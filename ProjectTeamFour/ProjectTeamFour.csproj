@@ -165,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Css\" />
+    <Folder Include="Assets\Imags\" />
+    <Folder Include="Assets\Javascript\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
