@@ -131,6 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\normalize.css" />
+    <Content Include="Assets\Css\setting.css" />
+    <Content Include="Assets\Html\setting.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -170,9 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\Images\" />
-    <Folder Include="Assets\Css\" />
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Javascript\" />
     <Folder Include="Data\" />
