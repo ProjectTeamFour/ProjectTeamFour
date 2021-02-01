@@ -169,7 +169,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Css\" />
-    <Folder Include="Assets\Imags\" />
+    <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Javascript\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
