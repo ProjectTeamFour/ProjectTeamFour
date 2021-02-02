@@ -130,7 +130,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\campaignDetail.css" />
     <Content Include="Assets\css\custom_layout.css" />
+    <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Javascript\custom_layout.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
