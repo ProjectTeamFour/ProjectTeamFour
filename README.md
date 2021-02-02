@@ -1,6 +1,6 @@
 /*
 
-**************引用相依性*************
+**引用相依性**
 
 - jquery3.5.1.min.js - bootstrap, slick 需要
 - jquery_migrate1.2.1.min.js - slick 需要
