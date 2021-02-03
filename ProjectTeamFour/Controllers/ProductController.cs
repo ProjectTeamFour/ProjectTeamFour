@@ -15,14 +15,6 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        public ActionResult  ProductCard()
-        {
-            List<Product> products = new List<Product>()
-            { 
-            new Product{Name="",}
-            
-            };
-            return View();
-        }
+
     }
 }
