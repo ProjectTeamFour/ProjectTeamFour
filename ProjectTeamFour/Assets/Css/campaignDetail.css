@@ -63,19 +63,44 @@ html {
   font-weight: bold;
 }
 
-#intro-video-wrap .items {
-  display: block;
+#intro-video-wrap {
+  width: 100%;
+  background-color: #aaa;
+  position: relative;
 }
 
 #intro-video-wrap iframe {
   width: 100%;
-  height: 200%;
-  overflow: hidden;
+  height: 100%;
+  position: absolute;
+}
+#intro-video-wrap:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  display: block;
+  padding-bottom: 56.25%;
+}
+
+.item-wrap {
+  margin: 2rem 1.5rem;
 }
 
 #creator-info .item-logo img {
   width: 3.5rem;
   height: 3.5rem;
+}
+#creator-info .item-text span {
+  margin-right: 1rem;
+}
+
+#creator-info .item-text {
+  display: inline-block;
+}
+
+#follow-icon {
+  display: inline-block;
+  margin-left: 3rem;
 }
 
 #follow-icon .row {

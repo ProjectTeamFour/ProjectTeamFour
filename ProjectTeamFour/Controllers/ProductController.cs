@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectTeamFour.Models;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -11,6 +12,16 @@ namespace ProjectTeamFour.Controllers
         // GET: Product
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult  ProductCard()
+        {
+            List<Product> products = new List<Product>()
+            { 
+            new Product{Name="",}
+            
+            };
             return View();
         }
     }
