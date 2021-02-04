@@ -162,6 +162,11 @@
     <Content Include="Assets\css\products\rwd-products.css" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Img\p1.jpg" />
+    <Content Include="Assets\Img\pay\pic.png" />
+    <Content Include="Assets\Img\pay\product.jpg" />
+    <Content Include="Assets\Img\personal\default.png" />
+    <Content Include="Assets\Img\personal\dog.jpg" />
+    <Content Include="Assets\Img\products\pc.jpg" />
     <Content Include="Assets\Javascript\custom_layout.js" />
     <Content Include="Assets\Javascript\Js-pay\pay.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
