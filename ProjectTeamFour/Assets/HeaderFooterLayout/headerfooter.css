@@ -112,6 +112,7 @@
 
 .hamburger .title h1 {
     letter-spacing: 0.3rem;
+    margin: 0;
 }
 
 .hamburger .fa-shopping-cart {
@@ -268,7 +269,7 @@
     .pcmode-navbar input {
         width: 5rem;
         border: none;
-        border-bottom: 0.1rem solid rgb(212, 210, 210);
+/*        border-bottom: 0.1rem solid rgb(212, 210, 210);*/
         background-color: transparent;
         outline: none;
     }
@@ -280,6 +281,7 @@
         transform: translate(-50%, -50%);
         color: var(--color);
         letter-spacing: 0.2rem;
+        margin: 0;
     }
 
 .fakebox {
