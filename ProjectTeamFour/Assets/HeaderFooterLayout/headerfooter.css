@@ -320,6 +320,7 @@
 
 
 /* footer */
+
 .footer .title h2 {
     font-size: 1.2rem;
 }
@@ -334,8 +335,8 @@
     }
 
 .footer h4 {
-    font-size: 1rem;
-    color: #000;
+    font-size: 0.9rem;
+    color: #aaa;
     transition: .3s;
 }
 
