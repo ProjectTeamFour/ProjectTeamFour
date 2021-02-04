@@ -163,6 +163,7 @@
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Javascript\custom_layout.js" />
+    <Content Include="Assets\Javascript\Js-pay\pay.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
