@@ -1918,9 +1918,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout1st.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
+    <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
