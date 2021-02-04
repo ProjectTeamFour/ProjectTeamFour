@@ -154,6 +154,12 @@
   <ItemGroup>
     <Content Include="Assets\css\campaignDetail.css" />
     <Content Include="Assets\css\custom_layout.css" />
+    <Content Include="Assets\css\pay\pay.css" />
+    <Content Include="Assets\css\pay\rwd-pay.css" />
+    <Content Include="Assets\css\person-ins\personal.css" />
+    <Content Include="Assets\css\person-ins\rwd-personal.css" />
+    <Content Include="Assets\css\products\products.css" />
+    <Content Include="Assets\css\products\rwd-products.css" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Javascript\custom_layout.js" />
