@@ -130,8 +130,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\custom_layout.css" />
-    <Content Include="Assets\Javascript\custom_layout.js" />
+    <Content Include="Assets\css\homepage.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter_layout.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter_layout.js" />
+    <Content Include="Assets\Images\HomePageImage\001_1900500.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\HomePageImage\002_1900x500.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\HomePageImage\02首頁幻燈片.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\HomePageImage\1900500pic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\HomePageImage\408-1900x500.jpg" />
+    <Content Include="Assets\Images\HomePageImage\landingbanner01pic.jpg" />
+    <Content Include="Assets\Images\HomePageImage\landingbanner02pic.jpg" />
+    <Content Include="Assets\Images\HomePageImage\首頁幻燈片.jpg" />
+    <Content Include="Assets\Javascript\HomePage\homepage.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
@@ -1881,7 +1899,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout1st.cshtml" />
+    <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
