@@ -159,6 +159,8 @@
     <Content Include="Assets\css\person-ins\rwd-personal.css" />
     <Content Include="Assets\css\products\products.css" />
     <Content Include="Assets\css\products\rwd-products.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
@@ -1912,7 +1914,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
