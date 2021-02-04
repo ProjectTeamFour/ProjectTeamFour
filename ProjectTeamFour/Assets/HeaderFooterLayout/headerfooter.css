@@ -287,7 +287,7 @@
 .fakebox {
     position: absolute;
     right: 15.5rem;
-    width: 2rem;
+    width: 1rem;
     height: 2.6rem;
     border-right: 1px solid rgb(150, 148, 148);
 }
