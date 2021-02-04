@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./indiegogo.css">
+  <link rel="stylesheet" href="./reset.css">
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
+  <!-- 手機排版部分 -->
+
+  <!-- 漢堡選單 -->
+  <section id="md-navbar">
+    <div class="fixed-top">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Collapsed content</h5>
+          <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a> -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+          <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </div>
+
+  </section>
+  <!-- 產品標題＆說明 -->
+  <!-- 手機是vertical，其他為兩欄畫面 -->
+  <section style="padding-top: 20vh;" id="product-info">
+    <div id="info-imgs" class="container">
+      <!-- 手機滿版carousel，桌機2cols -->
+      <div class="row">
+        <div id="campaign-layout-video" class="col-sm-12 col-md-6 col-lg-8">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://picsum.photos/600/400/?random=1" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/600/400/?random=3" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/600/400/?random=5" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div id="info-text" class="col-sm-12 col-md-6 col-lg-4">
+          <span class="badge badge-secondary">INDEMAND</span>
+          <h1 style="font-size: 32px; margin-top: 8px;">VAVA Portable SSD Touch</h1>
+          <p>AES 256-bit & fingerprint encryption. 1TB & 2TB. 540MB/s transfer speed. Multi-device compatibility.</p>
+          <div class="item">
+            <div class="item-logo"><img
+                src="https://c3.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_40,g_center,q_auto:best,dpr_0.9,f_auto,h_40/dyq61vd9xyhbwteetrir"
+                alt="" srcset=""></div>
+            <div class="item-text">
+              <h6>Team VAVA</h6>
+              <!-- 這邊不確定有沒有要用到麵包屑 -->
+              <nav id="company-info">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">5 Campaigns</li>
+                  <li class="breadcrumb-item active" aria-current="page">San Francisco, United States</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <div id="donating-amount">
+            <button>NT$18,381,739 TWD</button>
+            <span>by 3,725 backers</span>
+            <span>NT$15,517,835 TWD by 3,188 backers</span><span>on Nov 8, 2020</span>
+          </div>
+          <!-- 手機的按鈕會變成fixed在body的bottom -->
+          <div id="backing-section" class="container">
+            <div class="row">
+              <a href="" id="back-it-btn">BACK IT</a>
+              <a href="" id="follow-btn">FOLLOW</a>
+              <div id="follow-icon">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 手機最下面會有一個固定的back區塊 -->
+  <div class="fixed-bottom"></div>
+
+  <!-- 方案選擇，這邊都是card -->
+  <section id="select-perk">
+    <div class="container">
+      <div class="card-deck">
+        <h6>Select a perk</h6>
+        <div class="row">
+          <div class="card col-sm-3 col-md-12" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_762,g_center,q_auto:best,dpr_1.0,f_auto,h_506/bcuby8ssqnrqe9gfl5nu"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Early Bird Perk A</h5>
+              <h6>$799 USD <span>$999 USD (20% OFF)</span><br>
+                <span>NT$22,347 TWD</span>
+              </h6>
+              <p class="card-text">Free shipping! You will get 1 * 24mm Anamorphic lens at $799 ONLY. Which will retail
+                for $999 I 20% off the retail price
+                <span>Included Items</span>
+              <ul>
+                <li>24mm Anamorphic Lens</li>
+              </ul>
+              <span>Estimated Shipping</span>
+              Current: January 2021 <br>
+              2 out of 20 claimed <br>
+              Ships worldwide.
+              </p>
+              <a href="#" class="btn btn-primary">GET THIS PERK</a>
+            </div>
+          </div>
+          <div class="card col-sm-3 col-md-12" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_762,g_center,q_auto:best,dpr_1.0,f_auto,h_506/bcuby8ssqnrqe9gfl5nu"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Early Bird Perk B</h5>
+              <h6>$799 USD <span>$999 USD (20% OFF)</span><br>
+                <span>NT$22,347 TWD</span>
+              </h6>
+              <p class="card-text">
+                <span>Included Items</span>
+              <ul>
+                <li>24mm Anamorphic Lens</li>
+              </ul>
+              <span>Estimated Shipping</span>
+              January 2021 <br>
+              Only 3 left <br>
+              Ships worldwide.
+              </p>
+              <a href="#" class="btn btn-primary">GET THIS PERK</a>
+            </div>
+          </div>
+          <div class="card col-sm-3 col-md-12" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_762,g_center,q_auto:best,dpr_1.0,f_auto,h_506/bcuby8ssqnrqe9gfl5nu"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Early Bird Perk C</h5>
+              <h6>$799 USD <span>$999 USD (20% OFF)</span><br>
+                <span>NT$22,347 TWD</span>
+              </h6>
+              <p class="card-text">Free shipping! You will get 1 * 24mm Anamorphic lens at $799 ONLY. Which will retail
+                for $999 I 20% off the retail price
+                <span>Included Items</span>
+              <ul>
+                <li>24mm Anamorphic Lens</li>
+              </ul>
+              <span>Estimated Shipping</span>
+              Current: January 2021 <br>
+              2 out of 20 claimed <br>
+              Ships worldwide.
+              </p>
+              <a href="#" class="btn btn-primary">GET THIS PERK</a>
+            </div>
+          </div>
+          <div class="card col-sm-3 col-md-12" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_762,g_center,q_auto:best,dpr_1.0,f_auto,h_506/bcuby8ssqnrqe9gfl5nu"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Early Bird Perk D</h5>
+              <h6>$799 USD <span>$999 USD (20% OFF)</span><br>
+                <span>NT$22,347 TWD</span>
+              </h6>
+              <p class="card-text">Free shipping! You will get 1 * 24mm Anamorphic lens at $799 ONLY. Which will retail
+                for $999 I 20% off the retail price
+                <span>Included Items</span>
+              <ul>
+                <li>24mm Anamorphic Lens</li>
+              </ul>
+              <span>Estimated Shipping</span>
+              Current: January 2021 <br>
+              2 out of 20 claimed <br>
+              Ships worldwide.
+              </p>
+              <a href="#" class="btn btn-primary">GET THIS PERK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 其他產品介紹 -->
+
+  <!-- 四個pages -->
+  <div id="tab-labels" class="container">
+    <nav class="nav">
+      <a class="nav-link active" href="#">Story</a>
+      <a class="nav-link" href="#">FAQ</a>
+      <a class="nav-link" href="#">UPDATES</a>
+      <a class="nav-link" href="#">COMMENTS</a>
+    </nav>
+  </div>
+
+  <!-- story -->
+  <section class="container" id="story">
+
+    <div id="shipping" class="container">
+      <h6>Shipping</h6>
+      <p>The project team has begun shipping their products. The delivery may be affected by shipping challenges and
+        delays.
+        <span><a href="">Learn More</a></span>
+
+      <div id="process">
+
+      </div>
+      </p>
+      <h6>Highlights</h6>
+      <div class="row"></div>
+      <div class="items">
+        <div class="icon-item"></div>
+        <p><a href="#">Indiegogo Team Favorites</a></p>
+      </div>
+      <div class="items">
+        <div class="icon-item"></div>
+        <p><a href="#">5 Projects</a></p>
+      </div>
+    </div>
+    <!-- 這邊hover highlight之後會跑出一個card -->
+
+    <img src="https://picsum.photos/400/300/?random=10">
+    <h3>Overview</h3>
+    <p>The VAVA Portable Solid-State Drive (SSD) Touch gives you the ultimate fingerprint security and 540MB/s transfer
+      speed in a palm-sized package. Experience the convenience of securing and unlocking your critical files with a
+      touch
+      of a finger.</p>
+    <ul>
+      <li>AES 256-Bit Encryption</li>
+      <li>Fingerprint Identification Technology</li>
+      <li>Fingerprint Identification Technology
+        Ultra Sleek Design</li>
+      <li>Up to 540/480MB/s Read & Write Speed</li>
+      <li>Multi-device Compatibility</li>
+    </ul>
+    <img
+      src="https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_limit,w_695/v1598491018/oaq0njjlvkhvt4xcqzsg.png"
+      alt="" srcset="">
+
+    <h3>Fingerprint Encryption </h3>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0246/4147/0554/files/QzpcVXNlcnNcbGFyYS5mYW5cQXBwRGF0YVxSb2FtaW5nXERpbmdUYWxrXDY5MTg0NjE3OV92MlxJbWFnZUZpbGVzXDE0MTc1MDEwXDIwMDUzNTIwNTVfMjE5NDgwNzYxMTFfR0lGIDEuZ2lm.gif?v=1598260842"
+      alt="" srcset="">
+
+    <h3>Unboxing Video by Indiegogo Team</h3>
+
+    <!-- 內嵌Youtube影片 -->
+    <iframe src="" frameborder="0"></iframe>
+
+
+    <div id="FAQ">
+      <div id="FAQ-top" class="container">
+        <span>Looking for more information?</span>
+        <p>Check the project<a href="#">FAQ</a></p>
+      </div>
+      <div id="FAQ-down" class="container">
+        <p><a href="#">Let us know</a> if you think this campaign contains <a href="#">prohibited content</a>.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 專案標籤 -->
+  <section class="footer-before">
+
+
+    <section id="tags" class="container">
+      <h2>Tags for this project</h2>
+      <a href="#" class="badge badge-secondary">SECURITY</a>
+      <a href="#" class="badge badge-secondary">PC</a>
+      <a href="#" class="badge badge-secondary">LAPTOPS</a>
+      <a href="#" class="badge badge-secondary">COMPUTERS</a>
+      <a href="#" class="badge badge-secondary">SAFETY</a>
+    </section>
+
+    <!-- 其他專案的連結&簡介 -->
+
+    <section id="founding-suggestion-card">
+      <div class="container">
+        <h2>You may also be interested in</h2>
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fit,w_auto,g_center,q_auto:best,dpr_1.0,f_auto/hrtgeu7ae92dhzmfhsym"
+              alt="Card image cap">
+            <div class="card-body">
+              <span>FUNDING</span>
+              <h5 class="card-title"><a href="http://">OYeet NEX:The Most Powerful & Portable Massage Gun</a></h5>
+              <p class="card-text">Deep Tissue Muscle Recovery, Anytime & Anywhere | 40lbs Force | 3500 PPM Speed |
+                Ultra-Portable
+              </p>
+              <a href="#" class="btn tag">HEALTH&FITNESS</a>
+
+              <div class="progress">
+                <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">
+                </div>
+              </div>
+              <span>Now funding through <a href="#">InDemand</a>:</span>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fit,w_auto,g_center,q_auto:best,dpr_1.0,f_auto/hrtgeu7ae92dhzmfhsym"
+              alt="Card image cap">
+            <div class="card-body">
+              <span>FUNDING</span>
+              <h5 class="card-title"><a href="http://">OYeet NEX:The Most Powerful & Portable Massage Gun</a></h5>
+              <p class="card-text">Deep Tissue Muscle Recovery, Anytime & Anywhere | 40lbs Force | 3500 PPM Speed |
+                Ultra-Portable
+              </p>
+              <a href="#" class="btn tag">HEALTH&FITNESS</a>
+
+              <div class="progress">
+                <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">
+                </div>
+              </div>
+              <span>Now funding through <a href="#">InDemand</a>:</span>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fit,w_auto,g_center,q_auto:best,dpr_1.0,f_auto/hrtgeu7ae92dhzmfhsym"
+              alt="Card image cap">
+            <div class="card-body">
+              <span>FUNDING</span>
+              <h5 class="card-title"><a href="http://">OYeet NEX:The Most Powerful & Portable Massage Gun</a></h5>
+              <p class="card-text">Deep Tissue Muscle Recovery, Anytime & Anywhere | 40lbs Force | 3500 PPM Speed |
+                Ultra-Portable
+              </p>
+              <a href="#" class="btn tag">HEALTH&FITNESS</a>
+
+              <div class="progress">
+                <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">
+                </div>
+              </div>
+              <span>Now funding through <a href="#">InDemand</a>:</span>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+              src="https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fit,w_auto,g_center,q_auto:best,dpr_1.0,f_auto/hrtgeu7ae92dhzmfhsym"
+              alt="Card image cap">
+            <div class="card-body">
+              <span>FUNDING</span>
+              <h5 class="card-title"><a href="http://">OYeet NEX:The Most Powerful & Portable Massage Gun</a></h5>
+              <p class="card-text">Deep Tissue Muscle Recovery, Anytime & Anywhere | 40lbs Force | 3500 PPM Speed |
+                Ultra-Portable
+              </p>
+              <a href="#" class="btn tag">HEALTH&FITNESS</a>
+
+              <div class="progress">
+                <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">
+                </div>
+              </div>
+              <span>Now funding through <a href="#">InDemand</a>:</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- footer手機部分 -->
+  <section class="footer">
+    <div class="container" id="footer-wrapper">
+      <div id="find-it-first" class="">
+        <h5>Find it first on Indiegogo</h5>
+        <p>Discover new and clever products in
+          <br> the Indiegogo newsletter
+        </p>
+        <input type="email" name="Your email address" id="">
+        <input type="checkbox" name="" id="">
+        <button id="sign-up-btn" class="btn btn-primary"
+          style="border: none;background-color: #e51075; color: #ffffff;">SIGN ME UP</button>
+      </div>
+      <div class="row" id="footer-list">
+        <div class="explore">
+          <ul>
+            <li><a href="http://">What We Do</a></li>
+            <li><a href="http://">Funding</a></li>
+            <li><a href="http://">GoFundMe</a></li>
+          </ul>
+        </div>
+        <div class="about">
+          <ul>
+            <li><a href="http://">About Us</a></li>
+            <li><a href="http://">Blog</a></li>
+            <li><a href="http://">Trust & Safety</a></li>
+            <li><a href="http://">Help & Support</a></li>
+            <li><a href="http://">Press</a></li>
+            <li><a href="http://">Careers</a></li>
+            <li><a href="http://">Contact</a></li>
+          </ul>
+        </div>
+        <div class="entrepreneurs">
+          <ul>
+            <li><a href="http://">How It Works</a></li>
+            <li><a href="http://">Indiegogo vs. Kickstarter</a></li>
+            <li><a href="http://">Education Center</a></li>
+            <li><a href="http://">Experts Directory</a></li>
+            <li><a href="http://">Fees</a></li>
+            <li><a href="http://">Enterprise</a></li>
+            <li><a href="http://">China</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 橫線 -->
+      <button type="button" class="btn btn-primary">按下去跳出訊息，一個selector選匯率</button>
+      <div id="icon-wrapper">
+        <a href="http://"> <i class="bi bi-facebook"></i></a>
+        <a href="http://"><i class="bi bi-twitter"></i></a>
+        <a href="http://"><i class="bi bi-youtube"></i></a>
+        <a href="http://"><i class="bi bi-instagram"></i></a>
+        <a href="http://"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <a href="#"><img src="https://www.indiegogo.com/images/bbbImage.png" alt=""></a>
+      <div id="personal-settings" class="">
+        <div class="col-4"><a href="#">Term of Use</a></div>
+        <div class="col-4"><a href="#">Privacy Policy</a></div>
+        <div class="col-4"><a href="#">Cookie Policy</a></div>
+        <div class="col-12"><a href="#">Do Not Sell My Personal Information</a></div>
+        <div class="col-12">
+          <p>© 2021 Indiegogo, Inc. All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
