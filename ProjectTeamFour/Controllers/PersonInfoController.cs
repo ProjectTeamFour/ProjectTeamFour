@@ -13,5 +13,25 @@ namespace ProjectTeamFour.Controllers
         {
             return View();
         }
+
+        public ActionResult Sponser()
+        {
+            return View();
+        }
+
+        public ActionResult Submit()
+        {
+            return View();
+        }
+
+        public ActionResult Connect()
+        {
+            return View();
+        }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }

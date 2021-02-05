@@ -1953,6 +1953,10 @@
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
     <Content Include="Views\PersonInfo\Index.cshtml" />
+    <Content Include="Views\PersonInfo\Sponser.cshtml" />
+    <Content Include="Views\PersonInfo\Submit.cshtml" />
+    <Content Include="Views\PersonInfo\Connect.cshtml" />
+    <Content Include="Views\PersonInfo\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
