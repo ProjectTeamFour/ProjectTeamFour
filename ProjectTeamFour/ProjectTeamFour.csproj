@@ -1922,6 +1922,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
