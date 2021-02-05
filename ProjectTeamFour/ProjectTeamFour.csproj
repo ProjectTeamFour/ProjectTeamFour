@@ -154,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\campaignDetail.css" />
-    <Content Include="Assets\css\OrdinaryQAPage\Ordinary.css" />
     <Content Include="Assets\css\PaymentPage\pay.css" />
     <Content Include="Assets\css\PaymentPage\rwd-pay.css" />
     <Content Include="Assets\css\Person_insPage\personal.css" />
@@ -170,9 +169,8 @@
     <Content Include="Assets\Img\personal\default.png" />
     <Content Include="Assets\Img\personal\dog.jpg" />
     <Content Include="Assets\Img\products\pc.jpg" />
-    <Content Include="Assets\Javascript\OrdinaryQAPage\OrdinaryQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
-    <Content Include="Assets\Javascript\productsPage\productsJS.js" />
+    <Content Include="Assets\Javascript\Products_Page\Products.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
@@ -1923,6 +1921,7 @@
     <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
