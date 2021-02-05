@@ -11,15 +11,13 @@ a:hover {
 }
 
 .category-group {
-    display: flex;
-    flex-wrap: wrap;
     text-align: center;
-    justify-content: space-between;
 }
 
 .category-group-item {
     width: 50%;
     color: #000;
+    outline: none;
 }
 
     .category-group-item:hover {
@@ -70,6 +68,7 @@ button[type="button"] {
 
 .menu-project-pic {
     overflow: hidden;
+    width: 100%;
 }
 
     .menu-project-pic img {
