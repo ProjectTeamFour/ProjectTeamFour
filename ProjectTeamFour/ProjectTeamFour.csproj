@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
+    <Compile Include="Controllers\personalInfoController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,6 +173,7 @@
     <Content Include="Assets\Img\products\pc.jpg" />
     <Content Include="Assets\Javascript\OrdinaryQAPage\OrdinaryQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
+    <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\productsPage\productsJS.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
@@ -1924,6 +1926,7 @@
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\personalInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
