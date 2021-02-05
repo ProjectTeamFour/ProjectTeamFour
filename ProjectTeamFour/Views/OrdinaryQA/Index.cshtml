@@ -1,0 +1,1690 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section topCSS{
+
+
+    <link href="~/Assets/Css/OrdinaryQAPage/Ordinary.css" rel="stylesheet" />
+}
+@section endJS{
+    <script src="~/Assets/Javascript/OrdinaryQAPage/OrdinaryQAPage.js"></script>
+}
+
+<section class="search-bar">
+    <div class="container search-container">
+        <div class="row">
+            <div class="form-group  searchIcon col-sm-12 col-md-12">
+                <i class="fa fa-search"></i>
+                <input class="form-control" id="fsearch" placeholder="對於平台有任何疑問嗎？搜尋看看吧" name="fsearch" type="text">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="common-questions">
+    <div class="container">
+        <div class="title">
+            <h3 class="bluequote">常見問題</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 common-questions-hint col-md-4">
+                <div class="whiteWell">
+                    <p class="catTitle stong">提案人</p>
+                    <ol>
+                        <li>
+                            <a href="#TurnToProposalQ1" class="qlink question1">要如何提案？</a>
+                        </li>
+                        <li><a href="#TurnToProposalQ2" class="qlink question2">集資車車 會如何審核專案？會審核多久？</a></li>
+                        <li><a href="#TurnToProposalQ3" class="qlink question3">專案募資成功了，我什麼時候可以拿到錢？</a></li>
+                    </ol>
+
+                </div>
+            </div>
+            <div class="col-sm-12 common-questions-hint col-md-4">
+                <div class="whiteWell">
+                    <p class="catTitle stong">贊助人</p>
+                    <ol>
+                        <li><a href="#TurnToProposalQ4" class="qlink question4">如何支付贊助費用？</a></li>
+                        <li><a href="#TurnToProposalQ5" class="qlink question5">贊助者如何知道專案的進度？</a></li>
+                        <li><a href="#TurnToProposalQ6" class="qlink question6">若專案沒有達到目標，我的贊助會歸還嗎？</a></li>
+                    </ol>
+
+                </div>
+            </div>
+            <div class="col-sm-12 common-questions-hint col-md-4">
+                <div class="whiteWell" style="padding: 40px 20px; display:block;">
+                    <p class="catTitle stong">探索者</p>
+                    <ol>
+                        <li><a href="#TurnToProposalQ7" class="qlink question7">我該怎麼更改我的個人資料？</a></li>
+                        <li><a href="#TurnToProposalQ8" class="qlink question8">怎麼知道我贊助過那些專案？</a></li>
+                        <li><a href="#TurnToProposalQ9" class="qlink question9">平台上的贊助到底是什麼行為？</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="forHr">
+    <hr>
+</div>
+<div id="answer">
+    <section class="proposal">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="col-sm-12 brow proposal-text">
+                        <p class="catTitle stong">提案者</p>
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left proposalQ1 question1" type="button"
+                                                data-toggle="collapse" data-target="#proposalQ1" aria-expanded="true"
+                                                aria-controls="proposalQ1" id="TurnToProposalQ1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>要如何提案？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ1" class="collapse " aria-labelledby="headingOne"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            您只需在註冊後點選「提案」，就可以開始逐步編寫您的提案。
+                                            <br>
+                                            <br>
+
+                                            在編輯過程中，您可隨時儲存現有的內容。按下「完成！提交專案」按鈕並同意「提案者合約」後，即可將計畫提交審核。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ2" aria-expanded="true"
+                                                aria-controls="proposalQ2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>誰可以提案呢?
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ2" class="collapse " aria-labelledby="headingTwo"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            提案者必須是 集資車車 的會員。
+                                            <br>
+                                            <br>
+
+                                            提案者必須是具備完全行為能力的自然人、合法登記的法人或團體。若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。提案前，應完成註冊程序，並應依本平台當時所訂之方式完成會員認證。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ3" aria-expanded="true"
+                                                aria-controls="proposalQ3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>國外用戶可以提案嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ3" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            目前 集資車車 只限定台灣用戶，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ4" aria-expanded="true"
+                                                aria-controls="proposalQ4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>提案有限定類型嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ4" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            除了提案者合約中的禁止募資事項以外，只要有明確可以履行的計劃目標，且不違反現行法律，我們歡迎一切類型的專案。
+                                            <br>
+                                            <br>
+
+                                            如果你不確定計畫是否適合我們的平台，請與我們聯繫。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ5" aria-expanded="true"
+                                                aria-controls="proposalQ5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>企業行號或法人團體可以提案嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ5" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>可以，提案者必須是具備完全行為能力的自然人、合法登記的法人或團體。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question2" type="button"
+                                                data-toggle="collapse" data-target="#proposalQ8" aria-expanded="true"
+                                                aria-controls="proposalQ8" id="TurnToProposalQ2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>集資車車 會如何審核專案？會審核多久？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ8" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            從提交到專案人員的回覆，需要 7 個工作天。
+                                            <br>
+                                            <br>
+
+                                            群眾募資的本意在於「去中間化」，亦即讓市場自己決定什麼計畫應當成真。集資車車 將僅就提案的必須內容進行檢視及建議，而非對內容進行審核。
+                                            <br>
+                                            <br>
+
+                                            除非您的案件有違法之疑慮、或涉及具高度爭議性之內容，否則 集資車車 將不會禁止專案的刊登。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ9" aria-expanded="true"
+                                                aria-controls="proposalQ9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何定義我的專案分類？可以自訂或給予複數的類別嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ9" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            在專案編輯頁面中，我們有提供預設的分類項目，如果您覺得您的專案橫跨多個領域，請與專案經理討論。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ10" aria-expanded="true"
+                                                aria-controls="proposalQ10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>募資專案的期限應該設多長？有上下限嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ10" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            募資天數最短為 7 天、最長為兩個月。
+                                            <br>
+
+                                            請視專案的情況設定合理的時程，若是您的回饋項目具有時效性，請將時程設定在合適的範圍內。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ11" aria-expanded="true"
+                                                aria-controls="proposalQ11">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>募資專案的門檻金額應該設多少？有上下限嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ11" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p> 門檻金額最低為 5,000 元，沒有上限。建議設定在能完成專案、履行回饋所需的金額即可。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ12" aria-expanded="true"
+                                                aria-controls="proposalQ12">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>是否一定需要提供回饋？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ12" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>是，回饋式群眾募資和捐款不同的地方是，每項專案都必須提供回饋方案。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ13" aria-expanded="true"
+                                                aria-controls="proposalQ13">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>可以用專案的股份或分紅當回饋嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ13" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            不行。用現金紅利或有價證券（如可通用的現金禮券）做為回饋是違法的。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ14" aria-expanded="true"
+                                                aria-controls="proposalQ14">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>是否可以同時在不同平台募資？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ14" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            國內禁止，而國外則不建議。
+                                            <br>
+                                            <br>
+
+                                            台灣境內是禁止同時多平台募資的，跨國平台募資也建議將時程錯開，贊助及宣傳能量才能集中達成目標。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ15" aria-expanded="true"
+                                                aria-controls="proposalQ15">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>為什麼要寫出回饋的預計完成日期？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ15" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            讓贊助者知道大約什麼時候可以取得回饋是很重要的，也可以避免贊助者重複提問。若您不能確定回饋履行的日期，請將時間設定的寬鬆一些，並務必使用「進度」功能通知贊助者最新的進度。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ16" aria-expanded="true"
+                                                aria-controls="proposalQ16">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我該怎麼收取回饋的運費？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ16" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>請將國內的運費成本考量在初始的回饋設置裡。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ17" aria-expanded="true"
+                                                aria-controls="proposalQ17">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案裡面回饋項目是如何排序的？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ17" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            集資車車 預設的分級方式是根據贊助金額來做等級的區分，提案者也可以自行調整順序。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ18" aria-expanded="true"
+                                                aria-controls="proposalQ18">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我的專案會出現在 集資車車 的哪裡？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ18" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            集資車車 將會根據專案分類、登錄日期、截止日期、當前募資金額等項目進行排序管理，首頁則會有專案的輪播區塊。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ19" aria-expanded="true"
+                                                aria-controls="proposalQ19">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我要如何才能讓專案登上熱門項目？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ19" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            集資車車 將會根據所有專案的贊助情況（人數、金額），系統計算後選出熱門項目的專案。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ20" aria-expanded="true"
+                                                aria-controls="proposalQ20">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何與我的贊助者溝通？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ20" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            請利用「更新進度」張貼最新的消息，或與贊助者在「互動」交流討論、回覆疑問。每天利用工具與贊助者互動、活化專案，是專案成功的一大關鍵。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ21" aria-expanded="true"
+                                                aria-controls="proposalQ21">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>開始募資後我可以改變專案內容嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ21" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            僅有部分計畫內容可以進行修改及更新。截止日期不能延長、目標額度不能改變、已被選擇的回饋項目不能取消。
+                                            <br>
+                                            <br>
+
+                                            其餘項目的變更或特殊狀況，請透過專案經理協助完成。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ22" aria-expanded="true"
+                                                aria-controls="proposalQ22">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>更新進度會自動發佈給贊助者嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ22" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            透過「進度更新」發佈的內容，會以電子郵件寄發給專案的贊助者。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ23" aria-expanded="true"
+                                                aria-controls="proposalQ23">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案可以提前結束嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ23" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            募資日期一經設定後就無法再更改，若有其他特殊情況請與負責的專案經理做討論。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ24" aria-expanded="true"
+                                                aria-controls="proposalQ24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我可以自己贊助自己的專案嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ24" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            可以
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ25" aria-expanded="true"
+                                                aria-controls="proposalQ25">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我收到別人直接贊助的現金，該如何呈現在專案上？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ25" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            您可根據他們的贊助金額，幫他們選擇正確的回饋，並用自己的帳號替他們完成贊助。但請自行搜集回饋寄送所需的資料（收件姓名、電話、地址、Email）。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ26" aria-expanded="true"
+                                                aria-controls="proposalQ26">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我無法完成提交的專案，可以取消募資中的計劃嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ26" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            可以，但非常不建議。當專案已達成募資目標卻中途取消，對提案者是很大的傷害。若您的專案未達目標額度，在專案到期日前，可與專案經理討論專案的調整方式。
+                                            <br>
+                                            <br>
+                                            請注意，即便中途終止專案，專案仍將留存於 集資車車 平台上。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question3" type="button"
+                                                data-toggle="collapse" data-target="#proposalQ27" aria-expanded="true"
+                                                aria-controls="proposalQ27" id="TurnToProposalQ3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案募資成功了，我什麼時候可以拿到錢？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ27" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            專案募資成功後的 10 個工作天後，會收到 集資車車 傳送的結案報告，若是提案者在時限內回傳匯款帳號資料，集資車車
+                                            會在隔週的星期五匯出款項。若是專案遭遇到不可抗力之因素（客服、退款等），可能會延遲出款日期。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ28" aria-expanded="true"
+                                                aria-controls="proposalQ28">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>履行回饋的重要性是？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ28" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            在群眾募資平台上，履行回饋是提案者的責任。
+                                            <br>
+                                            <br>
+
+                                            集資車車
+                                            提供的各項服務旨在更有效便捷的媒合提案者與贊助者，我們會善盡平台的責任，但並不能擔保提案者能百分之百的履行其計畫內容。如有發生糾紛爭議，我們將依循「提案者合約」與「網站使用條款」處理。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ29" aria-expanded="true"
+                                                aria-controls="proposalQ29">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>什麼是「風險與變數」？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ29" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            我們明白，每個提案者都非常希望能順利履行回饋。
+                                            <br>
+                                            <br>
+
+                                            但天有不測風雲，為了保障雙方的權益，我們要求提案者必須在專案內容中標明專案進行可能遭遇的挑戰與困難，並且清楚說明如果在募資成功後卻無法或延期履行回饋的處理方式，以避免爭議的產生。除此之外，你也可以公開你的支出帳目，讓贊助者知道你得到的每一分錢都花在該用的地方。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#proposalQ30" aria-expanded="true"
+                                                aria-controls="proposalQ30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>集資車車 的收費方式？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="proposalQ30" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            集資車車 採用的是全有全無制（All or nothing），我們依據提案團隊為專案訂下的目標金額及募資時間來判斷募資是否成功。
+                                            <br>
+                                            <br>
+
+                                            當專案時間結束且募資金額到達目標時，集資車車 將收取專案總金額的 8% 作為平台服務費。
+                                            <br>
+                                            <br>
+
+                                            反之若未達目標，則不會收取平台服務費，並將全數贊助款項退還給贊助者。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-sm-12 fsidebar">
+                        <div class="title">
+                            <h3 class="bluequote">為什麼募資計劃採用「全有全無制」？</h3>
+                        </div>
+                        <hr>
+                        <p>群眾募資讓提案者得以在執行專案之前直接得到贊助者的支持，我們希望每一個提案者以執行專案計劃的最低門檻為原則，審慎評估自己在群眾募資專案中希望募集的金額。</p><br>
+                        <p> 當提案者已經準備好後，集資車車 提供一個能夠被群眾看見、進而選擇是否支持的舞台。同時我們也希望將提案者的失敗風險降到最低。</p>
+                        <br>
+                        <p>
+                            因此，當計劃失敗後提案者無需付出任何費用，只要帶著這次的經驗改善自己的計劃、做出更多努力及不同的嘗試即可捲土重來。只有計劃募資成功才收取手續費，因為我們十分樂意與提案者共享成功的甜美果實，並且在失敗時提供再接再厲的勇氣。
+
+
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="forHr">
+        <hr>
+    </div>
+    <section class="sponsor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 filter">
+                    <div class="col-sm-12 sponsor-text">
+                        <p class="catTitle stong">贊助人</p>
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ1" aria-expanded="true" aria-controls="sponsorQ1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>贊助專案有什麼身份限制？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ1" class="collapse " aria-labelledby="headingOne"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>沒有限制，您只需要成為 集資車車 的會員，登入後即可贊助募資中的任一專案。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ2" aria-expanded="true" aria-controls="sponsorQ2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>可以匿名贊助嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ2" class="collapse " aria-labelledby="headingTwo"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            每筆訂單在填寫寄送資訊時，下方可自行勾選“匿名贊助。<br>
+                                            若忘記點選匿名，贊助完成後請再回到個人頁面的「贊助記錄」中修改。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question4" type="button"
+                                                data-toggle="collapse" data-target="#sponsorQ3" aria-expanded="true"
+                                                aria-controls="sponsorQ3" id="TurnToProposalQ4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何支付贊助費用？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ3" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>付款方式為信用卡一次付清。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ4" aria-expanded="true" aria-controls="sponsorQ4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何查看訂單付款狀態？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ4" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            已付款成功之訂單，會顯示在個人頁面的「贊助記錄」。<br>
+                                            請於登入狀態下，至網頁右上角的個人圖示，點選▼下拉選單至「贊助記錄」中查看。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ5" aria-expanded="true" aria-controls="sponsorQ5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>忘記超商／ATM 繳費代碼？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ5" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>超商／ATM 櫃員機的繳費代碼可在贊助通知信中查看；或回到個人「贊助記錄」中查看訂單的待繳單號資訊。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ6" aria-expanded="true" aria-controls="sponsorQ6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>贊助過程中一直失敗！
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ6" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            造成贊助失敗的原因有很多，可能因為網路環境不佳、瀏覽器未升級至最新版本，或是金流系統短暫維護中。而信用卡付款失敗的原因有：卡片資訊輸入錯誤（卡號、有效月年、背面末三碼）、已換發新卡、超過當月使用額度，或是未開通網路消費功能。
+                                            <br>若仍無法付款成功請您來信至 flyingfive@ontoo.cc 說明，我們將儘速幫您查詢原因。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ7" aria-expanded="true" aria-controls="sponsorQ7">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何更改訂單的收件資料？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ7" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            請回到個人贊助記錄中，點入訂單右側的「修改」，專案結束日期後的兩天內均可修改您的：收件人姓名、電話、地址、備註資訊、下拉式項目表單。
+                                            <br>
+                                            <br>
+
+                                            專案結束兩天以上之訂單右側會顯示為「查看」，代表無法再修改。仍需更改收件資訊請回到專案頁，至【互動】頁籤中留言或點選【聯絡提案人】，會由提案人親自為您處理。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question5" type="button"
+                                                data-toggle="collapse" data-target="#sponsorQ8" aria-expanded="true"
+                                                aria-controls="sponsorQ8" id="TurnToProposalQ5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>贊助者如何知道專案的進度？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ8" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            我們會建議提案者將計畫的相關過程（開始執行到完成）以及寄送回饋的最新訊息，都公告在專案頁的【進度】中。當專案結束時系統會寄送 Email
+                                            通知所有贊助人，讓贊助者了解目前的最新進度。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ9" aria-expanded="true" aria-controls="sponsorQ9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何聯絡專案的提案者？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ9" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            在專案頁的【互動】中留言等候提案人的回覆，或點選【聯絡提案人】利用站內訊息模式與提案人對話。若您需要其他的聯絡管道，請透過上述方式直接向提案者索取。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ10" aria-expanded="true"
+                                                aria-controls="sponsorQ10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我贊助的金額會顯示嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ10" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>專案內的【支持者】頁面只會顯示您的圖像與暱稱，不會顯示贊助金額。只有專案的提案者和 集資車車 平台管理者能知道各筆訂單的贊助資訊。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ11" aria-expanded="true"
+                                                aria-controls="sponsorQ11">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>提案者會得到那些我的個人資訊？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ11" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>提案者會收集到您於訂單中所留的收件資訊［收件人姓名、電話、地址、Email、備註、贊助金額、回饋內容、金流單號］。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ12" aria-expanded="true"
+                                                aria-controls="sponsorQ12">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>贊助的金額能不能抵免稅款？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ12" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>我們會建議能提供抵稅收據的提案者在專案內文中說明，如果您找不到相關資訊，您可以在專案頁的【互動】中直接提問。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question6" type="button"
+                                                data-toggle="collapse" data-target="#sponsorQ13" aria-expanded="true"
+                                                aria-controls="sponsorQ13" id="TurnToProposalQ6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>若專案沒有達到目標，我的贊助會歸還嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ13" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            若贊助的專案未在時間內達到目標金額，贊助款項將由 集資車車 退還給您。退款通知信將在專案到期日後 7－14
+                                            個工作天內發送。各項退款處理程序請詳以下說明：
+                                            <br>
+                                            <br>
+                                            【信用卡】退款程序
+                                            <br>
+
+                                            專案結束後 7－14 個工作天內，全額刷退至原付費信用卡帳單中（無手續費產生）。
+                                            <br>
+                                            <br>
+
+                                            ◎ 退款完成會收到Email 通知，請留存備查。
+                                            <br>
+                                            <br>
+
+                                            ◎ 請依據信用卡之結帳日判斷，刷退款項將返還於當月或次月信用卡帳單中。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ14" aria-expanded="true"
+                                                aria-controls="sponsorQ14">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>募資失敗案件已結束兩週以上，但沒有收到退款通知？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ14" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            退款通知信會在 7－14 個工作天內寄出，未查看到信件可能已被歸類至垃圾郵件，請至垃圾信箱中查找看看，仍無資訊請來信
+                                            flyingfive@ontoo.cc，告知您的會員帳號、贊助的專案名稱，我們將儘速幫您查詢退款狀態。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ15" aria-expanded="true"
+                                                aria-controls="sponsorQ15">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案進行中，可以取消贊助嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ15" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            可以。請來信至 flyingfive@ontoo.cc
+                                            告知＂退款原因＂，同時附上您贊助的「專案名稱、金流單號、贊助金額」，我們將儘速為您處理退款程序。
+                                            <br>
+                                            <br>
+
+                                            ◎ 贊助資訊可回到個人贊助記錄中查看
+                                            <br>
+
+                                            （平台網頁右上角個人圖示點選▼下拉選單至“贊助記錄”中）
+                                            <br>
+                                            <br>
+                                            【信用卡】退款程序
+                                            <br>
+
+                                            專案結束後 7－14 個工作天內，全額刷退至原付費信用卡帳單中（無手續費產生）。
+                                            <br>
+                                            <br>
+
+                                            ◎ 退款完成會收到Email 通知，請留存備查。
+                                            <br>
+                                            <br>
+
+                                            ◎ 請依據信用卡之結帳日判斷，刷退款項將返還於當月或次月信用卡帳單中。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ16" aria-expanded="true"
+                                                aria-controls="sponsorQ16">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我如何知道提案者的身份？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ16" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>在每個專案的右方都有提案者的簡介，點選名稱可進一步查看相關資訊及提案負責人姓名。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#sponsorQ17" aria-expanded="true"
+                                                aria-controls="sponsorQ17">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案募資成功了，但是我一直沒有收到回饋
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="sponsorQ17" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            請確認專案的「進度報告」和您登記的信箱，檢查是否有提案者發佈的訊息；若無，則可寄信至提案者信箱反應或使用「互動」區塊提出疑問、與其他贊助者交流討論。
+                                            <br>
+                                            <br>
+
+                                            若提案團隊仍無回應，則請與我們聯繫，我們會要求提案者盡速說明。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-sm-12 fsidebar">
+                        <div class="title">
+                            <h3 class="bluequote">集資車車 為一個互利互惠的平台</h3>
+                        </div>
+                        <hr>
+                        <p>在 集資車車 上發起的群眾募資案件，本質上不同於一般的「贈與」或「交易」。贊助者給予提案者資金；提案者在完成提案後給予贊助者回饋物。</p><br>
+                        <p>當募資專案成功時，提案者將得到贊助者的資金，並依承諾將回饋送至贊助者的手中；當募資專案失敗時，平台會退還募資金額予贊助者。</p><br>
+                        <p>這個模式仰賴信任機制的運作，在降低提案團隊失敗風險的同時，我們也會盡一切可能保障贊助者的權益。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="forHr">
+        <hr>
+    </div>
+    <section class="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="col-sm-12 explore-text">
+                        <p class="catTitle stong">探索者</p>
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ1" aria-expanded="true" aria-controls="exploreQ1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>會員與非會員的差別是什麼？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ1" class="collapse " aria-labelledby="headingOne"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>不論是否 集資車車 會員，都可以瀏覽所有的專案。若您想提問、追蹤專案進度或贊助專案則必須是會員才可以喔！</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ2" aria-expanded="true" aria-controls="exploreQ2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>案件太多了，我不知道怎麼找有趣的案子。
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ2" class="collapse " aria-labelledby="headingTwo"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            請利用搜尋功能，或到類別分類裡尋找你喜歡的領域，或者也可以在首頁看看那些案件現在特別熱門喔！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ3" aria-expanded="true" aria-controls="exploreQ3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>與 Facebook 同步有什麼功用？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ3" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            與 Facebook
+                                            同步，除了可以快速登入外，系統也會自動帶入你的基本資料，第一次來訪的朋友就不須再輸入。此外也可以打開「社群功能」，看看朋友們贊助了哪些案子，十分便利！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ4" aria-expanded="true" aria-controls="exploreQ4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>沒有成功的專案可以在 集資車車 上看到嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ4" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            可以，只要至各分類領域中點選「瀏覽全部」，再點選「已結束」即可看到所有該領域的專案。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ5" aria-expanded="true" aria-controls="exploreQ5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>總贊助金額和回饋選項加起來的不一樣？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ5" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>點選贊助的按鈕後，除了該項目的金額，贊助者可以「額外」贊助其他不求回饋的金額。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ8" aria-expanded="true" aria-controls="exploreQ8">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>如何刪除帳號？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ8" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p> 若是要刪除帳號，請於登入狀態下，至網頁右上角的個人圖示，點選▼下拉選單至「會員資料」＞「設定」＞「帳號管理」中刪除帳號。。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question9" type="button"
+                                                data-toggle="collapse" data-target="#exploreQ9" aria-expanded="true"
+                                                aria-controls="exploreQ9" id="TurnToProposalQ9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>平台上的贊助到底是什麼行為？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ9" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>
+                                            在 集資車車
+                                            上發起的群眾募資案件，本質上不同於一般的「贈與」或「交易」。贊助者給予提案者資金；提案者在完成提案後給予贊助者回饋物，集資車車
+                                            提供專案刊載與金流服務，當募資專案成功時，平台會向提案者收取募資金額的 8%
+                                            作為手續費；當募資專案失敗時，平台會退還募資金額予贊助者。除刊載與金流外，專案回饋之履行與遞交及稅捐稽徵事宜（如需開立發票或收據）則為提案者之責任。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ10" aria-expanded="true"
+                                                aria-controls="exploreQ10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>專案會不會有詐騙的風險？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ10" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>我們不能保證每一個專案都能完美達成承諾，但會盡一切可能保障贊助者的權益。 集資車車 平台管理者能知道各筆訂單的贊助資訊。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                                                data-target="#exploreQ11" aria-expanded="true"
+                                                aria-controls="exploreQ11">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>提案者的身分是經過查證的嗎？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ11" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p>我們會善盡最大力量進行申請者身分的查證，集資車車 平台在審查時會要求專案申請者提交身分證明的資料：</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question7" type="button"
+                                                data-toggle="collapse" data-target="#exploreQ12" aria-expanded="true"
+                                                aria-controls="exploreQ12" id="TurnToProposalQ7">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>我該怎麼更改我的個人資料？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ12" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p> 請於登入狀態下，至網頁右上角的個人圖示，點選▼下拉選單至「會員資料」中查看及修改。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h4 class="mb-0">
+
+                                        <button class="btn btn-block text-left question8" type="button"
+                                                data-toggle="collapse" data-target="#exploreQ13" aria-expanded="true"
+                                                aria-controls="exploreQ13" id="TurnToProposalQ8">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                            </svg>怎麼知道我贊助過那些專案？
+                                        </button>
+                                    </h4>
+                                </div>
+
+                                <div id="exploreQ13" class="collapse " aria-labelledby="headingThree"
+                                     data-parent="#accordionExample" class="for-position">
+
+                                    <div class="card-body answer-inner-text ">
+
+                                        <p> 在登入狀況下，您贊助過的專案頁面上會有一個徽章「您是贊助者」，同時您也可以從「贊助記錄」裡看到所有曾贊助過的案件、金額與回饋。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-sm-12 fsidebar">
+                        <div class="title">
+                            <h3 class="bluequote">集資車車 是什麼？</h3>
+                        </div>
+                        <hr>
+                        <p>集資車車 是台灣最大的群眾募資（群眾集資／眾籌）網站。</p><br>
+                        <p>如果你有一個想完成的計畫，你可以在 集資車車 上刊登你的計畫向大家推廣，並邀集喜歡你的計劃的人用贊助的方式支持你，助你完成夢想。</p>
+                        <br>
+                        <p>
+                            如果你支持創意、喜歡創作、欣賞設計、熱愛活動、想認識各式各樣的新創人或團隊，在 集資車車
+                            上你可以瀏覽到豐富的專案內容，也可以成為提案者最有力的夥伴，一起見證這些計畫從腦海裡奔向現實、踏進你世界的過程。
+
+                        </p>
+                        <br>
+                        <p>
+                            我們希望『讓準備好的人不用再等待』，透過平台的力量媒合創意與資源，實現更多產品、計畫和理想，為生活帶來更多美好的改變。
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="forHr">
+        <hr>
+    </div>
+</div>

@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class HomeController : Controller
+    public class testProductsController : Controller
     {
+        // GET: Products
         public ActionResult Index()
         {
             return View();
         }
+
+        
     }
 }

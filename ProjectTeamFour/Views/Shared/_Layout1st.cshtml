@@ -10,6 +10,8 @@
     <link href="~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
     @*<link href="~/Assets/Plugin/Slick/slick_cdn1.8.1.css" rel="stylesheet" />*@
     <link href="~/Assets/Css/custom_layout.css" rel="stylesheet" />
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
 </head>
 <body>
 
@@ -278,6 +280,10 @@
         </footer>
     </div>
 
+    @RenderSection("scripts", required: false)
+
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
 </body>
 </html>
 

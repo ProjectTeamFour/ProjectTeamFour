@@ -338,3 +338,24 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ProjectTeamFour/Views/ProductDetail/Create.cshtml
+/ProjectTeamFour/Views/ProductDetail/Index.cshtml
+/ProjectTeamFour/Views/ProductDetail/Edit.cshtml
+/ProjectTeamFour/Views/ProductDetail/Details.cshtml
+/ProjectTeamFour/Views/ProductDetail/Delete.cshtml
+/ProjectTeamFour/Controllers/OrdinaryQAController.cs
+/ProjectTeamFour/Controllers/personalInfoController.cs
+/ProjectTeamFour/Assets/Javascript/productsPage/productsJS.js
+/ProjectTeamFour/Assets/Javascript/PersonalInfo/PersonalInfo.js
+/ProjectTeamFour/Assets/Javascript/PaymentPage/pay.js
+/ProjectTeamFour/Assets/Javascript/OrdinaryQAPage/OrdinaryQAPage.js
+*.jpg
+*.png
+/ProjectTeamFour/Migrations/202102031204078_m12.resx
+/ProjectTeamFour/Migrations/202102031204078_m12.Designer.cs
+/ProjectTeamFour/Migrations/202102031204078_m12.cs
+/ProjectTeamFour/Migrations/202102031140006_M123.resx
+/ProjectTeamFour/Migrations/202102031140006_M123.Designer.cs
+/ProjectTeamFour/Migrations/202102031140006_M123.cs
+/ProjectTeamFour/Models/Image.cs
+/ProjectTeamFour/Migrations/Configuration.cs

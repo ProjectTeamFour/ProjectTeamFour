@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 集資車車</title>
+
+    @*FontAwesome*@
+    <link href="~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
+    @*bs min.css*@
+    <link href="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css" rel="stylesheet" />
+    @*normalize.css*@
+    <link href="~/Assets/Plugin/Normalize.css/normalize.css" rel="stylesheet" />
+    @*slick.css*@
+    <link href="~/Assets/Plugin/Slick/slick_cdn1.8.1.css" rel="stylesheet" />
+    @*Header,Footer的CSS*@
+    <link href="~/Assets/HeaderFooterLayout/headerfooter.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    @*這是首頁除了Header和Footer之外的CSS_Phil*@
+    @RenderSection("homepageCSS", required: false)
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
+</head>
+<body>
+
+
+    @* Header phonemode *@
+    <section class="phonemode-navbar">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>
+                    @Html.ActionLink("集資車車", "Index", "Home")
+                </h2>
+                <li class="sidebar-item search">
+                    <i class="fas fa-search"></i>
+                </li>
+                <li class="sidebar-item">
+                    <i class="fas fa-bullhorn"></i>
+                </li>
+            </div>
+
+
+            <div class="search-input">
+                <input type="text">
+            </div>
+
+            <ul class="list-unstyled list">
+                <li class="active list-item">
+                    @*htmllink*@
+                    <a href="#">關於</a>
+                </li>
+                <li class="list-item">
+                    @*htmllink*@
+                    <a href="#">提案</a>
+                </li>
+                <li class="list-item">
+                    @*htmllink*@
+                    <a href="#">探索</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="overlay"></div>
+
+        <div class="hamburger">
+            <button class="sidebar-collapse" id="sidebarCollapse">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            @*<a class="navbar-brand title" href="#">
+                    <h1>集資車車</h1>
+                </a>*@
+
+            <div class="title">
+                <h1>
+                    @Html.ActionLink("集資車車", "Index", "Home", new { @class = "navbar-brand" })
+                </h1>
+            </div>
+
+            <div class="d-flex">
+
+                <a class="nav-item" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://picsum.photos/30/30/?random=1">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">個人頁面</a>
+                        <hr />
+                        <a class="dropdown-item" href="#">贊助紀錄</a>
+                        <a class="dropdown-item" href="#">提案紀錄</a>
+                        <hr />
+                        <a class="dropdown-item" href="#">聯絡訊息</a>
+                        <a class="dropdown-item" href="#">最新通知</a>
+                        <a class="dropdown-item" href="#">登出</a>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </section>
+    @* Header pcmode*@
+    <section class="pcmode-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item space-box">
+                    </li>
+
+                    <li class="nav-item about">
+                        @*htmllink*@
+                        <a class="nav-link guide" href="#">關於</a>
+                    </li>
+                    <li class="nav-item idea">
+                        @*htmllink*@
+                        <a class="nav-link guide" href="#">提案</a>
+                    </li>
+                    <li class="nav-item explore">
+                        @*htmllink*@
+                        <a class="nav-link guide" href="#">探索</a>
+                    </li>
+
+                    <li class="nav-item search">
+                        <i class="fas fa-search"></i>
+                        <input type="text">
+                    </li>
+
+                    <li class="title">
+                        <h1>
+                            @Html.ActionLink("集資車車", "Index", "Home", new { @class = "nav-item navbar-brand" })
+                        </h1>
+                    </li>
+
+
+
+                    <a class="nav-item">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+
+                    <li class="nav-item">
+                        <i class="fas fa-bullhorn"></i>
+                    </li>
+
+                    <div class="fakebox"></div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://picsum.photos/40/40/?random=1">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">個人頁面</a>
+                            <hr />
+                            <a class="dropdown-item" href="#">贊助紀錄</a>
+                            <a class="dropdown-item" href="#">提案紀錄</a>
+                            <hr />
+                            <a class="dropdown-item" href="#">聯絡訊息</a>
+                            <a class="dropdown-item" href="#">最新通知</a>
+                            <a class="dropdown-item" href="#">登出</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+
+    @*RenderBody塞大家各自的頁面*@
+    @RenderBody()
+
+    <hr />
+    <footer>
+        @*Footer*@
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-11 mb-md-5">
+                        <div class="footer-item site-map">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-4">
+                                    <div class="site-map-item about-us">
+                                        <div class="about-us-item title mb-5 mt-5">
+                                            <h2>關於</h2>
+                                        </div>
+                                        <div class="about-us-item mb-3">
+                                            <a href="#">
+                                                <h4>關於我們</h4>
+                                            </a>
+                                        </div>
+                                        <div class="about-us-item mb-3">
+                                            <a href="#">
+                                                <h4>人才招募</h4>
+                                            </a>
+                                        </div>
+                                        <div class="about-us-item">
+                                            <a href="#">
+                                                <h4>商標使用規範</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-4">
+                                    <div class="site-map-item terms">
+                                        <div class="terms-item title mb-5 mt-5">
+                                            <h2>條款</h2>
+                                        </div>
+                                        <div class="terms-item mb-3">
+                                            <a href="#">
+                                                <h4>網站使用條款</h4>
+                                            </a>
+                                        </div>
+                                        <div class="terms-item">
+                                            <a href="#">
+                                                <h4>提案者合約</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-4">
+                                    <div class="site-map-item help">
+                                        <div class="help-item title mb-5 mt-5">
+                                            <h2>協助</h2>
+                                        </div>
+                                        <div class="help-item mb-3">
+                                            <a href="/OrdinaryQA/index">
+                                                <h4>常見問題</h4>
+                                            </a>
+                                        </div>
+                                        <div class="help-item mb-3">
+                                            <a href="#">
+                                                <h4>使用手冊</h4>
+                                            </a>
+                                        </div>
+                                        <div class="help-item">
+                                            <a href="#">
+                                                <h4>提案百科</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-1 mb-md-5">
+                        <div class="footer-item social-media d-flex justify-content-center mt-5">
+                            <div class="row">
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-6">
+                                    <div class="social-media-item facebook mr-3">
+                                        <a href="">
+                                            <i class="fab fa-facebook-square"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-6">
+                                    <div class="social-media-item instagram mr-3">
+                                        <a href="">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-6">
+                                    <div class="social-media-item flickr mr-3 mt-md-3">
+                                        <a href="#">
+                                            <i class="fab fa-flickr"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-6">
+                                    <div class="social-media-item linkedin mt-md-3">
+                                        <a href="">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12">
+                        <div class="footer-item copyright d-flex justify-content-center mt-5">
+                            <p>集資車車 &copy; 2021. ALL RIGHTS RESERVED.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    @*jquery_min.js - bs, slick需要*@
+    <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
+    @*jquery_migrate - slick需要*@
+    <script src="~/Assets/Plugin/JQuery/jquery_migrate1.2.1.min.js"></script>
+    @*slick min.js*@
+    <script src="~/Assets/Plugin/Slick/slick_cdn1.8.1.min.js"></script>
+    @*popper.min.js - bs需要*@
+    <script src="~/Assets/Plugin/Popper.js/popper_cdn1.16.1.min.js"></script>
+    @*bs min.js*@
+    <script src="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.js"></script>
+    @*Header,Footer的JS*@
+    <script src="~/Assets/HeaderFooterLayout/headerfooter.js"></script>
+
+    @*這是首頁除了Header和Footer之外內容的JS_Phil*@
+    @RenderSection("homepageJS", required: false)
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
+
+</body>
+</html>

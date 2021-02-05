@@ -1,0 +1,23 @@
+﻿@media screen and (min-width: 768px) {
+
+    .menu-dropdown-group-filter, .menu-dropdown-group-sort {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem 0 1rem 0;
+    }
+
+    .dropdown {
+        flex-direction: row;
+        align-items: center;
+    }
+
+        .dropdown label {
+            margin-top: 0.5rem;
+            padding: 0 0.5rem;
+            border-right: 1px solid #000;
+        }
+
+    button[type="button"] {
+        border: none;
+    }
+}

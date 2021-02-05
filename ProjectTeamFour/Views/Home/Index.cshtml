@@ -1,31 +1,1405 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- 1st carousel -->
+<section class="first-carousel">
+    <div class="autoplay">
+        <div class="autoplay-box">
+            <a href="#">
+                <div class="autoplay-item1">
+                </div>
+            </a>
+        </div>
+        <div class="autoplay-box">
+            <a href="#">
+                <div class="autoplay-item2">
+                </div>
+            </a>
+        </div>
+        <div class="autoplay-box">
+            <a href="#">
+                <div class="autoplay-item3">
+                </div>
+            </a>
+        </div>
+        <div class="autoplay-box">
+            <a href="#">
+                <div class="autoplay-item4">
+                </div>
+            </a>
+        </div>
+        <div class="autoplay-box">
+            <a href="#">
+                <div class="autoplay-item5">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- 種類 -->
+<section class="project-categories">
+    <div class="container">
+        <div class="project-categories-wrap">
+            <div class="project-categories-item tech">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="tech-item pic d-flex justify-content-center">
+                            <i class="far fa-lightbulb"></i>
+                        </div>
+                        <div class="tech-item text">
+                            <h4>科技設計</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="project-categories-item music">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="music-item pic d-flex justify-content-center">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="music-item text">
+                            <h4>音樂</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-categories-item art">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="art-item pic d-flex justify-content-center">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="art-item text">
+                            <h4>藝術影視</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-categories-item living">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="living-item pic d-flex justify-content-center">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="living-item text">
+                            <h4>生活</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-categories-item public">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="public-item pic d-flex justify-content-center">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+                        <div class="public-item text">
+                            <h4>公共在地</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-categories-item game">
+                <div class="project-categories-box">
+                    <a href="#">
+                        <div class="game-item pic d-flex justify-content-center">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="game-item text">
+                            <h4>遊戲出版</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+
+<!-- 熱門專案 -->
+<section class="popular-project">
+    <div class="container">
+
+        <div class="popular-project-item title-bar d-flex justify-content-between">
+            <div class="title-bar-item title">
+                <h2>熱門項目</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="">查看更多 ></a>
+            </div>
+        </div>
+
+        <div class="popular-project-item cardtemplate-section">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=1">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat –</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=2">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=3">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=4">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=5">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="cardtemplate-section-item cardtemplate">
+                        <a href="#">
+                            <div class="cardtemplate-item project-picture">
+                                <img class="w-100" src="https://picsum.photos/800/600/?random=6">
+                            </div>
+                            <div class="cardtemplate-item d-flex tag">
+                                <div class="tag-item categories">
+                                    <p>科技設計</p>
+                                </div>
+                                <div class="tag-item status">
+                                    <p>SUCCESS!</p>
+                                </div>
+                            </div>
+                            <div class="cardtemplate-item project-name">
+                                <h3>Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度</h3>
+                            </div>
+                            <div class="cardtemplate-item project-team">
+                                <p>TRANZEND</p>
+                            </div>
+                            <div class="cardtemplate-item project-progressbar">
+                                <div class="project-progressbar-item"></div>
+                            </div>
+                            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                                <div class="project-progressnumber-item amount d-flex">
+                                    <div class="amount-item money">
+                                        <p>
+                                            $5,441,970
+                                        </p>
+                                    </div>
+                                    <div class="amount-item">
+
+                                    </div>
+                                    <div class="amount-item percent">
+                                        <p>
+                                            5441%
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="project-progressnumber-item countdown">
+                                    <div class="countdown-item dayorhour">
+                                        <p>還剩 19 天</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="popular-project-item title-bar">
+            <div class="title-bar-item phone-see-more">
+                <a href="">查看更多 ></a>
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</section>
+
+<!-- 商城專案 -->
+<section class="indemand-project">
+    <div class="container">
+
+        <div class="indemand-project-item title-bar d-flex justify-content-between mt-2">
+            <div class="title-bar-item title">
+                <h2>車車商城</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="#">上車專區 ></a>
+            </div>
+        </div>
+
+        <div class="slide-arrow d-flex justify-content-between">
+            <button type="button" class="slide-arrow-item bg-transparent border-0 prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="slide-arrow-item bg-transparent border-0 next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="indemand-project-item cardtemplate-section">
+            <div class="indemand-project-wrap">
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=10">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $900
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=11">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $1,200
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>限時上車</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=12">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $750
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=13">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $2,430
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=14">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $999
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=15">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $1,400
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>限時上車</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=16">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $5,800
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=17">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $5,800
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=18">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $5,800
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=19">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                            <div class="project-progressnumber-item amount d-flex">
+                                <div class="amount-item money">
+                                    <p>
+                                        $5,800
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-progressnumber-item countdown">
+                                <div class="countdown-item dayorhour">
+                                    <p>上車嗎？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+
+@section homepageCSS{
+    <style>
+    /* 首頁開頭幻燈片 */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+    .autoplay-box a{
+    outline: none;
+    }
+
+    .autoplay-item1{
+    width: 100%;
+    height: 12rem;
+    background-image: url("https://picsum.photos/1900/500/?random=1");
+    background-position: center center;
+    background-size: cover;
+    }
+
+    .autoplay-item2{
+    width: 100%;
+    height: 12rem;
+    background-image: url("https://picsum.photos/1900/500/?random=2");
+    background-position: center center;
+    background-size: cover;
+    }
+
+    .autoplay-item3{
+    width: 100%;
+    height: 12rem;
+    background-image: url("https://picsum.photos/1900/500/?random==3");
+    background-position: center center;
+    background-size: cover;
+    }
+
+
+    .autoplay-item4{
+    width: 100%;
+    height: 12rem;
+    background-image: url("https://picsum.photos/1900/500/?random=4");
+    background-position: center center;
+    background-size: cover;
+    }
+
+
+    .autoplay-item5{
+    width: 100%;
+    height: 12rem;
+    background-image: url("https://picsum.photos/1900/500/?random=5");
+    background-position: center center;
+    background-size: cover;
+    }
+
+    @@media screen and (min-width: 768px) {
+    .autoplay-item1{
+    width: 100%;
+    height: 0;
+    padding-top: 26.3%;
+    background-image: url("https://picsum.photos/1900/500/?random=1");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+    .autoplay-item2{
+    width: 100%;
+    height: 0;
+    padding-top: 26.3%;
+    background-image: url("https://picsum.photos/1900/500/?random=2");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+    .autoplay-item3{
+    width: 100%;
+    height: 0;
+    padding-top: 26.3%;
+    background-image: url("https://picsum.photos/1900/500/?random=3");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+    .autoplay-item4{
+    width: 100%;
+    height: 0;
+    padding-top: 26.3%;
+    background-image: url("https://picsum.photos/1900/500/?random=4");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+    .autoplay-item5{
+    width: 100%;
+    height: 0;
+    padding-top: 26.3%;
+    background-image: url("https://picsum.photos/1900/500/?random=5");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+    }
+
+
+
+    /* 種類 */
+
+    .project-categories{
+    padding-top: 3rem;
+    margin-bottom: 5rem;
+    }
+
+    .project-categories .project-categories-box{
+    border-bottom: 1px solid #aaa;
+    }
+    .project-categories .pic {
+    border-radius: 50%;
+    }
+
+    .project-categories .pic i {
+    font-size: 2rem;
+    color: rgb(65, 63, 63);
+    padding: 0.5rem 0 1rem 0;
+    transition: .3s;
+    }
+
+    .project-categories .text h4 {
+    font-size: 0.8rem;
+    color: rgb(65, 63, 63);
+    font-weight: 600;
+    text-align: center;
+    transition: .3s;
+    }
+
+    .project-categories .project-categories-box a {
+    text-decoration: none;
+    outline: none;
+    }
+
+    .project-categories .project-categories-box:hover i {
+    color: #f9414a;
+    }
+
+    .project-categories .project-categories-box:hover h4 {
+    color: #f9414a;
+    }
+
+
+
+
+
+
+
+
+    /* 熱門專案 */
+
+    .popular-project {
+    padding: 0 0.6rem;
+    }
+
+    .popular-project .title-bar {
+    padding-bottom: 2rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .popular-project .title h2 {
+    font-size: 1.25rem;
+    border-left: 0.5rem solid #f9414a;
+    padding-left: 0.5rem;
+    font-weight: 700;
+    }
+
+    .popular-project .see-more a {
+    text-decoration: none;
+    color: #f9414a;
+    font-weight: 800;
+    display: none;
+    }
+
+    .popular-project .see-more a:hover {
+    color: #000;
+    }
+
+    .popular-project .phone-see-more a {
+    text-decoration: none;
+    color: #f9414a;
+    font-weight: 800;
+    }
+
+    .popular-project .phone-see-more a:hover {
+    color: #000;
+    }
+
+    .popular-project .money {
+    border-right: 1px solid #aaa;
+    padding-right: 0.5rem;
+    }
+
+    .popular-project .percent {
+    padding-left: 0.5rem;
+    }
+
+    .popular-project .cardtemplate {
+    margin-bottom: 3rem;
+    }
+
+    .popular-project .cardtemplate a{
+    color: #000;
+    text-decoration: none;
+    }
+
+    .popular-project .cardtemplate-item p {
+    margin-bottom: 0;
+    }
+
+    .popular-project .project-name{
+    height: 3rem;
+    }
+
+
+    .popular-project .tag-item {
+    background-color: #f7f7f7;
+    padding: 0.4rem 0.6rem;
+    margin: 0.6rem 0;
+    letter-spacing: 0.1rem;
+    }
+
+    .popular-project .tag-item p {
+    font-size: 0.8rem;
+    }
+
+    .popular-project .status p {
+    color: #f9414a;
+    font-weight: 700;
+    }
+
+    .popular-project .status {
+    margin-left: 0.8rem;
+    }
+
+    .popular-project .project-name h3 {
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0;
+    line-height: 1.55rem;
+    font-weight: 700;
+    }
+
+    .popular-project .project-team {
+    padding-bottom: 2rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .popular-project .project-team p {
+    color: rgb(128, 127, 127);
+    font-size: 0.9rem;
+    }
+
+    .popular-project .project-progressbar-item {
+    background-color: #f9414a;
+    height: 0.2rem;
+    }
+
+    .popular-project .project-progressnumber {
+    padding-top: 1rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .popular-project .project-progressnumber p {
+    font-size: 0.75rem;
+    font-weight: 700;
+    }
+
+    .popular-project .project-name:hover {
+    color: #f9414a;
+    }
+
+    .popular-project .cardtemplate:hover img {
+    transform: scale(1.1);
+    }
+
+    .popular-project .project-picture {
+    overflow: hidden;
+    }
+
+    .popular-project .project-picture img {
+    transition: .4s;
+    }
+
+    @@media screen and (min-width: 768px) {
+    .popular-project .see-more a {
+    display: block;
+    }
+
+    .popular-project .phone-see-more a {
+    display: none;
+    }
+
+    .popular-project .title h2 {
+    font-size: 1.45rem;
+    letter-spacing: 0.2rem;
+    }
+
+    .popular-project .tag-item p {
+    font-size: 0.9rem;
+    }
+
+    .popular-project .project-progressnumber p {
+    font-size: 0.95rem;
+    }
+    }
+
+
+
+    /* 商城專案 */
+
+    .indemand-project .cardtemplate-section-item {
+    padding: 0 0.1rem;
+    }
+
+    .indemand-project .cardtemplate-section-item a{
+    color: #000;
+    text-decoration: none;
+    }
+
+    .indemand-project .cardtemplate-section-item .project-name{
+    height: 3rem;
+    }
+
+    .indemand-project .title-bar {
+    padding-bottom: 1.5rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .indemand-project .title h2 {
+    font-size: 1.25rem;
+    border-left: 0.5rem solid #f9414a;
+    padding-left: 0.5rem;
+    font-weight: 700;
+    }
+
+    .indemand-project .see-more a {
+    text-decoration: none;
+    color: #f9414a;
+    font-weight: 800;
+    }
+
+    .indemand-project .see-more a:hover {
+    color: #000;
+    }
+
+    .indemand-project .phone-see-more a {
+    text-decoration: none;
+    color: #f9414a;
+    font-weight: 800;
+    }
+
+    .indemand-project .phone-see-more a:hover {
+    color: #000;
+    }
+
+    .indemand-project .percent {
+    padding-left: 0.5rem;
+    }
+
+    .indemand-project .cardtemplate {
+    margin-bottom: 3rem;
+    outline: none;
+    }
+
+    .indemand-project .cardtemplate:hover {
+    cursor: pointer;
+    }
+
+    .indemand-project .cardtemplate-item p {
+    margin-bottom: 0;
+    }
+
+    .indemand-project .tag-item {
+    background-color: #f7f7f7;
+    padding: 0.4rem 0.6rem;
+    margin: 0.6rem 0;
+    letter-spacing: 0.1rem;
+    }
+
+    .indemand-project .tag-item p {
+    font-size: 0.8rem;
+    }
+
+    .indemand-project .status p {
+    color: #f9414a;
+    font-weight: 700;
+    }
+
+    .indemand-project .status {
+    margin-left: 0.8rem;
+    }
+
+    .indemand-project .project-name h3 {
+    font-size: 0.7rem;
+    letter-spacing: 0.05rem;
+    margin-bottom: 0;
+    line-height: 1.55rem;
+    font-weight: 700;
+    }
+
+    .indemand-project .project-team {
+    padding-bottom: 2rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .indemand-project .project-team p {
+    color: rgb(128, 127, 127);
+    font-size: 0.7rem;
+    }
+
+    .indemand-project .project-progressbar-item {
+    background-color: #f9414a;
+    height: 0.2rem;
+    }
+
+    .indemand-project .project-progressnumber {
+    padding-top: 1rem;
+    letter-spacing: 0.1rem;
+    }
+
+    .indemand-project .project-progressnumber p {
+    font-size: 0.55rem;
+    font-weight: 700;
+    background-color: rgb(247, 228, 219);
+    }
+
+    .indemand-project .project-name:hover {
+    color: #f9414a;
+    }
+
+    .indemand-project .cardtemplate:hover img {
+    transform: scale(1.1);
+    }
+
+    .indemand-project .project-picture {
+    overflow: hidden;
+    }
+
+    .indemand-project .project-picture img {
+    transition: .4s;
+    }
+
+    @@media screen and (min-width: 768px) {
+    .indemand-project .see-more a {
+    display: block;
+    }
+
+    .indemand-project .phone-see-more a {
+    display: none;
+    }
+
+    .indemand-project .title h2 {
+    font-size: 1.45rem;
+    letter-spacing: 0.2rem;
+    }
+
+    .indemand-project .tag-item p {
+    font-size: 0.9rem;
+    }
+
+    .indemand-project .project-progressnumber p {
+    font-size: 0.75rem;
+    }
+    }
+    </style>
+}
+
+@section homepageJS{
+    <script>
+        $(document).ready(function () {
+
+            $('.autoplay').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                infinite: true,
+                arrows: true,
+                accessibility: true,
+                prevArrow: $(".prev"),
+                nextArrow: $(".next"),
+            });
+
+            $('.project-categories-wrap').slick({
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                autoplay: false,
+                infinite: true,
+                arrows: true,
+                accessibility: true,
+                prevArrow: $(".prev"),
+                nextArrow: $(".next"),
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 6,
+                        slidesToScroll: 6
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }
+                ]
+            });
+
+
+            $('.indemand-project-wrap').slick({
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                autoplay: false,
+                infinite: true,
+                arrows: true,
+                accessibility: true,
+                prevArrow: $(".prev"),
+                nextArrow: $(".next"),
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+                ]
+            });
+
+        });
+    </script>
+}

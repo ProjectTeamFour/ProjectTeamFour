@@ -123,24 +123,70 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\HelperFunction.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\OrdinaryQAController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\testProductsController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Data\testProductDetailContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102031140006_M123.cs" />
+    <Compile Include="Migrations\202102031140006_M123.designer.cs">
+      <DependentUpon>202102031140006_M123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102031204078_m12.cs" />
+    <Compile Include="Migrations\202102031204078_m12.designer.cs">
+      <DependentUpon>202102031204078_m12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductDetailModel.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reposities\BaseReposity.cs" />
+    <Compile Include="Service\ProjectService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\campaignDetail.css" />
-    <Content Include="Assets\css\custom_layout.css" />
+    <Content Include="Assets\css\OrdinaryQAPage\Ordinary.css" />
+    <Content Include="Assets\css\PaymentPage\pay.css" />
+    <Content Include="Assets\css\PaymentPage\rwd-pay.css" />
+    <Content Include="Assets\css\Person_insPage\personal.css" />
+    <Content Include="Assets\css\Person_insPage\rwd-personal.css" />
+    <Content Include="Assets\css\ProductsPage\products.css" />
+    <Content Include="Assets\css\ProductsPage\rwd-products.css" />
+    <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
+    <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
-    <Content Include="Assets\Javascript\custom_layout.js" />
+    <Content Include="Assets\Img\p1.jpg" />
+    <Content Include="Assets\Img\pay\pic.png" />
+    <Content Include="Assets\Img\pay\product.jpg" />
+    <Content Include="Assets\Img\personal\default.png" />
+    <Content Include="Assets\Img\personal\dog.jpg" />
+    <Content Include="Assets\Img\products\pc.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest1.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest2.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest3.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest3.png" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest4.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test1.png" />
+    <Content Include="Assets\Img\ShoppingCart\test2.png" />
+    <Content Include="Assets\Img\ShoppingCart\test3.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test4.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test5.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test6.jpg" />
+    <Content Include="Assets\Javascript\OrdinaryQAPage\OrdinaryQAPage.js" />
+    <Content Include="Assets\Javascript\PaymentPage\pay.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
@@ -1864,6 +1910,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff2" />
+    <Content Include="App_Code\StringFormat5.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1885,16 +1932,21 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout1st.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
+    <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
+    <Content Include="Views\OrdinaryQA\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
+    <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
+    <Content Include="Views\OrdinaryQA\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1908,6 +1960,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202102031140006_M123.resx">
+      <DependentUpon>202102031140006_M123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102031204078_m12.resx">
+      <DependentUpon>202102031204078_m12.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

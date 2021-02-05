@@ -1,0 +1,180 @@
+﻿@model  IEnumerable<Project>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="menu">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                @Html.Partial("~/Views/Shared/PartialView/_projectPartialView.cshtml", item);
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+@section topCSS{
+    <style>
+        .row {
+            display: flex;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .category {
+            background-color: #F6F6F6
+        }
+
+        .category-group {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .category-group-item {
+            width: 50%;
+            color: #000;
+        }
+
+            .category-group-item:hover {
+                color: #fA9;
+            }
+
+            .category-group-item .content {
+                width: 5rem;
+                height: 5rem;
+                background-color: #fff;
+                border-radius: 6rem;
+                margin: auto;
+                position: relative;
+            }
+
+                .category-group-item .content i {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+        .menu-dropdown-group {
+            padding-top: 1rem;
+            display: flex;
+        }
+
+        .menu-dropdown-group-filter {
+            padding-right: 1rem;
+        }
+
+        .dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button[type="button"] {
+            color: #000;
+            background-color: #fff;
+        }
+
+        .menu-project-group {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-project-pic {
+            overflow: hidden;
+        }
+
+            .menu-project-pic img {
+                width: 100%;
+                transition: transform 0.5s linear;
+            }
+
+            .menu-project-pic:hover img {
+                transform: scale(1.1);
+                =
+            }
+
+        .menu-project {
+            margin: 1rem 0;
+        }
+
+        .menu-project-text-tag {
+            margin: 0.5rem 0;
+            display: flex;
+        }
+
+            .menu-project-text-tag span {
+                display: block;
+                padding: 0.5rem;
+                background-color: #F6F6F6;
+                color: #000;
+            }
+
+                .menu-project-text-tag span:nth-child(2) {
+                    margin-left: 1rem;
+                    color: #F8414A;
+                }
+
+        .menu-project-text h2 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #000;
+        }
+
+            .menu-project-text h2:hover {
+                color: #F8414A;
+            }
+
+        .menu-project-text p {
+            color: #aaaaaa;
+        }
+
+        .menu-project-text-percent-line::after {
+            content: "";
+            width: 100%;
+            background-color: #f00;
+            height: 0.2rem;
+            display: block;
+            margin: 1rem 0;
+        }
+
+        .menu-project-text-percent {
+            font-weight: 600;
+        }
+
+        .goal-money, .goal-percent, .dateline {
+            color: #000;
+        }
+
+        .menu-project-text-percent-goal {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dateline {
+            display: block;
+        }
+
+        .btn-more {
+            width: 100%;
+            color: #fff;
+            background-color: #808080;
+            margin: 1rem 0;
+        }
+
+            .btn-more:hover {
+                background-color: #000;
+            }
+    </style>
+}
