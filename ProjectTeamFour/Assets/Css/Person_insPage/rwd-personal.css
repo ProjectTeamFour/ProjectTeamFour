@@ -6,10 +6,6 @@
         margin: auto;
     }
 
-    .nav-item, button[type="button"] {
-        font-size: 1.5rem;
-    }
-
     .person-data-pic {
         margin: 0;
         width: 10rem;

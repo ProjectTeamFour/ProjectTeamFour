@@ -1950,6 +1950,7 @@
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
+    <Content Include="Views\PersonInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1959,7 +1960,6 @@
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\PersonInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -24,10 +24,12 @@
 
 .nav-links {
     color: #aaa;
+    display: block;
+    padding: .5rem 1rem;
 }
 
 
-button[type="button"] {
+.nav-item-tag .account {
     background-color: #F6F6F6;
     color: #000;
     font-weight: 600;
@@ -92,7 +94,7 @@ button[type="button"] {
     padding: 0 0.3rem;
 }
 
-.about {
+.about-some {
     padding: 3.5rem 0;
 }
 
@@ -219,21 +221,21 @@ button[type="button"] {
     }
 /* -------第四格-------------------------------- */
 
-.search {
+.search-item {
     padding: 2rem 0;
     display: flex;
     position: relative;
 }
 
-input[type="search"] {
-    width: 100%;
-}
+    .search-item input {
+        width: 100%;
+    }
 
-.search i {
-    position: absolute;
-    left: 4rem;
-    top: 2.5rem;
-}
+    .search-item i {
+        position: absolute;
+        left: 4rem;
+        top: 2.5rem;
+    }
 
 
 /* ---------第五格------------------ */
