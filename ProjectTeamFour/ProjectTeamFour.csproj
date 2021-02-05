@@ -170,6 +170,7 @@
     <Content Include="Assets\Img\personal\dog.jpg" />
     <Content Include="Assets\Img\products\pc.jpg" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
+    <Content Include="Assets\Javascript\Products_Page\Products.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
@@ -1920,12 +1921,13 @@
     <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
