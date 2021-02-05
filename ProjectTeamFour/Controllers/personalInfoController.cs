@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class personalInfoController : Controller
     {
-        // GET: ShoppingCart
+        // GET: personalInfo
         public ActionResult Index()
         {
             return View();
