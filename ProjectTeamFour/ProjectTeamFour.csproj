@@ -130,9 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
-    <Compile Include="Controllers\personalInfoController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +162,7 @@
     <Content Include="Assets\css\Person_insPage\rwd-personal.css" />
     <Content Include="Assets\css\ProductsPage\products.css" />
     <Content Include="Assets\css\ProductsPage\rwd-products.css" />
+    <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
@@ -171,10 +172,19 @@
     <Content Include="Assets\Img\personal\default.png" />
     <Content Include="Assets\Img\personal\dog.jpg" />
     <Content Include="Assets\Img\products\pc.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest1.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest2.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest3.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest3.png" />
+    <Content Include="Assets\Img\ShoppingCart\projecttest4.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test1.png" />
+    <Content Include="Assets\Img\ShoppingCart\test2.png" />
+    <Content Include="Assets\Img\ShoppingCart\test3.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test4.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test5.jpg" />
+    <Content Include="Assets\Img\ShoppingCart\test6.jpg" />
     <Content Include="Assets\Javascript\OrdinaryQAPage\OrdinaryQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
-    <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
-    <Content Include="Assets\Javascript\productsPage\productsJS.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.js" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\attribution.js" />
@@ -1925,13 +1935,13 @@
     <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\personalInfo\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
