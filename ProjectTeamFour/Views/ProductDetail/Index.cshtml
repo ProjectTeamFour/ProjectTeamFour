@@ -1,95 +1,21 @@
 ﻿@model IEnumerable<ProjectTeamFour.Models.ProductDetail>
 
-@{
-    ViewBag.Title = 
+@*@ViewData.Model=ProjectContent;*@
+
+@section topCSS{
+    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+}
+@section endJS{
+    @*<script src=".js"></script>*@
 }
 
-@*
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GoalAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FundedAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FundedPeople)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ifSucceed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CountDownDays)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeadLine)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatorName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatorLinkUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectContent)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GoalAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FundedAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FundedPeople)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ifSucceed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CountDownDays)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeadLine)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatorLinkUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectContent)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </table>*@
+@*@{
+    ViewBag.Title =
+}*@
 
 <section class="main-body">
     <div id="project-title" class="container">
-        <span class="badge badge-secondary">遊戲出版</span>
+        <span class="badge badge-secondary">@Html.DisplayNameFor(model=>model.Category)</span>
         <h1>@Html.DisplayNameFor(model => model.ProductName) 開啟與孩子的第一場程式冒險《解碼傳說 CO·DECODE》</h1>
     </div>
     <!-- 本文 -->
@@ -145,12 +71,12 @@
                         <div id="campaign-info-item">
                             <span class="badge badge-secondary">INDEMAND</span>
                             <div id="donating-amount">
-                                <h2>NTD $1,609,173</h2>
+                                <h2>NTD $1,609,173 @Html.DisplayNameFor(Model=>Model.FundedAmount)</h2>
                             </div>
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
                                 <span class="label-grey">贊助人數</span>
-                                <h2 class="block">796人</2>
+                                <h2 class="block">@Html.DisplayNameFor(Model=>Model.FundedPeople)</2>
                             </div>
                             <div id="donating-days-countdown" class="number-row">
                                 <span class="label-grey">募資倒數</span>
@@ -166,7 +92,8 @@
                         <!-- 手機的按鈕會變成fixed在body的bottom -->
                         <div id="backing-section" class="wrapper">
                             <div class="row">
-                                <div class="btn col-12"><a href="" id="backit-btn">贊助專案</a></div>
+                                <div class="btn col-12">
+                                <a href="" id="backit-btn">贊助專案</a></div>
                                 <div class="btn col-8">
                                     <a href="" id="ask-btn">
                                         <span class="comment"><i class="bi bi-chat-dots-fill"></i></span>
@@ -348,7 +275,7 @@
                                                             </div>
                                                         </div>
                                                     </p>
-                                                    <button id="donate-btn">贊助此回饋方案</button>
+                                                    <button id="donate-btn"><a href="~/Views/pay/Index.cshtml">贊助此回饋方案</a> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -438,8 +365,3 @@
     </div>
 </section>
 
-@*CSS渲染+JS*@
-
-@section topCSS{
-    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
-}
