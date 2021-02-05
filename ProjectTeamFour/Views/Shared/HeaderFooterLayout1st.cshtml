@@ -19,6 +19,8 @@
 
     @*這是首頁除了Header和Footer之外的CSS_Phil*@
     @RenderSection("homepageCSS", required: false)
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
 </head>
 <body>
 
@@ -49,7 +51,7 @@
 
             <ul class="list-unstyled list">
                 <li class="active list-item">
-                     @*htmllink*@
+                    @*htmllink*@
                     <a href="#">關於</a>
                 </li>
                 <li class="list-item">
@@ -71,14 +73,14 @@
             </button>
 
             @*<a class="navbar-brand title" href="#">
-                <h1>集資車車</h1>
-            </a>*@
-            
-        <div class="title">
-            <h1>
-                @Html.ActionLink("集資車車", "Index", "Home", new { @class = "navbar-brand" })
-            </h1>
-        </div>
+                    <h1>集資車車</h1>
+                </a>*@
+
+            <div class="title">
+                <h1>
+                    @Html.ActionLink("集資車車", "Index", "Home", new { @class = "navbar-brand" })
+                </h1>
+            </div>
 
             <div class="d-flex">
 
@@ -142,7 +144,7 @@
                             @Html.ActionLink("集資車車", "Index", "Home", new { @class = "nav-item navbar-brand" })
                         </h1>
                     </li>
-                 
+
 
 
                     <a class="nav-item">
@@ -312,7 +314,8 @@
 
     @*這是首頁除了Header和Footer之外內容的JS_Phil*@
     @RenderSection("homepageJS", required: false)
-
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
 
 </body>
 </html>
