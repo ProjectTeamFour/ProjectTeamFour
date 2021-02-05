@@ -3,5 +3,66 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+@section topCSS{
+    <link href="~/Assets/Css/StartAProjectPage/StartAProject.css" rel="stylesheet" />
+    }
+    <div class="createMainWrapper">
+        <section class="createStepOne">
+            <div class="container">
+                <h2 class="stepTitle text-center">開始提案</h2>
+                <div class="alertWell row">
+                    <ul>
+                        <li>請填寫專案標題</li>
+                        <li>請選擇專案類別</li>
+                        <li>您需同意並勾選以繼續提案</li>
+                    </ul>
+                </div>
+                <form method="POST" action="https://www.flyingv.cc/projects" accept-charset="UTF-8" class="v55-form">
+                    <input name="_token" type="hidden" value="UiKwRTy0fmS4jslYPuOhrAMsKnCiOyfGVHIIYHL0">
+                    <div class="row conc">
+                        <div class="col-sm-8">
+                            <input class="form-control projectName flat" id="project_name" placeholder="輸入專案名稱"
+                                   maxlength="40" name="title" type="text" value="">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="customSelectWrapper" id="day">
+                                    <select class="form-control" id="category" name="category_id">
+                                        <option value="1">科技設計</option>
+                                        <option value="2">音樂</option>
+                                        <option value="3">藝術影視</option>
+                                        <option value="4">生活</option>
+                                        <option value="5">公共在地</option>
+                                        <option value="6">遊戲出版</option>
+                                    </select>
+                                    <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row conc">
+                        <div class="col-sm-12">
+                            <p class="createConf">請確認以下事項，確保您符合 flyingV 提案人的身份</p>
+                            <div class="createConfList">
+                                <ul>
+                                    <li>
+                                        您已滿 18 歲是具備完全行為能力的自然人，或是合法登記的法人或團體<br>
+                                        <p>若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。</p>
+                                    </li>
+                                    <li>
+                                        您是具有台灣居住地址、銀行帳戶及國籍的自然人或法人<br>
+                                        <p>目前 flyingV 只限定台灣用戶，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input id="agreement" class="checkmark" name="agreement" type="checkbox" value="1">
+                            <label for="agreement" class="grey dark agreement">
+                                您已符合以上敘述並同意 flyingV <a href="http://flyingv.cc/policy" target="_blank">網站使用條款</a> 及 <a href="http://flyingv.cc/contract" target="_blank">提案者合約</a>
+                            </label>
+                            <input class="btn btn-block fRed" type="submit" value="開始撰寫專案">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>

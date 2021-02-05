@@ -1,0 +1,1034 @@
+﻿.greybk {
+    background: #eee;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    height: auto;
+    font-size: 14px;
+    color: #212121;
+    line-height: 22.4px;
+}
+
+.wrapper, a, p {
+    letter-spacing: 1.6px;
+}
+
+.flyingSidebar, .flyingSidebar .sidebar-mask {
+    transition: all .3s ease 0s;
+    position: fixed;
+    height: 100vh;
+}
+
+.flyingSidebar {
+    top: 0;
+    left: -224px;
+    width: 224px;
+    z-index: 9999;
+    background: #f6f6f6;
+}
+
+    .flyingSidebar .sidebar-mask {
+        display: none;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(33,33,33,.6);
+    }
+
+    .flyingSidebar .sidebar-close {
+        display: none;
+        position: fixed;
+        top: 24px;
+        left: 240px;
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+    .flyingSidebar .sidebar-wrapper {
+        height: 100vh;
+    }
+
+    .flyingSidebar .sidebar-menu, .flyingSidebar .sidebar-wrapper {
+        background: #f6f6f6;
+        position: relative;
+    }
+
+    .flyingSidebar .sidebar-header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        background: #f6f6f6;
+        padding: 20px 24px;
+    }
+
+        .flyingSidebar .sidebar-header .hlogo {
+            margin-left: -5px;
+        }
+
+    .flyingSidebar #mobileActivityDropdown .noteBell {
+        position: relative;
+    }
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+.flyingSidebar #mobileActivityDropdown .badge {
+    background-color: #f8414a;
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+    position: absolute;
+    right: -1px;
+    top: -2px;
+    min-width: unset;
+    padding: 3px;
+    letter-spacing: normal;
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+.badge, .label {
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.flyingSidebar #mobileActivityDropdown #mobileActivityMenu {
+    display: none;
+    position: fixed;
+    top: 66px;
+    left: 24px;
+    border: 1px solid #ccc;
+    max-height: 600px;
+    width: 272px;
+    min-height: 50px;
+    background: #fff;
+    z-index: 1;
+}
+
+    .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .arrow {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 9px solid #fff;
+        position: absolute;
+        right: 104px;
+        top: -9px;
+    }
+
+    .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .acInner {
+        overflow: hidden;
+    }
+
+    .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .acitem.unread {
+        background: #ccc;
+    }
+
+    .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .acitem {
+        display: flex;
+        padding: 16px;
+        background: #fff;
+        text-decoration: none;
+        position: relative;
+        transition: .2s all;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .acitem .acdes .time {
+            margin-bottom: 4px;
+        }
+
+        .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .acitem .acdes p {
+            font-size: 12px;
+            letter-spacing: 1.4px;
+            line-height: 1.6;
+        }
+
+    .flyingSidebar #mobileActivityDropdown #mobileActivityMenu .seeall {
+        display: block;
+        color: #f8414a;
+        font-weight: 700;
+        padding: 12px 16px;
+        transition: .2s all;
+    }
+
+a:active, a:hover, a:link, a:visited {
+    text-decoration: none;
+    color: #f8414a;
+}
+
+.flyingSidebar .sidebar-menu, .flyingSidebar .sidebar-wrapper {
+    background: #f6f6f6;
+    position: relative;
+}
+
+    .flyingSidebar .sidebar-menu li {
+        padding: 18px 24px;
+    }
+
+        .flyingSidebar .sidebar-menu li a {
+            color: #212121;
+            font-size: 16px;
+            line-height: normal;
+            letter-spacing: 2px;
+            transition: all .3s ease;
+        }
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.flyingSidebar #mobileLanguageDropdown #mobileLanguageMenu {
+    display: none;
+    position: absolute;
+    bottom: -92px;
+    left: -1px;
+    border: 1px solid #c7c7c7;
+    width: 176px;
+    background: #fff;
+    padding: 8px 12px;
+    z-index: 1;
+}
+
+    .flyingSidebar #mobileLanguageDropdown #mobileLanguageMenu a:first-child {
+        padding: 0 0 12px;
+    }
+
+    .flyingSidebar #mobileLanguageDropdown #mobileLanguageMenu a {
+        position: relative;
+        width: 100%;
+        padding: 10px 0 0;
+        margin: auto;
+        display: block;
+    }
+
+.flyingSidebar #mobileLanguageDropdown a {
+    color: #212121;
+}
+
+.flyingSidebar #mobileLanguageDropdown #mobileLanguageMenu a {
+    position: relative;
+    width: 100%;
+    padding: 10px 0 0;
+    margin: auto;
+    display: block;
+}
+
+.flyingSidebar .sidebar-footer {
+    background: #212121;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 24px;
+    width: 100%;
+}
+
+    .flyingSidebar .sidebar-footer li {
+        margin-bottom: 20px;
+    }
+
+    .flyingSidebar .sidebar-footer .sidebar-fb {
+        position: absolute;
+        right: 24px;
+        top: 60px;
+    }
+
+    .flyingSidebar .sidebar-footer .sidebar-flickr {
+        position: absolute;
+        right: 24px;
+        top: 100px;
+    }
+
+.flyingHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 20;
+    background-color: #fff;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 0 24px;
+}
+
+    .flyingHeader .header-container {
+        max-width: 1280px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+        height: 100%;
+    }
+
+    .flyingHeader .header-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .flyingHeader .hamburger-menu {
+        position: relative;
+        cursor: pointer;
+        margin-right: 16px;
+        display: block;
+        width: 26px;
+        height: 26px;
+    }
+
+    .flyingHeader .leftmenu {
+        display: flex;
+        margin-left: 15px;
+        align-items: center;
+    }
+
+    .flyingHeader .usermenu {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .flyingHeader ul {
+        padding: 0;
+        height: 100%;
+    }
+
+    .flyingHeader .usermenu #languageDropdown {
+        position: relative;
+        padding-right: 30px;
+        height: 40px;
+    }
+
+    .flyingHeader .usermenu li {
+        vertical-align: middle;
+    }
+
+    .flyingHeader li {
+        vertical-align: middle;
+        position: relative;
+        height: 100%;
+    }
+
+    .flyingHeader .usermenu #activityDropdown {
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .flyingHeader .usermenu #userDropdown {
+        position: relative;
+        padding-left: 20px;
+    }
+
+        .flyingHeader .usermenu #userDropdown > a {
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            min-width: 66px;
+        }
+
+    .flyingHeader li a {
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+        transition: .2s all ease;
+    }
+
+    .flyingHeader li a, .flyingHeader li#mobileSearch a {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .flyingHeader .usermenu .userThumb {
+        -moz-border-radius: 40px;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+a img {
+    border: none;
+}
+
+#languageDropdown .svg-dropdown, #mobileLanguageDropdown .svg-dropdown, #userDropdown .svg-dropdown {
+    display: block;
+    transition: .2s all ease;
+}
+
+.mdl-button, .mdl-button .material-icons, .mdl-checkbox, .mdl-data-table td, .mdl-data-table td .mdl-data-table__select, audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+.flyingHeader .usermenu #userDropdown #menu {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 16px;
+    min-width: 72px;
+}
+
+.flyingHeader .usermenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.flyingHeader ul {
+    padding: 0;
+    height: 100%;
+}
+
+.onepageBox {
+    padding: 55px 0;
+    line-height: 1.8em;
+}
+
+.container, .container-fluid {
+    max-width: 985px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+.container, .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.container, .container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .hidden-md {
+        display: none !important;
+    }
+}
+
+.flyingBlue {
+    color: #00bbd6;
+}
+
+.osmfont {
+    font-family: Oswald,sans-serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+.bluequote, .bold, .finput label, .infoTitle, .share, h1, strong {
+    font-weight: 700;
+}
+
+.bluequote, h1 {
+    line-height: normal;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+p {
+    font-size: 14px;
+}
+
+a, body, p {
+    line-height: 1.6;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+section {
+    display: block;
+}
+
+.container, .container-fluid {
+    max-width: 985px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+.btn-group-vertical > .btn-group:after, .btn-group-vertical > .btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    display: table;
+    content: " ";
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.grey {
+    color: #737373;
+}
+
+p {
+    font-size: 14px;
+}
+
+a, body, p {
+    line-height: 1.6;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+h6, p {
+    font-weight: 400;
+}
+
+h6, ol, p, ul {
+    line-height: 24px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+.mdl-button, .mdl-button .material-icons, .mdl-checkbox, .mdl-data-table td, .mdl-data-table td .mdl-data-table__select, audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+iframe {
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+.btn-group-vertical > .btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {
+    clear: both;
+}
+
+.btn-group-vertical > .btn-group:after, .btn-group-vertical > .btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    display: table;
+    content: " ";
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+.container, .container-fluid {
+    max-width: 985px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+.btn.fRed {
+    background: #f8414a;
+    color: #fff;
+}
+
+#freebirdhelp, #teamWrapper .teamblock .memberItem .second, .animate, .anwserContent .question .qAnwser, .btn-more.fDark, .btn.fDark, .btn.fGhost, .btn.fGhost.inverted, .btn.fGhostred, .btn.fRed, .btn.fWhite, .greyTitleBox .videoBlock .playbar .icon-playVideo, .projectAdmin .videoBlock .playbar .icon-playVideo, .projectContent.freebirdContent .bandHeader .musicplayer, .projectContentUpper .videoBlock .playbar .icon-playVideo, .projectRewardContent .videoBlock .playbar .icon-playVideo, .pushnote:before, .rewardItem, .rewardItem.onlive .pledgeLayer, .rewardSurveyForm .addtoLib, .surveyLibBlock, .tagBtn {
+    transition: all .3s;
+    backface-visibility: hidden;
+}
+
+.btn {
+    height: 38px;
+    padding: 6px 12px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+    .btn, .btn svg path {
+        transition: .2s all ease;
+    }
+
+.btn, .createWrapper section {
+    margin-bottom: 0;
+}
+
+.btn, .btn-delProject {
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.btn {
+    border-radius: unset;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+    .btn, .btn-danger.active, .btn-danger:active, .btn-default.active, .btn-default:active, .btn-info.active, .btn-info:active, .btn-primary.active, .btn-primary:active, .btn-warning.active, .btn-warning:active, .btn.active, .btn:active, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover, .form-control, .navbar-toggle, .open > .dropdown-toggle.btn-danger, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-info, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-warning {
+        background-image: none;
+    }
+
+.btn, .mdl-layout__tab-bar-button, .mdl-menu__item {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+a {
+    color: #f8414a;
+    text-decoration: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+a, body, p {
+    line-height: 1.6;
+}
+
+    a, a svg path {
+        transition: .2s all ease;
+    }
+
+.mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu, .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab, a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+a {
+    background-color: transparent;
+}
+
+    a:-webkit-any-link {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.btn.fWhite {
+    background: #fff;
+    color: #343434;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #343434;
+}
+
+#freebirdhelp, #teamWrapper .teamblock .memberItem .second, .animate, .anwserContent .question .qAnwser, .btn-more.fDark, .btn.fDark, .btn.fGhost, .btn.fGhost.inverted, .btn.fGhostred, .btn.fRed, .btn.fWhite, .greyTitleBox .videoBlock .playbar .icon-playVideo, .projectAdmin .videoBlock .playbar .icon-playVideo, .projectContent.freebirdContent .bandHeader .musicplayer, .projectContentUpper .videoBlock .playbar .icon-playVideo, .projectRewardContent .videoBlock .playbar .icon-playVideo, .pushnote:before, .rewardItem, .rewardItem.onlive .pledgeLayer, .rewardSurveyForm .addtoLib, .surveyLibBlock, .tagBtn {
+    transition: all .3s;
+    backface-visibility: hidden;
+}
+
+a, a svg path {
+    transition: .2s all ease;
+}
+
+.mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu, .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab, a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+a {
+    background-color: transparent;
+}
+
+    a:-webkit-any-link {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.btn.fDark {
+    background: #343434;
+}
+
+.btn-alike:hover, .btn.fDark {
+    color: #fff;
+}
+
+#freebirdhelp, #teamWrapper .teamblock .memberItem .second, .animate, .anwserContent .question .qAnwser, .btn-more.fDark, .btn.fDark, .btn.fGhost, .btn.fGhost.inverted, .btn.fGhostred, .btn.fRed, .btn.fWhite, .greyTitleBox .videoBlock .playbar .icon-playVideo, .projectAdmin .videoBlock .playbar .icon-playVideo, .projectContent.freebirdContent .bandHeader .musicplayer, .projectContentUpper .videoBlock .playbar .icon-playVideo, .projectRewardContent .videoBlock .playbar .icon-playVideo, .pushnote:before, .rewardItem, .rewardItem.onlive .pledgeLayer, .rewardSurveyForm .addtoLib, .surveyLibBlock, .tagBtn {
+    transition: all .3s;
+    backface-visibility: hidden;
+}
+
+.mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu, .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab, a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+a {
+    background-color: transparent;
+}
+
+    a:-webkit-any-link {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.container, .container-fluid {
+    max-width: 985px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+    .paperBlock .about-buttons-wrapper {
+        margin-bottom: 30px;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+@media (min-width: 768px) {
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+        float: left;
+    }
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.paperBlock .about-buttons-wrapper {
+    margin-bottom: 30px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+        float: left;
+    }
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn.fDark {
+    background: #343434;
+}
+
+.btn-alike:hover, .btn.fDark {
+    color: #fff;
+}
+
+#freebirdhelp, #teamWrapper .teamblock .memberItem .second, .animate, .anwserContent .question .qAnwser, .btn-more.fDark, .btn.fDark, .btn.fGhost, .btn.fGhost.inverted, .btn.fGhostred, .btn.fRed, .btn.fWhite, .greyTitleBox .videoBlock .playbar .icon-playVideo, .projectAdmin .videoBlock .playbar .icon-playVideo, .projectContent.freebirdContent .bandHeader .musicplayer, .projectContentUpper .videoBlock .playbar .icon-playVideo, .projectRewardContent .videoBlock .playbar .icon-playVideo, .pushnote:before, .rewardItem, .rewardItem.onlive .pledgeLayer, .rewardSurveyForm .addtoLib, .surveyLibBlock, .tagBtn {
+    transition: all .3s;
+    backface-visibility: hidden;
+}
+
+.mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu, .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab, a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+a {
+    background-color: transparent;
+}
+
+    a:-webkit-any-link {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.text-center {
+    text-align: center;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+html {
+    line-height: 1;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+    color: rgba(0,0,0,.87);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+element.style {
+    max-width: 940px;
+}
+
+.container, .container-fluid {
+    max-width: 985px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+body {
+    font-family: "Noto Sans TC","Helvetica Neue","Heiti TC","Microsoft JhengHei",Arial,sans-serif;
+    letter-spacing: 1.6px;
+    color: #212121;
+}
+
+a, body, p {
+    line-height: 1.6;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+.paperBlock .about-buttons-wrapper {
+    margin-bottom: 30px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+        float: left;
+    }
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.paperBlock {
+    padding: 30px;
+    line-height: 1.6rem;
+    background: #fff;
+    margin-bottom: 8rem;
+}
+
+.gradientBk {
+    background: #ef7070;
+    background: -moz-radial-gradient(center,ellipse cover,#ef7070 0,#eb4b4b 100%);
+    background: -webkit-radial-gradient(center,ellipse cover,#ef7070 0,#eb4b4b 100%);
+    background: radial-gradient(ellipse at center,#ef7070 0,#eb4b4b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef7070', endColorstr='#eb4b4b', GradientType=1);
+    color: #fff;
+}
