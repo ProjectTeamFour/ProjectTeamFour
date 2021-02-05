@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
     <Compile Include="Controllers\PayController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\StartAProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\campaignDetail.css" />
+    <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\OrdinanyQAPage\OrdinaryQA.css" />
     <Content Include="Assets\css\PaymentPage\pay.css" />
     <Content Include="Assets\css\PaymentPage\rwd-pay.css" />
@@ -187,6 +190,7 @@
     <Content Include="Assets\Img\ShoppingCart\test4.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test5.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test6.jpg" />
+    <Content Include="Assets\Javascript\HomePage\homepage.js" />
     <Content Include="Assets\Javascript\OrdinanyQAPage\OrdinanyQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
     <Content Include="Assets\Javascript\Products_Page\Products.js" />
@@ -1944,9 +1948,15 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\StartAProject\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\css\AboutUsPage\" />
+    <Folder Include="Assets\css\StartAProjectPage\" />
+    <Folder Include="Assets\Javascript\AboutUsPage\" />
+    <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\PersonInfo\" />
