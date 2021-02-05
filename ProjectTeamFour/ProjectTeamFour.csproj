@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\campaignDetail.css" />
+    <Content Include="Assets\css\OrdinanyQAPage\OrdinaryQA.css" />
     <Content Include="Assets\css\PaymentPage\pay.css" />
     <Content Include="Assets\css\PaymentPage\rwd-pay.css" />
     <Content Include="Assets\css\Person_insPage\personal.css" />
@@ -182,6 +183,7 @@
     <Content Include="Assets\Img\ShoppingCart\test4.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test5.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test6.jpg" />
+    <Content Include="Assets\Javascript\OrdinanyQAPage\OrdinanyQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
     <Content Include="Assets\Javascript\Products_Page\Products.js" />
     <Content Include="Assets\Plugin\Bootstrap\bootstrap_cdn4.6.0.min.css" />

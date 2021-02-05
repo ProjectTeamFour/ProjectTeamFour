@@ -221,6 +221,14 @@ img {
 .shop-item .actions {
     width: 20%;
 }
+.hamburger .dropdown img {
+   
+    width: auto;
+}
+.nav-link {
+   
+    padding: .5rem 3rem;
+}
 
 
 
@@ -272,5 +280,27 @@ img {
         position: sticky;
         top: 20px;
         height: max-content;
+    }
+   
+}
+@media screen and (min-width:1200px)
+{
+    .nav-link {
+        padding: 0px;
+        padding-bottom:10px;
+    }
+    
+    .pcmode-navbar .search {
+         margin-top: 0px; 
+        
+    }
+    
+    .pcmode-navbar .fa-shopping-cart {
+        top: 20px;
+    }
+    .navbar-nav .dropdown {
+        position: absolute;
+        right: 10rem;
+        top: -5px;
     }
 }
