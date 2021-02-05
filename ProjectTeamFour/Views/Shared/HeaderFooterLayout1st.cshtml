@@ -31,9 +31,9 @@
 
         <nav id="sidebar">
             <div class="sidebar-header">
-                <a href="#">
-                    <h2>集資車車</h2>
-                </a>
+                <h2>
+                    @Html.ActionLink("集資車車", "Index", "Home")
+                </h2>
                 <li class="sidebar-item search">
                     <i class="fas fa-search"></i>
                 </li>
@@ -49,12 +49,15 @@
 
             <ul class="list-unstyled list">
                 <li class="active list-item">
+                     @*htmllink*@
                     <a href="#">關於</a>
                 </li>
                 <li class="list-item">
+                    @*htmllink*@
                     <a href="#">提案</a>
                 </li>
                 <li class="list-item">
+                    @*htmllink*@
                     <a href="#">探索</a>
                 </li>
             </ul>
@@ -67,9 +70,15 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <a class="navbar-brand title" href="#">
+            @*<a class="navbar-brand title" href="#">
                 <h1>集資車車</h1>
-            </a>
+            </a>*@
+            
+        <div class="title">
+            <h1>
+                @Html.ActionLink("集資車車", "Index", "Home", new { @class = "navbar-brand" })
+            </h1>
+        </div>
 
             <div class="d-flex">
 
@@ -111,12 +120,15 @@
                     </li>
 
                     <li class="nav-item about">
-                        <a class="nav-link guide" href="#">關於 <span class="sr-only">(current)</span></a>
+                        @*htmllink*@
+                        <a class="nav-link guide" href="#">關於</a>
                     </li>
                     <li class="nav-item idea">
+                        @*htmllink*@
                         <a class="nav-link guide" href="#">提案</a>
                     </li>
                     <li class="nav-item explore">
+                        @*htmllink*@
                         <a class="nav-link guide" href="#">探索</a>
                     </li>
 
@@ -125,9 +137,12 @@
                         <input type="text">
                     </li>
 
-                    <a class="nav-item navbar-brand title" href="#">
-                        <h1>集資車車</h1>
-                    </a>
+                    <li class="title">
+                        <h1>
+                            @Html.ActionLink("集資車車", "Index", "Home", new { @class = "nav-item navbar-brand" })
+                        </h1>
+                    </li>
+                 
 
 
                     <a class="nav-item">
