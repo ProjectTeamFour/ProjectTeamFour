@@ -70,13 +70,10 @@ button[type="button"] {
 
 .menu-project-pic {
     overflow: hidden;
-    width: 100%;
-    height: 300px;
 }
 
     .menu-project-pic img {
         width: 100%;
-        height: 100%;
         transition: transform 0.5s linear;
     }
 
