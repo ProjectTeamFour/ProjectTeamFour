@@ -1,19 +1,19 @@
 ﻿@model Project
 
-@{ 
-    decimal num = (Model.NowMoney / Model.GoalMoney)*100;
+@{
+    decimal num = (Model.NowMoney / Model.GoalMoney) * 100;
     string imgPath = ConfigurationManager.AppSettings["imgPath"];
 }
 
 <div class="col-sm-12 col-md-6 col-lg-4">
-    <a href ="#" class="menu-project">
+    <a href="#" class="menu-project">
         <div class="menu-project-pic">
-            <img src="~/@(imgPath+Model.MainImage)" >
+            <img src="~/@(imgPath+Model.MainImage)">
         </div>
         <div class="menu-project-text">
             <div class="menu-project-text-tag">
                 <span>Design</span>
-                @StringFormat5.Judgement(Model.GoalMoney,Model.NowMoney)
+                @StringFormat5.Judgement(Model.GoalMoney, Model.NowMoney)
             </div>
             <h2>
                 @Model.Title
