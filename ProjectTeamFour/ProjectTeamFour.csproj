@@ -171,7 +171,8 @@
     <Content Include="Assets\css\ProductsPage\products.css" />
     <Content Include="Assets\css\ProductsPage\rwd-products.css" />
     <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
-    <Content Include="Assets\css\StartAProjectPage\StartAProject.css" />
+    <Content Include="Assets\css\StartAProjectPage\startaproject.css" />
+    <Content Include="Assets\css\StartAProjectPage\submissionprocess.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
@@ -1957,6 +1958,7 @@
     <Content Include="Views\PersonInfo\Submit.cshtml" />
     <Content Include="Views\PersonInfo\Connect.cshtml" />
     <Content Include="Views\PersonInfo\New.cshtml" />
+    <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
