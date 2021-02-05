@@ -159,6 +159,7 @@
     <Compile Include="Service\ProjectService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\AboutUsPage\aboutus.css" />
     <Content Include="Assets\css\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\OrdinanyQAPage\OrdinaryQA.css" />
@@ -169,6 +170,7 @@
     <Content Include="Assets\css\ProductsPage\products.css" />
     <Content Include="Assets\css\ProductsPage\rwd-products.css" />
     <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
+    <Content Include="Assets\css\StartAProjectPage\StartAProject.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
@@ -1952,8 +1954,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\css\AboutUsPage\" />
-    <Folder Include="Assets\css\StartAProjectPage\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Data\" />
