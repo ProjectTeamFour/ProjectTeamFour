@@ -177,6 +177,11 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_01.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_02.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_03.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_04.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_05.jpg" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
     <Content Include="Assets\Img\pay\product.jpg" />
