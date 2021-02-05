@@ -167,13 +167,13 @@
 
     .hamburger .title {
         color: #000;
-        margin-top: 0.5rem;
-        margin-left: 2rem;
+        margin-top: 1rem;
+        margin-left: 3.8rem;
+        text-align: center;
     }
 
         .hamburger .title h1 {
-            font-size: 1.7rem;
-/*            color: var(--color);*/
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 0.3rem;
             margin: 0;
@@ -181,6 +181,8 @@
 
             .hamburger .title h1 a {
                 color: var(--color);
+                margin-right: 0;
+                text-decoration: none;
             }
 
     .hamburger .dropdown-toggle::after {
@@ -199,6 +201,12 @@
 @media screen and (max-width: 576px) {
     .hamburger .nav-link {
         padding: .5rem .5rem;
+    }
+}
+
+@media screen and (min-width: 577px) {
+    .hamburger .title{
+        margin-left: 4.5rem;
     }
 }
 
@@ -292,11 +300,13 @@
         letter-spacing: 0.2rem;
         margin: 0;
         font-weight: 700;
+        text-align: center;
     }
 
         .pcmode-navbar .title h1 a {
             color: var(--color);
             font-size: 2rem;
+            text-decoration: none;
         }
 
 .fakebox {
