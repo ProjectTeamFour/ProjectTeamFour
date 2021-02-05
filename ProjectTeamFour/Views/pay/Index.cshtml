@@ -1,0 +1,342 @@
+﻿
+@{
+    ViewBag.Title = "PayPage";
+}
+
+
+@section topCSS{
+    <link href="~/Assets/Css/PaymentPage/pay.css" rel="stylesheet" />
+    <link href="~/Assets/Css/PaymentPage/rwd-pay.css" rel="stylesheet" />
+}
+@section endJS{
+    <script src="~/Assets/Javascript/PaymentPage/pay.js"></script>
+}
+
+
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Show order summary
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="products">
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/product.jpg" alt="肉" class="pic">
+                            </div>
+                            <div class="product-item-text  col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                            </div>
+                            <div class="product-item-text  col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                            </div>
+                            <div class="product-item-text col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                            </div>
+                            <div class="product-item-text col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                            </div>
+                            <div class="product-item-text col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-item-pic col-2 col-sm-2">
+                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                            </div>
+                            <div class="product-item-text col-10 col-sm-10">
+                                <h3>Food Planner</h3>
+                                <span>$28.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout">
+                        <div class="checkout-price">
+                            <h4>subtotal</h4>
+                            <span>$28.98</span>
+                        </div>
+                        <div class="checkout-price">
+                            <h4>shipping</h4>
+                            <span>Calculated at next step</span>
+                        </div>
+                        <div class="check-total">
+                            <h4>Total</h4>
+                            <P><span>USD</span>$28.98</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="body-reverse">
+        <div class="wrap wrap-outside col-lg-5">
+            <section class="pay-col">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="products">
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉" class="pic">
+                                </div>
+                                <div class="product-item-text  col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                                </div>
+                                <div class="product-item-text  col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                                </div>
+                                <div class="product-item-text col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                                </div>
+                                <div class="product-item-text col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                                </div>
+                                <div class="product-item-text col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-pic col-2 col-sm-2">
+                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
+                                </div>
+                                <div class="product-item-text col-10 col-sm-10">
+                                    <h3>Food Planner</h3>
+                                    <span>$28.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout">
+                            <div class="checkout-price">
+                                <h4>subtotal</h4>
+                                <span>$28.98</span>
+                            </div>
+                            <div class="checkout-price">
+                                <h4>shipping</h4>
+                                <span>Calculated at next step</span>
+                            </div>
+                            <div class="check-total">
+                                <h4>Total</h4>
+                                <P><span>USD</span>$28.98</P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="wrap wrap-outside col-lg-7">
+            <section class="title">
+                <div class="row">
+                    <div class="col-12">
+                        <span id="tag">科技設計</span>
+                        <h2>Ultra Coat - 全境溫控風雨衣 | 挑戰你的環境 操控你的溫度</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="outside delivery-title">
+                            <div class="box"></div>
+                            <h3 id="delivery">寄送資訊</h3>
+                        </div>
+                        <div class="content-deliver">
+                            <div class="inside content-deliver-detail">
+                                <h4>寄送國家</h4>
+                                <form class="w3-container w3-card-4" action="/action_page.php">
+                                    <select class="w3-select w3-border" name="option">
+                                        <option value="" disabled selected>請選擇寄送國家</option>
+                                        <option value="1">其他地區(+$900)</option>
+                                        <option value="2">Taiwan | 台灣本島(+$0)</option>
+                                        <option value="3">Macao | 澳門(+$400)</option>
+                                        <option value="4">Hong Kong | 香港(+$900)</option>
+                                    </select>
+                                </form>
+                                <h4>收件人姓名</h4>
+                                <input type="text" placeholder="請填寫真實姓名">
+                                <h4>收件地址</h4>
+                                <input type="text" placeholder="請填寫希望的收件地址,回饋將寄送至此">
+                                <h4>郵遞區號</h4>
+                                <input type="text" placeholder="海外無郵遞區號請填0">
+                                <h4>聯絡電話</h4>
+                                <input type="text" placeholder="請填寫常用手機號碼,以利提案團隊聯繫">
+                                <h4>聯絡信箱</h4>
+                                <input type="text" placeholder="請填寫常用電子信箱,以利提案團隊聯繫">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="outside pay-title">
+                            <div class="box2"></div>
+                            <h3>付款資訊</h3>
+                        </div>
+                        <div class="inside content-payment">
+                            <h4>付款方式</h4>
+                            <div class="button-group">
+                                <button id="credit-card">信用卡(一次付清)</button>
+                                <button id="credit-card-split">信用卡(分期0利率)</button>
+                                <button id="credit-atm">ATM</button>
+                                <button id="credit-market">超商付款</button>
+                            </div>
+                            <span id="one">可用卡別：VISA／MASTERCARD／JCB／銀聯卡，無手續費產生</span>
+                            <span id="split">分期選項將於點選「進行付款」後出現，可分期銀行：中信、台新、玉山、永豐（銀聯卡僅限一次付清）</span>
+                            <span id="atm">
+                                Web ATM 轉帳 / 實體 ATM 繳款：當匯款銀行與金流特定銀行不同時，您的銀行將會額外收取 10 ~ 15 元
+                                轉帳手續費，此費用為銀行端收取的一次性服務費用，若遇退款需求時不計算在退還款項中，將依據實際贊助金額退費。
+                            </span>
+                            <span id="market">超商代碼繳費：可至全台「7-11、全家、萊爾富、OK超商」之多媒體機台列印繳費單，持繳費單至超商櫃台以現金付款。</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="inside support-group">
+                            <h6>贊助總金額</h6>
+                            <div class="support">
+                                <div class="pay-money">
+                                    <h5>贊助金額</h5>
+                                    <p>7580</p>
+                                </div>
+                                <div class="pay-money">
+                                    <h5>+ 運費</h5>
+                                    <p>400</p>
+                                </div>
+                                <div class="pay-money">
+                                    <h5>+額外支持</h5>
+                                    <input type="text" placeholder="0" id="bonus">
+                                </div>
+                                <div class="pay-money">
+                                    <h5>= 總金額 NTD</h5>
+                                    <P>7980</P>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="feedback">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="outside feedback-title">
+                            <div class="box3"></div>
+                            <h3>回饋調查</h3>
+                        </div>
+                        <div class="inside feedback-check">
+                            <div class="form-group">
+                                <h4>請選擇您想要的款式</h4>
+                                <form class="w3-container w3-card-4" action="/action_page.php">
+                                    <select class="w3-select w3-border" name="option">
+                                        <option value="" disabled selected>請選擇您要的款式</option>
+                                        <option value="1">男生款</option>
+                                        <option value="2">女生款</option>
+                                    </select>
+                                </form>
+                                <h4>請選擇您要的顏色</h4>
+                                <form class="w3-container w3-card-4" action="/action_page.php">
+                                    <select class="w3-select w3-border" name="option">
+                                        <option value="" disabled selected>請選擇您要的顏色</option>
+                                        <option value="1">經典黑</option>
+                                    </select>
+                                </form>
+                                <h4>請選擇您的尺寸</h4>
+                                <form class="w3-container w3-card-4" action="/action_page.php">
+                                    <select class="w3-select w3-border" name="option">
+                                        <option value="" disabled selected>請選擇您的尺寸</option>
+                                        <option value="1">S</option>
+                                        <option value="2">M</option>
+                                        <option value="3">L</option>
+                                        <option value="4">XL</option>
+                                        <option value="5">2XL</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="outside remark">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="inside remark-group">
+                            <h4>備註欄位</h4>
+                            <input type="text" placeholder="如有特殊需求請填寫於此">
+                            <div class="btn-check">
+                                <input type="checkbox" checked="checked" id="menu_control" class="menu-btn">
+                                <label for="menu_control">匿名贊助</label>
+                                <span>勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=" button-pay">
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn-pay">付款贊助</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+

@@ -75,7 +75,7 @@
 }
 
 
-input[type="text"] {
+.inside input{
     border-radius: 10px;
     font-size: 1rem;
     width: 100%;
@@ -232,6 +232,10 @@ form {
 
 label {
     font-size: 1.2rem;
+}
+
+.btn-check input{
+    width:10%;
 }
 
 .btn-pay {

@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 992px) {
-    body {
+    .body-reverse {
         display: flex;
         flex-direction: row-reverse;
     }
