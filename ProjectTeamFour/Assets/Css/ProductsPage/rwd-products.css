@@ -11,11 +11,11 @@
         align-items: center;
     }
 
-        .dropdown label {
-            margin-top: 0.5rem;
-            padding: 0 0.5rem;
-            border-right: 1px solid #000;
-        }
+    .dropdown label {
+        margin-top: 0.5rem;
+        padding: 0 0.5rem;
+        border-right: 1px solid #000;
+    }
 
     button[type="button"] {
         border: none;

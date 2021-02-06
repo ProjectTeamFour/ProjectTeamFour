@@ -148,9 +148,11 @@
     <Compile Include="Controllers\PersonInfoController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProfileSettingsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StartAProjectController.cs" />
+    <Compile Include="Data\ProfileSettingsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +173,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductDetail.cs" />
+    <Compile Include="Models\ProfileSetting.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,6 +198,11 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_01.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_02.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_03.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_04.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_05.jpg" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
     <Content Include="Assets\Img\pay\product.jpg" />
@@ -1977,6 +1985,11 @@
     <Content Include="Views\PersonInfo\Submit.cshtml" />
     <Content Include="Views\PersonInfo\Connect.cshtml" />
     <Content Include="Views\PersonInfo\New.cshtml" />
+    <Content Include="Views\ProfileSettings\Create.cshtml" />
+    <Content Include="Views\ProfileSettings\Delete.cshtml" />
+    <Content Include="Views\ProfileSettings\Details.cshtml" />
+    <Content Include="Views\ProfileSettings\Edit.cshtml" />
+    <Content Include="Views\ProfileSettings\Index.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
@@ -1985,6 +1998,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
