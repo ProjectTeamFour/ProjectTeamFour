@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <label>帳號</label>
+    <input type="text" id="input_acc" class="input1" />
+    <label id="accountlabel1" class="lab1"></label>
+    <label>密碼</label>
+    <input type="password" id="input_pass" class="input1" />
+    <label id="passwordlabel1" class="lab1"></label>
+    <label>密碼驗證</label>
+    <input type="password" id="input_passconfirm" class="input1" />
+    <label id="passwordconfirmlabel1" class="lab1"></label>
+    <br />
+    <label>姓名</label>
+    <input type="text" id="input_name" class="input1" />
+    <label id="namelabel1" class="lab1"></label>
+    <br />
+</div>
+<div>
+    <button id="btn_create">新增</button>
+    <button id="btn_login">登入</button>
+</div>
+
+<div id="showMember">
+
+</div>
+<div id="showMessage">
+
+    </div>
+
+@Html.ActionLink("12", "Login", "Member")
+
+    @section endJs{
+        <script>
+
+            window.onload = function () {
+                getMembers();
+            }
+
+            var url = "https://localhost:44300/api/member";
+            var div_showMembers = document.querySelector('#showMember');
+            var div_showMessage = document.querySelector('#showMessage');
+            var input_acc = document.getElementById('input_acc');
+            var input_pass = document.getElementById('input_pass');
+            var input_passconfirm = document.getElementById('input_passconfirm');
+            var input_name = document.getElementById('input_name');
+
+            var btn_create = document.querySelector('#btn_create');
+
+            btn_create.addEventListener('click', function () {
+                div_showMessage.innerHTML = "";
+                div_showMembers.innerHTML = "";
+                let name_v = input_name.value;
+                let password_v = input_pass.value;
+                let passconfirm_v = input_passconfirm.value;
+                let acc_v = input_acc.value;
+            //    let myBody = {
+            //        method: 'Post', body:
+            //            '{Name:`${name_v}`,PassWord:`${password_v}`,PassWordConfirm:`${passwordconfirm_v}`,Accout:`${acc_v}`,Position:""}'
+            //    };
+            //    let request = new Request(url + "/CreateMember", myBody);
+            //    fetch(request)
+            //        .then(response => response.text())
+            //        .then(result => {
+            //            div_showMessage = result;
+            //        })
+
+                $.ajax({
+                    url: url + "/CreateMember",
+                    type: 'post',
+                    data: {
+                        Account: acc_v, PassWord: password_v, PassWordConfirm: passconfirm_v,
+                        Name: name_v, Position: ""
+                    },
+                    success: function (response) {
+                        div_showMessage.innerHTML = JSON.stringify(response);
+                        getMembers();
+                    }
+                })
+            })
+
+
+            var btn_login = document.querySelector('#btn_login');
+            btn_login.addEventListener('click', function () {
+                div_showMessage.innerHTML = "";
+                fetch(`https://localhost:44300/Member/Login?acc=${input_acc.value}&pwd=${input_pass.value}`)
+                    .then(result => result)
+                    .then(response => {
+                       div_showMessage.innerHTML="成功"
+                    })
+            })
+
+
+
+            function getMembers() {
+                let request = new Request(url + "/getmembers");
+                fetch(request)
+                    .then(response => response.text())
+                    .then(result => {
+                        div_showMembers.innerHTML = result;
+                    })
+            }
+        </script>
+    }
