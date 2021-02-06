@@ -333,3 +333,13 @@ h4 {
   display: flex;
   flex-direction: row-reverse;
 }
+
+.btn-link {
+    color: #212121;
+    text-decoration: none;
+}
+
+    .btn-link:hover {
+        color: #f9414a;
+        text-decoration: none;
+    }

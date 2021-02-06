@@ -135,9 +135,11 @@
     <Compile Include="Controllers\PersonInfoController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProfileSettingsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StartAProjectController.cs" />
+    <Compile Include="Data\ProfileSettingsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,7 +155,7 @@
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductDetail.cs" />
-    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\ProfileSetting.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1958,12 +1960,16 @@
     <Content Include="Views\PersonInfo\Submit.cshtml" />
     <Content Include="Views\PersonInfo\Connect.cshtml" />
     <Content Include="Views\PersonInfo\New.cshtml" />
+    <Content Include="Views\ProfileSettings\Create.cshtml" />
+    <Content Include="Views\ProfileSettings\Delete.cshtml" />
+    <Content Include="Views\ProfileSettings\Details.cshtml" />
+    <Content Include="Views\ProfileSettings\Edit.cshtml" />
+    <Content Include="Views\ProfileSettings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
-    <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
