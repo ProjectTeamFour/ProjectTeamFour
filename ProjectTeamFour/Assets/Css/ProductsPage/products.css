@@ -98,10 +98,10 @@ button[type="button"] {
     }
 
 
-        .menu-project-text-tag span:nth-child(2) {
-            margin-left: 1rem;
-            color: #F8414A;
-        }
+    .menu-project-text-tag span:nth-child(2) {
+        margin-left: 1rem;
+        color: #F8414A;
+    }
 
 .menu-project-text h2 {
     font-size: 1rem;
@@ -109,9 +109,6 @@ button[type="button"] {
     color: #000;
 }
 
-.menu-project-text-title {
-    height: 3rem;
-}
 
 .menu-project-text h2:hover {
     color: #F8414A;
