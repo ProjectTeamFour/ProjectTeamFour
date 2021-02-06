@@ -20,14 +20,17 @@ namespace ProjectTeamFour.Reposities
         public void Create(T value)
         {
             _context.Entry(value).State = EntityState.Added;
+            _context.SaveChanges();
         }
         public void Update(T value)
         {
             _context.Entry(value).State = EntityState.Modified;
+            _context.SaveChanges();
         }
         public void Delete(T value)
         {
             _context.Entry(value).State = EntityState.Deleted;
+            _context.SaveChanges();
         }
         public IQueryable<T> GetAll()
         {

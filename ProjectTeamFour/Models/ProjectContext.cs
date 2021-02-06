@@ -14,5 +14,9 @@ namespace ProjectTeamFour.Models
         }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductDetail> productDetails { get; set; }
+        public DbSet<Member> Members { get; set; }
+
     }
 }
