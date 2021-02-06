@@ -174,10 +174,16 @@
     <Content Include="Assets\css\ProductsPage\products.css" />
     <Content Include="Assets\css\ProductsPage\rwd-products.css" />
     <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
-    <Content Include="Assets\css\StartAProjectPage\StartAProject.css" />
+    <Content Include="Assets\css\StartAProjectPage\startaproject.css" />
+    <Content Include="Assets\css\StartAProjectPage\submissionprocess.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_01.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_02.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_03.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_04.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_05.jpg" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
     <Content Include="Assets\Img\pay\product.jpg" />
@@ -1965,6 +1971,7 @@
     <Content Include="Views\ProfileSettings\Details.cshtml" />
     <Content Include="Views\ProfileSettings\Edit.cshtml" />
     <Content Include="Views\ProfileSettings\Index.cshtml" />
+    <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

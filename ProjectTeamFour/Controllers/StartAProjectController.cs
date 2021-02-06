@@ -13,5 +13,10 @@ namespace ProjectTeamFour.Controllers
         {
             return View();
         }
+
+        public ActionResult SubmissionProcess()
+        {
+            return View();
+        }
     }
 }
