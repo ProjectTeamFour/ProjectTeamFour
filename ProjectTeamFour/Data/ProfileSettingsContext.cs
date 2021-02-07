@@ -19,6 +19,6 @@ namespace ProjectTeamFour.Data
         {
         }
 
-        public System.Data.Entity.DbSet<ProjectTeamFour.Models.ProfileSetting> ProfileSettings { get; set; }
+        //spublic System.Data.Entity.DbSet<ProjectTeamFour.Models.ProfileSetting> ProfileSettings { get; set; }
     }
 }

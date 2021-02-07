@@ -7,7 +7,7 @@ using ProjectTeamFour.Models;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class ProductDetailController : Controller
+    public class ProjectDetailController : Controller
     {
 
         // GET: ProductDetail
