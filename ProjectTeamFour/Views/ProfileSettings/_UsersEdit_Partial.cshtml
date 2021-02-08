@@ -1,0 +1,86 @@
+﻿@model ProjectTeamFour.Models.User
+
+@section topCSS{
+    <link href="~/Assets/Css/setting.css" rel="stylesheet" />
+}
+
+
+<!-- 個人資料 -->
+<form action="">
+    <div id="user-profile" class="container">
+        <div class="form-group row">
+            <!-- 左欄 -->
+            <div class="left col-12 col-md-6">
+                <div id="upload-img">
+                    <!-- 這裡是複製的 -->
+                    <div class="flyingUpload">
+                        <svg width="93" height="93" class="transpCircle">
+                            <mask id="mask">
+                                <rect fill="white" width="100%" height="100%" />
+                                <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
+                            </mask>
+                            <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
+                        </svg>
+                        <img src="https://static.flyingv.asia/static/square/users/60129aa331255.jpg" alt="謝宜勳" class="avatar"
+                             style="width: 93px;">
+                        <span class="image-hinter">
+                            <strong>上傳圖片</strong><br>
+                            <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
+                        </span>
+                        <input class="upload" id="upload" accept="image/*" name="avatar" type="file">
+                    </div>
+                </div>
+                <div id="register-email" class="form-group">
+                    <label for="inputEmail">註冊信箱</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" readonly>
+                    <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
+                </div>
+                <div id="contact-email" class="form-group">
+                    <label for="inputEmail">聯絡信箱</label>
+                    <input type="email" class="form-control" id="contactEmail" placeholder="[email]">
+                </div>
+                <div id="gender" class="form-group">
+                    <label for="gender">性別</label>
+                    <select class="form-control" id="gender">
+                        <option>請選擇性別</option>
+                        <option>男性</option>
+                        <option>女性</option>
+                        <option>其他</option>
+                    </select>
+                </div>
+
+                <div id="birthday"></div>
+
+
+            </div>
+            <!-- 右欄 -->
+            <div class="right col-12 col-md-6">
+                <div id="about-me" class="form-group">
+                    <label for="about" class="colored-label">
+                        <p>關於我</p>
+                    </label>
+                    <input type="text" class="form-control" id="about" placeholder="300字以內簡介">
+                </div>
+                <div id="name" class="form-group">
+                    <label for="name">顯示名稱</label>
+                    <input type="text" class="form-control" id="name" placeholder="[name]">
+                </div>
+                <div id="personal-site" class="form-group">
+                    <label for="personal-site">個人網站</label>
+                    <input type="url" class="form-control" id="personal-site" placeholder="[webside]">
+                </div>
+                <div id="language-preference" class="form-group">
+                    <label for="gender">語言偏好</label>
+                    <select class="form-control" id="language">
+                        <option>中文</option>
+                        <option>英文</option>
+                        <option>日文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button type="save" class="btn btn-primary">儲存</button>
+        <button type="check" id="btn-black" class="btn btn-primary">查看檔案頁</button>
+    </div>
+</form>
