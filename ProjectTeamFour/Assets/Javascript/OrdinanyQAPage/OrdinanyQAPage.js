@@ -41,34 +41,46 @@
         question9[0].addEventListener("click", function () {
         onQuestionClick(question9)
     });
-        //搜索功能(使用jqury)
-        let searchbar = document.querySelector(".form-control");
-        let answerTitle = document.querySelectorAll(".btn-block");
-        let filter=document.querySelector(".filter");
+       
+         //搜索功能(使用jqury)
+//搜索功能(使用jqury)
+let searchbar = document.querySelector(".form-control");
+let cardNodeArray = document.querySelectorAll(".card");
+let searchtitle = document.querySelector(".search-title");
+let filter = document.querySelector(".filter");
 
-        let answer = document.querySelector("#answer");
-        let answerrClone=answer.cloneNode(true);
-        let answerTitleArray = [];
 
-       searchbar.addEventListener("change",function(){
+searchbar.addEventListener("change", function () {
 
-        answerTitle.forEach(node => {
-            if (node.innerText.includes(searchbar.value) && searchbar.value != "") {
-                var clonenode = node.cloneNode(true);
-                answer.innerHTML = "";
-                console.dir(clonenode);
-                debugger;
-                //   clonenode.forEach(node=>{
-                //     answer.appendChild(clonenode);
-                //   })
+    if (searchbar.value != "") {
+        filter.innerHTML = "";
 
+
+        cardNodeArray.forEach(node => {
+
+            if (node.innerText.includes(searchbar.value)) {
+                //    console.dir(node);
+
+                searchtitle.innerText = "搜尋結果";
+                filter.append(node);
+
+            }
+            else {
+                if (filter.innerHTML == "") {
+                    searchtitle.innerText = "無符合的結果";
+                }
 
 
             }
-            else if (searchbar.value == "") {
-                answer.innerHTML = "";
-                answer.appendChild(answerrClone);
-            }
-        })
-    })
+
+        });
+
+    }
+    else {
+        searchtitle.innerText = "";
+        filter.innerHTML = "";
+    }
+
+
+})
 

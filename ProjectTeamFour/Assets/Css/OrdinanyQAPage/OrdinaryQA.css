@@ -25,7 +25,7 @@
     list-style-position: inside;
 }
 
-h3::before {
+.title h3::before {
     position: absolute;
     left: 0;
     top: 3px;
@@ -107,11 +107,7 @@ hr {
         font-weight: 700;
     }
 
-.sponsor,
-.explore,
-.proposal {
-    font-family: 'Noto Sans TC', sans-serif;
-}
+
 
 .sponsor-text,
 .explore-text,
@@ -143,6 +139,7 @@ hr {
     color: var(--font-size);
     padding: 0px;
     padding-bottom: 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
     .btn:focus {
@@ -190,11 +187,11 @@ hr {
 
     h3 {
         font-size: 1rem;
-        position: relative;
+        
         font-weight: 700;
     }
 
-        h3::before {
+        .title h3::before {
             position: absolute;
             left: 0;
             top: 3px;
@@ -220,6 +217,10 @@ hr {
 
     .pcmode-navbar {
         display: block;
+    }
+
+    h3 {
+        font-size: 1rem;
     }
 }
 
