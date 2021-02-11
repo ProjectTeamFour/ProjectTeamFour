@@ -9,7 +9,7 @@ namespace ProjectTeamFour
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Assets/Plugin/JQuery/jquery_migrate1.2.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -20,11 +20,21 @@ namespace ProjectTeamFour
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Assets/Plugin/JQuery/jquery_3.5.1.min.js",
+                      
+                      "~/Assets/Plugin/Slick/slick_cdn1.8.1.min.js",
+                      "~/Assets/Plugin/Popper.js/popper_cdn1.16.1.min.js",
+                      "~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.js",
+                      "~/Assets/HeaderFooterLayout/headerfooter.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Assets/css").Include(
+                      "~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css",
+                      "~/Assets/HeaderFooterLayout/headerfooter.css",
+                      "~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css", 
+                      "~/Assets/Plugin/Normalize.css/normalize.css", 
+                      "~/Assets/Plugin/Slick/slick_cdn1.8.1.css"));
+
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }
