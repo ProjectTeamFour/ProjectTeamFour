@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
@@ -1988,6 +1989,7 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
+    <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

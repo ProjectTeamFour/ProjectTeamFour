@@ -235,7 +235,9 @@ label {
 }
 
 .btn-check input{
-    width:10%;
+    width:1rem;
+    position:relative;
+    top:1rem;
 }
 
 .btn-pay {
