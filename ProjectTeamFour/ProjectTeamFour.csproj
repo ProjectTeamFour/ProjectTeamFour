@@ -138,6 +138,16 @@
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102131600221_正式-2-13.cs" />
+    <Compile Include="Migrations\202102131600221_正式-2-13.Designer.cs">
+      <DependentUpon>202102131600221_正式-2-13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectCategory.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="ViewModels\ViewMembers.cs" />
@@ -2025,6 +2035,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102091059315_m5.resx">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102131600221_正式-2-13.resx">
+      <DependentUpon>202102131600221_正式-2-13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

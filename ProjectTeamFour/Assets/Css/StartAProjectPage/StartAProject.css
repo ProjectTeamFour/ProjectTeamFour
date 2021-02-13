@@ -1,286 +1,121 @@
-﻿/*.createMainWrapper {
-    font-family: "Noto Sans TC",sans-serif;
-}
-
-.html {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-
-*, :after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.createMainWrapper .createStepOne {
-    padding: 50px 0;
+﻿.project-proposal-landing {
+    width: 100%;
     background-color: #f7f7f7;
+    padding-bottom: 3rem;
 }
 
-.createStepOne {
-    margin-bottom: 30px;
-}
+    .project-proposal-landing .title {
+        text-align: center;
+        font-size: 1.5rem;
+        position: relative;
+        width: 25rem;
+        margin-bottom: 2rem;
+        padding: 4rem 0;
+        font-weight: 700;
+    }
 
-.createMainWrapper .createStepOne .container {
-    max-width: 580px;
-    padding: 0 20px;
-}
+        .project-proposal-landing .title::after {
+            content: "";
+            width: 100%;
+            height: 4px;
+            background-color: #f9414a;
+            position: absolute;
+            border-radius: 1.5px;
+            left: 0;
+            top: 7rem;
+        }
 
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
+    .project-proposal-landing .project-name-input-item input {
+        border: none;
+        border-bottom: 1px solid #000;
+        background-color: transparent;
+        outline: none;
+        width: 11.5rem;
+    }
+
+    .project-proposal-landing .project-name-input-item select {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.5rem;
+        border-radius: 10px;
+        margin-left: 1rem;
+        color: #4d4c4c;
+        outline: none;
+    }
+
+    .project-proposal-landing .check-terms-item li {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #4d4c4c;
+        padding-left: 5px;
+        margin-left: -10px;
+        letter-spacing: 0.1rem;
+    }
+
+        .project-proposal-landing .check-terms-item li p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #4d4c4c;
+        }
+
+    .project-proposal-landing .check-terms-item .read-terms {
+        font-size: 0.85rem;
+        text-align: center;
+        letter-spacing: 1.8px;
+        font-weight: 600;
+        color: #4d4c4c;
+        padding-bottom: 2rem;
+    }
+
+    .project-proposal-landing .checkbox {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.15rem;
+    }
+
+        .project-proposal-landing .checkbox .checkbox-item {
+            padding: 1.3rem 0;
+        }
+
+    .project-proposal-landing .checkbox-item .inputcheckbox {
+        margin-right: 3px;
+    }
+
+    .project-proposal-landing .checkbox a {
+        color: #f9414a;
+        text-decoration: underline;
+    }
+
+    .project-proposal-landing .checkbox-item .submitbutton {
+        background-color: #f9414a;
+        border: none;
+        color: #fff;
+        padding: 0.5rem 0;
+        letter-spacing: 0.1rem;
+        font-size: 0.9rem;
+        outline: none;
+    }
+
+@media screen and (max-width: 575px) {
+
+    .project-proposal-landing .title {
+        width: 18rem;
     }
 }
 
-.container, .container-fluid {
-    margin-right: auto;
-    margin-left: auto;
-}
+@media screen and (min-width: 576px) {
 
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
+    .project-proposal-landing .project-name-input-item input {
+        width: 19rem;
     }
 }
 
-.container:before {
-    display: table;
-    content: " ";
-}
+@media screen and (min-width: 768px) {
 
-.createMainWrapper .createStepOne h2.stepTitle {
-    position: relative;
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 2.2px;
-    color: #000;
-    padding-bottom: 25px;
-    margin-bottom: 60px;
-}
+    .project-proposal-landing .title {
+        width: 42rem;
+    }
 
-.text-center {
-    text-align: center;
+    .project-proposal-landing .project-name-input-item input {
+        width: 34rem;
+    }
 }
-
-h2 {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 2px;
-}
-
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-
-.createMainWrapper .createStepOne h2.stepTitle:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    border-radius: 1.5px;
-    background-color: #f8414a;
-    left: 0;
-    bottom: 0;
-}
-
-*, :after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.v55-form {
-    font-family: "Noto Sans TC",sans-serif;
-}
-
-form {
-    display: block;
-    margin-top: 0em;
-}
-
-.container:after {
-    clear: both;
-    content: " ";
-}
-
-.alertWell, .midWell, .successWell {
-    padding: 20px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    background: #ffe8e8;
-    color: #f8414a;
-    border: 1px solid #f8414a;
-    margin-bottom: 15px;
-}
-
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-div {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-
-.createMainWrapper .createStepOne .conc {
-    margin-bottom: 15px;
-}
-
-.createMainWrapper .createStepOne .projectName {
-    width: 100%;
-    border-bottom: 1px solid #4a4a4a;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    color: #9b9b9b;
-    background-color: #f7f7f7;
-    padding: 15px 10px;
-    border-radius: 0;
-}
-
-.v55-form input.form-control, .v55-form select.form-control {
-    height: 40px;
-}
-
-.v55-form input.form-control, .v55-form select.form-control, .v55-form textarea {
-    font-size: 13px;
-    letter-spacing: 1.2px;
-    text-align: left;
-    color: #212121;
-    padding-left: 20px;
-    border-radius: 10px;
-    border: 1px solid #c7c7c7;
-    background-color: #fff;
-}
-
-.v55-form .customSelectWrapper i.fa.fa-caret-down {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    z-index: 1;
-}
-
-.createMainWrapper .createStepOne input[type=submit].btn {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    margin: 50px 0 30px;
-}
-
-.v55-form input[type=submit] {
-    height: 40px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-top: 20px;
-}
-
-input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {
-    width: 100%;
-}
-
-.btn.fRed {
-    background: #f8414a;
-    color: #fff;
-}
-
-.createMainWrapper .createStepOne p.createConf {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-align: center;
-    margin: 30px 0;
-}
-
-a, body, p {
-    line-height: 1.6;
-}
-
-.conc a {
-    color: red
-}
-
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-li {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-
-.createMainWrapper .createStepOne .createConfList ul li {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-align: left;
-    color: #4a4a4a;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    padding-left: 10px;
-}
-
-.createMainWrapper .createStepOne label.agreement {
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 2.2px;
-    color: #4a4a4a;
-}
-
-.createMainWrapper .createStepOne .container {
-    max-width: 580px;
-    padding: 0 20px;
-}
-
-.row:before {
-    display: table;
-    content: " ";
-}
-*/

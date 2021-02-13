@@ -344,6 +344,9 @@
 
 
 /* footer */
+.footer .line {
+    border-top: 1px solid #e8e8e8;
+}
 
 .footer .title h2 {
     font-size: 1.2rem;
