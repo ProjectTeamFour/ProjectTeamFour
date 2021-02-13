@@ -34,5 +34,20 @@ namespace ProjectTeamFour.Controllers
         {
             return View();
         }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        public ActionResult Account()
+        {
+            return View();
+        }
+
+        public ActionResult Setting()
+        {
+            return View();
+        }
     }
 }
