@@ -15,7 +15,7 @@ namespace ProjectTeamFour.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> orderDetails { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Project> Projects { get; set; }
     }

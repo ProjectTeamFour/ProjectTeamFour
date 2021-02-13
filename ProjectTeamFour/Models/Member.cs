@@ -24,7 +24,6 @@ namespace ProjectTeamFour.Models
         public string MemberMessage { get; set; }
         //Navigation Property 導覽屬性
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Plan> Planes { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }
