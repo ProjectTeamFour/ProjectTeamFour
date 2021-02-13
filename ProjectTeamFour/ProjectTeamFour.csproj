@@ -138,6 +138,7 @@
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProjectCategory.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="ViewModels\ViewMembers.cs" />
     <Content Include="App_Code\HelperFunction.cs" />
