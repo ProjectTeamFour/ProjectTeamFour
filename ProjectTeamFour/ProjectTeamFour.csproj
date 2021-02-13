@@ -1991,6 +1991,9 @@
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
+    <Content Include="Views\PersonInfo\Edit.cshtml" />
+    <Content Include="Views\PersonInfo\Account.cshtml" />
+    <Content Include="Views\PersonInfo\Setting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
