@@ -132,6 +132,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MemberLoginController.cs" />
+    <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
@@ -205,6 +207,8 @@
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
     <Content Include="Assets\css\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
+    <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
+    <Content Include="Assets\css\MemberRegisterPage\memberregister.css" />
     <Content Include="Assets\css\OrdinanyQAPage\OrdinaryQA.css" />
     <Content Include="Assets\css\PaymentPage\pay.css" />
     <Content Include="Assets\css\PaymentPage\rwd-pay.css" />
@@ -2015,6 +2019,8 @@
     <Content Include="Views\PersonInfo\Edit.cshtml" />
     <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Setting.cshtml" />
+    <Content Include="Views\MemberRegister\Index.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

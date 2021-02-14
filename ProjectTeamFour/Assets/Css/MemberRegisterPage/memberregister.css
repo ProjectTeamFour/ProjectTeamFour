@@ -1,0 +1,179 @@
+﻿
+.register-page .container,
+.register-page .container-sm {
+    max-width: 350px;
+}
+
+.register-page .gender input {
+    display: none;
+}
+
+.register-page .gender p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.register-page .gender label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    color: rgb(145, 144, 144);
+    font-weight: 600;
+}
+
+.register-page .gender input + label {
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0.3rem 1.5rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.register-page .gender input:checked + label {
+    background-color: rgb(248, 200, 200);
+}
+
+.register-page .register-page-item .title {
+    border-left: 0.5rem solid #f9414a;
+    padding-left: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+}
+
+.register-page .split-line {
+    width: 100%;
+    height: 1px;
+    margin: 1rem 0;
+    background-color: rgb(214, 211, 211);
+    position: relative;
+}
+
+    .register-page .split-line p {
+        position: relative;
+        text-align: center;
+        top: -0.7rem;
+        background-color: rgb(230, 227, 227);
+        width: 1.7rem;
+        left: 50%;
+        border-radius: 5px;
+        color: rgb(145, 144, 144);
+        transform: translateX(-50%);
+    }
+
+.register-page h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 4rem 0 2rem 0;
+}
+
+.register-page .name-password input {
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #a7a7a7;
+    outline: none;
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.register-page .birthdate {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+    .register-page .birthdate input {
+        padding: 0.25rem 0 0.25rem 0.4rem;
+        border: 1px solid #a7a7a7;
+        border-radius: 5px;
+        outline: none;
+        color: rgb(145, 144, 144);
+        font-weight: 500;
+    }
+
+.register-page p {
+    margin-bottom: 0;
+}
+
+.register-page .register-button input {
+    background-color: #f9414a;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 0;
+    outline: none;
+}
+
+
+/*  */
+
+.register-page .other-register-item a {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-page .other-register-item i {
+    padding-top: 0.3rem;
+    padding-right: 0.5rem;
+}
+
+
+.register-page .other-register-item .facebook {
+    background-color: #1D3D82;
+    color: #fff;
+    padding: 0.5rem 0;
+}
+
+.register-page .other-register-item .google {
+    background-color: transparent;
+    color: rgb(104, 103, 103);
+    padding: 0.5rem 0;
+    border: 1px solid #aaa;
+}
+
+
+/*  */
+
+.register-page .term {
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+}
+
+    .register-page .term a {
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+        color: #f9414a;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+/*  */
+
+.register-page .changestatus {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding-bottom: 3rem;
+    align-items: center;
+    font-weight: 500;
+}
+
+    .register-page .changestatus input {
+        background-color: transparent;
+        border: 1px solid #f9414a;
+        padding: 0.4rem 2rem;
+        color: #f9414a;
+        outline: none;
+        font-weight: 600;
+    }
+
+
+@media (min-width: 576px) {
+
+    .register-page .container,
+    .register-page .container-sm {
+        max-width: 350px;
+    }
+}
