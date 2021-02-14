@@ -11,10 +11,12 @@ namespace ProjectTeamFour.Models
         public Guid OrderDetailId { get; set; }
         public string OrderDetailDes { get; set; }
         public Guid OrderId { get; set; }
-        public Guid OrderDetailPlanId { get; set; }
+        public string OrderAddress { get; set; }
+        public string OrderPhone { get; set; }
+
         //導覽屬性
         public virtual Order Order { get; set; }
-        [ForeignKey("OrderDetailPlanId")]
+        
         public virtual Plan Plan { get; set; }
     }
 }

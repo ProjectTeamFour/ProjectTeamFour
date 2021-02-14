@@ -150,6 +150,10 @@
     <Compile Include="Migrations\202102140308430_mergeProjectAndProjectCategory.Designer.cs">
       <DependentUpon>202102140308430_mergeProjectAndProjectCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102140342230_optimizationDB.cs" />
+    <Compile Include="Migrations\202102140342230_optimizationDB.Designer.cs">
+      <DependentUpon>202102140342230_optimizationDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
@@ -2051,6 +2055,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102140308430_mergeProjectAndProjectCategory.resx">
       <DependentUpon>202102140308430_mergeProjectAndProjectCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102140342230_optimizationDB.resx">
+      <DependentUpon>202102140342230_optimizationDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

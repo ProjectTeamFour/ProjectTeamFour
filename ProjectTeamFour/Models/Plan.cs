@@ -9,8 +9,9 @@ namespace ProjectTeamFour.Models
     public class Plan
     {
         public Guid PlanId { get; set; }
-        public int OderIndex { get; set; }
-        public Guid Projectid { get; set; }
+        public int ProjectPlanId { get; set; }
+        
+        public Guid ProjectId { get; set; }
         public string PlanTitle { get; set; }
         public int PlanFundedPeople { get; set; }
         public DateTime PlanShipDate { get; set; }
