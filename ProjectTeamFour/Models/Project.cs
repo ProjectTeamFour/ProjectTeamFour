@@ -17,7 +17,7 @@ namespace ProjectTeamFour.Models
         public string CreatorName { get; set; }
         public int Fundedpeople { get; set; }
         public string ProjectDescription { get; set; }
-        public string ProjectImgUrl { get; set; }
+        public string[] ProjectImgUrl { get; set; }
         public string ProjectVideoUrl { get; set; }
         public string Project_Question { get; set; }
         public string Project_Answer { get; set; }
@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Models
         public int ProjectPlansCount { get; set; }
         public string ProjectCoverUrl { get; set; }
         //導覽屬性
-        public virtual ICollection<Plan> Planes { get; set; }
+        public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }
