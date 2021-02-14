@@ -8,10 +8,10 @@ namespace ProjectTeamFour.Models
 {
     public class Plan
     {
-        public Guid PlanId { get; set; }
+        public int PlanId { get; set; }
         public int ProjectPlanId { get; set; }
         
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public string PlanTitle { get; set; }
         public int PlanFundedPeople { get; set; }
         public DateTime PlanShipDate { get; set; }
@@ -20,6 +20,6 @@ namespace ProjectTeamFour.Models
         public decimal PlanePrice { get; set; }
         //導覽屬性
         public virtual Project Project { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

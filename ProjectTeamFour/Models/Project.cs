@@ -7,7 +7,7 @@ namespace ProjectTeamFour.Models
 {
     public class Project
     {
-        public Guid ProjectId { get; set; } 
+        public int ProjectId { get; set; } 
         public string ProjectName { get; set; } 
         public decimal FundingAmount { get; set; }
         public string Category { get; set; }

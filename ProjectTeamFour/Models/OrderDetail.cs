@@ -8,9 +8,9 @@ namespace ProjectTeamFour.Models
 {
     public class OrderDetail
     {
-        public Guid OrderDetailId { get; set; }
+        public int OrderDetailId { get; set; }
         public string OrderDetailDes { get; set; }
-        public Guid OrderId { get; set; }
+        public int OrderId { get; set; }
         public string OrderAddress { get; set; }
         public string OrderPhone { get; set; }
 

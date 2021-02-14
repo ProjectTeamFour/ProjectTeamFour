@@ -7,7 +7,7 @@ namespace ProjectTeamFour.Models
 {
     public class Member
     {
-        public Guid MemberId { get; set; }
+        public int MemberId { get; set; }
         public string MemberName { get; set; }
         public string MemberTeamName { get; set; }
         public string MemberAccount { get; set; }

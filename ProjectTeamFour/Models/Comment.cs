@@ -7,9 +7,9 @@ namespace ProjectTeamFour.Models
 {
     public class Comment
     {
-        public Guid CommentId { get; set; }
-        public Guid ProjectId { get; set; }
-        public Guid MemberId { get; set; }
+        public int CommentId { get; set; }
+        public int ProjectId { get; set; }
+        public int MemberId { get; set; }
         public string Comment_Question { get; set; }
         public DateTime Comment_Time { get; set; }
         public string Comment_Answer { get; set; }
