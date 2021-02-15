@@ -133,11 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LogController.cs" />
-    <Compile Include="Controllers\MemberInfoController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\MemberRegisterController.cs" />
+    <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
+    <Compile Include="Data\MemberContext.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
@@ -208,7 +209,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\PersonInfoController.cs" />
@@ -2053,6 +2053,8 @@
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberRegister\Index.cshtml" />
+    <Content Include="Views\Member\testPageForSonia.cshtml" />
+    <Content Include="Views\Member\Indextest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2060,6 +2062,7 @@
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Views\Log\" />
+    <Folder Include="Views\MemberSettings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
