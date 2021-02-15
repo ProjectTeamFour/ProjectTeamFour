@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ProjectTeamFour.Data
 {
-    public class UserContext : DbContext
+    public class MemberContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,10 +15,10 @@ namespace ProjectTeamFour.Data
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public UserContext() : base("name=UserContext")
+        public MemberContext() : base("name=MemberContext")
         {
         }
 
-        public System.Data.Entity.DbSet<ProjectTeamFour.Models.User> Users { get; set; }
+        public System.Data.Entity.DbSet<ProjectTeamFour.Models.Member> Members { get; set; }
     }
 }
