@@ -164,6 +164,22 @@
     <Compile Include="Migrations\202102141720529_將guid改成int.Designer.cs">
       <DependentUpon>202102141720529_將guid改成int.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102150212489_將member改為int.cs" />
+    <Compile Include="Migrations\202102150212489_將member改為int.Designer.cs">
+      <DependentUpon>202102150212489_將member改為int.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102150227109_將member改為int1.cs" />
+    <Compile Include="Migrations\202102150227109_將member改為int1.Designer.cs">
+      <DependentUpon>202102150227109_將member改為int1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102150228469_將member改為int2.cs" />
+    <Compile Include="Migrations\202102150228469_將member改為int2.Designer.cs">
+      <DependentUpon>202102150228469_將member改為int2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102150449461_AddQuantityLimitCol.cs" />
+    <Compile Include="Migrations\202102150449461_AddQuantityLimitCol.Designer.cs">
+      <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
@@ -2078,6 +2094,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102141720529_將guid改成int.resx">
       <DependentUpon>202102141720529_將guid改成int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102150212489_將member改為int.resx">
+      <DependentUpon>202102150212489_將member改為int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102150227109_將member改為int1.resx">
+      <DependentUpon>202102150227109_將member改為int1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102150228469_將member改為int2.resx">
+      <DependentUpon>202102150228469_將member改為int2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102150449461_AddQuantityLimitCol.resx">
+      <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
