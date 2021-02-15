@@ -2039,12 +2039,13 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
+    <Content Include="Views\MemberRegister\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
-    <Folder Include="Views\SelectPlan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
