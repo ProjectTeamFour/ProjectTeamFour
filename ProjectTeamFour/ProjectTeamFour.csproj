@@ -136,41 +136,9 @@
     <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
-    <Compile Include="Migrations\202102091059315_m5.cs" />
-    <Compile Include="Migrations\202102091059315_m5.Designer.cs">
-      <DependentUpon>202102091059315_m5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131600221_正式-2-13.cs" />
-    <Compile Include="Migrations\202102131600221_正式-2-13.Designer.cs">
-      <DependentUpon>202102131600221_正式-2-13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131703572_修改Member資料表.cs" />
-    <Compile Include="Migrations\202102131703572_修改Member資料表.Designer.cs">
-      <DependentUpon>202102131703572_修改Member資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102140308430_mergeProjectAndProjectCategory.cs" />
-    <Compile Include="Migrations\202102140308430_mergeProjectAndProjectCategory.Designer.cs">
-      <DependentUpon>202102140308430_mergeProjectAndProjectCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102140342230_optimizationDB.cs" />
-    <Compile Include="Migrations\202102140342230_optimizationDB.Designer.cs">
-      <DependentUpon>202102140342230_optimizationDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102141716445_移除資料表.cs" />
-    <Compile Include="Migrations\202102141716445_移除資料表.Designer.cs">
-      <DependentUpon>202102141716445_移除資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102141720529_將guid改成int.cs" />
-    <Compile Include="Migrations\202102141720529_將guid改成int.Designer.cs">
-      <DependentUpon>202102141720529_將guid改成int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderDetail.cs" />
-    <Compile Include="Models\Plan.cs" />
-    <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\ProjectContext.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Data\UserContext.cs" />
+    <Compile Include="Models\SelectPlan.cs" />
     <Compile Include="ViewModels\ViewMembers.cs" />
     <Content Include="App_Code\HelperFunction.cs" />
     <Compile Include="Api\MemberController.cs" />
@@ -2023,17 +1991,12 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
-    <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
-    <Content Include="Views\PersonInfo\Edit.cshtml" />
-    <Content Include="Views\PersonInfo\Account.cshtml" />
-    <Content Include="Views\PersonInfo\Setting.cshtml" />
-    <Content Include="Views\MemberRegister\Index.cshtml" />
-    <Content Include="Views\MemberLogin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
+    <Folder Include="Views\SelectPlan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

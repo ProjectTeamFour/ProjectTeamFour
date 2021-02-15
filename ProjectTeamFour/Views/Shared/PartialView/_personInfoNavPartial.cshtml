@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "PersonInfo";
+}
+
+@section topCSS{
+    <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
+    <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
+}
+
+
+<div class="banner">
+    <div class="wrap">
+        <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">個人資料</a>
+            </li>
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">贊助紀錄</a>
+            </li>
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">提案紀錄</a>
+            </li>
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links" id="pills-message-tab" data-toggle="pill" href="#pills-message" role="tab" aria-controls="pills-message" aria-selected="false">聯絡訊息</a>
+            </li>
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">最新通知</a>
+            </li>
+            <li class="nav-item-tag" role="presentation">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle account" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        帳戶設定
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="ProfileSettings/Index">個人資料</a>
+                        <a class="dropdown-item" href="ProfileSettings/Index">帳號管理</a>
+                        <a class="dropdown-item" href="ProfileSettings/Index">通知設定</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <section class=person>
+                    <div class="wrap-inside">
+                        <div class="row">
+                            @*<div class="col-sm-12 col-md-12">
+                            <div class="person-data">
+                                <div class="person-data-pic">
+                                    <img src="~/Assets/Img/personal/default.png" alt="個人圖片">
+                                </div>
+                                <div class="person-data-text">
+                                    <h2>kane</h2>
+                                    <p>贊助過<span>0</span>件專案/發起過<span>0</span>件專案</p>
+                                </div>
+                            </div>
+                        </div>*@
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-some">
+                    <div class="wrap-inside">
+                        <div class="row">
+                            @*<div class="col-sm-12 col-md-12">
+                            <div class="about-case">
+                                <h2>贊助過的專案</h2>
+                                <p>目前還沒有贊助過任何專案</p>
+                            </div>
+                        </div>*@
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <section class="record">
+                    <div class="wrap-inside">
+                        @*<div class="record-content">
+                        <h2>贊助紀錄</h2>
+                        <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
+                    </div>
+                    <span>單筆贊助</span>
+                    <div class="record-detail">
+                        <div class="record-detillist">
+                            <div class="record-detail-col">贊助專案</div>
+                            <div class="record-detail-col">贊助金額</div>
+                            <div class="record-detail-col">回饋項目</div>
+                            <div class="record-detail-col">金流單號</div>
+                            <div class="record-detail-col">收到了?</div>
+                        </div>
+                        <p>目前沒有任何贊助歷史</p>
+                    </div>*@
+                    </div>
+                </section>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <section class="case">
+                    <div class="wrap-inside">
+                        @*<div class="case-title">
+                        <h2>提案紀錄</h2>
+                        <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
+                    </div>
+                    <div class="case-doing">
+                        <div class="case-doing-funding">
+                            <h3>募資中專案</h3>
+                            <p>目前您沒有募資中專案</p>
+                        </div>
+                        <div class="case-doing-creating">
+                            <h3>創建中專案</h3>
+                            <div class="case-doing-item">
+                                <div class="case-doing-pic">
+                                    <img src="https://picsum.photos/800/600/?random=1">
+                                </div>
+                                <div class="case-doing-text">
+                                    <div class="case-doing-name">
+                                        <h4>專案名稱:<span>1</span></h4>
+                                    </div>
+                                    <div class="case-doing-money">
+                                        <h4>目標金額:<span>$5000</span></h4>
+                                    </div>
+                                    <div class="case-doing-creat">
+                                        <h4><span>創建日期:2021/01/28</span></h4>
+                                    </div>
+                                    <div class="case-doing-givedate">
+                                        <h4><span>提交日期:尚未提交</span></h4>
+                                    </div>
+                                    <div class="case-doing-fix">
+                                        <h4><span>上次修改日期:2021/01/29</span></h4>
+                                    </div>
+                                </div>
+                                <div class="button-group">
+                                    <button id="btn-fix">修改</button>
+                                    <button id="btn-view">預覽</button>
+                                </div>
+                            </div>
+                            <div class="case-doing-item">
+                                <div class="case-doing-pic">
+                                    <img src="https://picsum.photos/800/600/?random=1">
+                                </div>
+                                <div class="case-doing-text">
+                                    <div class="case-doing-name">
+                                        <h4>專案名稱:<span>1</span></h4>
+                                    </div>
+                                    <div class="case-doing-money">
+                                        <h4>目標金額:<span>$5000</span></h4>
+                                    </div>
+                                    <div class="case-doing-creat">
+                                        <h4><span>創建日期:2021/01/28</span></h4>
+                                    </div>
+                                    <div class="case-doing-givedate">
+                                        <h4><span>提交日期:尚未提交</span></h4>
+                                    </div>
+                                    <div class="case-doing-fix">
+                                        <h4><span>上次修改日期:2021/01/29</span></h4>
+                                    </div>
+                                </div>
+                                <div class="button-group">
+                                    <button id="btn-fix">修改</button>
+                                    <button id="btn-view">預覽</button>
+                                </div>
+                            </div>
+                            <div class="case-doing-item">
+                                <div class="case-doing-pic">
+                                    <img src="~/Assets/Img/personal/dog.jpg" alt="肉">
+                                </div>
+                                <div class="case-doing-text">
+                                    <div class="case-doing-name">
+                                        <h4>專案名稱:<span>1</span></h4>
+                                    </div>
+                                    <div class="case-doing-money">
+                                        <h4>目標金額:<span>$5000</span></h4>
+                                    </div>
+                                    <div class="case-doing-creat">
+                                        <h4><span>創建日期:2021/01/28</span></h4>
+                                    </div>
+                                    <div class="case-doing-givedate">
+                                        <h4><span>提交日期:尚未提交</span></h4>
+                                    </div>
+                                    <div class="case-doing-fix">
+                                        <h4><span>上次修改日期:2021/01/29</span></h4>
+                                    </div>
+                                </div>
+                                <div class="button-group">
+                                    <button id="btn-fix">修改</button>
+                                    <button id="btn-view">預覽</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    </div>
+                </section>
+            </div>
+            <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">
+                <div class="message">
+                    <div class="wrap-inside">
+                        @*<div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="search-item">
+                                <select class="message-input" name="option">
+                                    <option value="1">最新</option>
+                                    <option value="2">未讀</option>
+                                    <option value="3">已讀</option>
+                                </select>
+                                <i class="fas fa-search"></i>
+                                <input type="search">
+                            </div>
+                        </div>
+                    </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+                <div class="news">
+                    <div class="wrap-inside">
+                        @*<div class="col-sm-12 col-md-9">
+                        <div class="news-text">
+                            <span>於2天前</span>
+                            <p>歡迎來到 flyingV！您可以到 熱門項目 看看我們的新鮮好案，或是 提案 發起您人生中的第一個群眾募資計劃！</p>
+                        </div>
+                    </div>*@
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+                <div class="news">
+                    <div class="wrap-inside">
+                        <div class="col-sm-12 col-md-9">
+                        <div class="news-text">
+                            <span>於2天前</span>
+                            <p>歡迎來到 flyingV！您可以到 熱門項目 看看我們的新鮮好案，或是 提案 發起您人生中的第一個群眾募資計劃！</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
