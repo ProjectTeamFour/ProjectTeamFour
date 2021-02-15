@@ -10,7 +10,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
