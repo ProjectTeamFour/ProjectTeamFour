@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
@@ -180,14 +181,24 @@
     <Compile Include="Migrations\202102150449461_AddQuantityLimitCol.Designer.cs">
       <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102151353405_新增Log表單.cs" />
+    <Compile Include="Migrations\202102151353405_新增Log表單.Designer.cs">
+      <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
-    <Compile Include="ViewModels\ViewMembers.cs" />
+    <Compile Include="Service\LogService.cs" />
+    <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="ViewModels\LogListViewModel.cs" />
+    <Compile Include="ViewModels\LogViewModel.cs" />
+    <Compile Include="ViewModels\MemberListViewModel.cs" />
+    <Compile Include="ViewModels\MemberViewModel.cs" />
     <Content Include="App_Code\HelperFunction.cs" />
     <Compile Include="Api\MemberController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -2044,7 +2055,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
-    <Folder Include="Views\SelectPlan\" />
+    <Folder Include="Assets\Log\" />
+    <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2101,6 +2113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102150449461_AddQuantityLimitCol.resx">
       <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102151353405_新增Log表單.resx">
+      <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

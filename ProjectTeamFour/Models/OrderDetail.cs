@@ -16,7 +16,6 @@ namespace ProjectTeamFour.Models
 
         //導覽屬性
         public virtual Order Order { get; set; }
-        
         public virtual Plan Plan { get; set; }
     }
 }

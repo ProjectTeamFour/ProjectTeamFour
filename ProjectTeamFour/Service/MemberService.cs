@@ -1,58 +1,160 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using ProjectTeamFour.Reposities;
-//using ProjectTeamFour.Models;
-//using System.Data.Entity;
-//using System.Net.Http;
-//using ProjectTeamFour.ViewModels;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using ProjectTeamFour.Reposities;
+using ProjectTeamFour.Models;
+using System.Data.Entity;
+using System.Net.Http;
+using ProjectTeamFour.ViewModels;
+using System.Linq.Expressions;
 
-//namespace ProjectTeamFour.Service
-//{
-//    public class MemberService
-//    {
-//        private BaseReposity<Member> _baseReposity;
-//        public MemberService()
-//        {
-//            DbContext dbcontext = new ProjectContext();
-//            _baseReposity = new BaseReposity<Member>(dbcontext);
-//        }
-//        public Member GetMember(int id)
-//        {
-//            var members = _baseReposity.GetAll();
-//            Member m = members.FirstOrDefault(p => p.MemberId == id);
-//            return m;
-//        }
-//        public Member GetMember(string account, string pwd)
-//        {
-//            var members = _baseReposity.GetAll();
-//            Member m = members.FirstOrDefault(p => p.Account == account && p.PassWord == pwd);
-//            return m;
-//        }
-
-//        public List<Member> GetMembers()
-//        {
-//            return _baseReposity.GetAll().ToList();
-//        }
-//        public string CreateMember(ViewMembers vm)
-//        {
-//            string Message = "";
-//            try
-//            {
-//                Member m = new Member();
-//                m.Account = vm.Account;
-//                m.PassWord = vm.PassWord;
-//                m.Name = m.Name;
-//                _baseReposity.Create(m);
-
-//                Message = "新增成功";
-//            }
-//            catch (Exception ex)
-//            {
-//                Message = ex.ToString();
-//            }
-//            return Message;
-//        }
-//    }
-//}
+namespace ProjectTeamFour.Service
+{
+    public class MemberService
+    {
+        private DbContext _context;
+        private BaseReposity _reposity;
+        public MemberService()
+        {
+            _context = new ProjectContext();
+            _reposity = new BaseReposity(_context);
+        }
+        //byLambda搜尋
+        public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
+        {
+            var entity = _reposity.GetAll<Member>().FirstOrDefault(KeySelector);
+            var viewModel = new MemberViewModel
+            {
+                MemberName = entity.MemberName,
+                MemberTeamName = entity.MemberTeamName,
+                MemberAccount = entity.MemberAccount,
+                MemberPassword = entity.MemberPassword,
+                MemberAddress = entity.MemberAddress,
+                MemberPhone = entity.MemberPhone,
+                MemberRegEmail = entity.MemberRegEmail,
+                MemberConEmail = entity.MemberConEmail,
+                Gender = entity.Gender,
+                MemberBirth = entity.MemberBirth,
+                AboutMe = entity.AboutMe,
+                ProfileImgUrl = entity.ProfileImgUrl,
+                MemberWebsite = entity.MemberWebsite,
+                MemberMessage = entity.MemberMessage
+            };
+            return viewModel;
+        }
+        //全部
+        public MemberListViewModel GetMembers()
+        {
+            var listViewmodel = new MemberListViewModel()
+            {
+                Items = new List<MemberViewModel>()
+            };
+            foreach (var entity in _reposity.GetAll<Member>())
+            {
+                var viewModel = new MemberViewModel
+                {
+                    MemberName = entity.MemberName,
+                    MemberTeamName = entity.MemberTeamName,
+                    MemberAccount = entity.MemberAccount,
+                    MemberPassword = entity.MemberPassword,
+                    MemberAddress = entity.MemberAddress,
+                    MemberPhone = entity.MemberPhone,
+                    MemberRegEmail = entity.MemberRegEmail,
+                    MemberConEmail = entity.MemberConEmail,
+                    Gender = entity.Gender,
+                    MemberBirth = entity.MemberBirth,
+                    AboutMe = entity.AboutMe,
+                    ProfileImgUrl = entity.ProfileImgUrl,
+                    MemberWebsite = entity.MemberWebsite,
+                    MemberMessage = entity.MemberMessage
+                };
+                listViewmodel.Items.Add(viewModel);
+            }
+            return listViewmodel;
+        }
+        //新增
+        public OperationResult Create(MemberViewModel input)
+        {
+            var result = new OperationResult();
+            try
+            {
+                var viewModel = new MemberViewModel
+                {
+                    MemberName = input.MemberName,
+                    MemberTeamName = input.MemberTeamName,
+                    MemberAccount = input.MemberAccount,
+                    MemberPassword = input.MemberPassword,
+                    MemberAddress = input.MemberAddress,
+                    MemberPhone = input.MemberPhone,
+                    MemberRegEmail = input.MemberRegEmail,
+                    MemberConEmail = input.MemberConEmail,
+                    Gender = input.Gender,
+                    MemberBirth = input.MemberBirth,
+                    AboutMe = input.AboutMe,
+                    ProfileImgUrl = input.ProfileImgUrl,
+                    MemberWebsite = input.MemberWebsite,
+                    MemberMessage = input.MemberMessage
+                };
+                _reposity.Create(input);
+                result.IsSuccessful = true;
+            }
+            catch(Exception ex)
+            {
+                //result.Member=
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = true;
+            }
+            return result;
+        }
+        //修改    
+        public OperationResult Update(MemberViewModel input)
+        {
+            var result = new OperationResult();
+            try
+            {
+                Member entity = _reposity.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
+                entity.MemberName = input.MemberName;
+                entity.MemberTeamName = input.MemberTeamName;
+                entity.MemberAccount = input.MemberAccount;
+                entity.MemberPassword = input.MemberPassword;
+                entity.MemberAddress = input.MemberAddress;
+                entity.MemberPhone = input.MemberPhone;
+                entity.MemberRegEmail = input.MemberRegEmail;
+                entity.MemberConEmail = input.MemberConEmail;
+                entity.Gender = input.Gender;
+                entity.MemberBirth = input.MemberBirth;
+                entity.AboutMe = input.AboutMe;
+                entity.ProfileImgUrl = input.ProfileImgUrl;
+                entity.MemberWebsite = input.MemberWebsite;
+                entity.MemberMessage = input.MemberMessage;
+                _reposity.Update(entity);
+                result.IsSuccessful = true;
+            }
+            catch (Exception ex)
+            {
+                //result.Member
+                result.DateTime = DateTime.Now;
+                result.Exception = ex;
+                result.IsSuccessful = false;
+            }
+            return result;
+        }
+        public OperationResult Delete(int MemberId)
+        {
+            var result = new OperationResult();
+            try
+            {
+                Member entity = _reposity.GetAll<Member>().FirstOrDefault(m => m.MemberId == MemberId);
+                _reposity.Delete(entity);
+            }catch(Exception ex)
+            {
+                result.DateTime = DateTime.Now;
+                result.Exception = ex;
+                result.IsSuccessful = false;
+            }
+            return result;
+        }
+    }      
+}
