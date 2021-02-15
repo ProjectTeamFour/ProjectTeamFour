@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        window.onload = function () {
+            let request = new Request("Member/Edit/" + "1_aa_6");
+            fetch(request)
+                .then(response => response.text())
+                .then(result => {
+                    alert(result);
+                })
+        }
+    </script>
+</body>
+</html>
