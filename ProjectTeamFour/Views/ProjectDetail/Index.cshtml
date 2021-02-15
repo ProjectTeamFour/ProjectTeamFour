@@ -1,6 +1,4 @@
-﻿@model IEnumerable<ProjectTeamFour.Models.ProjectDetail>
-
-@*@ViewData.Model=ProjectContent;*@
+﻿@model ProjectDetail
 
 @section topCSS{
     <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
@@ -9,14 +7,10 @@
     @*<script src=".js"></script>*@
 }
 
-@*@{
-    ViewBag.Title =
-}*@
-
 <section class="main-body">
     <div id="project-title" class="container">
-        <span class="badge badge-secondary">@Html.DisplayNameFor(model=>model.Category)</span>
-        <h1>@Html.DisplayNameFor(model => model.ProductName) 開啟與孩子的第一場程式冒險《解碼傳說 CO·DECODE》</h1>
+        <span class="badge badge-secondary">@Html.DisplayFor(model=>model.Category)</span>
+        <h1>@Html.DisplayFor(model => model.ProductName)</h1>
     </div>
     <!-- 本文 -->
     <section class="info-top">
@@ -46,7 +40,7 @@
                                 </a>
                             </div>
                             <div class="item-text">
-                                <h5><span class="label-grey">提案者</span> Papacode-程式老爹 @Html.DisplayNameFor(model => model.CreatorName)</h5>
+                                <h5><span class="label-grey">提案者</span> Papacode-程式老爹 @Html.DisplayFor(model => model.CreatorName)</h5>
                                 <div class="wrapper">
                                     <div class="item-text">
                                         <h5><span class="label-grey">提案總數</span>2件</h5>
