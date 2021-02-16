@@ -106,7 +106,6 @@ namespace ProjectTeamFour.Service
             }
             catch(Exception ex)
             {
-                //result.Member=
                 result.Exception = ex;
                 result.DateTime = DateTime.Now;
                 result.IsSuccessful = false;

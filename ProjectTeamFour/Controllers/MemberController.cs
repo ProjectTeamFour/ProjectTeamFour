@@ -22,7 +22,6 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult Register(MemberRegisterViewModel input)
         {
-
             if (ModelState.IsValid)
             {
                 MemberViewModel vm = new MemberViewModel()
@@ -30,11 +29,21 @@ namespace ProjectTeamFour.Controllers
                     MemberName = input.Name,
                     MemberRegEmail = input.Email,
                     MemberPassword = input.Password,
-                   // MemberBirth = StringtoDate(input.BirthDay)
+                    MemberBirth = StringtoDate(input.BirthDay),
+                    Gender=input.gender  
                 };
                 _api.CreateMember(vm);
             }
             return View();
+        }
+        private DateTime StringtoDate(string input)
+        {
+            int[] result = input.Split('-').Select(p =>
+            {
+                return int.Parse(p);
+            }).ToArray();
+            DateTime dt = new DateTime(result[0], result[1], result[2]);
+            return dt;
         }
         public ActionResult Login()
         {
@@ -55,21 +64,24 @@ namespace ProjectTeamFour.Controllers
                 if (viewModel.MemberPassword != input.Password)
                 {
                     ViewData["WrongPassword"] = "密碼錯誤!";
+                    return View();
                 }
                 Session["Member"] = viewModel;
             }
+            return RedirectToAction("test");
+        }
+        public ActionResult Logout()
+        {
+            Session["Member"] = null;
+            return View("test");
+        }
+
+
+        public ActionResult test()
+        {
             return View();
         }
 
-        private DateTime StringtoDate(string input)
-        {
-            int[] result=input.Split('-').Select(p =>
-            {
-                return int.Parse(p);
-            }).ToArray();
-            DateTime dt= new DateTime(result[0],result[1],result[2]);
-            return dt;
-        }
 
         //private MemberService _memberService;
         //public MemberController()

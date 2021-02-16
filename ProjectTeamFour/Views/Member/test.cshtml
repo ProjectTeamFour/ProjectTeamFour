@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "test";
+    var x = (MemberViewModel)Session["Member"];
+    int y = 3;
+}
+
+<h2>test</h2>
+
+@if (x != null)
+{@StringFormat5.ShowLoginPic(x.ProfileImgUrl, x.Gender)
+}
+else
+{
+    @StringFormat5.ShowNoLoginPic()
+}
+
+
+
+@Html.ActionLink("登出", "Logout")

@@ -229,7 +229,6 @@
     <Compile Include="ViewModels\ProjectDetail.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
-    <Content Include="App_Code\HelperFunction.cs" />
     <Compile Include="Api\MemberController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -309,6 +308,9 @@
     <Content Include="Assets\Img\ShoppingCart\test4.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test5.jpg" />
     <Content Include="Assets\Img\ShoppingCart\test6.jpg" />
+    <Content Include="Assets\Img\Sign\man.png" />
+    <Content Include="Assets\Img\Sign\questionMark.png" />
+    <Content Include="Assets\Img\Sign\woman.png" />
     <Content Include="Assets\Javascript\HomePage\homepage.js" />
     <Content Include="Assets\Javascript\OrdinanyQAPage\OrdinanyQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
@@ -2085,6 +2087,7 @@
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\Shared\PartialView\_ProjectCardPartial.cshtml" />
+    <Content Include="Views\Member\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

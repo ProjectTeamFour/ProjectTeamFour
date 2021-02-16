@@ -10,6 +10,7 @@ using ProjectTeamFour.Service;
 
 namespace ProjectTeamFour.Controllers
 {
+
     public class LogController : Controller
     {
         private LogService _logservice;
@@ -28,7 +29,7 @@ namespace ProjectTeamFour.Controllers
             {
                 LogViewModel vm = new LogViewModel()
                 {
-                    //MemberId=item.MemberId,
+                    MemberId=item.MemberId,
                     LogId = item.LogId,
                     DateTime = item.DateTime,
                     Content = _logservice.Readtext(item.Path)

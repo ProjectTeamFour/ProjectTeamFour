@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    MemberViewModel vm = Session["member"]==null ? null : (MemberViewModel)Session["Member"];
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,17 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 集資車車</title>
 
-    @*FontAwesome*@
-    <!--<link href="~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />-->
-    @*bs min.css*@
-    <!--<link href="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css" rel="stylesheet" />-->
-    @*normalize.css*@
-    <!--<link href="~/Assets/Plugin/Normalize.css/normalize.css" rel="stylesheet" />-->
-    @*slick.css*@
-    <!--<link href="~/Assets/Plugin/Slick/slick_cdn1.8.1.css" rel="stylesheet" />-->
-    @*Header,Footer的CSS*@
+    
+    @*FontAwesome
+    <link href="~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
+    bs min.css
+    <link href="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css" rel="stylesheet" />
+    normalize.css
+    <link href="~/Assets/Plugin/Normalize.css/normalize.css" rel="stylesheet" />
+    slick.css
+    <link href="~/Assets/Plugin/Slick/slick_cdn1.8.1.css" rel="stylesheet" />
+    Header,Footer的CSS
 
-    @*<link href="~/Assets/HeaderFooterLayout/headerfooter.css" rel="stylesheet" />*@
+    <link href="~/Assets/HeaderFooterLayout/headerfooter.css" rel="stylesheet" />*@
     @Styles.Render("~/Assets/css")
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
@@ -100,15 +104,19 @@
                         <img src="https://picsum.photos/30/30/?random=1">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+               
 
-                        @*尚未登入註冊放這個*@
+
+
+
+                        @*尚未登入註冊放這個
 
                         <a class="dropdown-item" href="/MemberLogin/Index">登入</a>
                         <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>
 
-                        @*已經登入放這個*@
+                        已經登入放這個
 
-
+                        
                         <a class="dropdown-item" href="/PersonInfo/Index">個人頁面</a>
                         <hr />
                         <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
@@ -116,7 +124,7 @@
                         <hr />
                         <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
                         <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
-                        <a class="dropdown-item" href="#">登出</a>
+                        <a class="dropdown-item" href="#">登出</a>*@
 
 
                     </div>
@@ -181,22 +189,31 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
+        @if (vm == null)
+        {
+            @StringFormat5.ShowNoLogin()
+        }
+        else
+        {
+            @StringFormat5.ShowMemberMessage(vm)
+        }
+
                             @*尚未登入註冊放這個*@
 
-                            <a class="dropdown-item" href="/MemberLogin/Index">登入</a>
-                            <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>
+                            @*<a class="dropdown-item" href="/MemberLogin/Index">登入</a>
+        <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>*@
 
                             @*已經登入放這個*@
 
 
-                            <a class="dropdown-item" href="/PersonInfo/Index">個人頁面</a>
-                            <hr />
-                            <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
-                            <a class="dropdown-item" href="/PersonInfo/Submit">提案紀錄</a>
-                            <hr />
-                            <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
-                            <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
-                            <a class="dropdown-item" href="#">登出</a>
+                            @*<a class="dropdown-item" href="/PersonInfo/Index">個人頁面</a>
+        <hr />
+        <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
+        <a class="dropdown-item" href="/PersonInfo/Submit">提案紀錄</a>
+        <hr />
+        <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
+        <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
+        <a class="dropdown-item" href="#">登出</a>*@
 
                         </div>
                     </li>

@@ -15,7 +15,6 @@ namespace ProjectTeamFour.Service
         public bool IsSuccessful { get; set; }
         public DateTime DateTime { get; set; }
         public Exception Exception { get; set; }
-        public Member Member { get; set; }
     }
 
     public static class OperationHelper

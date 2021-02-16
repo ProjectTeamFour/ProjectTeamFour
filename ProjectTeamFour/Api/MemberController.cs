@@ -45,7 +45,6 @@ namespace ProjectTeamFour.Api
             {
                 Log entity = new Log()
                 {
-                    //MemberId=result.Member.MemberId,
                     Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
@@ -65,7 +64,6 @@ namespace ProjectTeamFour.Api
             {
                 Log entity = new Log()
                 {
-                    //MemberId=result.Member.MemberId,
                     Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };

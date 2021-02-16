@@ -1,17 +1,4 @@
-﻿@*@functions{ public IHtmlString stringFormat(string input)
-        {
-            int index = input.IndexOf('.');
-
-            if (input.Length >= index + 2)
-            {
-                input = input.Substring(0, index + 2) + "%";
-            }
-            return new HtmlString(@input);
-        }
-    }*@
-
-
-@helper StringFormat(string input)
+﻿@helper StringFormat(string input)
 {
     int index = input.IndexOf('.');
 
@@ -66,3 +53,39 @@
     }
 }
 
+@helper ShowMemberMessage(ProjectTeamFour.ViewModels.MemberViewModel member)
+{
+    <a class="dropdown-item" href="/PersonInfo/Index">個人頁面</a>
+    <hr />
+    <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
+    <a class="dropdown-item" href="/PersonInfo/Submit">提案紀錄</a>
+    <hr />
+    <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
+    <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
+    <a class="dropdown-item" href="#">登出</a>
+}
+@helper ShowNoLogin()
+{
+    <a class="dropdown-item" href="/MemberLogin/Index">登入</a>
+    <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>
+}
+
+@helper ShowLoginPic(string input,string gender) { 
+if (string.IsNullOrEmpty(input))
+{
+    if (gender == "男性")
+    {
+        <img src="~/Assets/Img/Sign/man.png"/>
+    }
+    else if(gender=="女性")
+    {
+        <img src="~/Assets/Img/Sign/woman.png"/>
+    }
+}
+else
+{
+        <img src=@input/>
+}   }
+@helper ShowNoLoginPic() { 
+    <img src="~/Assets/Img/Sign/questionMark.png"/>
+    }
