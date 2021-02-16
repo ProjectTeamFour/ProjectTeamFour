@@ -220,6 +220,8 @@
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
+    <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
