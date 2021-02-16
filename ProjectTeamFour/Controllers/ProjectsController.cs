@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 namespace ProjectTeamFour.Controllers
 {
-    public class ProductsController : Controller
+    public class ProjectsController : Controller
     {
         // GET: Products
         public ActionResult Index()

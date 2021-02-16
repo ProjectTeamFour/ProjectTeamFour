@@ -214,7 +214,7 @@
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\PersonInfoController.cs" />
     <Compile Include="Controllers\ProjectDetailController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StartAProjectController.cs" />
@@ -2035,7 +2035,7 @@
     <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
