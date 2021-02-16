@@ -5,6 +5,8 @@ using System.Web;
 using ProjectTeamFour.Models;
 using ProjectTeamFour.Service;
 using System.IO;
+using System.Web.Mvc;
+
 
 namespace ProjectTeamFour.Service
 {
@@ -18,11 +20,12 @@ namespace ProjectTeamFour.Service
 
     public static class OperationHelper
     {
-        public static string  WriteLog(this OperationResult result)
+        public static string  WriteLog(this OperationResult result,string serverPath)
         {
             if (result.Exception != null)
             {
-                string path = $"~/Assets/Log/{result.DateTime.ToString("yyyy-MM-dd_HH_mm_ss")}.txt";
+                string filename = $"{result.DateTime.ToString("yyyy-MM-dd_HH_mm_ss")}.txt";
+                string path = Path.Combine(serverPath, filename);
                 File.WriteAllText(path, result.Exception.ToString());
                 return path;
             }

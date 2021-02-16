@@ -20,7 +20,7 @@ namespace ProjectTeamFour.Controllers
         // GET: Log
         public ActionResult Index()
         {
-            LogListViewModel list = new LogListViewModel()
+            LogListViewModel ListViewModel = new LogListViewModel()
             {
                 Items = new List<LogViewModel>()
             };
@@ -30,10 +30,12 @@ namespace ProjectTeamFour.Controllers
                 {
                     //MemberId=item.MemberId,
                     LogId = item.LogId,
-                    DateTime = item.DateTime
+                    DateTime = item.DateTime,
+                    Content = _logservice.Readtext(item.Path)
                 };
+                ListViewModel.Items.Add(vm);
             }
-            return View();
+            return View(ListViewModel.Items);
         }
     }
 }

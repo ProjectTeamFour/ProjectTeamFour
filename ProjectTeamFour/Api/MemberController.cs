@@ -8,15 +8,17 @@ using ProjectTeamFour.Service;
 using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
+using System.Web.Hosting;
+
 
 
 namespace ProjectTeamFour.Api
 {
-    public class MemberController : ApiController
+    public class MemberApiController : ApiController
     {
         private MemberService _memberService;
         private LogService _logservice;
-        public MemberController()
+        public MemberApiController()
         {
             _memberService = new MemberService();
             _logservice = new LogService();
@@ -44,11 +46,11 @@ namespace ProjectTeamFour.Api
                 Log entity = new Log()
                 {
                     //MemberId=result.Member.MemberId,
-                    Path = result.WriteLog(),
+                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
-                return "失敗";
+                return "失敗";       
             }
         } 
         public string Update([FromBody] MemberViewModel input)
@@ -64,7 +66,7 @@ namespace ProjectTeamFour.Api
                 Log entity = new Log()
                 {
                     //MemberId=result.Member.MemberId,
-                    Path = result.WriteLog(),
+                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
@@ -84,7 +86,7 @@ namespace ProjectTeamFour.Api
                 Log entity = new Log()
                 {
                     //MemberId=result.Member.MemberId,
-                    Path = result.WriteLog(),
+                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);

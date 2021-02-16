@@ -5,6 +5,7 @@ using System.Web;
 using ProjectTeamFour.Reposities;
 using ProjectTeamFour.Models;
 using System.Data.Entity;
+using System.IO;
 
 namespace ProjectTeamFour.Service
 {
@@ -27,6 +28,16 @@ namespace ProjectTeamFour.Service
         {
             return _reposity.GetAll<Log>();
         }
-        
+        public string Readtext(string path)
+        {
+            StreamReader reader = new StreamReader(path);
+            string result = string.Empty;
+            string output = string.Empty;
+            while ((result = reader.ReadLine()) != null)
+            {
+                output += result + Environment.NewLine;
+            }
+            return output;
+        }
     }
 }

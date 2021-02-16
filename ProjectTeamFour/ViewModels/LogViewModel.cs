@@ -11,6 +11,5 @@ namespace ProjectTeamFour.ViewModels
         public int MemberId { get; set; }
         public DateTime DateTime { get; set; }
         public string Content { get; set; }
-
     }
 }

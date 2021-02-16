@@ -17,7 +17,6 @@ namespace ProjectTeamFour.Controllers
 
         //public ActionResult PlanCards()
         //{
-
         //    List<SelectPlan> plans = new List<SelectPlan>
         //    {
         //        new SelectPlan{Id=1,PlanTitle="【基礎方案，現省380元】",PlanPrice=1580,FundedPeople=6,PlanDescription="完整收錄4大冒險故事＋250張獨特卡牌＋專屬遊戲APP，帶給你一趟精彩絕倫的程式解謎故事！", ExpectShipDate=new DateTime(2021, 5, 1),PlaceAllowedShippng="寄送至特定地區"},

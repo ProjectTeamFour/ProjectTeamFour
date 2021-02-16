@@ -53,10 +53,23 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -185,6 +198,18 @@
     <Compile Include="Migrations\202102151353405_新增Log表單.Designer.cs">
       <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102160740004_修改Log表單.cs" />
+    <Compile Include="Migrations\202102160740004_修改Log表單.Designer.cs">
+      <DependentUpon>202102160740004_修改Log表單.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102160748308_移除Log資料表.cs" />
+    <Compile Include="Migrations\202102160748308_移除Log資料表.Designer.cs">
+      <DependentUpon>202102160748308_移除Log資料表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102160749157_重新加入Log資料表.cs" />
+    <Compile Include="Migrations\202102160749157_重新加入Log資料表.Designer.cs">
+      <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -198,7 +223,10 @@
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
+    <Compile Include="ViewModels\MemberLoginViewModel.cs" />
+    <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\ProjectDetail.cs" />
     <Content Include="App_Code\HelperFunction.cs" />
     <Compile Include="Api\MemberController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -2048,17 +2076,18 @@
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberRegister\Index.cshtml" />
+    <Content Include="Views\Log\Index.cshtml" />
+    <Content Include="Views\Member\Register.cshtml" />
+    <Content Include="Views\Member\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
-    <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2118,6 +2147,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102151353405_新增Log表單.resx">
       <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102160740004_修改Log表單.resx">
+      <DependentUpon>202102160740004_修改Log表單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102160748308_移除Log資料表.resx">
+      <DependentUpon>202102160748308_移除Log資料表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102160749157_重新加入Log資料表.resx">
+      <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

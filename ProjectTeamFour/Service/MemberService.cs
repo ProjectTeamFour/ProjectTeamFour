@@ -24,24 +24,28 @@ namespace ProjectTeamFour.Service
         public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
             var entity = _reposity.GetAll<Member>().FirstOrDefault(KeySelector);
-            var viewModel = new MemberViewModel
+            if (entity != null)
             {
-                MemberName = entity.MemberName,
-                MemberTeamName = entity.MemberTeamName,
-                MemberAccount = entity.MemberAccount,
-                MemberPassword = entity.MemberPassword,
-                MemberAddress = entity.MemberAddress,
-                MemberPhone = entity.MemberPhone,
-                MemberRegEmail = entity.MemberRegEmail,
-                MemberConEmail = entity.MemberConEmail,
-                Gender = entity.Gender,
-                MemberBirth = entity.MemberBirth,
-                AboutMe = entity.AboutMe,
-                ProfileImgUrl = entity.ProfileImgUrl,
-                MemberWebsite = entity.MemberWebsite,
-                MemberMessage = entity.MemberMessage
-            };
-            return viewModel;
+                var viewModel = new MemberViewModel
+                {
+                    MemberName = entity.MemberName,
+                    MemberTeamName = entity.MemberTeamName,
+                    MemberAccount = entity.MemberAccount,
+                    MemberPassword = entity.MemberPassword,
+                    MemberAddress = entity.MemberAddress,
+                    MemberPhone = entity.MemberPhone,
+                    MemberRegEmail = entity.MemberRegEmail,
+                    MemberConEmail = entity.MemberConEmail,
+                    Gender = entity.Gender,
+                    MemberBirth = entity.MemberBirth,
+                    AboutMe = entity.AboutMe,
+                    ProfileImgUrl = entity.ProfileImgUrl,
+                    MemberWebsite = entity.MemberWebsite,
+                    MemberMessage = entity.MemberMessage
+                };
+                return viewModel;
+            }
+            return null;
         }
         //全部
         public MemberListViewModel GetMembers()
@@ -79,8 +83,9 @@ namespace ProjectTeamFour.Service
             var result = new OperationResult();
             try
             {
-                var viewModel = new MemberViewModel
+                Member entity = new Member
                 {
+                    MemberId=25,
                     MemberName = input.MemberName,
                     MemberTeamName = input.MemberTeamName,
                     MemberAccount = input.MemberAccount,
@@ -96,7 +101,7 @@ namespace ProjectTeamFour.Service
                     MemberWebsite = input.MemberWebsite,
                     MemberMessage = input.MemberMessage
                 };
-                _reposity.Create(input);
+                _reposity.Create(entity);
                 result.IsSuccessful = true;
             }
             catch(Exception ex)
@@ -104,7 +109,7 @@ namespace ProjectTeamFour.Service
                 //result.Member=
                 result.Exception = ex;
                 result.DateTime = DateTime.Now;
-                result.IsSuccessful = true;
+                result.IsSuccessful = false;
             }
             return result;
         }

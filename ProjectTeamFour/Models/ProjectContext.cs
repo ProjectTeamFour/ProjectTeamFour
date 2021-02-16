@@ -18,5 +18,6 @@ namespace ProjectTeamFour.Models
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }
