@@ -6,7 +6,8 @@ using System.Data.Entity;
 
 namespace ProjectTeamFour.Reposities
 {
-    public class BaseReposity<T> where T:class
+    //將泛型改成泛型方法
+    public class BaseReposity
     {
         public DbContext _context;
         public BaseReposity(DbContext context)
@@ -17,22 +18,22 @@ namespace ProjectTeamFour.Reposities
             }
             this._context = context;
         }
-        public void Create(T value)
+        public void Create<T>(T value)
         {
             _context.Entry(value).State = EntityState.Added;
             _context.SaveChanges();
         }
-        public void Update(T value)
+        public void Update<T>(T value)
         {
             _context.Entry(value).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public void Delete(T value)
+        public void Delete<T>(T value)
         {
             _context.Entry(value).State = EntityState.Deleted;
             _context.SaveChanges();
         }
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll<T>()where T:class
         {
             return _context.Set<T>();
         }
