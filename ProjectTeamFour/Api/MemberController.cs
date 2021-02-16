@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using System.Web.Hosting;
 
 
+using System.Web.Mvc;
 
 namespace ProjectTeamFour.Api
 {
@@ -91,6 +92,17 @@ namespace ProjectTeamFour.Api
                 return "失敗";
             }
         }
+
+        //// POST: Users/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    Member member = db.Member.Find(id);
+        //    db.Member.Remove(member);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
         //public HttpResponseMessage CreateMember([FromBody] ViewMembers vm)
         //{
         //    if (!ModelState.IsValid)
