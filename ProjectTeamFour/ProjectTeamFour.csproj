@@ -228,7 +228,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\ProjectDetail.cs" />
+    <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="Api\MemberController.cs" />
@@ -247,7 +247,6 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StartAProjectController.cs" />
-    <Compile Include="Data\ProfileSettingsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2090,12 +2089,15 @@
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\Shared\PartialView\_ProjectCardPartial.cshtml" />
     <Content Include="Views\Member\test.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectPlanCardsPartial.cshtml" />
+    <Content Include="Views\ProjectDetail\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

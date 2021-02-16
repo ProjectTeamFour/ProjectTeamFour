@@ -49,7 +49,91 @@ namespace ProjectTeamFour.Controllers
                     AmountThreshold = 5200000m,
                     EndDate = new DateTime(2021, 4, 7),
                     StartDate = new DateTime(2021, 2, 7)
-                } 
+                },
+                new ProjectViewModel
+                {
+                    ProjectMainUrl = "https://i.imgur.com/8hymepqm.jpg",
+                    Category = "科技設計",
+                    ProjectStatus = "集資中",
+                    ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
+                    CreatorName = "cheerdots TW",
+                    FundingAmount = 50000m,
+                    AmountThreshold = 761209m,
+                    EndDate = new DateTime(2021, 4, 10),
+                    StartDate = new DateTime(2021, 2, 10)
+                },
+                new ProjectViewModel
+                {
+                    ProjectMainUrl = "https://i.imgur.com/FTTAIvIm.png",
+                    ProjectName = "開啟與孩子的第一場程式冒險 《解碼傳說 CO·DECODE》",
+                    Category = "遊戲出版",
+                    ProjectStatus = "集資中",
+                    StartDate = new DateTime(2021, 2, 8),
+                    EndDate = new DateTime(2021, 4, 8),
+                    FundingAmount = 2320000m,
+                    AmountThreshold = 140000m,
+                    CreatorName = "Papacode-程式老爹"
+                },
+                new ProjectViewModel
+                {
+                    ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
+                    Category = "科技設計",
+                    ProjectStatus = "集資中",
+                    StartDate = new DateTime(2021, 2, 10),
+                    EndDate = new DateTime(2021, 4, 10),
+                    FundingAmount = 1473828m,
+                    AmountThreshold = 100000m,
+                    CreatorName = "SWOL",
+                    ProjectMainUrl = "https://i.imgur.com/YwrOaYYm.jpg"
+                },
+                new ProjectViewModel
+                {
+                    ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
+                    Category = "公共在地",
+                    ProjectStatus = "集資中",
+                    StartDate = new DateTime(2021, 2, 13),
+                    EndDate = new DateTime(2021, 4, 13),
+                    FundingAmount = 37300m,
+                    AmountThreshold = 200000m,
+                    CreatorName = "致理未來超市",
+                    ProjectMainUrl = "https://i.imgur.com/RocoEApm.png"
+                },
+                new ProjectViewModel
+                {
+                    ProjectName = "《小狗大盜》| 淡江大傳第35屆畢業製作拍攝計畫",
+                    Category = "藝術影視",
+                    ProjectStatus = "集資中",
+                    StartDate = new DateTime(2021, 2, 15),
+                    EndDate = new DateTime(2021, 4, 15),
+                    FundingAmount = 10251m,
+                    AmountThreshold = 100000m,
+                    CreatorName = "半獸人工作室 ORC Studio",
+                    ProjectMainUrl = "https://i.imgur.com/ObjlmhQm.png"
+                },
+                new ProjectViewModel
+                {
+                    ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
+                    Category = "科技設計",
+                    ProjectStatus = "集資中",
+                    StartDate = new DateTime(2021, 2, 6),
+                    EndDate = new DateTime(2021, 4, 6),
+                    FundingAmount = 681820m,
+                    AmountThreshold = 100000m,
+                    CreatorName = "潤益國際",
+                    ProjectMainUrl = "https://i.imgur.com/3QZROEUm.jpg"
+                },
+                new ProjectViewModel
+                {
+                    ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
+                      Category = "公共在地",
+                      ProjectStatus = "集資中",
+                      StartDate = new DateTime(2021, 2, 7),
+                      EndDate = new DateTime(2021, 4, 7),
+                      FundingAmount = 90040m,
+                      AmountThreshold = 350000m,
+                      CreatorName = "不垃圾場",
+                      ProjectMainUrl = "https://i.imgur.com/BItzv0vm.jpg"
+                }
             };
             return View(products);
         }
