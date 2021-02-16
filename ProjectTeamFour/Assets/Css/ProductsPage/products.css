@@ -60,98 +60,223 @@ button[type="button"] {
     background-color: #fff;
 }
 
-.menu-project-group {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
+
+/* 種類 */
+
+.project-categories {
+    padding-top: 3rem;
+    margin-bottom: 5rem;
 }
 
-.menu-project-pic {
-    overflow: hidden;
-    width: 100%;
-}
-
-    .menu-project-pic img {
-        width: 100%;
-        transition: transform 0.5s linear;
+    .project-categories .project-categories-box {
+        border-bottom: 1px solid #aaa;
     }
 
-    .menu-project-pic:hover img {
+    .project-categories .pic {
+        border-radius: 50%;
+    }
+
+        .project-categories .pic i {
+            font-size: 2rem;
+            color: rgb(65, 63, 63);
+            padding: 0.5rem 0 1rem 0;
+            transition: .3s;
+        }
+
+    .project-categories .text h4 {
+        font-size: 0.8rem;
+        color: rgb(65, 63, 63);
+        font-weight: 600;
+        text-align: center;
+        transition: .3s;
+    }
+
+    .project-categories .project-categories-box a {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .project-categories .project-categories-box:hover i {
+        color: #f9414a;
+    }
+
+    .project-categories .project-categories-box:hover h4 {
+        color: #f9414a;
+    }
+
+
+
+
+
+
+
+
+/* 熱門專案 */
+
+.popular-project {
+    padding: 0 0.6rem;
+}
+
+    .popular-project .title-bar {
+        padding-bottom: 2rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .popular-project .title h2 {
+        font-size: 1.25rem;
+        border-left: 0.5rem solid #f9414a;
+        padding-left: 0.5rem;
+        font-weight: 700;
+    }
+
+    .popular-project .see-more a {
+        text-decoration: none;
+        color: #f9414a;
+        font-weight: 800;
+        display: none;
+    }
+
+        .popular-project .see-more a:hover {
+            color: #000;
+        }
+
+    .popular-project .phone-see-more a {
+        text-decoration: none;
+        color: #f9414a;
+        font-weight: 800;
+    }
+
+        .popular-project .phone-see-more a:hover {
+            color: #000;
+        }
+
+    .popular-project .money {
+        border-right: 1px solid #aaa;
+        padding-right: 0.5rem;
+    }
+
+    .popular-project .percent {
+        padding-left: 0.5rem;
+    }
+
+    .popular-project .cardtemplate {
+        margin-bottom: 3rem;
+    }
+
+        .popular-project .cardtemplate a {
+            color: #000;
+            text-decoration: none;
+        }
+
+    .popular-project .cardtemplate-item p {
+        margin-bottom: 0;
+    }
+
+    .popular-project .project-name {
+        height: 3rem;
+    }
+
+
+    .popular-project .tag-item {
+        background-color: #f7f7f7;
+        padding: 0.4rem 0.6rem;
+        margin: 0.6rem 0;
+        letter-spacing: 0.1rem;
+    }
+
+        .popular-project .tag-item p {
+            font-size: 0.8rem;
+        }
+
+    .popular-project .status p {
+        color: #f9414a;
+        font-weight: 700;
+    }
+
+    .popular-project .status {
+        margin-left: 0.8rem;
+    }
+
+    .popular-project .project-name h3 {
+        font-size: 1.1rem;
+        letter-spacing: 0.1rem;
+        margin-bottom: 0;
+        line-height: 1.55rem;
+        font-weight: 700;
+    }
+
+    .popular-project .project-team {
+        padding-bottom: 2rem;
+        letter-spacing: 0.1rem;
+    }
+
+        .popular-project .project-team p {
+            color: rgb(128, 127, 127);
+            font-size: 0.9rem;
+        }
+
+    .popular-project .project-progressbar-item {
+        background-color: #f9414a;
+        height: 0.2rem;
+    }
+
+    .popular-project .project-progressnumber {
+        padding-top: 1rem;
+        letter-spacing: 0.1rem;
+    }
+
+        .popular-project .project-progressnumber p {
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+    .popular-project .project-name:hover {
+        color: #f9414a;
+    }
+
+    .popular-project .cardtemplate:hover img {
         transform: scale(1.1);
     }
 
-.menu-project {
-    margin: 1rem 0;
-}
+    .popular-project .project-picture {
+        overflow: hidden;
+    }
 
+        .popular-project .project-picture img {
+            transition: .4s;
+        }
 
-.menu-project-text-tag {
-    margin: 0.5rem 0;
-    display: flex;
-}
-
-    .menu-project-text-tag span {
+@media screen and (min-width: 768px) {
+    .popular-project .see-more a {
         display: block;
-        padding: 0.5rem;
-        background-color: #F6F6F6;
-        color: #000;
     }
 
-
-    .menu-project-text-tag span:nth-child(2) {
-        margin-left: 1rem;
-        color: #F8414A;
+    .popular-project .phone-see-more a {
+        display: none;
     }
 
-.menu-project-text h2 {
-    font-size: 1rem;
-    font-weight: 900;
-    color: #000;
-}
+    .popular-project .title h2 {
+        font-size: 1.45rem;
+        letter-spacing: 0.2rem;
+    }
 
+    .popular-project .tag-item p {
+        font-size: 0.9rem;
+    }
 
-.menu-project-text h2:hover {
-    color: #F8414A;
-}
+    .popular-project .project-progressnumber p {
+       
+        font-size: 0.95rem;
+    }
 
-.menu-project-text p {
-    color: #aaaaaa;
-}
-
-.menu-project-text-percent-line::after {
-    content: "";
-    width: 100%;
-    background-color: #f00;
-    height: 0.2rem;
-    display: block;
-    margin: 1rem 0;
-}
-
-.menu-project-text-percent {
-    font-weight: 600;
-}
-
-.goal-money, .goal-percent, .dateline {
-    color: #000;
-}
-
-.menu-project-text-percent-goal {
-    display: flex;
-    justify-content: space-between;
-}
-
-.dateline {
-    display: block;
-}
-
-
-.btn-more {
-    width: 100%;
-    color: #fff;
-    background-color: #808080;
-    margin: 1rem 0;
-}
+    .btn-more {
+        width: 100%;
+        color: #fff;
+        background-color: #808080;
+        margin: 1rem 0;
+    }
 
     .btn-more:hover {
         background-color: #000;
     }
+}
