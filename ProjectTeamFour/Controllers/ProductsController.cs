@@ -36,7 +36,19 @@ namespace ProjectTeamFour.Controllers
                     AmountThreshold = 400000m,
                     EndDate = new DateTime(2021, 3, 22),
                     StartDate = new DateTime(2021, 2, 1)
-                }
+                },
+                new Project
+                {
+                    ProjectMainUrl = "https://i.imgur.com/OQB8O5P.jpg",
+                    Category = "公共在地",
+                    ProjectStatus = "集資中",
+                    ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
+                    CreatorName = "FaithForAnimals",
+                    FundingAmount = 4790327m,
+                    AmountThreshold = 5200000m,
+                    EndDate = new DateTime(2021, 4, 7),
+                    StartDate = new DateTime(2021, 2, 7)
+                } 
             };
             return View(products);
         }
