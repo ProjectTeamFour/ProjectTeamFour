@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ProjectTeamFour.Models.Project>
 @{
     ViewBag.Title = "Index";
 }
@@ -89,7 +89,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            @foreach( var item in Model)
+            {
+                @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+            }
+            @*<div class="col-sm-12 col-md-6 col-lg-4">
                 <a href="#" class="menu-project">
                     <div class="menu-project-pic">
                         <img src="~/Assets/Img/products/pc.jpg" alt="123">
@@ -414,7 +418,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div>*@
             <div class="col-sm-12">
                 <button class="btn-more">Load More</button>
             </div>

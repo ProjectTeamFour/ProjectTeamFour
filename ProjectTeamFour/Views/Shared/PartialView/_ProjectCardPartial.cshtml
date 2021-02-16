@@ -1,0 +1,42 @@
+﻿@model ProjectTeamFour.Models.Project
+
+
+@{
+    decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
+    double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
+}
+
+@{
+    ViewBag.Title = "products page";
+}
+
+<div class="col-sm-12 col-md-6 col-lg-4">
+    <a href="#" class="menu-project">
+        <div class="menu-project-pic">
+            <img src=@Model.ProjectMainUrl alt="123">
+        </div>
+        <div class="menu-project-text">
+            <div class="menu-project-text-tag">
+                <span>@Model.Category</span>
+                <span>SUCCESS</span>
+            </div>
+            <h2>
+                @Model.ProjectName
+            </h2>
+            <p>@Model.CreatorName</p>
+            <div class="menu-project-text-percent">
+                <div class="menu-project-text-percent-line"></div>
+                <div class="menu-project-text-percent-goal">
+                    <div class="menu-project-text-percent-goal-group">
+                        <span class="goal-money">$@Model.FundingAmount</span>
+                        <span class="goal-percent">@StringFormat5.StringFormat(num.ToString()+"%")</span>
+                    </div>
+                    <span class="dateline">還剩@(dateLine.ToString())天</span>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+
