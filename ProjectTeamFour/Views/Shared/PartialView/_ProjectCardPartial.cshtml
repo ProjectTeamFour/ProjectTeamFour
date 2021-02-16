@@ -1,0 +1,70 @@
+﻿@model ProjectTeamFour.ViewModels.ProjectViewModel
+
+
+@{
+    decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
+    double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
+}
+
+
+
+<div class="col-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="cardtemplate-section-item cardtemplate">
+        <a href="/ProductDetail/Index">
+            <div class="cardtemplate-item project-picture">
+                <img class="w-100" src=@Model.ProjectMainUrl>
+            </div>
+            <div class="cardtemplate-item d-flex tag">
+                <div class="tag-item categories">
+                    <p>@Model.Category</p>
+                </div>
+                <div class="tag-item status">
+                    <p>@Model.ProjectStatus</p>
+                </div>
+            </div>
+            <div class="cardtemplate-item project-name">
+                <h3>@Model.ProjectName</h3>
+            </div>
+            <div class="cardtemplate-item project-team">
+                <p>@Model.CreatorName</p>
+            </div>
+            <div class="cardtemplate-item project-progressbar">
+                <div class="project-progressbar-item"></div>
+            </div>
+            <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+                <div class="project-progressnumber-item amount d-flex">
+                    <div class="amount-item money">
+                        <p>
+                            $@Model.FundingAmount
+                        </p>
+                    </div>
+                    <div class="amount-item">
+
+                    </div>
+                    <div class="amount-item percent">
+                        <p>
+                            @StringFormat5.StringFormat(num.ToString() + "%")
+                        </p>
+                    </div>
+                </div>
+                <div class="project-progressnumber-item countdown">
+                    <div class="countdown-item dayorhour">
+                        <p>還剩@(dateLine.ToString())天</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

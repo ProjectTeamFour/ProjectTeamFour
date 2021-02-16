@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
-
 namespace ProjectTeamFour.Controllers
 {
-    public class HomeController : Controller
+    public class ProjectsController : Controller
     {
+        // GET: Products
         public ActionResult Index()
         {
-            List<ProjectViewModel> projects = new List<ProjectViewModel>
+            List<ProjectViewModel> products = new List<ProjectViewModel>
             {
                 new ProjectViewModel
                 {
@@ -48,45 +49,9 @@ namespace ProjectTeamFour.Controllers
                     AmountThreshold = 5200000m,
                     EndDate = new DateTime(2021, 4, 7),
                     StartDate = new DateTime(2021, 2, 7)
-                },
-                new ProjectViewModel
-                {
-                    ProjectMainUrl = "https://i.imgur.com/OQB8O5P.jpg",
-                    Category = "公共在地",
-                    ProjectStatus = "集資中",
-                    ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
-                    CreatorName = "FaithForAnimals",
-                    FundingAmount = 4790327m,
-                    AmountThreshold = 5200000m,
-                    EndDate = new DateTime(2021, 4, 7),
-                    StartDate = new DateTime(2021, 2, 7)
-                },
-                new ProjectViewModel
-                {
-                    ProjectMainUrl = "https://i.imgur.com/OQB8O5P.jpg",
-                    Category = "公共在地",
-                    ProjectStatus = "集資中",
-                    ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
-                    CreatorName = "FaithForAnimals",
-                    FundingAmount = 4790327m,
-                    AmountThreshold = 5200000m,
-                    EndDate = new DateTime(2021, 4, 7),
-                    StartDate = new DateTime(2021, 2, 7)
-                },
-                new ProjectViewModel
-                {
-                    ProjectMainUrl = "https://i.imgur.com/OQB8O5P.jpg",
-                    Category = "公共在地",
-                    ProjectStatus = "集資中",
-                    ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
-                    CreatorName = "FaithForAnimals",
-                    FundingAmount = 4790327m,
-                    AmountThreshold = 5200000m,
-                    EndDate = new DateTime(2021, 4, 7),
-                    StartDate = new DateTime(2021, 2, 7)
-                }
+                } 
             };
-            return View(projects);
+            return View(products);
         }
     }
 }
