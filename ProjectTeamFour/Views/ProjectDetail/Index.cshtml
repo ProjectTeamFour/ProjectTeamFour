@@ -1,16 +1,15 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectDetailViewModel
 
-@section topCSS{
-    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
-}
-@section endJS{
-    @*<script src=".js"></script>*@
+
+@{
+    decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
+    double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
 }
 
 <section class="main-body">
     <div id="project-title" class="container">
-        <span class="badge badge-secondary">@Html.DisplayFor(m=>m.Category)</span>
-        <h1>@Html.DisplayFor(model => model.ProjectName)</h1>
+        <span class="badge badge-secondary">@Model.Category</span>
+        <h1>@Model.ProjectName</h1>
     </div>
     <!-- 本文 -->
     <section class="info-top">
@@ -20,7 +19,7 @@
                 <div class="col-sm-12 col-md-8">
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
-                        <iframe scrolling="no" src="https://www.youtube.com/embed/_RYBkvErQLA" @Html.DisplayTextFor(m=>m.ProjectVideoUrl) frameborder="0"
+                        <iframe scrolling="no" src="@Model.ProjectVideoUrl" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
@@ -40,7 +39,7 @@
                                 </a>
                             </div>
                             <div class="item-text">
-                                <h5><span class="label-grey">提案者</span> Papacode-程式老爹 @Html.DisplayFor(model => model.CreatorName)</h5>
+                                <h5><span class="label-grey">提案者</span> @Model.CreatorName</h5>
                                 <div class="wrapper">
                                     <div class="item-text">
                                         <h5><span class="label-grey">提案總數</span>2件</h5>
@@ -65,21 +64,21 @@
                         <div id="campaign-info-item">
                             <span class="badge badge-secondary">INDEMAND</span>
                             <div id="donating-amount">
-                                <h2>NTD $@Html.DisplayNameFor(m=>m.FundingAmount)</h2>
+                                <h2>NTD $@Model.FundingAmount</h2>
                             </div>
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
                                 <span class="label-grey">贊助人數</span>
-                                <h2 class="block">@Html.DisplayNameFor(m=>m.Fundedpeople)</h2>
+                                <h2 class="block">@Model.Fundedpeople</h2>
                             </div>
                             <div id="donating-days-countdown" class="number-row">
                                 <span class="label-grey">募資倒數</span>
-                                <h2 class="block">34天</h2>
+                                <h2 class="block">@(dateLine.ToString())天</h2>
                             </div>
                         </div>
                         <blockquote id="campaign-status-label">
                             <div class="text-wrap">
-                                專案募資成功！<br>在 2021/03/06 23:59 @Model.EndDate
+                                專案募資成功！<br>在 @Model.EndDate
                                 募資結束前，您都可以持續贊助此計畫。
                             </div>
                         </blockquote>
@@ -87,7 +86,8 @@
                         <div id="backing-section" class="wrapper">
                             <div class="row">
                                 <div class="btn col-12">
-                                <a href="" id="backit-btn">贊助專案</a></div>
+                                    <a href="" id="backit-btn">贊助專案</a>
+                                </div>
                                 <div class="btn col-8">
                                     <a href="" id="ask-btn">
                                         <span class="comment"><i class="bi bi-chat-dots-fill"></i></span>
@@ -157,7 +157,7 @@
                                                  data-parent="#accordionExample">
                                                 <div class="card-body">
                                                     「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」
-                                                    <code>.show</code> class.
+
                                                 </div>
                                             </div>
                                         </div>
@@ -360,3 +360,9 @@
     </div>
 </section>
 
+@section topCSS{
+    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+}
+@section endJS{
+    @*<script src=".js"></script>*@
+}
