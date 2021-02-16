@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ProjectTeamFour.Models;
+//using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels;
 namespace ProjectTeamFour.Controllers
 {
     public class ProductsController : Controller
@@ -11,9 +12,9 @@ namespace ProjectTeamFour.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            List<Project> products = new List<Project>
+            List<ProjectViewModel> products = new List<ProjectViewModel>
             {
-                new Project
+                new ProjectViewModel
                 {
                     ProjectMainUrl = "https://i.imgur.com/fEmjPny.png",
                     Category = "科技設計",
@@ -25,7 +26,7 @@ namespace ProjectTeamFour.Controllers
                     EndDate = new DateTime(2021, 3, 11),
                     StartDate = new DateTime(2021, 2, 1)
                 },
-                new Project
+                new ProjectViewModel
                 {
                     ProjectMainUrl = "https://i.imgur.com/fY4fvf2.jpg",
                     Category = "生活",
@@ -37,7 +38,7 @@ namespace ProjectTeamFour.Controllers
                     EndDate = new DateTime(2021, 3, 22),
                     StartDate = new DateTime(2021, 2, 1)
                 },
-                new Project
+                new ProjectViewModel
                 {
                     ProjectMainUrl = "https://i.imgur.com/OQB8O5P.jpg",
                     Category = "公共在地",

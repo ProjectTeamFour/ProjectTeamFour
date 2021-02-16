@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class ProjectView
+    public class ProjectViewModel
     {
         public string ProjectMainUrl { get; set; }
         public string Category { get; set; }

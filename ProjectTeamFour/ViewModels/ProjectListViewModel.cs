@@ -5,8 +5,8 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class ProjectListView
+    public class ProjectListViewModel
     {
-        public List<ProjectView> Items { get; set; }
+        public List<ProjectViewModel> Items { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ProjectTeamFour.ViewModels.ProjectView
+﻿@model ProjectTeamFour.ViewModels.ProjectViewModel
 
 
 @{
@@ -6,9 +6,6 @@
     double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
 }
 
-@{
-    ViewBag.Title = "products page";
-}
 <div class="col-12 col-sm-12 col-md-6 col-lg-4">
     <div class="cardtemplate-section-item cardtemplate">
         <a href="/ProductDetail/Index">
