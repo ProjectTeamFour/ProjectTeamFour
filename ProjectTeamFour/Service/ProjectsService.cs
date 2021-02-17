@@ -13,12 +13,12 @@ namespace ProjectTeamFour.Service
     public class ProjectsService
     {
         private DbContext _context;
-        private BaseReposity _reposity;
+        private BaseRepository _reposity;
 
         public ProjectsService()
         {
             _context = new ProjectContext();
-            _reposity = new BaseReposity(_context);
+            _reposity = new BaseRepository(_context);
         }
 
         public ProjectListViewModel GetByWhere(Expression<Func<Project, bool>> KeySelctor) //判斷是否符合條件判斷
