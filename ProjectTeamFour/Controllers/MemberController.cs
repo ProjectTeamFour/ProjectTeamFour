@@ -55,7 +55,7 @@ namespace ProjectTeamFour.Controllers
             MemberViewModel viewModel = null;
             if (ModelState.IsValid)
             {
-                viewModel= _api.GetMember(p => p.MemberRegEmail == input.Email);
+                viewModel= _api.GetMemberbyReg(input.Email);
                 if (viewModel == null)
                 {
                     ViewData["WrongAccount"] = "帳號錯誤!";
@@ -68,19 +68,14 @@ namespace ProjectTeamFour.Controllers
                 }
                 Session["Member"] = viewModel;
             }
-            return RedirectToAction("test");
+            return RedirectToAction("Index","Home");
         }
         public ActionResult Logout()
         {
             Session["Member"] = null;
-            return View("test");
+            return RedirectToAction("Index", "Home");
         }
-
-
-        public ActionResult test()
-        {
-            return View();
-        }
+ 
 
 
         //private MemberService _memberService;

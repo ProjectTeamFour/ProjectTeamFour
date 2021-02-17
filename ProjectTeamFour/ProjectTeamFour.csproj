@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
@@ -210,6 +212,10 @@
     <Compile Include="Migrations\202102160749157_重新加入Log資料表.Designer.cs">
       <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102170432173_修改LogTable.cs" />
+    <Compile Include="Migrations\202102170432173_修改LogTable.Designer.cs">
+      <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -237,7 +243,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\PersonInfoController.cs" />
@@ -262,7 +267,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reposities\BaseReposity.cs" />
+    <Compile Include="Reposities\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2081,6 +2086,8 @@
     <Content Include="Views\SelectPlan\PlanCards.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberRegister\Index.cshtml" />
+    <Content Include="Views\Member\testPageForSonia.cshtml" />
+    <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
@@ -2088,6 +2095,7 @@
     <Content Include="Views\Member\test.cshtml" />
     <Content Include="Views\Shared\PartialView\_selectPlanCardsPartial.cshtml" />
     <Content Include="Views\ProjectDetail\Details.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2096,6 +2104,7 @@
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\MemberSettings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2164,6 +2173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102160749157_重新加入Log資料表.resx">
       <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102170432173_修改LogTable.resx">
+      <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

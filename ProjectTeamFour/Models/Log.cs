@@ -10,6 +10,6 @@ namespace ProjectTeamFour.Models
         public int LogId { get; set; }
         public int MemberId { get; set; }
         public DateTime DateTime { get; set; }
-        public string Path { get; set; }
+        public string Content { get; set; }
     }
 }
