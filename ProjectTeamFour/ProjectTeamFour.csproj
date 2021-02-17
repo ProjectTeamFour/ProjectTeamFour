@@ -231,6 +231,7 @@
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="Service\ProjectDetailService.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
@@ -271,7 +272,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reposities\BaseRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2092,7 +2093,6 @@
     <Content Include="Views\MemberRegister\Index.cshtml" />
     <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
-    <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\Shared\PartialView\_ProjectCardPartial.cshtml" />
