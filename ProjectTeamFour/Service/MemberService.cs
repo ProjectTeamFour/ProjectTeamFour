@@ -14,16 +14,16 @@ namespace ProjectTeamFour.Service
     public class MemberService
     {
         private DbContext _context;
-        private BaseReposity _reposity;
+        private BaseRepository _repository;
         public MemberService()
         {
             _context = new ProjectContext();
-            _reposity = new BaseReposity(_context);
+            _repository = new BaseRepository(_context);
         }
         //byLambda搜尋
         public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
-            var entity = _reposity.GetAll<Member>().FirstOrDefault(KeySelector);
+            var entity = _repository.GetAll<Member>().FirstOrDefault(KeySelector);
             if (entity != null)
             {
                 var viewModel = new MemberViewModel
@@ -54,7 +54,7 @@ namespace ProjectTeamFour.Service
             {
                 Items = new List<MemberViewModel>()
             };
-            foreach (var entity in _reposity.GetAll<Member>())
+            foreach (var entity in _repository.GetAll<Member>())
             {
                 var viewModel = new MemberViewModel
                 {
@@ -101,7 +101,7 @@ namespace ProjectTeamFour.Service
                     MemberWebsite = input.MemberWebsite,
                     MemberMessage = input.MemberMessage
                 };
-                _reposity.Create(entity);
+                _repository.Create(entity);
                 result.IsSuccessful = true;
             }
             catch(Exception ex)
@@ -118,7 +118,7 @@ namespace ProjectTeamFour.Service
             var result = new OperationResult();
             try
             {
-                Member entity = _reposity.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
+                Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
                 entity.MemberName = input.MemberName;
                 entity.MemberTeamName = input.MemberTeamName;
                 entity.MemberAccount = input.MemberAccount;
@@ -133,7 +133,7 @@ namespace ProjectTeamFour.Service
                 entity.ProfileImgUrl = input.ProfileImgUrl;
                 entity.MemberWebsite = input.MemberWebsite;
                 entity.MemberMessage = input.MemberMessage;
-                _reposity.Update(entity);
+                _repository.Update(entity);
                 result.IsSuccessful = true;
             }
             catch (Exception ex)
@@ -150,8 +150,8 @@ namespace ProjectTeamFour.Service
             var result = new OperationResult();
             try
             {
-                Member entity = _reposity.GetAll<Member>().FirstOrDefault(m => m.MemberId == MemberId);
-                _reposity.Delete(entity);
+                Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == MemberId);
+                _repository.Delete(entity);
             }catch(Exception ex)
             {
                 result.DateTime = DateTime.Now;
