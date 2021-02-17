@@ -27,7 +27,6 @@ namespace ProjectTeamFour.Service
             var project = new ProjectListViewModel
             {
                 ProjectItems = new List<ProjectViewModel>()
-
             };
             foreach(var item in result)
             {
