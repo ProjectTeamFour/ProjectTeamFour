@@ -21,8 +21,9 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult GetCategory()
         {
+            
             var fliter = _projectsService.GetByProjectStatus("集資中");
-
+                
             return View(fliter);
         }
         
@@ -49,7 +50,7 @@ namespace ProjectTeamFour.Controllers
                 {
                     ProjectMainUrl = "https://i.imgur.com/fY4fvf2.jpg",
                     Category = "生活",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資失敗",
                     ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                     CreatorName = "魟魚與貓",
                     FundingAmount = 105760m,
@@ -73,7 +74,7 @@ namespace ProjectTeamFour.Controllers
                 {
                     ProjectMainUrl = "https://i.imgur.com/8hymepqm.jpg",
                     Category = "科技設計",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資成功",
                     ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
                     CreatorName = "cheerdots TW",
                     FundingAmount = 50000m,
