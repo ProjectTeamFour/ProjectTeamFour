@@ -7,6 +7,6 @@ namespace ProjectTeamFour.ViewModels
 {
     public class ProjectListViewModel
     {
-        public List<ProjectViewModel> Items { get; set; }
+        public List<ProjectViewModel> ProjectItems { get; set; }
     }
 }
