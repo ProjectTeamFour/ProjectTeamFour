@@ -5,10 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 //using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Service;
+using ProjectTeamFour.Models;
+using System.Linq.Expressions;
+
 namespace ProjectTeamFour.Controllers
 {
     public class ProjectsController : Controller
     {
+        private ProjectsService _projectsService;
+        public ProjectsController()
+        {
+            _projectsService = new ProjectsService();
+        }
+
+        public ActionResult GetCategory()
+        {
+            
+            var fliter = _projectsService.GetByProjectStatus("集資中");            
+            return View(fliter);
+        }
+        
+
+
         // GET: Products
         public ActionResult Index()
         {
@@ -18,7 +37,7 @@ namespace ProjectTeamFour.Controllers
                 {
                     ProjectMainUrl = "https://i.imgur.com/fEmjPny.png",
                     Category = "科技設計",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資失敗",
                     ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                     CreatorName = "窩窩睏",
                     FundingAmount = 2053000m,
@@ -137,5 +156,7 @@ namespace ProjectTeamFour.Controllers
             };
             return View(products);
         }
+     
+
     }
 }

@@ -1,0 +1,43 @@
+﻿@model ProjectTeamFour.ViewModels.CarCarPlanViewModel
+
+
+<div class="cardtemplate-section-item cardtemplate">
+    <a href="/ProjectDetail/Index">
+        <div class="cardtemplate-item project-picture">
+            <img class="w-100" src="@Model.PlanImgUrl">
+        </div>
+        <div class="cardtemplate-item tag">
+            <div class="tag-item categories">
+                <p>@Model.Category</p>
+            </div>
+
+        </div>
+        <div class="cardtemplate-item project-name">
+            <h3>@Model.ProjectName</h3>
+        </div>
+        <div class="cardtemplate-item project-plan-title">
+            <p>@Model.PlanTitle</p>
+        </div>
+        <div class="cardtemplate-item project-team">
+            <p>@Model.CreatorName</p>
+        </div>
+        <div class="cardtemplate-item project-progressbar">
+            <div class="project-progressbar-item"></div>
+        </div>
+        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
+            <div class="project-progressnumber-item amount d-flex">
+                <div class="amount-item money">
+                    <p>
+                        @Model.PlanPrice
+                    </p>
+                </div>
+
+            </div>
+            <div class="project-progressnumber-item countdown">
+                <div class="countdown-item dayorhour">
+                    <p>上車嗎？</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

@@ -5,9 +5,8 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class ProjectListViewModel
+    public class CarCarPlanListViewModel
     {
-        public List<ProjectViewModel> ProjectItems { get; set; }
-        
+        public List<CarCarPlanViewModel> CarCarPlanItems { get; set; }
     }
 }

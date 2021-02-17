@@ -19,19 +19,19 @@ namespace ProjectTeamFour.Service
 
     public static class OperationHelper
     {
-        public static string  WriteLog(this OperationResult result,string serverPath)
-        {
-            if (result.Exception != null)
-            {
-                string filename = $"{result.DateTime.ToString("yyyy-MM-dd_HH_mm_ss")}.txt";
-                string path = Path.Combine(serverPath, filename);
-                File.WriteAllText(path, result.Exception.ToString());
-                return path;
-            }
-            else
-            {
-                return "沒有存檔";
-            }
-        }
+        //public static string WriteLog(this OperationResult result, string serverPath)
+        //{
+        //    if (result.Exception != null)
+        //    {
+        //        string filename = $"{result.DateTime.ToString("yyyy-MM-dd_HH_mm_ss")}.txt";
+        //        string path = Path.Combine(serverPath, filename);
+        //        File.WriteAllText(path, result.Exception.ToString());
+        //        return path;
+        //    }
+        //    else
+        //    {
+        //        return "沒有存檔";
+        //    }
+        //}
     }
 }
