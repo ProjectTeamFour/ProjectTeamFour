@@ -220,6 +220,7 @@
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
@@ -242,7 +243,6 @@
     <Compile Include="Controllers\PersonInfoController.cs" />
     <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StartAProjectController.cs" />
     <Compile Include="Global.asax.cs">
@@ -264,7 +264,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reposities\BaseReposity.cs" />
     <Compile Include="Service\MemberService.cs" />
-    <Compile Include="Service\ProjectService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -2089,6 +2088,7 @@
     <Content Include="Views\Member\test.cshtml" />
     <Content Include="Views\Shared\PartialView\_selectPlanCardsPartial.cshtml" />
     <Content Include="Views\ProjectDetail\Details.cshtml" />
+    <Content Include="Views\Projects\GetCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
