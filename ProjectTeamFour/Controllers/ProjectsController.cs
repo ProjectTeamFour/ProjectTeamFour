@@ -8,6 +8,7 @@ using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Service;
 using ProjectTeamFour.Models;
 using System.Linq.Expressions;
+using ProjectTeamFour.Repositories;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -21,23 +22,37 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult GetCategory()
         {
-            var fliter = _projectsService.GetByProjectStatus("集資中");
-
+            
+            var fliter = _projectsService.GetByProjectStatus("集資中");            
             return View(fliter);
         }
-        
+
+        public ActionResult GetCategoryFail()
+        {
+
+            var fail = _projectsService.GetByProjectStatus("集資失敗");
+            return View(fail);
+        }
+
+        public ActionResult GetCategorySuccess()
+        {
+
+            var success = _projectsService.GetByProjectStatus("集資成功");
+            return View(success);
+        }
+
 
 
         // GET: Products
         public ActionResult Index()
-        {
+        {           
             List<ProjectViewModel> products = new List<ProjectViewModel>
             {
                 new ProjectViewModel
                 {
                     ProjectMainUrl = "https://i.imgur.com/fEmjPny.png",
                     Category = "科技設計",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資失敗",
                     ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                     CreatorName = "窩窩睏",
                     FundingAmount = 2053000m,
@@ -49,7 +64,7 @@ namespace ProjectTeamFour.Controllers
                 {
                     ProjectMainUrl = "https://i.imgur.com/fY4fvf2.jpg",
                     Category = "生活",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資成功",
                     ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                     CreatorName = "魟魚與貓",
                     FundingAmount = 105760m,

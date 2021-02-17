@@ -6,13 +6,18 @@ using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Models;
 using System.Net;
+using ProjectTeamFour.Service;
 
 namespace ProjectTeamFour.Controllers
 {
     public class ProjectDetailController : Controller
     {
-        
+        private ProjectDetailService projectDetailService;
 
+        public ProjectDetailController()
+        {
+
+        }
 
 
         //private ProjectContext db = new ProjectContext();

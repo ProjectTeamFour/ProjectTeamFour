@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace ProjectTeamFour.Reposities
+namespace ProjectTeamFour.Repositories
 {
     //將泛型改成泛型方法
     public class BaseRepository
