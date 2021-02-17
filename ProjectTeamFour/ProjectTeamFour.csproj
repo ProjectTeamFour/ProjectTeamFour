@@ -216,6 +216,10 @@
     <Compile Include="Migrations\202102170432173_修改LogTable.Designer.cs">
       <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102170934392_新增projectname.cs" />
+    <Compile Include="Migrations\202102170934392_新增projectname.Designer.cs">
+      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -2183,6 +2187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102170432173_修改LogTable.resx">
       <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102170934392_新增projectname.resx">
+      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
