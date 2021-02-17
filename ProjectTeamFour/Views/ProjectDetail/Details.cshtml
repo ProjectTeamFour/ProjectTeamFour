@@ -1,0 +1,108 @@
+﻿@model Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundingAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundingAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fundedpeople)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fundedpeople)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectImgUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectImgUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectVideoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectVideoUrl)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatorName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
