@@ -8,7 +8,7 @@ using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Service;
 using ProjectTeamFour.Models;
 using System.Linq.Expressions;
-using ProjectTeamFour.Reposities;
+using ProjectTeamFour.Repositories;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -64,7 +64,7 @@ namespace ProjectTeamFour.Controllers
                 {
                     ProjectMainUrl = "https://i.imgur.com/fY4fvf2.jpg",
                     Category = "生活",
-                    ProjectStatus = "集資中",
+                    ProjectStatus = "集資成功",
                     ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                     CreatorName = "魟魚與貓",
                     FundingAmount = 105760m,

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using ProjectTeamFour.Models;
-using ProjectTeamFour.Reposities;
+using ProjectTeamFour.Repositories;
 using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.Service
