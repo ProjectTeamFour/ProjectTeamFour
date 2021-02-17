@@ -32,7 +32,7 @@ namespace ProjectTeamFour.Controllers
                     MemberId=item.MemberId,
                     LogId = item.LogId,
                     DateTime = item.DateTime,
-                    Content = _logservice.Readtext(item.Path)
+                    //Content = _logservice.Readtext(item.Path)
                 };
                 ListViewModel.Items.Add(vm);
             }

@@ -7,10 +7,10 @@ using System.Data.Entity;
 namespace ProjectTeamFour.Reposities
 {
     //將泛型改成泛型方法
-    public class BaseReposity
+    public class BaseRepository
     {
         public DbContext _context;
-        public BaseReposity(DbContext context)
+        public BaseRepository(DbContext context)
         {
             if (context == null)
             {

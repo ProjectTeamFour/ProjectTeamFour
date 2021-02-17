@@ -62,12 +62,12 @@
     <hr />
     <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
     <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
-    <a class="dropdown-item" href="#">登出</a>
+    <a class="dropdown-item" href="/Member/Logout">登出</a>
 }
 @helper ShowNoLogin()
 {
-    <a class="dropdown-item" href="/MemberLogin/Index">登入</a>
-    <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>
+    <a class="dropdown-item" href="/Member/Login">登入</a>
+    <a class="dropdown-item" href="/Member/Register">註冊</a>
 }
 
 @helper ShowLoginPic(string input,string gender) { 
@@ -75,17 +75,17 @@ if (string.IsNullOrEmpty(input))
 {
     if (gender == "男性")
     {
-        <img src="~/Assets/Img/Sign/man.png"/>
+        <img src="~/Assets/Img/Sign/man.png" width="30" height="30"/>
     }
     else if(gender=="女性")
     {
-        <img src="~/Assets/Img/Sign/woman.png"/>
+        <img src="~/Assets/Img/Sign/woman.png" width="30" height="30"/>
     }
 }
 else
 {
-        <img src=@input/>
+        <img src=@input width="30" height="30"/>
 }   }
 @helper ShowNoLoginPic() { 
-    <img src="~/Assets/Img/Sign/questionMark.png"/>
+    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30"/>
     }

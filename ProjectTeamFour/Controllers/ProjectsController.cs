@@ -5,10 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 //using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Service;
+using ProjectTeamFour.Models;
+using System.Linq.Expressions;
+
 namespace ProjectTeamFour.Controllers
 {
     public class ProjectsController : Controller
     {
+        private ProjectsService _projectsService;
+        public ProjectsController()
+        {
+            _projectsService = new ProjectsService();
+        }
+
+        public ActionResult GetCategory()
+        {
+            var fliter = _projectsService.GetByProjectStatus("集資中");
+
+            return View(fliter);
+        }
+        
+
+
         // GET: Products
         public ActionResult Index()
         {
@@ -137,5 +156,7 @@ namespace ProjectTeamFour.Controllers
             };
             return View(products);
         }
+     
+
     }
 }
