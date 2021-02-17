@@ -24,9 +24,9 @@ namespace ProjectTeamFour.Api
             _memberService = new MemberService();
             _logservice = new LogService();
         }
-        public MemberViewModel GetMember(Expression<Func<Member,bool>> keySelector)
+        public MemberViewModel GetMemberbyReg(string reg)
         {
-            return _memberService.GetMember(keySelector);
+            return _memberService.GetMember(p=>p.MemberRegEmail==reg);
         }
         public MemberListViewModel GetMembers()
         {
@@ -46,7 +46,7 @@ namespace ProjectTeamFour.Api
             {
                 Log entity = new Log()
                 {
-                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
+                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
@@ -65,7 +65,7 @@ namespace ProjectTeamFour.Api
             {
                 Log entity = new Log()
                 {
-                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
+                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
@@ -85,7 +85,7 @@ namespace ProjectTeamFour.Api
                 Log entity = new Log()
                 {
                     //MemberId=result.Member.MemberId,
-                    Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
+                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
