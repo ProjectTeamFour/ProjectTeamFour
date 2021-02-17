@@ -8,6 +8,7 @@ using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Service;
 using ProjectTeamFour.Models;
 using System.Linq.Expressions;
+using ProjectTeamFour.Reposities;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -25,12 +26,26 @@ namespace ProjectTeamFour.Controllers
             var fliter = _projectsService.GetByProjectStatus("集資中");            
             return View(fliter);
         }
-        
+
+        public ActionResult GetCategoryFail()
+        {
+
+            var fail = _projectsService.GetByProjectStatus("集資失敗");
+            return View(fail);
+        }
+
+        public ActionResult GetCategorySuccess()
+        {
+
+            var success = _projectsService.GetByProjectStatus("集資成功");
+            return View(success);
+        }
+
 
 
         // GET: Products
         public ActionResult Index()
-        {
+        {           
             List<ProjectViewModel> products = new List<ProjectViewModel>
             {
                 new ProjectViewModel
