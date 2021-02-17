@@ -62,9 +62,10 @@
                         <!-- 文字說明 -->
 
                         <div id="campaign-info-item">
-                            <span class="badge badge-secondary">INDEMAND</span>
-                            <div id="donating-amount">
-                                <h2>NTD $@Model.FundingAmount</h2>
+                            <span class="badge badge-secondary">@Model.ProjectStatus</span>
+                            <div id="donating-amount" class="number-row">
+                                <span class="label-grey">目標 NTD$@Model.AmountThreshold</span>
+                                <h2>$@Model.FundingAmount</h2>
                             </div>
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
@@ -89,10 +90,10 @@
                                     <a href="" id="backit-btn">贊助專案</a>
                                 </div>
                                 <div class="btn col-8">
-                                    <a href="" id="ask-btn">
-                                        <span class="comment"><i class="bi bi-chat-dots-fill"></i></span>
+                                    <button id="ask-btn">
+                                        <span class="comment" id="ask-btn"><i class="bi bi-chat-dots-fill"></i></span>
                                         聯絡提案人
-                                    </a>
+                                    </button>
                                 </div>
                                 <div class="btn col-4"><a href="" id="share-btn">分享</a></div>
                             </div>
@@ -130,6 +131,7 @@
                                 <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
                                     <section id="story">
                                         <div class="container">
+                                            @*成功的話新增一個判斷式*@
                                             <div class="info wrapper">
                                                 <p>已達成 募資目標!</p>
                                             </div>
@@ -143,6 +145,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
                                     <!-- 問答要做成 collapse -->
+                                    <!-- 這裡要下判斷式，長出提問以及回答 -->
                                     <div class="accordion" id="accordionExample">
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
@@ -364,5 +367,14 @@
     <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
 }
 @section endJS{
-    @*<script src=".js"></script>*@
+    <script>
+        //var message_btn = document.getElementById("ask-btn");
+        //message_btn.addEventListener('click', function SendMessage() {
+        //    document.createElement("div");
+        //})
+
+
+        var project_status = document.getElementById("goal-wrap");
+
+    </script>
 }
