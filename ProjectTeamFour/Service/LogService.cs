@@ -12,11 +12,11 @@ namespace ProjectTeamFour.Service
     public class LogService
     {
         private DbContext _context { get; set; }
-        private BaseReposity _reposity { get; set; }
+        private BaseRepository _reposity { get; set; }
         public LogService()
         {
             _context = new ProjectContext();
-            _reposity = new BaseReposity(_context);
+            _reposity = new BaseRepository(_context);
         }
         //寫入Log檔
         public void Create(Log entity)
