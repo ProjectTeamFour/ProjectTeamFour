@@ -77,6 +77,7 @@
             {
 
                 ProjectId = 1,
+                ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 PlanId = 1,
                 ProjectPlanId = 1,
                 PlanTitle = "【台制 單人標準 1 張】",
@@ -91,6 +92,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 ProjectId = 1,
+                ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 PlanId = 2,
                 ProjectPlanId = 2,
                 PlanTitle = "【台制 單人加大 1 張】",
@@ -104,6 +106,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 ProjectId = 1,
+                ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 PlanId = 3,
                 ProjectPlanId = 3,
                 PlanTitle = "【台制 雙人標準 1 張】",
@@ -117,6 +120,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 ProjectId = 1,
+                ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 PlanId = 4,
                 ProjectPlanId = 4,
                 PlanTitle = "【台制 雙人特大 1 張】",
@@ -180,6 +184,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 5,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 1,
                 PlanTitle = "【單純贊助，不需要任何回饋！】",
@@ -194,6 +199,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 6,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 2,
                 PlanTitle = "【友善無毒農產品回饋方案】",
@@ -207,6 +213,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 7,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 3,
                 PlanTitle = "【早鳥優惠的簡約餐具方案】",
@@ -220,6 +227,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 8,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 4,
                 PlanTitle = "【簡約餐具方案】",
@@ -233,6 +241,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 9,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 5,
                 PlanTitle = "【好像有點豪華方案】",
@@ -246,6 +255,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 10,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 6,
                 PlanTitle = "【來點下午茶方案】",
@@ -259,6 +269,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 11,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 7,
                 PlanTitle = "【好像一切都有了呢！】",
@@ -272,6 +283,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 12,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 8,
                 PlanTitle = "【無開關感應式小夜燈】",
@@ -285,6 +297,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 13,
+                ProjectName = "不讓土地哭泣——預購手工木餐具・讓這片土地不受農藥污染",
                 ProjectId = 2,
                 ProjectPlanId = 9,
                 PlanTitle = "【簡約棧板盤案】",
@@ -344,6 +357,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 14,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 1,
                 PlanTitle = "【 隨喜贊助 】",
@@ -358,6 +372,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 15,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 2,
                 PlanTitle = "【我紮狗】",
@@ -372,6 +387,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 16,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 3,
                 PlanTitle = "【 愛狗狗 】",
@@ -386,6 +402,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 17,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 4,
                 PlanTitle = "【 遛狗狗 】",
@@ -400,6 +417,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 18,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 5,
                 PlanTitle = "【 愛狗久久 】",
@@ -414,6 +432,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 19,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 6,
                 PlanTitle = "【 相信動物 】",
@@ -428,6 +447,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 20,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 7,
                 PlanTitle = "【 驕傲單身狗 — 單人套組 】",
@@ -442,6 +462,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 21,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 8,
                 PlanTitle = "【 鬥陣來愛狗 — 雙人套組 】",
@@ -456,6 +477,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 22,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 9,
                 PlanTitle = "【 巾划算 】",
@@ -470,6 +492,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 23,
+                ProjectName = "#先浪狗變少——相信動物協會「紮女養成計」，前進桃園！",
                 ProjectId = 3,
                 ProjectPlanId = 10,
                 PlanTitle = "【 作伙一企來愛狗 】",
@@ -534,6 +557,7 @@
             {
                 PlanId = 24,
                 ProjectId = 4,
+                ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
                 ProjectPlanId = 1,
                 PlanTitle = "CheerPod x1",
                 PlanFundedPeople = 154,
@@ -548,6 +572,7 @@
             {
                 PlanId = 25,
                 ProjectId = 4,
+                ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
                 ProjectPlanId = 2,
                 PlanTitle = "CheerPod x1",
                 PlanFundedPeople = 18,
@@ -562,6 +587,7 @@
             {
                 PlanId = 26,
                 ProjectId = 4,
+                ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
                 ProjectPlanId = 3,
                 PlanTitle = "CheerPod x1",
                 PlanFundedPeople = 0,
@@ -576,6 +602,7 @@
             {
                 PlanId = 27,
                 ProjectId = 4,
+                ProjectName = "Cheerpod 智慧滑鼠 | 一片在手，螢幕隨控",
                 ProjectPlanId = 4,
                 PlanTitle = "CheerPod x1",
                 PlanFundedPeople = 1,
@@ -640,6 +667,7 @@
             {
                 PlanId = 28,
                 ProjectId = 5,
+                ProjectName = "開啟與孩子的第一場程式冒險 《解碼傳說 CO·DECODE》",
                 ProjectPlanId = 1,
                 PlanTitle = "",
                 PlanFundedPeople = 256,
@@ -654,6 +682,7 @@
             {
                 PlanId = 29,
                 ProjectId = 5,
+                ProjectName = "開啟與孩子的第一場程式冒險 《解碼傳說 CO·DECODE》",
                 ProjectPlanId = 2,
                 PlanTitle = "",
                 PlanFundedPeople = 11,
@@ -668,6 +697,7 @@
             {
                 PlanId = 30,
                 ProjectId = 5,
+                ProjectName = "開啟與孩子的第一場程式冒險 《解碼傳說 CO·DECODE》",
                 ProjectPlanId = 3,
                 PlanTitle = "",
                 PlanFundedPeople = 3,
@@ -682,6 +712,7 @@
             {
                 PlanId = 31,
                 ProjectId = 5,
+                ProjectName = "開啟與孩子的第一場程式冒險 《解碼傳說 CO·DECODE》",
                 ProjectPlanId = 4,
                 PlanTitle = "",
                 PlanFundedPeople = 5,
@@ -745,6 +776,7 @@
             {
                 PlanId = 32,
                 ProjectId = 6,
+                ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
                 ProjectPlanId = 1,
                 PlanTitle = "SWOL 雙水箱旋轉拖把 1 組",
                 PlanFundedPeople = 83,
@@ -759,6 +791,7 @@
             {
                 PlanId = 33,
                 ProjectId = 6,
+                ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
                 ProjectPlanId = 2,
                 PlanTitle = "SWOL 雙水箱旋轉拖把 1 組",
                 PlanFundedPeople = 0,
@@ -773,6 +806,7 @@
             {
                 PlanId = 34,
                 ProjectId = 6,
+                ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
                 ProjectPlanId = 3,
                 PlanTitle = "SWOL 拖把替換布 5 片",
                 PlanFundedPeople = 42,
@@ -787,6 +821,7 @@
             {
                 PlanId = 35,
                 ProjectId = 6,
+                ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
                 ProjectPlanId = 4,
                 PlanTitle = "SWOL 雙水箱旋轉拖把 5 組",
                 PlanFundedPeople = 0,
@@ -801,6 +836,7 @@
             {
                 PlanId = 36,
                 ProjectId = 6,
+                ProjectName = "SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨",
                 ProjectPlanId = 5,
                 PlanTitle = "1. SWOL 雙水箱旋轉拖把 10 組 2. 主揪額外贈送拖把替換布 5 片",
                 PlanFundedPeople = 6,
@@ -864,6 +900,7 @@
             {
                 PlanId = 37,
                 ProjectId = 7,
+                ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
                 ProjectPlanId = 1,
                 PlanTitle = "【單純贊助，感謝有你】",
                 PlanFundedPeople = 6,
@@ -878,6 +915,7 @@
             {
                 PlanId = 38,
                 ProjectId = 7,
+                ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
                 ProjectPlanId = 2,
                 PlanTitle = "【改變剩食的第一步】",
                 PlanFundedPeople = 11,
@@ -892,6 +930,7 @@
             {
                 PlanId = 39,
                 ProjectId = 7,
+                ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
                 ProjectPlanId = 3,
                 PlanTitle = "【改變剩食的推手】",
                 PlanFundedPeople = 14,
@@ -906,6 +945,7 @@
             {
                 PlanId = 40,
                 ProjectId = 7,
+                ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
                 ProjectPlanId = 4,
                 PlanTitle = "【改變剩食的推手】",
                 PlanFundedPeople = 5,
@@ -920,6 +960,7 @@
             {
                 PlanId = 41,
                 ProjectId = 7,
+                ProjectName = "一場集結展現消費端聲音的「珍惜 ‧ 真食物蹲點募資計畫」",
                 ProjectPlanId = 5,
                 PlanTitle = "【改變剩食的推手】",
                 PlanFundedPeople = 3,
@@ -983,6 +1024,7 @@
             {
                 PlanId = 42,
                 ProjectId = 8,
+                ProjectName = "《小狗大盜》| 淡江大傳第35屆畢業製作拍攝計畫",
                 ProjectPlanId = 1,
                 PlanTitle = "180 | 劇本半年後的時程，也代表了主角在180天後的轉變",
                 PlanFundedPeople = 3,
@@ -997,6 +1039,7 @@
             {
                 PlanId = 43,
                 ProjectId = 8,
+                ProjectName = "《小狗大盜》| 淡江大傳第35屆畢業製作拍攝計畫",
                 ProjectPlanId = 2,
                 PlanTitle = "531 | 外送員，這是一個外送青年的故事",
                 PlanFundedPeople = 1,
@@ -1011,6 +1054,7 @@
             {
                 PlanId = 44,
                 ProjectId = 8,
+                ProjectName = "《小狗大盜》| 淡江大傳第35屆畢業製作拍攝計畫",
                 ProjectPlanId = 3,
                 PlanTitle = "888 | 恭喜發財，祝大家發發發",
                 PlanFundedPeople = 0,
@@ -1074,6 +1118,7 @@
             {
                 PlanId = 45,
                 ProjectId = 9,
+                ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
                 ProjectPlanId = 1,
                 PlanTitle = "► 限量優惠價 ",
                 PlanFundedPeople = 117,
@@ -1088,6 +1133,7 @@
             {
                 PlanId = 46,
                 ProjectId = 9,
+                ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
                 ProjectPlanId = 2,
                 PlanTitle = "► 拍拍打｜ Swdk無線吸塵除螨機一台 ",
                 PlanFundedPeople = 5,
@@ -1102,6 +1148,7 @@
             {
                 PlanId = 47,
                 ProjectId = 9,
+                ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
                 ProjectPlanId = 3,
                 PlanTitle = "► 拍拍打｜ Swdk無線吸塵除螨機三台 ",
                 PlanFundedPeople = 0,
@@ -1116,6 +1163,7 @@
             {
                 PlanId = 48,
                 ProjectId = 9,
+                ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
                 ProjectPlanId = 4,
                 PlanTitle = "► 拍拍打｜ Swdk無線吸塵除螨機五台 ",
                 PlanFundedPeople = 0,
@@ -1130,6 +1178,7 @@
             {
                 PlanId = 49,
                 ProjectId = 9,
+                ProjectName = "拍拍打｜SWDK無線吸塵除螨機",
                 ProjectPlanId = 5,
                 PlanTitle = "► 拍拍打｜ Swdk無線吸塵除螨機十台 ",
                 PlanFundedPeople = 0,
@@ -1193,6 +1242,7 @@
             {
                 PlanId = 50,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 1,
                 PlanTitle = "塑膠再生寶石耳環x1對 ",
                 PlanFundedPeople = 3,
@@ -1207,6 +1257,7 @@
             {
                 PlanId = 51,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 2,
                 PlanTitle = "塑膠再生鑰匙圈x4",
                 PlanFundedPeople = 6,
@@ -1221,6 +1272,7 @@
             {
                 PlanId = 52,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 3,
                 PlanTitle = "塑膠再生鑰匙圈x2 塑膠再生卡片夾x1 塑膠袋再生零錢包x1",
                 PlanFundedPeople = 5,
@@ -1235,6 +1287,7 @@
             {
                 PlanId = 53,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 4,
                 PlanTitle = "塑膠再生鑰匙圈x2 塑膠再生卡片夾x1 塑膠袋再生零錢包x1 塑膠再生編織收納籃x1 六角形再生杯墊x2 極簡再生方形掛鐘x1",
                 PlanFundedPeople = 5,
@@ -1249,6 +1302,7 @@
             {
                 PlanId = 54,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 5,
                 PlanTitle = "來硬的！塑膠再生深度體驗x1人",
                 PlanFundedPeople = 4,
@@ -1263,6 +1317,7 @@
             {
                 PlanId = 55,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 6,
                 PlanTitle = "一片巨大的阿花x1 神秘展覽preview邀請函",
                 PlanFundedPeople = 2,
@@ -1277,6 +1332,7 @@
             {
                 PlanId = 56,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 7,
                 PlanTitle = "原創性物件開發，依據30人投票結果決定物件，並共同開發及作出物件。",
                 PlanFundedPeople = 3,
@@ -1291,6 +1347,7 @@
             {
                 PlanId = 57,
                 ProjectId = 10,
+                ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 ProjectPlanId = 8,
                 PlanTitle = "社會企業責任鬥陣來",
                 PlanFundedPeople = 1,
