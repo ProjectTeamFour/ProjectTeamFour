@@ -11,16 +11,28 @@ using ProjectTeamFour.Models;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class MemberController : Controller
+    public class MemberSettingsController : Controller
     {
-        ////private MemberContext db = new MemberContext();
+        private ProjectContext db = new ProjectContext();
 
         //// GET: Member
         //public ActionResult Index()
         //{
         //    return View("testPageForSonic");
         //}
-
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //User user = db.Users.Find(id);
+            //if (member == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
+        }
         //// GET: Member/Edit/5
         //public ActionResult Edit(string id)
         //{

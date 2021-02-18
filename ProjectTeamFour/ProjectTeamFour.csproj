@@ -150,8 +150,11 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\MemberRegisterController.cs" />
+    <Compile Include="Controllers\MemberSettingsController.cs" />
+    <Compile Include="Controllers\PartialViewController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
@@ -274,6 +277,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
+    <Compile Include="ViewModels\SelectPlanViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -2088,7 +2093,6 @@
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\SelectPlan\PlanCards.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberRegister\Index.cshtml" />
     <Content Include="Views\Member\testPageForSonia.cshtml" />
@@ -2102,6 +2106,11 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

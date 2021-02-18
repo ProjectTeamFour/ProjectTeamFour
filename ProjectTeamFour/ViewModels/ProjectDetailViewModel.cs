@@ -33,5 +33,9 @@ namespace ProjectTeamFour.ViewModels
         //導覽屬性
         //public virtual ICollection<Plan> Plans { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
+
+        //方案的List
+        public List<SelectPlanListViewModel> PlanCardItem { get; set; }
+
     }
 }
