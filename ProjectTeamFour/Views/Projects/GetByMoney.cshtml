@@ -1,11 +1,13 @@
-﻿@model IEnumerable<ProjectTeamFour.ViewModels.ProjectViewModel>
+﻿
+@model ProjectListViewModel
+@*@model IEnumerable<ProjectTeamFour.ViewModels.ProjectViewModel>*@
 
 @{
     ViewBag.Title = "products page";
 }
 
 
-@section topCSS{    
+@section topCSS{
     <link href="~/Assets/Css/HomePage/homepage.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/products.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/rwd-products.css" rel="stylesheet" />
@@ -58,11 +60,11 @@
                             <label for="dropdownMenuButton" class="menu-btn">Project Status</label>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                All
+                                Ongoing
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/Projects/GetCategory">Ongoing</a>
-                                <a class="dropdown-item" href="/Projects/GetCategorySuccess">Successful</a>
+                                <a class="dropdown-item" href="#">Successful</a>
                                 <a class="dropdown-item" href="/Projects/Index">All</a>
                             </div>
                         </div>
@@ -78,7 +80,7 @@
                                 <a class="dropdown-item" href="#">Popularity</a>
                                 <a class="dropdown-item" href="#">Newest</a>
                                 <a class="dropdown-item" href="#">End Date</a>
-                                <a class="dropdown-item" href="/Projects/GetByMoney">Most Funded</a>
+                                <a class="dropdown-item" href="#">Most Funded</a>
                                 <a class="dropdown-item" href="#">Most Backed</a>
                             </div>
                         </div>
@@ -93,7 +95,7 @@
     <div class="container">
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
-                @foreach (var item in Model)
+                @foreach (var item in Model.ProjectItems)
                 {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
                 }
@@ -104,4 +106,6 @@
 <div class="col-sm-12">
     <button class="btn-more">Load More</button>
 </div>
+
+
 
