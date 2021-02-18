@@ -7,7 +7,7 @@ namespace ProjectTeamFour.ViewModels
 {
     public class HomePageViewModel
     {
-        public List<ProjectListViewModel> ProjectItem { get; set; }
+        public List<ProjectTotalViewModel> ProjectItem { get; set; }
         public List<CarCarPlanListViewModel> CarCarPlanItem { get; set; }
     }
 }

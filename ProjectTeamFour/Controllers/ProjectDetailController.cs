@@ -18,8 +18,6 @@ namespace ProjectTeamFour.Controllers
         {
 
         }
-
-
         //private ProjectContext db = new ProjectContext();
 
         // GET: ProductDetail
@@ -44,67 +42,7 @@ namespace ProjectTeamFour.Controllers
 
             };
 
-            //ViewData.Model = productDetails;
-            //return View(productDetails);
-            return View(project);
-        }
-        public ActionResult Summary(ProjectDetailViewModel projectDetail)
-        {
-            //
-            ProjectDetailViewModel vm = new ProjectDetailViewModel()
-            {
-                //ProjectName = projectDetail.ProjectName,
-                //MemberName = input.Name,
-                //MemberRegEmail = input.Email,
-                //MemberPassword = input.Password,
-                //MemberBirth = StringtoDate(input.BirthDay),
-                //Gender = input.gender
-            };
-
-            //
-            return View();
-        }
-
-        //public ActionResult Details(int? Id)
-        //{
-        //    Project project = db.Projects.Find(Id);
-        //    if (Id==null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    if(project==null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    else
-        //    {
-        //        return View(project);
-        //    }
-
-        //}
-
-        public ActionResult Details()
-        {
-            //List<Plan> plans = new List<Plan>()
-            //{
-            //    new Plan
-            //    {
-            //        ProjectId = 1,
-            //        PlanId = 1,
-            //        ProjectPlanId = 1,
-            //        PlanTitle = "【台制 單人標準 1 張】",
-            //        PlanDescription = "台制單人｜90 x 188 x 26 cm±1cm 原價 20,800 元(現省 9, 000元)► 免費搬運舊床墊至管理處或巷口► 全台灣寄送免運費(台灣本島)► 偏遠地區須加運費",
-            //        PlanFundedPeople = 1,
-            //        PlanShipDate = new DateTime(2021, 3, 29),
-            //        PlanImgUrl = "https://i.imgur.com/dmoLRa1.png",
-            //        PlanPrice = 11800m,
-            //        QuantityLimit = 0
-            //    }
-            //};
-            //return View(plans);
-            ProjectDetailViewModel plancards = new ProjectDetailViewModel()
-            {
-                PlanCardItem = new List<SelectPlanListViewModel>()
+            List<SelectPlanListViewModel> PlanCardItems = new List<SelectPlanListViewModel>()
                 {
                     new SelectPlanListViewModel()
                     {
@@ -131,9 +69,18 @@ namespace ProjectTeamFour.Controllers
                             new SelectPlanViewModel{ProjectId=6,PlanTitle=" ",PlanPrice=16400,PlanFundedPeople=3,PlanDescription="《解碼傳說 CO·DECODE》10組與10本完整大解析，揪團挑戰最佳方案！！", PlanShipDate=new DateTime(2021, 5, 1)}
                         }
                     },
-                }
-            };
-            return View(plancards);
+                };
+
+            return View(project);
         }
+        //public ActionResult Summary(ProjectDetailViewModel projectDetail)
+        //{
+        //    ProjectDetailViewModel vm = new ProjectDetailViewModel()
+        //    {
+               
+        //    };
+
+        //    return View();
+        //}
     }
 }

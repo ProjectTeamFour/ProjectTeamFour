@@ -251,7 +251,7 @@
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailListViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
-    <Compile Include="ViewModels\ProjectListViewModel.cs" />
+    <Compile Include="ViewModels\ProjectTotalViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="Api\MemberController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

@@ -194,9 +194,9 @@ namespace ProjectTeamFour.Controllers
 
             HomePageViewModel homepageview = new HomePageViewModel()
             {
-                ProjectItem = new List<ProjectListViewModel>()
+                ProjectItem = new List<ProjectTotalViewModel>()
                 {
-                     new ProjectListViewModel()
+                     new ProjectTotalViewModel()
                     {
                           ProjectItems = new List<ProjectViewModel>()
                           {

@@ -21,10 +21,10 @@ namespace ProjectTeamFour.Service
             _reposity = new BaseRepository(_context);
         }
 
-        public ProjectListViewModel GetByWhere(Expression<Func<Project, bool>> KeySelctor) //判斷是否符合條件判斷
+        public ProjectTotalViewModel GetByWhere(Expression<Func<Project, bool>> KeySelctor) //判斷是否符合條件判斷
         {
             var result = _reposity.GetAll<Project>().Where(KeySelctor); //篩選條件邏輯
-            var project = new ProjectListViewModel
+            var project = new ProjectTotalViewModel
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
@@ -47,7 +47,7 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel GetByProjectStatus(string projectStatus)
+        public ProjectTotalViewModel GetByProjectStatus(string projectStatus)
         {
             return GetByWhere(p => p.ProjectStatus == projectStatus);
         }
