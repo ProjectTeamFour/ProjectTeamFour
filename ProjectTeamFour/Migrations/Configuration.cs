@@ -85,7 +85,7 @@
                 PlanFundedPeople = 1,
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/dmoLRa1.png",
-                PlanePrice = 11800m,
+                PlanPrice = 11800m,
                 QuantityLimit = 0
 
             });
@@ -100,7 +100,7 @@
                 PlanFundedPeople = 3,
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/eZ84taV.png",
-                PlanePrice = 12800m,
+                PlanPrice = 12800m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -114,7 +114,7 @@
                 PlanFundedPeople = 20,
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/eZ84taV.png",
-                PlanePrice = 14800m,
+                PlanPrice = 14800m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -128,7 +128,7 @@
                 PlanFundedPeople = 15,
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/eZ84taV.png",
-                PlanePrice = 20800m,
+                PlanPrice = 20800m,
                 QuantityLimit = 0
             });
             //第二個提案
@@ -193,7 +193,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/eCm2xgg.jpg",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 500m,
+                PlanPrice = 500m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -207,7 +207,7 @@
                 PlanDescription = "此方案可以收到我們（一年或更久之後）在這片土地上所種植的生鮮農產品，或者是我們自行加工的農產品。但是！無法保證作物的美觀或作物的種類，也許，可以當作福袋的心情來訂購喔！（笑）【可以保證的是：友善環境與無毒栽培】",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/hSE6nFa.jpg",
-                PlanePrice = 800m,
+                PlanPrice = 800m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -221,7 +221,7 @@
                 PlanDescription = "一隻湯匙一雙筷子間單人生不過如此但是因為是早鳥再多一雙筷子也是剛好此方案包含湯匙x1支筷子x2雙島森家餐具袋x1只【約略尺寸】湯匙長約20cm寬5cm筷子長約23cm餐具袋長24cm寬7.5cm（收摺後）手工製作，難免誤差，感謝諒解",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/WRP6FKn.jpg",
-                PlanePrice = 980m,
+                PlanPrice = 980m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -235,7 +235,7 @@
                 PlanDescription = "一隻湯匙一雙筷子間單人生不過如此此方案包含湯匙x1支筷子x1雙島森家餐具袋x1只【約略尺寸】湯匙長約20cm寬5cm筷子長約23cm餐具袋長24cm寬7.5cm（收摺後）手工製作，難免誤差，感謝諒解",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/QHpTRMu.jpg",
-                PlanePrice = 980m,
+                PlanPrice = 980m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -249,7 +249,7 @@
                 PlanDescription = "此方案包含筷子一雙、湯匙一支、喝湯深湯匙一支、餐叉一支、甜點水果叉一支、奶油果醬抹刀一支、島森家餐具袋一只約略尺寸筷子 長23cm湯匙 長20cm 寬5cm深湯匙 長17cm 寬5.5cm餐叉 長20cm水果叉 長14cm抹刀 長19cm餐具袋長24cm寬12 - 15cm（收摺後）",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/wnqwp61.jpg",
-                PlanePrice = 1980m,
+                PlanPrice = 1980m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -263,7 +263,7 @@
                 PlanDescription = "啊！好美！此方案包含手刻點心盤x2手刻杯墊x2咖啡量豆勺x1點心水果叉x2奶油果醬抹刀x1約略尺寸點心盤直徑 14 - 15cm 厚2cm杯墊直徑 10cm 厚1 - 1.5cm咖啡量豆勺 10 - 16cm 豆量約15克點心叉 13 - 14cm抹刀 18 - 20cm",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/sLuiuPH.jpg",
-                PlanePrice = 2180m,
+                PlanPrice = 2180m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -277,7 +277,7 @@
                 PlanDescription = "此方案包含有手把大砧板一片、大炒菜匙一支、中炒菜匙一支、攪拌匙一支、飯匙一支、料理長筷一雙、大湯杓一支約略尺寸手把大砧板 30x55cm(含手把)炒菜匙 大35x8cm 中26x7cm攪拌匙 35x5cm飯匙 21x6cm長筷 37.5cm大湯勺 42x8cm",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/aLPQXYg.jpg",
-                PlanePrice = 3880m,
+                PlanPrice = 3880m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -291,7 +291,7 @@
                 PlanDescription = "此方案包含全木製5vLED小夜燈組x1(內建LED燈、電子線路、高級電子零件)木質感應開關x1約略尺寸整體長寬高23x23x38cm底座直徑23 - 24cm 厚度約4cm小夜燈開啟方式https://www.youtube.com/watch?v=HoEgP1jn16U",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/YnlACWO.jpg",
-                PlanePrice = 2680m,
+                PlanPrice = 2680m,
                 QuantityLimit = 20
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -305,7 +305,7 @@
                 PlanDescription = "此方案包含全木製5vLED小夜燈組x1(內建LED燈、電子線路、高級電子零件)木質感應開關x1約略尺寸整體長寬高23x23x38cm底座直徑23 - 24cm 厚度約4cm小夜燈開啟方式https://www.youtube.com/watch?v=HoEgP1jn16U",
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/RYrTiN5.jpg",
-                PlanePrice = 3980m,
+                PlanPrice = 3980m,
                 QuantityLimit = 20
             });
             //第三個提案
@@ -366,7 +366,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/S0pVvGNm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 100m,
+                PlanPrice = 100m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -381,7 +381,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/q1U8EY1m.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 589m,
+                PlanPrice = 589m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -396,7 +396,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/u8c75kZm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1299m,
+                PlanPrice = 1299m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -411,7 +411,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/SfYXHfSm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1699m,
+                PlanPrice = 1699m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -426,7 +426,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/TzZpxZrm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 2299m,
+                PlanPrice = 2299m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -441,7 +441,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/39hfwKam.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 3405m,
+                PlanPrice = 3405m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -456,7 +456,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/zth2ZNqm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 3999m,
+                PlanPrice = 3999m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -471,7 +471,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/pG6K3Kvm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 7999m,
+                PlanPrice = 7999m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -486,7 +486,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/opTuc7om.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 6000m,
+                PlanPrice = 6000m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -501,7 +501,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/jpnfrqtm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 99000m,
+                PlanPrice = 99000m,
                 QuantityLimit = 0
             });
             //第4個提案
@@ -565,7 +565,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/l1PaFfwm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1590m,
+                PlanPrice = 1590m,
                 QuantityLimit = 1000
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -580,7 +580,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/SxgTSLTm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1490m,
+                PlanPrice = 1490m,
                 QuantityLimit = 500
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -595,7 +595,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/Mpjrv8sm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1890m,
+                PlanPrice = 1890m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -610,7 +610,7 @@
                 PlanShipDate = new DateTime(2021, 4, 21),
                 PlanImgUrl = "https://i.imgur.com/7j2cn5tm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1990m,
+                PlanPrice = 1990m,
                 QuantityLimit = 0
             });
             //第5個提案
@@ -675,7 +675,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/Pm8tb4dm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 3280m,
+                PlanPrice = 3280m,
                 QuantityLimit = 500
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -690,7 +690,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/EPz86uYm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 3480m,
+                PlanPrice = 3480m,
                 QuantityLimit = 500
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -705,7 +705,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/OOElEYrm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 6880m,
+                PlanPrice = 6880m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -720,7 +720,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/qp8nlSQm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 16400m,
+                PlanPrice = 16400m,
                 QuantityLimit = 0
             });
             //第6個提案
@@ -784,7 +784,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/Z6uzD7Xm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 949m,
+                PlanPrice = 949m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -799,7 +799,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/VSBASBjm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1090m,
+                PlanPrice = 1090m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -814,7 +814,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/o3AAjwYm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 399m,
+                PlanPrice = 399m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -829,7 +829,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/zmYG4eem.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 4450m,
+                PlanPrice = 4450m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -844,7 +844,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/Fi1P2lMm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 7490m,
+                PlanPrice = 7490m,
                 QuantityLimit = 0
             });
             //第7個提案
@@ -908,7 +908,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 300m,
+                PlanPrice = 300m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -923,7 +923,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/DbcfFvqm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 500m,
+                PlanPrice = 500m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -938,7 +938,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/Q45lve9m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 800m,
+                PlanPrice = 800m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -953,7 +953,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/7h1NFxzm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1600m,
+                PlanPrice = 1600m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -968,7 +968,7 @@
                 PlanShipDate = new DateTime(2021, 5, 21),
                 PlanImgUrl = "https://i.imgur.com/g8vpmrVm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 2300m,
+                PlanPrice = 2300m,
                 QuantityLimit = 0
             });
             //第8個提案
@@ -1032,7 +1032,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/vxeNl2mm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 180m,
+                PlanPrice = 180m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1047,7 +1047,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/4w5f9s1m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 531m,
+                PlanPrice = 531m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1062,7 +1062,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/o5ubgxym.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 888m,
+                PlanPrice = 888m,
                 QuantityLimit = 0
             });
             //第9個提案
@@ -1126,7 +1126,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/60FYPzRm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 2480m,
+                PlanPrice = 2480m,
                 QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1141,7 +1141,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/Wlk4E9Vm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 2780m,
+                PlanPrice = 2780m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1156,7 +1156,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/PhkMIV7m.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 7740m,
+                PlanPrice = 7740m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1171,7 +1171,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/9gFiS6xm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 12400m,
+                PlanPrice = 12400m,
                 QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1186,7 +1186,7 @@
                 PlanShipDate = new DateTime(2021, 5, 10),
                 PlanImgUrl = "https://i.imgur.com/MWxcnJem.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 23800m,
+                PlanPrice = 23800m,
                 QuantityLimit = 200
             });
             //第10個提案
@@ -1250,7 +1250,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/tKxVktQm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 450m,
+                PlanPrice = 450m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1265,7 +1265,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/KOt8HMWm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 500m,
+                PlanPrice = 500m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1280,7 +1280,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/Yrk24clm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 750m,
+                PlanPrice = 750m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1295,7 +1295,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/22I4cjym.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 1500m,
+                PlanPrice = 1500m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1310,7 +1310,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/GQ7nxDFm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 3000m,
+                PlanPrice = 3000m,
                 QuantityLimit = 15
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1325,7 +1325,7 @@
                 PlanShipDate = new DateTime(2021, 5, 1),
                 PlanImgUrl = "https://i.imgur.com/BN2Vb7Xm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 4200m,
+                PlanPrice = 4200m,
                 QuantityLimit = 0
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1340,7 +1340,7 @@
                 PlanShipDate = new DateTime(2021, 8, 1),
                 PlanImgUrl = "https://i.imgur.com/RWWy6sQm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 5000m,
+                PlanPrice = 5000m,
                 QuantityLimit = 30
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -1355,7 +1355,7 @@
                 PlanShipDate = new DateTime(2021, 8, 1),
                 PlanImgUrl = "https://i.imgur.com/W8DaURRm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanePrice = 30000m,
+                PlanPrice = 30000m,
                 QuantityLimit = 10
             });
         }
