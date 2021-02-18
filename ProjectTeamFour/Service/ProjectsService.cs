@@ -51,5 +51,14 @@ namespace ProjectTeamFour.Service
         {
             return GetByWhere(p => p.ProjectStatus == projectStatus);
         }
+
+        //public ProjectListViewModel GetByPrice() //按照價錢排序
+        //{
+        //    var result = new ProjectListViewModel();
+        //    result.ProjectItems = new List<ProjectViewModel>();
+        //    ProjectContext context = new ProjectContext();
+        //    BaseRepository<ProjectViewModel> repository = new BaseRepository<ProjectViewModel>(context);
+        //    foreach(var item in repository.GetAll<ProjectViewModel>().OrderBy((x) => x.)
+        //}
     }
 }

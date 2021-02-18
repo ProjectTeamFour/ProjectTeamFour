@@ -43,7 +43,22 @@ namespace ProjectTeamFour.Controllers
 
         //public ActionResult GetByPopular()
         //{
+        //    var popular = _projectsService.GetByWhere((x) => x.)
+        //}
 
+
+        //public ActionResult GetByMoney(decimal fundingAmount) //排序金錢
+        //{
+        //    decimal maxPrice = 0m;
+        //    var money = _projectsService.GetByWhere((X) => X.FundingAmount == fundingAmount);//還缺orderby
+        //    foreach (var item in money.ProjectItems)
+        //    {
+        //        if (item.FundingAmount > maxPrice)
+        //        {
+        //            maxPrice = item.FundingAmount;
+        //        }
+        //    }
+        //    return View(money);
         //}
 
         // GET: Products
