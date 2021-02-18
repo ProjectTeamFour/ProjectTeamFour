@@ -58,7 +58,7 @@ namespace ProjectTeamFour.Service
         //    result.ProjectItems = new List<ProjectViewModel>();
         //    ProjectContext context = new ProjectContext();
         //    BaseRepository<ProjectViewModel> repository = new BaseRepository<ProjectViewModel>(context);
-        //    foreach(var item in repository.GetAll<ProjectViewModel>().OrderBy((x) => x.)
+        //    foreach (var item in repository.GetAll<ProjectViewModel>().OrderBy((x) => x.)
         //}
     }
 }
