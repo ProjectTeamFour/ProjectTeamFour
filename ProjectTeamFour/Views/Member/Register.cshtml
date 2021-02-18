@@ -29,7 +29,7 @@
                     </div>
                     <div class="gender-item d-flex justify-content-between">
                         <div>
-                            <input type="radio" value="男性" id="male" name="gender" required oninvalid="checkValid(this);">
+                            <input type="radio" value="男性" id="male" name="gender" required oninvalid="checkValid(this);" onclick="this.setCustomValidity('')">
                             <label for="male">男性</label>
                         </div>
                         <div>
@@ -78,18 +78,9 @@
 @section endJS{
     <script>
 
-        //提交時跳比對訊息 (密碼與確認密碼)
-        function onChange() {
-            const password = document.querySelector("#pwrg-first");
-            const confirm = document.querySelector("#pwrg-second");
-            if (confirm.value === password.value) {
-                confirm.setCustomValidity("");
-            } else {
-                confirm.setCustomValidity("與輸入密碼不相符");
-            }
-        }
 
-        //輸入時 即時比對改變框色 (密碼與確認密碼)
+
+        //輸入時 即時比對改變框色 - (密碼與確認密碼)
         $("#pwrg-second").on("keyup", function () {
             if ($(this).val() == $("#pwrg-first").val()) {
                 $("#pwrg-second").css("border-color", "#a7a7a7");
@@ -101,6 +92,30 @@
 
 
 
+        //提交時跳比對訊息 - (密碼與確認密碼)
+        function onChange() {
+            const password = document.querySelector("#pwrg-first");
+            const confirm = document.querySelector("#pwrg-second");
+            if (confirm.value === password.value) {
+                confirm.setCustomValidity("");
+            } else {
+                confirm.setCustomValidity("與輸入密碼不相符");
+            }
+        }
+
+
+         //讓group中(同樣name的)所有input type="radio"的真正valid狀態不要被隱藏 - (性別選項)
+        function checkValid(target) {
+            var groupTargets = document.getElementsByName(target.name);
+            if (groupTargets.length > 0) {
+                for (var i = 0; i < groupTargets.length; i++) {
+                    groupTargets[i].setCustomValidity("");
+                    if (!groupTargets[i].validity.valid) {
+                        groupTargets[i].setCustomValidity("請選擇性別");
+                    }
+                }
+            }
+        }
 
     </script>
 }
