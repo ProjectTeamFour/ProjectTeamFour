@@ -41,7 +41,10 @@ namespace ProjectTeamFour.Controllers
             return View(success);
         }
 
+        //public ActionResult GetByPopular()
+        //{
 
+        //}
 
         // GET: Products
         public ActionResult Index()
