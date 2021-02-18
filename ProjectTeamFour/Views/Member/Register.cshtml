@@ -14,14 +14,14 @@
                     <p>註冊</p>
                 </div>
                 <div class="register-item d-flex flex-column name-password">
-                    <input type="text" placeholder="名稱" name="Name">
-                    <input type="text" placeholder="註冊信箱" name="Email">
-                    <input type="password" placeholder="密碼" name="Password">
-                    <input type="password" placeholder="確認登入密碼" name="PasswordConfirm">
+                    <input type="text" placeholder="名稱" name="Name" required>
+                    <input type="email" placeholder="註冊信箱" name="Email" required>
+                    <input type="password" id="pwrg-first" placeholder="密碼" name="Password" pattern="^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$" minlength="6" maxlength="14" title="請輸入介於6-14位的英文與數字" onChange="onChange()">
+                    <input type="password" id="pwrg-second" placeholder="確認登入密碼" name="PasswordConfirm" required onChange="onChange()" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="register-item birthdate mb-3">
                     <p class="mb-2">生日</p>
-                    <input type="date" class="w-100" name="Birthday">
+                    <input type="date" class="w-100" name="Birthday" required>
                 </div>
                 <div class="register-item gender mb-3">
                     <div class="gender-item">
@@ -29,16 +29,15 @@
                     </div>
                     <div class="gender-item d-flex justify-content-between">
                         <div>
-                            <input type="radio" value="男性" id="male" name="gender">
+                            <input type="radio" value="男性" id="male" name="gender" required oninvalid="checkValid(this);">
                             <label for="male">男性</label>
-                            <!-- <input type="radio" value="1" id="male" name="gender"> -->
                         </div>
                         <div>
-                            <input type="radio" value="女性" id="female" name="gender">
+                            <input type="radio" value="女性" id="female" name="gender" oninvalid="checkValid(this);">
                             <label for="female">女性</label>
                         </div>
                         <div>
-                            <input type="radio" value="其他" id="others" name="gender">
+                            <input type="radio" value="其他" id="others" name="gender" oninvalid="checkValid(this);">
                             <label for="others">其他</label>
                         </div>
                     </div>
@@ -74,3 +73,34 @@
         </div>
     </div>
 </section>
+
+
+@section endJS{
+    <script>
+
+        //提交時跳比對訊息 (密碼與確認密碼)
+        function onChange() {
+            const password = document.querySelector("#pwrg-first");
+            const confirm = document.querySelector("#pwrg-second");
+            if (confirm.value === password.value) {
+                confirm.setCustomValidity("");
+            } else {
+                confirm.setCustomValidity("與輸入密碼不相符");
+            }
+        }
+
+        //輸入時 即時比對改變框色 (密碼與確認密碼)
+        $("#pwrg-second").on("keyup", function () {
+            if ($(this).val() == $("#pwrg-first").val()) {
+                $("#pwrg-second").css("border-color", "#a7a7a7");
+            }
+            else {
+                $("#pwrg-second").css("border-color", "red");
+            }
+        });
+
+
+
+
+    </script>
+}
