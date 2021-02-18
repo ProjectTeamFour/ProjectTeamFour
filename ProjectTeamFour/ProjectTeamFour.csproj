@@ -219,6 +219,14 @@
     <Compile Include="Migrations\202102170432173_修改LogTable.Designer.cs">
       <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102170934392_新增projectname.cs" />
+    <Compile Include="Migrations\202102170934392_新增projectname.Designer.cs">
+      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102171018175_在Plan新增ProjectName資料.cs" />
+    <Compile Include="Migrations\202102171018175_在Plan新增ProjectName資料.Designer.cs">
+      <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -227,6 +235,7 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
@@ -2106,6 +2115,8 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
+    <Content Include="Views\Projects\GetCategoryFail.cshtml" />
+    <Content Include="Views\Projects\GetCategorySuccess.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -2190,6 +2201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102170432173_修改LogTable.resx">
       <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102170934392_新增projectname.resx">
+      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102171018175_在Plan新增ProjectName資料.resx">
+      <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
