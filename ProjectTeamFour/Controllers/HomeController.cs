@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using ProjectTeamFour.Service;
 using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ProjectsService _projectsService;
+        public HomeController()
+        {
+            _projectsService = new ProjectsService();
+        }
         public ActionResult Index()
 
         {
@@ -277,6 +285,8 @@ namespace ProjectTeamFour.Controllers
                     },
                 },
             };
+
+            
 
 
             //ViewData["carcarplan"] = carcarplan;

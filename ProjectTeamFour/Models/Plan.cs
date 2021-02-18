@@ -8,9 +8,11 @@ namespace ProjectTeamFour.Models
 {
     public class Plan
     {
+        
         public int PlanId { get; set; }
         public int ProjectPlanId { get; set; }
         
+        public string ProjectName { get; set; }
         public int ProjectId { get; set; }
         public string PlanTitle { get; set; }
         public int PlanFundedPeople { get; set; }
