@@ -49,8 +49,8 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult GetByMoney() //排序金錢
         {
-            var money = _projectsService.GetByMoney();
-            return View(money);
+            //var money = _projectsService.GetByMoney();
+            return View();
         }
 
         // GET: Products

@@ -3,6 +3,7 @@
     <link href="~/Assets/Css/MemberRegisterPage/memberregister.css" rel="stylesheet" />
 }
 
+
 <section class="register-page">
     <div class="container d-flex flex-column">
         <div class="register-page-item text-center">
@@ -29,15 +30,15 @@
                     </div>
                     <div class="gender-item d-flex justify-content-between">
                         <div>
-                            <input type="radio" value="男性" id="male" name="gender" required oninvalid="checkValid(this);" onclick="this.setCustomValidity('')">
+                            <input type="radio" value="男性" id="male" name="gender" required oninvalid="checkValid(this);" onclick="checkValid(this);">
                             <label for="male">男性</label>
                         </div>
                         <div>
-                            <input type="radio" value="女性" id="female" name="gender" oninvalid="checkValid(this);">
+                            <input type="radio" value="女性" id="female" name="gender" oninvalid="checkValid(this);" onclick="checkValid(this);">
                             <label for="female">女性</label>
                         </div>
                         <div>
-                            <input type="radio" value="其他" id="others" name="gender" oninvalid="checkValid(this);">
+                            <input type="radio" value="其他" id="others" name="gender" oninvalid="checkValid(this);" onclick="checkValid(this);">
                             <label for="others">其他</label>
                         </div>
                     </div>
@@ -104,7 +105,7 @@
         }
 
 
-         //讓group中(同樣name的)所有input type="radio"的真正valid狀態不要被隱藏 - (性別選項)
+        //讓group中(同樣name的)所有input type="radio"的真正valid狀態不要被隱藏 - (性別選項)
         function checkValid(target) {
             var groupTargets = document.getElementsByName(target.name);
             if (groupTargets.length > 0) {
