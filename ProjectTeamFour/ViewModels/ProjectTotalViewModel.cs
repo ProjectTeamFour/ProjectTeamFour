@@ -8,6 +8,6 @@ namespace ProjectTeamFour.ViewModels
     public class ProjectTotalViewModel
     {
         public ProjectViewModel ProjectItem { get; set; }
-        public SelectPlanListViewModel SelectPlanCards { get; set; }
+        public ProjectPageViewModel SelectPlanCards { get; set; }
     }
 }
