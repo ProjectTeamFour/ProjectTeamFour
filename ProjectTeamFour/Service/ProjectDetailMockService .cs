@@ -35,7 +35,7 @@ namespace ProjectTeamFour.Service
                 ProjectVideoUrl = "ProjectVideoUrl",
                 AmountThreshold = 2000,
                 Project_Question = "Project_Question",
-                Project_Answer = "Project_Answer"​,
+                Project_Answer = "Project_Answer",
                 EndDate = new DateTime(2021, 3, 11),
                 StartDate = new DateTime(2021, 2, 1)
             };
