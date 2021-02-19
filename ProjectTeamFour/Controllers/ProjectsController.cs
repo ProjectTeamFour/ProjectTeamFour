@@ -41,7 +41,17 @@ namespace ProjectTeamFour.Controllers
             return View(success);
         }
 
+        //public ActionResult GetByPopular()
+        //{
+        //    var popular = _projectsService.GetByWhere((x) => x.)
+        //}
 
+
+        public ActionResult GetByMoney() //排序金錢
+        {
+            //var money = _projectsService.GetByMoney();
+            return View();
+        }
 
         // GET: Products
         public ActionResult Index()

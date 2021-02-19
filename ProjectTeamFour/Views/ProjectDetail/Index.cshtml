@@ -1,4 +1,4 @@
-﻿@model ProjectTeamFour.ViewModels.ProjectDetailViewModel
+﻿@model ProjectDetailViewModel
 
 
 @{
@@ -238,6 +238,11 @@
                         <!-- 選擇方案 -->
                         <section id="select-perk">
                             <div class="min-display-slide">
+                                @*@foreach (var item in Model)
+                                {
+
+                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                }*@
                                 <!-- <h4>選擇方案</h4> -->
                                 <div class="row">
                                     <div class="col-sm-3 col-md-12">

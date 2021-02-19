@@ -56,5 +56,36 @@ namespace ProjectTeamFour.Service
         //{
         //    var result = _reposity.GetAll<Project>().OrderBy(x => x.FundingAmount);
         //}
+
+        //public ProjectListViewModel GetByMoney()
+        //{
+            //var result = new ProjectListViewModel();
+            //result.ProjectItems = new List<ProjectViewModel>();
+            //ProjectContext context = new ProjectContext();
+            //BaseRepository repo = new BaseRepository(context);
+            
+            //var result = new ProjectListViewModel();
+            //result.ProjectItems = new List<ProjectViewModel>();
+            //ProjectContext context = new ProjectContext();
+            //BaseRepository repo = new BaseRepository(context);
+            //foreach (var item in repo.GetAll<ProjectViewModel>().OrderBy((x) => x.FundingAmount))
+            //{
+            //    var p = new ProjectViewModel()
+            //    {
+            //        FundingAmount = item.FundingAmount
+            //    };
+            //    result.ProjectItems.Add(p);
+            //}
+            //return result;
+        //}
+        
+        //public ProjectListViewModel GetByPrice() //按照價錢排序
+        //{
+        //    var result = new ProjectListViewModel();
+        //    result.ProjectItems = new List<ProjectViewModel>();
+        //    ProjectContext context = new ProjectContext();
+        //    BaseRepository<ProjectViewModel> repository = new BaseRepository<ProjectViewModel>(context);
+        //    foreach (var item in repository.GetAll<ProjectViewModel>().OrderBy((x) => x.)
+        //}
     }
 }

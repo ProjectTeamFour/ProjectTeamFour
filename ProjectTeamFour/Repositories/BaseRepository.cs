@@ -9,7 +9,7 @@ namespace ProjectTeamFour.Repositories
     //將泛型改成泛型方法
     public class BaseRepository
     {
-        public DbContext _context;
+        public DbContext _context; //欄位要用private嗎? //那邊是用DbContext 還是 projectContext
         public BaseRepository(DbContext context)
         {
             if (context == null)

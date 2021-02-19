@@ -4,8 +4,11 @@
     max-width: 350px;
 }
 
+
+
 .register-page .gender input {
-    display: none;
+    opacity: 0;
+    position: absolute;
 }
 
 .register-page .gender p {
