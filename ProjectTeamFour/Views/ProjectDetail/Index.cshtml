@@ -238,126 +238,13 @@
                         <!-- 選擇方案 -->
                         <section id="select-perk">
                             <div class="min-display-slide">
-                                @*@foreach (var item in Model)
-                                {
-
-                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                }*@
-                                <!-- <h4>選擇方案</h4> -->
                                 <div class="row">
-                                    <div class="col-sm-3 col-md-12">
-                                        <div class="card-deck">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h3 id="amount" class="">$1,580</h3>
-                                                    <div class="img-wrap">
-                                                        <img class="card-img-top"
-                                                             src="https://static.flyingv.asia/static/333x/projects/27775/reward/600273a52912d.png"
-                                                             alt="Card image cap">
-                                                    </div>
-                                                    <h4 class="card-title">
-                                                        【基礎方案，現省380元】
-                                                        完整收錄4大冒險故事＋250張獨特卡牌＋專屬遊戲APP，帶給你一趟精彩絕倫的程式解謎故事！
-                                                    </h4>
-                                                    <p class="card-text">
-                                                        <div id="perk-info-down" class="wrapper">
-                                                            <div class="row">
-                                                                <div class="col-12 col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">贊助人數</h6>
-                                                                    <h4 class="text-large">5人</h4>
-                                                                </div>
-                                                                <div class="col-12 col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
-                                                                    <h4 class="text-large">2021/05</h4>
-                                                                </div>
+                                    @foreach (var item in Model)
+                                     {
 
-                                                                <div class="col-12 col-sm-12">
-                                                                    <h6 class="text-secondary text-normal text-small">寄送地點</h6>
-                                                                    <h4 class="text-large">寄送至特定地區</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </p>
-                                                    <a href="/ShoppingCart/Index"><button id="donate-btn">贊助此回饋方案</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3 col-md-12">
-                                        <div class="card-deck ">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h3 id="amount" class="">$1,820</h3>
-                                                    <div class="img-wrap">
-                                                        <img class="card-img-top"
-                                                             src="https://static.flyingv.asia/static/333x/projects/27775/reward/60027361e995a.png"
-                                                             alt="Card image cap">
-                                                    </div>
-                                                    <h4 class="card-title">
-                                                        【2+1完整方案，現省490元】
-                                                        完整收錄4大冒險故事＋250張獨特卡牌＋專屬遊戲APP＋額外收錄解碼手冊：
-
-                                                        內含額外的擴充APP挑戰，將解密40個程式關卡以及彩蛋，跟著老爹一起完整探索九大程式航道！
-                                                    </h4>
-                                                    <p class="card-text">
-                                                        <div id="perk-info-down" class="wrapper">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">贊助人數</h6>
-                                                                    <h4 class="text-large">5人</h4>
-                                                                </div>
-                                                                <div class="col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
-                                                                    <h4 class="text-large">2021/05</h4>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h6 class="text-secondary text-normal text-small">寄送地點</h6>
-                                                                    <h4 class="text-large">寄送至特定地區</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </p>
-                                                    <a href="/ShoppingCart/Index"><button id="donate-btn">贊助此回饋方案</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" col-sm-3 col-md-12">
-                                        <div class="card-deck">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h3 id="amount" class="">$3,280</h3>
-                                                    <div class="img-wrap">
-                                                        <img class="card-img-top"
-                                                             src="https://static.flyingv.asia/static/333x/projects/27775/reward/5ff3d37997878.jpg"
-                                                             alt="Card image cap">
-                                                    </div>
-                                                    <h4 class="card-title">
-                                                        額外收錄《Coding Ocean：海霸》以及四本藏寶圖擴充，把冦丁海洋全部一起帶回家！！！
-                                                    </h4>
-                                                    <p class="card-text">
-                                                        <div id="perk-info-down" class="wrapper">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">贊助人數</h6>
-                                                                    <h4 class="text-large">5人</h4>
-                                                                </div>
-                                                                <div class="col-sm-12 col-md-6">
-                                                                    <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
-                                                                    <h4 class="text-large">2021/05</h4>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <h6 class="text-secondary text-normal text-small">寄送地點</h6>
-                                                                    <h4 class="text-large">寄送至特定地區</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </p>
-                                                    <a href="/ShoppingCart/Index"><button id="donate-btn">贊助此回饋方案</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                     }
+                                    <!-- <h4>選擇方案</h4> -->
                                 </div>
                             </div>
                         </section>

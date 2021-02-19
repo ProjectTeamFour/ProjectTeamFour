@@ -62,9 +62,7 @@ namespace ProjectTeamFour.Controllers
             foreach(var item in GetAll.ProjectItems)
             {
                 products.Add(item);
-            }
-               
-            
+            }                          
             return View(products);
         }
      

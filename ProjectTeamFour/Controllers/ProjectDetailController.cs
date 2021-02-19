@@ -12,14 +12,13 @@ namespace ProjectTeamFour.Controllers
 {
     public class ProjectDetailController : Controller
     {
-        private ProjectDetailService projectDetailService;
+        private IProjectDetailService projectDetailService;
 
         public ProjectDetailController()
         {
-
+            projectDetailService = new ProjectDetailEntityService();
+            //projectDetailService = new ProjectDetailMockService();
         }
-
-
         //private ProjectContext db = new ProjectContext();
 
         // GET: ProductDetail
@@ -44,26 +43,36 @@ namespace ProjectTeamFour.Controllers
 
             };
 
-            //ViewData.Model = productDetails;
-            //return View(productDetails);
             return View(project);
         }
-        public ActionResult Summary(ProjectDetailViewModel projectDetail)
-        {
+        //public ActionResult Summary(ProjectDetailViewModel projectDetail)
+        //{
+        //    ProjectDetailViewModel vm = new ProjectDetailViewModel()
+        //    {
+               
+        //    };
+
+        //    return View();
+            //ViewData.Model = productDetails;
+            //return View(productDetails);
+          //  return View(project);
+        //}
+       // public ActionResult Summary(ProjectDetailViewModel projectDetail)
+       // {
             //
-            ProjectDetailViewModel vm = new ProjectDetailViewModel()
-            {
+          //  ProjectDetailViewModel vm = new ProjectDetailViewModel()
+           // {
                 //ProjectName = projectDetail.ProjectName,
                 //MemberName = input.Name,
                 //MemberRegEmail = input.Email,
                 //MemberPassword = input.Password,
                 //MemberBirth = StringtoDate(input.BirthDay),
                 //Gender = input.gender
-            };
+            //};
 
             //
-            return View();
-        }
+            // return View();
+        //}
 
         //public ActionResult Details(int? Id)
         //{
