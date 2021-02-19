@@ -2120,6 +2120,9 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Projects\OrderByFundingAmount.cshtml" />
+    <Content Include="Views\Projects\GetType.cshtml" />
+    <Content Include="Views\Projects\OrderByPeople.cshtml" />
+    <Content Include="Views\Projects\OrderByNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
