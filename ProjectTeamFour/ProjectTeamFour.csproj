@@ -2114,13 +2114,12 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
-    <Content Include="Views\Projects\GetCategorySuccess.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Projects\GetByMoney.cshtml" />
+    <Content Include="Views\Projects\OrderByFundingAmount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,13 +27,6 @@ namespace ProjectTeamFour.Controllers
             return View(fliter);
         }
 
-        public ActionResult GetByFundingAmount(string id)
-        {
-            var fliter = _projectsService.GetByWhere(p => p.FundingAmount.ToString() == id);
-            return View(fliter);
-        }       
-     
-
         public ActionResult OrderByFundingAmount() //排序金錢
         {
 
@@ -50,9 +43,7 @@ namespace ProjectTeamFour.Controllers
             foreach(var item in GetAll.ProjectItems)
             {
                 products.Add(item);
-            }
-               
-            
+            }                           
             return View(products);
         }
         
