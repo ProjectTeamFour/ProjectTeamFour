@@ -235,13 +235,16 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
+    <Compile Include="Service\HomeService.cs" />
+    <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\ProjectDetailEntityService.cs" />
+    <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
-    <Compile Include="ViewModels\HomePageViewModel.cs" />
-    <Compile Include="Service\ProjectDetailService.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
@@ -251,6 +254,7 @@
     <Compile Include="ViewModels\ProjectDetailListViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
+    <Compile Include="ViewModels\ProjectTotalViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="Api\MemberController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

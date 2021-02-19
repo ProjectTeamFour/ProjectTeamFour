@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectTeamFour.ViewModels.ProjectViewModel>
+﻿@model ProjectTeamFour.ViewModels.HomeViewModel
 
 
 @section topCSS{
@@ -147,7 +147,7 @@
             <div class="row">
 
 
-                @foreach (var item in Model)
+                @foreach (var item in Model.ProjectItem.ProjectItems)
                 {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
                 }
@@ -188,84 +188,11 @@
 
         <div class="indemand-project-item cardtemplate-section">
             <div class="indemand-project-wrap">
-                <div class="cardtemplate-section-item cardtemplate">
-                    <a href="/ProjectDetail/Index">
-                        <div class="cardtemplate-item project-picture">
-                            <img class="w-100" src="https://picsum.photos/800/600/?random=10">
-                        </div>
-                        <div class="cardtemplate-item tag">
-                            <div class="tag-item categories">
-                                <p>遊戲出版</p>
-                            </div>
 
-                        </div>
-                        <div class="cardtemplate-item project-name">
-                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
-                        </div>
-                        <div class="cardtemplate-item project-plan-title">
-                            <p>【台制 單人標準 1 張】</p>
-                        </div>
-                        <div class="cardtemplate-item project-team">
-                            <p>Papacode-程式老爹</p>
-                        </div>
-                        <div class="cardtemplate-item project-progressbar">
-                            <div class="project-progressbar-item"></div>
-                        </div>
-                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
-                            <div class="project-progressnumber-item amount d-flex">
-                                <div class="amount-item money">
-                                    <p>
-                                        $900
-                                    </p>
-                                </div>
-
-                            </div>
-                            <div class="project-progressnumber-item countdown">
-                                <div class="countdown-item dayorhour">
-                                    <p>上車嗎？</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="cardtemplate-section-item cardtemplate">
-                    <a href="/ProjectDetail/Index">
-                        <div class="cardtemplate-item project-picture">
-                            <img class="w-100" src="https://picsum.photos/800/600/?random=11">
-                        </div>
-                        <div class="cardtemplate-item tag">
-                            <div class="tag-item categories">
-                                <p>遊戲出版</p>
-                            </div>
-
-                        </div>
-                        <div class="cardtemplate-item project-name">
-                            <h3>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h3>
-                        </div>
-                        <div class="cardtemplate-item project-team">
-                            <p>Papacode-程式老爹</p>
-                        </div>
-                        <div class="cardtemplate-item project-progressbar">
-                            <div class="project-progressbar-item"></div>
-                        </div>
-                        <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
-                            <div class="project-progressnumber-item amount d-flex">
-                                <div class="amount-item money">
-                                    <p>
-                                        $1,200
-                                    </p>
-                                </div>
-
-                            </div>
-                            <div class="project-progressnumber-item countdown">
-                                <div class="countdown-item dayorhour">
-                                    <p>限時上車</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @foreach (var item in Model.CarCarPlanItem.CarCarPlanItems)
+                {
+                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", item);
+                }
 
 
             </div>

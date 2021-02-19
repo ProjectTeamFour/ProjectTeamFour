@@ -369,9 +369,6 @@ body {
     outline: none;
 }
 
-    .indemand-project .cardtemplate:hover {
-        cursor: pointer;
-    }
 
 .indemand-project .cardtemplate-item p {
     margin-bottom: 0;
@@ -420,12 +417,12 @@ body {
     height: 0.2rem;
 }
 
-.indemand-project .project-progressnumber {
+.indemand-project .project-amount {
     padding-top: 1rem;
     letter-spacing: 0.1rem;
 }
 
-    .indemand-project .project-progressnumber p {
+    .indemand-project .project-amount p {
         font-size: 0.55rem;
         font-weight: 700;
         background-color: rgb(247, 228, 219);
@@ -465,7 +462,66 @@ body {
         font-size: 0.9rem;
     }
 
-    .indemand-project .project-progressnumber p {
+    .indemand-project .project-amount p {
         font-size: 0.75rem;
     }
+}
+
+
+/* 加上 projectname 和 button */
+
+
+
+.indemand-project .cardtemplate .project-amount .add-to-cart button {
+    border: none;
+    background-color: rgb(228, 158, 125);
+    font-size: 0.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 1rem;
+    padding: 0 5px 0 7px;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+    .indemand-project .cardtemplate .project-amount .add-to-cart button:hover {
+        background-color: #f9414a;
+    }
+
+.indemand-project .cardtemplate .project-amount p {
+    padding: 0 3px;
+    border-radius: 5px;
+}
+
+
+.indemand-project .cardtemplate .project-amount .add-to-cart p {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+.indemand-project .cardtemplate .plan-title {
+    height: 4.5rem;
+}
+
+
+    .indemand-project .cardtemplate .plan-title h3 {
+        font-size: 0.75rem;
+        color: rgb(49, 48, 48);
+        font-weight: 600;
+    }
+
+.indemand-project .cardtemplate .project-name h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.indemand-project .cardtemplate a {
+    outline: none;
+}
+
+.indemand-project .cardtemplate .project-picture {
+    height: 200px;
 }

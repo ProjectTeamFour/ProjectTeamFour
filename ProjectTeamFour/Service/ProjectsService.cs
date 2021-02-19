@@ -21,9 +21,9 @@ namespace ProjectTeamFour.Service
             _reposity = new BaseRepository(_context);
         }
 
-        public ProjectListViewModel GetByWhere(Expression<Func<Project, bool>> KeySelector) //判斷是否符合條件判斷
+        public ProjectListViewModel GetByWhere(Expression<Func<Project, bool>> KeySelctor) //判斷是否符合條件判斷
         {
-            var result = _reposity.GetAll<Project>().Where(KeySelector); //篩選條件邏輯
+            var result = _reposity.GetAll<Project>().Where(KeySelctor); //篩選條件邏輯
             var project = new ProjectListViewModel
             {
                 ProjectItems = new List<ProjectViewModel>()
