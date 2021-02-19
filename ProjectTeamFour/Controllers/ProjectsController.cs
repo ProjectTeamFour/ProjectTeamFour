@@ -47,10 +47,11 @@ namespace ProjectTeamFour.Controllers
         //}
 
 
-        public ActionResult GetByMoney() //排序金錢
+        public ActionResult OrderByFundingAmount() //排序金錢
         {
-            //var money = _projectsService.GetByMoney();
-            return View();
+
+            var FundingAmount = _projectsService.OrderBy(x => x.FundingAmount);
+            return View(FundingAmount);
         }
 
         // GET: Products
