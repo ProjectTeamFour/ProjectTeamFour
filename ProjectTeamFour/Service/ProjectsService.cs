@@ -51,5 +51,10 @@ namespace ProjectTeamFour.Service
         {
             return GetByWhere(p => p.ProjectStatus == projectStatus);
         }
+
+        //public ProjectListViewModel OrderBy(string Key, string label)
+        //{
+        //    var result = _reposity.GetAll<Project>().OrderBy(x => x.FundingAmount);
+        //}
     }
 }
