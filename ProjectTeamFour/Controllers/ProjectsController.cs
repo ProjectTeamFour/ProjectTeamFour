@@ -20,52 +20,33 @@ namespace ProjectTeamFour.Controllers
             _projectsService = new ProjectsService();
         }
 
-        public ActionResult GetCategory()
+        public ActionResult GetCategory(string id)
         {
             
-            var fliter = _projectsService.GetByProjectStatus("集資中");            
+            var fliter = _projectsService.GetByWhere(p => p.ProjectStatus == id);            
             return View(fliter);
         }
 
-        public ActionResult GetCategoryFail()
+        public ActionResult OrderByFundingAmount() //排序金錢
         {
 
-            var fail = _projectsService.GetByProjectStatus("集資失敗");
-            return View(fail);
-        }
-
-        public ActionResult GetCategorySuccess()
-        {
-
-            var success = _projectsService.GetByProjectStatus("集資成功");
-            return View(success);
-        }
-
-        //public ActionResult GetByPopular()
-        //{
-        //    var popular = _projectsService.GetByWhere((x) => x.)
-        //}
-
-
-        public ActionResult GetByMoney() //排序金錢
-        {
-            //var money = _projectsService.GetByMoney();
-            return View();
+            var FundingAmount = _projectsService.OrderBy(x => x.FundingAmount);
+            return View(FundingAmount);
         }
 
         // GET: Products
         public ActionResult Index()
         {
-            var projectsService = new ProjectsService();
+            
             List<ProjectViewModel> products = new List<ProjectViewModel>();
-            var GetAll = projectsService.GetByWhere(x=>x.ProjectId!=0);
+            var GetAll = _projectsService.GetByWhere(x=>x.ProjectId!=0);
             foreach(var item in GetAll.ProjectItems)
             {
                 products.Add(item);
-            }                          
+            }                           
             return View(products);
         }
-     
+        
 
     }
 }
