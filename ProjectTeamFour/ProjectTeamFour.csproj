@@ -234,7 +234,6 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
-    <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
@@ -2115,7 +2114,6 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
-    <Content Include="Views\Projects\GetCategoryFail.cshtml" />
     <Content Include="Views\Projects\GetCategorySuccess.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />

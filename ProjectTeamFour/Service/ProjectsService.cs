@@ -47,33 +47,33 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel GetByProjectStatus(string projectStatus)
-        {
-            return GetByWhere(p => p.ProjectStatus == projectStatus);
-        }
+        //public ProjectListViewModel GetByProjectStatus(string projectStatus)
+        //{
+        //    return GetByWhere(p => p.ProjectStatus == projectStatus);
+        //}
 
         //public ProjectListViewModel GetByMoney()
         //{
-            //var result = new ProjectListViewModel();
-            //result.ProjectItems = new List<ProjectViewModel>();
-            //ProjectContext context = new ProjectContext();
-            //BaseRepository repo = new BaseRepository(context);
-            
-            //var result = new ProjectListViewModel();
-            //result.ProjectItems = new List<ProjectViewModel>();
-            //ProjectContext context = new ProjectContext();
-            //BaseRepository repo = new BaseRepository(context);
-            //foreach (var item in repo.GetAll<ProjectViewModel>().OrderBy((x) => x.FundingAmount))
-            //{
-            //    var p = new ProjectViewModel()
-            //    {
-            //        FundingAmount = item.FundingAmount
-            //    };
-            //    result.ProjectItems.Add(p);
-            //}
-            //return result;
+        //    var result = new ProjectListViewModel();
+        //    result.ProjectItems = new List<ProjectViewModel>();
+        //    ProjectContext context = new ProjectContext();
+        //    BaseRepository repo = new BaseRepository(context);
+
+        //    var result = new ProjectListViewModel();
+        //    result.ProjectItems = new List<ProjectViewModel>();
+        //    ProjectContext context = new ProjectContext();
+        //    BaseRepository repo = new BaseRepository(context);
+        //    foreach (var item in repo.GetAll<ProjectViewModel>().OrderBy((x) => x.FundingAmount))
+        //    {
+        //        var p = new ProjectViewModel()
+        //        {
+        //            FundingAmount = item.FundingAmount
+        //        };
+        //        result.ProjectItems.Add(p);
+        //    }
+        //    return result;
         //}
-        
+
         //public ProjectListViewModel GetByPrice() //按照價錢排序
         //{
         //    var result = new ProjectListViewModel();

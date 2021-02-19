@@ -20,38 +20,20 @@ namespace ProjectTeamFour.Controllers
             _projectsService = new ProjectsService();
         }
 
-        public ActionResult GetCategory()
+        public ActionResult GetCategory(string id)
         {
             
-            var fliter = _projectsService.GetByProjectStatus("集資中");            
+            var fliter = _projectsService.GetByWhere(p => p.ProjectStatus == id);            
             return View(fliter);
         }
 
-        public ActionResult GetCategoryFail()
+        public ActionResult GetByFundingAmount(string id)
         {
+            var fliter = _projectsService.GetByWhere(p => p.FundingAmount.ToString() == id);
+            return View(fliter);
+        }       
+     
 
-            var fail = _projectsService.GetByProjectStatus("集資失敗");
-            return View(fail);
-        }
-
-        public ActionResult GetCategorySuccess()
-        {
-
-            var success = _projectsService.GetByProjectStatus("集資成功");
-            return View(success);
-        }
-
-        //public ActionResult GetByPopular()
-        //{
-        //    var popular = _projectsService.GetByWhere((x) => x.)
-        //}
-
-
-        public ActionResult GetByMoney() //排序金錢
-        {
-            //var money = _projectsService.GetByMoney();
-            return View();
-        }
 
         // GET: Products
         public ActionResult Index()
@@ -67,7 +49,7 @@ namespace ProjectTeamFour.Controllers
             
             return View(products);
         }
-     
+        
 
     }
 }
