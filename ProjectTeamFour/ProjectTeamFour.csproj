@@ -255,7 +255,6 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\ProjectDetailListViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
     <Compile Include="ViewModels\ProjectTotalViewModel.cs" />
@@ -2118,7 +2117,6 @@
     <Content Include="Views\Shared\PartialView\_ProjectCardPartial.cshtml" />
     <Content Include="Views\Member\test.cshtml" />
     <Content Include="Views\Shared\PartialView\_selectPlanCardsPartial.cshtml" />
-    <Content Include="Views\ProjectDetail\Details.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
@@ -2131,6 +2129,7 @@
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
     <Content Include="Views\Projects\OrderByNew.cshtml" />
+    <Content Include="Views\ProjectDetail\Details.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
   </ItemGroup>
   <ItemGroup>

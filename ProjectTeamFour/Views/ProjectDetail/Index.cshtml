@@ -39,10 +39,14 @@
                                 </a>
                             </div>
                             <div class="item-text">
-                                <h5><span class="label-grey">提案者</span> @Model.CreatorName</h5>
+                                <h5>
+                                    <span class="label-grey">提案者</span> @Model.CreatorName
+                                </h5>
                                 <div class="wrapper">
                                     <div class="item-text">
-                                        <h5><span class="label-grey">提案總數</span>2件</h5>
+                                        <h5>
+                                            <span class="label-grey">提案總數</span>2件
+                                        </h5>
                                     </div>
                                     <div id="follow-icon">
                                         <a href="#"><i class="bi bi-facebook"></i></a>
@@ -79,7 +83,8 @@
                         </div>
                         <blockquote id="campaign-status-label">
                             <div class="text-wrap">
-                                專案募資成功！<br>在 @Model.EndDate
+                                專案募資成功！
+                                <br>在 @Model.EndDate
                                 募資結束前，您都可以持續贊助此計畫。
                             </div>
                         </blockquote>
@@ -95,7 +100,9 @@
                                         聯絡提案人
                                     </button>
                                 </div>
-                                <div class="btn col-4"><a href="" id="share-btn">分享</a></div>
+                                <div class="btn col-4">
+                                    <a href="" id="share-btn">分享</a>
+                                </div>
                             </div>
                         </div>
 
@@ -227,7 +234,10 @@
 
                                 <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
                                     <div id="comment-hint" class="wrapper">
-                                        <p>您還不是本案的贊助者，若有問題可直接 <span class="color-tag"><i class="bi bi-envelope"></i> 聯絡提案人！</span></p>
+                                        <p>
+                                            您還不是本案的贊助者，若有問題可直接
+                                            <span class="color-tag"><i class="bi bi-envelope"></i> 聯絡提案人！</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -239,11 +249,11 @@
                         <section id="select-perk">
                             <div class="min-display-slide">
                                 <div class="row">
-                                    @foreach (var item in Model)
-                                     {
+                                    @*@foreach (var item in Model)
+                                        {
 
-                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                     }
+                                           @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                        }*@
                                     <!-- <h4>選擇方案</h4> -->
                                 </div>
                             </div>
