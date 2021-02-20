@@ -226,6 +226,10 @@
     <Compile Include="Migrations\202102171018175_在Plan新增ProjectName資料.Designer.cs">
       <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102200345199_doingNothing.cs" />
+    <Compile Include="Migrations\202102200345199_doingNothing.Designer.cs">
+      <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -2212,6 +2216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102171018175_在Plan新增ProjectName資料.resx">
       <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102200345199_doingNothing.resx">
+      <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
