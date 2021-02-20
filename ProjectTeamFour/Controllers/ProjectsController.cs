@@ -33,11 +33,11 @@ namespace ProjectTeamFour.Controllers
             return View(type);
         }
 
-        //public ActionResult OrderByPeople() //排序人數 有問題
-        //{
-        //    var Fundedpeople = _projectsService.OrderBy((x) => x.Fundedpeople);
-        //    return View(Fundedpeople);
-        //}
+        public ActionResult OrderByPeople() //排序人數 有問題
+        {
+            var Fundedpeople = _projectsService.OrderBy(x => x.Fundedpeople);
+            return View(Fundedpeople);
+        }
         public ActionResult OrderByFundingAmount() //排序金錢
         {
 

@@ -15,6 +15,7 @@ namespace ProjectTeamFour.Models
         public string ProjectStatus { get; set; } 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
         //public double dateLine { get; set; }
         public int MemberId { get; set; }
         public int Fundedpeople { get; set; }
