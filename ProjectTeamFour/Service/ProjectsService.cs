@@ -31,7 +31,6 @@ namespace ProjectTeamFour.Service
             
             foreach (var item in result)
             {
-                //var dateLine = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays;                
                 var projectbox = new ProjectViewModel
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -50,7 +49,20 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)//時間之外的排序
+        //public ProjectListViewModel Sort(string input)
+        //{
+        //    var result = _reposity.GetAll<Project>();
+        //    var project = new ProjectListViewModel
+        //    {
+        //        ProjectItems = new List<ProjectViewModel>()
+        //    };
+        //    if (input == "最新") 
+        //    {
+        //        return result.
+        //    }
+        //}
+
+        public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
         {
             
             var result = _reposity.GetAll<Project>().OrderBy(KeySelector);
