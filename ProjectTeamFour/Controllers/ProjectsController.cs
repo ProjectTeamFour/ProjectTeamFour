@@ -67,6 +67,14 @@ namespace ProjectTeamFour.Controllers
             }                           
             return View(products);
         }
+
+        public ActionResult GetItem(string projectStatus , string category , string id)
+        {
+            var result= _projectsService.GetByWhere(x => x.ProjectStatus == projectStatus && x.Category == category);
+            return View(result);
+                           
+
+        }
         
 
     }
