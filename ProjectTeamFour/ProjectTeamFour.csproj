@@ -239,6 +239,7 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
+    <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\HomeService.cs" />
     <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
@@ -248,6 +249,8 @@
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
+    <Compile Include="ViewModels\CartItemViewModel.cs" />
+    <Compile Include="ViewModels\CartListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
