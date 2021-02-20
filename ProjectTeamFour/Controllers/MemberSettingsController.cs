@@ -6,34 +6,71 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-//using ProjectTeamFour.Data;
 using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Service;
+using System.Linq.Expressions;
+using ProjectTeamFour.Repositories;
 
 namespace ProjectTeamFour.Controllers
 {
     public class MemberSettingsController : Controller
     {
-        private ProjectContext db = new ProjectContext();
+        private MemberService _memberService;
+
+        public MemberSettingsController()
+        {
+            _memberService = new MemberService();
+        }
 
         //// GET: Member
         //public ActionResult Index()
         //{
         //    return View("testPageForSonic");
         //}
-        public ActionResult Details(string id)
+
+        // GET: ManageMember
+        public ActionResult Index()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            ViewBag.ResultMessage = TempData["ResultMessage"];
+            using (ProjectContext db = new ProjectContext())
+            {   //抓取所有AspNetMembers中的資料，並且放入Models.ManageMember模型中
+                var result = (from s in db.Members
+                              select new Member
+                              {
+                                  MemberId = s.MemberId,
+                                  MemberName = s.MemberName,
+                                  MemberRegEmail = s.MemberRegEmail
+                              }).ToList();
+                return View(result);
             }
-            //User user = db.Users.Find(id);
-            //if (member == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
         }
-        //// GET: Member/Edit/5
+
+        //public ActionResult Details(string id)
+        //{
+        //if (id == null)
+        //{
+        // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        // }
+        // Member member = _memberService.GetMember(id);
+
+        //User user = db.Users.Find(id);
+        //if (member == null)
+        //{
+        //    return HttpNotFound();
+        //}
+        //return View();
+        //}
+
+        //public ActionResult Edit()
+        //{
+        //MemberViewModel memberInfoVM;
+
+
+
+        //return View(memberInfoVM);
+        // }
+        // GET: Member/Edit/5
         //public ActionResult Edit(string id)
         //{
         //    // id = realID_type_text
@@ -56,22 +93,51 @@ namespace ProjectTeamFour.Controllers
 
         //}
 
-        //protected override void Dispose(bool disposing)
+        public ActionResult Edit(int id) //編輯該會員個人資料
+        {
+            var memberService = new MemberService();
+
+            MemberViewModel memberVM = new MemberViewModel();
+
+            var memberInfo = _memberService.GetMember(m => m.MemberId == id);
+            return View(memberInfo);
+            //return RedirectToAction("Index");
+            //if (memberInfo != default(ViewModels.MemberViewModel))
+            //{
+            //    return View(memberInfo);
+            //}
+        }
+
+        //[HttpPost]
+        //public ActionResult Edit(int id)
         //{
-        //    if (disposing)
-        //    {
-        //        //db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
+        //    var memberService = new MemberService();
+
+        //    MemberViewModel memberVM = new MemberViewModel();
+
+        //    var memberInfo = _memberService.GetMember(m => m.MemberId == id);
+        //    return View(memberInfo);
+
+            
+        //    //設定成功訊息
+        //    TempData["ResultMessage"] = String.Format("使用者[{0}]成功編輯");
+        //    return RedirectToAction("Index");
+                
+            
+        //    //設定錯誤訊息
+        //    TempData["ResultMessage"] = String.Format("請重新操作");
+        //    return RedirectToAction("Index");
         //}
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                //db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 
 
-
-    
-
-
-
-
-    
 }

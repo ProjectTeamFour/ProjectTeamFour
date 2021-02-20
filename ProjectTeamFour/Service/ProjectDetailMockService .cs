@@ -42,11 +42,10 @@ namespace ProjectTeamFour.Service
             return projectdetailVM;
         }
 
-        public ProjectPageViewModel GetPageViewModel(int projectID)
+        public SelectPlanListViewModel GetPageViewModel(int projectID)
         {
-            ProjectPageViewModel projectPageViewModel = new ProjectPageViewModel
+            SelectPlanListViewModel projectPageViewModel = new SelectPlanListViewModel
             {
-                projectDetailViewModel = GetProjectDetail(projectID),
                 PlanCardItems = GetPlanCards(projectID)
             };
             return projectPageViewModel;

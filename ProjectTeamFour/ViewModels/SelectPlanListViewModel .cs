@@ -7,9 +7,8 @@ using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class ProjectPageViewModel
+    public class SelectPlanListViewModel
     {
-        public ProjectDetailViewModel projectDetailViewModel { get;set; }
         public List<SelectPlanViewModel> PlanCardItems { get;set; }
     }
 }
