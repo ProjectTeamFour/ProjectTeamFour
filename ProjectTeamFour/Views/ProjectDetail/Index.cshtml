@@ -1,15 +1,15 @@
-﻿@model ProjectDetailViewModel
+﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
 
 @{
-    decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
-    double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
+    //decimal num = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+    double dateLine = new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - Model.ProjectDetailItem.StartDate.Ticks).TotalDays;
 }
 
 <section class="main-body">
     <div id="project-title" class="container">
-        <span class="badge badge-secondary">@Model.Category</span>
-        <h1>@Model.ProjectName</h1>
+        <span class="badge badge-secondary">@Model.ProjectDetailItem.Category</span>
+        <h1>@Model.ProjectDetailItem.ProjectName</h1>
     </div>
     <!-- 本文 -->
     <section class="info-top">
@@ -19,7 +19,7 @@
                 <div class="col-sm-12 col-md-8">
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
-                        <iframe scrolling="no" src="@Model.ProjectVideoUrl" frameborder="0"
+                        <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="item-text">
                                 <h5>
-                                    <span class="label-grey">提案者</span> @Model.CreatorName
+                                    <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName
                                 </h5>
                                 <div class="wrapper">
                                     <div class="item-text">
@@ -66,15 +66,15 @@
                         <!-- 文字說明 -->
 
                         <div id="campaign-info-item">
-                            <span class="badge badge-secondary">@Model.ProjectStatus</span>
+                            <span class="badge badge-secondary">@Model.ProjectDetailItem.ProjectStatus</span>
                             <div id="donating-amount" class="number-row">
-                                <span class="label-grey">目標 NTD$@Model.AmountThreshold</span>
-                                <h2>$@Model.FundingAmount</h2>
+                                <span class="label-grey">目標 NTD$@Model.ProjectDetailItem.AmountThreshold</span>
+                                <h2>$@Model.ProjectDetailItem.FundingAmount</h2>
                             </div>
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
                                 <span class="label-grey">贊助人數</span>
-                                <h2 class="block">@Model.Fundedpeople</h2>
+                                <h2 class="block">@Model.ProjectDetailItem.Fundedpeople</h2>
                             </div>
                             <div id="donating-days-countdown" class="number-row">
                                 <span class="label-grey">募資倒數</span>
@@ -84,7 +84,7 @@
                         <blockquote id="campaign-status-label">
                             <div class="text-wrap">
                                 專案募資成功！
-                                <br>在 @Model.EndDate
+                                <br>在 @Model.ProjectDetailItem.EndDate
                                 募資結束前，您都可以持續贊助此計畫。
                             </div>
                         </blockquote>
@@ -143,7 +143,7 @@
                                                 <p>已達成 募資目標!</p>
                                             </div>
                                             <p>
-                                                @Model.ProjectDescription
+                                                @Model.ProjectDetailItem.ProjectDescription
                                                 海霸團隊又回來了！這次將為大家帶來全球第一款程式解謎遊戲!源自於交通大學的程式老爹，過去以「順序性」「迴圈」「條件判斷」「集合」四項基礎程式邏輯打造了一款適合所有程式初學者的桌遊《Coding
                                                 Ocean：海霸》並已被全台超過500所國中、國小支持，並獲得許多的獎項與肯定！甚至於2019年被納入國中教科書中，每年幫助十萬位小朋友學習程式。
                                             </p>
@@ -231,7 +231,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
                                     <div id="comment-hint" class="wrapper">
                                         <p>
@@ -249,11 +248,10 @@
                         <section id="select-perk">
                             <div class="min-display-slide">
                                 <div class="row">
-                                    @*@foreach (var item in Model)
+                                    @foreach (var item in Model.SelectPlanCards.PlanCardItems)
                                         {
-
                                            @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                        }*@
+                                        }
                                     <!-- <h4>選擇方案</h4> -->
                                 </div>
                             </div>
@@ -275,8 +273,6 @@
         //    document.createElement("div");
         //})
 
-
         var project_status = document.getElementById("goal-wrap");
-
     </script>
 }
