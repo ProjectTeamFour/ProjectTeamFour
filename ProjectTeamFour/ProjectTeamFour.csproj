@@ -2131,6 +2131,7 @@
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
     <Content Include="Views\Projects\OrderByNew.cshtml" />
+    <Content Include="Views\Projects\GetItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
