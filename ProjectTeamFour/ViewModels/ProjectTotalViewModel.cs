@@ -5,9 +5,10 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
+    //完整商品詳細頁的ViewModel聚合
     public class ProjectTotalViewModel
     {
-        public ProjectViewModel ProjectItem { get; set; }
-        public ProjectPageViewModel SelectPlanCards { get; set; }
+        public ProjectDetailViewModel ProjectDetailItem { get;set; }
+        public SelectPlanListViewModel SelectPlanCards { get; set; }
     }
 }
