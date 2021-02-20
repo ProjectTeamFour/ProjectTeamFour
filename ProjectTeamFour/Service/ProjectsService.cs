@@ -49,8 +49,22 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
+        //public ProjectListViewModel Sort(string input)
+        //{
+        //    var result = _reposity.GetAll<Project>();
+        //    var project = new ProjectListViewModel
+        //    {
+        //        ProjectItems = new List<ProjectViewModel>()
+        //    };
+        //    if (input == "最新") 
+        //    {
+        //        return result.
+        //    }
+        //}
+
         public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
         {
+            
             var result = _reposity.GetAll<Project>().OrderBy(KeySelector);
             var project = new ProjectListViewModel
             {
@@ -79,7 +93,7 @@ namespace ProjectTeamFour.Service
 
         }
 
-        public ProjectListViewModel OrderByTime()
+        public ProjectListViewModel OrderByTime()//過濾結束時間的排序
         {
             var result = _reposity.GetAll<Project>();
             var project = new ProjectListViewModel

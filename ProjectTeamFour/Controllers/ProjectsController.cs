@@ -20,12 +20,14 @@ namespace ProjectTeamFour.Controllers
             _projectsService = new ProjectsService();
         }
 
-        public ActionResult GetCategory(string id) //排序狀態
+        public ActionResult GetCategory(string id) //排序狀態  
         {
-            
-            var fliter = _projectsService.GetByWhere(p => p.ProjectStatus == id);            
+
+            var fliter = _projectsService.GetByWhere(p => p.ProjectStatus == id);
+
             return View(fliter);
         }
+        
 
         public ActionResult GetType(string id) //排序類別
         {

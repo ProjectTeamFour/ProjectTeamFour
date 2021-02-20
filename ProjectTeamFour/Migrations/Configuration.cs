@@ -1193,7 +1193,7 @@
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             {
                 ProjectId = 10,
-                MemberId = 9,
+                MemberId = 10,
                 ProjectName = "一個把廢物變寶物的塑膠資源再生計畫-不垃圾場",
                 Category = "公共在地",
                 ProjectStatus = "集資中",
@@ -1205,7 +1205,7 @@
                 CreatorName = "不垃圾場",
                 ProjectMainUrl = "https://i.imgur.com/BItzv0vm.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://i.imgur.com/PgIzBeIl.jpg",
+                ProjectCoverUrl = "https://i.imgur.com/PgIzBeIl.jpgl.jpg",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
                 ProjectImgUrl = "https://i.imgur.com/4RPQQYel.jpg,https://i.imgur.com/STYm7Chl.jpg,https://i.imgur.com/qxZdqFTl.jpg,https://i.imgur.com/hm9weGol.jpg,https://i.imgur.com/YMHNtynl.jpg,https://i.imgur.com/Jjnt56Nl.jpg,https://i.imgur.com/5ECdXZvl.jpg,https://i.imgur.com/wtEZLbkl.jpg,https://i.imgur.com/X8gHZoll.jpg,https://i.imgur.com/DKaPGqll.jpg,https://i.imgur.com/cZm1b27l.jpg,https://i.imgur.com/DPZ02idl.jpg,https://i.imgur.com/5OYzRRel.jpg,https://i.imgur.com/5ChxFb4l.jpg,https://i.imgur.com/6I7kik4l.jpg,https://i.imgur.com/DprtvkWl.jpg,https://i.imgur.com/2kb15SXl.jpg,https://i.imgur.com/Zg3hI49l.jpg,https://i.imgur.com/mjN5wgll.jpg,https://i.imgur.com/0hW7Z2Wl.jpg,https://i.imgur.com/wtpB7wul.jpg",
@@ -1336,7 +1336,7 @@
                 ProjectPlanId = 7,
                 PlanTitle = "原創性物件開發，依據30人投票結果決定物件，並共同開發及作出物件。",
                 PlanFundedPeople = 3,
-                PlanDescription = "優先共享不垃圾場工作空間，讓我們一起用想像力跟實際作為去慶祝一個更好的未來。",
+                PlanDescription = "優先共享不垃圾場工作空間，讓我們一起用想像力跟實際作為去慶祝一個更好的未來。",
                 PlanShipDate = new DateTime(2021, 8, 1),
                 PlanImgUrl = "https://i.imgur.com/RWWy6sQm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
