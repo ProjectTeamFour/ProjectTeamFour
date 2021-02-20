@@ -28,7 +28,7 @@ namespace ProjectTeamFour.Service
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
-            
+
             foreach (var item in result)
             {
                 var projectbox = new ProjectViewModel
@@ -41,8 +41,8 @@ namespace ProjectTeamFour.Service
                     FundingAmount = item.FundingAmount,
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
-                    StartDate = item.StartDate
-                    
+                    StartDate = item.StartDate,
+                    ProjectId = item.ProjectId
                 };
                 project.ProjectItems.Add(projectbox);
             }
@@ -64,13 +64,13 @@ namespace ProjectTeamFour.Service
 
         public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
         {
-            
+
             var result = _reposity.GetAll<Project>().OrderBy(KeySelector);
             var project = new ProjectListViewModel
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
-            foreach(var item in result)
+            foreach (var item in result)
             {
 
                 var projectbox = new ProjectViewModel
@@ -85,7 +85,7 @@ namespace ProjectTeamFour.Service
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
                     Fundedpeople = item.Fundedpeople
-                  
+
                 };
                 project.ProjectItems.Add(projectbox);
             }
@@ -115,12 +115,41 @@ namespace ProjectTeamFour.Service
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
                     Fundedpeople = item.Fundedpeople,
-                    dateLine=timespan
+                    dateLine = timespan
                 };
                 project.ProjectItems.Add(projectbox);
             };
             return project;
         }
-     }
-        
+
+        public ProjectListViewModel GetAllTotal() //全部產生
+        {
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+
+            foreach (var item in _reposity.GetAll<Project>())
+            {
+
+                ProjectViewModel pv = new ProjectViewModel
+                {
+                    ProjectMainUrl = item.ProjectMainUrl,
+                    Category = item.Category,
+                    ProjectStatus = item.ProjectStatus,
+                    ProjectName = item.ProjectName,
+                    CreatorName = item.CreatorName,
+                    FundingAmount = (int)item.FundingAmount,
+                    AmountThreshold = item.AmountThreshold,
+                    EndDate = item.EndDate,
+                    StartDate = item.StartDate,
+                    ProjectId = item.ProjectId
+                };
+                project.ProjectItems.Add(pv);
+            }
+            return project;
+
+        }
+       
     }
+}        

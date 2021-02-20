@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectTeamFour.ViewModels.ProjectViewModel>
+﻿@model ProjectTeamFour.ViewModels.ProjectListViewModel
 
 @{
     ViewBag.Title = "products page";
@@ -93,7 +93,7 @@
     <div class="container">
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
-                @foreach (var item in Model)
+                @foreach (var item in Model.ProjectItems)
                 {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
                 }
