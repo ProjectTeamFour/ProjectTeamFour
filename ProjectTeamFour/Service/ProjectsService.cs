@@ -50,8 +50,9 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
+        public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)//時間之外的排序
         {
+            
             var result = _reposity.GetAll<Project>().OrderBy(KeySelector);
             var project = new ProjectListViewModel
             {
@@ -80,7 +81,7 @@ namespace ProjectTeamFour.Service
 
         }
 
-        public ProjectListViewModel OrderByTime()
+        public ProjectListViewModel OrderByTime()//過濾結束時間的排序
         {
             var result = _reposity.GetAll<Project>();
             var project = new ProjectListViewModel
