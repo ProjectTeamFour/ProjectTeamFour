@@ -7,6 +7,7 @@ namespace ProjectTeamFour.ViewModels
 {
     public class ProjectViewModel
     {
+        public int ProjectId { get; set; }
         public string ProjectMainUrl { get; set; }
         public string Category { get; set; }
         public string ProjectStatus { get; set; }

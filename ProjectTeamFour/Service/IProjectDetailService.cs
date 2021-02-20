@@ -15,6 +15,6 @@ namespace ProjectTeamFour.Service
     {
         ProjectDetailViewModel GetProjectDetail(int ProjectId);
         List<SelectPlanViewModel> GetPlanCards(int projectId);
-        SelectPlanListViewModel GetPageViewModel(int projectId);
+        ProjectTotalViewModel GetPageViewModel(int projectId);
     }
 }

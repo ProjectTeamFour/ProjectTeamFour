@@ -153,6 +153,7 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
@@ -239,6 +240,7 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
+    <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\HomeService.cs" />
     <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
@@ -248,6 +250,8 @@
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
+    <Compile Include="ViewModels\CartItemViewModel.cs" />
+    <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
@@ -297,7 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
-    <Content Include="Assets\css\campaignDetail.css" />
+    <Content Include="Assets\css\ProjectDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
     <Content Include="Assets\css\MemberRegisterPage\memberregister.css" />
@@ -314,11 +318,12 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_01.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_02.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_03.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_04.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_05.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\mopproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\papadaproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\sleepproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\treasureproject.jpg" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
     <Content Include="Assets\Img\pay\product.jpg" />
@@ -2129,8 +2134,6 @@
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
     <Content Include="Views\Projects\OrderByNew.cshtml" />
-    <Content Include="Views\ProjectDetail\Details.cshtml" />
-    <Content Include="Views\Projects\GetItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2139,6 +2142,7 @@
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
     <Folder Include="Views\MemberSettings\" />
+    <Folder Include="Views\Shopping\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
