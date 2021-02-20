@@ -41,7 +41,8 @@ namespace ProjectTeamFour.Service
                     FundingAmount = item.FundingAmount,
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
-                    StartDate = item.StartDate,
+                    StartDate = item.StartDate
+                    
                 };
                 project.ProjectItems.Add(projectbox);
             }
@@ -57,7 +58,37 @@ namespace ProjectTeamFour.Service
             };
             foreach(var item in result)
             {
-                var dateLine1 = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays;
+
+                var projectbox = new ProjectViewModel
+                {
+                    ProjectMainUrl = item.ProjectMainUrl,
+                    Category = item.Category,
+                    ProjectStatus = item.ProjectStatus,
+                    ProjectName = item.ProjectName,
+                    CreatorName = item.CreatorName,
+                    FundingAmount = item.FundingAmount,
+                    AmountThreshold = item.AmountThreshold,
+                    EndDate = item.EndDate,
+                    StartDate = item.StartDate,
+                    Fundedpeople = item.Fundedpeople
+                  
+                };
+                project.ProjectItems.Add(projectbox);
+            }
+            return project;
+
+        }
+
+        public ProjectListViewModel OrderByTime()
+        {
+            var result = _reposity.GetAll<Project>();
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            foreach (var item in result)
+            {
+                var timespan = item.EndDate.Subtract(item.StartDate);
                 var projectbox = new ProjectViewModel
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -70,12 +101,11 @@ namespace ProjectTeamFour.Service
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
                     Fundedpeople = item.Fundedpeople,
-                    dateLine = dateLine1
+                    dateLine=timespan
                 };
                 project.ProjectItems.Add(projectbox);
-            }
+            };
             return project;
-
         }
      }
         

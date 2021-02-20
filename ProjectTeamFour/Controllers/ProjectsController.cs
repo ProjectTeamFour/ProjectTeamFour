@@ -48,7 +48,8 @@ namespace ProjectTeamFour.Controllers
         public ActionResult OrderByNew() //排序時間
         {
 
-            var dateLine = _projectsService.OrderBy(x => (decimal)new TimeSpan(x.EndDate.Ticks-x.StartDate.Ticks).TotalDays);
+            //var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
+            var dateLine = _projectsService.OrderByTime();
             return View(dateLine);
         }
 
