@@ -31,7 +31,6 @@ namespace ProjectTeamFour.Service
             
             foreach (var item in result)
             {
-                //var dateLine = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays;                
                 var projectbox = new ProjectViewModel
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -43,8 +42,7 @@ namespace ProjectTeamFour.Service
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
-                    dateLine = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays
-            };
+                };
                 project.ProjectItems.Add(projectbox);
             }
             return project;
@@ -59,7 +57,7 @@ namespace ProjectTeamFour.Service
             };
             foreach(var item in result)
             {
-
+                var dateLine1 = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays;
                 var projectbox = new ProjectViewModel
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -72,8 +70,8 @@ namespace ProjectTeamFour.Service
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
                     Fundedpeople = item.Fundedpeople,
-                    dateLine = new TimeSpan(item.EndDate.Ticks - item.StartDate.Ticks).TotalDays
-            };
+                    dateLine = dateLine1
+                };
                 project.ProjectItems.Add(projectbox);
             }
             return project;

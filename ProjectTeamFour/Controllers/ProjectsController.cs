@@ -33,7 +33,7 @@ namespace ProjectTeamFour.Controllers
             return View(type);
         }
 
-        public ActionResult OrderByPeople() //排序人數 有問題
+        public ActionResult OrderByPeople() //排序人數 
         {
             var Fundedpeople = _projectsService.OrderBy(x => x.Fundedpeople);
             return View(Fundedpeople);
@@ -45,12 +45,12 @@ namespace ProjectTeamFour.Controllers
             return View(FundingAmount);
         }
 
-        //public ActionResult OrderByNew() //排序時間
-        //{
+        public ActionResult OrderByNew() //排序時間
+        {
 
-        //    var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
-        //    return View(dateLine);
-        //}
+            var dateLine = _projectsService.OrderBy(x => (decimal)new TimeSpan(x.EndDate.Ticks-x.StartDate.Ticks).TotalDays);
+            return View(dateLine);
+        }
 
         // GET: Products
         public ActionResult Index() //主畫面
