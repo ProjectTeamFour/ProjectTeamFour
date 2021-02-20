@@ -45,12 +45,13 @@ namespace ProjectTeamFour.Controllers
             return View(FundingAmount);
         }
 
-        //public ActionResult OrderByNew() //排序時間
-        //{
+        public ActionResult OrderByNew() //排序時間
+        {
 
-        //    var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
-        //    return View(dateLine);
-        //}
+            //var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
+            var dateLine = _projectsService.OrderByTime();
+            return View(dateLine);
+        }
 
         // GET: Products
         public ActionResult Index() //主畫面

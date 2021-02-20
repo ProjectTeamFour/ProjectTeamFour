@@ -16,7 +16,7 @@ namespace ProjectTeamFour.ViewModels
         public decimal AmountThreshold { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime StartDate { get; set; }
-        public double dateLine { get; set; }
+        public TimeSpan dateLine { get; set; }
         public int Fundedpeople { get; set; }        
     }
 }

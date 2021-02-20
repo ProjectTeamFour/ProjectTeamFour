@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<ProjectTeamFour.ViewModels.ProjectViewModel>
+@model ProjectListViewModel
 
 @{
     ViewBag.Title = "products page";
@@ -77,10 +77,10 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">熱門</a>
-                                <a class="dropdown-item" href="/Projects/GetCategory/New">最新</a>
+                                <a class="dropdown-item" href="#">最新</a>
                                 <a class="dropdown-item" href="#">結束日期</a>
                                 <a class="dropdown-item" href="/Projects/OrderByFundingAmount/FundingAmount">募資金額</a>
-                                <a class="dropdown-item" href="/Projects/GetCategory/Fundedpeople">贊助人數</a>
+                                <a class="dropdown-item" href="#">贊助人數</a>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
     <div class="container">
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
-                @foreach (var item in Model)
+                @foreach (var item in Model.ProjectItems)
                 {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
                 }
