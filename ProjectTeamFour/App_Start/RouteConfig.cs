@@ -19,7 +19,11 @@ namespace ProjectTeamFour
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            
+            routes.MapRoute(
+                name: "Default1",
+                url: "{controller}/{action}/{id1}/{id2}/{id3}",
+                defaults: new { controller = "Home", action = "Index", id1 = UrlParameter.Optional , id2 = UrlParameter.Optional , id3 = UrlParameter.Optional }
+            );
         }
     }
 }

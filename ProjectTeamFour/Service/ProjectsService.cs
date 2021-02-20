@@ -49,6 +49,19 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
+        //public ProjectListViewModel Sort(string input)
+        //{
+        //    var result = _reposity.GetAll<Project>();
+        //    var project = new ProjectListViewModel
+        //    {
+        //        ProjectItems = new List<ProjectViewModel>()
+        //    };
+        //    if (input == "最新") 
+        //    {
+        //        return result.
+        //    }
+        //}
+
         public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
         {
             var result = _reposity.GetAll<Project>().OrderBy(KeySelector);
