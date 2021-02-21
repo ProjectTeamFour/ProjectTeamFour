@@ -21,13 +21,20 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }
 
-        public SelectPlanListViewModel GetPageViewModel(int projectId)
+        public ProjectTotalViewModel GetPageViewModel(int projectId)
         {
-            SelectPlanListViewModel selectPlanListViewModel = new SelectPlanListViewModel
+            ProjectTotalViewModel projectTotalVM = new ProjectTotalViewModel
             {
-                PlanCardItems = GetPlanCards(projectId)
+                
+                ProjectDetailItem = new ProjectDetailViewModel(),
+
+                SelectPlanCards = new SelectPlanListViewModel()
+                {
+                    PlanCardItems = GetPlanCards(projectId)
+                }
             };
-            return selectPlanListViewModel ;
+
+            return projectTotalVM;
         }
 
 

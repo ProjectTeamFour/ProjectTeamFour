@@ -46,10 +46,11 @@ namespace ProjectTeamFour.Service
                     ProjectStatus = item.ProjectStatus,
                     ProjectName = item.ProjectName,
                     CreatorName = item.CreatorName,
-                    FundingAmount = item.FundingAmount,
+                    FundingAmount = (int)item.FundingAmount,
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
-                    StartDate = item.StartDate
+                    StartDate = item.StartDate,
+                    ProjectId = item.ProjectId
                 };
                 homeviewmodel.ProjectItem.ProjectItems.Add(pv);
             }
@@ -65,8 +66,9 @@ namespace ProjectTeamFour.Service
                     Category = item.Project.Category,
                     PlanTitle = item.PlanTitle,
                     CreatorName = item.Project.CreatorName,
-                    PlanPrice = item.PlanPrice,
-                    PlanId = item.PlanId
+                    PlanPrice = (int)item.PlanPrice,
+                    PlanId = item.PlanId,
+                    PlanDescription = item.PlanDescription
                 };
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
             }

@@ -318,11 +318,12 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_01.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_02.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_03.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_04.jpg" />
-    <Content Include="Assets\Img\HomePageCarousel\landingcarousel_05.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\mopproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\papadaproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\sleepproject.jpg" />
+    <Content Include="Assets\Img\HomePageCarousel\treasureproject.jpg" />
     <Content Include="Assets\Img\p1.jpg" />
     <Content Include="Assets\Img\pay\pic.png" />
     <Content Include="Assets\Img\pay\product.jpg" />
@@ -2133,7 +2134,6 @@
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
     <Content Include="Views\Projects\OrderByNew.cshtml" />
-    <Content Include="Views\ProjectDetail\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

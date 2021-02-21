@@ -1358,6 +1358,242 @@
                 PlanPrice = 30000m,
                 QuantityLimit = 10
             });
+
+
+            //第11個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 11,
+                MemberId = 11,
+                ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 2, 12),
+                EndDate = new DateTime(2021, 5, 7),
+                Fundedpeople = 19,
+                FundingAmount = 9040m,
+                AmountThreshold = 350500m,
+                CreatorName = "SoulFa 靈魂沙發",
+                ProjectMainUrl = "https://i.imgur.com/eTKxhXTm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/91YB27Wl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "大家好！我們是SoulFa靈魂沙發！2019年的12 / 1我們發行了我們的首張專輯《SoulFa》，儘管2020很特別，但依然很幸運地能完售我們的巡迴、完售了所有實體專輯（港恩ㄉ心），我們相信這不是僥倖而是每一個你們真真實實的支持和喜歡。當你看到這裡時，我們的第二張專輯《Slumber Days》也即將抵達製作期的最後階段，為了能夠獲得這張專輯的完整體驗，我們誠摯邀請您用行動支持我們，讓我們一起迎接＼第二張專輯／的到來！我們要出第二張專輯了，靈魂沙發需要你們！募資動機上一張專輯的募資計畫，在小沙發們踴躍的支持下，周邊商品與專輯銷售一空。而這次，在希望大家都能安安穩穩得到專輯和周邊的前提下，我們將募資的時間加長與專輯預購數量增加，並且巡演計畫已經在規劃的路上了，很快就能夠跟大家見面，希望大家能夠穿著這次募資的商品，作伙相見歡。這次的專輯，將會帶給大家不同以往的感官享受，想看到不同面貌的我們，絕對不容錯過！周邊商品部分，也是全新的設計概念，在日常與時尚之間取得巧妙的平衡，不論何時何地，都能讓你呈現最有自信的一面！用言語難以形容，擁有過才知道成員介紹,https://i.imgur.com/yemG6vdl.jpg,https://i.imgur.com/uazz8J2l.jpg,《Slumber Days》專輯介紹「在季風的尾巴，繫上一排搖曳風鈴，等待候鳥歸來的季節，提醒你我曾經沈睡」-《沙發上的白日夢》關於沈睡，姿態存在千百種。有的人雙眼緊閉；有些人是鼾聲雷動；有些人看似清醒的在活動，實則在夢中快活，那叫夢遊。然而，有沒有一種可能，是旁人看你酣睡如泥，但其實你知道自己是神智清醒？究竟是沈睡亦或是清醒、是現實亦或是虛幻； 一切似乎終將成為魚樂之辯的哲學提問。而這次，靈魂沙發將邀請你和我們一同出走意識模糊的疆界，漫遊在沈睡的時光裡，尋找答案。第二張專輯總共會有9首精彩的創作，這次也特別收錄《留一盞燈給漫漫長夜》，在每個無邊的黑暗裡，讓我們找到你。歌詞,https://i.imgur.com/uazz8J2l.jpg,活動與經歷《發行作品》2018發行單曲《PolyDream》《44 seconds road movie》 2019 發行單曲《Lover Song》《Rose and i.》《Hear Hear》 2019發行專輯《SoulFa》 2020發行單曲《夏日午睡》《留一盞燈給漫漫長夜》,《參與重要演出》2018 『Simple Day 台北簡單生活節X 尼古拉斯採購日』首演2019「2019 The Next Big Thing 大團誕生」入選演出2019「Simple Urban +」演出2019 『Lover Song 首演會』 feat.張淦勳、南西肯恩@Legacy mini2019 焦慮抑制劑＠糖果LIVE三層，北京2019 大團誕生 @Legacy Taipei2019 簡單生活節＠101水舞廣場2020 首發專輯『沙發上的白日夢』台灣北中南巡迴演唱會Sold Out2020 貴人散步音樂節2020 簡單生活音樂節,https://i.imgur.com/WeLQH5ll.jpg,https://i.imgur.com/YEakXk0l.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/watch?v=s0VbGDaLnYk&feature=emb_logo",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4
+
+
+            });
+            //第11個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 11,
+                MemberAccount = "NO11member",
+                MemberPassword = "NO11memberPassword",
+                MemberName = "SoulFa 靈魂沙發",
+                MemberAddress = "100台北市中正區重慶南路一段122號",
+                MemberBirth = new DateTime(1999, 12, 3),
+                MemberConEmail = "1235835@gmail.com",
+                MemberRegEmail = "1235835@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-145874",
+                MemberTeamName = "SoulFa 靈魂沙發",
+                MemberWebsite = "",
+                AboutMe = "來自台北的樂團，由四個大男孩組成，曲風受英式搖滾啟蒙，結合了對這世代生活的體驗，並與音樂融合，唱著他們對世界的態度 一張給靈魂休息的沙發，在生活中有個屬於「心」的角落，不僅是他們對音樂上的期許，更希望用輕鬆的氛圍、自由的旋律、療癒的聲響，讓他們的音樂無論在開心或是難過時，都陪伴在大家身旁。希望有朝一日能變成別人的陽光、 空氣、水，他們對音樂的執著，在於真摯地表現自己，透過具有傳染力的輕鬆 節奏，鼓勵大家不要陷入無限的日常循環，應該勇於闖蕩自己的不平凡。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/vo6V6X3t.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第11個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 58,
+                ProjectId = 11,
+                ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
+                ProjectPlanId = 1,
+                PlanTitle = "「 純贊助 SoulFa 」不求回報的你最可愛，SoulFa愛你",
+                PlanFundedPeople = 2,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 4, 1),
+                PlanImgUrl = "https://i.imgur.com/os0iCyYm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200m,
+                QuantityLimit = 0
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 59,
+                ProjectId = 11,
+                ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
+                ProjectPlanId = 2,
+                PlanTitle = "「 SoulFa親筆簽名專輯 」第一張專輯都有了，第二張專輯還不買爆嗎？",
+                PlanFundedPeople = 210,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 4, 1),
+                PlanImgUrl = "https://i.imgur.com/1HFv9fNm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 480m,
+                QuantityLimit = 1500
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 60,
+                ProjectId = 11,
+                ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
+                ProjectPlanId = 3,
+                PlanTitle = "「 SoulFa親筆簽名專輯 」第一張專輯都有了，第二張專輯還不買爆嗎？",
+                PlanFundedPeople = 17,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 4, 1),
+                PlanImgUrl = "https://i.imgur.com/SPf6jZUm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1400m,
+                QuantityLimit = 100
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 61,
+                ProjectId = 11,
+                ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
+                ProjectPlanId = 4,
+                PlanTitle = "「 SoulFa，專屬T-shirt 」2020沙發限定T - shirt，小沙發們來巡迴場的必備衣物。",
+                PlanFundedPeople = 26,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 4, 1),
+                PlanImgUrl = "https://i.imgur.com/GgZkcE8m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 680m,
+                QuantityLimit = 100
+            });
+
+            //第12個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 12,
+                MemberId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                Category = "科技設計",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 2, 28),
+                EndDate = new DateTime(2021, 5, 7),
+                Fundedpeople = 98,
+                FundingAmount = 172572m,
+                AmountThreshold = 355555m,
+                CreatorName = "MicroNovelty",
+                ProjectMainUrl = "https://i.imgur.com/oNyUOL4m.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/oNyUOL4l.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/gtArrl0l.jpg,https://i.imgur.com/4yAvNQnl.jpg,https://i.imgur.com/oLpxY2vl.jpg,https://i.imgur.com/ieqnLUjl.jpg,https://i.imgur.com/ajvrnxZl.jpg,https://i.imgur.com/303GUfGl.jpg,https://i.imgur.com/5y5aP7Jl.jpg,https://i.imgur.com/LrgRt67l.jpg,https://i.imgur.com/AK83LKcl.jpg,",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/watch?v=srC7fmMbtNk&feature=emb_logo",
+                Project_Question = "我該如何聯繫提案人？,產品產地是在哪裡？",
+                Project_Answer = "1.通過flyingV的站內信聯繫。2.通過我們的客服信箱support@micronovelty.com聯繫我們的客服團隊。,中國深圳",
+                ProjectPlansCount = 5
+
+
+            });
+            //第10個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 12,
+                MemberAccount = "NO12member",
+                MemberPassword = "NO12memberPassword",
+                MemberName = "MicroNovelty",
+                MemberAddress = "100台北市中正區重慶南路一段122號",
+                MemberBirth = new DateTime(1980, 111, 3),
+                MemberConEmail = "123545@gmail.com",
+                MemberRegEmail = "123545@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-123789",
+                MemberTeamName = "MicroNovelty",
+                MemberWebsite = "https://www.micronovelty.com/",
+                AboutMe = "MicroNovelt是一家致力於極客產品開發和推廣的科技公司。 MicroNovelty的願景和使命是讓極客（發明家）的創新設計能夠變為商品，被更多的人接受和使用。我們希望做極客（發明家）的經紀人，讓極客（發明家）專注創新，我們做產品的工程化和商業化推廣。 目前，MicroNovelty在上海丶台湾、大連、深圳、紐約和矽谷設有分支機構，具有完善的工程師、供應鏈管理和市場推廣團隊。累計開發產品20餘款，涵蓋消費電子品、戶外用品、個人護理、旅行產品、攝影器材等多個品類，依托渠道和互聯網平台，銷售遍布全球150多個國家和地區。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/DIu40gRl.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第10個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 62,
+                ProjectId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                ProjectPlanId = 1,
+                PlanTitle = "【超級早鳥】馬上優惠 36 % OFF未來售價 : NT$1545，現省NT$557元!---------------------------------------內容物▸1 x PockeTool2.0多功能小工具▲ 全球免運▲ 一年保固服務",
+                PlanFundedPeople = 62,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 5, 1),
+                PlanImgUrl = "https://i.imgur.com/t3qZGe1m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 989m,
+                QuantityLimit = 200
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 63,
+                ProjectId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                ProjectPlanId = 2,
+                PlanTitle = "【超級早鳥】馬上優惠 36 % OFF未來售價 : NT$1545，現省NT$557元!---------------------------------------內容物▸1 x PockeTool2.0多功能小工具▲ 全球免運▲ 一年保固服務",
+                PlanFundedPeople = 62,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 5, 1),
+                PlanImgUrl = "https://i.imgur.com/4a29a37m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1099m,
+                QuantityLimit = 200
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 64,
+                ProjectId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                ProjectPlanId = 3,
+                PlanTitle = "【超級早鳥】馬上優惠 36 % OFF未來售價 : NT$1545，現省NT$557元!---------------------------------------內容物▸1 x PockeTool2.0多功能小工具▲ 全球免運▲ 一年保固服務",
+                PlanFundedPeople = 14,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 5, 1),
+                PlanImgUrl = "https://i.imgur.com/PIId0f0m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1899m,
+                QuantityLimit = 0
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 65,
+                ProjectId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                ProjectPlanId = 4,
+                PlanTitle = "【超級早鳥】馬上優惠 36 % OFF未來售價 : NT$1545，現省NT$557元!---------------------------------------內容物▸1 x PockeTool2.0多功能小工具▲ 全球免運▲ 一年保固服務",
+                PlanFundedPeople = 9,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 5, 1),
+                PlanImgUrl = "https://i.imgur.com/thOBHsKm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2799m,
+                QuantityLimit = 0
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 66,
+                ProjectId = 12,
+                ProjectName = "PockeTool2.0 戶外多功能小工具",
+                ProjectPlanId =5,
+                PlanTitle = "【超級早鳥】馬上優惠 36 % OFF未來售價 : NT$1545，現省NT$557元!---------------------------------------內容物▸1 x PockeTool2.0多功能小工具▲ 全球免運▲ 一年保固服務",
+                PlanFundedPeople = 13,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 5, 1),
+                PlanImgUrl = "https://i.imgur.com/u9JeTZVm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 4499m,
+                QuantityLimit = 0
+            });
         }
     }
 }
