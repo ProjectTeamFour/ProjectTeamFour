@@ -41,7 +41,8 @@ namespace ProjectTeamFour.Service
                     AboutMe = entity.AboutMe,
                     ProfileImgUrl = entity.ProfileImgUrl,
                     MemberWebsite = entity.MemberWebsite,
-                    MemberMessage = entity.MemberMessage
+                    MemberMessage = entity.MemberMessage,
+                    Permission=entity.Permission
                 };
                 return viewModel;
             }
@@ -99,7 +100,8 @@ namespace ProjectTeamFour.Service
                     AboutMe = input.AboutMe,
                     ProfileImgUrl = input.ProfileImgUrl,
                     MemberWebsite = input.MemberWebsite,
-                    MemberMessage = input.MemberMessage
+                    MemberMessage = input.MemberMessage,
+                    Permission=input.Permission
                 };
                 _repository.Create(entity);
                 result.IsSuccessful = true;

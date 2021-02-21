@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Helpers\CustomAuthorize.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
@@ -229,6 +230,10 @@
     <Compile Include="Migrations\202102200345199_doingNothing.cs" />
     <Compile Include="Migrations\202102200345199_doingNothing.Designer.cs">
       <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211551023_Member加入Permission欄位.cs" />
+    <Compile Include="Migrations\202102211551023_Member加入Permission欄位.Designer.cs">
+      <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
@@ -2136,6 +2141,7 @@
     <Content Include="Views\Projects\OrderByNew.cshtml" />
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
+    <Content Include="Views\Log\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2224,6 +2230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102200345199_doingNothing.resx">
       <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211551023_Member加入Permission欄位.resx">
+      <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
