@@ -58,22 +58,27 @@ namespace ProjectTeamFour.Controllers
         // GET: Products
         public ActionResult Index() //主畫面
         {
-            
-            List<ProjectViewModel> products = new List<ProjectViewModel>();
-            var GetAll = _projectsService.GetByWhere(x=>x.ProjectId!=0);
-            foreach(var item in GetAll.ProjectItems)
+
+            var projectService = new ProjectsService(); //呼叫service
+
+            var project = new ProjectListViewModel 
             {
-                products.Add(item);
-            }                           
-            return View(products);
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var GetAll = projectService.GetAllTotal();
+            foreach (var item in GetAll.ProjectItems)
+            {
+                project.ProjectItems.Add(item);
+            }
+
+            return View(project);
         }
 
         public ActionResult GetItem(string projectStatus , string category , string id)
         {
             var result= _projectsService.GetByWhere(x => x.ProjectStatus == projectStatus && x.Category == category);
             return View(result);
-                           
-
+                          
         }
         
 
