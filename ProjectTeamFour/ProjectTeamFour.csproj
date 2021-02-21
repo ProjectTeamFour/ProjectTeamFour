@@ -152,8 +152,6 @@
     <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
-    <Compile Include="Controllers\SelectPlanController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
       <DependentUpon>202102091059315_m5.cs</DependentUpon>
@@ -300,7 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
-    <Content Include="Assets\css\campaignDetail.css" />
+    <Content Include="Assets\css\ProjectDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
     <Content Include="Assets\css\MemberRegisterPage\memberregister.css" />
