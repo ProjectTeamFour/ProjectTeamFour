@@ -58,14 +58,7 @@ namespace ProjectTeamFour.Controllers
         // GET: Products
         public ActionResult Index() //主畫面
         {
-            
-            List<ProjectViewModel> products = new List<ProjectViewModel>();
-            var GetAll = _projectsService.GetByWhere(x=>x.ProjectId!=0);
-            foreach(var item in GetAll.ProjectItems)
-            {
-                products.Add(item);
-            }                           
-            return View(products);
+            return null;
         }
 
         public ActionResult GetItem(string projectStatus , string category , string id)

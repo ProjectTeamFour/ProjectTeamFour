@@ -7,54 +7,87 @@
     <link href="~/Assets/Css/StartAProjectPage/StartAProject.css" rel="stylesheet" />
 }
 <section class="project-proposal-landing">
-    <div class="container d-flex flex-column align-items-center">
-        <div class="project-proposal-landing-item title">
-            <div class="">開始提案</div>
-        </div>
-        <div class="project-proposal-landing-item project-name-input d-flex pb-5">
-            <div class="project-name-input-item">
-                <input type="text" class="" placeholder="輸入專案名稱">
+    <form action="~/StartAProject/SubmissionProcess" method="post">
+        <div class="container d-flex flex-column align-items-center">
+            <div class="project-proposal-landing-item title">
+                <div class="">開始提案</div>
             </div>
-            <div class="project-name-input-item select">
-                <select name="" id="categories" class="">
-                    <option disabled selected>選擇領域</option>
-                    <option value="科技設計">科技設計</option>
-                    <option value="音樂">音樂</option>
-                    <option value="藝術影視">藝術影視</option>
-                    <option value="生活">生活</option>
-                    <option value="公共在地">公共在地</option>
-                    <option value="遊戲出版">遊戲出版</option>
-                </select>
+            <div class="project-proposal-landing-item project-name-input d-flex pb-5">
+                <div class="project-name-input-item">
+                    <input type="text" id="project-name" placeholder="輸入專案名稱" required oninvalid="this.setCustomValidity('請輸入專案名稱')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="project-name-input-item select">
+                    <select name="" id="categories" required oninvalid="this.setCustomValidity('請選擇領域')" oninput="this.setCustomValidity('')">
+                        <option value="" selected disabled>選擇領域</option>
+                        <option value="tech" class="option-name">科技設計</option>
+                        <option value="music" class="option-name">音樂</option>
+                        <option value="art" class="option-name">藝術影視</option>
+                        <option value="life" class="option-name">生活</option>
+                        <option value="public" class="option-name">公共在地</option>
+                        <option value="game" class="option-name">遊戲出版</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="project-proposal-landing-item check-terms">
-            <div class="check-terms-item">
-                <p class="read-terms">請確認以下事項，確保您符合 flyingV 提案人的身份</p>
-            </div>
-            <div class="check-terms-item">
-                <ul>
-                    <li>
-                        您已滿 18 歲是具備完全行為能力的自然人，或是合法登記的法人或團體<br><br>
-                        <p>若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。</p>
-                    </li>
+            <div class="project-proposal-landing-item check-terms">
+                <div class="check-terms-item">
+                    <p class="read-terms">請確認以下事項，確保您符合 flyingV 提案人的身份</p>
+                </div>
+                <div class="check-terms-item">
+                    <ul>
+                        <li>
+                            您已滿 18 歲是具備完全行為能力的自然人，或是合法登記的法人或團體<br><br>
+                            <p>若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。</p>
+                        </li>
 
-                    <li>
-                        您是具有台灣居住地址、銀行帳戶及國籍的自然人或法人<br><br>
-                        <p>目前 flyingV 只限定台灣用戶，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="check-terms-item checkbox">
-                <form action="">
+                        <li>
+                            您是具有台灣居住地址、銀行帳戶及國籍的自然人或法人<br><br>
+                            <p>目前 flyingV 只限定台灣用戶，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="check-terms-item checkbox">
                     <div class="checkbox-item d-flex">
-                        <input class="inputcheckbox" type="checkbox" style="zoom:200%;">
-                        <label for="">您已符合以上敘述並同意 flyingV <a href="#">網站使用條款</a>及<a href="#">提案者合約</a></label>
+                        <input class="inputcheckbox" id="inputcheckbox" type="checkbox" style="zoom:200%;" required oninvalid="this.setCustomValidity('同意才能繼續')" onchange="this.setCustomValidity('')">
+                        <label for="">您已符合以上敘述並同意 集資車車 <a href="#">網站使用條款</a>及<a href="#">提案者合約</a></label>
                     </div>
                     <div class="checkbox-item">
                         <input type="submit" value="開始撰寫專案" class="submitbutton w-100">
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </section>
+
+
+
+
+
+@section endJS{
+    <script>
+        function InvalidMsg(textbox) {
+
+            @*var projectNameInput = document.querySelector("#project-name");
+            var selectCategoriesInput = document.querySelector("#categories");
+            var inputCheckbox = document.querySelector("#inputcheckbox");
+
+            if (projectNameInput.value == "") {
+                projectNameInput.setCustomValidity("請輸入專案名稱");
+            }
+            else {
+                projectNameInput.setCustomValidity("");
+            }
+
+            if (selectCategoriesInput.value == "") {
+                selectCategoriesInput.setCustomValidity("請選擇領域");
+            }
+            else {
+                selectCategoriesInput.setCustomValidity("");
+            }
+
+           
+            return true;*@
+        }
+    </script>
+    
+    }

@@ -15,14 +15,14 @@
                     <p>註冊</p>
                 </div>
                 <div class="register-item d-flex flex-column name-password">
-                    <input type="text" placeholder="名稱" name="Name" required>
-                    <input type="email" placeholder="註冊信箱" name="Email" required>
-                    <input type="password" id="pwrg-first" placeholder="密碼" name="Password" pattern="^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$" minlength="6" maxlength="14" title="請輸入介於6-14位的英文與數字" onChange="onChange()">
+                    <input type="text" placeholder="名稱" name="Name" required oninvalid="this.setCustomValidity('請幫我填一下名稱噢')" oninput="this.setCustomValidity('')">
+                    <input type="email" placeholder="註冊信箱" name="Email" required oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
+                    <input type="password" id="pwrg-first" placeholder="密碼" name="Password" pattern="^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$" minlength="6" maxlength="14" oninvalid="this.setCustomValidity('請輸入介於6-14位的英文與數字')" onChange="onChange()" oninput="this.setCustomValidity('')">
                     <input type="password" id="pwrg-second" placeholder="確認登入密碼" name="PasswordConfirm" required onChange="onChange()" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="register-item birthdate mb-3">
                     <p class="mb-2">生日</p>
-                    <input type="date" class="w-100" name="Birthday" required>
+                    <input type="date" class="w-100" name="Birthday" required oninvalid="this.setCustomValidity('您的生日~~')" onchange="this.setCustomValidity('')">
                 </div>
                 <div class="register-item gender mb-3">
                     <div class="gender-item">
@@ -116,6 +116,22 @@
                     }
                 }
             }
+        }
+
+
+
+        function InvalidMsg(textbox) {
+
+            if (textbox.value == "") {
+                textbox.setCustomValidity("信箱忘了填噢~~");
+            }
+            else if (textbox.validity.typeMismatch) {
+                textbox.setCustomValidity("格式請幫我填對,感謝!");
+            }
+            else {
+                textbox.setCustomValidity("");
+            }
+            return true;
         }
 
     </script>
