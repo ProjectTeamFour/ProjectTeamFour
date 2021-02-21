@@ -9,10 +9,10 @@ namespace ProjectTeamFour.ViewModels
     {
         public CartItemListViewModel()
         {
-            this.CartItems = new List<CartItemViewModel>();
+            this.CartItems = new List<CarCarPlanViewModel>();
         }
 
-        public  List<CartItemViewModel> CartItems{ get;set;}
+        public  List<CarCarPlanViewModel> CartItems{ get;set;}
 
        
 

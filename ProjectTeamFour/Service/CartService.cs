@@ -21,29 +21,31 @@ namespace ProjectTeamFour.Service
             repository = new BaseRepository(_ctx);
         }
 
-        public CartItemViewModel QueryByPlanId(int Id)
+        public CarCarPlanViewModel QueryByPlanId(int Id)
         {
             var plan = repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == Id);
             
 
             if (plan == null)
             {
-                return new CartItemViewModel();
+                return new CarCarPlanViewModel();
             }
 
-            var cartItem = new CartItemViewModel
+            var cartItem = new CarCarPlanViewModel
             {
                 PlanId = plan.PlanId,
-                PlanUrl = plan.PlanImgUrl,
-                Title = plan.PlanTitle,
-                Price = plan.PlanPrice,
-
+                PlanTitle = plan.PlanTitle,
+                PlanPrice=plan.PlanPrice,
+                PlanImgUrl=plan.PlanImgUrl,
+               
+                Quantity=1
+                
             };
             return cartItem;
 
         }
 
-        public CartItemViewModel GetPlanById(int Id)
+        public CarCarPlanViewModel GetPlanById(int Id)
         {
             var plan = QueryByPlanId(Id);
 

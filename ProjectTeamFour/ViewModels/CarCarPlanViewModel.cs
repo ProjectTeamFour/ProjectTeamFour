@@ -15,5 +15,8 @@ namespace ProjectTeamFour.ViewModels
         public string PlanDescription { get; set; }
         public string CreatorName { get; set; }
         public decimal PlanPrice { get; set; }
+        public int Quantity { get; set; }
+        public int CartId { get; set; }
+        public decimal Account { get { return this.PlanPrice * Quantity; } }
     }
 }
