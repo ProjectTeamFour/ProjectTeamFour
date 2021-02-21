@@ -41,7 +41,7 @@ namespace ProjectTeamFour.Service
 
         public ProjectDetailViewModel GetProjectDetail(int projectId)
         {
-            return GetProjectDetailFromEntity(x => x.ProjectId != projectId);
+            return GetProjectDetailFromEntity(x => x.ProjectId == projectId);
         }
 
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)

@@ -299,7 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
-    <Content Include="Assets\css\ProjectDetailPage\campaignDetail.css" />
+    <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
     <Content Include="Assets\css\MemberRegisterPage\memberregister.css" />
@@ -316,6 +316,7 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
+    <Content Include="Assets\Html\selectPlanCard.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\mopproject.jpg" />
