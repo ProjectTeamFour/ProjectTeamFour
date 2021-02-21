@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class CartListViewModel
+    public class CartItemListViewModel
     {
-        public CartListViewModel()
+        public CartItemListViewModel()
         {
             this.CartItems = new List<CartItemViewModel>();
         }

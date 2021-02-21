@@ -153,6 +153,7 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
@@ -250,7 +251,7 @@
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
-    <Compile Include="ViewModels\CartListViewModel.cs" />
+    <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
@@ -2141,6 +2142,7 @@
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
     <Folder Include="Views\MemberSettings\" />
+    <Folder Include="Views\Shopping\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
