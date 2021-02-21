@@ -93,9 +93,9 @@
 
             <div class="d-flex">
 
-                <a class="nav-item cart" href="/ShoppingCart/Index">
+                <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                     <i class="fas fa-shopping-cart"></i>
-                    <p>0</p>
+                    <p class="MyCart">0</p>
                 </a>
 
                 <li class="nav-item dropdown">
@@ -108,7 +108,7 @@
                         }
                         else
                         {
-                            @StringFormat5.ShowLoginPic(vm.ProfileImgUrl,vm.Gender)
+                            @StringFormat5.ShowLoginPic(vm.ProfileImgUrl, vm.Gender)
                         }
 
                     </a>
@@ -164,9 +164,9 @@
                             @*@Html.ActionLink("集資車車", "Index", "Home", new { @class = "nav-item" })*@
                         </h1>
                     </li>
-                    <a class="nav-item cart" href="/ShoppingCart/Index">
+                    <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                         <i class="fas fa-shopping-cart"></i>
-                        <p>0</p>
+                        <p class="MyCart">0</p>
                     </a>
 
                     <li class="nav-item">
@@ -191,31 +191,31 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-        @if (vm == null)
-        {
-            @StringFormat5.ShowNoLogin()
-        }
-        else
-        {
-            @StringFormat5.ShowMemberMessage(vm)
-        }
+                            @if (vm == null)
+                            {
+                                @StringFormat5.ShowNoLogin()
+                            }
+                            else
+                            {
+                                @StringFormat5.ShowMemberMessage(vm)
+                            }
 
                             @*尚未登入註冊放這個*@
 
                             @*<a class="dropdown-item" href="/MemberLogin/Index">登入</a>
-        <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>*@
+                                <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>*@
 
                             @*已經登入放這個*@
 
 
                             @*<a class="dropdown-item" href="/PersonInfo/Index">個人頁面</a>
-        <hr />
-        <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
-        <a class="dropdown-item" href="/PersonInfo/Submit">提案紀錄</a>
-        <hr />
-        <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
-        <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
-        <a class="dropdown-item" href="#">登出</a>*@
+                                <hr />
+                                <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
+                                <a class="dropdown-item" href="/PersonInfo/Submit">提案紀錄</a>
+                                <hr />
+                                <a class="dropdown-item" href="/PersonInfo/Connect">聯絡訊息</a>
+                                <a class="dropdown-item" href="/PersonInfo/New">最新通知</a>
+                                <a class="dropdown-item" href="#">登出</a>*@
 
                         </div>
                     </li>
@@ -228,7 +228,7 @@
     @*RenderBody塞大家各自的頁面*@
     @RenderBody()
 
-    
+
     <footer>
         @*Footer*@
         <section class="footer">
@@ -357,12 +357,29 @@
     <!--<script src="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.js"></script>-->
     @*Header,Footer的JS*@
     <!--<script src="~/Assets/HeaderFooterLayout/headerfooter.js"></script>-->
-
     @*這是首頁除了Header和Footer之外內容的JS_Phil*@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
+    <script>
+    window.onload = function () {
+        console.log("ready!");
+    }
+    function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice) {
+        $.ajax({
+            type: "POST",
+            url: "/ShoppingCart/AddtoCart",
+            data: { PlanId: PlanId, PlanTitle: PlanTitle, PlanPrice: PlanPrice, PlanImgUrl: PlanImgUrl, Quantity: 1 },
+            dataType: "text",
+            success: function (response) {
+                alert(response);
+                $(".MyCart").text(`${response}`);
+            }
+        })
+    }
+    </script>
+
 
 </body>
 </html>

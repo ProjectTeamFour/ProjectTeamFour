@@ -249,8 +249,7 @@
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
-    <Compile Include="ViewModels\CartItemViewModel.cs" />
-    <Compile Include="ViewModels\CartListViewModel.cs" />
+    <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
@@ -258,6 +257,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
     <Compile Include="ViewModels\ProjectTotalViewModel.cs" />
@@ -300,7 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
-    <Content Include="Assets\css\campaignDetail.css" />
+    <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
     <Content Include="Assets\css\MemberRegisterPage\memberregister.css" />
@@ -317,6 +317,7 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
+    <Content Include="Assets\Html\selectPlanCard.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\mopproject.jpg" />
@@ -2133,6 +2134,8 @@
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
     <Content Include="Views\Projects\OrderByNew.cshtml" />
+    <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
+    <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

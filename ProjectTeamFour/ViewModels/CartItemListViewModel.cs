@@ -5,14 +5,14 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class CartListViewModel
+    public class CartItemListViewModel
     {
-        public CartListViewModel()
+        public CartItemListViewModel()
         {
-            this.CartItems = new List<CartItemViewModel>();
+            this.CartItems = new List<CarCarPlanViewModel>();
         }
 
-        public  List<CartItemViewModel> CartItems{ get;set;}
+        public  List<CarCarPlanViewModel> CartItems{ get;set;}
 
        
 

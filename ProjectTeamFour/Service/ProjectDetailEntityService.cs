@@ -41,7 +41,7 @@ namespace ProjectTeamFour.Service
 
         public ProjectDetailViewModel GetProjectDetail(int projectId)
         {
-            return GetProjectDetailFromEntity(x => x.ProjectId != projectId);
+            return GetProjectDetailFromEntity(x => x.ProjectId == projectId);
         }
 
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
@@ -60,8 +60,9 @@ namespace ProjectTeamFour.Service
                 ProjectImgUrl = entity.ProjectImgUrl,
                 ProjectVideoUrl = entity.ProjectVideoUrl,
                 AmountThreshold = entity.AmountThreshold,
-                Project_Question = entity.Project_Question,
-                Project_Answer = entity.Project_Answer​,
+                ProjectFAQList= ConvertProjectFAQList(entity.Project_Question,entity.Project_Answer),
+                //Project_Question = entity.Project_Question,
+                //Project_Answer = entity.Project_Answer​,
                 EndDate = new DateTime(2021, 3, 11),
                 StartDate = new DateTime(2021, 2, 1)
             };
@@ -74,6 +75,29 @@ namespace ProjectTeamFour.Service
             return GetPlanCards(x => x.ProjectId == projectId);
 
         }
+
+
+        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion , string strAnswer)
+        {
+            List<ProjectFAQViewModel> ProjectFAQ = new List<ProjectFAQViewModel>();
+
+            string[] questionsArray = strQuestion.Split(',');
+            string[] answerArray = strAnswer.Split(',');
+            int len_of_faq = questionsArray.Length;
+
+            for (int i = 0; i < len_of_faq ; i++)
+            {
+                ProjectFAQ.Add(
+                    new ProjectFAQViewModel()
+                    {
+                        Question = questionsArray[i],
+                        Answer = answerArray[i]
+                    }
+                );
+            }
+            return ProjectFAQ; 
+        }
+        
 
         public List<SelectPlanViewModel> GetPlanCards(Expression<Func<Plan, bool>> ProjectId)
         {         

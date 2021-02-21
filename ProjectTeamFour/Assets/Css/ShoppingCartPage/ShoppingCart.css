@@ -230,16 +230,15 @@ img {
     padding: .5rem 3rem;
 }
 
-
-
+.no-result {
+    text-align: center;
+    font-size: 3rem;
+}
+#navbarDropdownMenuLink img{
+    width:auto;
+}
 /* Set RWD */
-
-
 @media screen and (min-width: 992px) {
-
-
-
-
     .main-title::after {
         margin-top: 9rem;
     }
@@ -301,6 +300,6 @@ img {
     .navbar-nav .dropdown {
         position: absolute;
         right: 10rem;
-        top: -5px;
+        top: 14px;
     }
 }

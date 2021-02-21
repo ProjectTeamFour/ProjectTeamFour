@@ -113,7 +113,7 @@
                 PlanDescription = "台制雙人｜150 x 188 x 26 cm±1cm 原價 29,800 元(現省 15,000元)► 免費搬運舊床墊至管理處或巷口► 全台灣寄送免運費(台灣本島)► 偏遠地區須加運費",
                 PlanFundedPeople = 20,
                 PlanShipDate = new DateTime(2021, 3, 29),
-                PlanImgUrl = "https://i.imgur.com/eZ84taVm.png",
+                PlanImgUrl = "https://i.imgur.com/CNLokGtm.png",
                 PlanPrice = 14800m,
                 QuantityLimit = 0
             });
@@ -127,7 +127,7 @@
                 PlanDescription = "台制雙人特大｜180 x 210 x 26 cm±1cm 原價 41,800 元(現省 21,000元)► 免費搬運舊床墊至管理處或巷口► 全台灣寄送免運費(台灣本島)► 偏遠地區須加運費",
                 PlanFundedPeople = 15,
                 PlanShipDate = new DateTime(2021, 3, 29),
-                PlanImgUrl = "https://i.imgur.com/eZ84taVm.png",
+                PlanImgUrl = "https://i.imgur.com/donBSJIm.png",
                 PlanPrice = 20800m,
                 QuantityLimit = 0
             });
@@ -1498,7 +1498,7 @@
 
 
             });
-            //第10個提案的會員資料
+            //第12個提案的會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
                 MemberId = 12,
@@ -1506,7 +1506,7 @@
                 MemberPassword = "NO12memberPassword",
                 MemberName = "MicroNovelty",
                 MemberAddress = "100台北市中正區重慶南路一段122號",
-                MemberBirth = new DateTime(1980, 111, 3),
+                MemberBirth = new DateTime(1980, 11, 3),
                 MemberConEmail = "123545@gmail.com",
                 MemberRegEmail = "123545@gmail.com",
                 MemberMessage = "",
@@ -1518,7 +1518,7 @@
                 ProfileImgUrl = "https://i.imgur.com/DIu40gRl.jpg",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
-            //第10個提案中的方案
+            //第12個提案中的方案
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 62,

@@ -21,8 +21,9 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectDescription { get; set; }
         public string ProjectImgUrl { get; set; }
         public string ProjectVideoUrl { get; set; }
-        public string Project_Question { get; set; }
-        public string Project_Answer { get; set; }
+
+        public List<ProjectFAQViewModel> ProjectFAQList { get; set; }
+  
         //可以動態取得看是否拿掉plan.Count(p=>p.projectid==?)......................... 
         public int ProjectPlansCount { get; set; }
         public string ProjectCoverUrl { get; set; }

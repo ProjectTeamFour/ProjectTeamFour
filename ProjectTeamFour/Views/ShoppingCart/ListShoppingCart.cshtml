@@ -1,0 +1,149 @@
+﻿@model CartItemListViewModel
+@{
+    ViewBag.Title = "ShoppingCart";
+    
+}
+@section topCSS{
+    <link href="~/Assets/Css/ShoppingCartPage/ShoppingCart.css" rel="stylesheet" />
+}
+@section endJS{
+    <script>
+
+
+        let forseller = document.querySelector(".for-seller");
+        let cartout = document.querySelector(".cart-out");
+        let noresult = document.querySelector(".no-result");
+        if (noresult.innerText == "購物車無任何商品") {
+            forseller.setAttribute("style", "display:none");
+            cartout.setAttribute("style", "display:none");
+        }
+        else {
+            forseller.setAttribute("style", "display:block");
+            cartout.setAttribute("style", "display:block");
+        }
+
+    </script>
+}
+
+<section class="shopping-cart">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-12 col-md-12 col-lg-6 main-title">
+                <div class="sticky">
+                    <h1>Shopping Cart</h1>
+                </div>
+
+            </div>
+
+
+            <div class="shop-items col-lg-6">
+                @if (Model!=null)
+                {
+                    foreach (var item in Model.CartItems)
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
+                    }
+
+                   
+                }
+                else
+                {
+                        <div class="no-result">
+                            <p>購物車無任何商品</p>
+                        </div>
+                }
+
+
+
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-sm-12 col-lg-6 for-seller">
+                <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
+                          aria-label="Special instructions for seller"></textarea>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cart-out">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-sm-12 col-lg-6">
+                <p class="total" id="CartTotal">Total: <span>$56.98</span></p>
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-sm-12 buttons-group col-lg-6">
+
+                <a href="/pay/Index"><input type="submit" name="checkout" value="Checkout" class="checkout"></a>
+
+                <button name="update" class="button outline less-padding" aria-label="Update cart" class="reload">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wish-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="wish-title">
+                    <P>
+                        Wish List Projects
+                    </P>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="wish-list-image">
+                    <a href="/ProductDetail/Index">
+                        <img src="~/Assets/Img/ShoppingCart/projecttest1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="wish-list-text">
+                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD <span>起</span> </span> </a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="wish-list-image">
+                    <a href="/ProductDetail/Index">
+                        <img src="~/Assets/Img/ShoppingCart/projecttest2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="wish-list-text">
+                    <a href="/ProductDetail/Index">
+                        <span class="title">
+                            Bento Box in Elements Lorem ipsum dolor sit, amet consectetur
+                            adipisicing elit. Rem vitae libero dolorem atque illum minus rerum cumque sint beatae
+                            ratione distinctio, porro harum! Impedit, necessitatibus quaerat optio sed deserunt
+                            vel?
+                        </span>
+                        <span class="price">$28.00 USD<span>起</span> </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="wish-list-image">
+                    <a href="/ProductDetail/Index">
+                        <img src="~/Assets/Img/ShoppingCart/projecttest3.jpg" alt="">
+                    </a>
+                </div>
+                <div class="wish-list-text">
+                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD<span>起</span> </span> </a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="wish-list-image">
+                    <a href="/ProductDetail/Index">
+                        <img src="~/Assets/Img/ShoppingCart/projecttest4.jpg" alt="">
+                    </a>
+                </div>
+                <div class="wish-list-text">
+                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD<span>起</span> </span> </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+</section>

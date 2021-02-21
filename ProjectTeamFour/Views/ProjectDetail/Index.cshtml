@@ -25,7 +25,7 @@
                         </iframe>
                     </div>
                     <div id="campaign-summary" class="">
-                        <p>玩故事學程式，無論何時都合適，一款最適合孩童學程式的解謎桌遊！</p>
+                        <p>@Model.ProjectDetailItem.ProjectName</p>
                         <div id="campaign-progress " class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
                                  aria-valuemax="100"></div>
@@ -34,24 +34,26 @@
                     <div id="creator-info" class="item-wrap">
                         <div class="row">
                             <div class="item-logo">
-                                <a href="#" data-target="#messageModal" data-toggle="modal">
+                                @*<a href="#" data-target="#messageModal" data-toggle="modal">
                                     <img src="https://static.flyingv.asia/static/square/users/5c126a0e32b49.png" alt="" srcset="">
-                                </a>
+                                </a>*@
                             </div>
                             <div class="item-text">
                                 <h5>
-                                    <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName
+                                    <a href="#" data-target="#messageModal" data-toggle="modal">
+                                        <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName
+                                        </a>
                                 </h5>
                                 <div class="wrapper">
                                     <div class="item-text">
                                         <h5>
-                                            <span class="label-grey">提案總數</span>2件
+                                            <span class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
                                         </h5>
                                     </div>
                                     <div id="follow-icon">
-                                        <a href="#"><i class="bi bi-facebook"></i></a>
-                                        <a href="#"><i class="bi bi-twitter"></i></a>
-                                        <a href="#"><i class="bi bi-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-facebook"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +76,7 @@
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
                                 <span class="label-grey">贊助人數</span>
-                                <h2 class="block">@Model.ProjectDetailItem.Fundedpeople</h2>
+                                <h2 class="block">@Model.ProjectDetailItem.Fundedpeople 人</h2>
                             </div>
                             <div id="donating-days-countdown" class="number-row">
                                 <span class="label-grey">募資倒數</span>
@@ -93,10 +95,11 @@
                             <div class="row">
                                 <div class="btn col-12">
                                     <a href="" id="backit-btn">贊助專案</a>
+                                    @* 轉接到加入購物車 *@
                                 </div>
                                 <div class="btn col-8">
                                     <button id="ask-btn">
-                                        <span class="comment" id="ask-btn"><i class="bi bi-chat-dots-fill"></i></span>
+                                        <span class="comment"><i class="fab fa-comment-dots"></i></span>
                                         聯絡提案人
                                     </button>
                                 </div>
@@ -110,7 +113,7 @@
                 </div>
             </div>
         </div>
-        </div>
+
     </section>
 
     <div class="below-content">
@@ -139,75 +142,104 @@
                                     <section id="story">
                                         <div class="container">
                                             @*成功的話新增一個判斷式*@
-                                            <div class="info wrapper">
-                                                <p>已達成 募資目標!</p>
-                                            </div>
-                                            <p>
-                                                @Model.ProjectDetailItem.ProjectDescription
-                                                海霸團隊又回來了！這次將為大家帶來全球第一款程式解謎遊戲!源自於交通大學的程式老爹，過去以「順序性」「迴圈」「條件判斷」「集合」四項基礎程式邏輯打造了一款適合所有程式初學者的桌遊《Coding
-                                                Ocean：海霸》並已被全台超過500所國中、國小支持，並獲得許多的獎項與肯定！甚至於2019年被納入國中教科書中，每年幫助十萬位小朋友學習程式。
-                                            </p>
+                                            @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                                            {
+                                                <div class="info wrapper">
+                                                    <p>已達成 募資目標!</p>
+                                                </div>
+                                            }
+                                        <p>
+                                            @Model.ProjectDetailItem.ProjectDescription
+                                        </p>
+                                                @*專案詳細說明內文*@
+                                                @{
+                                                    string[] description = Model.ProjectDetailItem.ProjectDescription.Split(',');
+                                                    if (description.Contains("jpg"))
+                                                    {
+                                                        <img src=""/>
+                                                    }                                                        
+                                                    else { 
+                                                        <p> </p>
+                                                        };
+                                                    }
                                         </div>
                                     </section>
                                 </div>
+
                                 <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
                                     <!-- 問答要做成 collapse -->
                                     <!-- 這裡要下判斷式，長出提問以及回答 -->
                                     <div class="accordion" id="accordionExample">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」
 
+
+
+                                        @{
+                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                            {
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                @item.Question
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                         data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            @item.Answer
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header" id="headingTwo">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                                            aria-controls="collapseTwo">
-                                                        許多桌遊的規則都很複雜，《解碼傳說》會不會很難上手？
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    《解碼傳說》的規則非常容易，口述只需要三分鐘以內。除了規則說明書，我們還設計了教學關卡，會逐步帶玩家熟練規則。此外，我們屆時還會拍攝教學影片放上Youtube平台供玩家參考。
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header" id="headingThree">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                                            aria-controls="collapseThree">
-                                                        《解碼傳說》是不是只適合給小朋友玩？
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    「其它年紀的玩家也適合喔！《解碼傳說》已經有過千人次的測試經驗，玩家包含了其它年紀的學生（國中至大學生）、成人(家長、老師、解謎遊戲玩家)，都獲得了大量的好評，遊戲在故事風格、難易度、趣味性是適合各年齡層的玩家的。」
-                                                </div>
-                                            </div>
-                                        </div>
+                                            }
+
+                                        }
+                                        @*<div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        許多桌遊的規則都很複雜，《解碼傳說》會不會很難上手？
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                 data-parent="#accordionExample">
+                <div class="card-body">
+                    《解碼傳說》的規則非常容易，口述只需要三分鐘以內。除了規則說明書，我們還設計了教學關卡，會逐步帶玩家熟練規則。此外，我們屆時還會拍攝教學影片放上Youtube平台供玩家參考。
+                </div>
+            </div>
+        </div>*@
+                                        @*<div class="faqWrapper">
+            <div class="faq">
+                <div class="outer">
+                    <div class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
+                </div>
+                <div class="answer">
+                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
+
+                </div>
+            </div>
+        </div>*@
+
                                     </div>
-
                                 </div>
+
+                                @* 專案進度更新 *@
                                 <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
                                     <div id="goal-wrap" class="container">
                                         <span class="post-date label-grey">2021/01/05</span>
@@ -231,6 +263,7 @@
                                     </div>
                                 </div>
 
+                                @* 專案留言區 *@
                                 <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
                                     <div id="comment-hint" class="wrapper">
                                         <p>
@@ -249,9 +282,9 @@
                             <div class="min-display-slide">
                                 <div class="row">
                                     @foreach (var item in Model.SelectPlanCards.PlanCardItems)
-                                        {
-                                           @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                        }
+                                    {
+                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                    }
                                     <!-- <h4>選擇方案</h4> -->
                                 </div>
                             </div>

@@ -37,7 +37,7 @@ namespace ProjectTeamFour.Controllers
             };
 
             var projectDetail = projectDetailService.GetProjectDetail(id);
-            projectTotalVM.ProjectDetailItem.Equals(projectDetail);
+            projectTotalVM.ProjectDetailItem=projectDetail ;
 
             var plancards = projectDetailService.GetPlanCards(x => x.ProjectId == id);
             foreach (var item in plancards)

@@ -14,7 +14,7 @@
         <div class="cardtemplate-item project-name">
             <h4>@Model.ProjectName</h4>
         </div>
-        <div class="cardtemplate-item plan-title">
+        <div  class="cardtemplate-item plan-title">
             <h3>@Model.PlanTitle</h3>
         </div>
         <div class="cardtemplate-item plan-description">
@@ -35,7 +35,8 @@
         </div>
         <div class="project-amount-item add-to-cart d-flex">
             <p>上車囉</p>
-            <button><i class="fas fa-plus"></i></button>
+            <a onclick="AddToMyCart('@Model.PlanId','@Model.PlanTitle','@Model.PlanImgUrl','@Model.PlanPrice')" href="javascript:void(0)"><i class="fas fa-plus"></i></a>
+
         </div>
     </div>
 </div>
