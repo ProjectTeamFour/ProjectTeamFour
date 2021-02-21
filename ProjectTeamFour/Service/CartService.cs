@@ -52,6 +52,35 @@ namespace ProjectTeamFour.Service
             return plan;
         }
 
+        public CartItemListViewModel CheckId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
+        {
+            
+
+            var result = cartItems.CartItems.Where(x => x.PlanId == carcarPlanVM.PlanId).Select(x => x).FirstOrDefault();
+
+            if(result == default(CarCarPlanViewModel))
+            {
+                var cart = new CarCarPlanViewModel
+                {
+                    CartId = cartItems.CartItems.Count() + 1,
+                    PlanId = carcarPlanVM.PlanId,
+                    PlanTitle = carcarPlanVM.PlanTitle,
+                    PlanImgUrl = carcarPlanVM.PlanImgUrl,
+                    PlanPrice = carcarPlanVM.PlanPrice,
+                    Quantity = carcarPlanVM.Quantity,
+
+
+                };
+                cartItems.CartItems.Add(cart);
+                return cartItems;
+            }
+            else
+            {
+               result.Quantity += 1;
+                return cartItems;
+            }
+        }
+
 
     }
 }

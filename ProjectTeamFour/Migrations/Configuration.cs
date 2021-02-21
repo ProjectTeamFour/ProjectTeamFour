@@ -113,7 +113,7 @@
                 PlanDescription = "台制雙人｜150 x 188 x 26 cm±1cm 原價 29,800 元(現省 15,000元)► 免費搬運舊床墊至管理處或巷口► 全台灣寄送免運費(台灣本島)► 偏遠地區須加運費",
                 PlanFundedPeople = 20,
                 PlanShipDate = new DateTime(2021, 3, 29),
-                PlanImgUrl = "https://i.imgur.com/eZ84taVm.png",
+                PlanImgUrl = "https://i.imgur.com/CNLokGtm.png",
                 PlanPrice = 14800m,
                 QuantityLimit = 0
             });
@@ -127,7 +127,7 @@
                 PlanDescription = "台制雙人特大｜180 x 210 x 26 cm±1cm 原價 41,800 元(現省 21,000元)► 免費搬運舊床墊至管理處或巷口► 全台灣寄送免運費(台灣本島)► 偏遠地區須加運費",
                 PlanFundedPeople = 15,
                 PlanShipDate = new DateTime(2021, 3, 29),
-                PlanImgUrl = "https://i.imgur.com/eZ84taVm.png",
+                PlanImgUrl = "https://i.imgur.com/donBSJIm.png",
                 PlanPrice = 20800m,
                 QuantityLimit = 0
             });

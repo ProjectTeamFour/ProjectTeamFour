@@ -37,18 +37,20 @@
 
 
             <div class="shop-items col-lg-6">
-                @if (Model == null)
-                {
-                    <div class="no-result">
-                        <p>購物車無任何商品</p>
-                    </div>
-                }
-                else
+                @if (Model!=null)
                 {
                     foreach (var item in Model.CartItems)
                     {
                         @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
                     }
+
+                   
+                }
+                else
+                {
+                        <div class="no-result">
+                            <p>購物車無任何商品</p>
+                        </div>
                 }
 
 

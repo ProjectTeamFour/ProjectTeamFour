@@ -1,4 +1,5 @@
-﻿using ProjectTeamFour.ViewModels;
+﻿using ProjectTeamFour.Service;
+using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace ProjectTeamFour.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        private CartService _CartService;
+        public ShoppingCartController()
+        {
+            _CartService = new CartService();
+        }
         // GET: ShoppingCart
         public ActionResult Index()
         {
@@ -41,19 +47,24 @@ namespace ProjectTeamFour.Controllers
             else
             {
                 cartList = (CartItemListViewModel)Session["Cart"];
-                var cart = new CarCarPlanViewModel
-                {
-                    CartId = cartList.CartItems.Count() + 1,
-                    PlanId = carcarPlanVM.PlanId,
-                    PlanTitle = carcarPlanVM.PlanTitle,
-                    PlanImgUrl = carcarPlanVM.PlanImgUrl,
-                    PlanPrice = carcarPlanVM.PlanPrice,
-                    Quantity = carcarPlanVM.Quantity,
+
+                //var cart = new CarCarPlanViewModel
+                //{
+                //    CartId = cartList.CartItems.Count() + 1,
+                //    PlanId = carcarPlanVM.PlanId,
+                //    PlanTitle = carcarPlanVM.PlanTitle,
+                //    PlanImgUrl = carcarPlanVM.PlanImgUrl,
+                //    PlanPrice = carcarPlanVM.PlanPrice,
+                //    Quantity = carcarPlanVM.Quantity,
 
 
-                };
-                cartList.CartItems.Add(cart);
-                Session["Cart"] = cartList;
+                //};
+                //cartList.CartItems.Add(cart);
+                var cartFiilter = _CartService.CheckId(cartList, carcarPlanVM);
+
+                    Session["Cart"] = cartFiilter;
+                
+                
             }
 
 
