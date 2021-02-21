@@ -5,24 +5,6 @@
     //decimal num = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     double dateLine = new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - Model.ProjectDetailItem.StartDate.Ticks).TotalDays;
 }
-@{
-    string project_question = Model.ProjectDetailItem.Project_Question;
-    string[] questions = project_question.Split(',');
-    foreach (var q in questions)
-    {
-        <button>@q</button>
-    }
-}
-
-@{
-    string project_answer = Model.ProjectDetailItem.Project_Answer;
-    string[] answers = project_answer.Split(',');
-    foreach (var a in answers)
-    {
-        <div class="card-body">@a</div>
-    }
-}
-
 
 <section class="main-body">
     <div id="project-title" class="container">
@@ -188,62 +170,71 @@
                                     <!-- 問答要做成 collapse -->
                                     <!-- 這裡要下判斷式，長出提問以及回答 -->
                                     <div class="accordion" id="accordionExample">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        @Model.ProjectDetailItem.Project_Question
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    @Model.ProjectDetailItem.Project_Answer
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @*<div class="card">
-                                            <div class="card-header" id="headingTwo">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                                            aria-controls="collapseTwo">
-                                                        許多桌遊的規則都很複雜，《解碼傳說》會不會很難上手？
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    《解碼傳說》的規則非常容易，口述只需要三分鐘以內。除了規則說明書，我們還設計了教學關卡，會逐步帶玩家熟練規則。此外，我們屆時還會拍攝教學影片放上Youtube平台供玩家參考。
-                                                </div>
-                                            </div>
-                                        </div>*@
-                                                                @*<div class="faqWrapper">
-                                            <div class="faq">
-                                                <div class="outer">
-                                                    <div class="arrow">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                            <g fill="none" fill-rule="evenodd">
-                                                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                            </g>
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                            <g fill="none" fill-rule="evenodd">
-                                                                <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
-                                                </div>
-                                                <div class="answer">
-                                                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
 
+
+
+                                        @{
+                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                            {
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                @item.Question
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                         data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            @item.Answer
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>*@
+                                            }
+
+                                        }
+                                        @*<div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        許多桌遊的規則都很複雜，《解碼傳說》會不會很難上手？
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                 data-parent="#accordionExample">
+                <div class="card-body">
+                    《解碼傳說》的規則非常容易，口述只需要三分鐘以內。除了規則說明書，我們還設計了教學關卡，會逐步帶玩家熟練規則。此外，我們屆時還會拍攝教學影片放上Youtube平台供玩家參考。
+                </div>
+            </div>
+        </div>*@
+                                        @*<div class="faqWrapper">
+            <div class="faq">
+                <div class="outer">
+                    <div class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
+                </div>
+                <div class="answer">
+                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
+
+                </div>
+            </div>
+        </div>*@
 
                                     </div>
                                 </div>
