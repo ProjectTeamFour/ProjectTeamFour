@@ -31,6 +31,7 @@
         background-color: transparent;
         outline: none;
         width: 11.5rem;
+        font-weight: 700;
     }
 
     .project-proposal-landing .project-name-input-item select {
@@ -93,6 +94,16 @@
         letter-spacing: 0.1rem;
         font-size: 0.9rem;
         outline: none;
+    }
+
+
+    .project-proposal-landing .select .option-name {
+        color: #000;
+        font-weight: 600;
+    }
+
+    .project-proposal-landing select {
+        font-weight: 600;
     }
 
 @media screen and (max-width: 575px) {
