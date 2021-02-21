@@ -1498,7 +1498,7 @@
 
 
             });
-            //第10個提案的會員資料
+            //第12個提案的會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
                 MemberId = 12,
@@ -1506,7 +1506,7 @@
                 MemberPassword = "NO12memberPassword",
                 MemberName = "MicroNovelty",
                 MemberAddress = "100台北市中正區重慶南路一段122號",
-                MemberBirth = new DateTime(1980, 111, 3),
+                MemberBirth = new DateTime(1980, 11, 3),
                 MemberConEmail = "123545@gmail.com",
                 MemberRegEmail = "123545@gmail.com",
                 MemberMessage = "",
@@ -1518,7 +1518,7 @@
                 ProfileImgUrl = "https://i.imgur.com/DIu40gRl.jpg",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
-            //第10個提案中的方案
+            //第12個提案中的方案
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 62,
