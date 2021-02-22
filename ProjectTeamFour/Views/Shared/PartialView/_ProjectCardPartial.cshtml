@@ -2,8 +2,9 @@
 
 
 @{
+    DateTime today = DateTime.Now;
     decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
-    int dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays);
+    double dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - today.Ticks).TotalDays);
 }
 
 
@@ -35,7 +36,7 @@
                 <div class="project-progressnumber-item amount d-flex">
                     <div class="amount-item money">
                         <p>
-                            $@Model.FundingAmount
+                            @StringFormat5.addComma((int)Model.FundingAmount)
                         </p>
                     </div>
                     <div class="amount-item">
