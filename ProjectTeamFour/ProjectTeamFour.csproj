@@ -2142,6 +2142,7 @@
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
+    <Content Include="Views\Projects\GetItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

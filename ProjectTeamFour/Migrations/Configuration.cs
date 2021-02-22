@@ -1368,8 +1368,8 @@
                 ProjectName = "SoulFa靈魂沙發第二張專輯< Slumber Days>",
                 Category = "音樂",
                 ProjectStatus = "集資中",
-                StartDate = new DateTime(2021, 2, 12),
-                EndDate = new DateTime(2021, 5, 7),
+                StartDate = new DateTime(2021, 2, 7),
+                EndDate = new DateTime(2021, 9, 7),
                 Fundedpeople = 19,
                 FundingAmount = 9040m,
                 AmountThreshold = 350500m,
@@ -1478,8 +1478,8 @@
                 ProjectName = "PockeTool2.0 戶外多功能小工具",
                 Category = "科技設計",
                 ProjectStatus = "集資中",
-                StartDate = new DateTime(2021, 2, 28),
-                EndDate = new DateTime(2021, 5, 7),
+                StartDate = new DateTime(2021, 2, 7),
+                EndDate = new DateTime(2021, 8, 5),
                 Fundedpeople = 98,
                 FundingAmount = 172572m,
                 AmountThreshold = 355555m,
@@ -1515,7 +1515,7 @@
                 MemberWebsite = "https://www.micronovelty.com/",
                 AboutMe = "MicroNovelt是一家致力於極客產品開發和推廣的科技公司。 MicroNovelty的願景和使命是讓極客（發明家）的創新設計能夠變為商品，被更多的人接受和使用。我們希望做極客（發明家）的經紀人，讓極客（發明家）專注創新，我們做產品的工程化和商業化推廣。 目前，MicroNovelty在上海丶台湾、大連、深圳、紐約和矽谷設有分支機構，具有完善的工程師、供應鏈管理和市場推廣團隊。累計開發產品20餘款，涵蓋消費電子品、戶外用品、個人護理、旅行產品、攝影器材等多個品類，依托渠道和互聯網平台，銷售遍布全球150多個國家和地區。",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/DIu40gRl.jpg",
+                ProfileImgUrl = "https://i.imgur.com/DIu40gRt.jpg",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第12個提案中的方案
