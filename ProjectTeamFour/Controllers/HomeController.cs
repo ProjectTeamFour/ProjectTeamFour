@@ -49,5 +49,42 @@ namespace ProjectTeamFour.Controllers
 
             return View(homeviewmodel);
         }
+
+
+
+
+        public ActionResult Search()
+        {
+
+            var homeService = new HomeService();
+
+            HomeViewModel homeviewmodel = new HomeViewModel()
+            {
+                ProjectItem = new ProjectListViewModel()
+                {
+                    ProjectItems = new List<ProjectViewModel>()
+                },
+
+                CarCarPlanItem = new CarCarPlanListViewModel()
+                {
+                    CarCarPlanItems = new List<CarCarPlanViewModel>()
+                }
+            };
+
+
+            var GetAll = homeService.GetAllTotal();
+            foreach (var item in GetAll.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
+
+            foreach (var item in GetAll.CarCarPlanItem.CarCarPlanItems)
+            {
+                homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
+            }
+
+            return View(homeviewmodel);
+        }
+
     }
 }
