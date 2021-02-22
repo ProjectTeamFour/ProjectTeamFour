@@ -84,8 +84,8 @@ namespace ProjectTeamFour.Service
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
-                    Fundedpeople = item.Fundedpeople
-
+                    Fundedpeople = item.Fundedpeople,
+                    ProjectId = item.ProjectId
                 };
                 project.ProjectItems.Add(projectbox);
             }
@@ -115,7 +115,8 @@ namespace ProjectTeamFour.Service
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
                     Fundedpeople = item.Fundedpeople,
-                    dateLine = timespan
+                    dateLine = timespan,
+                    ProjectId = item.ProjectId
                 };
                 project.ProjectItems.Add(projectbox);
             };
