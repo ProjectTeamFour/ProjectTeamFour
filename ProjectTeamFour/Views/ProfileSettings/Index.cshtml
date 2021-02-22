@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectTeamFour.Models.User>
+﻿@model Member
 
 @{
     ViewBag.Title = "Index";
@@ -226,14 +226,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 
     <!-- 帳戶設定 -->
     <!-- 個人資料 -->
@@ -477,6 +469,8 @@
             </div>
             <button id="delete-account" class="btn btn-primary">儲存設定</button>
         </div>
+
+        @Html.Partial("~/Views/MemberSettings/Edit.cshtml");
     </form>
 </div>
 

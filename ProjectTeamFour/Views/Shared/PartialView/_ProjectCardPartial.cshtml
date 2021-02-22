@@ -3,7 +3,7 @@
 
 @{
     decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
-    double dateLine = new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays;
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - Model.StartDate.Ticks).TotalDays);
 }
 
 
