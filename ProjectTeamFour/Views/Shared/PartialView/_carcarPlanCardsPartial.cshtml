@@ -29,9 +29,7 @@
     </a>
     <div class="cardtemplate-item project-amount d-flex justify-content-between">
         <div class="project-amount-item amount">
-            <p>
-                $@Model.PlanPrice
-            </p>
+           @StringFormat5.addComma((int)Model.PlanPrice)
         </div>
         <div class="project-amount-item add-to-cart d-flex">
             <p>上車囉</p>
@@ -40,3 +38,14 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+@section endJS{
+    <script>
+       
+    </script>
+    }

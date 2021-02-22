@@ -74,11 +74,11 @@
     list-style: none;
 }
 
-    #sidebar .sidebar-header li {
-        color: #000;
-        margin-left: 1.7rem;
-        margin-top: 0.9rem;
-    }
+#sidebar .sidebar-header li {
+    color: #000;
+    margin-left: 1.7rem;
+    margin-top: 0.9rem;
+}
 
 #sidebar .sidebar-item i {
     transition: .3s;
@@ -88,6 +88,9 @@
     #sidebar .sidebar-item i:hover {
         color: var(--color);
     }
+
+
+/*手機input*/
 
 #sidebar .search-input input {
     border: none;
@@ -315,6 +318,12 @@
         border: none;
         background-color: transparent;
         outline: none;
+        height: 1rem;
+        margin-left: 3px;
+    }
+
+    .pcmode-navbar .pc-input-search {
+
     }
 
     .pcmode-navbar .title h1 {

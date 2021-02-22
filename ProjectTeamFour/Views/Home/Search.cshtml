@@ -1,0 +1,80 @@
+﻿@model ProjectTeamFour.ViewModels.HomeViewModel
+
+
+@section topCSS{
+    <link href="~/Assets/Css/HomePage/homepage.css" rel="stylesheet" />
+}
+
+@section endJS{
+    <script src="~/Assets/Javascript/HomePage/homepage.js"></script>
+}
+
+<!-- 熱門專案 -->
+<section class="popular-project">
+    <div class="container">
+
+        <div class="popular-project-item title-bar d-flex justify-content-between">
+            <div class="title-bar-item title">
+                <h2>熱門項目</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="/Projects/Index">查看更多 ></a>
+            </div>
+        </div>
+
+        <div class="popular-project-item cardtemplate-section">
+            <div class="row">
+
+
+                @foreach (var item in Model.ProjectItem.ProjectItems)
+                {
+                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                }
+
+            </div>
+        </div>
+
+        <div class="popular-project-item title-bar">
+            <div class="title-bar-item phone-see-more">
+                <a href="">查看更多 ></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 商城專案 -->
+<section class="indemand-project">
+    <div class="container">
+
+        <div class="indemand-project-item title-bar d-flex justify-content-between mt-2">
+            <div class="title-bar-item title">
+                <h2>車車商城</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="/Products/Index">上車專區 ></a>
+            </div>
+        </div>
+
+        <div class="slide-arrow d-flex justify-content-between">
+            <button type="button" class="slide-arrow-item bg-transparent border-0 prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="slide-arrow-item bg-transparent border-0 next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="indemand-project-item cardtemplate-section">
+            <div class="indemand-project-wrap">
+
+                @foreach (var item in Model.CarCarPlanItem.CarCarPlanItems)
+                {
+                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", item);
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>
