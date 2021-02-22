@@ -19,7 +19,7 @@
                 <div class="col-sm-12 col-md-8">
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
-                        <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
+                        <iframe scrolling="no" src="https://www.youtube.com/embed/40vGu9I2SAc" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
@@ -71,7 +71,7 @@
                             <span class="badge badge-secondary">@Model.ProjectDetailItem.ProjectStatus</span>
                             <div id="donating-amount" class="number-row">
                                 <span class="label-grey">目標 NTD$@Model.ProjectDetailItem.AmountThreshold</span>
-                                <h2>$@Model.ProjectDetailItem.FundingAmount</h2>
+                                <h2>@Model.ProjectDetailItem.FundingAmount.ToString("C2")</h2>
                             </div>
                             <hr class="display-sm">
                             <div id="donating-people-count" class="number-row">
@@ -148,20 +148,17 @@
                                                     <p>已達成 募資目標!</p>
                                                 </div>
                                             }
-                                        <p>
-                                            @Model.ProjectDetailItem.ProjectDescription
-                                        </p>
-                                                @*專案詳細說明內文*@
-                                                @{
-                                                    string[] description = Model.ProjectDetailItem.ProjectDescription.Split(',');
-                                                    if (description.Contains("jpg"))
-                                                    {
-                                                        <img src=""/>
-                                                    }                                                        
-                                                    else { 
-                                                        <p> </p>
-                                                        };
-                                                    }
+
+                                            @*專案詳細說明內文*@
+                                            @{
+                                                string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                                foreach (var item in description_str)
+                                                {
+                                                    <div style="width:100%;margin:1rem;">
+                                                        <img src="@item" />
+                                                    </div>
+                                                }
+                                            }
                                         </div>
                                     </section>
                                 </div>
