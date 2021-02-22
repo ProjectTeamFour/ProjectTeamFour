@@ -22,8 +22,11 @@ namespace ProjectTeamFour.Models
         public string ProfileImgUrl { get; set; }
         public string MemberWebsite { get; set; }
         public string MemberMessage { get; set; }
+        public int Permission { get; set; }
+
         //Navigation Property 導覽屬性
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+
     }
 }

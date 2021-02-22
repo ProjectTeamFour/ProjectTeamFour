@@ -45,5 +45,6 @@ namespace ProjectTeamFour.ViewModels
         public string MemberWebsite { get; set; }
         [Display(Name = "聯絡訊息")]
         public string MemberMessage { get; set; }
+        public int Permission { get; set; }
     }
 }

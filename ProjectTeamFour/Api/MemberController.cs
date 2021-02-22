@@ -24,9 +24,9 @@ namespace ProjectTeamFour.Api
             _memberService = new MemberService();
             _logservice = new LogService();
         }
-        public MemberViewModel GetMemberbyReg(string reg)
+        public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
-            return _memberService.GetMember(p=>p.MemberRegEmail==reg);
+            return _memberService.GetMember(KeySelector);
         }
         public MemberListViewModel GetMembers()
         {

@@ -7,6 +7,7 @@ using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
 using System.IO;
 using ProjectTeamFour.Service;
+using ProjectTeamFour.Helpers;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -37,6 +38,11 @@ namespace ProjectTeamFour.Controllers
                 ListViewModel.Items.Add(vm);
             }
             return View(ListViewModel.Items);
+        }
+        [CustomAuthorize(flagNum =1)]
+        public ActionResult Test()
+        {
+            return View();
         }
     }
 }

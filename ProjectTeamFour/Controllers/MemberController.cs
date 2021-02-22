@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Api;
+using System.Web.Security;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -52,28 +53,65 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult Login(MemberLoginViewModel input)
         {
-            MemberViewModel viewModel = null;
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                viewModel= _api.GetMemberbyReg(input.Email);
-                if (viewModel == null)
-                {
-                    ViewData["WrongAccount"] = "帳號錯誤!";
-                    return View();
-                }
-                if (viewModel.MemberPassword != input.Password)
-                {
-                    ViewData["WrongPassword"] = "密碼錯誤!";
-                    return View();
-                }
-                Session["Member"] = viewModel;
+                return View(input);
             }
-            return RedirectToAction("Index","Home");
+            MemberViewModel viewModel = _api.GetMember(p => p.MemberRegEmail == input.Email &&
+              p.MemberPassword == input.Password);
+            if (viewModel == null)
+            {
+                ModelState.AddModelError("NotFount", "帳號或密碼輸入錯誤");
+                return View(input);
+            }
+            Session["Permission"] = viewModel.Permission;
+            Session["Member"] = viewModel;
+            //1.Create FormsAuthenticationTicket
+           var ticket = new FormsAuthenticationTicket(
+           version: 1,
+           name: "", //可以放使用者Id
+           issueDate: DateTime.UtcNow,//現在UTC時間
+           expiration: DateTime.UtcNow.AddMinutes(30),//Cookie有效時間=現在時間往後+30分鐘
+           isPersistent: false,// 是否要記住我 true or false
+           userData: "", //可以放使用者角色名稱
+           cookiePath: FormsAuthentication.FormsCookiePath);
+
+            //2.Encrypt the Ticket
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+            //3.Create the cookie.
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            Response.Cookies.Add(cookie);
+
+            //4.Redirect back to original URL.
+            var url = FormsAuthentication.GetRedirectUrl("", false);
+
+            //5.Response.Redirect
+            return Redirect(url);
+            //MemberViewModel viewModel = null;
+            //if (ModelState.IsValid)
+            //{
+            //    viewModel= _api.GetMemberbyReg(input.Email);
+            //    if (viewModel == null)
+            //    {
+            //        ViewData["WrongAccount"] = "帳號錯誤!";
+            //        return View();
+            //    }
+            //    if (viewModel.MemberPassword != input.Password)
+            //    {
+            //        ViewData["WrongPassword"] = "密碼錯誤!";
+            //        return View();
+            //    }
+            //    Session["Member"] = viewModel;
+            //}
+            //return RedirectToAction("Index","Home");
         }
         public ActionResult Logout()
         {
+            FormsAuthentication.SignOut();
             Session["Member"] = null;
-            return RedirectToAction("Index", "Home");
+            Session["Permission"] = null;
+            return RedirectToAction("Login", "Member");
         }
  
 
