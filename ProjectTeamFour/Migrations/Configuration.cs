@@ -1594,6 +1594,76 @@
                 PlanPrice = 4499m,
                 QuantityLimit = 0
             });
+
+
+            //第13個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 13,
+                MemberId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                Category = "科技設計",
+                ProjectStatus = "集資成功",
+                StartDate = new DateTime(2021, 3, 7),
+                EndDate = new DateTime(2021, 5, 7),
+                Fundedpeople = 700,
+                FundingAmount = 4330767m,
+                AmountThreshold = 300000m,
+                CreatorName = "TRANZEND",
+                ProjectMainUrl = "",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "外套的重量有多重呢？",
+                Project_Answer = "Men-S:含帽子 880g , 不含帽子 780g, Female-S: 含帽子 820g, 不含帽子 740g,一般厚羽絨外套或是保暖大衣的重量大約落在900g~1300g不等～",
+                ProjectPlansCount = 12
+            });
+
+
+            //第13個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 13,
+                MemberAccount = "NO13member",
+                MemberPassword = "NO13memberPassword",
+                MemberName = "TRANZEND",
+                MemberAddress = "100台北市中正區重慶南路一段122號",
+                MemberBirth = new DateTime(1993, 1, 6),
+                MemberConEmail = "19930106@gmail.com",
+                MemberRegEmail = "19930106@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0919930106",
+                MemberTeamName = "TRANZEND",
+                MemberWebsite = "https://www.facebook.com/TranzendTW/",
+                AboutMe = "具有極佳的超彈性，透氣性和防水性 - Tranzend 我們的價值觀源於三個要素 - 裁縫審美，高技術性和永續環保。 我們相信這為西裝創造了無可爭議的視角。 我們的設計融合了永續環保材質的運動元素和傳統時尚 - 為每位顧客提供舒適感和適應不同環境的能力。 我們看到了新興的男裝市場，並將功能性和永續環保的紡織品應用於成衣，打破了正式男裝的印象，讓風格和功能共存。 我們的目標是創造新時代，反映我們的口號 - 作為傳說的立場，像野獸一樣移動！",
+                Gender = "其他",
+                ProfileImgUrl = "",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+
+
+            //第13個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 67,
+                ProjectId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                ProjectPlanId = 1,
+                PlanTitle = "▎限量早鳥價(限量250組), 未來市價 $15500｜現省 $7920",
+                PlanFundedPeople = 200,
+                PlanDescription = "Ultra Coat 經典黑*1",
+                PlanShipDate = new DateTime(2021, 5, 9),
+                PlanImgUrl = "",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 7580m,
+                QuantityLimit = 250
+            });
+
+
         }
     }
 }
