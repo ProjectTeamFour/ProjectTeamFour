@@ -1610,16 +1610,16 @@
                 FundingAmount = 4330767m,
                 AmountThreshold = 300000m,
                 CreatorName = "TRANZEND",
-                ProjectMainUrl = "",
+                ProjectMainUrl = "https://i.imgur.com/mSsGSNFm.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "",
+                ProjectCoverUrl = "https://i.imgur.com/OPlFGaOl.jpg",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "【 台北試穿體驗會 】來看看大家如何評價 Ultra Coat！,錯過體驗會的朋友們注意！#台北 #台中 試穿店面正式開放，現場將有專業的門市人員為大家介紹，也備有各尺寸的 Ultra Coat 讓大家試穿！,https://i.imgur.com/NdogmaV.png,https://i.imgur.com/sCAKFpx.png,https://i.imgur.com/AvU4JgR.png,https://i.imgur.com/X7WCX7u.png,https://i.imgur.com/edlXFOq.png,https://i.imgur.com/Pj5vdwQ.png,https://i.imgur.com/0em3tHx.gif,https://i.imgur.com/i1ywXnA.gif,https://i.imgur.com/4WOrAjl.png",
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "",
-                Project_Question = "外套的重量有多重呢？",
-                Project_Answer = "Men-S:含帽子 880g , 不含帽子 780g, Female-S: 含帽子 820g, 不含帽子 740g,一般厚羽絨外套或是保暖大衣的重量大約落在900g~1300g不等～",
+                ProjectVideoUrl = "https://www.youtube.com/embed/scEttN1ewFI",
+                Project_Question = "外套的重量有多重呢？,加熱模式開啟與一般穿著時的保暖程度為？,平常不穿時，如何折疊與收納才不會影響發熱元件？發熱元件安全嗎？,剪裁設計與提供尺寸是否符合亞洲人身型？",
+                Project_Answer = "Men-S:含帽子 880g，不含帽子 780g, Female-S: 含帽子 820g，不含帽子 740g，一般厚羽絨外套或是保暖大衣的重量大約落在900g~1300g不等～,一般穿著：適用20度上下，開啟第一段溫控(42度)：適用16度上下，開啟第二段溫控(50度)：適用13度上下，開啟第一段溫控(55度)：適用10度以下,一般正常使用即可，發熱元件原料為日本進口高純度95%的石墨碳纖維，堅韌耐拉扯，避免拉扯斷裂漏電短路風險。線材阻燃等級UL 94 V0-V2，至少可耐溫到280度；線材接頭防水達IP68，可泡水可機洗。,我們是根據亞洲人(團隊成員們)做尺寸以及剪裁設計的喔",
                 ProjectPlansCount = 12
             });
 
@@ -1641,7 +1641,7 @@
                 MemberWebsite = "https://www.facebook.com/TranzendTW/",
                 AboutMe = "具有極佳的超彈性，透氣性和防水性 - Tranzend 我們的價值觀源於三個要素 - 裁縫審美，高技術性和永續環保。 我們相信這為西裝創造了無可爭議的視角。 我們的設計融合了永續環保材質的運動元素和傳統時尚 - 為每位顧客提供舒適感和適應不同環境的能力。 我們看到了新興的男裝市場，並將功能性和永續環保的紡織品應用於成衣，打破了正式男裝的印象，讓風格和功能共存。 我們的目標是創造新時代，反映我們的口號 - 作為傳說的立場，像野獸一樣移動！",
                 Gender = "其他",
-                ProfileImgUrl = "",
+                ProfileImgUrl = "https://i.imgur.com/Hwq8j0Kt.jpg",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
 
@@ -1664,6 +1664,72 @@
             });
 
 
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 68,
+                ProjectId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                ProjectPlanId = 2,
+                PlanTitle = "▎限量價 - 加購行動電源組(限量200組)未來市價 $16490｜現省 $8040",
+                PlanFundedPeople = 183,
+                PlanDescription = "✅Ultra Coat 經典黑*1,✅ADAM Gravity-M行動電源*1",
+                PlanShipDate = new DateTime(2021, 5, 9),
+                PlanImgUrl = "https://i.imgur.com/cLuKsY8m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8450m,
+                QuantityLimit = 200
+            });
+
+
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 69,
+                ProjectId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                ProjectPlanId = 3,
+                PlanTitle = "▎限量早鳥價(限量100組)未來市價 $15500｜現省 $7920",
+                PlanFundedPeople = 41,
+                PlanDescription = "✅Ultra Coat 海軍藍或軍綠色*1",
+                PlanShipDate = new DateTime(2021, 5, 9),
+                PlanImgUrl = "https://i.imgur.com/RvxoXnYm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 7580m,
+                QuantityLimit = 100
+            });
+
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 70,
+                ProjectId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                ProjectPlanId = 4,
+                PlanTitle = "▎限量早鳥價 - 加購行動電源組(限量100組)未來市價 $16490｜現省 $8040",
+                PlanFundedPeople = 56,
+                PlanDescription = "✅Ultra Coat 海軍藍或軍綠色*1✅ADAM Gravity-M行動電源*1",
+                PlanShipDate = new DateTime(2021, 5, 9),
+                PlanImgUrl = "https://i.imgur.com/MtzPYqPm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8450m,
+                QuantityLimit = 100
+            });
+            
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 71,
+                ProjectId = 13,
+                ProjectName = "Ultra Coat – 全境溫控風雨衣｜挑戰你的環境 操控你的溫度",
+                ProjectPlanId = 5,
+                PlanTitle = "未來市價 $15500｜現省 $7520",
+                PlanFundedPeople = 5,
+                PlanDescription = "✅Ultra Coat 經典黑*1",
+                PlanShipDate = new DateTime(2021, 5, 9),
+                PlanImgUrl = "https://i.imgur.com/bcfHu8gm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 7980m,
+                QuantityLimit = 56
+            });
         }
     }
 }
