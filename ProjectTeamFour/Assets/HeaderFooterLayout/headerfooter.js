@@ -35,3 +35,27 @@ faSearch.addEventListener("click", function () {
     inputSearch.focus();
 });
 
+//購物車功能
+function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice) {
+    $.ajax({
+        type: "POST",
+        url: "/ShoppingCart/AddtoCart",
+        data: { PlanId: PlanId, PlanTitle: PlanTitle, PlanPrice: PlanPrice, PlanImgUrl: PlanImgUrl, Quantity: 1 },
+        dataType: "text",
+        success: function (response) {
+
+            $(".MyCart").text(`${response}`);
+        }
+    }).then(function TriggerAlert() {
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '已成功加入購物車',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    })
+}
+
