@@ -95,6 +95,7 @@ namespace ProjectTeamFour.Service
 
         public ProjectListViewModel OrderByTime()//過濾結束時間的排序
         {
+            DateTime today = DateTime.Now;
             var result = _reposity.GetAll<Project>();
             var project = new ProjectListViewModel
             {
@@ -102,7 +103,7 @@ namespace ProjectTeamFour.Service
             };
             foreach (var item in result)
             {
-                var timespan = item.EndDate.Subtract(item.StartDate);
+                var timespan = item.EndDate.Subtract(today); //endDate - 今天
                 var projectbox = new ProjectViewModel
                 {
                     ProjectMainUrl = item.ProjectMainUrl,

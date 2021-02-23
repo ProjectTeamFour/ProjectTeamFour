@@ -89,3 +89,14 @@ else
 @helper ShowNoLoginPic() { 
     <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30"/>
     }
+
+
+
+
+@* 錢加逗號用 - Phil *@
+@helper addComma(int amount)
+{
+    int currentAmount = amount;
+    string transformAmount = currentAmount.ToString("#,0");
+    <p>$@transformAmount</p>
+}

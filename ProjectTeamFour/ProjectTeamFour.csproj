@@ -148,8 +148,6 @@
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
-    <Compile Include="Controllers\MemberLoginController.cs" />
-    <Compile Include="Controllers\MemberRegisterController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
@@ -2118,8 +2116,6 @@
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\MemberLogin\Index.cshtml" />
-    <Content Include="Views\MemberRegister\Index.cshtml" />
     <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
@@ -2130,11 +2126,6 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Projects\GetCategory.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Projects\OrderByFundingAmount.cshtml" />
     <Content Include="Views\Projects\GetType.cshtml" />
     <Content Include="Views\Projects\OrderByPeople.cshtml" />
@@ -2142,6 +2133,10 @@
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
+    <Content Include="Views\MemberSettings\Edit.cshtml" />
+    <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Projects\GetItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2149,7 +2144,6 @@
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\MemberSettings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
