@@ -1,0 +1,331 @@
+﻿@model ProjectTeamFour.ViewModels.CarCarPlanViewModel
+
+
+
+@section topCSS{
+    <link href="~/Assets/Css/CarCarPlanPage/carcarplandetail.css" rel="stylesheet" />
+    }
+
+@section endJS{
+    <script src="~/Assets/Javascript/CarCarPlanPage/carcarplan.js"></script>
+    }
+<section class="carplandetail">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="projectname pb-4">
+                    <h3>@Model.ProjectName</h3>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <div class="carplandetail-item main d-flex flex-column align-items-center">
+                    <div class="main-item pb-5 picture">
+                        <img src=@Model.PlanImgUrl>
+                    </div>
+                    <div class="main-item categories pb-3">
+                        <p>@Model.Category</p>
+                    </div>
+                    <div class="main-item project-team pb-5">
+                        <p>@Model.CreatorName</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <div class="carplandetail-item detail px-3">
+                    <div class="title-and-describtion d-flex flex-column align-items-center">
+                        <div class="detail-item plan-title pb-5">
+                            <p>@Model.PlanTitle</p>
+                        </div>
+                        <div class="detail-item plan-describtion">
+                            <p>
+                                @Model.PlanDescription
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="price-and-cart d-flex flex-row justify-content-around pt-4">
+                        <div class="detail-item price">
+                            <p>@Model.PlanPrice</p>
+                        </div>
+                        <div class="detail-item">
+                            <button class="add-to-cart d-flex">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 商城專案 -->
+<section class="indemand-project">
+    <div class="container">
+
+        <div class="indemand-project-item title-bar d-flex justify-content-between mt-2 pt-5">
+            <div class="title-bar-item title">
+                <h2>為您推薦</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="">上車專區 ></a>
+            </div>
+        </div>
+
+        <div class="slide-arrow d-flex justify-content-between">
+            <button type="button" class="slide-arrow-item bg-transparent border-0 prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="slide-arrow-item bg-transparent border-0 next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="indemand-project-item cardtemplate-section">
+            <div class="indemand-project-wrap">
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=30">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴充》四本 ，額外收錄超過120張燒腦刺激藏寶圖，不怕你玩，只擔心玩不完！(含台灣本島運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=40">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴充》四本 ，額外收錄超過120張燒腦刺激藏寶圖，不怕你玩，只擔心玩不完！(含台灣本島運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>限時上車</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=10">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴充》四本 ，額外收錄超過120張燒腦刺激藏寶圖，不怕你玩，只擔心玩不完！(含台灣本島運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=15">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>限時上車</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=20">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴充》四本 ，額外收錄超過120張燒腦刺激藏寶圖，不怕你玩，只擔心玩不完！(含台灣本島運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="cardtemplate-section-item cardtemplate">
+                    <a href="#">
+                        <div class="cardtemplate-item project-picture">
+                            <img class="w-100" src="https://picsum.photos/800/600/?random=30">
+                        </div>
+                        <div class="cardtemplate-item tag">
+                            <div class="tag-item categories">
+                                <p>遊戲出版</p>
+                            </div>
+                        </div>
+                        <div class="cardtemplate-item project-name">
+                            <h4>送給孩子的第一份程式禮物《Coding Ocean：海霸》</h4>
+                        </div>
+                        <div class="cardtemplate-item plan-title">
+                            <h3>《Coding Ocean：海霸》1組| 完整《寇丁海洋藏寶圖擴充》四本 ，額外收錄超過120張燒腦刺激藏寶圖，不怕你玩，只擔心玩不完！(含台灣本島運費)</h3>
+                        </div>
+                        <div class="cardtemplate-item project-team">
+                            <p>Papacode-程式老爹</p>
+                        </div>
+                        <div class="cardtemplate-item project-progressbar">
+                            <div class="project-progressbar-item"></div>
+                        </div>
+                    </a>
+                    <div class="cardtemplate-item project-amount d-flex justify-content-between">
+                        <div class="project-amount-item amount">
+                            <p>
+                                $900
+                            </p>
+                        </div>
+                        <div class="project-amount-item add-to-cart d-flex">
+                            <button class="add-to-cart d-flex">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

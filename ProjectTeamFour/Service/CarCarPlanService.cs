@@ -21,24 +21,29 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }
 
-        //public CarCarPlanListViewModel GetByWhere(Expression<Func<Project, bool>> KeySelector)
-        //{
-        //    var planResult = _repository.GetAll<Plan>().Where(KeySelector);
-        //    var planProject = new CarCarPlanListViewModel
-        //    {
-        //        CarCarPlanItems = new List<CarCarPlanViewModel>()
-        //    };
+        public CarCarPlanViewModel GetPlanId(int PlanId)
+        {
+            return GetCarCarPlan(x => x.PlanId == PlanId);
+        }
 
-        //    foreach(var item in planResult)
-        //    {
-        //        var planBox = new CarCarPlanViewModel
-        //        {
-        //            PlanImgUrl = item.PlanImgUrl,
+        public CarCarPlanViewModel GetCarCarPlan(Expression<Func<Plan, bool>> PlanId)
+        {
+            //List<CarCarPlanViewModel> lcpvm = new List<CarCarPlanViewModel>();
 
-        //        };
-        //    }
-        //    return planProject;
-        //}
-
+            var planCard = _repository.GetAll<Plan>().FirstOrDefault(PlanId);
+           
+               CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                {
+                    PlanId = planCard.PlanId,
+                    PlanImgUrl = planCard.PlanImgUrl,
+                    Category = planCard.Project.Category,
+                    ProjectName = planCard.ProjectName,
+                    PlanTitle = planCard.PlanTitle,
+                    PlanDescription = planCard.PlanDescription,
+                    PlanPrice = (int)planCard.PlanPrice,
+                    CreatorName = planCard.Project.CreatorName
+                };
+            return cv;
+        }
     }
 }
