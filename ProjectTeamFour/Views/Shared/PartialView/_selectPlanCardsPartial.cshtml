@@ -11,9 +11,7 @@
                             <div class="card-body">
                                 <h3 id="amount">@Model.PlanPrice</h3>
                                 <div class="img-wrap">
-                                    <img class="card-img-top"
-                                         src="https://static.flyingv.asia/static/333x/projects/27775/reward/600273a52912d.png"
-                                         alt="Card image cap">
+                                    <img class="card-img-top" src="@Model.PlanImgUrl" alt="Card image cap">
                                 </div>
                                 <h4 class="card-title">
                                     @Model.PlanTitle
@@ -48,7 +46,7 @@
 </section>
 
 @section topCSS{
-    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+    <link href="~/Assets/Css/ProductDetailPage/campaignDetail.css" rel="stylesheet" />
 }
 @section endJS{
     <script src=".js"></script>

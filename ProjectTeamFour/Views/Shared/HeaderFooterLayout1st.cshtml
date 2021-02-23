@@ -9,18 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funding BuBu - 集資車車</title>
 
-    
-    @*FontAwesome
-    <link href="~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
-    bs min.css
-    <link href="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css" rel="stylesheet" />
-    normalize.css
-    <link href="~/Assets/Plugin/Normalize.css/normalize.css" rel="stylesheet" />
-    slick.css
-    <link href="~/Assets/Plugin/Slick/slick_cdn1.8.1.css" rel="stylesheet" />
-    Header,Footer的CSS
 
-    <link href="~/Assets/HeaderFooterLayout/headerfooter.css" rel="stylesheet" />*@
     @Styles.Render("~/Assets/css")
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
@@ -344,41 +333,14 @@
             </div>
         </section>
     </footer>
-
-    @*jquery_min.js - bs, slick需要*@
-    <!--<script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>-->
-    @*jquery_migrate - slick需要*@
-    <!--<script src="~/Assets/Plugin/JQuery/jquery_migrate1.2.1.min.js"></script>-->
-    @*slick min.js*@
-    <!--<script src="~/Assets/Plugin/Slick/slick_cdn1.8.1.min.js"></script>-->
-    @*popper.min.js - bs需要*@
-    <!--<script src="~/Assets/Plugin/Popper.js/popper_cdn1.16.1.min.js"></script>-->
-    @*bs min.js*@
-    <!--<script src="~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.js"></script>-->
-    @*Header,Footer的JS*@
-    <!--<script src="~/Assets/HeaderFooterLayout/headerfooter.js"></script>-->
-    @*這是首頁除了Header和Footer之外內容的JS_Phil*@
+    @*sweetalert2套件*@
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
-    <script>
-    window.onload = function () {
-        console.log("ready!");
-    }
-    function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice) {
-        $.ajax({
-            type: "POST",
-            url: "/ShoppingCart/AddtoCart",
-            data: { PlanId: PlanId, PlanTitle: PlanTitle, PlanPrice: PlanPrice, PlanImgUrl: PlanImgUrl, Quantity: 1 },
-            dataType: "text",
-            success: function (response) {
-                
-                $(".MyCart").text(`${response}`);
-            }
-        })
-    }
-    </script>
+
 
 
 </body>

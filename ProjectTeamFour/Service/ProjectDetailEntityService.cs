@@ -63,8 +63,8 @@ namespace ProjectTeamFour.Service
                 ProjectFAQList= ConvertProjectFAQList(entity.Project_Question,entity.Project_Answer),
                 //Project_Question = entity.Project_Question,
                 //Project_Answer = entity.Project_Answer​,
-                EndDate = new DateTime(2021, 3, 11),
-                StartDate = new DateTime(2021, 2, 1)
+                EndDate = entity.EndDate,
+                StartDate = entity.StartDate
             };
             return projectdetailVM;
         }
