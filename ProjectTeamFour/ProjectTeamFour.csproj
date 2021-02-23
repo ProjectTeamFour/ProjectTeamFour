@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CarCarPlanController.cs" />
+    <Compile Include="Api\ProjectsController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -234,11 +235,16 @@
     <Compile Include="Migrations\202102211551023_Member加入Permission欄位.Designer.cs">
       <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102231030539_Create_Permissiontable.cs" />
+    <Compile Include="Migrations\202102231030539_Create_Permissiontable.Designer.cs">
+      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
@@ -2078,6 +2084,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff2" />
     <Content Include="App_Code\StringFormat5.cshtml" />
+    <Content Include="..\..\..\ProjectDetailIndex.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2089,6 +2096,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2107,7 +2115,6 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\pay\Index.cshtml" />
-    <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
     <Content Include="Views\PersonInfo\Index.cshtml" />
@@ -2140,6 +2147,9 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
+    <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
+    <Content Include="Views\Projects\Getalll.cshtml" />
+    <Content Include="Views\Projects\GetSingle.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
   </ItemGroup>
@@ -2232,6 +2242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102211551023_Member加入Permission欄位.resx">
       <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102231030539_Create_Permissiontable.resx">
+      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

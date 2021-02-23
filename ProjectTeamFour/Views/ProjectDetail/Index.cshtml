@@ -93,19 +93,71 @@
                             <div class="row">
                                 <div class="btn col-12">
                                     <a href="" id="backit-btn">贊助專案</a>
-                                    @* 轉接到加入購物車 *@
+                                    <!--轉接到加入購物車-->
                                 </div>
                                 <div class="btn col-8">
-                                    <button id="ask-btn">
-                                        <span class="comment"><i class="fab fa-comment-dots"></i></span>
-                                        聯絡提案人
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                        <span class="comment"><i class="fab fa-comment-dots">留言</i></span>聯絡提案人
                                     </button>
                                 </div>
-                                @*<div class="btn col-4">
-                                    <a href="" id="share-btn">分享</a>
-                                </div>*@
+                                <!-- Modal -->
+                                
+                                <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="Message" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <!-- <h5 class="modal-title" id="Message">Modal title</h5> -->
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="container-fluid">
+                                                    <div class="modal-dialog modal-lg" id="ask-modal">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <h4>村岸產業株式会社</h4>
+                                                                <p>提案負責人：TW ROTUNDA</p>
+                                                                <i class="fab fa-facebook-official"></i><a href=""></a>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <p>
+                                                                    大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
+                                                                    」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
+                                                                </p>
+                                                                <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr />
+                                                        <label for="message-area" class="form-label">傳訊息給 村岸產業株式会社 </label>
+                                                        <form action="">
+                                                            <textarea class="form-control" rows="10" id="msg-content" placeholder="傳送訊息..."></textarea>
+                                                            <br />
+                                                            <button type="button" class="btn" id="send-msg">
+                                                                傳送訊息
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<script>
+        $('#ask-btn').on('shown.bs.modal', function () {
+            $('#ask-modal').trigger('focus')
+        })</script>-->
+
+
+
+
+
                                 <button id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-toggle="popover" data-placement="bottom" data-content="hello">
-                                    分享
+                                    分享 <div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
                                 </button>
                             </div>
                         </div>
@@ -142,23 +194,29 @@
                                 <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
                                     <section id="story">
                                         <div class="container">
-                                            @*成功的話新增一個判斷式*@
+                                            @*專案詳細說明內文*@
                                             @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
                                             {
-                                                <div class="info wrapper">
-                                                    <p>已達成 募資目標!</p>
-                                                </div>
+                                            <div class="info wrapper">
+                                                <p>已達成 募資目標!</p>
+                                            </div>
                                             }
 
-                                            @*專案詳細說明內文*@
                                             @{
-                                                string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
-                                                foreach (var item in description_str)
-                                                {
-                                                    <div style="width:100%;margin:1rem;">
-                                                        <img src="@item" />
-                                                    </div>
-                                                }
+                                            string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                            foreach (var item in description_str)
+                                            {
+                                            if (item.Contains("i.imgur"))
+                                            {
+                                            <div margin:1rem;">
+                                                <img src="@item" style="width:100%;" />
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <p>@item</p>
+                                            }
+                                            }
                                             }
                                         </div>
                                     </section>
@@ -221,6 +279,8 @@
 
                                 @* 專案進度更新 *@
                                 <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
+                                    @*下面放專案更新進度貼文的card*@
+
                                     <div id="goal-wrap" class="container">
                                         <span class="post-date label-grey">2021/01/05</span>
                                         <h4 class="post-label">已達成 募資目標!</h4>
@@ -287,5 +347,59 @@
         //})
 
         var project_status = document.getElementById("goal-wrap");
+
+
+
+
+
+
+
+
+        //Facebook分享的Api
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 'share-fb-btn',
+                xfbml: true,
+                version: 'v2.4'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+        //官網傳送訊息程式碼:
+        $(document).on('click', '#send_msg', function () {
+            var content = $('#msg_content').val();
+
+            if (content.length) {
+                $.ajax({
+                    url: laroute.route('api.inbox.send'),
+                    type: 'POST',
+                    data: {
+                        project_id: '27640',
+                        content: content
+                    }
+                })
+                    .success(function (res) {
+                        if (res.error) {
+                            toastr.error(res.error);
+                        } else {
+                            toastr.success('成功傳送訊息');
+                            $('#messageModal').modal('hide');
+                        }
+                    });
+            } else {
+                toastr.warning('請輸入內文！');
+            }
+        });
+
     </script>
 }

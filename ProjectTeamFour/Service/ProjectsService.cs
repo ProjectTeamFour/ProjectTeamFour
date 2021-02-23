@@ -28,7 +28,7 @@ namespace ProjectTeamFour.Service
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
-
+            
             foreach (var item in result)
             {
                 var projectbox = new ProjectViewModel
@@ -44,7 +44,7 @@ namespace ProjectTeamFour.Service
                     StartDate = item.StartDate,
                     ProjectId = item.ProjectId
                 };
-                project.ProjectItems.Add(projectbox);
+                project.ProjectItems.Add(projectbox); //在list加入這筆資料
             }
             return project;
         }
@@ -150,8 +150,6 @@ namespace ProjectTeamFour.Service
                 project.ProjectItems.Add(pv);
             }
             return project;
-
-        }
-       
+        }       
     }
 }        

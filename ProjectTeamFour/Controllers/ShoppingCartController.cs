@@ -30,40 +30,17 @@ namespace ProjectTeamFour.Controllers
 
             if (Session["Cart"] == null)
             {
-                var cart = new CarCarPlanViewModel
-                {
-                    CartId = 1,
-                    PlanId = carcarPlanVM.PlanId,
-                    PlanTitle = carcarPlanVM.PlanTitle,
-                    PlanImgUrl = carcarPlanVM.PlanImgUrl,
-                    PlanPrice = carcarPlanVM.PlanPrice,
-                    Quantity = carcarPlanVM.Quantity,
-
-
-                };
+                var cart = _CartService.CreateANewCart(carcarPlanVM);
                 cartList.CartItems.Add(cart);
                 Session["Cart"] = cartList;
             }
             else
             {
                 cartList = (CartItemListViewModel)Session["Cart"];
-
-                //var cart = new CarCarPlanViewModel
-                //{
-                //    CartId = cartList.CartItems.Count() + 1,
-                //    PlanId = carcarPlanVM.PlanId,
-                //    PlanTitle = carcarPlanVM.PlanTitle,
-                //    PlanImgUrl = carcarPlanVM.PlanImgUrl,
-                //    PlanPrice = carcarPlanVM.PlanPrice,
-                //    Quantity = carcarPlanVM.Quantity,
-
-
-                //};
-                //cartList.CartItems.Add(cart);
                 var cartFiilter = _CartService.CheckId(cartList, carcarPlanVM);
 
                     Session["Cart"] = cartFiilter;
-                
+                    
                 
             }
 

@@ -37,8 +37,8 @@
                 ProjectStatus = "集資失敗",
                 StartDate = new DateTime(2021, 2, 1),
                 EndDate = new DateTime(2021, 3, 11),
-                Fundedpeople = 20,
-                FundingAmount = 2053000m,
+                Fundedpeople = 39,
+                FundingAmount = 658200m,
                 AmountThreshold = 1000000m,
                 CreatorName = "窩窩睏",
                 ProjectMainUrl = "https://i.imgur.com/fEmjPnym.png",//提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
@@ -142,8 +142,8 @@
                 ProjectStatus = "集資成功",
                 StartDate = new DateTime(2021, 2, 1),
                 EndDate = new DateTime(2021, 3, 22),
-                Fundedpeople = 46,
-                FundingAmount = 105760m,
+                Fundedpeople = 69,
+                FundingAmount = 107200m,
                 AmountThreshold = 400000m,
                 CreatorName = "魟魚與貓",
                 ProjectMainUrl = "https://i.imgur.com/fY4fvf2m.jpg",
@@ -318,8 +318,8 @@
                 ProjectStatus = "集資中",
                 StartDate = new DateTime(2021, 2, 7),
                 EndDate = new DateTime(2021, 4, 7),
-                Fundedpeople = 2642,
-                FundingAmount = 4790327m,
+                Fundedpeople = 2396,
+                FundingAmount = 3042302m,
                 AmountThreshold = 5200000m,
                 CreatorName = "FaithForAnimals",
                 ProjectMainUrl = "https://i.imgur.com/OQB8O5Pm.jpg",//提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
@@ -514,8 +514,8 @@
                 ProjectStatus = "集資中",
                 StartDate = new DateTime(2021, 2, 10),
                 EndDate = new DateTime(2021, 5, 10),
-                Fundedpeople = 516,
-                FundingAmount = 50000m,
+                Fundedpeople = 173,
+                FundingAmount = 273670m,
                 AmountThreshold = 761209m,
                 CreatorName = "cheerdots TW",
                 ProjectMainUrl = "https://i.imgur.com/8hymepqm.jpg",
@@ -625,7 +625,7 @@
                 StartDate = new DateTime(2021, 2, 8),
                 EndDate = new DateTime(2021, 6, 8),
                 Fundedpeople = 916,
-                FundingAmount = 2320000m,
+                FundingAmount = 949280m,
                 AmountThreshold = 140000m,
                 CreatorName = "Papacode-程式老爹",
                 ProjectMainUrl = "https://i.imgur.com/FTTAIvIm.png",
@@ -733,8 +733,8 @@
                 ProjectStatus = "集資中",
                 StartDate = new DateTime(2021, 2, 10),
                 EndDate = new DateTime(2021, 7, 10),
-                Fundedpeople = 1271,
-                FundingAmount = 1473828m,
+                Fundedpeople = 131,
+                FundingAmount = 132975m,
                 AmountThreshold = 100000m,
                 CreatorName = "SWOL",
                 ProjectMainUrl = "https://i.imgur.com/YwrOaYYm.jpg",
@@ -858,7 +858,7 @@
                 StartDate = new DateTime(2021, 2, 13),
                 EndDate = new DateTime(2021, 8, 13),
                 Fundedpeople = 36,
-                FundingAmount = 37300m,
+                FundingAmount = 33400m,
                 AmountThreshold = 200000m,
                 CreatorName = "致理未來超市",
                 ProjectMainUrl = "https://i.imgur.com/RocoEApm.png",
@@ -982,7 +982,7 @@
                 StartDate = new DateTime(2021, 2, 15),
                 EndDate = new DateTime(2021, 9, 15),
                 Fundedpeople = 10,
-                FundingAmount = 10251m,
+                FundingAmount = 4266m,
                 AmountThreshold = 100000m,
                 CreatorName = "半獸人工作室 ORC Studio",
                 ProjectMainUrl = "https://i.imgur.com/ObjlmhQm.png",
@@ -1075,8 +1075,8 @@
                 ProjectStatus = "集資中",
                 StartDate = new DateTime(2021, 2, 6),
                 EndDate = new DateTime(2021, 10, 6),
-                Fundedpeople = 284,
-                FundingAmount = 681820m,
+                Fundedpeople = 125,
+                FundingAmount = 327820m,
                 AmountThreshold = 100000m,
                 CreatorName = "潤益國際",
                 ProjectMainUrl = "https://i.imgur.com/3QZROEUm.jpg",
@@ -1200,7 +1200,7 @@
                 StartDate = new DateTime(2021, 2, 7),
                 EndDate = new DateTime(2021, 11, 7),
                 Fundedpeople = 39,
-                FundingAmount = 90040m,
+                FundingAmount = 81000m,
                 AmountThreshold = 350000m,
                 CreatorName = "不垃圾場",
                 ProjectMainUrl = "https://i.imgur.com/BItzv0vm.jpg",
@@ -1371,7 +1371,7 @@
                 StartDate = new DateTime(2021, 2, 7),
                 EndDate = new DateTime(2021, 9, 7),
                 Fundedpeople = 19,
-                FundingAmount = 9040m,
+                FundingAmount = 142680m,
                 AmountThreshold = 350500m,
                 CreatorName = "SoulFa 靈魂沙發",
                 ProjectMainUrl = "https://i.imgur.com/eTKxhXTm.jpg",
@@ -1481,7 +1481,7 @@
                 StartDate = new DateTime(2021, 2, 7),
                 EndDate = new DateTime(2021, 8, 5),
                 Fundedpeople = 98,
-                FundingAmount = 172572m,
+                FundingAmount = 203728m,
                 AmountThreshold = 355555m,
                 CreatorName = "MicroNovelty",
                 ProjectMainUrl = "https://i.imgur.com/oNyUOL4m.jpg",
@@ -1760,6 +1760,85 @@
                 Project_Answer = "",
                 ProjectPlansCount = 5
             });
+
+
+
+
+
+
+            //第17個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+
+                ProjectId = 17,
+                MemberId = 17,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                Category = "生活",
+                ProjectStatus = "集資成功",
+                StartDate = new DateTime(),
+                EndDate = new DateTime(),
+                Fundedpeople = 36,
+                FundingAmount = 221540,
+                AmountThreshold = 5000,
+                CreatorName = "村岸產業株式会社",
+                ProjectMainUrl = "",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 1
+
+
+            });
+            //第17個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 17,
+                MemberAccount = "",
+                MemberPassword = "NO17memberPassword",
+                MemberName = "村岸產業株式会社",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1929,5,1),
+                MemberConEmail = "",
+                MemberRegEmail = "",
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "",
+                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
+                AboutMe = "大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌 」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛的應用於日常生活中。 將化妝刷製作技術的累積，投注於身體刷重新設計改良，《 ROTUNDA 熊野筆沐浴刷 》因而傳承新生",
+                Gender = "女",
+                ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第17個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 72,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 1,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 1 入",
+                PlanFundedPeople = 1,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」,專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021,08,01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 4290,
+                QuantityLimit = 60
+            });
+
+
+
+
+
+
+
+
         }
     }
 }

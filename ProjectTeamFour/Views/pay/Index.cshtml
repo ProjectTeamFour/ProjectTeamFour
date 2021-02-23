@@ -1,4 +1,4 @@
-﻿
+﻿@model CartItemListViewModel
 @{
     ViewBag.Title = "PayPage";
 }
@@ -27,60 +27,74 @@
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                     <div class="products">
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/product.jpg" alt="肉" class="pic">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model.CartItems)
+                            {
+                                @Html.Partial("~/Views/Shared/PartialView/_cartItemForPay.cshtml", item);
+                            }
+                        }
+                        else
+                        {
+                            <div class="no-result">
+                                <p>購物車無任何商品</p>
                             </div>
-                            <div class="product-item-text  col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text  col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <span>$28.00</span>
-                            </div>
-                        </div>
+                        }
+
+                        @*<div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/product.jpg" alt="肉" class="pic">
+            </div>
+            <div class="product-item-text  col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text  col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>*@
                     </div>
                     <div class="checkout">
                         <div class="checkout-price">
@@ -108,60 +122,73 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="products">
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉" class="pic">
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model.CartItems)
+                                {
+                                    @Html.Partial("~/Views/Shared/PartialView/_cartItemForPay.cshtml", item);
+                                }
+                            }
+                            else
+                            {
+                                <div class="no-result">
+                                    <p>購物車無任何商品</p>
                                 </div>
-                                <div class="product-item-text  col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text  col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
+                            }
+                            @*<div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉" class="pic">
+            </div>
+            <div class="product-item-text  col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text  col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>
+        <div class="product-item">
+            <div class="product-item-pic col-2 col-sm-2">
+                <img src="~/Assets/Img/pay/pic.png" alt="肉">
+            </div>
+            <div class="product-item-text col-10 col-sm-10">
+                <h3>Food Planner</h3>
+                <div><span>個</span><span>$28.00</span></div>
+            </div>
+        </div>*@
                         </div>
                         <div class="checkout">
                             <div class="checkout-price">
