@@ -93,7 +93,7 @@
                             <div class="row">
                                 <div class="btn col-12">
                                     <a href="" id="backit-btn">贊助專案</a>
-                                    @* 轉接到加入購物車 *@
+                                    <!--轉接到加入購物車-->
                                 </div>
                                 <div class="btn col-8">
                                     <!-- Button trigger modal -->
@@ -102,44 +102,56 @@
                                     </button>
                                 </div>
                                 <!-- Modal -->
+                                
                                 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="Message" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Message">Modal title</h5>
+                                            <div class="modal-body">
+                                                <!-- <h5 class="modal-title" id="Message">Modal title</h5> -->
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Modal -->
-                                                <div class="modal-dialog modal-lg" id="ask-modal">
-                                                    <h4>村岸產業株式会社</h4> <p>提案負責人：TW ROTUNDA</p>
-                                                    <i class="fab fa-facebook-official"></i><a href=""></a>
 
-                                                    <p>大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌 」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......</p>
-                                                    <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
-                                                    <hr />
+                                                <!-- Modal -->
+                                                <div class="container-fluid">
+                                                    <div class="modal-dialog modal-lg" id="ask-modal">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <h4>村岸產業株式会社</h4>
+                                                                <p>提案負責人：TW ROTUNDA</p>
+                                                                <i class="fab fa-facebook-official"></i><a href=""></a>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <p>
+                                                                    大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
+                                                                    」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
+                                                                </p>
+                                                                <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
+                                                            </div>
                                                         </div>
-                                                <label>傳訊息給 村岸產業株式会社 </label>
-                                                <form>
-                                                    <input type="text" />test comment傳送訊息...
-                                                    <button type="submit">test</button>
-                                                </form>
-                                            </div>                                            
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">傳送訊息</button>
+
+                                                        <hr />
+                                                        <label for="message-area" class="form-label">傳訊息給 村岸產業株式会社 </label>
+                                                        <form action="">
+                                                            <textarea class="form-control" rows="10" id="msg-content" placeholder="傳送訊息..."></textarea>
+                                                            <br />
+                                                            <button type="button" class="btn" id="send-msg">
+                                                                傳送訊息
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
                                 <!--<script>
-                                    $('#ask-btn').on('shown.bs.modal', function () {
-                                        $('#ask-modal').trigger('focus')
-                                    })</script>-->
-                                                            
+        $('#ask-btn').on('shown.bs.modal', function () {
+            $('#ask-modal').trigger('focus')
+        })</script>-->
+
 
 
 
@@ -182,30 +194,29 @@
                                 <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
                                     <section id="story">
                                         <div class="container">
-                                            @*成功的話新增一個判斷式*@
+                                            @*專案詳細說明內文*@
                                             @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
                                             {
-                                                <div class="info wrapper">
-                                                    <p>已達成 募資目標!</p>
-                                                </div>
+                                            <div class="info wrapper">
+                                                <p>已達成 募資目標!</p>
+                                            </div>
                                             }
 
-                                            @*專案詳細說明內文*@
                                             @{
-                                                string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
-                                                foreach (var item in description_str)
-                                                {
-                                                    if (item.Contains("i.imgur"))
-                                                    {
-                                                        <div style="width:100%;margin:1rem;">
-                                                            <img src="@item" />
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                            <p>@item</p>
-                                                    }
-                                                }
+                                            string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                            foreach (var item in description_str)
+                                            {
+                                            if (item.Contains("i.imgur"))
+                                            {
+                                            <div margin:1rem;">
+                                                <img src="@item" style="width:100%;" />
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <p>@item</p>
+                                            }
+                                            }
                                             }
                                         </div>
                                     </section>
@@ -362,6 +373,33 @@
         }(document, 'script', 'facebook-jssdk'));
 
 
+
+
+        //官網傳送訊息程式碼:
+        $(document).on('click', '#send_msg', function () {
+            var content = $('#msg_content').val();
+
+            if (content.length) {
+                $.ajax({
+                    url: laroute.route('api.inbox.send'),
+                    type: 'POST',
+                    data: {
+                        project_id: '27640',
+                        content: content
+                    }
+                })
+                    .success(function (res) {
+                        if (res.error) {
+                            toastr.error(res.error);
+                        } else {
+                            toastr.success('成功傳送訊息');
+                            $('#messageModal').modal('hide');
+                        }
+                    });
+            } else {
+                toastr.warning('請輸入內文！');
+            }
+        });
 
     </script>
 }
