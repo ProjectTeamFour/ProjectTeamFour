@@ -25,6 +25,7 @@ namespace ProjectTeamFour.Api
         }
               
         //Get api/values/Id 找特定id
+        [AcceptVerbs("GET", "POST")]
         public ProjectListViewModel GetProject(string id)
         {
 
@@ -32,6 +33,7 @@ namespace ProjectTeamFour.Api
         }
 
         //Get api/values 全部
+        [AcceptVerbs("GET", "POST")]
         public ProjectListViewModel GetAll() //新增卡片資料
         {
             var projectService = new ProjectsService(); //呼叫service
@@ -51,10 +53,10 @@ namespace ProjectTeamFour.Api
         }
 
         ////Post api/values/Id  新增卡片資料
-        public void Post([FromBody] ProjectViewModel input)
-        {
-            var result = new ProjectViewModel();
+        //public void Post([FromBody] ProjectViewModel input)
+        //{
+        //    var result = new ProjectViewModel();
 
-        }
+        //}
     }
 }
