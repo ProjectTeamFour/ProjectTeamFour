@@ -17,7 +17,7 @@
                 <div class="col-sm-12 col-md-8">
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
-                        <iframe scrolling="no" src="https://www.youtube.com/embed/40vGu9I2SAc" frameborder="0"
+                        <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
@@ -32,15 +32,13 @@
                     <div id="creator-info" class="item-wrap">
                         <div class="row">
                             <div class="item-logo">
-                                @*<a href="#" data-target="#messageModal" data-toggle="modal">
+                                @*<a href="#" data-target="" data-toggle="modal">
                                     <img src="https://static.flyingv.asia/static/square/users/5c126a0e32b49.png" alt="" srcset="">
                                 </a>*@
                             </div>
                             <div class="item-text">
-                                <h5>
-                                    <a href="#" data-target="#messageModal" data-toggle="modal">
-                                        <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName
-                                        </a>
+                                <h5>                             
+                                    <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName  
                                 </h5>
                                 <div class="wrapper">
                                     <div class="item-text">
@@ -102,7 +100,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal -->
-                                
+
                                 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="Message" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -142,15 +140,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
 
-                                <!--<script>
-        $('#ask-btn').on('shown.bs.modal', function () {
-            $('#ask-modal').trigger('focus')
-        })</script>-->
+
 
 
 
@@ -228,51 +223,51 @@
                                     <div class="accordion" id="accordionExample">
 
                                         @{
-                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
-                                            {
-                                                <div class="card">
-                                                    <div class="card-header" id="headingOne">
-                                                        <h2 class="mb-0">
-                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                @item.Question
-                                                            </button>
-                                                        </h2>
-                                                    </div>
-                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                         data-parent="#accordionExample">
-                                                        <div class="card-body">
-                                                            @item.Answer
-                                                        </div>
-                                                    </div>
+                                        foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                        {
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        @item.Question
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @item.Answer
                                                 </div>
-                                            }
+                                            </div>
+                                        </div>
+                                        }
 
                                         }
-                                        
-                                        @*<div class="faqWrapper">
-                                                    <div class="faq">
-                                                        <div class="outer">
-                                                            <div class="arrow">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                    <g fill="none" fill-rule="evenodd">
-                                                                        <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                                    </g>
-                                                                </svg>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                    <g fill="none" fill-rule="evenodd">
-                                                                        <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
-                                                                    </g>
-                                                                </svg>
-                                                            </div>
-                                                            <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
-                                                        </div>
-                                                        <div class="answer">
-                                                            「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
 
-                                                        </div>
+                                        @*<div class="faqWrapper">
+                                            <div class="faq">
+                                                <div class="outer">
+                                                    <div class="arrow">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                            <g fill="none" fill-rule="evenodd">
+                                                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                                                            </g>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                            <g fill="none" fill-rule="evenodd">
+                                                                <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
+                                                            </g>
+                                                        </svg>
                                                     </div>
-                                                </div>*@
+                                                    <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
+                                                </div>
+                                                <div class="answer">
+                                                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
+
+                                                </div>
+                                            </div>
+                                        </div>*@
 
                                     </div>
                                 </div>
@@ -323,7 +318,7 @@
                                 <div class="row">
                                     @foreach (var item in Model.SelectPlanCards.PlanCardItems)
                                     {
-                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
                                     }
                                     <!-- <h4>選擇方案</h4> -->
                                 </div>
@@ -337,19 +332,22 @@
 </section>
 
 @section topCSS{
-    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+<link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
 }
 @section endJS{
-    <script>
-        //var message_btn = document.getElementById("ask-btn");
-        //message_btn.addEventListener('click', function SendMessage() {
-        //    document.createElement("div");
-        //})
+<script>
+    //var message_btn = document.getElementById("ask-btn");
+    //message_btn.addEventListener('click', function SendMessage() {
+    //    document.createElement("div");
+    //})
 
-        var project_status = document.getElementById("goal-wrap");
+    var project_status = document.getElementById("goal-wrap");
 
 
-
+         
+        $('#ask-btn').on('shown.bs.modal', function () {
+            $('#ask-modal').trigger('focus')
+        })
 
 
 
