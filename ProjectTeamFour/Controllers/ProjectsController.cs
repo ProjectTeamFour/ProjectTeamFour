@@ -76,46 +76,68 @@ namespace ProjectTeamFour.Controllers
             return View(project);
         }
 //--------------------------------------tempdata-------------------------------------------
-        public ActionResult GetStatus(string id)
-        {
+        //public ActionResult GetStatus(string id)
+        //{
 
-            var result= _projectsService.GetByWhere(x => x.ProjectStatus == id);
-            TempData["ProjectStatus"] = result;
-            return RedirectToAction("GetItem", "Projects");          
-        }        
+        //    var result= _projectsService.GetByWhere(x => x.ProjectStatus == id);
+        //    TempData["ProjectStatus"] = result;
+        //    return RedirectToAction("GetItem", "Projects");          
+        //}        
 
-        public ActionResult GetClass(string id)
-        {
-            var fliter = _projectsService.GetByWhere(p => p.Category == id);
-            TempData["Category"] = fliter;
-            return RedirectToAction("GetItem", "Projects");
-        }
+        //public ActionResult GetClass(string id)
+        //{
+        //    var fliter = _projectsService.GetByWhere(p => p.Category == id);
+        //    TempData["Category"] = fliter;
+        //    return RedirectToAction("GetItem", "Projects");
+        //}
         
-        public ActionResult OrderPeople() //排序人數 
-        {
-            var Fundedpeople = _projectsService.OrderBy(x => x.Fundedpeople);
-            return RedirectToAction("GetItem", "Projects");
-        }
-        public ActionResult OrderFundingAmount() //排序金錢
-        {
+        //public ActionResult OrderPeople() //排序人數 
+        //{
+        //    var Fundedpeople = _projectsService.OrderBy(x => x.Fundedpeople);
+        //    return RedirectToAction("GetItem", "Projects");
+        //}
+        //public ActionResult OrderFundingAmount() //排序金錢
+        //{
 
-            var FundingAmount = _projectsService.OrderBy(x => x.FundingAmount);
-            return RedirectToAction("GetItem" , "Projects");
-        }
+        //    var FundingAmount = _projectsService.OrderBy(x => x.FundingAmount);
+        //    return RedirectToAction("GetItem" , "Projects");
+        //}
 
-        public ActionResult OrderNew() //排序時間
-        {
+        //public ActionResult OrderNew() //排序時間
+        //{
 
-            //var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
-            var dateLine = _projectsService.OrderByTime();
-            return RedirectToAction("GetItem", "Projects");
-        }
+        //    //var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
+        //    var dateLine = _projectsService.OrderByTime();
+        //    return RedirectToAction("GetItem", "Projects");
+        //}
 
         public ActionResult GetItem()
         {
             return View();
         }
+        //----------------------api改寫---------------------------------
+        public ActionResult Getalll()
+        {
+            var projectService = new ProjectsService(); //呼叫service
 
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var GetAll = projectService.GetAllTotal();
+            foreach (var item in GetAll.ProjectItems)
+            {
+                project.ProjectItems.Add(item);
+            }
+
+            return Json(project, JsonRequestBehavior.AllowGet);
+        }
         
+        public ActionResult GetSingle(string id)
+        {
+            var fliter = _projectsService.GetByWhere(p => p.ProjectStatus == id);
+
+            return Json(fliter, JsonRequestBehavior.AllowGet);
+        }
     }
 }
