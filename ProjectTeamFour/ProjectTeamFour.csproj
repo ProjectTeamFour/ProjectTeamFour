@@ -145,6 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ProjectsController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -2140,6 +2141,9 @@
     <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
+    <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
+    <Content Include="Views\Projects\Getalll.cshtml" />
+    <Content Include="Views\Projects\GetSingle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,3 +14,21 @@
         }
     }]
 });
+
+let tech = document.getElementById("tech");
+tech.addEventListener(click, function () {
+
+})
+
+$().ready(function () {
+    $("#ajax").click(function () {
+        $.ajax({
+            url: https://localhost:44300/api/Projects/GetAll,
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+            }
+        })
+    })
+})
