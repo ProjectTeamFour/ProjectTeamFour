@@ -21,6 +21,15 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }
 
+        //public CarCarPlanListViewModel GetPlanPage(int PlanId)
+        //{
+        //    CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
+        //    {
+        //        CarCarPlanItems = new List<CarCarPlanViewModel>()
+        //    };
+        //    return CarCarPlanListVM;
+        //}
+
         public CarCarPlanViewModel GetPlanId(int PlanId)
         {
             return GetCarCarPlan(x => x.PlanId == PlanId);
@@ -43,7 +52,67 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)planCard.PlanPrice,
                     CreatorName = planCard.Project.CreatorName
                 };
+            
             return cv;
+        }
+
+
+        public List<CarCarPlanViewModel> GetAllTotal()
+        {
+
+            List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+
+            foreach (var item in _repository.GetAll<Plan>().ToList())
+            {
+
+                CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                {
+                    PlanImgUrl = item.PlanImgUrl,
+                    ProjectName = item.ProjectName,
+                    Category = item.Project.Category,
+                    PlanTitle = item.PlanTitle,
+                    CreatorName = item.Project.CreatorName,
+                    PlanPrice = (int)item.PlanPrice,
+                    PlanId = item.PlanId,
+                    PlanDescription = item.PlanDescription
+                };
+                CarCarPlanItems.Add(cv);
+            }
+            return CarCarPlanItems;
+        }
+
+
+
+
+        public List<CarCarPlanViewModel> GetOtherPlan(string Category)
+        {
+            return GetOtherPlan(x => x.Project.Category == Category);
+        }
+
+
+        public List<CarCarPlanViewModel> GetOtherPlan(Expression<Func<Plan, bool>> Category)
+        {
+
+            List<CarCarPlanViewModel> lccpvm = new List<CarCarPlanViewModel>();
+
+            var carcarPlans = _repository.GetAll<Plan>().Where(Category);
+            foreach (var item in carcarPlans)
+            {
+                var cv = new CarCarPlanViewModel()
+                {
+                    PlanImgUrl = item.PlanImgUrl,
+                    ProjectName = item.ProjectName,
+                    Category = item.Project.Category,
+                    PlanTitle = item.PlanTitle,
+                    CreatorName = item.Project.CreatorName,
+                    PlanPrice = (int)item.PlanPrice,
+                    PlanId = item.PlanId,
+                    PlanDescription = item.PlanDescription
+                };
+                lccpvm.Add(cv);
+            }
+
+            return lccpvm;
         }
     }
 }

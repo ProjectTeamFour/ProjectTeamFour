@@ -11,21 +11,48 @@ namespace ProjectTeamFour.Controllers
 {
     public class CarCarPlanController : Controller
     {
+        private CarCarPlanService _carcarplanservice;
+        public CarCarPlanController()
+        {
+            _carcarplanservice = new CarCarPlanService();
+        }
         // GET: CarCarPlan
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int id, string Category)
         {
             var carcarPlanService = new CarCarPlanService();
 
-            //CarCarPlanViewModel cpvm = new CarCarPlanViewModel();
+            CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
+            {
+                CarCarPlanItems = new List<CarCarPlanViewModel>(),
+
+                SelectCarCarPlanItem =  new CarCarPlanViewModel()
+            };
 
             var planDetail = carcarPlanService.GetPlanId(id);
-            
-            return View(planDetail);
+
+            CarCarPlanListVM.SelectCarCarPlanItem = planDetail;
+
+
+            var getplans = carcarPlanService.GetAllTotal();
+
+            foreach (var item in getplans)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            //var allPlan = carcarPlanService.GetOtherPlan(Category);
+
+            //foreach (var item in allPlan)
+            //{
+            //    CarCarPlanListVM.CarCarPlanItems.Add(item);
+            //}
+
+            return View(CarCarPlanListVM);
         }
     }
 }
