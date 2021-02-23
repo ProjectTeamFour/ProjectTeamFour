@@ -195,9 +195,16 @@
                                                 string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
                                                 foreach (var item in description_str)
                                                 {
-                                                    <div style="margin:1rem;">
-                                                        <img src="@item" style="width: 100%;" />
-                                                    </div>
+                                                    if (item.Contains("i.imgur"))
+                                                    {
+                                                        <div style="width:100%;margin:1rem;">
+                                                            <img src="@item" />
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                            <p>@item</p>
+                                                    }
                                                 }
                                             }
                                         </div>
