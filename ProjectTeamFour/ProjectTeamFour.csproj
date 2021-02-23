@@ -233,11 +233,16 @@
     <Compile Include="Migrations\202102211551023_Member加入Permission欄位.Designer.cs">
       <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102231030539_Create_Permissiontable.cs" />
+    <Compile Include="Migrations\202102231030539_Create_Permissiontable.Designer.cs">
+      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
@@ -2228,6 +2233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102211551023_Member加入Permission欄位.resx">
       <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102231030539_Create_Permissiontable.resx">
+      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
