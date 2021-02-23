@@ -81,6 +81,23 @@ namespace ProjectTeamFour.Service
             }
         }
 
+        public CarCarPlanViewModel CreateANewCart(CarCarPlanViewModel CarCarPlanVM)
+        {
+            var cart = new CarCarPlanViewModel
+            {
+                CartId = 1,
+                PlanId = CarCarPlanVM.PlanId,
+                PlanTitle = CarCarPlanVM.PlanTitle,
+                PlanImgUrl = CarCarPlanVM.PlanImgUrl,
+                PlanPrice = CarCarPlanVM.PlanPrice,
+                Quantity = CarCarPlanVM.Quantity,
+
+
+            };
+
+            return cart;
+        }
+
 
     }
 }
