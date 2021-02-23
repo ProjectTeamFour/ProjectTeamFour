@@ -1730,6 +1730,85 @@
                 PlanPrice = 7980m,
                 QuantityLimit = 56
             });
+
+
+
+
+
+
+            //第17個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+
+                ProjectId = 17,
+                MemberId = 17,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                Category = "生活",
+                ProjectStatus = "集資成功",
+                StartDate = new DateTime(),
+                EndDate = new DateTime(),
+                Fundedpeople = 36,
+                FundingAmount = 221540,
+                AmountThreshold = 5000,
+                CreatorName = "村岸產業株式会社",
+                ProjectMainUrl = "",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 1
+
+
+            });
+            //第17個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 17,
+                MemberAccount = "",
+                MemberPassword = "NO17memberPassword",
+                MemberName = "村岸產業株式会社",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1929,5,1),
+                MemberConEmail = "",
+                MemberRegEmail = "",
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "",
+                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
+                AboutMe = "大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌 」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛的應用於日常生活中。 將化妝刷製作技術的累積，投注於身體刷重新設計改良，《 ROTUNDA 熊野筆沐浴刷 》因而傳承新生",
+                Gender = "女",
+                ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第17個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 72,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 1,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 1 入",
+                PlanFundedPeople = 1,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」,專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021,08,01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 4290,
+                QuantityLimit = 60
+            });
+
+
+
+
+
+
+
+
         }
     }
 }
