@@ -1,7 +1,7 @@
 ﻿@model CartItemListViewModel
 @{
     ViewBag.Title = "ShoppingCart";
-    
+
 }
 @section topCSS{
     <link href="~/Assets/Css/ShoppingCartPage/ShoppingCart.css" rel="stylesheet" />
@@ -21,8 +21,7 @@
             forseller.setAttribute("style", "display:block");
             cartout.setAttribute("style", "display:block");
         }
-
-        //移除購物清單
+       //移除購物清單
 function RemoveFromCart(PlanId) {
     $.ajax({
         type: "POST",
@@ -51,20 +50,20 @@ function RemoveFromCart(PlanId) {
 
 
             <div class="shop-items col-lg-6">
-                @if (Model!=null)
+                @if (Model != null)
                 {
                     foreach (var item in Model.CartItems)
                     {
                         @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
                     }
 
-                   
+
                 }
                 else
                 {
-                        <div class="no-result">
-                            <p>購物車無任何商品</p>
-                        </div>
+                    <div class="no-result">
+                        <p>購物車無任何商品</p>
+                    </div>
                 }
 
 
@@ -161,5 +160,6 @@ function RemoveFromCart(PlanId) {
     </div>
     </div>
 </section>
+
 
 

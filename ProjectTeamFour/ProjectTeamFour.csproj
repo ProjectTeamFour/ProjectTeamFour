@@ -2138,6 +2138,7 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
+    <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
