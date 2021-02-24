@@ -60,23 +60,7 @@ function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice) {
 
 
 
-function search(SearchValue) {
-
-    //var pcSearchString = document.getElementsByClassName("pc-input-search").value();
-
-    //$.ajax({
-    //    type: "POST",
-    //    url: "/Home/Search",
-    //    data: { SearchValue: SearchValue },
-    //    dataType: "text",
-    //    success: function (response) {
-    //        $(".pc-input-search").text(`${response}`);
-    //    }
-
-    //});
-}
-
-
+//全域搜尋
 document.querySelector("#searchString").addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
 
@@ -85,17 +69,25 @@ document.querySelector("#searchString").addEventListener("keypress", function (e
         console.log(searchString);
 
         window.location.href = url + searchString;
-
-        //$.ajax({
-        //    type: "GET",
-        //    url: url,
-        //    data: { searchString: searchString },
-        //    success: function (data) {
-
-        //    }
-        //});
     }
 });
+
+//全域搜尋
+document.querySelector("#phone-searchString").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+
+        var url = "/Home/Search/";
+        var searchString = document.querySelector("#phone-searchString").value;
+        console.log(searchString);
+
+        window.location.href = url + searchString;
+    }
+});
+
+
+
+
+
 
 //$("#searchString").on("keyup", function (e) {
 //    console.log("11");

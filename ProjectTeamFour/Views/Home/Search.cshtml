@@ -13,21 +13,26 @@
 
         <div class="popular-project-item title-bar d-flex justify-content-between">
             <div class="title-bar-item title">
-                <h2>熱門項目</h2>
+                <h2>搜尋結果:</h2>
             </div>
             <div class="title-bar-item see-more">
-                <a href="/Projects/Index">查看更多 ></a>
+                <a href="/Projects/Index">更多專案 ></a>
             </div>
         </div>
 
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
 
+                @if(!Model.Any())
+                {
+                    <p>親愛的，目前無您查詢的對應專案 !</p>
+                }
+
 
                 @*@for (int i = 0; i < 6; i++)
-                {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItem.ProjectItems[i]);
-                }*@
+        {
+            @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItem.ProjectItems[i]);
+        }*@
 
                 @foreach (var item in Model)
                 {
@@ -39,7 +44,7 @@
 
         <div class="popular-project-item title-bar">
             <div class="title-bar-item phone-see-more">
-                <a href="">查看更多 ></a>
+                <a href="/Projects/Index">更多專案 ></a>
             </div>
         </div>
 

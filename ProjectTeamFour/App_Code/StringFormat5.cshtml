@@ -70,25 +70,27 @@
     <a class="dropdown-item" href="/Member/Register">註冊</a>
 }
 
-@helper ShowLoginPic(string input,string gender) { 
-if (string.IsNullOrEmpty(input))
+@helper ShowLoginPic(string input, string gender)
 {
-    if (gender == "男性")
+    if (string.IsNullOrEmpty(input))
     {
-        <img src="~/Assets/Img/Sign/man.png" width="30" height="30"/>
+        if (gender == "男性")
+        {
+            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" />
+        }
+        else if (gender == "女性")
+        {
+            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" />
+        }
     }
-    else if(gender=="女性")
+    else
     {
-        <img src="~/Assets/Img/Sign/woman.png" width="30" height="30"/>
-    }
+        <img src=@input width="30" height="30" />
+    }}
+@helper ShowNoLoginPic()
+{
+    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" />
 }
-else
-{
-        <img src=@input width="30" height="30"/>
-}   }
-@helper ShowNoLoginPic() { 
-    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30"/>
-    }
 
 
 
@@ -100,3 +102,9 @@ else
     string transformAmount = currentAmount.ToString("#,0");
     <p>$@transformAmount</p>
 }
+
+
+
+
+
+
