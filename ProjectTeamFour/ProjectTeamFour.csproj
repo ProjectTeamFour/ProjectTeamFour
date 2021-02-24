@@ -153,7 +153,6 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
     <Compile Include="Migrations\202102091059315_m5.Designer.cs">
@@ -250,17 +249,19 @@
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\CartService.cs" />
-    <Compile Include="Service\Product.cs" />
+    <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\HomeService.cs" />
     <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
+    <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
@@ -268,6 +269,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\ProjectCategoryViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
@@ -2126,9 +2128,9 @@
     <Content Include="Views\PersonInfo\Submit.cshtml" />
     <Content Include="Views\PersonInfo\Connect.cshtml" />
     <Content Include="Views\PersonInfo\New.cshtml" />
-    <Content Include="Views\ProfileSettings\Index.cshtml" />
+    <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\Index.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
-    <Content Include="Views\ProfileSettings\_UsersEdit_Partial.cshtml" />
+    <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
@@ -2146,7 +2148,6 @@
     <Content Include="Views\Projects\OrderByNew.cshtml" />
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
-    <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
@@ -2156,6 +2157,10 @@
     <Content Include="Views\Projects\GetSingle.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
+    <Content Include="Views\Projects\FindStatusAndCategory.cshtml" />
+    <Content Include="Views\Log\Test.cshtml" />
+    <Content Include="Views\Manager\AccountManger.cshtml" />
+    <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

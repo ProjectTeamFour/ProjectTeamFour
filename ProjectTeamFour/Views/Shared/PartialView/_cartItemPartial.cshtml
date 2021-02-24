@@ -10,10 +10,10 @@
         </div>
         <div class="actions">
             <input class="qty" type="number" name="updates[]"
-                   id="updates_13864137195572" value="@Model.Quantity" min="0" aria-label="Quantity"> <a href="#"
+                   id="updates_13864137195572" value="@Model.Quantity" min="0" aria-label="Quantity"> <a href="/ShoppingCart/ListShoppingCart"
                                                                                            class="remove" aria-label="Remove item from cart">
                 <span aria-hidden="true">
-                    <svg version="1.1" class="svg close" xmlns="//www.w3.org  /2000/svg"
+                    <svg version="1.1" class="svg close" onclick="RemoveFromCart(@Model.PlanId)" xmlns="//www.w3.org  /2000/svg"
                          xmlns:xlink="//www.w3.org  /1999/xlink" x="0px" y="0px" width="45px"
                          height="45px" viewBox="0 0 60 60" enable-background="new 0 0 60 60"
                          xml:space="preserve">
