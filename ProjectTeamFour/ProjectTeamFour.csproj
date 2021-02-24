@@ -250,6 +250,7 @@
     <Compile Include="Models\ProjectContext.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\CartService.cs" />
+    <Compile Include="Service\Product.cs" />
     <Compile Include="Service\HomeService.cs" />
     <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
     <Content Include="Assets\css\CarCarPlanPage\carcarplandetail.css" />
     <Content Include="Assets\css\CarCarPlanPage\carcarplanindex.css" />
+    <Content Include="Assets\css\HomePage\homepagesearch.css" />
     <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
