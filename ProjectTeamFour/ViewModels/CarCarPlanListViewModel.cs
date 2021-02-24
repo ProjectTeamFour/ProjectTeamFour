@@ -8,5 +8,7 @@ namespace ProjectTeamFour.ViewModels
     public class CarCarPlanListViewModel
     {
         public List<CarCarPlanViewModel> CarCarPlanItems { get; set; }
+
+        public CarCarPlanViewModel SelectCarCarPlanItem { get; set; }
     }
 }

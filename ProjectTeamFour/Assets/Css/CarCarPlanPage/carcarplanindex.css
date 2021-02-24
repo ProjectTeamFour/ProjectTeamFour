@@ -1,0 +1,42 @@
+﻿/* 種類 */
+
+.project-categories {
+    padding-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+    .project-categories .project-categories-box {
+        border-bottom: 1px solid #aaa;
+    }
+
+    .project-categories .pic {
+        border-radius: 50%;
+    }
+
+        .project-categories .pic i {
+            font-size: 2rem;
+            color: rgb(65, 63, 63);
+            padding: 0.5rem 0 1rem 0;
+            transition: .3s;
+        }
+
+    .project-categories .text h4 {
+        font-size: 0.8rem;
+        color: rgb(65, 63, 63);
+        font-weight: 600;
+        text-align: center;
+        transition: .3s;
+    }
+
+    .project-categories .project-categories-box a {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .project-categories .project-categories-box:hover i {
+        color: #f9414a;
+    }
+
+    .project-categories .project-categories-box:hover h4 {
+        color: #f9414a;
+    }

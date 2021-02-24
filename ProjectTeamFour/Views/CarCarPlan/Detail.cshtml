@@ -1,0 +1,102 @@
+﻿@model ProjectTeamFour.ViewModels.CarCarPlanListViewModel
+
+
+
+@section topCSS{
+    <link href="~/Assets/Css/CarCarPlanPage/carcarplandetail.css" rel="stylesheet" />
+}
+
+@section endJS{
+    <script src="~/Assets/Javascript/CarCarPlanPage/carcarplan.js"></script>
+}
+<section class="carplandetail">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="projectname pb-4">
+                    <h3>@Model.SelectCarCarPlanItem.ProjectName</h3>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <div class="carplandetail-item main d-flex flex-column align-items-center">
+                    <div class="main-item pb-5 picture">
+                        <img src=@Model.SelectCarCarPlanItem.PlanImgUrl>
+                    </div>
+                    <div class="main-item categories pb-3">
+                        <p>@Model.SelectCarCarPlanItem.Category</p>
+                    </div>
+                    <div class="main-item project-team pb-5">
+                        <p>@Model.SelectCarCarPlanItem.CreatorName</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <div class="carplandetail-item detail px-3">
+                    <div class="title-and-describtion d-flex flex-column align-items-center">
+                        <div class="detail-item plan-title pb-5">
+                            <p>@Model.SelectCarCarPlanItem.PlanTitle</p>
+                        </div>
+                        <div class="detail-item plan-describtion">
+                            <p>
+                                @Model.SelectCarCarPlanItem.PlanDescription
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="price-and-cart d-flex flex-row justify-content-around pt-4">
+                        <div class="detail-item price">
+                            @StringFormat5.addComma((int)Model.SelectCarCarPlanItem.PlanPrice)
+                        </div>
+                        <div class="detail-item">
+                            <button class="add-to-cart d-flex" onclick="AddToMyCart('@Model.SelectCarCarPlanItem.PlanId','@Model.SelectCarCarPlanItem.PlanTitle','@Model.SelectCarCarPlanItem.PlanImgUrl','@Model.SelectCarCarPlanItem.PlanPrice')">
+                                <p>上車囉</p>
+                                <a href="#"><i class="fas fa-shopping-cart"></i>+</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 商城專案 -->
+<section class="indemand-project">
+    <div class="container">
+
+        <div class="indemand-project-item title-bar d-flex justify-content-between mt-2">
+            <div class="title-bar-item title">
+                <h2>為您推薦</h2>
+            </div>
+            <div class="title-bar-item see-more">
+                <a href="/Products/Index">上車專區 ></a>
+            </div>
+        </div>
+
+        <div class="slide-arrow d-flex justify-content-between">
+            <button type="button" class="slide-arrow-item bg-transparent border-0 prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="slide-arrow-item bg-transparent border-0 next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="indemand-project-item cardtemplate-section">
+            <div class="indemand-project-wrap">
+
+                @*@for (int i = 0; i < 20; i++)
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
+                    }*@
+
+                @foreach (var item in Model.CarCarPlanItems)
+                {
+                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", item);
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

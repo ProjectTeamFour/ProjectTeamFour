@@ -59,6 +59,7 @@ namespace ProjectTeamFour.Service
             {
                 var viewModel = new MemberViewModel
                 {
+                    MemberId = entity.MemberId,
                     MemberName = entity.MemberName,
                     MemberTeamName = entity.MemberTeamName,
                     MemberAccount = entity.MemberAccount,
@@ -72,7 +73,8 @@ namespace ProjectTeamFour.Service
                     AboutMe = entity.AboutMe,
                     ProfileImgUrl = entity.ProfileImgUrl,
                     MemberWebsite = entity.MemberWebsite,
-                    MemberMessage = entity.MemberMessage
+                    MemberMessage = entity.MemberMessage,
+                    Permission = entity.Permission
                 };
                 listViewmodel.Items.Add(viewModel);
             }
