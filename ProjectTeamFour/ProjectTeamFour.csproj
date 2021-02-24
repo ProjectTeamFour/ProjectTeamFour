@@ -2147,6 +2147,7 @@
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
     <Content Include="Views\Projects\Getalll.cshtml" />
     <Content Include="Views\Projects\GetSingle.cshtml" />
+    <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

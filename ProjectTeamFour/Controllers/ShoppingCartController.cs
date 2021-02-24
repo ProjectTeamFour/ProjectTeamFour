@@ -55,14 +55,17 @@ namespace ProjectTeamFour.Controllers
             return View(carList);
         }
 
-
+        [HttpPost]
         public ActionResult RemoveCartItem(CarCarPlanViewModel carcarPlanVM)
         {
             var carList = (CartItemListViewModel)Session["Cart"];
 
-            var result = _CartService.DeleteId(carList,carcarPlanVM);
+            carList = _CartService.DeleteId(carList,carcarPlanVM);
 
-            return View(result);
+            Session["Cart"] = carList;
+
+
+            return View("ListShoppingCart");
         }
 
     }
