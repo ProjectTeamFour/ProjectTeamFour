@@ -26,14 +26,15 @@ namespace ProjectTeamFour.Service
         {
             int mem_per = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == memberId).Permission;
             string mem_perString = Convert.ToString(mem_per,2);
-            string per_string = permissionId.ToString();
+            int per_value = _repository.GetAll<Permission>().FirstOrDefault(m => m.PermissionId == permissionId).PermissionValue;
+            string per_valueString = Convert.ToString(per_value, 2);
             CheckPermissionViewModel cv = new CheckPermissionViewModel()
             {
                 MemberId = memberId,
                 PermissionId = permissionId,
                 Checked = false
             };
-            if (mem_perString[per_string.Length - 1] == '1')
+            if (per_value<=mem_per&&mem_perString[per_valueString.Length - 1] == '1')
             {
                 cv.Checked = true;
             }
