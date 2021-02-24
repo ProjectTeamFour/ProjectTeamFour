@@ -5,7 +5,7 @@
 }
 
 
-@section topCSS{    
+@section topCSS{
     <link href="~/Assets/Css/HomePage/homepage.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/products.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/rwd-products.css" rel="stylesheet" />
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="category-group">
-                    <a href="/Projects/Index/?category={category}&projectStatus={projectStatus}" class="category-group-item">
+                    <a href="/Projects/FindStatusAndCategory/{category}-{projectStatus}" class="category-group-item">
                         <div class="content"><i class="far fa-lightbulb"></i></div>
                         <div class="category-group-item-title" id="tech">科技設計</div>
                     </a>
@@ -104,3 +104,4 @@
 <div class="col-sm-12">
     <button class="btn-more">Load More</button>
 </div>
+

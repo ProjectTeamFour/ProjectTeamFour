@@ -88,23 +88,6 @@ namespace ProjectTeamFour.Controllers
 
             //5.Response.Redirect
             return Redirect(url);
-            //MemberViewModel viewModel = null;
-            //if (ModelState.IsValid)
-            //{
-            //    viewModel= _api.GetMemberbyReg(input.Email);
-            //    if (viewModel == null)
-            //    {
-            //        ViewData["WrongAccount"] = "帳號錯誤!";
-            //        return View();
-            //    }
-            //    if (viewModel.MemberPassword != input.Password)
-            //    {
-            //        ViewData["WrongPassword"] = "密碼錯誤!";
-            //        return View();
-            //    }
-            //    Session["Member"] = viewModel;
-            //}
-            //return RedirectToAction("Index","Home");
         }
         public ActionResult Logout()
         {
@@ -114,7 +97,11 @@ namespace ProjectTeamFour.Controllers
             return RedirectToAction("Login", "Member");
         }
  
-
+        public ActionResult test()
+        {
+            
+            return Content(_api.GetManagerIndex());
+        }
 
         //private MemberService _memberService;
         //public MemberController()

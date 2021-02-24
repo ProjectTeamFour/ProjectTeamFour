@@ -150,6 +150,42 @@ namespace ProjectTeamFour.Service
                 project.ProjectItems.Add(pv);
             }
             return project;
-        }       
+        }
+
+        public ProjectListViewModel GetAllTotal123(string category, string projectStatus) //全部產生過濾完3層
+        {
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var source = _reposity.GetAll<Project>();
+            if (!string.IsNullOrEmpty(category))
+            {
+                source = source.Where((x) => x.Category == category);
+            }
+            if (!string.IsNullOrEmpty(projectStatus))
+            {
+                source = source.Where((x) => x.ProjectStatus == projectStatus);
+            }
+            foreach (var item in source)
+            {
+
+                ProjectViewModel pv = new ProjectViewModel
+                {
+                    ProjectMainUrl = item.ProjectMainUrl,
+                    Category = item.Category,
+                    ProjectStatus = item.ProjectStatus,
+                    ProjectName = item.ProjectName,
+                    CreatorName = item.CreatorName,
+                    FundingAmount = (int)item.FundingAmount,
+                    AmountThreshold = item.AmountThreshold,
+                    EndDate = item.EndDate,
+                    StartDate = item.StartDate,
+                    ProjectId = item.ProjectId
+                };
+                project.ProjectItems.Add(pv);
+            }
+            return project;
+        }
     }
 }        
