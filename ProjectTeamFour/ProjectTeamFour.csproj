@@ -145,6 +145,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CarCarPlanController.cs" />
+    <Compile Include="Api\ProjectsController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -267,6 +269,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\ProjectCategoryViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
@@ -310,6 +313,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
+    <Content Include="Assets\css\CarCarPlanPage\carcarplandetail.css" />
+    <Content Include="Assets\css\CarCarPlanPage\carcarplanindex.css" />
     <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
@@ -354,6 +359,8 @@
     <Content Include="Assets\Img\Sign\man.png" />
     <Content Include="Assets\Img\Sign\questionMark.png" />
     <Content Include="Assets\Img\Sign\woman.png" />
+    <Content Include="Assets\Javascript\CarCarPlanPage\carcarplan.js" />
+    <Content Include="Assets\Javascript\CarCarPlanPage\carcarplanindex.js" />
     <Content Include="Assets\Javascript\HomePage\homepage.js" />
     <Content Include="Assets\Javascript\OrdinanyQAPage\OrdinanyQAPage.js" />
     <Content Include="Assets\Javascript\PaymentPage\pay.js" />
@@ -2144,6 +2151,12 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
+    <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
+    <Content Include="Views\Projects\Getalll.cshtml" />
+    <Content Include="Views\Projects\GetSingle.cshtml" />
+    <Content Include="Views\CarCarPlan\Index.cshtml" />
+    <Content Include="Views\CarCarPlan\Detail.cshtml" />
+    <Content Include="Views\Projects\FindStatusAndCategory.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
   </ItemGroup>

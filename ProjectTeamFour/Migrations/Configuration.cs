@@ -1606,7 +1606,7 @@
                 ProjectStatus = "集資成功",
                 StartDate = new DateTime(2021, 3, 7),
                 EndDate = new DateTime(2021, 5, 7),
-                Fundedpeople = 700,
+                Fundedpeople = 485,
                 FundingAmount = 4330767m,
                 AmountThreshold = 300000m,
                 CreatorName = "TRANZEND",
@@ -1619,8 +1619,8 @@
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectVideoUrl = "https://www.youtube.com/embed/scEttN1ewFI",
                 Project_Question = "外套的重量有多重呢？,加熱模式開啟與一般穿著時的保暖程度為？,平常不穿時，如何折疊與收納才不會影響發熱元件？發熱元件安全嗎？,剪裁設計與提供尺寸是否符合亞洲人身型？",
-                Project_Answer = "Men-S:含帽子 880g，不含帽子 780g, Female-S: 含帽子 820g，不含帽子 740g，一般厚羽絨外套或是保暖大衣的重量大約落在900g~1300g不等～,一般穿著：適用20度上下，開啟第一段溫控(42度)：適用16度上下，開啟第二段溫控(50度)：適用13度上下，開啟第一段溫控(55度)：適用10度以下,一般正常使用即可，發熱元件原料為日本進口高純度95%的石墨碳纖維，堅韌耐拉扯，避免拉扯斷裂漏電短路風險。線材阻燃等級UL 94 V0-V2，至少可耐溫到280度；線材接頭防水達IP68，可泡水可機洗。,我們是根據亞洲人(團隊成員們)做尺寸以及剪裁設計的喔",
-                ProjectPlansCount = 12
+                Project_Answer = "Men-S:含帽子 880g，不含帽子 780g，Female-S: 含帽子 820g，不含帽子 740g，一般厚羽絨外套或是保暖大衣的重量大約落在900g~1300g不等～,一般穿著：適用20度上下，開啟第一段溫控(42度)：適用16度上下，開啟第二段溫控(50度)：適用13度上下，開啟第一段溫控(55度)：適用10度以下,一般正常使用即可，發熱元件原料為日本進口高純度95%的石墨碳纖維，堅韌耐拉扯，避免拉扯斷裂漏電短路風險。線材阻燃等級UL 94 V0-V2，至少可耐溫到280度；線材接頭防水達IP68，可泡水可機洗。,我們是根據亞洲人(團隊成員們)做尺寸以及剪裁設計的喔",
+                ProjectPlansCount = 5
             });
 
 
@@ -1734,6 +1734,36 @@
 
 
 
+            //第14個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 14,
+                MemberId = 14,
+                ProjectName = "SAX VOYAGE 米特薩克斯風重奏團｜走出臺灣，風鳴亞洲",
+                Category = "藝術影視",
+                ProjectStatus = "集資成功",
+                StartDate = new DateTime(2021, 3, 7),
+                EndDate = new DateTime(2021, 5, 7),
+                Fundedpeople = 222,
+                FundingAmount = 640858m,
+                AmountThreshold = 600000m,
+                CreatorName = "TRANZEND",
+                ProjectMainUrl = "",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/xNS9Lu14zx0",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 5
+            });
+
+
+
+
 
 
             //第17個提案
@@ -1745,8 +1775,8 @@
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
                 Category = "生活",
                 ProjectStatus = "集資成功",
-                StartDate = new DateTime(),
-                EndDate = new DateTime(),
+                StartDate = new DateTime(2021,01,01),
+                EndDate = new DateTime(2021,02,26),
                 Fundedpeople = 36,
                 FundingAmount = 221540,
                 AmountThreshold = 5000,
@@ -1759,11 +1789,9 @@
                 ProjectImgUrl = "",
                 //格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
-                Project_Question = "",
-                Project_Answer = "",
+                Project_Question = "「熊野筆」是化妝刷具的高品質象徵，怎麼會想要拿來做沐浴刷呢？,刷毛的材質為何呢？,《 熊野筆 ROTUNDA 沐浴刷 》中間的凹槽有什麼功能呢？,清潔使用後，該如何收納與保養呢？,如果收到產品後不夠滿意，可以做退換貨嗎？,《 熊野筆 ROTUNDA 沐浴刷 》是否會提供保固呢？",
+                Project_Answer = "遠自江戶末期，日本廣島縣熊野町就因盛產毛筆，獲得「 筆之都 」的稱號，我們相信熊野筆「 柔軟且親膚 」的特性，不僅適合臉部妝容，更能用於全身清潔！,我們選用天然山羊毛與PBT纖維，沿襲熊野筆「混毛」的製作方式，由超過 150,000 根 0.1 mm 極細柔軟刷毛製成，除了能深度清潔毛細孔內的污垢、同時達到去角質的效果,以毫米為單位多次重複測試精修，可讓刷洗時產生更細緻且大量的泡沫；不僅帶來更強的去污力，光看著就很療癒,建議用浴巾將沐浴刷擦乾後，採刷毛倒立方式至通風處晾乾，長柄刷亦可透過末端的圈繩吊掛收納,可以的，依照消費者保護法的規定，我們提供商品貨到日起七天猶豫期的權益。請注意猶豫期非試用期，您所退回或要更換的商品若經檢測後有毀損狀況，我們可能會向您收取相關的費用,在 flyingV 參與募資計畫的朋友，都享有收到貨後起算 6 個月保固的權益；若為正常使用耗損、人為因素導致商品毀損，則不在保固範圍內。",
                 ProjectPlansCount = 1
-
-
             });
             //第17個提案的會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
@@ -1799,6 +1827,81 @@
                 PlanImgUrl = "",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 4290,
+                QuantityLimit = 60
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 73,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 2,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 1 入",
+                PlanFundedPeople = 1,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」，專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021, 08, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 4290,
+                QuantityLimit = 60
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 74,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 3,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》長柄 募資早鳥 1 入",
+                PlanFundedPeople = 7,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」，專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021, 08, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 6290,
+                QuantityLimit = 60
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 75,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 4,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 2 入",
+                PlanFundedPeople = 1,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」，專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021, 08, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8490,
+                QuantityLimit = 60
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 76,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 5,
+                PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》長柄 募資早鳥 2 入",
+                PlanFundedPeople = 1,
+                PlanDescription = "全方案開放「刷卡 3、6 期零利率」，專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
+                PlanShipDate = new DateTime(2021, 08, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 12390,
+                QuantityLimit = 60
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 77,
+                ProjectName = "熊野筆 ROTUNDA 沐浴刷",
+                ProjectId = 17,
+                ProjectPlanId = 6,
+                PlanTitle = "單純贊助，不需回饋",
+                PlanFundedPeople = 0,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 08, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100,
                 QuantityLimit = 60
             });
 

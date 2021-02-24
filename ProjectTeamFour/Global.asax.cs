@@ -21,5 +21,7 @@ namespace ProjectTeamFour
             //api只傳送Json格式
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
+
+
     }
 }
