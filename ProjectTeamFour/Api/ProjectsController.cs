@@ -25,12 +25,12 @@ namespace ProjectTeamFour.Api
         }
               
         //Get api/values/Id 找特定id
-        [AcceptVerbs("GET", "POST")]
-        public ProjectListViewModel GetProject(string id)
-        {
+        //[AcceptVerbs("GET", "POST")]
+        //public ProjectListViewModel GetProject(string id)
+        //{
 
-            return projectService.GetByWhere(x => x.Category == id ); //這邊屬性怎麼改變
-        }
+        //    return projectService.GetByWhere(x => x.Category == id ); //這邊屬性怎麼改變
+        //}
 
         //Get api/values 全部
         [AcceptVerbs("GET", "POST")]
@@ -52,11 +52,26 @@ namespace ProjectTeamFour.Api
 
         }
 
-        ////Post api/values/Id  新增卡片資料
-        //public void Post([FromBody] ProjectViewModel input)
-        //{
-        //    var result = new ProjectViewModel();
+        [AcceptVerbs("GET", "POST")]
+        public ProjectListViewModel Index(string category, string projectStatus) //主畫面 呼叫全部資料
+        {
 
-        //}
+            var projectService = new ProjectsService(); //呼叫service
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var GetAll = projectService.GetAllTotal123(category, projectStatus);
+
+
+            return GetAll;
+        }
+
+            ////Post api/values/Id  新增卡片資料
+            //public void Post([FromBody] ProjectViewModel input)
+            //{
+            //    var result = new ProjectViewModel();
+
+            //}
+        }
     }
-}

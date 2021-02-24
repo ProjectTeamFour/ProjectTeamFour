@@ -266,6 +266,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\ProjectCategoryViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\ProjectListViewModel.cs" />
@@ -2147,6 +2148,7 @@
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
     <Content Include="Views\Projects\Getalll.cshtml" />
     <Content Include="Views\Projects\GetSingle.cshtml" />
+    <Content Include="Views\Projects\FindStatusAndCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

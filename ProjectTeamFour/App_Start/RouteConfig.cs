@@ -18,7 +18,18 @@ namespace ProjectTeamFour
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );            
+            );
+            //routes.MapRoute(
+            //    name: "",
+            //    url: "Projects/GetCategory/{category}-{projectStatus}-{id}", //類型-狀態-各種排序
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional, id3 = UrlParameter.Optional }
+            //);
+
+           // routes.MapRoute(
+           //    name: "category",
+           //    url: "Projects/Index/{category}-{projectStatus}", //類型-狀態-各種排序
+           //    defaults: new { controller = "Home", action = "Index", id= UrlParameter.Optional}
+           //);
         }
     }
 }
