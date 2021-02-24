@@ -1,0 +1,326 @@
+﻿.carplandetail {
+    background-color: #f7f7f7;
+    padding: 5rem 0 2.5rem 0;
+}
+
+
+    .carplandetail .container {
+        max-width: 800px;
+    }
+
+    .carplandetail p {
+        margin-bottom: 0;
+        letter-spacing: 1px;
+    }
+
+    .carplandetail .projectname h3 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+
+    .carplandetail .categories p {
+        background-color: #dbdbdb;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-weight: 500;
+    }
+
+    .carplandetail .project-team p {
+        font-weight: 400;
+    }
+
+    .carplandetail .price p {
+        padding: 2px 8px;
+        border-radius: 5px;
+    }
+
+    .carplandetail .price p {
+        background-color: rgb(247, 228, 219);
+    }
+
+    .carplandetail .title-and-describtion {
+        height: 13.9rem;
+    }
+
+    .carplandetail .picture {
+        height: 16rem;
+    }
+
+    .carplandetail .add-to-cart {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid rgb(167, 162, 162);
+        padding-bottom: 2px;
+    }
+
+        .carplandetail .add-to-cart a {
+            color: #000;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .carplandetail .add-to-cart p {
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        .carplandetail .add-to-cart:hover p {
+            color: #f9414a;
+        }
+
+        .carplandetail .add-to-cart:hover a {
+            color: #f9414a;
+        }
+
+    .carplandetail .plan-describtion p {
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
+    .carplandetail .plan-title p {
+        background-color: #f37f85;
+        border-radius: 5px;
+        padding: 2px 6px;
+        font-weight: 500;
+    }
+
+
+
+
+
+
+/*下面的幻燈卡*/
+
+
+/* 商城專案 */
+
+.indemand-project {
+    padding-top: 3rem;
+}
+
+    .indemand-project .cardtemplate-section-item {
+        padding: 0 0.1rem;
+    }
+
+        .indemand-project .cardtemplate-section-item a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .indemand-project .cardtemplate-section-item .project-name {
+            height: 3rem;
+        }
+
+    .indemand-project .title-bar {
+        padding-bottom: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .indemand-project .title h2 {
+        font-size: 1.25rem;
+        border-left: 0.5rem solid #f9414a;
+        padding-left: 0.5rem;
+        font-weight: 700;
+    }
+
+    .indemand-project .see-more a {
+        text-decoration: none;
+        color: #f9414a;
+        font-weight: 800;
+    }
+
+        .indemand-project .see-more a:hover {
+            color: #000;
+        }
+
+    .indemand-project .phone-see-more a {
+        text-decoration: none;
+        color: #f9414a;
+        font-weight: 800;
+    }
+
+        .indemand-project .phone-see-more a:hover {
+            color: #000;
+        }
+
+    .indemand-project .percent {
+        padding-left: 0.5rem;
+    }
+
+    .indemand-project .cardtemplate {
+        margin-bottom: 3rem;
+        outline: none;
+    }
+
+
+    .indemand-project .cardtemplate-item p {
+        margin-bottom: 0;
+    }
+
+    .indemand-project .tag-item {
+        background-color: #f7f7f7;
+        padding: 0.4rem 0.6rem;
+        margin: 0.6rem 0;
+        letter-spacing: 0.1rem;
+    }
+
+        .indemand-project .tag-item p {
+            font-size: 0.8rem;
+        }
+
+    .indemand-project .status p {
+        color: #f9414a;
+        font-weight: 700;
+    }
+
+    .indemand-project .status {
+        margin-left: 0.8rem;
+    }
+
+    .indemand-project .project-name h3 {
+        font-size: 0.7rem;
+        letter-spacing: 0.05rem;
+        margin-bottom: 0;
+        line-height: 1.55rem;
+        font-weight: 700;
+    }
+
+    .indemand-project .project-team {
+        padding-bottom: 2rem;
+        letter-spacing: 0.1rem;
+    }
+
+        .indemand-project .project-team p {
+            color: rgb(128, 127, 127);
+            font-size: 0.7rem;
+        }
+
+    .indemand-project .project-progressbar-item {
+        background-color: #f9414a;
+        height: 0.2rem;
+    }
+
+    .indemand-project .project-amount {
+        padding-top: 1rem;
+        letter-spacing: 0.1rem;
+    }
+
+        .indemand-project .project-amount .amount p {
+            font-size: 0.64rem;
+            font-weight: 700;
+            background-color: rgb(247, 228, 219);
+            padding: 0 3px;
+            border-radius: 5px;
+        }
+
+    .indemand-project .project-name:hover {
+        color: #f9414a;
+    }
+
+    .indemand-project .cardtemplate:hover img {
+        transform: scale(1.1);
+    }
+
+    .indemand-project .project-picture {
+        overflow: hidden;
+    }
+
+        .indemand-project .project-picture img {
+            transition: .4s;
+        }
+
+
+    /* 加上 projectname 和 button */
+
+
+
+    .indemand-project .cardtemplate .project-amount .add-to-cart button {
+        border: none;
+        background-color: #f1c2b4;
+        font-size: 0.64rem;
+        margin-top: 0;
+        margin-bottom: 10px;
+        margin-left: 1rem;
+        padding: 0 5px 0 7px;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        text-align: center;
+        border-radius: 5px;
+        transition: .3s;
+    }
+
+
+        .indemand-project .cardtemplate .project-amount .add-to-cart button:hover {
+            background-color: #f9414a;
+        }
+
+
+    .indemand-project .cardtemplate .plan-title {
+        height: 5.5rem;
+    }
+
+
+        .indemand-project .cardtemplate .plan-title h3 {
+            font-size: 0.65rem;
+            color: rgb(49, 48, 48);
+        }
+
+    .indemand-project .cardtemplate .project-name h4 {
+        font-size: 0.75rem;
+    }
+
+    .indemand-project .cardtemplate a {
+        outline: none;
+    }
+
+
+
+
+@media screen and (min-width: 768px) {
+    .indemand-project .see-more a {
+        display: block;
+    }
+
+    .indemand-project .phone-see-more a {
+        display: none;
+    }
+
+    .indemand-project .title h2 {
+        font-size: 1.45rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .indemand-project .tag-item p {
+        font-size: 0.9rem;
+    }
+
+    .indemand-project .project-amount .amount p {
+        font-size: 0.85rem;
+    }
+
+    .indemand-project .cardtemplate .project-amount .add-to-cart button a {
+        font-size: 0.85rem;
+    }
+
+    .indemand-project .cardtemplate .project-amount .add-to-cart button p {
+        font-size: 0.85rem;
+    }
+
+    .indemand-project .cardtemplate .project-picture {
+        height: 180px;
+    }
+
+    .indemand-project .cardtemplate .plan-title {
+        height: 6rem;
+    }
+
+        .indemand-project .cardtemplate .plan-title h3 {
+            font-size: 0.85rem;
+        }
+
+    .indemand-project .cardtemplate .project-name h4 {
+        font-size: 0.95rem;
+    }
+}
+

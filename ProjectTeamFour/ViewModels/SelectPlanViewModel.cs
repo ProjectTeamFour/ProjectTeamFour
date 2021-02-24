@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using ProjectTeamFour.Models;
@@ -17,6 +18,7 @@ namespace ProjectTeamFour.ViewModels
         public DateTime PlanShipDate { get; set; }
         public string PlanDescription { get; set; }
         public string PlanImgUrl { get; set; }
+        [DataType(DataType.Currency)]
         public decimal PlanPrice { get; set; }
         public int QuantityLimit { get; set; }
         ////導覽屬性
