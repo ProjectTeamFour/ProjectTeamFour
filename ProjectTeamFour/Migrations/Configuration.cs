@@ -1761,17 +1761,11 @@
                 ProjectPlansCount = 5
             });
 
-
-
-
-
-
-            //第17個提案
+            //第15個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             {
-
-                ProjectId = 17,
-                MemberId = 17,
+                ProjectId = 15,
+                MemberId = 15,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
                 Category = "生活",
                 ProjectStatus = "集資成功",
@@ -1793,10 +1787,10 @@
                 Project_Answer = "遠自江戶末期，日本廣島縣熊野町就因盛產毛筆，獲得「 筆之都 」的稱號，我們相信熊野筆「 柔軟且親膚 」的特性，不僅適合臉部妝容，更能用於全身清潔！,我們選用天然山羊毛與PBT纖維，沿襲熊野筆「混毛」的製作方式，由超過 150,000 根 0.1 mm 極細柔軟刷毛製成，除了能深度清潔毛細孔內的污垢、同時達到去角質的效果,以毫米為單位多次重複測試精修，可讓刷洗時產生更細緻且大量的泡沫；不僅帶來更強的去污力，光看著就很療癒,建議用浴巾將沐浴刷擦乾後，採刷毛倒立方式至通風處晾乾，長柄刷亦可透過末端的圈繩吊掛收納,可以的，依照消費者保護法的規定，我們提供商品貨到日起七天猶豫期的權益。請注意猶豫期非試用期，您所退回或要更換的商品若經檢測後有毀損狀況，我們可能會向您收取相關的費用,在 flyingV 參與募資計畫的朋友，都享有收到貨後起算 6 個月保固的權益；若為正常使用耗損、人為因素導致商品毀損，則不在保固範圍內。",
                 ProjectPlansCount = 1
             });
-            //第17個提案的會員資料
+            //第15個提案的會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
-                MemberId = 17,
+                MemberId = 15,
                 MemberAccount = "",
                 MemberPassword = "NO17memberPassword",
                 MemberName = "村岸產業株式会社",
@@ -1813,12 +1807,12 @@
                 ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
-            //第17個提案中的方案
+            //第15個提案中的方案
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 72,
+                PlanId = 77,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 1,
                 PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 1 入",
                 PlanFundedPeople = 1,
@@ -1831,9 +1825,9 @@
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 73,
+                PlanId = 78,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 2,
                 PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 1 入",
                 PlanFundedPeople = 1,
@@ -1846,9 +1840,9 @@
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 74,
+                PlanId = 79,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 3,
                 PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》長柄 募資早鳥 1 入",
                 PlanFundedPeople = 7,
@@ -1861,9 +1855,9 @@
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 75,
+                PlanId = 80,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 4,
                 PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》短柄 募資早鳥 2 入",
                 PlanFundedPeople = 1,
@@ -1876,9 +1870,9 @@
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 76,
+                PlanId = 81,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 5,
                 PlanTitle = "《 ROTUNDA 熊野筆沐浴刷 》長柄 募資早鳥 2 入",
                 PlanFundedPeople = 1,
@@ -1891,9 +1885,9 @@
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
-                PlanId = 77,
+                PlanId = 82,
                 ProjectName = "熊野筆 ROTUNDA 沐浴刷",
-                ProjectId = 17,
+                ProjectId = 15,
                 ProjectPlanId = 6,
                 PlanTitle = "單純贊助，不需回饋",
                 PlanFundedPeople = 0,
@@ -1907,9 +1901,144 @@
 
 
 
+            //第16個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 16,
+                MemberId = 16,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                Category = "遊戲出版",
+                ProjectStatus = "集資成功",
+                StartDate = new DateTime(2021, 01, 01),
+                EndDate = new DateTime(2021, 02, 26),
+                Fundedpeople = 306,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "米爸",
+                ProjectMainUrl = "",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 1
+            });
 
-
-
+            //第16個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 16,
+                MemberAccount = "米爸",
+                MemberPassword = "NO16memberPassword",
+                MemberName = "Miiii",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1929, 5, 1),
+                MemberConEmail = "",
+                MemberRegEmail = "",
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "",
+                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
+                AboutMe = "",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第16個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 83,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄1【台灣北部、中部】1本",
+                ProjectId = 15,
+                ProjectPlanId = 1,
+                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanFundedPeople = 24,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 500,
+                QuantityLimit = 999
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 84,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄2【台灣東部、南部】1本",
+                ProjectId = 16,
+                ProjectPlanId = 2,
+                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanFundedPeople = 19,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 500,
+                QuantityLimit = 999
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 85,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄寫真書1套2冊含外盒",
+                ProjectId = 16,
+                ProjectPlanId = 3,
+                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanFundedPeople = 188,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 950,
+                QuantityLimit = 999
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 86,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 16,
+                ProjectPlanId = 4,
+                PlanTitle = "",
+                PlanFundedPeople = 7,
+                PlanDescription = "9折，寵物友善環境探訪實錄寫真書5套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 4275,
+                QuantityLimit = 15
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 87,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 16,
+                ProjectPlanId = 5,
+                PlanTitle = "",
+                PlanFundedPeople = 10,
+                PlanDescription = "85折，寵物友善環境探訪實錄寫真書10套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8075,
+                QuantityLimit = 10
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 88,
+                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 16,
+                ProjectPlanId = 6,
+                PlanTitle = "純贊助【寵物友善環境發展協會】成立，推動友善環境和好爸媽及乖毛孩的分級認證，不須回饋",
+                PlanFundedPeople = 58,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 06, 01),
+                PlanImgUrl = "",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100,
+                QuantityLimit = 999
+            });
 
 
         }
