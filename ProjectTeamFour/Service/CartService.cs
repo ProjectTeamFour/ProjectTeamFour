@@ -98,6 +98,26 @@ namespace ProjectTeamFour.Service
             return cart;
         }
 
+        public CartItemListViewModel DeleteId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
+        {
+
+
+            var result = cartItems.CartItems.Where(x => x.PlanId == carcarPlanVM.PlanId).Select(x => x).FirstOrDefault();
+
+            if (result == default(CarCarPlanViewModel))
+            {
+                
+               
+            }
+            else
+            {
+                cartItems.CartItems.Remove(result);
+            }
+            return cartItems;
+        }
+
+
+
 
     }
 }

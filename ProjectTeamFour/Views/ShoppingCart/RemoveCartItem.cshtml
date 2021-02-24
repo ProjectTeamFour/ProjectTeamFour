@@ -1,7 +1,7 @@
 ﻿@model CartItemListViewModel
 @{
     ViewBag.Title = "ShoppingCart";
-    
+
 }
 @section topCSS{
     <link href="~/Assets/Css/ShoppingCartPage/ShoppingCart.css" rel="stylesheet" />
@@ -13,25 +13,10 @@
         let forseller = document.querySelector(".for-seller");
         let cartout = document.querySelector(".cart-out");
         let noresult = document.querySelector(".no-result");
-        let shopitems=document.querySelector(".shop-items");
-        if (shopitems.innerText == "" )
-        {
-            NewDiv = document.createElement("div");
-            NewP = document.createElement("p");
-            NewDiv.appendChild(NewP);
-            shopitems.appendChild(NewDiv);
-            NewDiv.setAttribute("style", "text-align:center;font-size:3rem");
-            
-            NewP.innerText = "購物車無任何商品";
+        if (noresult.innerText == "購物車無任何商品") {
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
-        else if (noresult.innerText == "購物車無任何商品")
-        {
-            forseller.setAttribute("style", "display:none");
-            cartout.setAttribute("style", "display:none");
-        }
-        
         else {
             forseller.setAttribute("style", "display:block");
             cartout.setAttribute("style", "display:block");
@@ -66,21 +51,20 @@ function RemoveFromCart(PlanId) {
 
 
             <div class="shop-items col-lg-6">
-                @if (Model!=null)
+                @if (Model != null)
                 {
                     foreach (var item in Model.CartItems)
                     {
                         @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
                     }
 
-                   
+
                 }
                 else
                 {
-                        
-                        <div class="no-result">
-                            <p>購物車無任何商品</p>
-                        </div>
+                    <div class="no-result">
+                        <p>購物車無任何商品</p>
+                    </div>
                 }
 
 
@@ -177,5 +161,7 @@ function RemoveFromCart(PlanId) {
     </div>
     </div>
 </section>
+
+
 
 

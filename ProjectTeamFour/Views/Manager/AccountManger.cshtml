@@ -1,0 +1,130 @@
+﻿
+
+@Html.ActionLink("測試", "test", "Log");
+
+<button id="btn1">顯示畫面</button>
+
+<table id="mem_table">
+    <tr><th></th></tr>
+    <tr><td><input type="checkbox"/></td></tr>
+</table>
+
+@section endJs{
+    <script>
+        let btn1 = document.querySelector('#btn1');
+        let mem_table = document.querySelector('#mem_table');
+
+        let o;
+
+
+        btn1.addEventListener('click', function () {
+            show();
+        })
+        function show() {
+            mem_table.innerHTML = null;
+            $.ajax({
+                url: '/api/Memberapi/GetManagerIndex',
+                type: "get",
+                dataType: 'json',
+                success: function (response) {
+                    let result = JSON.parse(response);
+                    let members = result.Members.Items;
+                    let permissions = result.Permissions;
+                    let tr_head = createTr(mem_table);
+                    Object.keys(members[0]).forEach(p => {
+                        createTd(tr_head, `${p}|`);
+                    })
+                    createTd(tr_head, 'PermissionList|');
+                    createTd(tr_head, 'PermssionCheckBox|');
+                    members.forEach(p => {
+                        let tr = createTr(mem_table)
+                        let keys = Object.keys(p);
+                        keys.forEach(k => {
+                            if (k != 'Permission') {
+                                createTd(tr, `${p[k]}|`);
+                            }
+                            else {
+                                let td = document.createElement('td');
+                                td.setAttribute('id', `permission_${p['MemberId']}`);
+                                td.innerHTML = p['Permission'];
+                                tr.appendChild(td);
+                            }
+                        })
+                        var PermissionSelect = document.createElement('select');
+                        PermissionSelect.setAttribute('id', p['MemberId']);
+                        let td = document.createElement('td');
+                        td.appendChild(PermissionSelect);
+                        tr.appendChild(td);
+                        let optiondefault = document.createElement('option');
+                        optiondefault.value = '';
+                        optiondefault.text = "-請選擇權限-";
+                        PermissionSelect.add(optiondefault, null);
+                        permissions.forEach(m => {
+                            let option = document.createElement('option');
+                            option.value = `${p['MemberId']},${m['PermissionId']}`;
+                            option.text = `${m['CountrollerName']}-${m['ActionName']}`;
+                            PermissionSelect.add(option, null);
+                        })
+                        PermissionSelect.addEventListener('change', function (e) {
+                            permissionSelectChange(e.target);
+                        })
+                        let td_button = document.createElement('td');
+                        td_button.setAttribute('id', `mem_${p['MemberId']}`);
+                        tr.appendChild(td_button);
+                    })
+                }
+            })
+        }
+        function permissionSelectChange(target) {
+            if (target.selectedOptions[0].value != '') {
+                let array = target.selectedOptions[0].value.split(',');
+                let td = document.querySelector(`#mem_${array[0]}`);
+                td.innerHTML = null;
+                $.ajax({
+                    url: '/api/memberapi/CheckPermission',
+                    data: { memberId: array[0], permissionId: array[1] },
+                    method: 'post',
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        console.log(result);
+                        let input = document.createElement('input');
+                        input.setAttribute('type', 'checkbox');
+                        input.setAttribute('id', `${result.MemberId},${result.PermissionId}`);
+                        if (result.Checked) {
+                            input.checked = true;
+                        }
+                        input.addEventListener('change', function (e) {
+                            checkboxchange(e.target);
+                        })
+                        td.appendChild(input);
+                    }
+                })
+            }
+        }
+        function checkboxchange(target) {
+            //console.log(target.checked);
+            let array = target.id.split(',');
+            let checked = target.checked;
+            $.ajax({
+                url: '/api/memberapi/SetPermission',
+                data: { MemberId: array[0], PermissionId: array[1], Checked: checked },
+                method: 'post',
+                success: function (response) {
+                    let td = document.querySelector(`#permission_${array[0]}`);
+                    td.innerHTML = null;
+                    td.innerHTML = response;
+                }
+            })
+        }
+        function createTd(th, value) {
+            let td=document.createElement('td');
+            td.innerHTML = value ;
+            th.appendChild(td); 
+        }
+        function createTr(table) {
+            let tr = document.createElement('tr');
+            table.appendChild(tr);
+            return tr;
+        }
+    </script>  
+    }
