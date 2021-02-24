@@ -9,6 +9,7 @@ using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
 using System.Web.Hosting;
+using Newtonsoft.Json;
 
 
 using System.Web.Mvc;
@@ -19,10 +20,12 @@ namespace ProjectTeamFour.Api
     {
         private MemberService _memberService;
         private LogService _logservice;
+        private PermissionService _permissionService;
         public MemberApiController()
         {
             _memberService = new MemberService();
             _logservice = new LogService();
+            _permissionService = new PermissionService();
         }
         public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
@@ -92,7 +95,26 @@ namespace ProjectTeamFour.Api
                 return "失敗";
             }
         }
-
+        public string GetManagerIndex()
+        {
+            var Members = _memberService.GetMembers();
+            var Permission = _permissionService.GetPermissions();
+            var result = new
+            {
+                Members = Members,
+                Permissions = Permission
+            };
+            return JsonConvert.SerializeObject(result);
+        }
+        public string CheckPermission([FromBody]CheckPermissionViewModel input)
+        {
+            CheckPermissionViewModel cv = _permissionService.CheckPermission(input.MemberId, input.PermissionId);
+            return JsonConvert.SerializeObject(cv);
+        }
+        public string SetPermission([FromBody]CheckPermissionViewModel input)
+        {
+            return _permissionService.SetPermission(input.MemberId, input.PermissionId, input.Checked);
+        }
         //// POST: Users/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]

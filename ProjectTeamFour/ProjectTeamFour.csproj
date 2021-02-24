@@ -252,12 +252,14 @@
     <Compile Include="Service\IProjectDetailService.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
+    <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
@@ -2138,11 +2140,12 @@
     <Content Include="Views\Projects\OrderByNew.cshtml" />
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
-    <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Projects\GetItem.cshtml" />
+    <Content Include="Views\Log\Test.cshtml" />
+    <Content Include="Views\Manager\AccountManger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
