@@ -246,6 +246,12 @@ button[type="button"] {
             transition: .4s;
         }
 
+
+.ForCategory{
+    display:none;
+}
+
+
 @media screen and (min-width: 768px) {
     .popular-project .see-more a {
         display: block;
