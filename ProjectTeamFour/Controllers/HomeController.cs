@@ -53,11 +53,9 @@ namespace ProjectTeamFour.Controllers
 
 
 
-        public ActionResult Search()
+        public ActionResult Search(string id)
         {
-
-            var homeService = new HomeService();
-
+            
             HomeViewModel homeviewmodel = new HomeViewModel()
             {
                 ProjectItem = new ProjectListViewModel()
@@ -71,19 +69,62 @@ namespace ProjectTeamFour.Controllers
                 }
             };
 
+            var resultCardProjectName = _homeService.GetSearchProjectName(id);
+            var resultCardCategory = _homeService.GetSearchCategory(id);
+            var resultCardCreatorName = _homeService.GetSearchCreatorName(id);
+            var resultCardProjectDescription = _homeService.GetSearchProjectDescription(id);
+            var resultCardProjectQuestion= _homeService.GetSearchProjectQuestion(id);
+            var resultCardProjectAnswer = _homeService.GetSearchProjectAnswer(id);
+            var resultCardPlanTitle = _homeService.GetSearchPlanTitle(id);
+            var resultCardPlanDescription = _homeService.GetSearchPlanDescription(id);
 
-            var GetAll = homeService.GetAllTotal();
-            foreach (var item in GetAll.ProjectItem.ProjectItems)
+
+            foreach (var item in resultCardProjectName.ProjectItem.ProjectItems)
             {
                 homeviewmodel.ProjectItem.ProjectItems.Add(item);
             }
 
-            foreach (var item in GetAll.CarCarPlanItem.CarCarPlanItems)
+            foreach (var item in resultCardCategory.ProjectItem.ProjectItems)
             {
-                homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
             }
 
-            return View(homeviewmodel);
+            foreach (var item in resultCardCreatorName.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
+
+            foreach (var item in resultCardProjectDescription.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
+
+            foreach (var item in resultCardProjectQuestion.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
+
+            foreach (var item in resultCardProjectAnswer.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
+
+            //foreach (var item in resultCardPlanTitle.CarCarPlanItem.CarCarPlanItems)
+            //{
+            //    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
+            //}
+
+            //foreach (var item in resultCardPlanDescription.CarCarPlanItem.CarCarPlanItems)
+            //{
+            //    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
+            //}
+
+            var result = homeviewmodel.ProjectItem.ProjectItems.GroupBy(x => x.ProjectName).Select(y => y.First());
+
+            //homeviewmodel.ProjectItem.ProjectItems.Count();
+            //homeviewmodel.CarCarPlanItem.CarCarPlanItems.GroupBy(x => x.ProjectName).Select(y => y.First()).ToList();
+
+            return View(result);
         }
 
     }

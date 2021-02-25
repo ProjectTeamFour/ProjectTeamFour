@@ -43,7 +43,7 @@
 
 
             <div class="search-input">
-                <input type="text">
+                <input type="text" class="phone-input-search" id="phone-searchString">
             </div>
 
             <ul class="list-unstyled list">
@@ -143,8 +143,10 @@
                     </li>
 
                     <li class="nav-item search">
-                        <i class="fas fa-search pc-fa-search"></i>
-                        <input class="pc-input-search" type="text">
+                        <i class="fas fa-search pc-fa-search"></i>       
+                        @*<form action="/Home/Search" method="post" id="search-form">*@
+                            <input class="pc-input-search searchString" type="text" id="searchString" value=""/>
+                        @*</form>*@
                     </li>
 
                     <li class="title">
@@ -174,7 +176,7 @@
                             else
                             {
                                 @StringFormat5.ShowLoginPic(vm.ProfileImgUrl, vm.Gender)
-                            }
+                                }
 
                             @*<img src="https://picsum.photos/40/40/?random=1">*@
                         </a>
