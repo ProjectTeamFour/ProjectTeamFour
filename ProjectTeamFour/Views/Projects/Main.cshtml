@@ -1,14 +1,15 @@
-﻿@model ProjectTeamFour.ViewModels.ProjectListViewModel
+﻿
+@model ProjectTeamFour.ViewModels.ProjectListViewModel
 @{string category = (string)ViewData["category"];
     string status = (string)ViewData["status"];
     string id = (string)ViewData["id"];
-    }
+}
 @{
     ViewBag.Title = "products page";
 }
 
 
-@section topCSS{    
+@section topCSS{
     <link href="~/Assets/Css/HomePage/homepage.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/products.css" rel="stylesheet" />
     <link href="~/Assets/Css/ProductsPage/rwd-products.css" rel="stylesheet" />
@@ -21,27 +22,27 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="category-group" name="category">
-                    <a  class="category-group-item"  id="tech" name="category">
+                    <a class="category-group-item" id="tech" name="category">
                         <div class="content"><i class="far fa-lightbulb"></i></div>
-                        <div class="category-group-item-title" >科技設計</div>
+                        <div class="category-group-item-title">科技設計</div>
                     </a>
-                    <a  class="category-group-item" id="music" name="category" >
+                    <a class="category-group-item" id="music" name="category">
                         <div class="content"><i class="fas fa-music"></i></div>
                         <div class="category-group-item-title">音樂</div>
                     </a>
-                    <a  id="art" class="category-group-item">
+                    <a id="art" class="category-group-item">
                         <div class="content"><i class="fas fa-palette"></i></div>
                         <div class="category-group-item-title">藝術影視</div>
                     </a>
-                    <a   id="life" class="category-group-item">
+                    <a id="life" class="category-group-item">
                         <div class="content"><i class="fas fa-walking"></i></div>
                         <div class="category-group-item-title">生活</div>
                     </a>
-                    <a  id="local" class="category-group-item">
+                    <a id="local" class="category-group-item">
                         <div class="content"><i class="fas fa-house-damage"></i></div>
                         <div class="category-group-item-title">公共在地</div>
                     </a>
-                    <a  id="game" class="category-group-item">
+                    <a id="game" class="category-group-item">
                         <div class="content"><i class="fas fa-gamepad"></i></div>
                         <div class="category-group-item-title">遊戲出版</div>
                     </a>
@@ -59,13 +60,13 @@
                     <div class="menu-dropdown-group-filter">
                         <div class="dropdown">
                             <label for="dropdownMenuButton" class="menu-btn">Project Status</label>
-                            <button class="btn btn-secondary dropdown-toggle btnForStatus" type="button" id="dropdownMenuButton"
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 全部
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu">
-                                <a class="dropdown-item"  id="ongoing">進行中</a>
-                                <a class="dropdown-item"  id="success">成功專案</a>
+                                <a class="dropdown-item" id="ongoing">進行中</a>
+                                <a class="dropdown-item" id="success">成功專案</a>
                                 <a class="dropdown-item" href="/Projects/Main" id="all">全部專案</a>
                             </div>
                         </div>
@@ -79,7 +80,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="orderByItem">
                                 <a href="Projects/OrderByPeople/Fundedpeople" class="dropdown-item" id="hot">熱門</a>
-                                <a class="dropdown-item" id="new">最新</a>                                
+                                <a class="dropdown-item" id="new">最新</a>
                                 <a class="dropdown-item" id="money">募資金額</a>
                             </div>
                         </div>
@@ -105,18 +106,18 @@
 <div class="col-sm-12">
     <button class="btn-more">Load More</button>
 </div>
-    
-   <div class="ForCategory"> 
-        <p id="category">@category</p>
-        <p id="status">@status</p>
-        <p id="id">@id</p>
-        <p class="url1">科技設計</p>
-        <p class="url1">音樂</p>
-        <p class="url1">藝術影視</p>
-        <p class="url1">生活</p>
-        <p class="url1">公共在地</p>
-        <p class="url1">遊戲出版</p>
-        <p id="url2">全部專案</p>
-        <p id="url3">熱門</p>
-    </div>
+
+<div class="ForCategory">
+    <p id="category">@category</p>
+    <p id="status">@status</p>
+    <p id="id">@id</p>
+    <p class="url1">科技設計</p>
+    <p class="url1">音樂</p>
+    <p class="url1">藝術影視</p>
+    <p class="url1">生活</p>
+    <p class="url1">公共在地</p>
+    <p class="url1">遊戲出版</p>
+    <p id="url2">全部專案</p>
+    <p id="url3">熱門</p>
+</div>
 

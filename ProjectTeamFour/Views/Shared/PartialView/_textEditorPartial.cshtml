@@ -1,0 +1,307 @@
+﻿@model  ProjectDetailViewModel
+@* 編輯內文 *@
+
+<header>
+    <!-- <div class="text-center jumbotron pb-4" style="font-family:Microsoft JhengHei;font-size:200%">
+        <h1>發帖區<small><%=ID%></small></h1>
+        <small>發往 <%=board_ID%></small>
+    </div> -->
+    <div name="Title" class="jumbotron  mb-0 ">
+        <button class="btn btn-outline-dark  float-left" onclick="history.back()">上一頁</button>
+        <form method="post" action="/SAN/sign_in" id="sign_in_form">
+            <input type="text" name='ID' style="display:none" value="<%=ID%>" />
+            <input type="password" name='password' style="display:none" value="<%=personal_password%>" />
+            <input type="submit" class=" btn btn-secondary float-left" value="回首頁" />
+        </form>
+        <div class="text-center  align-self-center">
+            <h1>發帖區<small><%=ID%></small></h1>
+            <small>您正位於<%=board_ID%>區</small>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="container-fluid mb-2" style="width: 80%;">
+        <div id="title-div" style="border: 0;">
+            <h3 for="main " class=" d-inline-block"><strong>主題</strong></h3>
+            <span style="display: none;"><small style="color: red; ">*主題不可為空</small></span>
+            <input type="text" class="form-control w-100" aria-describedby="basic-addon1"
+                   style="font-weight: bold;font-size: xx-large;">
+        </div>
+
+        <div id="content-area" class="pt-2">
+            <h3 for="main" class=" d-inline-block"><strong>內文</strong></h3>
+            <span style="display: none;"><small style="color: red; ">*內文不可為空</small></span>
+            <div class="">
+                <!-- heading-group -->
+                <span class="ml-1">
+                    <label id="heading-label" class="btn btn-outline-info  dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="false" aria-expanded="false" data-target="heading-menu">
+                        <i class="fa fa-header " aria-hidden="true"></i>
+                    </label>
+                    <div id="heading-menu" class="dropdown-menu" aria-labelledby="heading-label">
+                        <button class="dropdown-item heading" value="H2">標題-1</button>
+                        <button class="dropdown-item heading" value="H3">標題-2</button>
+                        <button class="dropdown-item heading" value="H4">標題-3 </button>
+                        <button class="dropdown-item heading" value="H5">標題-4</button>
+                        <button class="dropdown-item heading" value="H6">標題-5</button>
+                        <button class="dropdown-item heading" value="p">一般文字</button>
+                    </div>
+                </span>
+                <!-- size-group -->
+                <span>
+                    <label id="sizing-label" class="btn btn-outline-info  dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" data-target="sizing-menu">
+                        <i class="fa fa-font " aria-hidden="true"></i>
+                    </label>
+                    <div id="sizing-menu" class="dropdown-menu" aria-labelledby="sizing-label">
+                        <button class="dropdown-item sizing" value="6">尺寸極大</button>
+                        <button class="dropdown-item sizing" value="5">尺寸大</button>
+                        <button class="dropdown-item sizing" value="4">尺寸中 </button>
+                        <button class="dropdown-item sizing" value="3">一般尺寸</button>
+                        <button class="dropdown-item sizing" value="2">尺寸小</button>
+                        <button class="dropdown-item sizing" value="1">尺寸極小</button>
+                    </div>
+                </span>
+                <!-- foreground-group -->
+                <span id="pen-group ml-1">
+                    <label id="pencil-label" class="btn btn-outline-info  dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="false" aria-expanded="false" data-target="pencil-menu">
+                        <i class="fa fa-pencil " aria-hidden="true"></i>
+                    </label>
+                    <div id="pencil-menu " class="dropdown-menu color-menu fore" aria-labelledby="pencil-label">
+                        <button class="dropdown-item heading" value="blue"
+                                style="font-weight: bold; color: rgb(18, 35, 187);">
+                            blue
+                        </button>
+                        <button class="dropdown-item heading" value="red"
+                                style="font-weight: bold; color: rgb(212, 4, 4);">
+                            red
+                        </button>
+                        <button class="dropdown-item heading" value="orange"
+                                style="font-weight: bold; color: rgb(228, 196, 15);">
+                            orange
+                        </button>
+                        <button class="dropdown-item heading" value="green"
+                                style="font-weight: bold; color: rgb(128, 252, 79);">
+                            green
+                        </button>
+                        <button class="dropdown-item heading" value="gray"
+                                style="font-weight: bold; color: rgb(102, 102, 102);">
+                            gray
+                        </button>
+                        <button class="dropdown-item heading" value="black"
+                                style="font-weight: bold; color: rgb(0, 0, 0);">
+                            black
+                        </button>
+                        <button class="dropdown-item heading" value="white"
+                                style="font-weight: bold; color: rgb(207, 207, 207);">
+                            white
+                        </button>
+                    </div>
+                </span>
+                <!-- backgruond-group -->
+                <span id="back-group ml-1">
+                    <label id="back-label" class="btn btn-outline-info  dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="false" aria-expanded="false" data-target="back-menu">
+                        <i class="fa fa-paint-brush " aria-hidden="true"></i>
+                    </label>
+                    <div id="back-menu" class="dropdown-menu color-menu back" aria-labelledby="back-label">
+                        <button class="dropdown-item heading" value="rgb(170, 230, 255)"
+                                style="font-weight: bold; color: rgb(170, 230, 255);">
+                            blue
+                        </button>
+                        <button class="dropdown-item heading" value=" rgb(255, 164, 164)"
+                                style="font-weight: bold; color: rgb(255, 164, 164);">
+                            red
+                        </button>
+                        <button class="dropdown-item heading" value=" rgb(248, 205, 112)"
+                                style="font-weight: bold; color: rgb(248, 205, 112);">
+                            orange
+                        </button>
+                        <button class="dropdown-item heading" value="rgb(179, 245, 179)"
+                                style="font-weight: bold; color: rgb(179, 245, 179);">
+                            green
+                        </button>
+                        <button class="dropdown-item heading" value="rgb(170, 170, 170)"
+                                style="font-weight: bold; color: rgb(102, 102, 102);">
+                            gray
+                        </button>
+                        <button class="dropdown-item heading" value="rgb(76, 78, 78)"
+                                style="font-weight: bold; color: rgb(76, 78, 78);">
+                            dark
+                        </button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item heading" value=''
+                                style="font-weight: bold; color: rgb(46, 46, 46);">
+                            無背景上色
+                        </button>
+                    </div>
+                </span>
+                <span id="font-group" class=" ml-2">
+                    <!--bold label-->
+                    <label class="btn btn-outline-info " onclick="docCommand('bold')">
+                        <i class="fa fa-bold "
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info " onclick="docCommand('italic')">
+                        <i class="fa fa-italic "
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info " onclick="docCommand('underline')">
+                        <i class="fa fa-underline "
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info " onclick="docCommand('strikeThrough')">
+                        <i class="fa fa-strikethrough " aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info " onclick="docCommand('superscript')">
+                        <i class="fa fa-superscript " aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info " onclick="docCommand('subscript')">
+                        <i class="fa fa-subscript "
+                           aria-hidden="true"></i>
+                    </label>
+                </span>
+
+
+                <span id='format-group' class="ml-2">
+                    <label class="btn btn-outline-info">
+                        <i class="fa fa-list-ol "
+                           onclick="docCommand('insertOrderedList')" aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info">
+                        <i class="fa fa-list-ul "
+                           onclick="docCommand('insertUnorderedList')" aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info">
+                        <i class="fa fa-indent " onclick="docCommand('indent')"
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-outline-info">
+                        <i class="fa fa-outdent " onclick="docCommand('outdent')"
+                           aria-hidden="true"></i>
+                    </label>
+                </span>
+                <!-- align-group -->
+                <span id="align-group" class="ml-2">
+                    <label class="btn btn-outline-info" onclick="docCommand('justifyLeft')">
+                        <i class="fa fa-align-left "
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class=" btn btn-outline-info " onclick="docCommand('justifyCenter')">
+                        <i class="fa fa-align-center " aria-hidden="true"></i>
+                    </label>
+                    <label class=" btn btn-outline-info " onclick="docCommand('justifyRight')">
+                        <i class="fa fa-align-right " aria-hidden="true"></i>
+                    </label>
+                    <label class=" btn btn-outline-info" onclick="docCommand('justifyFull')">
+                        <i class="fa fa-align-justify " aria-hidden="true"></i>
+                    </label>
+                </span>
+                <!-- other-group -->
+                <span id="other-group" class=" ml-2">
+                    <!-- image label -->
+                    <label id="img-label" class="btn btn-outline-info " onclick="$('#imgur-input').click()">
+                        <i class="fa fa-image " aria-hidden="true"></i>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"
+                              style="display: none;"></span>
+                        <span style="display: none;">Loading...</span>
+                    </label>
+                    <input id="imgur-input" type="file" class="imgur" accept="image/*" style="display: none;" />
+                    <!--youtube label-->
+                    <label id="youtube-label" class="link btn btn-outline-info " data-toggle="modal"
+                           data-target="#myModal"><i class="fa fa-youtube-play " aria-hidden="true"></i></label>
+                    <!--link label-->
+                    <label id="link-label" class="link btn btn-outline-info " data-toggle="modal"
+                           data-target="#myModal"><i class="fa fa-chain " aria-hidden="true"></i></label>
+                </span>
+                <!-- reon-group -->
+                <span id="undo-redo-group" class=" ml-3 float-right">
+                    <label class=" btn btn-outline-danger " onclick="docCommand('undo')">
+                        <i class="fa fa-undo"
+                           aria-hidden="true"></i>
+                    </label>
+                    <label class=" btn btn-outline-danger " onclick="docCommand('redo')">
+                        <i class="fa fa-repeat"
+                           aria-hidden="true"></i>
+                    </label>
+                </span>
+            </div>
+        </div>
+        <!-- 內文輸入區 -->
+        <div id="textbox" class="form-control" contentEditable="true"
+             style="height: 630px; overflow-y: auto;word-wrap: break-word;">
+            <div><br></div>
+        </div>
+    </div>
+
+    <!-- 連結輸入 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body ">
+                    <button type="button" class="close pt-0" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <input id="link-name" type="text" class="form-control mt-1" placeholder="輸入名稱" />
+                    <input id="link-url" type="url" class="form-control mt-1" placeholder="可輸入連結或E-mail" />
+                    <button id="link-btn" type="button" class="btn btn-secondary mt-2 float-right"
+                            data-dismiss="modal">
+                        Enter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 隱藏的form -->
+    <form id='public-form' action="/DB/post_public" method="post" style="display: none;">
+        <input type="text" name="ID" value="<%=ID%>" />
+        <input type="text" name="board_ID" value="<%=board_ID%>" />
+        <input type="text" name="title" />
+        <input type="text" name="personal_password" />
+        <input type="password" placeholder="發文密碼" name="board_password" value="NA"><br />
+        <input type="text" name="include" />
+        <input type="submit" />
+    </form>
+    <form id="private-form" action="/DB/post_private" method="post" style="display: none;">
+        <input type="text" name="ID" value="<%=ID%>" />
+        <input type="text" name="board_ID" value="<%=board_ID%>" />
+        <input type="text" name="title" />
+        <input type="text" name="personal_password" />
+        <input type="password" placeholder="發文密碼" name="board_password"><br />
+        <input type="text" name="include" />
+        <input type="submit" />
+    </form>
+    <input id="Hidden1" type="hidden" value="<%=type%>" />
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">密碼輸入</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>"請先輸入您的個人密碼"</p>
+                    <input id="prompt" type="password" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="personal_password = $('#prompt').val(); if (personal_password == '') { alert('請輸入您的密碼'); } else { alert('謝謝,請重複剛才操作') }">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="text-center pb-2">
+        <label id="send-label" class="btn btn-outline-success m-auto btn-lg">
+            <i class="fa fa-paper-plane "
+               aria-hidden="true"></i> 寄出
+        </label>
+    </div>
+</footer>
