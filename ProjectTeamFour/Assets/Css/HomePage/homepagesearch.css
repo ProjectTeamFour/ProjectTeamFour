@@ -1,117 +1,4 @@
-﻿.row {
-    display: flex;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.category {
-    background-color: #F6F6F6
-}
-
-.category-group {
-    text-align: center;
-}
-
-.category-group-item {
-    width: 50%;
-    color: #000;
-    outline: none;
-}
-
-    .category-group-item:hover {
-        color: #fA9;
-    }
-
-
-    .category-group-item .content {
-        width: 5rem;
-        height: 5rem;
-        background-color: #fff;
-        border-radius: 6rem;
-        margin: auto;
-        position: relative;
-    }
-
-        .category-group-item .content i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-.menu-dropdown-group {
-    padding-top: 1rem;
-    display: flex;
-}
-
-.menu-dropdown-group-filter {
-    padding-right: 1rem;
-}
-
-.dropdown {
-    display: flex;
-    flex-direction: column;
-}
-
-button[type="button"] {
-    color: #000;
-    background-color: #fff;
-}
-
-
-/* 種類 */
-
-.project-categories {
-    padding-top: 3rem;
-    margin-bottom: 5rem;
-}
-
-    .project-categories .project-categories-box {
-        border-bottom: 1px solid #aaa;
-    }
-
-    .project-categories .pic {
-        border-radius: 50%;
-    }
-
-        .project-categories .pic i {
-            font-size: 2rem;
-            color: rgb(65, 63, 63);
-            padding: 0.5rem 0 1rem 0;
-            transition: .3s;
-        }
-
-    .project-categories .text h4 {
-        font-size: 0.8rem;
-        color: rgb(65, 63, 63);
-        font-weight: 600;
-        text-align: center;
-        transition: .3s;
-    }
-
-    .project-categories .project-categories-box a {
-        text-decoration: none;
-        outline: none;
-    }
-
-    .project-categories .project-categories-box:hover i {
-        color: #f9414a;
-    }
-
-    .project-categories .project-categories-box:hover h4 {
-        color: #f9414a;
-    }
-
-
-
-
-
-
-
-
-/* 熱門專案 */
+﻿/* 熱門專案 */
 
 .popular-project {
     padding: 0 0.6rem;
@@ -246,12 +133,6 @@ button[type="button"] {
             transition: .4s;
         }
 
-
-.ForCategory{
-    display:none;
-}
-
-
 @media screen and (min-width: 768px) {
     .popular-project .see-more a {
         display: block;
@@ -271,18 +152,6 @@ button[type="button"] {
     }
 
     .popular-project .project-progressnumber p {
-       
         font-size: 0.95rem;
-    }
-
-    .btn-more {
-        width: 100%;
-        color: #fff;
-        background-color: #808080;
-        margin: 1rem 0;
-    }
-
-    .btn-more:hover {
-        background-color: #000;
     }
 }
