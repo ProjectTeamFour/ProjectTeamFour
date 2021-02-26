@@ -1,7 +1,8 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectListViewModel
 @{string category = (string)ViewData["category"];
     string status = (string)ViewData["status"];
-    string id = (string)ViewData["id"];
+    string id = (string)ViewData["id"];    
+    var i = 0;
     }
 @{
     ViewBag.Title = "products page";
@@ -59,8 +60,8 @@
                     <div class="menu-dropdown-group-filter">
                         <div class="dropdown">
                             <label for="dropdownMenuButton" class="menu-btn">Project Status</label>
-                            <button class="btn btn-secondary dropdown-toggle btnForStatus" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="StatusForNow">
                                 全部
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu">

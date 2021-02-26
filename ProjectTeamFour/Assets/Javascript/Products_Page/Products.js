@@ -31,6 +31,8 @@ let local = $("#local");
 let game = $("#game");
 var category = $("#category").text();
 var status = $("#status").text();
+var id = $("id").text();
+
 let all = $(".category-group");//事件綁定父層
 all.click(function () {
     
@@ -78,13 +80,18 @@ all.click(function () {
 let menu = $("#menu");//事件綁定父層
 let ongoing = $("#ongoing");
 let success = $("#success");
+
+let StatusForNow = document.getElementsByName("StatusForNow")
+
+
 menu.click(function () {
     if ($(menu).children("a#ongoing")) {
-        
+        //StatusForNow[1].innerText = "";
+        StatusForNow[0].innerText = "集資中";
         url2.innerText = '';
         url2.innerText = '集資中';        
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${category}&projectStatus=${url2.innerText}&id=${id}`));
-        ongoing.attr("href", url);
+        ongoing.attr("href", url);        
     }
     if ($(menu).children("a#success")) {
         url2.innerText = '';
@@ -108,7 +115,7 @@ orderByItem.click(function () {
     }
     if ($(orderByItem).children("a#time")) {
         url3.innerText = "";
-        url3.innerText = "Time";
+        url3.innerText = "EndDate";
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${category}&projectStatus=${status}&id=${url3.innerText}`));
         time.attr("href", url);
     }

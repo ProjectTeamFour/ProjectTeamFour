@@ -61,7 +61,7 @@ namespace ProjectTeamFour.Controllers
         {
             category = category ?? "科技設計";
             projectStatus = projectStatus ?? "集資中";
-            id = id ?? "熱門";
+            id = id ?? "Fundedpeople";
             var projectService = new ProjectsService(); //呼叫service
             var project = new ProjectListViewModel
             {

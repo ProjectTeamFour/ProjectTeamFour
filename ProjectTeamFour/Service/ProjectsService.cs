@@ -164,19 +164,30 @@ namespace ProjectTeamFour.Service
             }
             if (!string.IsNullOrEmpty(id))
             {
-                Fliter f = new Fliter() ;
-                switch (f)
+                if (id == "FundingAmount")
                 {
-                    case Fliter.FundingAmount:
-                        source = source.OrderBy((x) => x.FundingAmount);
-                        break;
-                    case Fliter.Fundedpeople:
-                        source = source.OrderBy((x) => x.Fundedpeople);
-                        break;
-                    case Fliter.Time:
-                        source = source.OrderBy((x) => x.EndDate);
-                        break;
-                }                
+                    source = source.OrderBy((x) => x.FundingAmount);
+                }
+                if (id == "Fundedpeople")
+                {
+                    source = source.OrderBy((x) => x.Fundedpeople);
+                }
+                if(id == "EndDate")
+                {
+                    source = source.OrderBy((x) => x.EndDate);
+                }
+                //switch (id)
+                //{
+                //    case Fliter.FundingAmount:
+                //        source = source.OrderBy((x) => x.FundingAmount);
+                //        break;
+                //    case Fliter.Fundedpeople:
+                //        source = source.OrderBy((x) => x.Fundedpeople);
+                //        break;
+                //    case Fliter.Time:
+                //        source = source.OrderBy((x) => x.EndDate);
+                //        break;
+                //}
             }
             foreach (var item in source)
             {
