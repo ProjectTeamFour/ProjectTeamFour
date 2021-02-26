@@ -100,33 +100,22 @@ namespace ProjectTeamFour.Controllers
             MemberViewModel memberVM = new MemberViewModel();
 
             var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-            return View(memberInfo);
-            //return RedirectToAction("Index");
-            //if (memberInfo != default(ViewModels.MemberViewModel))
-            //{
-            //    return View(memberInfo);
-            //}
+            //return View(memberInfo);
+            return RedirectToAction("Index");
+            if (memberInfo != default(ViewModels.MemberViewModel))
+            {
+                return View(memberInfo);
+            }
         }
 
+        //[ValidateAntiForgeryToken]
         //[HttpPost]
         //public ActionResult Edit(int id)
         //{
-        //    var memberService = new MemberService();
-
-        //    MemberViewModel memberVM = new MemberViewModel();
-
-        //    var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-        //    return View(memberInfo);
-
-            
-        //    //設定成功訊息
-        //    TempData["ResultMessage"] = String.Format("使用者[{0}]成功編輯");
-        //    return RedirectToAction("Index");
-                
-            
-        //    //設定錯誤訊息
-        //    TempData["ResultMessage"] = String.Format("請重新操作");
-        //    return RedirectToAction("Index");
+        //   if(ModelState.IsValid)
+        //    {
+        //        return Content("修改成功!");
+        //    }
         //}
 
         protected override void Dispose(bool disposing)

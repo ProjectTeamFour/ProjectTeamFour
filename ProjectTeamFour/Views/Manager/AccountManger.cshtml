@@ -61,7 +61,7 @@
                         PermissionSelect.add(optiondefault, null);
                         permissions.forEach(m => {
                             let option = document.createElement('option');
-                            option.value = `${p['MemberId']},${m['PermissionValue']}`;
+                            option.value = `${p['MemberId']},${m['PermissionId']}`;
                             option.text = `${m['CountrollerName']}-${m['ActionName']}`;
                             PermissionSelect.add(option, null);
                         })

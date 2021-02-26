@@ -10,6 +10,13 @@ using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.Service
 {
+    enum Fliter
+    {
+        FundingAmount,
+        Fundedpeople,
+        Time
+    }
+
     public class ProjectsService
     {
         private DbContext _context;
@@ -49,18 +56,6 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        //public ProjectListViewModel Sort(string input)
-        //{
-        //    var result = _reposity.GetAll<Project>();
-        //    var project = new ProjectListViewModel
-        //    {
-        //        ProjectItems = new List<ProjectViewModel>()
-        //    };
-        //    if (input == "最新") 
-        //    {
-        //        return result.
-        //    }
-        //}
 
         public ProjectListViewModel OrderBy(Expression<Func<Project, decimal>> KeySelector)
         {
@@ -152,7 +147,7 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel GetAllTotal123(string category, string projectStatus) //全部產生過濾完3層
+        public ProjectListViewModel GetAllTotal123(string category, string projectStatus ,string id) //全部產生過濾完3層
         {
             var project = new ProjectListViewModel
             {
@@ -166,6 +161,33 @@ namespace ProjectTeamFour.Service
             if (!string.IsNullOrEmpty(projectStatus))
             {
                 source = source.Where((x) => x.ProjectStatus == projectStatus);
+            }
+            if (!string.IsNullOrEmpty(id))
+            {
+                if (id == "FundingAmount")
+                {
+                    source = source.OrderBy((x) => x.FundingAmount);
+                }
+                if (id == "Fundedpeople")
+                {
+                    source = source.OrderBy((x) => x.Fundedpeople);
+                }
+                if(id == "EndDate")
+                {
+                    source = source.OrderBy((x) => x.EndDate);
+                }
+                //switch (id)
+                //{
+                //    case Fliter.FundingAmount:
+                //        source = source.OrderBy((x) => x.FundingAmount);
+                //        break;
+                //    case Fliter.Fundedpeople:
+                //        source = source.OrderBy((x) => x.Fundedpeople);
+                //        break;
+                //    case Fliter.Time:
+                //        source = source.OrderBy((x) => x.EndDate);
+                //        break;
+                //}
             }
             foreach (var item in source)
             {
