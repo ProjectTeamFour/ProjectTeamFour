@@ -250,6 +250,18 @@
                                 <h3>專案內容</h3>
                             </div>
                             <div class="project-content-item editor" id="editor">This is some sample content.</div>
+                            <div class="project-content-item editor" id="editor">
+                                @*@section html{
+            <link type="text/html" href="~/Assets/Html/textEditor.html"/>
+        }*@
+
+                                <div>
+                                    @*<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Mobile.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>*@
+                                    @{Html.RenderPartial("~Views/Shared/PartialView/_textEditorPartial.cshtml");
+                                    }
+                                </div>
+
+                                </div>
                             <div class="project-content-item pt-3">
                                 <p>
                                     利用文字、圖片和影片，將您的計畫詳細清楚的述說給大家聽。圖片大小建議寬度 697 px，考慮到手機使用者的網路速度，單張圖片上傳大小不可超過 1

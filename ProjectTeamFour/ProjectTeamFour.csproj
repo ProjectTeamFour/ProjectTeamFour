@@ -333,6 +333,7 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
+    <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\mopproject.jpg" />
@@ -2160,6 +2161,7 @@
     <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
     <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
+    <Content Include="Views\Shared\PartialView\_textEditorPartial.cshtml" />
     <Content Include="Views\Projects\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
