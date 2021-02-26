@@ -2159,7 +2159,6 @@
     <Content Include="Views\Projects\FindStatusAndCategory.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
-    <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
