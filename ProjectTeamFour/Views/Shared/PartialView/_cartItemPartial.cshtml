@@ -10,7 +10,7 @@
         </div>
         <div class="actions">
             <input class="qty" type="number" name="updates[]"
-                   id="updates_13864137195572" value="@Model.Quantity" min="0" aria-label="Quantity"> <a href="/ShoppingCart/ListShoppingCart"
+                   id="updates_13864137195572" value="@Model.Quantity" min="1" max="99" aria-label="Quantity" step="1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required> <a href="/ShoppingCart/ListShoppingCart"
                                                                                            class="remove" aria-label="Remove item from cart">
                 <span aria-hidden="true">
                     <svg version="1.1" class="svg close" onclick="RemoveFromCart(@Model.PlanId)" xmlns="//www.w3.org  /2000/svg"

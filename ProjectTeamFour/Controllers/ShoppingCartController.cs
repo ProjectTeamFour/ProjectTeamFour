@@ -50,6 +50,7 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult ListShoppingCart()
         {
+            //還原Session
             var carList = (CartItemListViewModel)Session["Cart"];
 
             return View(carList);
@@ -58,6 +59,7 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult RemoveCartItem(CarCarPlanViewModel carcarPlanVM)
         {
+            //還原Session
             var carList = (CartItemListViewModel)Session["Cart"];
 
             carList = _CartService.DeleteId(carList,carcarPlanVM);
