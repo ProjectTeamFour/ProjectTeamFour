@@ -2117,7 +2117,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
-    <Content Include="Views\Shared\PartialView\_projectPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
@@ -2165,6 +2164,9 @@
     <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditorPartial.cshtml" />
     <Content Include="Views\Projects\Main.cshtml" />
+    <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
+    <Content Include="Views\CarCarPlan\Type.cshtml" />
+    <Content Include="Views\CarCarPlan\Search.cshtml" />
     <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Edit.cshtml" />
     <Content Include="Views\PersonInfo\Setting.cshtml" />
