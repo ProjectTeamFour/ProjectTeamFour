@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Helpers
             {
                 string permissionsNum = Convert.ToString((int)session["Permission"], 2);
                 string compareNum = Convert.ToString(flagNum, 2);
-                if ((int)session["Permission"]>=flagNum&&permissionsNum[compareNum.Length - 1] == '1')
+                if ((int)session["Permission"]>=flagNum&&permissionsNum[permissionsNum.Length-compareNum.Length] == '1')
                 {
                     flag = true;
                 }

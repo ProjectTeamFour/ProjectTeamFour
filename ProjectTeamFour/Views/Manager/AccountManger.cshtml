@@ -56,7 +56,7 @@
                         td.appendChild(PermissionSelect);
                         tr.appendChild(td);
                         let optiondefault = document.createElement('option');
-                        optiondefault.value = '';
+                        optiondefault.value = `${p['MemberId']},0`;
                         optiondefault.text = "-請選擇權限-";
                         PermissionSelect.add(optiondefault, null);
                         permissions.forEach(m => {
@@ -76,9 +76,10 @@
             })
         }
         function permissionSelectChange(target) {
-            if (target.selectedOptions[0].value != '') {
-                let array = target.selectedOptions[0].value.split(',');
-                let td = document.querySelector(`#mem_${array[0]}`);
+            debugger;
+            let array = target.selectedOptions[0].value.split(',');
+            let td = document.querySelector(`#mem_${array[0]}`);
+            if (array[1]!=0) {             
                 td.innerHTML = null;
                 $.ajax({
                     url: '/api/memberapi/CheckPermission',
@@ -99,6 +100,9 @@
                         td.appendChild(input);
                     }
                 })
+            }
+            else {
+                td.innerHTML = null;
             }
         }
         function checkboxchange(target) {
