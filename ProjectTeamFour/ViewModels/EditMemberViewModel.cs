@@ -41,5 +41,8 @@ namespace ProjectTeamFour.ViewModels
         [Display(Name = "個人網站")]
         [DataType(DataType.Url)]
         public string MemberWebsite { get; set; }
+        public int Permission { get; set; }
+        public string MemberPassword { get; set; }
+        public string MemberMessage { get; set; }
     }
 }

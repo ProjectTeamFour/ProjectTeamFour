@@ -1,15 +1,27 @@
-﻿using ProjectTeamFour.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Service;
+using System.Linq.Expressions;
+using ProjectTeamFour.Repositories;
 
 namespace ProjectTeamFour.Controllers
 {
     public class PersonInfoController : Controller
     {
-        //private ProjectContext db = new ProjectContext();
+        private MemberService _memberService;
+
+        public PersonInfoController()
+        {
+            _memberService = new MemberService();
+        }
 
         // GET: PersonInfo
         public ActionResult Index()
@@ -37,8 +49,19 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
+            var memberService = new MemberService();
+
+            MemberViewModel memberVM = new MemberViewModel();
+
+            var memberInfo = _memberService.GetMember(m => m.MemberId == id);
+            //return View(memberInfo);
+            return RedirectToAction("Index");
+            if (memberInfo != default(ViewModels.MemberViewModel))
+            {
+                return View(memberInfo);
+            }
             return View();
         }
 
@@ -71,6 +94,18 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult Account()
         {
+            //ViewBag.ResultMessage = TempData["ResultMessage"];
+            //using (ProjectContext db = new ProjectContext())
+            //{   //抓取所有AspNetMembers中的資料，並且放入Models.ManageMember模型中
+            //    var result = (from s in db.Members
+            //                  select new Member
+            //                  {
+            //                      MemberId = s.MemberId,
+            //                      MemberName = s.MemberName,
+            //                      MemberRegEmail = s.MemberRegEmail
+            //                  }).ToList();
+            //    return View(result);
+            //}
             return View();
         }
 

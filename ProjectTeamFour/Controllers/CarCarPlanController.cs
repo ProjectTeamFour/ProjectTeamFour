@@ -19,12 +19,100 @@ namespace ProjectTeamFour.Controllers
         // GET: CarCarPlan
         public ActionResult Index()
         {
-            return View();
+
+            CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
+            {
+                CarCarPlanItems = new List<CarCarPlanViewModel>(),
+
+                SelectCarCarPlanItem = new CarCarPlanViewModel()
+            };
+
+            var getPlans = _carcarplanservice.GetAllTotal();
+
+            foreach (var item in getPlans)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            return View(CarCarPlanListVM);
         }
+
+
+
+
+        public ActionResult Type(string id)
+        {
+            CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
+            {
+                CarCarPlanItems = new List<CarCarPlanViewModel>(),
+
+                SelectCarCarPlanItem = new CarCarPlanViewModel()
+            };
+
+
+            var getPlans = _carcarplanservice.GetOtherPlan(id);
+
+            foreach (var item in getPlans)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            return View(CarCarPlanListVM);
+
+        }
+
+
+        public ActionResult Search(string id)
+        {
+
+            CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
+            {
+                CarCarPlanItems = new List<CarCarPlanViewModel>(),
+
+                SelectCarCarPlanItem = new CarCarPlanViewModel()
+            };
+
+            var searchPlanTitle = _carcarplanservice.SearchPlanTitle(id);
+            var searchPlanDescription = _carcarplanservice.SearchPlanDescription(id);
+            var searchProjectName = _carcarplanservice.SearchPlanTitle(id);
+            var searchCategory = _carcarplanservice.SearchCategory(id);
+
+
+            foreach (var item in searchPlanTitle)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            foreach (var item in searchPlanDescription)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            foreach (var item in searchProjectName)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+            foreach (var item in searchCategory)
+            {
+                CarCarPlanListVM.CarCarPlanItems.Add(item);
+            }
+
+
+            CarCarPlanListVM.CarCarPlanItems.GroupBy(x => x.PlanTitle).Select(x => x.First());
+
+            return View(CarCarPlanListVM);
+
+        }
+
+
+
+
+
 
         public ActionResult Detail(int id, string Category)
         {
-            var carcarPlanService = new CarCarPlanService();
+            //var carcarPlanService = new CarCarPlanService();
 
             CarCarPlanListViewModel CarCarPlanListVM = new CarCarPlanListViewModel
             {
@@ -33,14 +121,14 @@ namespace ProjectTeamFour.Controllers
                 SelectCarCarPlanItem =  new CarCarPlanViewModel()
             };
 
-            var planDetail = carcarPlanService.GetPlanId(id);
+            var planDetail = _carcarplanservice.GetPlanId(id);
 
             CarCarPlanListVM.SelectCarCarPlanItem = planDetail;
 
+            
+            var getPlans = _carcarplanservice.GetAllTotal();
 
-            var getplans = carcarPlanService.GetAllTotal();
-
-            foreach (var item in getplans)
+            foreach (var item in getPlans)
             {
                 CarCarPlanListVM.CarCarPlanItems.Add(item);
             }

@@ -7,7 +7,7 @@
 
 @section endJS{
     <script src="~/Assets/Javascript/CarCarPlanPage/carcarplanindex.js"></script>
-    }
+}
 
 <!-- 種類 -->
 <section class="project-categories">
@@ -102,7 +102,7 @@
 
         <div class="indemand-project-item title-bar d-flex justify-content-between mt-2 pt-5">
             <div class="title-bar-item title">
-                <h2>車車商城</h2>
+                <h2>搜尋結果:</h2>
             </div>
             <div class="title-bar-item carcar-search d-flex">
                 <input type="text" class="w-70 text-input" id="text-input" placeholder="商城搜索">
@@ -116,10 +116,22 @@
             <div class="indemand-project-wrap">
                 <div class="row">
 
-
-                    @for (int i = 0; i < 12; i++)
+                    @if (!Model.CarCarPlanItems.Any())
                     {
-                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
+                        <p>親愛的，目前車車商城無您查詢的商品 !</p>
+                    }
+
+                    @*@for (int i = 0; i < 12; i++)
+                        {
+                            @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
+                        }*@
+
+
+                    @foreach (var item in Model.CarCarPlanItems)
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
+
+                        //可能還要再下條件判斷 一頁給幾個，多出來的用 butoon 長，或是到第二頁
                     }
 
                 </div>
@@ -128,6 +140,9 @@
 
     </div>
 </section>
+
+
+
 
 
 

@@ -30,6 +30,9 @@ namespace ProjectTeamFour.Service
         //    return CarCarPlanListVM;
         //}
 
+
+
+        //連到詳細頁
         public CarCarPlanViewModel GetPlanId(int PlanId)
         {
             return GetCarCarPlan(x => x.PlanId == PlanId);
@@ -57,6 +60,7 @@ namespace ProjectTeamFour.Service
         }
 
 
+        //全部
         public List<CarCarPlanViewModel> GetAllTotal()
         {
 
@@ -84,19 +88,21 @@ namespace ProjectTeamFour.Service
 
 
 
+        //之後依照選取類別去推薦車車卡片，待處理 -phil
         public List<CarCarPlanViewModel> GetOtherPlan(string Category)
         {
             return GetOtherPlan(x => x.Project.Category == Category);
         }
 
 
+        //條件
         public List<CarCarPlanViewModel> GetOtherPlan(Expression<Func<Plan, bool>> Category)
         {
 
             List<CarCarPlanViewModel> lccpvm = new List<CarCarPlanViewModel>();
 
             var carcarPlans = _repository.GetAll<Plan>().Where(Category);
-            foreach (var item in carcarPlans)
+            foreach (var item in carcarPlans.ToList())
             {
                 var cv = new CarCarPlanViewModel()
                 {
@@ -108,11 +114,34 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription
+
                 };
                 lccpvm.Add(cv);
             }
 
             return lccpvm;
         }
+
+
+        public List<CarCarPlanViewModel> SearchPlanTitle(string searchString)
+        {
+            return GetOtherPlan(x => x.PlanTitle.Contains(searchString));
+        }
+
+        public List<CarCarPlanViewModel> SearchPlanDescription(string searchString)
+        {
+            return GetOtherPlan(x => x.PlanDescription.Contains(searchString));
+        }
+
+        public List<CarCarPlanViewModel> SearchProjectName(string searchString)
+        {
+            return GetOtherPlan(x => x.ProjectName.Contains(searchString));
+        }
+
+        public List<CarCarPlanViewModel> SearchCategory(string searchString)
+        {
+            return GetOtherPlan(x => x.Project.Category.Contains(searchString));
+        }
+
     }
 }
