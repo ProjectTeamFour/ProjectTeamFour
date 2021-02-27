@@ -333,6 +333,7 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
+    <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2091,6 +2092,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff2" />
     <Content Include="App_Code\StringFormat5.cshtml" />
     <Content Include="..\..\..\ProjectDetailIndex.cshtml" />
+    <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
