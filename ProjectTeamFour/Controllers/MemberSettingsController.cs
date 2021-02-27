@@ -23,28 +23,28 @@ namespace ProjectTeamFour.Controllers
             _memberService = new MemberService();
         }
 
-        //// GET: Member
+        // GET: Member
         //public ActionResult Index()
         //{
-        //    return View("testPageForSonic");
+        //    return View("testPageForSonia");
         //}
 
         // GET: ManageMember
-        public ActionResult Index()
-        {
-            ViewBag.ResultMessage = TempData["ResultMessage"];
-            using (ProjectContext db = new ProjectContext())
-            {   //抓取所有AspNetMembers中的資料，並且放入Models.ManageMember模型中
-                var result = (from s in db.Members
-                              select new Member
-                              {
-                                  MemberId = s.MemberId,
-                                  MemberName = s.MemberName,
-                                  MemberRegEmail = s.MemberRegEmail
-                              }).ToList();
-                return View(result);
-            }
-        }
+        //public ActionResult Index()
+        //{
+        //    ViewBag.ResultMessage = TempData["ResultMessage"];
+        //    using (ProjectContext db = new ProjectContext())
+        //    {   //抓取所有AspNetMembers中的資料，並且放入Models.ManageMember模型中
+        //        var result = (from s in db.Members
+        //                      select new Member
+        //                      {
+        //                          MemberId = s.MemberId,
+        //                          MemberName = s.MemberName,
+        //                          MemberRegEmail = s.MemberRegEmail
+        //                      }).ToList();
+        //        return View(result);
+        //    }
+        //}
 
         //public ActionResult Details(string id)
         //{
@@ -62,14 +62,6 @@ namespace ProjectTeamFour.Controllers
         //return View();
         //}
 
-        //public ActionResult Edit()
-        //{
-        //MemberViewModel memberInfoVM;
-
-
-
-        //return View(memberInfoVM);
-        // }
         // GET: Member/Edit/5
         //public ActionResult Edit(string id)
         //{
@@ -93,29 +85,41 @@ namespace ProjectTeamFour.Controllers
 
         //}
 
+        public ActionResult Info(int id)
+        {
+            MemberViewModel editMemberVM = new MemberViewModel();
+
+            var memberInfo = _memberService.GetMember(x => x.MemberId == id);
+            editMemberVM = memberInfo;
+
+            return View(memberInfo);            
+        }
+
+
         public ActionResult Edit(int id) //編輯該會員個人資料
         {
-            var memberService = new MemberService();
+            MemberViewModel editMemberVM = new MemberViewModel();
 
-            MemberViewModel memberVM = new MemberViewModel();
+            var memberInfo = _memberService.GetMember(x => x.MemberId == id);
+            editMemberVM = memberInfo;
 
-            var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-            //return View(memberInfo);
-            return RedirectToAction("Index");
+            
             if (memberInfo != default(ViewModels.MemberViewModel))
             {
                 return View(memberInfo);
             }
+            return View();
         }
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         //public ActionResult Edit(int id)
         //{
         //   if(ModelState.IsValid)
         //    {
         //        return Content("修改成功!");
         //    }
+        // return RedirectToAction("Index");
         //}
 
         protected override void Dispose(bool disposing)
