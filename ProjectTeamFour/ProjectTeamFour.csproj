@@ -2174,6 +2174,8 @@
     <Content Include="Views\PersonInfo\Setting.cshtml" />
     <Content Include="Views\Shared\PartialView\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
+    <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
