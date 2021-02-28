@@ -96,12 +96,7 @@ namespace ProjectTeamFour.Controllers
             Session["Permission"] = null;
             return RedirectToAction("Login", "Member");
         }
- 
-        public ActionResult test()
-        {
-            
-            return Content(_api.GetManagerIndex());
-        }
+
 
         //private MemberService _memberService;
         //public MemberController()

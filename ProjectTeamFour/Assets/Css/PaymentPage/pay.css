@@ -28,11 +28,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    height: 10vh;
 }
 
+.product-item-pic {
+    width: 12rem;
+}
 
 .products .product-item .product-item-pic img {
     width: 100%;
+    height: 100%;
 }
 
 
@@ -40,10 +45,12 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
+    height: 100%;
 }
 
     .product-item-text h3 {
-        font-size: 0.5rem;
+        font-size: 1rem;
+        text-align: center;
     }
 
 .checkout {
@@ -75,7 +82,7 @@
 }
 
 
-.inside input{
+.inside input[type="text"] {
     border-radius: 10px;
     font-size: 1rem;
     width: 100%;
@@ -95,7 +102,7 @@ h3 {
     padding: 0 1rem;
 }
 
-h4 {
+.h4 {
     font-weight: 600;
 }
 
@@ -234,17 +241,13 @@ label {
     font-size: 1.2rem;
 }
 
-.btn-check input{
-    width:1rem;
-    position:relative;
-    top:1rem;
-}
-
 .btn-pay {
     border: none;
     font-size: 1.5rem;
-    width: 100%;
-    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
     padding: 0.5rem 1rem;
     color: #fff;
     background-color: #F8414A;

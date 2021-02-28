@@ -32,12 +32,15 @@ namespace ProjectTeamFour.Service
             {
                 MemberId = memberId,
                 PermissionId = permissionId,
-                Checked = false
+                Checked = false,
+                PermissionValue = mem_per
+               
             };
-            if (per_value<=mem_per&&mem_perString[per_valueString.Length - 1] == '1')
+            if (per_value<=mem_per&&mem_perString[mem_perString.Length-per_valueString.Length] == '1')
             {
                 cv.Checked = true;
             }
+            
             return cv;
         }
         public string SetPermission(int memberId, int permissionId, bool check)
