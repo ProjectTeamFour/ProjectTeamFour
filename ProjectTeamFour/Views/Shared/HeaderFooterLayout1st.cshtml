@@ -1,5 +1,16 @@
 ﻿@{ 
+    int count = 0;
     MemberViewModel vm = Session["member"]==null ? null : (MemberViewModel)Session["Member"];
+    CartItemListViewModel cartList = (CartItemListViewModel)Session["Cart"];
+    if (cartList != null)
+    {
+        count = cartList.CartItems.Count;
+    }
+    else
+    {
+        count = 0;
+    }
+
 }
 <!DOCTYPE html>
 <html>
@@ -84,7 +95,7 @@
 
                 <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                     <i class="fas fa-shopping-cart"></i>
-                    <p class="MyCart">0</p>
+                    <p class="MyCart">@count</p>
                 </a>
 
                 <li class="nav-item dropdown">
@@ -157,7 +168,7 @@
                     </li>
                     <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                         <i class="fas fa-shopping-cart"></i>
-                        <p class="MyCart">0</p>
+                        <p class="MyCart">@count</p>
                     </a>
 
                     <li class="nav-item">

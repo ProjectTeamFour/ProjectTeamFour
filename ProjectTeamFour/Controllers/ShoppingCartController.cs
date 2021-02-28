@@ -3,6 +3,7 @@ using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,11 +16,7 @@ namespace ProjectTeamFour.Controllers
         {
             _CartService = new CartService();
         }
-        // GET: ShoppingCart
-        public ActionResult Index()
-        {
-            return View("ListShoppingCart");
-        }
+       
 
         [HttpPost]
         public int AddtoCart(CarCarPlanViewModel carcarPlanVM)
@@ -66,6 +63,19 @@ namespace ProjectTeamFour.Controllers
 
             Session["Cart"] = carList;
 
+
+            return View("ListShoppingCart");
+        }
+
+        [HttpPost]
+        public ActionResult ClearCartItem()
+        {
+            //還原Session
+            var carList = (CartItemListViewModel)Session["Cart"];
+
+            carList = _CartService.ClearCart(carList);
+
+            Session["Cart"] = carList;
 
             return View("ListShoppingCart");
         }
