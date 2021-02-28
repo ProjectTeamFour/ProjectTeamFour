@@ -10,5 +10,6 @@ namespace ProjectTeamFour.ViewModels
         public int MemberId { get; set; }
         public int PermissionId { get; set; }
         public bool Checked { get; set; }
+        public int PermissionValue { get; set; }
     }
 }
