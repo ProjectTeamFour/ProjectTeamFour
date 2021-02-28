@@ -1,5 +1,13 @@
 ﻿@{
     MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
+
+    int count = 0;
+
+    if (Session["Cart"] != null)
+    {
+        var myCart = (CartItemListViewModel)Session["Cart"]; //將Session中的購物車記錄還原成集合
+        count = myCart.CartItems.Count;
+    }
 }
 
 
@@ -65,7 +73,7 @@
 
             <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                 <i class="fas fa-shopping-cart"></i>
-                <p class="MyCart">0</p>
+                <p class="MyCart">@count</p>
             </a>
 
             <li class="nav-item dropdown">
@@ -138,7 +146,7 @@
                 </li>
                 <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
                     <i class="fas fa-shopping-cart"></i>
-                    <p class="MyCart">0</p>
+                    <p class="MyCart">@count</p>
                 </a>
 
                 <li class="nav-item">
