@@ -25,11 +25,27 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        //public PayViewModel GetPlanIdAndQty(int Id) //從session抓方案的id&數量
-        //{
-        //    var cartList = (CartItemListViewModel)Session["Cart"];
-            
-        //}
+        public PayViewModel GetPlanIdAndQty(CarCarPlanViewModel carcarPlanVM) //從session抓方案的id&數量
+        {
+            //var cartList = new CartItemListViewModel
+            //{ CartItems = new List<CarCarPlanViewModel>() };
+
+            var cart = (CartItemListViewModel)Session["Cart"];
+
+            var payList = new PayViewModel
+            {
+                CarCarPlanItems = new List<CarCarPlanViewModel>()
+            };
+            foreach(var p in payList.CarCarPlanItems)
+            {
+                foreach (var c in cart.CartItems)
+                {
+                    p.PlanId = c.PlanId;
+                    p.Quantity = c.Quantity;
+                };
+            }
+            return payList;            
+        }
 
     }
 }

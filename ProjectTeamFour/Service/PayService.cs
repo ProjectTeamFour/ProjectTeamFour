@@ -55,17 +55,17 @@ namespace ProjectTeamFour.Service
 
             var listviewmodel = new PayViewModel()
             {
-                PlanCardItems = new List<SelectPlanViewModel>()
+                CarCarPlanItems = new List<CarCarPlanViewModel>()
             };
             foreach(var item in _repository.GetAll<Plan>())
             {
-                var viewmodel = new SelectPlanViewModel
+                var viewmodel = new CarCarPlanViewModel
                 {
                     PlanPrice = item.PlanPrice,
                     PlanImgUrl = item.PlanImgUrl,
                     PlanTitle = item.PlanTitle,
                 };
-                listviewmodel.PlanCardItems.Add(viewmodel);
+                listviewmodel.CarCarPlanItems.Add(viewmodel);
             }
 
             return listviewmodel;
@@ -83,8 +83,6 @@ namespace ProjectTeamFour.Service
             var memberId = QueryMemberId(Id);
 
             return memberId;
-        }
-
-       
+        }             
     }
 }

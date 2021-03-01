@@ -30,7 +30,7 @@ namespace ProjectTeamFour.ViewModels
         public List<Order> OrderItems { get; set; }
 
         //-------------Plan--------------------------------------------
-        public List<SelectPlanViewModel> PlanCardItems { get; set; }
+        public List<CarCarPlanViewModel> CarCarPlanItems { get; set; }
 
     }
 }
