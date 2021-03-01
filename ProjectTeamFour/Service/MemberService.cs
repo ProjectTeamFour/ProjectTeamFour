@@ -164,5 +164,15 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
+        public int RetutnLoginnerId()
+        {
+            var session = HttpContext.Current.Session;
+            if (session["Member"] == null)
+            {
+                return 0;
+            }
+            return ((MemberViewModel)session["Member"]).MemberId;
+        }
+
     }      
 }

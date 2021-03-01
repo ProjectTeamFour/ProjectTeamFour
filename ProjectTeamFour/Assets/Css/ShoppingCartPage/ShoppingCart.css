@@ -237,6 +237,16 @@ img {
 #navbarDropdownMenuLink img{
     width:auto;
 }
+i.fas.fa-snowplow {
+    width: 100%;
+    font-size: 20px;
+}
+.btn-success {
+    margin: 0 20px;
+}
+.btn-danger {
+    margin: 0 20px;
+}
 /* Set RWD */
 @media screen and (min-width: 992px) {
     .main-title::after {

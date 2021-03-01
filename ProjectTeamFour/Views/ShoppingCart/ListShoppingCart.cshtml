@@ -9,11 +9,13 @@
 @section endJS{
     <script>
 
-
+        let remove = document.querySelector("#remove");
         let forseller = document.querySelector(".for-seller");
         let cartout = document.querySelector(".cart-out");
         let noresult = document.querySelector(".no-result");
-        let shopitems=document.querySelector(".shop-items");
+        let shopitems = document.querySelector(".shop-items");
+
+
         if (shopitems.innerText == "" )
         {
             NewDiv = document.createElement("div");
@@ -21,35 +23,122 @@
             NewDiv.appendChild(NewP);
             shopitems.appendChild(NewDiv);
             NewDiv.setAttribute("style", "text-align:center;font-size:3rem");
-            
+
             NewP.innerText = "購物車無任何商品";
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
-        else if (noresult.innerText == "購物車無任何商品")
+        else if (noresult.innerText != "購物車無任何商品")
         {
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
-        
+
         else {
             forseller.setAttribute("style", "display:block");
             cartout.setAttribute("style", "display:block");
         }
 
         //移除購物清單
-function RemoveFromCart(PlanId) {
-    $.ajax({
-        type: "POST",
-        url: '@Url.Action("RemoveCartItem","ShoppingCart")',
-        data: { PlanId: PlanId },
-        success: function (response) {
+        function RemoveFromCart(PlanId) {
+            LanchRemoveAlert(PlanId);
 
-            alert(`${response}`);
         }
 
-    });
-}
+        function LanchRemoveAlert(PlanId) {
+            Swal.fire({
+                title: '您確定刪除此項商品?',
+                text: "此項商品即將被移除!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的, 請刪除!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        '刪除!',
+                        '此項商品已被刪除.',
+                        'success'
+                    );
+                    LanchRemoveAjax(PlanId);
+                }
+            })
+        }
+
+        function LanchRemoveAjax(PlanId) {
+             $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("RemoveCartItem","ShoppingCart")',
+                            data: { PlanId: PlanId },
+                            success: function (response)
+                            {
+                                window.setTimeout(reloading, 1000);
+
+                            }
+                                });
+        }
+
+        function reloading() {
+            window.location.assign(window.location.href);
+        }
+
+
+
+        function ClearCart() {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: '您確定清空購物車嗎?',
+                text: "購物車即將被清空!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '是的, 清空購物車!',
+                cancelButtonText: '不, 取消動作!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        '已清空!',
+                        '您的購物車已清空。',
+                        'success'
+                    );
+                    ClearAjax();
+                }
+                else if
+                    (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        '取消動作',
+                        '您的購物車已保留!',
+                        'error'
+                    )
+                }
+            })
+        }
+
+        function ClearAjax() {
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("ClearCartItem", "ShoppingCart")',
+                data: {},
+                success: function (response) {
+                    window.setTimeout(reloading, 1000);
+                }
+
+            });
+        }
+
+
+
 
     </script>
 }
@@ -106,8 +195,8 @@ function RemoveFromCart(PlanId) {
 
                 <a href="/pay/Index"><input type="submit" name="checkout" value="Checkout" class="checkout"></a>
 
-                <button name="update" class="button outline less-padding" aria-label="Update cart" class="reload">
-                    <i class="fas fa-redo"></i>
+                <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart" >
+                    <i class="fas fa-snowplow"></i>
                 </button>
             </div>
         </div>

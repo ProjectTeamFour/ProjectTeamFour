@@ -10,6 +10,7 @@ using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
 using System.Web.Hosting;
 using Newtonsoft.Json;
+using System.Web;
 
 
 using System.Web.Mvc;
@@ -95,17 +96,17 @@ namespace ProjectTeamFour.Api
                 return "失敗";
             }
         }
-        public string GetManagerIndex()
-        {
-            var Members = _memberService.GetMembers();
-            var Permission = _permissionService.GetPermissions();
-            var result = new
-            {
-                Members = Members,
-                Permissions = Permission
-            };
-            return JsonConvert.SerializeObject(result);
-        }
+        //public string GetManagerIndex()
+        //{
+        //    var Members = _memberService.GetMembers();
+        //    var Permission = _permissionService.GetPermissions();
+        //    var result = new
+        //    {
+        //        Members = Members,
+        //        Permissions = Permission
+        //    };
+        //    return JsonConvert.SerializeObject(result);
+        //}
         public string CheckPermission([FromBody]CheckPermissionViewModel input)
         {
             CheckPermissionViewModel cv = _permissionService.CheckPermission(input.MemberId, input.PermissionId);
@@ -115,6 +116,19 @@ namespace ProjectTeamFour.Api
         {
             return _permissionService.SetPermission(input.MemberId, input.PermissionId, input.Checked);
         }
+        //沒有登入回傳0
+        //[System.Web.Http.HttpGet]
+        //[System.Web.Http.Route("MyApi")]
+        //public string ReturnMemberId()
+        //{
+        //    var session = HttpContext.Current.Session;
+        //    if (session["Member"] == null)
+        //    {
+        //        return 0.ToString();
+        //    }
+        //    return ((MemberViewModel)session["Member"]).MemberId.ToString();
+        //}
+
         //// POST: Users/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]

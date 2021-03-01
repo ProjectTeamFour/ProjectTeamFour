@@ -116,6 +116,13 @@ namespace ProjectTeamFour.Service
             return cartItems;
         }
 
+        public CartItemListViewModel ClearCart(CartItemListViewModel cartItems)
+        {
+            cartItems.CartItems.Clear();
+            
+            return cartItems;
+        }
+
 
 
 

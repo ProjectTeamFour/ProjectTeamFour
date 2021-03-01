@@ -2123,7 +2123,6 @@
     <Content Include="Views\Shared\HeaderFooterLayout1st.cshtml" />
     <Content Include="Views\OrdinaryQA\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
@@ -2175,6 +2174,8 @@
     <Content Include="Views\PersonInfo\Setting.cshtml" />
     <Content Include="Views\Shared\PartialView\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
+    <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
