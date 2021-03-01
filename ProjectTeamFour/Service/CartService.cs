@@ -24,7 +24,7 @@ namespace ProjectTeamFour.Service
         public CarCarPlanViewModel QueryByPlanId(int Id)
         {
             var plan = repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == Id);
-            
+
 
             if (plan == null)
             {
@@ -35,11 +35,11 @@ namespace ProjectTeamFour.Service
             {
                 PlanId = plan.PlanId,
                 PlanTitle = plan.PlanTitle,
-                PlanPrice=plan.PlanPrice,
-                PlanImgUrl=plan.PlanImgUrl,
-               
-                Quantity=1
-                
+                PlanPrice = plan.PlanPrice,
+                PlanImgUrl = plan.PlanImgUrl,
+
+                Quantity = 1
+
             };
             return cartItem;
 

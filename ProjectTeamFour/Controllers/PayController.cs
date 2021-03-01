@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Service;
+using System.Net;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -18,34 +19,15 @@ namespace ProjectTeamFour.Controllers
         }
 
         // GET: pay
-        public ActionResult Index()
+        public ActionResult Index() //從session抓Id&Qty
         {
-            
-            
-            return View();
-        }
-
-        public PayViewModel GetPlanIdAndQty(CarCarPlanViewModel carcarPlanVM) //從session抓方案的id&數量
-        {
-            //var cartList = new CartItemListViewModel
-            //{ CartItems = new List<CarCarPlanViewModel>() };
 
             var cart = (CartItemListViewModel)Session["Cart"];
 
-            var payList = new PayViewModel
-            {
-                CarCarPlanItems = new List<CarCarPlanViewModel>()
-            };
-            foreach(var p in payList.CarCarPlanItems)
-            {
-                foreach (var c in cart.CartItems)
-                {
-                    p.PlanId = c.PlanId;
-                    p.Quantity = c.Quantity;
-                };
-            }
-            return payList;            
-        }
+            var cartt=_PayService.QueryByPlanId(cart);
+
+            return View(cartt);
+        }       
 
     }
 }
