@@ -10,7 +10,13 @@ namespace ProjectTeamFour.Controllers
 {
     public class PayController : Controller
     {
-        
+
+        private PayService _PayService;
+        public PayController()
+        {
+            _PayService = new PayService();
+        }
+
         // GET: pay
         public ActionResult Index()
         {
@@ -18,5 +24,12 @@ namespace ProjectTeamFour.Controllers
             
             return View();
         }
+
+        public PayViewModel GetPlanIdAndQty(int Id) //從session抓方案的id&數量
+        {
+            var cartList = (CartItemListViewModel)Session["Cart"];
+            
+        }
+
     }
 }
