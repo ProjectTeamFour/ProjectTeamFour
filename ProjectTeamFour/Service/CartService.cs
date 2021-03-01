@@ -51,7 +51,7 @@ namespace ProjectTeamFour.Service
 
             return plan;
         }
-        //
+        //查看購物車內是否有重複方案:若有，則方案數量+1;若無，購物車新增一筆方案
         public CartItemListViewModel CheckId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
         {
             
@@ -80,7 +80,7 @@ namespace ProjectTeamFour.Service
                 return cartItems;
             }
         }
-
+        //購物車新增一筆方案
         public CarCarPlanViewModel CreateANewCart(CarCarPlanViewModel CarCarPlanVM)
         {
             var cart = new CarCarPlanViewModel
@@ -98,6 +98,7 @@ namespace ProjectTeamFour.Service
             return cart;
         }
 
+        //購物車刪除一筆方案
         public CartItemListViewModel DeleteId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
         {
 
@@ -115,7 +116,7 @@ namespace ProjectTeamFour.Service
             }
             return cartItems;
         }
-
+        //清空購物車
         public CartItemListViewModel ClearCart(CartItemListViewModel cartItems)
         {
             cartItems.CartItems.Clear();
