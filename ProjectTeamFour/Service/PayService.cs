@@ -39,8 +39,7 @@ namespace ProjectTeamFour.Service
                     MemberConEmail = member.MemberConEmail
                 };
                 return memberList;
-            }
-            
+            }            
         }
         
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId

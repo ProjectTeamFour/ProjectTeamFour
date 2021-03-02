@@ -95,7 +95,7 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult PrepareToCheckout()
         {
-            int result = _MemberService.RetutnLoginnerId();
+            int result = _MemberService.ReturnLoginnerId();
 
             if(result==0)
             {
