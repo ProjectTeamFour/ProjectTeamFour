@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using ProjectTeamFour.ViewModels;
-
+using System.Linq.Expressions;
 
 namespace ProjectTeamFour.Service
 {
@@ -21,29 +21,29 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }
 
-        public PayViewModel QueryMemberId(int Id) //憑會員Id找會員資料
-        {
-            var member = _repository.GetAll<Member>().FirstOrDefault((x) => x.MemberId == Id);
-
-            if(member == null)
-            {
-                return new PayViewModel();
-            }
-            else
-            {
-                var memberList = new PayViewModel()
-                {
-                    MemberName = member.MemberName,
-                    MemberAddress = member.MemberAddress,
-                    MemberPhone = member.MemberPhone,
-                    MemberConEmail = member.MemberConEmail
-                };
-                return memberList;
-            }            
-        }
+        //public PayViewModel QueryMemberId(Expression<Func<Member, bool>> KeySelector) //憑會員Id找會員資料
+        //{
+            
+        //    var member = _repository.GetAll<Member>().FirstOrDefault(KeySelector);
+            
+        //    if (member != null)
+        //    {
+        //        var memberList = new PayViewModel()
+        //        {
+        //            MemberName = member.MemberName,
+        //            MemberAddress = member.MemberAddress,
+        //            MemberPhone = member.MemberPhone,
+        //            MemberConEmail = member.MemberConEmail
+        //        };
+        //        return memberList;
+        //    }
+        //    return null;                               
+        //}
         
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
+
+            
             var listviewmodel = new PayViewModel()
             {
                 CartItems = new List<CarCarPlanViewModel>()
@@ -52,20 +52,29 @@ namespace ProjectTeamFour.Service
             foreach (var item in cart.CartItems) //先撈session
             {
                 var plan = _repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == item.PlanId); //資料庫id==sessionId
+                var member = _repository.GetAll<Member>().FirstOrDefault(x =>x.MemberId == item.PlanId);
 
-               
-                    var viewmodel = new CarCarPlanViewModel
-                    {                        
-                        PlanId = plan.PlanId,
-                        Quantity = item.Quantity,
-                        PlanPrice = plan.PlanPrice,
-                        PlanImgUrl = plan.PlanImgUrl,
-                        PlanTitle = plan.PlanTitle,
-                        ProjectId = plan.ProjectId
-                    };
-                    listviewmodel.CartItems.Add(viewmodel);
-                               
-            }
+                var viewmodel = new PayViewModel
+                {
+                    MemberName = member.MemberName,
+                    MemberAddress = member.MemberAddress,
+                    MemberPhone = member.MemberPhone,
+                    MemberConEmail = member.MemberConEmail,
+                    MemberId = member.MemberId,
+                    CartItems = new List<CarCarPlanViewModel>
+                    {
+                        new CarCarPlanViewModel {
+                            PlanId = plan.PlanId,
+                            Quantity = item.Quantity,
+                            PlanPrice = plan.PlanPrice,
+                            PlanImgUrl = plan.PlanImgUrl,
+                            PlanTitle = plan.PlanTitle,
+                            ProjectId = plan.ProjectId
+                        }
+                    },
+                };
+                return viewmodel;                                                                                   
+            }            
             return listviewmodel;
         }      
 
@@ -76,11 +85,23 @@ namespace ProjectTeamFour.Service
         //    return planId;
         //}
 
-        public PayViewModel GetMemberById(int Id)
-        {
-            var memberId = QueryMemberId(Id);
+        //public PayViewModel GetMemberById(int Id)
+        //{
+        //    var memberId = QueryMemberId(Id);
 
-            return memberId;
-        }                           
+        //    return memberId;
+        //}
+
+        public int ReturnLoginnerId()
+        {
+            var session = HttpContext.Current.Session;
+            if (session["Member"] == null ||session["Cart"]==null)
+            {
+                return 0;
+            }
+
+            var x = ((MemberViewModel)session["Member"]);
+            return ((MemberViewModel)session["Member"]).MemberId;
+        }
     }
 }
