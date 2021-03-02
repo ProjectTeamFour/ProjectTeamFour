@@ -164,7 +164,7 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
-        public int RetutnLoginnerId()
+        public int ReturnLoginnerId()
         {
             var session = HttpContext.Current.Session;
             if (session["Member"] == null)

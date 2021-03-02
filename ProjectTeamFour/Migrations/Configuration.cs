@@ -1881,12 +1881,12 @@
                 FundingAmount = 221540,
                 AmountThreshold = 5000,
                 CreatorName = "村岸產業株式会社",
-                ProjectMainUrl = "",
+                ProjectMainUrl = "https://i.imgur.com/99sWgpxm.jpg",
                 //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
-                ProjectCoverUrl = "",
+                ProjectCoverUrl = "https://i.imgur.com/99sWgpxl.jpg",
                 //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "https://i.imgur.com/5RZVX0P.jpg,https://i.imgur.com/2j2h8vF.jpg,https://i.imgur.com/UQjxte9.jpg,https://i.imgur.com/SzTqnM1.jpg,https://i.imgur.com/w82hyDW.jpg,https://i.imgur.com/T0w6u7B.jpg,https://i.imgur.com/TAvWRXe.jpg,https://i.imgur.com/AJb6zsf.jpg,https://i.imgur.com/7kD5N1A.jpg,https://i.imgur.com/VEjNukC.jpg,https://i.imgur.com/HRQ1Bcl.gifv,https://i.imgur.com/owhlFNQ.jpg,https://i.imgur.com/OGx8IZr.jpg,https://i.imgur.com/pIuH2Uy.gifv,https://i.imgur.com/wLS3K0P.jpg,https://i.imgur.com/6mwBOLT.jpg,https://i.imgur.com/fxHrNfc.jpg,https://i.imgur.com/towH2lE.jpg,https://i.imgur.com/DYXnY5A.jpg,https://i.imgur.com/OLDlSl9.jpg,https://i.imgur.com/4UgdQZC.jpg,https://i.imgur.com/9jtZnuS.jpg,https://i.imgur.com/JQzAmYx.jpg,https://i.imgur.com/3YOp8M9.jpg,https://i.imgur.com/eM9qtVd.jpg,https://i.imgur.com/3Mwz1l6.jpg",
                 //格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
                 Project_Question = "「熊野筆」是化妝刷具的高品質象徵，怎麼會想要拿來做沐浴刷呢？,刷毛的材質為何呢？,《 熊野筆 ROTUNDA 沐浴刷 》中間的凹槽有什麼功能呢？,清潔使用後，該如何收納與保養呢？,如果收到產品後不夠滿意，可以做退換貨嗎？,《 熊野筆 ROTUNDA 沐浴刷 》是否會提供保固呢？",
@@ -1902,15 +1902,15 @@
                 MemberName = "村岸產業株式会社",
                 MemberAddress = "",
                 MemberBirth = new DateTime(1929,5,1),
-                MemberConEmail = "",
-                MemberRegEmail = "",
+                MemberConEmail = "rotundataiwan@gmail.com",
+                MemberRegEmail = "rotundataiwan@gmail.com",
                 MemberMessage = "",
                 MemberPhone = "",
-                MemberTeamName = "",
+                MemberTeamName = "村岸產業株式会社",
                 MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
                 AboutMe = "大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌 」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛的應用於日常生活中。 將化妝刷製作技術的累積，投注於身體刷重新設計改良，《 ROTUNDA 熊野筆沐浴刷 》因而傳承新生",
                 Gender = "女",
-                ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
+                ProfileImgUrl = "https://i.imgur.com/SsEZLl7.jpg",
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第15個提案中的方案
@@ -1984,7 +1984,7 @@
                 PlanFundedPeople = 1,
                 PlanDescription = "全方案開放「刷卡 3、6 期零利率」，專案前 60 名贊助者，額外贈送「熊野筆唇刷 1 支」",
                 PlanShipDate = new DateTime(2021, 08, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://imgur.com/qKliU0Fm.jpg",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 12390,
                 QuantityLimit = 60
@@ -2005,8 +2005,6 @@
                 QuantityLimit = 60
             });
 
-
-
             //第16個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             {
@@ -2021,12 +2019,12 @@
                 FundingAmount = 347625,
                 AmountThreshold = 300000,
                 CreatorName = "米爸",
-                ProjectMainUrl = "",
+                ProjectMainUrl = "https://i.imgur.com/jwLGY3Km.png",
                 //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
-                ProjectCoverUrl = "",
+                ProjectCoverUrl = "https://i.imgur.com/jwLGY3Kl.png",
                 //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "為什麼要出書？,你的毛孩...曾經被景點或商家拒絕嗎？,你大概會有這個經驗，你心愛的寶貝，曾經被拒絕於餐館或飯店門外，飽受交通不便， 到了旅遊景點，才發現你的寶貝，無法進入，是不受歡迎的！,https://i.imgur.com/hlwC762.jpg, 如影片所述，期望透過小米的旅遊介紹以及照片，鼓勵大家帶毛孩到一些戶外地點去遊玩並記錄下珍貴的點滴，希望這本書可以讓大家帶著毛小孩們，平安順利的體驗台灣之美。,藉由出書募得資金，重新啟動公益計畫,https://i.imgur.com/jXa7iTX.jpg, 我們費時2年2萬公里探訪台灣的景點寵物友善狀況，產生了大量的寫真照片和景點資訊，在許多粉絲、網友鼓勵下，決定將這些資料和照片製作出高品質的旅遊寫真書，並將書的所得扣除成本後投入公益事業，組成一個公益協會和社會企業，啟動 FURKID 毛小孩計畫，這是寵物專屬平台，並以降低棄養率為主的研發計畫，追蹤寵物過去和未來、寵物友善環境搜尋、提供並協助中途之家媒合平台和分析追蹤工具。,成立推動寵物友善環境及生命教育的公益協會,https://i.imgur.com/EPOQNCM.jpg, 台灣景點和周邊商家，許多地方寵物都可以進入，但也有許多地方仍禁止寵物進入，而我們希望能將這些地方有條件的變成寵物可進入，「透過正確的方式和規劃讓環境對寵物友善，同時也約束毛孩父母，教育好毛孩並做好自身責任對環境友善」，建立起相互信賴，並推動雙向分級「寵物友善環境認證」和「好爸媽及乖毛孩認證（飼主責任和寵物穩定度認定）」，讓友善環境也能有選擇權。,https://i.imgur.com/vChSG9c.jpg, 這是寫真書？還是旅遊書？,https://i.imgur.com/ES9VPa2.jpg,https://i.imgur.com/scvSlbt.jpg, 小米景點寫真, 以台灣北部、中部、南部、東部景點的介紹以及特色，讓我們一起透過小米看看美美的台灣。,https://i.imgur.com/3FXQFis.jpg,https://i.imgur.com/dNpA2Bq.jpg,https://i.imgur.com/bAmvyEX.jpg,https://i.imgur.com/L6ukvAE.jpg,https://i.imgur.com/H7FpUBJ.jpg,https://i.imgur.com/i8Oq6bD.jpg,https://i.imgur.com/s5SzX1V.jpg,https://i.imgur.com/lPjUKQ4.jpg,https://i.imgur.com/9CnlLC8.jpg,https://i.imgur.com/mlzMZ06.jpg,https://i.imgur.com/iiFmdgy.png,https://i.imgur.com/XYlTuV1.jpg, 一個國家的文明程度就看她怎樣對待動物,要讓整個環境能夠更朝友善寵物前進，有兩個最主要的因素。第一個就是商家和景點的開放，另外一個則是飼主本身的配合和進步。我們深信提升生命教育和飼主應盡責任是降低棄養率及對寵物友善的根本。因此我們準備將出書所得成立一家社會企業和計畫發展的公益協會, https://i.imgur.com/Of9YDuJ.jpg, 成立寵物友善環境發展協會, 透過協會進行寵物友善環境發展、生命教育、飼主教育、寵物證照推廣（乖寶寶證照）、寵物緊急救難基金等。,https://i.imgur.com/Jzz5S15.jpg,https://i.imgur.com/hz7we9i.jpg, 經費使用說明, https://i.imgur.com/VAHpMU2.png",
                 //格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
                 Project_Question = "",
@@ -2038,20 +2036,20 @@
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
                 MemberId = 16,
-                MemberAccount = "米爸",
+                MemberAccount = "Storm Kuo",
                 MemberPassword = "NO16memberPassword",
                 MemberName = "Miiii",
                 MemberAddress = "",
                 MemberBirth = new DateTime(1929, 5, 1),
-                MemberConEmail = "",
-                MemberRegEmail = "",
+                MemberConEmail = "ricefurkid@gmail.com",
+                MemberRegEmail = "rice@furkid.org",
                 MemberMessage = "",
                 MemberPhone = "",
-                MemberTeamName = "",
+                MemberTeamName = "米爸",
                 MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
-                AboutMe = "",
+                AboutMe = "小米的爸爸，精通於社群操作以及社群平台機制設計，所設計的創新平台曾獲得資策會第1屆IDEAS Show 第1名 以及 2008年 DEMO CHINA 08優勝獎項「Demo God 」，由於所研發的創新平台及概念皆是領先於當時環境，未來趨勢，可惜資源不足無法持續。但不管挫折如何，至今仍一直努力和堅持於數位創新領域上，目前獨力和小米一起執行「FURKID計畫」。",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/cdLjTOut.jpg",
+                ProfileImgUrl = "https://i.imgur.com/UILd3ZHt.jpg",
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第16個提案中的方案
@@ -2063,9 +2061,9 @@
                 ProjectPlanId = 1,
                 PlanTitle = "寵物友善環境探訪實錄寫真書5套",
                 PlanFundedPeople = 24,
-                PlanDescription = "",
+                PlanDescription = "我們費時2年2萬多公里，探訪台灣景點的寵物友善狀況。藉由出書募資，將所得投入寵物友善環境發展和生命教育推動，及重啟動降低棄養率的公益研發計畫。",
                 PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/aq6j2Sdm.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 500,
                 QuantityLimit = 999
@@ -2078,7 +2076,7 @@
                 ProjectPlanId = 2,
                 PlanTitle = "寵物友善環境探訪實錄寫真書5套",
                 PlanFundedPeople = 19,
-                PlanDescription = "",
+                PlanDescription = "https://i.imgur.com/Y3uAEeqm.png",
                 PlanShipDate = new DateTime(2021, 10, 01),
                 PlanImgUrl = "",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
@@ -2095,7 +2093,7 @@
                 PlanFundedPeople = 188,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/mLzamGPm.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 950,
                 QuantityLimit = 999
@@ -2110,7 +2108,7 @@
                 PlanFundedPeople = 7,
                 PlanDescription = "9折，寵物友善環境探訪實錄寫真書5套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
                 PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/YLHUNUC.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 4275,
                 QuantityLimit = 15
@@ -2125,7 +2123,7 @@
                 PlanFundedPeople = 10,
                 PlanDescription = "85折，寵物友善環境探訪實錄寫真書10套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
                 PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/YLHUNUC.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 8075,
                 QuantityLimit = 10
@@ -2140,12 +2138,11 @@
                 PlanFundedPeople = 58,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 06, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/mWUfu4gm.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 100,
                 QuantityLimit = 999
             });
-
 
         }
     }
