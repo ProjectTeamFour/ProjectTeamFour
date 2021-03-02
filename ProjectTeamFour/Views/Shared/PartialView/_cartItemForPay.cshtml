@@ -1,11 +1,11 @@
 ﻿@model CarCarPlanViewModel
-
+@*@model CartItemListViewModel*@
 <div class="product-item">
     <div class="product-item-pic col-2 col-sm-2">
         <img src="@Model.PlanImgUrl" alt="肉" class="pic">
     </div>
     <div class="product-item-text  col-10 col-sm-10">
         <h3>@Model.PlanTitle</h3>
-        <div><span>@(Model.Quantity.ToString())個</span><span>@Model.PlanPrice</span></div>
+        <div><span>@(Model.Quantity.ToString())個</span><span>@Model.Account</span></div>
     </div>
 </div>
