@@ -47,8 +47,8 @@ namespace ProjectTeamFour.Service
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
         {
             var entity = _repository.GetAll<Project>().FirstOrDefault(ProjectId);
-            if (entity != default(Models.Project))
-            {
+            //if (entity != default(Models.Project))
+            //{
                 var projectdetailVM = new ProjectDetailViewModel()
                 {
                     Category = entity.Category,
@@ -68,11 +68,11 @@ namespace ProjectTeamFour.Service
                     StartDate = entity.StartDate
                 };
                 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-            }
+            //}
             return projectdetailVM;
         }
 

@@ -95,16 +95,16 @@
     <div class="container">
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
-                @foreach (var item in Model.ProjectItems)
+                @for(int i=0; i<12; i++)
                 {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItems[i]);
                 }
             </div>
         </div>
     </div>
 </section>
 <div class="col-sm-12">
-    <button class="btn-more">Load More</button>
+    <button class="btn-more" id="btn-more">Load More</button>
 </div>
 
 <div class="ForCategory">
@@ -120,4 +120,6 @@
     <p id="url2">全部專案</p>
     <p id="url3">熱門</p>
 </div>
+ 
+
 
