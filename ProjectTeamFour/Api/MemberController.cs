@@ -56,8 +56,8 @@ namespace ProjectTeamFour.Api
                 _logservice.Create(entity);
                 return "失敗";       
             }
-        } 
-        public string Update([FromBody] MemberViewModel input)
+        }
+        public string Update([FromBody] EditMemberViewModel input)
         {
             var result = new OperationResult();
             result = _memberService.Update(input);
