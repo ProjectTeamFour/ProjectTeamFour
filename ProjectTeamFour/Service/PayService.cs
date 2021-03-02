@@ -43,48 +43,46 @@ namespace ProjectTeamFour.Service
             
         }
         
-        public PayViewModel QueryByPlanId(int Id) //撈資料庫資料 用購物車的planId找到資料庫的planId
+        public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
-            var plan = _repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == Id);
-
-
-            if (plan == null) //如果沒抓到這個iD
-            {
-                return new PayViewModel();
-            }
-
             var listviewmodel = new PayViewModel()
             {
-                PlanCardItems = new List<SelectPlanViewModel>()
+                CartItems = new List<CarCarPlanViewModel>()
             };
-            foreach(var item in _repository.GetAll<Plan>())
-            {
-                var viewmodel = new SelectPlanViewModel
-                {
-                    PlanPrice = item.PlanPrice,
-                    PlanImgUrl = item.PlanImgUrl,
-                    PlanTitle = item.PlanTitle,
-                };
-                listviewmodel.PlanCardItems.Add(viewmodel);
-            }
 
+            foreach (var item in cart.CartItems) //先撈session
+            {
+                var plan = _repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == item.PlanId); //資料庫id==sessionId
+
+                foreach (var items in listviewmodel.CartItems) //再撈資料庫
+                {
+                    var viewmodel = new CarCarPlanViewModel
+                    {
+                        PlanId= plan.PlanId,
+                        Quantity= item.Quantity,
+                        PlanPrice = plan.PlanPrice,
+                        PlanImgUrl = plan.PlanImgUrl,
+                        PlanTitle = plan.PlanTitle,
+                        ProjectId = plan.ProjectId
+                    };
+                    listviewmodel.CartItems.Add(viewmodel);
+                };                
+            }
             return listviewmodel;
         }      
 
-        public PayViewModel GetPlanById(int Id)  //憑PlanId找其他資料
-        {
-            var planId = QueryByPlanId(Id);
+        //public PayViewModel GetPlanById(CartItemListViewModel cart)  //憑PlanId找其他資料
+        //{
+        //    var planId = QueryByPlanId(cart);
 
-            return planId;
-        }
+        //    return planId;
+        //}
 
         public PayViewModel GetMemberById(int Id)
         {
             var memberId = QueryMemberId(Id);
 
             return memberId;
-        }
-
-       
+        }                           
     }
 }

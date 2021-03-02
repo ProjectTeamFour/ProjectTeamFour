@@ -46,26 +46,33 @@ namespace ProjectTeamFour.Service
 
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
         {
-        
             var entity = _repository.GetAll<Project>().FirstOrDefault(ProjectId);
-            var projectdetailVM = new ProjectDetailViewModel()
+            if (entity != default(Models.Project))
             {
-                Category = entity.Category,
-                ProjectStatus = entity.ProjectStatus,
-                ProjectName = entity.ProjectName,
-                CreatorName = entity.CreatorName,
-                FundingAmount = entity.FundingAmount,
-                Fundedpeople = entity.Fundedpeople,
-                ProjectDescription = entity.ProjectDescription,
-                ProjectImgUrl = entity.ProjectImgUrl,
-                ProjectVideoUrl = entity.ProjectVideoUrl,
-                AmountThreshold = entity.AmountThreshold,
-                ProjectFAQList= ConvertProjectFAQList(entity.Project_Question,entity.Project_Answer),
-                //Project_Question = entity.Project_Question,
-                //Project_Answer = entity.Project_Answer​,
-                EndDate = entity.EndDate,
-                StartDate = entity.StartDate
-            };
+                var projectdetailVM = new ProjectDetailViewModel()
+                {
+                    Category = entity.Category,
+                    ProjectStatus = entity.ProjectStatus,
+                    ProjectName = entity.ProjectName,
+                    CreatorName = entity.CreatorName,
+                    FundingAmount = entity.FundingAmount,
+                    Fundedpeople = entity.Fundedpeople,
+                    ProjectDescription = entity.ProjectDescription,
+                    ProjectImgUrl = entity.ProjectImgUrl,
+                    ProjectVideoUrl = entity.ProjectVideoUrl,
+                    AmountThreshold = entity.AmountThreshold,
+                    ProjectFAQList = ConvertProjectFAQList(entity.Project_Question, entity.Project_Answer),
+                    //Project_Question = entity.Project_Question,
+                    //Project_Answer = entity.Project_Answer​,
+                    EndDate = entity.EndDate,
+                    StartDate = entity.StartDate
+                };
+                
+            }
+            else
+            {
+
+            }
             return projectdetailVM;
         }
 
