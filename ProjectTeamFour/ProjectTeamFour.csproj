@@ -2163,7 +2163,6 @@
     <Content Include="Views\Projects\FindStatusAndCategory.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
-    <Content Include="Views\ShoppingCart\RemoveCartItem.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditorPartial.cshtml" />
     <Content Include="Views\Projects\Main.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />

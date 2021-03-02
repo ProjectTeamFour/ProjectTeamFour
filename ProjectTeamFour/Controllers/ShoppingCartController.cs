@@ -12,10 +12,14 @@ namespace ProjectTeamFour.Controllers
     public class ShoppingCartController : Controller
     {
         private CartService _CartService;
+        private MemberService _MemberService;
         public ShoppingCartController()
         {
             _CartService = new CartService();
+            _MemberService = new MemberService();
         }
+
+
        
 
         [HttpPost]
@@ -79,6 +83,34 @@ namespace ProjectTeamFour.Controllers
 
             return View("ListShoppingCart");
         }
+
+        [HttpPost]
+        public ActionResult GetCheckoutQuantity()
+        {
+            var carList = (CartItemListViewModel)Session["Cart"];
+
+
+            return View("ListShoppingCart");
+        }
+
+        public ActionResult PrepareToCheckout()
+        {
+            int result = _MemberService.RetutnLoginnerId();
+
+            if(result==0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
+            else
+            {
+                return RedirectToAction("Index", "Pay");
+            }
+
+           
+        }
+
+
 
     }
 }
