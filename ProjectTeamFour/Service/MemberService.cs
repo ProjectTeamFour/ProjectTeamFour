@@ -118,26 +118,22 @@ namespace ProjectTeamFour.Service
             return result;
         }
         //修改    
-        public OperationResult Update(MemberViewModel input)
+        public OperationResult Update(EditMemberViewModel input)
         {
             var result = new OperationResult();
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
                 entity.MemberName = input.MemberName;
-                entity.MemberTeamName = input.MemberTeamName;
-                entity.MemberAccount = input.MemberAccount;
-                entity.MemberPassword = input.MemberPassword;
-                entity.MemberAddress = input.MemberAddress;
-                entity.MemberPhone = input.MemberPhone;
-                entity.MemberRegEmail = input.MemberRegEmail;
                 entity.MemberConEmail = input.MemberConEmail;
-                entity.Gender = input.Gender;
-                entity.MemberBirth = input.MemberBirth;
+                if (input.Gender != "請選擇性別")
+                {
+                    entity.Gender = input.Gender;
+                }
+                //entity.MemberBirth = input.MemberBirth;
                 entity.AboutMe = input.AboutMe;
                 entity.ProfileImgUrl = input.ProfileImgUrl;
                 entity.MemberWebsite = input.MemberWebsite;
-                entity.MemberMessage = input.MemberMessage;
                 _repository.Update(entity);
                 result.IsSuccessful = true;
             }

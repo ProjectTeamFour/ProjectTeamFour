@@ -110,21 +110,21 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "iD,MemberName,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage")] EditMemberViewModel editmemberVM)
-        {
-            if (ModelState.IsValid)
-            {
-                var newData = _memberSettingService.Update(editmemberVM);
-                editmemberVM = newData;
-                //= EntityState.Modified;
-                //db.SaveChanges();
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "iD,MemberName,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage")] EditMemberViewModel editmemberVM)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var newData = _memberSettingService.Update(editmemberVM);
+        //        editmemberVM = newData;
+        //        //= EntityState.Modified;
+        //        //db.SaveChanges();
                 
-                return RedirectToAction("Index");
-            }
-            return View(editmemberVM);
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(editmemberVM);
+        //}
 
         protected override void Dispose(bool disposing)
         {
