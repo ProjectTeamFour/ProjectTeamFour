@@ -168,6 +168,7 @@ namespace ProjectTeamFour.Service
             {
                 return 0;
             }
+            var x = ((MemberViewModel)session["Member"]);
             return ((MemberViewModel)session["Member"]).MemberId;
         }
 

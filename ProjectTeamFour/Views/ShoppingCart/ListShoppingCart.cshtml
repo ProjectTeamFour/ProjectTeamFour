@@ -14,7 +14,7 @@
         let cartout = document.querySelector(".cart-out");
         let noresult = document.querySelector(".no-result");
         let shopitems = document.querySelector(".shop-items");
-
+        let qtyArray = document.querySelectorAll(".qty");
 
         if (shopitems.innerText == "" )
         {
@@ -138,7 +138,10 @@
             });
         }
 
-
+        function PrepareToCheckout() {
+            qtyValuesArray = qtyArray.values();
+            console.log(qtyValuesArray);
+        }
 
 
     </script>
@@ -156,32 +159,36 @@
 
 
             <div class="shop-items col-lg-6">
-                @if (Model!=null)
+                @if (Model != null)
                 {
                     foreach (var item in Model.CartItems)
                     {
                         @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
                     }
 
-                   
+
                 }
+
                 else
                 {
-                        
                         <div class="no-result">
-                            <p>購物車無任何商品</p>
+
+                        <p>購物車無任何商品</p>
+
                         </div>
                 }
 
 
 
+
+
+            </div>   
+                <div class="col-lg-6"></div>
+                <div class="col-sm-12 col-lg-6 for-seller">
+                    <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
+                              aria-label="Special instructions for seller"></textarea>
+                </div>
             </div>
-            <div class="col-lg-6"></div>
-            <div class="col-sm-12 col-lg-6 for-seller">
-                <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
-                          aria-label="Special instructions for seller"></textarea>
-            </div>
-        </div>
     </div>
 </section>
 <section class="cart-out">
@@ -194,11 +201,12 @@
             <div class="col-lg-6"></div>
             <div class="col-sm-12 buttons-group col-lg-6">
 
-                <a href="/pay/Index"><input type="submit" name="checkout" value="Checkout" class="checkout"></a>
-
-                <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart" >
-                    <i class="fas fa-snowplow"></i>
-                </button>
+                <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'><input type="submit" name="checkout" value="Checkout" class="checkout" onclick="PrepareToCheckout()"></a>
+                
+                    <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart">
+                        <i class="fas fa-snowplow"></i>
+                    </button>
+                
             </div>
         </div>
     </div>
@@ -265,7 +273,7 @@
 
 
     </div>
-    </div>
+    
 </section>
 
 
