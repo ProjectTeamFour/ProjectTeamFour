@@ -744,7 +744,7 @@
                 ProjectDescription = "",
                 ProjectImgUrl = "https://i.imgur.com/orQ8HcD.jpg,https://i.imgur.com/hlzHEoh.jpg,https://i.imgur.com/QZEu1IV.gif,https://i.imgur.com/wOXJpH8.jpg,https://i.imgur.com/8bIzSJY.gif,https://i.imgur.com/nlU6CzQ.jpg,https://i.imgur.com/oWfBErd.jpg,https://i.imgur.com/AMje1iS.gif,https://i.imgur.com/I0YADR1.jpg,https://i.imgur.com/aszux4j.jpg,https://i.imgur.com/h4Luebc.jpg,https://i.imgur.com/unf9sle.gif,https://i.imgur.com/Nt3MGP9.jpg,https://i.imgur.com/EPlBeuG.jpg,https://i.imgur.com/kQnCA8z.jpg",
                 //	原圖格式
-                ProjectVideoUrl = "<iframe width='560' height='315' src='https://www.youtube.com/embed/bOvZt-Rn590' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
+                ProjectVideoUrl = "https://www.youtube.com/embed/bOvZt-Rn590",
                 Project_Question = "《SWOL雙水箱旋轉拖把》水箱內置的毛刷是否需要定期更換或清洗？,《SWOL雙水箱旋轉拖把》的水箱應該要如何清理呢？,《SWOL雙水箱旋轉拖把》如果故障應該如何修理？,耗材（拖把毛、水箱內毛刷）要在哪裡購買更換？",
                 Project_Answer = "毛刷不需要更換，採用的是尼龍材料，韌性和強度都比較好。若使用上造成損壞，未來官網也會提供備品讓您可以付費更換！,清水區的蓋子拿掉之後，清水區和髒水區都是可以直接清洗的，搭配小刷子清潔的話會更乾淨喔！,基本故障可以透過購買零件自行更換，也可以送回SWOL團隊，由我們替您處理。,未來官網我們會上架備品給各位選購，請放心下單！",
                 ProjectPlansCount = 5

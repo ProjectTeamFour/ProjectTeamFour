@@ -15,6 +15,7 @@
         let noresult = document.querySelector(".no-result");
         let shopitems = document.querySelector(".shop-items");
         let qtyArray = document.querySelectorAll(".qty");
+        let valuesArray = [];
 
         if (shopitems.innerText == "" )
         {
@@ -138,11 +139,41 @@
             });
         }
 
+
         function PrepareToCheckout() {
-            qtyValuesArray = qtyArray.values();
-            console.log(qtyValuesArray);
+
+            valuesArray = NodeListPushToArray(qtyArray, valuesArray);
+            LanchArrayAjax(valuesArray);
         }
 
+        function NodeListPushToArray(NodeList, ValueArray) {
+            NodeList.forEach(element => {
+                if (element.value == "") {
+                    element.value = "1";
+                    ValueArray.push(element.value);
+
+                }
+                else {
+                    ValueArray.push(element.value);
+                }
+            });
+            return ValueArray;
+        }
+
+
+        function LanchArrayAjax(ValueArray) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetCheckoutQuantity", "ShoppingCart")',
+                dataType: "json",
+                
+                data: JSON.stringify(ValueArray),
+
+                success: function (response) {
+                    console.log("123");
+                }
+            })
+        }
 
     </script>
 }
@@ -196,12 +227,24 @@
         <div class="row">
             <div class="col-lg-6"></div>
             <div class="col-sm-12 col-lg-6">
-                <p class="total" id="CartTotal">Total: <span>0</span></p>
+                <p class="total" id="CartTotal">
+                    Total:
+                    @if (@Model == null)
+                    {
+                        <span>0</span>
+                    }
+                    else
+                    {
+                        <span>@Model.TotalAccount</span>
+                    }
+                </p>
             </div>
             <div class="col-lg-6"></div>
             <div class="col-sm-12 buttons-group col-lg-6">
 
-                <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'><input type="submit" name="checkout" value="Checkout" class="checkout" onclick="PrepareToCheckout()"></a>
+                <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'>
+                <input type="submit" name="checkout" value="Checkout" class="checkout" onclick="PrepareToCheckout()">
+                </a>
                 
                     <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart">
                         <i class="fas fa-snowplow"></i>

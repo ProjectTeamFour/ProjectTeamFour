@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -85,9 +86,9 @@ namespace ProjectTeamFour.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetCheckoutQuantity()
+        public ActionResult GetCheckoutQuantity(string QuantityArray)
         {
-            var carList = (CartItemListViewModel)Session["Cart"];
+            //var ValuesArray = JsonConvert.DeserializeObject(QuantityArray);
 
 
             return View("ListShoppingCart");
