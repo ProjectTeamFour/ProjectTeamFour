@@ -118,25 +118,25 @@
                     <div class="content-deliver">
                         <div id="app" class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}"  placeholder="請填寫姓名" value="@Model.MemberName">
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}"*@  placeholder="請填寫姓名" value="@Model.MemberName">
+                            @*<div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}"*@ placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
+                            @*<div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}"*@ placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
+                            @*<div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
-                            <div class="text-danger ">
+                            <input type="text" @*v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}"*@ placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
+                            @*<div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
