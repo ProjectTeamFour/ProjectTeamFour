@@ -2,7 +2,7 @@
 
     var uploadimg = document.querySelector('#uploadimg');
     uploadimg.addEventListener('change', function (e) {
-        debugger;
+        //debugger;
         let files = $(this).get(0).files;
         let formData = new FormData();
         formData.append(files[0].name, files[0]);
@@ -31,10 +31,11 @@
                 console.log('-------------------');
                 console.log(response);
                 if (response == "成功") {
-                    debugger;
+                    //debugger;
                     let imgurl = document.getElementById('imgshow').getAttribute('src');
                     console.log(document.getElementById("memberimg"));
-                    document.getElementById("memberimg").setAttribute('src',imgurl)
+                    document.getElementById("memberimg").setAttribute('src', imgurl);
+                    document.getElementById("pcmemberimg").setAttribute('src', imgurl);
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
@@ -58,7 +59,7 @@
 })
 
 function uploadFile(formData) {
-    debugger;
+    //debugger;
     console.log(formData);
     $.ajax({
         url: '/api/memberapi/UploadFiles',

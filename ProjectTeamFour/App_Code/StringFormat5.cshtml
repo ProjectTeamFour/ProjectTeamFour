@@ -76,20 +76,42 @@
     {
         if (gender == "男性")
         {
-            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" id="memberimg"/>
+            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" id="memberimg" />
         }
         else if (gender == "女性")
         {
-            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" id="memberimg"/>
+            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" id="memberimg" />
         }
     }
     else
     {
-        <img src=@input width="30" height="30" id="memberimg"/>
+        <img src=@input width="30" height="30" id="memberimg" />
     }}
 @helper ShowNoLoginPic()
 {
-    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" id="memberimg"/>
+    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" id="memberimg" />
+}
+
+@helper PcShowLoginPic(string input, string gender)
+{
+    if (string.IsNullOrEmpty(input))
+    {
+        if (gender == "男性")
+        {
+            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" id="pcmemberimg" />
+        }
+        else if (gender == "女性")
+        {
+            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" id="pcmemberimg" />
+        }
+    }
+    else
+    {
+        <img src=@input width="30" height="30" id="pcmemberimg" />
+    }}
+@helper PcShowNoLoginPic()
+{
+    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" id="pcmemberimg" />
 }
 
 
