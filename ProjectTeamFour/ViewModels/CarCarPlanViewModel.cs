@@ -19,5 +19,6 @@ namespace ProjectTeamFour.ViewModels
         public int Quantity { get; set; }
         public int CartId { get; set; }
         public decimal Account { get { return this.PlanPrice * Quantity; } }
+
     }
 }
