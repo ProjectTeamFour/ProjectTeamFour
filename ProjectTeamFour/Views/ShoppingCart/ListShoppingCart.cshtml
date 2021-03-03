@@ -166,8 +166,8 @@
                 type: "POST",
                 url: '@Url.Action("GetCheckoutQuantity", "ShoppingCart")',
                 dataType: "json",
-                
-                data: JSON.stringify(ValueArray),
+
+                data: { Quantity: ValueArray},
 
                 success: function (response) {
                     console.log("123");

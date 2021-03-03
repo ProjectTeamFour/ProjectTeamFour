@@ -124,6 +124,29 @@ namespace ProjectTeamFour.Service
             return cartItems;
         }
 
+        public CartItemListViewModel ChangeCartQuantity(CartItemListViewModel cartItems, CheckoutQuantityViewModel QuantityArray)
+        {
+            if(QuantityArray==null)
+            {
+                return cartItems;
+            }
+            else
+            {
+                foreach(var item in cartItems.CartItems)
+                {
+                    foreach(var quantity in QuantityArray.Quantity)
+                    {
+                        item.Quantity = quantity;
+                    }
+                    
+                }
+                return cartItems;
+            }
+            
+            
+            
+        }
+
 
 
 

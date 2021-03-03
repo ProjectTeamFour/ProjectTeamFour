@@ -86,10 +86,13 @@ namespace ProjectTeamFour.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetCheckoutQuantity(string QuantityArray)
+        public ActionResult GetCheckoutQuantity(CheckoutQuantityViewModel QuantityArray)
         {
-            //var ValuesArray = JsonConvert.DeserializeObject(QuantityArray);
+            var carList = (CartItemListViewModel)Session["Cart"];
 
+            //carList = _CartService.ChangeCartQuantity(carList, QuantityArray);
+            
+            Session["Cart"] = carList;
 
             return View("ListShoppingCart");
         }
@@ -110,6 +113,7 @@ namespace ProjectTeamFour.Controllers
 
            
         }
+
 
     }
 }
