@@ -1,5 +1,4 @@
-﻿import { intl } from "modernizr";
-
+﻿
 $(document).ready(function () {
     $('.category-group').slick({
         centerMode: false,
