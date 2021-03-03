@@ -4,11 +4,6 @@
     string status = (string)ViewData["status"];
     string id = (string)ViewData["id"];
 }
-@*@{
-    DateTime today = DateTime.Now;
-    decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
-    double dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - today.Ticks).TotalDays);
-}*@
 
 @{
     ViewBag.Title = "products page";
