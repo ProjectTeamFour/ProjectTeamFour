@@ -28,14 +28,13 @@
                 ProfileImgUrl: document.getElementById('imgshow').getAttribute('src')
             },
             success: function (response) {
-                console.log('-------------------');
-                console.log(response);
                 if (response == "成功") {
-                    //debugger;
+                    debugger;
                     let imgurl = document.getElementById('imgshow').getAttribute('src');
-                    console.log(document.getElementById("memberimg"));
-                    document.getElementById("memberimg").setAttribute('src', imgurl);
-                    document.getElementById("pcmemberimg").setAttribute('src', imgurl);
+                    document.getElementsByName('memberimg').forEach(item => {
+                        console.log(imgurl);
+                        item.setAttribute('src', imgurl);
+                    })
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',

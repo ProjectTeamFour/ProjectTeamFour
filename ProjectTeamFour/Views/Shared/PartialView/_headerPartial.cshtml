@@ -160,11 +160,11 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (vm == null)
                         {
-                            @StringFormat5.PcShowNoLoginPic()
+                            @StringFormat5.ShowNoLoginPic()
                         }
                         else
                         {
-                            @StringFormat5.PcShowLoginPic(vm.ProfileImgUrl, vm.Gender)
+                            @StringFormat5.ShowLoginPic(vm.ProfileImgUrl, vm.Gender)
                         }
 
                         @*<img src="https://picsum.photos/40/40/?random=1">*@
