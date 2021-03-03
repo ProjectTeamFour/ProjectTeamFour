@@ -1,4 +1,5 @@
-﻿
+﻿import { intl } from "modernizr";
+
 $(document).ready(function () {
     $('.category-group').slick({
         centerMode: false,
@@ -127,6 +128,15 @@ orderByItem.click(function () {
         money.attr("href", url);
     }
 })
+
+//let card = document.querySelectorAll("card");
+//let btnMore = document.getElementById("btn-more");
+
+//btnMore.addEventListener("click", function () {
+//    for (i = 12; i < card.length; i++) {
+//        card = card + 1;
+//    }
+//})
 
 
 
