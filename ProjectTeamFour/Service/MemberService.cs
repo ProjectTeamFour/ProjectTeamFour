@@ -8,6 +8,8 @@ using System.Data.Entity;
 using System.Net.Http;
 using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace ProjectTeamFour.Service
 {
@@ -134,6 +136,7 @@ namespace ProjectTeamFour.Service
                 entity.AboutMe = input.AboutMe;
                 entity.ProfileImgUrl = input.ProfileImgUrl;
                 entity.MemberWebsite = input.MemberWebsite;
+                entity.ProfileImgUrl = input.ProfileImgUrl;
                 _repository.Update(entity);
                 result.IsSuccessful = true;
             }
@@ -168,9 +171,7 @@ namespace ProjectTeamFour.Service
             {
                 return 0;
             }
-            
             return ((MemberViewModel)session["Member"]).MemberId;
         }
-
     }      
 }
