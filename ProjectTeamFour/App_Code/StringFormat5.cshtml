@@ -76,20 +76,20 @@
     {
         if (gender == "男性")
         {
-            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" />
+            <img src="~/Assets/Img/Sign/man.png" width="30" height="30" id="memberimg"/>
         }
         else if (gender == "女性")
         {
-            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" />
+            <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" id="memberimg"/>
         }
     }
     else
     {
-        <img src=@input width="30" height="30" />
+        <img src=@input width="30" height="30" id="memberimg"/>
     }}
 @helper ShowNoLoginPic()
 {
-    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" />
+    <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" id="memberimg"/>
 }
 
 

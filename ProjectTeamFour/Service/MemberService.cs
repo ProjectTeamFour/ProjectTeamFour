@@ -173,5 +173,11 @@ namespace ProjectTeamFour.Service
             }
             return ((MemberViewModel)session["Member"]).MemberId;
         }
+        public void Relogin()
+        {
+            var session = HttpContext.Current.Session;
+            int id= ((MemberViewModel)session["Member"]).MemberId;
+             session["Member"] = GetMember(p=>p.MemberId==id);
+        }
     }      
 }
