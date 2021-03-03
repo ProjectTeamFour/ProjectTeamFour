@@ -1,5 +1,8 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 @{
+int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+DateTime today = DateTime.Now;
+int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
     int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     DateTime today = DateTime.Now;
     int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
@@ -17,22 +20,22 @@
     </div>
     <!-- 本文 -->
     <section class="info-top">
-        <div id="campaign-maininfo" class="container">
+        <div id="campaign-maininfo" class="container sticky-top">
             <!-- 手機是置中的carousel，在桌機是左欄 -->
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
                         <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
+                            allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
                     </div>
                     <div id="campaign-summary" class="">
                         <p>@Model.ProjectDetailItem.ProjectName</p>
                         <div id="campaign-progress " class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="@num" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="@num"
+                                aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div id="creator-info" class="item-wrap">
@@ -49,7 +52,8 @@
                                 <div class="wrapper">
                                     <div class="item-text">
                                         <h5>
-                                            <span class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
+                                            <span
+                                                class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
                                         </h5>
                                     </div>
                                     <div id="follow-icon">
@@ -72,7 +76,8 @@
                         <div id="campaign-info-item">
                             <span class="badge badge-secondary">@Model.ProjectDetailItem.ProjectStatus</span>
                             <div id="donating-amount" class="number-row">
-                                <span class="label-grey">目標 @Model.ProjectDetailItem.AmountThreshold.ToString("C2")</span>
+                                <span class="label-grey">目標
+                                    @Model.ProjectDetailItem.AmountThreshold.ToString("C2")</span>
                                 <h2>$@Model.ProjectDetailItem.FundingAmount.ToString("###,###")</h2>
                             </div>
                             <hr class="display-sm">
@@ -438,17 +443,20 @@
             });
         };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
 
 
 
+    //官網傳送訊息程式碼:
+    $(document).on('click', '#send_msg', function () {
+        var content = $('#msg_content').val();
                                 //官網傳送訊息程式碼:
                                 //$(document).on('click', '#send_msg', function () {
                                 //    var content = $('#msg_content').val();
@@ -477,5 +485,5 @@
 
 
 
-    </script>
+</script>
 }
