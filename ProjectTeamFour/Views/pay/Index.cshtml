@@ -1,4 +1,4 @@
-﻿@model CartItemListViewModel
+﻿@model PayViewModel
 @{
     ViewBag.Title = "PayPage";
 }
@@ -40,67 +40,12 @@
                         <div class="no-result">
                             <p>購物車無任何商品</p>
                         </div>
-                    }
-
-                    @*<div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/product.jpg" alt="肉" class="pic">
-                            </div>
-                            <div class="product-item-text  col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text  col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-pic col-2 col-sm-2">
-                                <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                            </div>
-                            <div class="product-item-text col-10 col-sm-10">
-                                <h3>Food Planner</h3>
-                                <div><span>個</span><span>$28.00</span></div>
-                            </div>
-                        </div>*@
+                    }                   
                 </div>
                 <div class="checkout">
                     <div class="checkout-price">
                         <h4>subtotal</h4>
-                        <span>$28.98</span>
+                        <span>@Model.TotalAccount</span>
                     </div>
                     <div class="checkout-price">
                         <h4>shipping</h4>
@@ -108,7 +53,7 @@
                     </div>
                     <div class="check-total">
                         <h4>Total</h4>
-                        <P><span>USD</span>$28.98</P>
+                        <P><span>USD</span>@Model.TotalAccount</P>
                     </div>
                 </div>
             </div>
@@ -135,74 +80,16 @@
                             <div class="no-result">
                                 <p>購物車無任何商品</p>
                             </div>
-                        }
-                        @*<div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉" class="pic">
-                                </div>
-                                <div class="product-item-text  col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text  col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-item-pic col-2 col-sm-2">
-                                    <img src="~/Assets/Img/pay/pic.png" alt="肉">
-                                </div>
-                                <div class="product-item-text col-10 col-sm-10">
-                                    <h3>Food Planner</h3>
-                                    <div><span>個</span><span>$28.00</span></div>
-                                </div>
-                            </div>*@
+                        }                        
                     </div>
-                    <div class="checkout">
-                        <div class="checkout-price">
-                            <h4>subtotal</h4>
-                            <span>$28.98</span>
-                        </div>
+                    <div class="checkout">                        
                         <div class="checkout-price">
                             <h4>shipping</h4>
                             <span>Calculated at next step</span>
                         </div>
                         <div class="check-total">
                             <h4>Total</h4>
-                            <P><span>USD</span>$28.98</P>
+                            <P><span>USD</span>@Model.TotalAccount</P>
                         </div>
                     </div>
                 </div>
@@ -231,25 +118,25 @@
                     <div class="content-deliver">
                         <div id="app" class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫真實姓名">
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}"*@  placeholder="請填寫姓名" value="@Model.MemberName">
+                            @*<div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此">
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}"*@ placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
+                            @*<div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫">
-                            <div class="text-danger">
+                            <input type="text" @*v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}"*@ placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
+                            @*<div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
-                            </div>
+                            </div>*@
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫">
-                            <div class="text-danger ">
+                            <input type="text" @*v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}"*@ placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
+                            @*<div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -281,19 +168,15 @@
                         <div class="support">
                             <div class="pay-money">
                                 <h5>贊助金額</h5>
-                                <p>7580</p>
-                            </div>
-                            <div class="pay-money">
-                                <h5>+ 運費</h5>
-                                <p>400</p>
-                            </div>
+                                <p>@Model.TotalAccount</p>
+                            </div>                            
                             <div class="pay-money">
                                 <h5>+額外支持</h5>
                                 <input type="text" placeholder="0" id="bonus">
                             </div>
                             <div class="pay-money">
                                 <h5>= 總金額 NTD</h5>
-                                <P>7980</P>
+                                <P>@Model.TotalAccount</P>
                             </div>
                         </div>
                     </div>

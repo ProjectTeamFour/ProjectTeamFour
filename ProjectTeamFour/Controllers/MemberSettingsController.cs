@@ -16,11 +16,11 @@ namespace ProjectTeamFour.Controllers
 {
     public class MemberSettingsController : Controller
     {
-        private MemberService _memberService;
+        private MemberSettingService _memberSettingService;
 
         public MemberSettingsController()
         {
-            _memberService = new MemberService();
+            _memberSettingService = new MemberSettingService();
         }
 
         // GET: Member
@@ -62,7 +62,7 @@ namespace ProjectTeamFour.Controllers
         //return View();
         //}
 
-        // GET: Member/Edit/5
+        
         //public ActionResult Edit(string id)
         //{
         //    // id = realID_type_text
@@ -87,39 +87,43 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult Info(int id)
         {
-            MemberViewModel editMemberVM = new MemberViewModel();
+            EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberService.GetMember(x => x.MemberId == id);
+            var memberInfo = _memberSettingService.GetMember(id);
             editMemberVM = memberInfo;
 
             return View(memberInfo);            
         }
 
-
+        // GET: Member/Edit/5
         public ActionResult Edit(int id) //編輯該會員個人資料
         {
-            MemberViewModel editMemberVM = new MemberViewModel();
+            EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberService.GetMember(x => x.MemberId == id);
+            var memberInfo = _memberSettingService.GetMember(id);
             editMemberVM = memberInfo;
 
-            
-            if (memberInfo != default(ViewModels.MemberViewModel))
+            if (memberInfo != default(ViewModels.EditMemberViewModel))
             {
                 return View(memberInfo);
             }
             return View();
         }
 
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        //public ActionResult Edit(int id)
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "iD,MemberName,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage")] EditMemberViewModel editmemberVM)
         //{
-        //   if(ModelState.IsValid)
+        //    if (ModelState.IsValid)
         //    {
-        //        return Content("修改成功!");
+        //        var newData = _memberSettingService.Update(editmemberVM);
+        //        editmemberVM = newData;
+        //        //= EntityState.Modified;
+        //        //db.SaveChanges();
+                
+        //        return RedirectToAction("Index");
         //    }
-        // return RedirectToAction("Index");
+        //    return View(editmemberVM);
         //}
 
         protected override void Dispose(bool disposing)

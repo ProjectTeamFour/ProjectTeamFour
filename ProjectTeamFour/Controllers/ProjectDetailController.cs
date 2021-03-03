@@ -25,11 +25,10 @@ namespace ProjectTeamFour.Controllers
         {
             var projectDetailService = new ProjectDetailEntityService();
 
-            if (string.IsNullOrEmpty(id.ToString()))
+            if (id.ToString()==null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return HttpNotFound();
             }
-
             ProjectTotalViewModel projectTotalVM = new ProjectTotalViewModel()
             {
                 ProjectDetailItem = new ProjectDetailViewModel(),

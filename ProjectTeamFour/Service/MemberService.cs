@@ -8,6 +8,8 @@ using System.Data.Entity;
 using System.Net.Http;
 using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace ProjectTeamFour.Service
 {
@@ -28,6 +30,7 @@ namespace ProjectTeamFour.Service
             {
                 var viewModel = new MemberViewModel
                 {
+                    MemberId=entity.MemberId,
                     MemberName = entity.MemberName,
                     MemberTeamName = entity.MemberTeamName,
                     MemberAccount = entity.MemberAccount,
@@ -117,26 +120,23 @@ namespace ProjectTeamFour.Service
             return result;
         }
         //修改    
-        public OperationResult Update(MemberViewModel input)
+        public OperationResult Update(EditMemberViewModel input)
         {
             var result = new OperationResult();
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
                 entity.MemberName = input.MemberName;
-                entity.MemberTeamName = input.MemberTeamName;
-                entity.MemberAccount = input.MemberAccount;
-                entity.MemberPassword = input.MemberPassword;
-                entity.MemberAddress = input.MemberAddress;
-                entity.MemberPhone = input.MemberPhone;
-                entity.MemberRegEmail = input.MemberRegEmail;
                 entity.MemberConEmail = input.MemberConEmail;
-                entity.Gender = input.Gender;
-                entity.MemberBirth = input.MemberBirth;
+                if (input.Gender != "請選擇性別")
+                {
+                    entity.Gender = input.Gender;
+                }
+                //entity.MemberBirth = input.MemberBirth;
                 entity.AboutMe = input.AboutMe;
                 entity.ProfileImgUrl = input.ProfileImgUrl;
                 entity.MemberWebsite = input.MemberWebsite;
-                entity.MemberMessage = input.MemberMessage;
+                entity.ProfileImgUrl = input.ProfileImgUrl;
                 _repository.Update(entity);
                 result.IsSuccessful = true;
             }
@@ -164,7 +164,7 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
-        public int RetutnLoginnerId()
+        public int ReturnLoginnerId()
         {
             var session = HttpContext.Current.Session;
             if (session["Member"] == null)
@@ -173,6 +173,11 @@ namespace ProjectTeamFour.Service
             }
             return ((MemberViewModel)session["Member"]).MemberId;
         }
-
+        public void Relogin()
+        {
+            var session = HttpContext.Current.Session;
+            int id= ((MemberViewModel)session["Member"]).MemberId;
+             session["Member"] = GetMember(p=>p.MemberId==id);
+        }
     }      
 }

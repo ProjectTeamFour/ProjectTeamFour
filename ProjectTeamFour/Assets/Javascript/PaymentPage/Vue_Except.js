@@ -56,7 +56,7 @@
                 this.inputDataCheck.TelError = true;
                 this.inputDataCheck.TelErrorMsg = '開頭必須為09';
             }
-            else if (this.inputData.Tel.length != 10) {
+            else if (this.inputData.Tel.length < 10) {
                 this.inputDataCheck.TelError = true;
                 this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼';
             }

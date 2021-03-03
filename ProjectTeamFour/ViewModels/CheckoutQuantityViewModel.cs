@@ -5,10 +5,8 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class ProjectCategoryViewModel
+    public class CheckoutQuantityViewModel
     {
-        public string categoryAndprojectStatus { get; set; }
-       
-
+        public List<int> Quantity { get; set; }
     }
 }

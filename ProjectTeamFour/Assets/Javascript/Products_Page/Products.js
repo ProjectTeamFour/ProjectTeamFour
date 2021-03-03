@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     $('.category-group').slick({
         centerMode: false,
         slidesToShow: 7,
@@ -127,23 +128,16 @@ orderByItem.click(function () {
     }
 })
 
-//let menu = $("#menu");//事件綁定父層
-//let ongoing = $("#ongoing");
-//let success = $("#success");
-//let total = $("#total");
+//let card = document.querySelectorAll("card");
+//let btnMore = document.getElementById("btn-more");
 
-//menu.click(function () {
-//    if ($(menu).children("a#ongoing")) {
-//        url2.innerText = '';
-//        url2.innerText = '集資中';
-//        var url = decodeURI(encodeURI(`/Projects/Index/?category=${url1.innerText}&projectStatus=${url2.innerText}`));
-//        ongoing.attr("href", url);
-//    }
-//    if ($(menu).children("a#success")) {
-//        url2.innerText = '';
-//        url2.innerText = '集資成功';
-//        var url = decodeURI(encodeURI(`/Projects/Index/?category=${url1.innerText}&projectStatus=${url2.innerText}`));
-//        success.attr("href", url);
+//btnMore.addEventListener("click", function () {
+//    for (i = 12; i < card.length; i++) {
+//        card = card + 1;
 //    }
 //})
+
+
+
+
 
