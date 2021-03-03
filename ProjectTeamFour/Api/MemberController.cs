@@ -11,9 +11,10 @@ using System.Linq.Expressions;
 using System.Web.Hosting;
 using Newtonsoft.Json;
 using System.Web;
-
-
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using System.Web.Mvc;
+
 
 namespace ProjectTeamFour.Api
 {
@@ -96,6 +97,34 @@ namespace ProjectTeamFour.Api
                 return "失敗";
             }
         }
+   
+        public string CheckPermission([FromBody]CheckPermissionViewModel input)
+        {
+            CheckPermissionViewModel cv = _permissionService.CheckPermission(input.MemberId, input.PermissionId);
+            return JsonConvert.SerializeObject(cv);
+        }
+        public string SetPermission([FromBody]CheckPermissionViewModel input)
+        {
+            return _permissionService.SetPermission(input.MemberId, input.PermissionId, input.Checked);
+        }
+
+        public string UploadFiles()
+        {
+            HttpFileCollection files = HttpContext.Current.Request.Files;
+            HttpPostedFile file = files[0];
+            var stream = file.InputStream;
+            var myAccount = new Account { ApiKey = "846843815975652", ApiSecret = "qMRPPwm3IgED3Uzefx5CRhz_W7g", Cloud = "dymc0bi31" };
+            Cloudinary _cloudinary = new Cloudinary(myAccount);
+
+            var uploadParams = new ImageUploadParams()
+            {
+                File = new FileDescription(file.FileName, stream)
+            };
+            ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
+            return uploadResult.SecureUri.AbsoluteUri;
+        }
+
+
         //public string GetManagerIndex()
         //{
         //    var Members = _memberService.GetMembers();
@@ -107,15 +136,7 @@ namespace ProjectTeamFour.Api
         //    };
         //    return JsonConvert.SerializeObject(result);
         //}
-        public string CheckPermission([FromBody]CheckPermissionViewModel input)
-        {
-            CheckPermissionViewModel cv = _permissionService.CheckPermission(input.MemberId, input.PermissionId);
-            return JsonConvert.SerializeObject(cv);
-        }
-        public string SetPermission([FromBody]CheckPermissionViewModel input)
-        {
-            return _permissionService.SetPermission(input.MemberId, input.PermissionId, input.Checked);
-        }
+
         //沒有登入回傳0
         //[System.Web.Http.HttpGet]
         //[System.Web.Http.Route("MyApi")]
