@@ -51,9 +51,11 @@ namespace ProjectTeamFour.Service
 
             foreach (var item in cart.CartItems) //先撈session
             {
+                var session = HttpContext.Current.Session;
+                var member123 = ((MemberViewModel)session["Member"]);
                 var plan = _repository.GetAll<Plan>().FirstOrDefault(X => X.PlanId == item.PlanId); //資料庫id==sessionId
-                var member = _repository.GetAll<Member>().FirstOrDefault(x =>x.MemberId == item.PlanId);
-
+                var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == member123.MemberId);
+                
                 var viewmodel = new PayViewModel
                 {
                     MemberName = member.MemberName,
