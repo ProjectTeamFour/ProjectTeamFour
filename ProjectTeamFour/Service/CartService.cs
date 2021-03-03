@@ -132,14 +132,19 @@ namespace ProjectTeamFour.Service
             }
             else
             {
-                foreach(var item in cartItems.CartItems)
-                {
-                    foreach(var quantity in QuantityArray.Quantity)
+               
+
+                    for (int i = 0; i < QuantityArray.Quantity.Count; i++)
                     {
-                        item.Quantity = quantity;
+
+
+                    cartItems.CartItems[i].Quantity = QuantityArray.Quantity[i];
+
+
                     }
-                    
-                }
+                
+
+
                 return cartItems;
             }
             

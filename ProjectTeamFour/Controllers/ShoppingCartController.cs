@@ -90,8 +90,8 @@ namespace ProjectTeamFour.Controllers
         {
             var carList = (CartItemListViewModel)Session["Cart"];
 
-            //carList = _CartService.ChangeCartQuantity(carList, QuantityArray);
-            
+            carList = _CartService.ChangeCartQuantity(carList, QuantityArray);
+
             Session["Cart"] = carList;
 
             return View("ListShoppingCart");
