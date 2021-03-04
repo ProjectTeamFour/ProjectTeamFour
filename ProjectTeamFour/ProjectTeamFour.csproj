@@ -367,6 +367,8 @@
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
+    <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
+    <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />

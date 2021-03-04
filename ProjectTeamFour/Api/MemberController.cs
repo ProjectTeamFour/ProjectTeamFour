@@ -58,12 +58,13 @@ namespace ProjectTeamFour.Api
                 return "失敗";       
             }
         }
-        public string Update([FromBody] EditMemberViewModel input)
+        public string Update(EditMemberViewModel input)
         {
             var result = new OperationResult();
             result = _memberService.Update(input);
             if (result.IsSuccessful)
             {
+                _memberService.Relogin();
                 return "成功";
             }
             else

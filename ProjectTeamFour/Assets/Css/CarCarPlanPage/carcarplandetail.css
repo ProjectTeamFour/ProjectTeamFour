@@ -231,50 +231,66 @@
         }
 
 
-    /* 加上 projectname 和 button */
+/* 加上 projectname 和 button */
 
 
 
-    .indemand-project .cardtemplate .project-amount .add-to-cart button {
-        border: none;
-        background-color: #f1c2b4;
-        font-size: 0.64rem;
-        margin-top: 0;
-        margin-bottom: 10px;
-        margin-left: 1rem;
-        padding: 0 5px 0 7px;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-        text-align: center;
-        border-radius: 5px;
-        transition: .3s;
+
+
+.indemand-project .cardtemplate .project-amount .add-to-cart button i {
+    margin-top: 2.5px;
+}
+
+.indemand-project .cardtemplate .project-amount .add-to-cart button {
+    border: none;
+    background-color: #f1c2b4;
+    font-size: 0.64rem;
+    margin-top: 0;
+/*    margin-bottom: 10px;*/
+/*    margin-left: 1rem;*/
+    padding: 0 5px 0 7px;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+
+    .indemand-project .cardtemplate .project-amount .add-to-cart button:hover {
+        background-color: #f9414a;
     }
 
 
-        .indemand-project .cardtemplate .project-amount .add-to-cart button:hover {
-            background-color: #f9414a;
-        }
+.indemand-project .cardtemplate .plan-title {
+    height: 5.5rem;
+}
 
 
-    .indemand-project .cardtemplate .plan-title {
-        height: 5.5rem;
+    .indemand-project .cardtemplate .plan-title h3 {
+        font-size: 0.65rem;
+        color: rgb(49, 48, 48);
     }
 
+.indemand-project .cardtemplate .project-name h4 {
+    font-size: 0.75rem;
+}
 
-        .indemand-project .cardtemplate .plan-title h3 {
-            font-size: 0.65rem;
-            color: rgb(49, 48, 48);
-        }
+.indemand-project .cardtemplate a {
+    outline: none;
+}
 
-    .indemand-project .cardtemplate .project-name h4 {
-        font-size: 0.75rem;
+/*@media screen and (max-width:321px) {
+
+    .indemand-project  .add-to-cart button {
+        font-size: 0.4rem;
     }
 
-    .indemand-project .cardtemplate a {
-        outline: none;
+    .indemand-project .add-to-cart button {
+        font-size: 0.4rem;
     }
-
-
+}
+*/
 
 
 @media screen and (min-width: 768px) {
@@ -299,8 +315,9 @@
         font-size: 0.85rem;
     }
 
-    .indemand-project .cardtemplate .project-amount .add-to-cart button a {
-        font-size: 0.85rem;
+    .indemand-project .cardtemplate .project-amount .add-to-cart button i {
+        font-size: 1rem;
+        margin-top: 2px;
     }
 
     .indemand-project .cardtemplate .project-amount .add-to-cart button p {
@@ -323,4 +340,3 @@
         font-size: 0.95rem;
     }
 }
-

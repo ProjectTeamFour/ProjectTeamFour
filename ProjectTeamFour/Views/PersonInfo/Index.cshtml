@@ -10,7 +10,6 @@
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
 }
 
-
 <div class="banner">
     <div class="wrap">
         <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
@@ -264,57 +263,57 @@
             <div class="tab-pane fade" id="pills-edit" role="tabpanel" aria-labelledby="pills-edit-tab">
                 <div class="edit">
                     <div class="wrap-inside">
-                        @if(vm==null)
+                        @if (vm == null)
                         {
-                            Html.ActionLink("登入","Login","Member");
+                            Html.ActionLink("登入", "Login", "Member");
                         }
                         else if (vm != null)
                         {
-                            <form method="post" action="" accept-charset="UTF-8">
-                                <div id="user-profile" class="container">
-                                    <div class="form-group row">
-                                        <!-- 左欄 -->
-                                        <div class="left col-12 col-md-6">
-                                            <div id="upload-img">
-                                                <!-- 這裡是複製的 -->
-                                                <div class="flyingUpload">
-                                                    <svg width="93" height="93" class="transpCircle">
-                                                        <mask id="mask">
-                                                            <rect fill="white" width="100%" height="100%" />
-                                                            <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
-                                                        </mask>
-                                                        <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
-                                                    </svg>
-                                                    <img src="@vm.ProfileImgUrl" alt=""
-                                                         class="avatar" style="width: 93px;" id="imgshow">
-                                                    <span class="image-hinter">
-                                                        <strong>上傳圖片</strong><br>
-                                                        <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
-                                                    </span>
-                                                    <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file" >
-                                                    <div id="imgurl" hidden="hidden"></div>
-                                                </div>
+                            //<form method="post" action="" accept-charset="UTF-8">
+                            <div id="user-profile" class="container">
+                                <div class="form-group row">
+                                    <!-- 左欄 -->
+                                    <div class="left col-12 col-md-6">
+                                        <div id="upload-img">
+                                            <!-- 這裡是複製的 -->
+                                            <div class="flyingUpload">
+                                                <svg width="93" height="93" class="transpCircle">
+                                                    <mask id="mask">
+                                                        <rect fill="white" width="100%" height="100%" />
+                                                        <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
+                                                    </mask>
+                                                    <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
+                                                </svg>
+                                                <img src="@vm.ProfileImgUrl" alt=""
+                                                     class="avatar" style="width: 93px;" id="imgshow">
+                                                <span class="image-hinter">
+                                                    <strong>上傳圖片</strong><br>
+                                                    <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
+                                                </span>
+                                                <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file">
+                                                <div id="imgurl" hidden="hidden"></div>
                                             </div>
-                                            <div id="memberid" hidden="hidden">@vm.MemberId</div>
+                                        </div>
+                                        <div id="memberid" hidden="hidden">@vm.MemberId</div>
 
-                                            <div id="register-email" class="form-group">
-                                                <label for="inputEmail">註冊信箱</label>
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
-                                                <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
-                                            </div>
-                                            <div id="contact-email" class="form-group">
-                                                <label for="inputEmail">聯絡信箱</label>
-                                                <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
-                                            </div>
-                                            <div id="gender" class="form-group">
-                                                <label for="gender">性別</label>
-                                                <select class="form-control" id="gender1" name="Gender">
-                                                    <option>請選擇性別</option>
-                                                    <option>男性</option>
-                                                    <option>女性</option>
-                                                    <option>其他</option>
-                                                </select>
-                                            </div>
+                                        <div id="register-email" class="form-group">
+                                            <label for="inputEmail">註冊信箱</label>
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
+                                            <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
+                                        </div>
+                                        <div id="contact-email" class="form-group">
+                                            <label for="inputEmail">聯絡信箱</label>
+                                            <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
+                                        </div>
+                                        <div id="gender" class="form-group">
+                                            <label for="gender">性別</label>
+                                            <select class="form-control" id="gender1" name="Gender">
+                                                <option>請選擇性別</option>
+                                                <option>男性</option>
+                                                <option>女性</option>
+                                                <option>其他</option>
+                                            </select>
+                                        </div>
 
                                             <div class="form-group">
                                                 <label for="birthday">生日</label>
@@ -364,7 +363,7 @@
                                         </blockquote>
                                         <div class="login-account form-group">
                                             <label for="account">登入帳號</label>
-                                            <input type="text" class="form-control" id="account" placeholder="example@gmail.com" readonly>
+                                            <input type="text" class="form-control" id="account" placeholder="@vm.MemberRegEmail" readonly>
                                         </div>
                                         <div class="reset-passward form-group">
                                             <label for="inputPassword">更改密碼</label>
@@ -401,79 +400,10 @@
         <p>@vm.MemberRegEmail</p>
     }*@
 
-
 @section endJs{
-    
 
+    <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-        document.getElementById('personinfo').addEventListener('click', function () {
-
-            var uploadimg = document.querySelector('#uploadimg');
-            uploadimg.addEventListener('change', function (e) {
-                debugger;
-                let files = $(this).get(0).files; 
-                let formData = new FormData();
-                formData.append(files[0].name, files[0]);
-                uploadFile(formData);
-            })
-           
-            var btn_submit = document.querySelector('#btnSub');
-            btn_submit.addEventListener('click', function () {
-                //console.log();
-                $.ajax({
-                    url: '/api/memberapi/update',
-                    type: 'post',
-                    data: {
-                        MemberId: $('#memberid').text(),
-                        MemberConEmail: $('#contactEmail').val(),
-                        Gender: document.getElementById('gender1').selectedOptions[0].text,
-                        MemberBirth: document.getElementById('birthday1').value,
-                        AboutMe: $('#about').val(),
-                        MemberName: $('#name1').val(),
-                        MemberWebsite: $('#personal-site').val(),
-                        ProfileImgUrl: document.getElementById('imgshow').getAttribute('src')
-                    },
-                    success: function (response) {
-                        console.log('-------------------');
-                        console.log(response);
-                        if (response == "成功") {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: '修改成功',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                        else {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'error',
-                                title: '修改失敗',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    }
-                })
-            })
-        })
-
-        function uploadFile(formData) {
-            debugger;
-            console.log(formData);
-            $.ajax({
-                url: '/api/memberapi/UploadFiles',
-                method: 'post',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    document.getElementById('imgshow').setAttribute('src', response);
-                }
-            })
-        }
-    
 
 //import { json } from "modernizr";
 
@@ -505,65 +435,63 @@
 //            );
 //            xhr.send();
 //        }
-        //const app = new Vue({
-        //    el: '#app',
-        //    data() {
-        //        return {
-        //            formObj: {
-        //                contry: '',
-        //                province: '',
-        //                city: '',
-        //                area: '',
-        //                detail: '',
-        //                phone: '',
-        //                number: ''
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        onSubmit(event) {
-        //            event.preventDefault();
-        //            let formData = JSON.stringify(this.formObj);
-        //            console.log(formData);
-        //            this.$http.post('', formData).then(function (res) {
-        //                if (res.status === 2000) {
+            //const app = new Vue({
+            //    el: '#app',
+            //    data() {
+            //        return {
+            //            formObj: {
+            //                contry: '',
+            //                province: '',
+            //                city: '',
+            //                area: '',
+            //                detail: '',
+            //                phone: '',
+            //                number: ''
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        onSubmit(event) {
+            //            event.preventDefault();
+            //            let formData = JSON.stringify(this.formObj);
+            //            console.log(formData);
+            //            this.$http.post('', formData).then(function (res) {
+            //                if (res.status === 2000) {
 
-        //                }
-        //                else {
+            //                }
+            //                else {
 
-        //                }
-        //            });
-        //        },
-        //}
+            //                }
+            //            });
+            //        },
+            //}
 
+            //})
 
-        //})
+            //export default {
+            //    data: {
+            //        return {
+            //            student: {
+            //                userName: "",
+            //                gender: ""
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        submit() {
 
-        //export default {
-        //    data: {
-        //        return {
-        //            student: {
-        //                userName: "",
-        //                gender: ""
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        submit() {
+            //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
+            //            this.$http.post('', formData).then(function (data) {
+            //                if (data.json().state == "success")
+            //                    console.log("success");
+            //            }
+            //    }).catch(function () {
+            //                console.log("服务器异常！");
+            //            });
 
-        //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
-        //            this.$http.post('', formData).then(function (data) {
-        //                if (data.json().state == "success")
-        //                    console.log("success");
-        //            }
-        //    }).catch(function () {
-        //                console.log("服务器异常！");
-        //            });
+            //    }
 
-        //    }
-
-        //}
-        //}
-        
+            //}
+            //}
     </script>
-    }
+}

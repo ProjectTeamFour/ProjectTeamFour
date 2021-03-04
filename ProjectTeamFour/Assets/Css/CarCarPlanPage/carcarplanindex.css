@@ -189,6 +189,12 @@
 
 
 
+    .indemand-project .cardtemplate .project-amount .add-to-cart button i {
+        margin-top: 2.5px;
+    }
+
+
+
     .indemand-project .cardtemplate .project-amount .add-to-cart button {
         border: none;
         background-color: #f1c2b4;
@@ -253,8 +259,9 @@
         font-size: 0.85rem;
     }
 
-    .indemand-project .cardtemplate .project-amount .add-to-cart button a {
-        font-size: 0.85rem;
+    .indemand-project .cardtemplate .project-amount .add-to-cart button i {
+        font-size: 1rem;
+        margin-top: 2px;
     }
 
     .indemand-project .cardtemplate .project-amount .add-to-cart button p {
