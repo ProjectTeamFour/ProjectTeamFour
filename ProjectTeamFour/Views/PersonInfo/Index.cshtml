@@ -10,7 +10,6 @@
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
 }
 
-
 <div class="banner">
     <div class="wrap">
         <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
@@ -320,8 +319,6 @@
                                             <label for="birthday">生日</label>
                                             <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
                                         </div>
-
-
                                     </div>
                                     <!-- 右欄 -->
                                     <div class="right col-12 col-md-6">
@@ -337,18 +334,16 @@
                                             <label for="personal-site">個人網站</label>
                                             <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
                                         </div>
-
                                     </div>
                                 </div>
                                 <hr>
-                                @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
+                                @*<input type="submit" value="儲存" class="btn btn-primary" />*@
                                 <button id="btnSub">123</button>
                                 <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
                                 @Html.ActionLink("會員資料", "Index", "PersonInfo")
                             </div>
                             //</form>
                         }
-
                     </div>
                 </div>
             </div>
@@ -364,7 +359,7 @@
                                         </blockquote>
                                         <div class="login-account form-group">
                                             <label for="account">登入帳號</label>
-                                            <input type="text" class="form-control" id="account" placeholder="example@gmail.com" readonly>
+                                            <input type="text" class="form-control" id="account" placeholder="@vm.MemberRegEmail" readonly>
                                         </div>
                                         <div class="reset-passward form-group">
                                             <label for="inputPassword">更改密碼</label>
@@ -490,7 +485,6 @@
                                             <div class="hint small grey"> flyingV 為您精心挑選的好案介紹</div>
                                             <hr>
                                         </div>
-
                                     </div>
                                     <div class=" col-12 col-md-4">
                                         <blockquote class="colored-label">
@@ -515,7 +509,6 @@
                                             <div class="hint small grey"> 專案有新的留言便會寄信給您</div>
                                             <hr>
                                         </div>
-
                                     </div>
                                 </div>
                                 <button id="delete-account" class="btn btn-primary">儲存設定</button>
@@ -532,12 +525,10 @@
     <p>@vm.MemberRegEmail</p>
 }
 
-
 @section endJs{
 
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-
 
 //import { json } from "modernizr";
 
@@ -569,65 +560,63 @@
 //            );
 //            xhr.send();
 //        }
-        //const app = new Vue({
-        //    el: '#app',
-        //    data() {
-        //        return {
-        //            formObj: {
-        //                contry: '',
-        //                province: '',
-        //                city: '',
-        //                area: '',
-        //                detail: '',
-        //                phone: '',
-        //                number: ''
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        onSubmit(event) {
-        //            event.preventDefault();
-        //            let formData = JSON.stringify(this.formObj);
-        //            console.log(formData);
-        //            this.$http.post('', formData).then(function (res) {
-        //                if (res.status === 2000) {
+            //const app = new Vue({
+            //    el: '#app',
+            //    data() {
+            //        return {
+            //            formObj: {
+            //                contry: '',
+            //                province: '',
+            //                city: '',
+            //                area: '',
+            //                detail: '',
+            //                phone: '',
+            //                number: ''
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        onSubmit(event) {
+            //            event.preventDefault();
+            //            let formData = JSON.stringify(this.formObj);
+            //            console.log(formData);
+            //            this.$http.post('', formData).then(function (res) {
+            //                if (res.status === 2000) {
 
-        //                }
-        //                else {
+            //                }
+            //                else {
 
-        //                }
-        //            });
-        //        },
-        //}
+            //                }
+            //            });
+            //        },
+            //}
 
+            //})
 
-        //})
+            //export default {
+            //    data: {
+            //        return {
+            //            student: {
+            //                userName: "",
+            //                gender: ""
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        submit() {
 
-        //export default {
-        //    data: {
-        //        return {
-        //            student: {
-        //                userName: "",
-        //                gender: ""
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        submit() {
+            //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
+            //            this.$http.post('', formData).then(function (data) {
+            //                if (data.json().state == "success")
+            //                    console.log("success");
+            //            }
+            //    }).catch(function () {
+            //                console.log("服务器异常！");
+            //            });
 
-        //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
-        //            this.$http.post('', formData).then(function (data) {
-        //                if (data.json().state == "success")
-        //                    console.log("success");
-        //            }
-        //    }).catch(function () {
-        //                console.log("服务器异常！");
-        //            });
+            //    }
 
-        //    }
-
-        //}
-        //}
-
+            //}
+            //}
     </script>
 }
