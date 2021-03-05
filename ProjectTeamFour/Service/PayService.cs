@@ -134,11 +134,10 @@ namespace ProjectTeamFour.Service
 
         public List<string> ConnectECPay()
         {
+            var session = HttpContext.Current.Session;
             List<string> enErrors = new List<string>();
-            PayViewModel preparePayViewModel=new PayViewModel()
-            {
-
-            }
+            var cartSession = ((CartItemListViewModel)session["Cart"]);
+            PayViewModel readyToPay = QueryByPlanId(cartSession);
             try
             {
                 using (AllInOne oPayment = new AllInOne())
@@ -172,12 +171,22 @@ namespace ProjectTeamFour.Service
                     oPayment.Send.CustomField4 = "";
                     oPayment.Send.EncryptType = 1;
 
-                    
-                    //訂單的商品資料
-                    oPayment.Send.Items.Add(new Item()
+                    foreach(var order in readyToPay.CartItems)
                     {
-                        
-                    });
+                        //訂單的商品資料
+                        oPayment.Send.Items.Add(new Item()
+                        {
+                            
+                            Name = order.PlanTitle,//商品名稱
+                            Price = order.PlanPrice,//商品單價
+                            Currency = "新台幣",//幣別單位
+                            Quantity = order.Quantity,//購買數量
+                            Unit="件",
+                            URL = $"/ProjectDetail/Index/{order.ProjectId}",//商品的說明網址
+                        });
+                    }
+                    
+                  
 
                     /*************************非即時性付款:ATM、CVS 額外功能參數**************/
 
