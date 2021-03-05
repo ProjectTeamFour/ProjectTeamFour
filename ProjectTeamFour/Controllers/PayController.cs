@@ -43,9 +43,14 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay()
         {
-            
-            
-            return View();
+            //var cartlist = new CarCarPlanViewModel();
+            if (true)
+            {                
+               
+                _PayService.CreateOrderToDB();
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

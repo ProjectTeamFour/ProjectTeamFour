@@ -74,71 +74,56 @@ namespace ProjectTeamFour.Service
             return ((MemberViewModel)session["Member"]).MemberId;
         }
         //回傳訂單資料給資料庫
-        public void CreateOrderToDB(CarCarPlanViewModel cartPlan) //把購物車的資料&member回傳給資料庫
+        public void CreateOrderToDB() //把購物車的資料&member回傳給資料庫
         {
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var cartSession = ((CartItemListViewModel)session["Cart"]);
             var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓
-            var cart = cartSession.CartItems.Where(x => x.PlanId == cartPlan.PlanId).Select(x => x).FirstOrDefault(); //從session抓
-            var plan = _repository.GetAll<Plan>().Where((x) => x.ProjectId == cartPlan.ProjectId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
-                                                                                                                                     //製作order資料  把其他viewmodel資料指派給order    
+            //var cart = cartSession.CartItems.Where(x => x.PlanId == cartPlan.PlanId).Select(x => x).FirstOrDefault(); //從session抓
 
-            var order = new PayViewModel
+            var order = new Order
             {
+                MemberId = member.MemberId,
                 OrderName = member.MemberName,
                 OrderAddress = member.MemberAddress,
                 OrderPhone = member.MemberPhone,
                 OrderConEmail = member.MemberConEmail,
-                OrderItems = new List<OrderDetail>()
+                OrderTotalAccount = cartSession.TotalAccount,                
             };
-            foreach(var item in order.OrderItems)
+            _repository.Create(order);
+
+
+            List<OrderDetail> od = new List<OrderDetail>();
+            foreach( var i in cartSession.CartItems)
             {
-                var orderitem = new OrderDetail
+                var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId== i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
+                var o = new OrderDetail()
                 {
                     PlanTitle = plan.PlanTitle,
                     PlanId = plan.PlanId,
                     OrderPrice = plan.PlanPrice,
-                    OrderQuantity = cart.Quantity,
-                    OrderId = order.OrderId,
+                    OrderQuantity = i.Quantity,
                 };
-                order.OrderItems.Add(orderitem);
+                od.Add(o);
+
             }
-            _repository.Create(order);
-
-
-            //var order = new Order
-            //{
-            //    MemberId = member.MemberId,
-            //    OrderName = member.MemberName,
-            //    OrderAddress = member.MemberAddress,
-            //    OrderPhone = member.MemberPhone,
-            //    OrderConEmail = member.MemberConEmail,
-            //};
-            //var orderlist = new List<OrderDetail>
-            //{
-            //     order = new OrderDetail
-            //     {
-            //         PlanTitle = plan.PlanTitle,
-            //         PlanId = plan.PlanId,
-            //         OrderPrice = plan.PlanPrice,
-            //         OrderQuantity = cart.Quantity,
-            //         OrderId = order.OrderId,
-            //     }                 
-            //};
-            //orderlist.Add();
-            //_repository.Create(order);
-            //_repository.Create(orderlist);
-
+           
+            foreach (var item in od)
+            {
+                item.OrderId = order.OrderId;
+                 _repository.Create(item);
+            }
+                                                                                                      
         }
 
         public List<string> ConnectECPay()
         {
             List<string> enErrors = new List<string>();
-            PayViewModel preparePayViewModel=new PayViewModel()
+            PayViewModel preparePayViewModel = new PayViewModel()
             {
 
-            }
+            };
             try
             {
                 using (AllInOne oPayment = new AllInOne())

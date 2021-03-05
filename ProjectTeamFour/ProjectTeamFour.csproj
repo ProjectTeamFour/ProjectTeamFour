@@ -49,7 +49,7 @@
       <HintPath>..\packages\CloudinaryDotNet.1.14.0\lib\net45\CloudinaryDotNet.dll</HintPath>
     </Reference>
     <Reference Include="ECPay.Payment.Integration">
-      <HintPath>..\..\FinanceApi\ECPay.Payment.Integration.dll</HintPath>
+      <HintPath>Assets\Plugin\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -2196,7 +2196,6 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
-    <Content Include="Views\Projects\Getalll.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
@@ -2217,6 +2216,7 @@
     <Content Include="Views\Shared\PartialView\_messagePartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
+    <Content Include="Views\Projects\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
