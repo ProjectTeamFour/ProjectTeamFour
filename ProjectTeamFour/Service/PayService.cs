@@ -109,6 +109,10 @@ namespace ProjectTeamFour.Service
         public List<string> ConnectECPay()
         {
             List<string> enErrors = new List<string>();
+            PayViewModel preparePayViewModel=new PayViewModel()
+            {
+
+            }
             try
             {
                 using (AllInOne oPayment = new AllInOne())
@@ -142,10 +146,11 @@ namespace ProjectTeamFour.Service
                     oPayment.Send.CustomField4 = "";
                     oPayment.Send.EncryptType = 1;
 
+                    
                     //訂單的商品資料
                     oPayment.Send.Items.Add(new Item()
                     {
-
+                        
                     });
 
                     /*************************非即時性付款:ATM、CVS 額外功能參數**************/
