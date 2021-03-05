@@ -92,6 +92,23 @@ namespace ProjectTeamFour.Controllers
             return View(project);
         }
 
+        public ActionResult GetAll()
+        {
+            var projectService = new ProjectsService(); //呼叫service
+
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var GetAll = projectService.GetAllTotal();
+            foreach (var item in GetAll.ProjectItems)
+            {
+                project.ProjectItems.Add(item);
+            }
+
+            return View(project);
+        }
+
 
     }
 }

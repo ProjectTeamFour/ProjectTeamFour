@@ -2196,7 +2196,6 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
-    <Content Include="Views\Projects\Getalll.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
@@ -2218,6 +2217,7 @@
     <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
     <Content Include="Views\pay\ConnectECPay.cshtml" />
+    <Content Include="Views\Projects\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
