@@ -2210,6 +2210,7 @@
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_notifactionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

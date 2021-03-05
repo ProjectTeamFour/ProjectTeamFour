@@ -10,7 +10,6 @@
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
 }
 
-
 <div class="banner">
     <div class="wrap">
         <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
@@ -316,39 +315,39 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="birthday">生日</label>
-                                            <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
+                                            <div class="form-group">
+                                                <label for="birthday">生日</label>
+                                                <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
+                                            </div>
+
+
                                         </div>
+                                        <!-- 右欄 -->
+                                        <div class="right col-12 col-md-6">
+                                            <div id="about-me" class="form-group">
+                                                <label for="about" class="colored-label">關於我</label>
+                                                <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
+                                            </div>
+                                            <div id="name" class="form-group">
+                                                <label for="name">顯示名稱</label>
+                                                <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
+                                            </div>
+                                            <div id="personal-site" class="form-group">
+                                                <label for="personal-site">個人網站</label>
+                                                <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
+                                            </div>
 
-
+                                        </div>
                                     </div>
-                                    <!-- 右欄 -->
-                                    <div class="right col-12 col-md-6">
-                                        <div id="about-me" class="form-group">
-                                            <label for="about" class="colored-label">關於我</label>
-                                            <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
-                                        </div>
-                                        <div id="name" class="form-group">
-                                            <label for="name">顯示名稱</label>
-                                            <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
-                                        </div>
-                                        <div id="personal-site" class="form-group">
-                                            <label for="personal-site">個人網站</label>
-                                            <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
-                                        </div>
-
-                                    </div>
+                                    <hr>
+                                    @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
+                                    <button id="btnSub" class="btn btn-primary">儲存</button>
+                                    <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
+                                    @*@Html.ActionLink("會員資料", "Index", "PersonInfo")*@
                                 </div>
-                                <hr>
-                                @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
-                                <button id="btnSub">123</button>
-                                <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
-                                @Html.ActionLink("會員資料", "Index", "PersonInfo")
-                            </div>
-                            //</form>
+                           //</form>
                         }
-
+                        @*表單提交區域!!!*@
                     </div>
                 </div>
             </div>
@@ -364,7 +363,7 @@
                                         </blockquote>
                                         <div class="login-account form-group">
                                             <label for="account">登入帳號</label>
-                                            <input type="text" class="form-control" id="account" placeholder="example@gmail.com" readonly>
+                                            <input type="text" class="form-control" id="account" placeholder="@vm.MemberRegEmail" readonly>
                                         </div>
                                         <div class="reset-passward form-group">
                                             <label for="inputPassword">更改密碼</label>
@@ -373,9 +372,9 @@
                                         <button type="submit" class="btn btn-primary">更改密碼</button>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <label for="linked-account" class="colored-label">
+                                        <blockquote for="linked-account" class="colored-label">
                                             <p>社群綁定</p>
-                                        </label>
+                                        </blockquote>
                                     </div>
                                 </div>
                                 <hr>
@@ -388,156 +387,23 @@
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
-                        <form action="">
-                            <div id="notifaction-setting" class="container">
-
-                                <div class="form-group row">
-                                    <div class="col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>動態通知</p>
-                                        </blockquote>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_success]" type="checkbox" value="1">
-                                                專案達標
-                                            </label>
-                                            <div class="hint small grey"> 跟您分享專案達標的喜悅</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_update]" type="checkbox" value="1">
-                                                專案內容更新
-                                            </label>
-
-                                            <div class="hint small grey"> 及時掌握提案團隊更新的內容</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_countdown]" type="checkbox" value="1">
-                                                專案結束倒數
-                                            </label>
-
-                                            <div class="hint small grey"> 專案結束前的溫情提醒</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][follower_donate]" type="checkbox" value="1">
-                                                社群贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 社群好友贊助專案時發送的通知</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_reply]" type="checkbox" value="1">
-                                                提案者回覆留言
-                                            </label>
-
-                                            <div class="hint small grey"> 秒讀提案團隊回應內容</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][system_event]" type="checkbox" value="1">
-                                                平台重大活動通知
-                                            </label>
-
-                                            <div class="hint small grey"> 所有我們想邀請您一起參與的美好事物</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][system_statement]" type="checkbox" value="1">
-                                                平台全站聲明
-                                            </label>
-
-                                            <div class="hint small grey"> 您最重要的用戶權益</div>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class=" col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>平台系統通知信</p>
-                                        </blockquote>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][project_post]" type="checkbox" value="1">
-                                                專案進度更新
-                                            </label>
-
-                                            <div class="hint small grey"> 已贊助專案發送進度報告的通知信件</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][follower_donate]" type="checkbox" value="1">
-                                                社群贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 社群好友贊助專案時發送的通知信件</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][weekly]" type="checkbox" value="1">
-                                                每週精選專案
-                                            </label>
-
-                                            <div class="hint small grey"> flyingV 為您精心挑選的好案介紹</div>
-                                            <hr>
-                                        </div>
-
-                                    </div>
-                                    <div class=" col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>提案者系統通知信</p>
-                                        </blockquote>
-
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[creator][backers]" type="checkbox" value="1">
-                                                專案新贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 有新贊助者便會寄信給您</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[creator][comments]" type="checkbox" value="1">
-                                                專案新留言通知
-                                            </label>
-
-                                            <div class="hint small grey"> 專案有新的留言便會寄信給您</div>
-                                            <hr>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <button id="delete-account" class="btn btn-primary">儲存設定</button>
-                            </div>
-                        </form>
+                        
+                            @Html.Partial("~/Views/Shared/PartialView/_notifactionPartial.cshtml")
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@if (vm != null)
-{
-    <p>@vm.MemberRegEmail</p>
-}
-
+    @*@if (vm != null)
+    {
+        <p>@vm.MemberRegEmail</p>
+    }*@
 
 @section endJs{
 
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-
 
 //import { json } from "modernizr";
 
@@ -569,65 +435,63 @@
 //            );
 //            xhr.send();
 //        }
-        //const app = new Vue({
-        //    el: '#app',
-        //    data() {
-        //        return {
-        //            formObj: {
-        //                contry: '',
-        //                province: '',
-        //                city: '',
-        //                area: '',
-        //                detail: '',
-        //                phone: '',
-        //                number: ''
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        onSubmit(event) {
-        //            event.preventDefault();
-        //            let formData = JSON.stringify(this.formObj);
-        //            console.log(formData);
-        //            this.$http.post('', formData).then(function (res) {
-        //                if (res.status === 2000) {
+            //const app = new Vue({
+            //    el: '#app',
+            //    data() {
+            //        return {
+            //            formObj: {
+            //                contry: '',
+            //                province: '',
+            //                city: '',
+            //                area: '',
+            //                detail: '',
+            //                phone: '',
+            //                number: ''
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        onSubmit(event) {
+            //            event.preventDefault();
+            //            let formData = JSON.stringify(this.formObj);
+            //            console.log(formData);
+            //            this.$http.post('', formData).then(function (res) {
+            //                if (res.status === 2000) {
 
-        //                }
-        //                else {
+            //                }
+            //                else {
 
-        //                }
-        //            });
-        //        },
-        //}
+            //                }
+            //            });
+            //        },
+            //}
 
+            //})
 
-        //})
+            //export default {
+            //    data: {
+            //        return {
+            //            student: {
+            //                userName: "",
+            //                gender: ""
+            //            }
+            //        }
+            //    },
+            //    methods: {
+            //        submit() {
 
-        //export default {
-        //    data: {
-        //        return {
-        //            student: {
-        //                userName: "",
-        //                gender: ""
-        //            }
-        //        }
-        //    },
-        //    methods: {
-        //        submit() {
+            //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
+            //            this.$http.post('', formData).then(function (data) {
+            //                if (data.json().state == "success")
+            //                    console.log("success");
+            //            }
+            //    }).catch(function () {
+            //                console.log("服务器异常！");
+            //            });
 
-        //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
-        //            this.$http.post('', formData).then(function (data) {
-        //                if (data.json().state == "success")
-        //                    console.log("success");
-        //            }
-        //    }).catch(function () {
-        //                console.log("服务器异常！");
-        //            });
+            //    }
 
-        //    }
-
-        //}
-        //}
-
+            //}
+            //}
     </script>
 }
