@@ -78,173 +78,21 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <section class="record">
                     <div class="wrap-inside">
-                        <div class="record-content">
-                            <h2>贊助紀錄</h2>
-                            <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
-                        </div>
-                        <span>單筆贊助</span>
-                        <div class="record-detail">
-                            <div class="record-detillist">
-                                <div class="record-detail-col">贊助專案</div>
-                                <div class="record-detail-col">贊助金額</div>
-                                <div class="record-detail-col">回饋項目</div>
-                                <div class="record-detail-col">金流單號</div>
-                                <div class="record-detail-col">收到了?</div>
-                            </div>
-                            <p>目前沒有任何贊助歷史</p>
-                        </div>
+                        @Html.Partial("~/Views/Shared/PartialView/_backingRecordsPartial.cshtml")
                     </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <section class="case">
                     <div class="wrap-inside">
-                        <div class="case-title">
-                            <h2>提案紀錄</h2>
-                            <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
-                        </div>
-                        <div class="case-doing">
-                            <div class="case-doing-funding">
-                                <h3>募資中專案</h3>
-                                <p>目前您沒有募資中專案</p>
-                            </div>
-                            <div class="case-doing-creating">
-                                <h3>創建中專案</h3>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="https://picsum.photos/800/600/?random=1">
-                                    </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>
-                                                專案名稱:
-                                                <span>1</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-money">
-                                            <h4>
-                                                目標金額:
-                                                <span>$5000</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-creat">
-                                            <h4>
-                                                <span>創建日期:2021/01/28</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4>
-                                                <span>提交日期:尚未提交</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4>
-                                                <span>上次修改日期:2021/01/29</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
-                                    </div>
-                                </div>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="https://picsum.photos/800/600/?random=1">
-                                    </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>
-                                                專案名稱:
-                                                <span>1</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-money">
-                                            <h4>
-                                                目標金額:
-                                                <span>$5000</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-creat">
-                                            <h4>
-                                                <span>創建日期:2021/01/28</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4>
-                                                <span>提交日期:尚未提交</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4>
-                                                <span>上次修改日期:2021/01/29</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
-                                    </div>
-                                </div>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="~/Assets/Img/personal/dog.jpg" alt="肉">
-                                    </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>
-                                                專案名稱:
-                                                <span>1</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-money">
-                                            <h4>
-                                                目標金額:
-                                                <span>$5000</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-creat">
-                                            <h4>
-                                                <span>創建日期:2021/01/28</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4>
-                                                <span>提交日期:尚未提交</span>
-                                            </h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4>
-                                                <span>上次修改日期:2021/01/29</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @Html.Partial("~/Views/Shared/PartialView/_myProjectPartial.cshtml")
                     </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">
                 <div class="message">
                     <div class="wrap-inside">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="search-item">
-                                    <select class="message-input" name="option">
-                                        <option value="1">最新</option>
-                                        <option value="2">未讀</option>
-                                        <option value="3">已讀</option>
-                                    </select>
-                                    <i class="fas fa-search"></i>
-                                    <input type="search">
-                                </div>
-                            </div>
-                        </div>
+                        @Html.Partial("~/Views/Shared/PartialView/_messagePartial.cshtml")
                     </div>
                 </div>
             </div>
@@ -284,7 +132,7 @@
                                                     </mask>
                                                     <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
                                                 </svg>
-                                                <img src="@vm.ProfileImgUrl" alt=""
+                                                <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
                                                      class="avatar" style="width: 93px;" id="imgshow">
                                                 <span class="image-hinter">
                                                     <strong>上傳圖片</strong><br>
@@ -387,7 +235,6 @@
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
-                        
                             @Html.Partial("~/Views/Shared/PartialView/_notifactionPartial.cshtml")
                     </div>
                 </div>

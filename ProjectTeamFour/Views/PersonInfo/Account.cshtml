@@ -1,4 +1,4 @@
-﻿
+﻿@model ProjectTeamFour.ViewModels.MemberViewModel
 
 @{
     ViewBag.Title = "PersonInfo";
@@ -49,7 +49,7 @@
                                         <img src="~/Assets/Img/personal/default.png" alt="個人圖片">
                                     </div>
                                     <div class="person-data-text">
-                                        <h2>kane</h2>
+                                        <h2>@Model.MemberName</h2>
                                         <p>贊助過<span>0</span>件專案/發起過<span>0</span>件專案</p>
                                     </div>
                                 </div>
@@ -65,6 +65,7 @@
                                 <div class="about-case">
                                     <h2>贊助過的專案</h2>
                                     <p>目前還沒有贊助過任何專案</p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +239,7 @@
                                                     </mask>
                                                     <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
                                                 </svg>
-                                                <img src="https://static.flyingv.asia/static/square/users/60129aa331255.jpg" alt="謝宜勳"
+                                                <img src="@Model.ProfileImgUrl" alt="@Model.MemberName"
                                                      class="avatar" style="width: 93px;">
                                                 <span class="image-hinter">
                                                     <strong>上傳圖片</strong><br>
@@ -286,7 +287,7 @@
                                             <label for="personal-site">個人網站</label>
                                             <input type="url" class="form-control" id="personal-site" placeholder="[webside]">
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <hr>
@@ -333,139 +334,7 @@
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
-                        <form action="">
-                            <div id="notifaction-setting" class="container">
-
-                                <div class="form-group row">
-                                    <div class="col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>動態通知</p>
-                                        </blockquote>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_success]" type="checkbox" value="1">
-                                                專案達標
-                                            </label>
-                                            <div class="hint small grey"> 跟您分享專案達標的喜悅</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_update]" type="checkbox" value="1">
-                                                專案內容更新
-                                            </label>
-
-                                            <div class="hint small grey"> 及時掌握提案團隊更新的內容</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_countdown]" type="checkbox" value="1">
-                                                專案結束倒數
-                                            </label>
-
-                                            <div class="hint small grey"> 專案結束前的溫情提醒</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][follower_donate]" type="checkbox" value="1">
-                                                社群贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 社群好友贊助專案時發送的通知</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][project_reply]" type="checkbox" value="1">
-                                                提案者回覆留言
-                                            </label>
-
-                                            <div class="hint small grey"> 秒讀提案團隊回應內容</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][system_event]" type="checkbox" value="1">
-                                                平台重大活動通知
-                                            </label>
-
-                                            <div class="hint small grey"> 所有我們想邀請您一起參與的美好事物</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[notifications][system_statement]" type="checkbox" value="1">
-                                                平台全站聲明
-                                            </label>
-
-                                            <div class="hint small grey"> 您最重要的用戶權益</div>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class=" col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>平台系統通知信</p>
-                                        </blockquote>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][project_post]" type="checkbox" value="1">
-                                                專案進度更新
-                                            </label>
-
-                                            <div class="hint small grey"> 已贊助專案發送進度報告的通知信件</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][follower_donate]" type="checkbox" value="1">
-                                                社群贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 社群好友贊助專案時發送的通知信件</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[emails][weekly]" type="checkbox" value="1">
-                                                每週精選專案
-                                            </label>
-
-                                            <div class="hint small grey"> flyingV 為您精心挑選的好案介紹</div>
-                                            <hr>
-                                        </div>
-
-                                    </div>
-                                    <div class=" col-12 col-md-4">
-                                        <blockquote class="colored-label">
-                                            <p>提案者系統通知信</p>
-                                        </blockquote>
-
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[creator][backers]" type="checkbox" value="1">
-                                                專案新贊助通知
-                                            </label>
-
-                                            <div class="hint small grey"> 有新贊助者便會寄信給您</div>
-                                            <hr>
-                                        </div>
-                                        <div class="checkbox notiLine">
-                                            <label>
-                                                <input checked="checked" name="setting[creator][comments]" type="checkbox" value="1">
-                                                專案新留言通知
-                                            </label>
-
-                                            <div class="hint small grey"> 專案有新的留言便會寄信給您</div>
-                                            <hr>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <button id="delete-account" class="btn btn-primary">儲存設定</button>
-                            </div>
-                        </form>
+                        @Html.Partial("~/Views/Shared/PartialView/_notifactionPartial.cshtml")
                     </div>
                 </div>
             </div>

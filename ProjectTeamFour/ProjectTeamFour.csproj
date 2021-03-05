@@ -2199,6 +2199,9 @@
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_notifactionPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_messagePartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
