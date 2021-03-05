@@ -10,7 +10,6 @@
 }
 @section endJS{
     <script src="~/Assets/Javascript/PaymentPage/pay.js"></script>
-    <script src="~/Assets/Javascript/PaymentPage/Vue_Except.js"></script>
 }
 
 
@@ -40,7 +39,7 @@
                         <div class="no-result">
                             <p>購物車無任何商品</p>
                         </div>
-                    }                   
+                    }
                 </div>
                 <div class="checkout">
                     <div class="checkout-price">
@@ -80,9 +79,9 @@
                             <div class="no-result">
                                 <p>購物車無任何商品</p>
                             </div>
-                        }                        
+                        }
                     </div>
-                    <div class="checkout">                        
+                    <div class="checkout">
                         <div class="checkout-price">
                             <h4>shipping</h4>
                             <span>Calculated at next step</span>
@@ -118,25 +117,25 @@
                     <div class="content-deliver">
                         <div id="app" class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" @*v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}"*@  placeholder="請填寫姓名" value="@Model.MemberName">
-                            @*<div class="text-danger">
+                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName">
+                            <div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
-                            </div>*@
+                            </div>
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" @*v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}"*@ placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
-                            @*<div class="text-danger">
+                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
+                            <div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
-                            </div>*@
+                            </div>
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" @*v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}"*@ placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
-                            @*<div class="text-danger">
+                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
+                            <div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
-                            </div>*@
+                            </div>
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" @*v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}"*@ placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
-                            @*<div class="text-danger ">
+                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
+                            <div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
-                            </div>*@
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,7 +168,7 @@
                             <div class="pay-money">
                                 <h5>贊助金額</h5>
                                 <p>@Model.TotalAccount</p>
-                            </div>                            
+                            </div>
                             <div class="pay-money">
                                 <h5>+額外支持</h5>
                                 <input type="text" placeholder="0" id="bonus">
@@ -193,4 +192,104 @@
     </div>
 </div>
 
+<script>
+    var form = new Vue({
+        el: "#app",
+        data: {
+            inputData: {
+                Name: '',
+                Address: '',
+                Tel: '',
+                Email: '',
+            },
+            inputDataCheck: {
+                NameError: false,
+                NameErrorMsg: '',
+                AddressError: '',
+                AddressErrorMsg: '',
+                TelError: '',
+                TelErrorMsg: '',
+                EmailError: '',
+                EmailErrorMsg: '',
+            }
+        },
+        watch: {
+            'inputData.Name': function () {
+                let nameRegexp = /^[0-9]*$/; //只能數字
+                if (nameRegexp.test(this.inputData.Name)) {
+                    this.inputDataCheck.NameError = true;
+                    this.inputDataCheck.NameErrorMsg = '名稱不得有數字';
+                }
+                else if (this.inputData.Name.length > 8) {
+                    this.inputDataCheck.NameError = true;
+                    this.inputDataCheck.NameErrorMsg = '名稱不得超過8個字';
+                }
+                else {
+                    this.inputDataCheck.NameError = false;
+                    this.inputDataCheck.NameErrorMsg = '';
+                }
+                this.checkAddVerify();
+            },
+            'inputData.Address': function () {
+                let addressRegexp = /^[0-9]{3}/;  //開頭為數字
 
+                if (!addressRegexp.test(this.inputData.Address)) {
+                    this.inputDataCheck.AddressError = true;
+                    this.inputDataCheck.AddressErrorMsg = '開頭必須為3碼郵遞區號';
+                }
+                else {
+                    this.inputDataCheck.AddressError = false;
+                    this.inputDataCheck.AddressErrorMsg = '';
+                }
+                this.checkAddVerify();
+            },
+            'inputData.Tel': function () {
+                let telRegexp = /^09/; //開頭為09
+                let telRegexpNum = /^[0-9]*$/;
+                if (!telRegexp.test(this.inputData.Tel)) {
+
+                    this.inputDataCheck.TelError = true;
+                    this.inputDataCheck.TelErrorMsg = '開頭必須為09';
+                }
+                else if (this.inputData.Tel.length < 10) {
+                    this.inputDataCheck.TelError = true;
+                    this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼';
+                }
+                else if (!telRegexpNum.test(this.inputData.Tel)) {
+                    this.inputDataCheck.TelError = true;
+                    this.inputDataCheck.TelErrorMsg = '只能輸入數字';
+                }
+                else {
+                    this.inputDataCheck.TelError = false;
+                    this.inputDataCheck.TelErrorMsg = '';
+                }
+                this.checkAddVerify();
+            },
+            'inputData.Email': function () {
+                let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
+                if (!emailRegexp.test(this.inputData.Email)) {
+                    this.inputDataCheck.EmailError = true;
+                    this.inputDataCheck.EmailErrorMsg = '不符合email格式';
+                }
+                else {
+                    this.inputDataCheck.EmailError = false;
+                    this.inputDataCheck.EmailErrorMsg = '';
+                }
+                this.checkAddVerify();
+            }
+
+        },
+        methods: {
+            checkAddVerify() {
+                for (let index in this.inputDataCheck) {
+                    if (this.inputDataCheck[index] == true) {
+                        this.AddVerify = false;
+                        return;
+                    }
+                }
+                this.AddVerify = true;
+            }
+        }
+    })
+
+</script>

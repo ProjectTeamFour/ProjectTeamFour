@@ -11,8 +11,11 @@ namespace ProjectTeamFour.Models
         public int OrderDetailId { get; set; }
         public string OrderDetailDes { get; set; }
         public int OrderId { get; set; }
-        public string OrderAddress { get; set; }
-        public string OrderPhone { get; set; }
+        public int PlanId { get; set; }
+        public string PlanTitle { get; set; }
+        public int OrderQuantity { get; set; }
+        public decimal OrderPrice { get; set; }
+
 
         //導覽屬性
         public virtual Order Order { get; set; }
