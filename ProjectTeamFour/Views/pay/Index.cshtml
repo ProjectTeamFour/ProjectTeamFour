@@ -52,7 +52,7 @@
                     </div>
                     <div class="check-total">
                         <h4>Total</h4>
-                        <P><span>USD</span>@Model.TotalAccount</P>
+                        <P><span>NTD</span>@Model.TotalAccount</P>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,8 @@
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <button class="btn-pay" v-bind:disable="AddVerify == false">付款贊助</button>
+                    <a href="/Pay/ConnectECPay">付款贊助</a>
+                    @*<button class="btn-pay" v-bind:disable="AddVerify == false">付款贊助</button>*@
                 </div>
             </div>
         </section>

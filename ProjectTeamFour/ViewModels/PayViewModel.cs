@@ -18,20 +18,19 @@ namespace ProjectTeamFour.ViewModels
 
         //--------------Order-Detail---------------------------- //會員資料
 
-        public int OrderDetailId { get; set; }
-        public string OrderDetailDes { get; set; }
         public int OrderId { get; set; }
+        //public int MemberId { get; set; }
+        public string OrderName { get; set; }
         public string OrderAddress { get; set; }
         public string OrderPhone { get; set; }
-        public int ProjectId { get; set; }
-        public int PlanId { get; set; }
-        public decimal OrderPrice { get; set; }
-        public string OrderProjectName { get; set; }
-        public int OrderQuantity { get; set; }
+        public string OrderConEmail { get; set; }
+        public decimal OrderTotalAccount { get; set; }
+        public string TradeNo { get; set; } //綠界的交易編號
+        public int RtnCode { get; set; } //交易狀態
 
         //------------Order----------------------------------------
 
-        public List<Order> OrderItems { get; set; } //訂單
+        public List<OrderDetail> OrderItems { get; set; } //訂單
 
         //-------------Plan--------------------------------------------
         public List<CarCarPlanViewModel> CartItems { get; set; }

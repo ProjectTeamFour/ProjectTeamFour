@@ -16,6 +16,7 @@ namespace ProjectTeamFour.Models
         public string OrderPhone { get; set; }
         public string OrderConEmail { get; set; }
         public decimal OrderTotalAccount { get; set; }
+
         public string TradeNo { get; set; } //綠界的交易編號
         public int RtnCode { get; set; } //交易狀態
 

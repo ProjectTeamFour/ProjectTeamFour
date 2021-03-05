@@ -128,14 +128,6 @@ orderByItem.click(function () {
     }
 })
 
-//let card = document.querySelectorAll("card");
-//let btnMore = document.getElementById("btn-more");
-
-//btnMore.addEventListener("click", function () {
-//    for (i = 12; i < card.length; i++) {
-//        card = card + 1;
-//    }
-//})
 
 
 

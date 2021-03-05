@@ -126,17 +126,17 @@ namespace ProjectTeamFour.Api
         }
 
 
-        //public string GetManagerIndex()
-        //{
-        //    var Members = _memberService.GetMembers();
-        //    var Permission = _permissionService.GetPermissions();
-        //    var result = new
-        //    {
-        //        Members = Members,
-        //        Permissions = Permission
-        //    };
-        //    return JsonConvert.SerializeObject(result);
-        //}
+        public string GetManagerIndex()
+        {
+            var Members = _memberService.GetMembers();
+            var Permission = _permissionService.GetPermissions();
+            var result = new
+            {
+                Members = Members,
+                Permissions = Permission
+            };
+            return JsonConvert.SerializeObject(result);
+        }
 
         //沒有登入回傳0
         //[System.Web.Http.HttpGet]

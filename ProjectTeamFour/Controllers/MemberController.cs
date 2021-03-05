@@ -31,7 +31,8 @@ namespace ProjectTeamFour.Controllers
                     MemberRegEmail = input.Email,
                     MemberPassword = input.Password,
                     MemberBirth = StringtoDate(input.BirthDay),
-                    Gender=input.gender  
+                    Gender=input.gender,
+                    Permission=1 
                 };
                 _api.CreateMember(vm);
             }

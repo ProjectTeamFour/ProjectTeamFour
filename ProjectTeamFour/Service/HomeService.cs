@@ -69,7 +69,8 @@ namespace ProjectTeamFour.Service
                     CreatorName = item.Project.CreatorName,
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
-                    PlanDescription = item.PlanDescription
+                    PlanDescription = item.PlanDescription,
+                    ProjectId=item.ProjectId
                 };
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
             }

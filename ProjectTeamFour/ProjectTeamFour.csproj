@@ -48,6 +48,9 @@
     <Reference Include="CloudinaryDotNet, Version=1.14.0.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
       <HintPath>..\packages\CloudinaryDotNet.1.14.0\lib\net45\CloudinaryDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="ECPay.Payment.Integration">
+      <HintPath>Assets\Plugin\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -2193,7 +2196,6 @@
     <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
-    <Content Include="Views\Projects\Getalll.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
     <Content Include="Views\Log\Test.cshtml" />
@@ -2214,6 +2216,8 @@
     <Content Include="Views\Shared\PartialView\_messagePartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
+    <Content Include="Views\pay\ConnectECPay.cshtml" />
+    <Content Include="Views\Projects\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2317,6 +2321,9 @@
     <EmbeddedResource Include="Migrations\202103050617138_EditOrderDetail.resx">
       <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
