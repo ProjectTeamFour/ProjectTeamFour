@@ -43,7 +43,12 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay()
         {
-            
+            var result=_PayService.ConnectECPay();
+            ViewData["result"] = result;
+            return View();
+        }
+        public ActionResult Result()
+        {
             
             return View();
         }

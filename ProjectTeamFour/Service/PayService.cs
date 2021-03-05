@@ -132,14 +132,11 @@ namespace ProjectTeamFour.Service
 
         }
 
-        public List<string> ConnectECPay()
+        public string ConnectECPay()
         {
             var session = HttpContext.Current.Session;
             List<string> enErrors = new List<string>();
-            PayViewModel preparePayViewModel = new PayViewModel()
-            {
-
-            };
+            string html = string.Empty;
             var cartSession = ((CartItemListViewModel)session["Cart"]);
             PayViewModel readyToPay = QueryByPlanId(cartSession);
             try
@@ -154,9 +151,9 @@ namespace ProjectTeamFour.Service
                     oPayment.MerchantID = "2000132";//ECPay提供的特店編號
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "http://example.com";//付款完成通知回傳的網址
-                    oPayment.Send.ClientBackURL = "http://www.ecpay.com.tw/";//瀏覽器端返回的廠商網址
-                    oPayment.Send.OrderResultURL = "";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.ReturnURL = "https://localhost:44300//Pay/Result";//付款完成通知回傳的網址
+                    oPayment.Send.ClientBackURL = "https://localhost:44300//Home/Index";//瀏覽器端返回的廠商網址
+                    oPayment.Send.OrderResultURL = "https://localhost:44300//pay/result";//瀏覽器端回傳付款結果網址
                     oPayment.Send.MerchantTradeNo = "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     oPayment.Send.TotalAmount = Decimal.Parse("1000");//交易總金額
@@ -251,6 +248,7 @@ namespace ProjectTeamFour.Service
 
                     /* 產生訂單 */
                     enErrors.AddRange(oPayment.CheckOut());
+                    oPayment.CheckOutString(ref html);
                 }
             }
             catch (Exception ex)
@@ -266,7 +264,7 @@ namespace ProjectTeamFour.Service
                     // string szErrorMessage = String.Join("\\r\\n", enErrors);
                 }
             }
-            return enErrors;
+            return html;
 
 
         }
