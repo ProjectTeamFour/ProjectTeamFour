@@ -1,4 +1,5 @@
-﻿
+﻿@model ProjectTeamFour.ViewModels.EditMemberViewModel
+
 @{
     ViewBag.Title = "PersonInfo";
 }
@@ -45,11 +46,15 @@
                             <div class="col-sm-12 col-md-12">
                                 <div class="person-data">
                                     <div class="person-data-pic">
-                                        <img src="~/Assets/Img/personal/default.png" alt="個人圖片">
+                                        <img src="@Model.ProfileImgUrl" alt="個人圖片">
                                     </div>
                                     <div class="person-data-text">
-                                        <h2>kane</h2>
-                                        <p>贊助過<span>0</span>件專案/發起過<span>0</span>件專案</p>
+                                        <h2>@Model.MemberName</h2>
+                                        <p>
+                                            贊助過
+                                            <span>0</span>件專案/發起過
+                                            <span>0</span>件專案
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -286,13 +291,13 @@
                                             <input type="url" class="form-control" id="personal-site" placeholder="[webside]">
                                         </div>
                                         @*<div id="language-preference" class="form-group">
-                                            <label for="gender">語言偏好</label>
-                                            <select class="form-control" id="language">
-                                                <option>中文</option>
-                                                <option>英文</option>
-                                                <option>日文</option>
-                                            </select>
-                                        </div>*@
+                                                <label for="gender">語言偏好</label>
+                                                <select class="form-control" id="language">
+                                                    <option>中文</option>
+                                                    <option>英文</option>
+                                                    <option>日文</option>
+                                                </select>
+                                            </div>*@
                                     </div>
                                 </div>
                                 <hr>

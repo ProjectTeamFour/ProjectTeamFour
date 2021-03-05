@@ -57,12 +57,8 @@ namespace ProjectTeamFour.Controllers
 
             var memberInfo = _memberService.GetMember(m => m.MemberId == id);
             //return View(memberInfo);
-            return RedirectToAction("Index");
-            if (memberInfo != default(ViewModels.MemberViewModel))
-            {
-                return View(memberInfo);
-            }
-            return View();
+            //return RedirectToAction("Index");
+            return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
         }
 
         //public ActionResult Edit(int? id)
