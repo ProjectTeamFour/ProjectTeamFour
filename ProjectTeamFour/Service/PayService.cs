@@ -135,10 +135,10 @@ namespace ProjectTeamFour.Service
         public List<string> ConnectECPay()
         {
             List<string> enErrors = new List<string>();
-            PayViewModel preparePayViewModel=new PayViewModel()
+            PayViewModel preparePayViewModel = new PayViewModel()
             {
 
-            }
+            };
             try
             {
                 using (AllInOne oPayment = new AllInOne())
