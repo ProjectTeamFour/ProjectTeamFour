@@ -39,6 +39,13 @@ namespace ProjectTeamFour.Controllers
             var cartt=_PayService.QueryByPlanId(cart);
             
             return View(cartt);
-        }       
+        }
+        
+        public ActionResult ConnectECPay()
+        {
+            
+            
+            return View();
+        }
     }
 }
