@@ -11,6 +11,7 @@ using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Service;
 using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
+using ProjectTeamFour.Helpers;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -24,6 +25,7 @@ namespace ProjectTeamFour.Controllers
         }
 
         // GET: PersonInfo
+        [CustomAuthorize(flagNum =1)]
         public ActionResult Index()
         {
             return View();

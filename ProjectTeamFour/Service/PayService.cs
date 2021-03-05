@@ -136,6 +136,10 @@ namespace ProjectTeamFour.Service
         {
             var session = HttpContext.Current.Session;
             List<string> enErrors = new List<string>();
+            PayViewModel preparePayViewModel = new PayViewModel()
+            {
+
+            };
             var cartSession = ((CartItemListViewModel)session["Cart"]);
             PayViewModel readyToPay = QueryByPlanId(cartSession);
             try
