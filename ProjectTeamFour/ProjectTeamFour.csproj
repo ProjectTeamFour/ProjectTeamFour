@@ -265,6 +265,18 @@
     <Compile Include="Migrations\202102231030539_Create_Permissiontable.Designer.cs">
       <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103050540252_EditOrder.cs" />
+    <Compile Include="Migrations\202103050540252_EditOrder.Designer.cs">
+      <DependentUpon>202103050540252_EditOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050606010_EditOrder2nd.cs" />
+    <Compile Include="Migrations\202103050606010_EditOrder2nd.Designer.cs">
+      <DependentUpon>202103050606010_EditOrder2nd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050617138_EditOrderDetail.cs" />
+    <Compile Include="Migrations\202103050617138_EditOrderDetail.Designer.cs">
+      <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -367,6 +379,8 @@
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
+    <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
+    <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2196,6 +2210,7 @@
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
+    <Content Include="Views\Shared\PartialView\_notifactionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2289,6 +2304,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102231030539_Create_Permissiontable.resx">
       <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050540252_EditOrder.resx">
+      <DependentUpon>202103050540252_EditOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050606010_EditOrder2nd.resx">
+      <DependentUpon>202103050606010_EditOrder2nd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050617138_EditOrderDetail.resx">
+      <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
