@@ -16,18 +16,22 @@ namespace ProjectTeamFour.ViewModels
         public string MemberConEmail { get; set; }
 
 
-        //--------------Order-Detail----------------------------
+        //--------------Order-Detail---------------------------- //會員資料
 
         public int OrderDetailId { get; set; }
         public string OrderDetailDes { get; set; }
         public int OrderId { get; set; }
         public string OrderAddress { get; set; }
         public string OrderPhone { get; set; }
-
+        public int ProjectId { get; set; }
+        public int PlanId { get; set; }
+        public decimal OrderPrice { get; set; }
+        public string OrderProjectName { get; set; }
+        public int OrderQuantity { get; set; }
 
         //------------Order----------------------------------------
 
-        public List<Order> OrderItems { get; set; }
+        public List<Order> OrderItems { get; set; } //訂單
 
         //-------------Plan--------------------------------------------
         public List<CarCarPlanViewModel> CartItems { get; set; }

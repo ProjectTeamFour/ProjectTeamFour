@@ -25,10 +25,10 @@ namespace ProjectTeamFour.Service
         {
 
             
-            var listviewmodel = new PayViewModel()
-            {
-                CartItems = new List<CarCarPlanViewModel>()
-            };
+            //var listviewmodel = new PayViewModel()
+            //{
+            //    CartItems = new List<CarCarPlanViewModel>()
+            //};
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
@@ -73,9 +73,36 @@ namespace ProjectTeamFour.Service
             return ((MemberViewModel)session["Member"]).MemberId;
         }
         //回傳訂單資料給資料庫
-        //public PayViewModel SendOrderToDB(){
-        //    var order = _repository.Create<Order>()
-        //}
-            
+        public void CreateOrderToDB(CarCarPlanViewModel cartPlan) //把購物車的資料&member回傳給資料庫
+        {
+            var session = HttpContext.Current.Session;
+            var memberSession = ((MemberViewModel)session["Member"]);
+            var cartSession = ((CartItemListViewModel)session["Cart"]);
+            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓
+            var cart = cartSession.CartItems.Where(x => x.PlanId == cartPlan.PlanId).Select(x => x).FirstOrDefault(); //從session抓
+            var plan = _repository.GetAll<Plan>().Where((x) => x.ProjectId == cartPlan.ProjectId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
+            //製作order資料  把其他viewmodel資料指派給order            
+            var order = new PayViewModel()
+            {
+                OrderAddress = member.MemberAddress,
+                OrderPhone = member.MemberPhone,
+                OrderItems = new List<Order>(),  
+                PlanId = cart.PlanId,
+                OrderQuantity= cart.Quantity,
+                OrderPrice = plan.PlanPrice,
+                ProjectId = plan.ProjectId,                
+            };
+
+            foreach (var item in order.OrderItems) //遍歷orderitems裡的資料
+            {
+
+                var OrderItem = new Order
+                {
+                    MemberId = member.MemberId,
+                };
+                order.OrderItems.Add(OrderItem);
+            }
+            _repository.Create(order);           
+        }
     }
 }
