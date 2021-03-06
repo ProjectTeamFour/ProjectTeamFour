@@ -20,6 +20,15 @@ namespace ProjectTeamFour.Controllers
         }
         public ActionResult Index()
         {
+            if(!TempData.ContainsKey("RtnCode"))
+            {
+                
+            }
+            else
+            {
+                TempData.Keep("RtnCode");
+
+            }
 
             var homeService = new HomeService();
 
