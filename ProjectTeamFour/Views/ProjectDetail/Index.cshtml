@@ -3,7 +3,13 @@
     int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     DateTime today = DateTime.Now;
     int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+
 }
+
+@* FB分享 *@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0" nonce="9aOjq2xP"></script>
+
 <section class="main-body">
     <div id="project-title" class="container">
         <span class="badge badge-secondary">@Model.ProjectDetailItem.Category</span>
@@ -33,12 +39,12 @@
                         <div class="row">
                             <div class="item-logo">
                                 @*<a href="#" data-target="" data-toggle="modal">
-                                    <img src="https://static.flyingv.asia/static/square/users/5c126a0e32b49.png" alt="" srcset="">
-                                </a>*@
+                                        <img src="https://static.flyingv.asia/static/square/users/5c126a0e32b49.png" alt="" srcset="">
+                                    </a>*@
                             </div>
                             <div class="item-text">
-                                <h5>                             
-                                    <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName  
+                                <h5>
+                                    <span class="label-grey">提案者</span> @Model.ProjectDetailItem.CreatorName
                                 </h5>
                                 <div class="wrapper">
                                     <div class="item-text">
@@ -47,9 +53,9 @@
                                         </h5>
                                     </div>
                                     <div id="follow-icon">
-                                        <a href="#"><i class="fab fa-facebook"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                        <a href="#"><i class="fab fa-instagram-square"></i></a>
+                                        <a href="#"><i class="fab fa-youtube-square"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +111,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body">
-                                                <!-- <h5 class="modal-title" id="Message">Modal title</h5> -->
+                                                <h5 class="modal-title" id="Message">Modal title</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -151,10 +157,13 @@
 
 
 
-                                <button id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-toggle="popover" data-placement="bottom" data-content="hello">
-                                    分享 <div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
-                                    <div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>
-                                </button>
+                                <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-toggle="popover" data-placement="bottom" data-content="hello">
+                                    分享
+                                    <div class="fb-share-button" data-href="https://localhost:44300/ProjectDetail/Index/id=?" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A44300%2FProjectDetail%2FIndex%2Fid%3D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">分享</a></div>                                
+    @*<div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
+                                        <div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
+                                    <a href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><img alt='分享給LINE好友 !' height='40' src='https://1.bp.blogspot.com/-FvoBw8lnlC8/WHgA91RmxiI/AAAAAAAAIvA/CazIGx6Jlp8PJ4pE40kt2XMxwFmeBSdjgCLcB/s1600/168x40.png' width='168' /></a>
+                                </div>
                             </div>
                         </div>
 
@@ -193,26 +202,26 @@
                                             @*專案詳細說明內文*@
                                             @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
                                             {
-                                            <div class="info wrapper">
-                                                <p>已達成 募資目標!</p>
-                                            </div>
+                                                <div class="info wrapper">
+                                                    <p>已達成 募資目標!</p>
+                                                </div>
                                             }
 
                                             @{
-                                            string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
-                                            foreach (var item in description_str)
-                                            {
-                                            if (item.Contains("i.imgur"))
-                                            {
-                                            <div margin:1rem;">
-                                                <img src="@item" style="width:100%;" />
-                                            </div>
-                                            }
-                                            else
-                                            {
-                                            <p>@item</p>
-                                            }
-                                            }
+                                                string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                                foreach (var item in description_str)
+                                                {
+                                                    if (item.Contains("i.imgur"))
+                                                    {
+                                                        <div margin:1rem;">
+                                                            <img src="@item" style="width:100%;" />
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@item</p>
+                                                    }
+                                                }
                                             }
                                         </div>
                                     </section>
@@ -224,51 +233,51 @@
                                     <div class="accordion" id="accordionExample">
 
                                         @{
-                                        foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
-                                        {
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        @item.Question
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    @item.Answer
+                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                            {
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                @item.Question
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                         data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            @item.Answer
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        }
+                                            }
 
                                         }
 
                                         @*<div class="faqWrapper">
-                                            <div class="faq">
-                                                <div class="outer">
-                                                    <div class="arrow">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                            <g fill="none" fill-rule="evenodd">
-                                                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                            </g>
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                            <g fill="none" fill-rule="evenodd">
-                                                                <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
-                                                            </g>
-                                                        </svg>
+                                                <div class="faq">
+                                                    <div class="outer">
+                                                        <div class="arrow">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                <g fill="none" fill-rule="evenodd">
+                                                                    <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                                                                </g>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                <g fill="none" fill-rule="evenodd">
+                                                                    <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
                                                     </div>
-                                                    <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
-                                                </div>
-                                                <div class="answer">
-                                                    「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
+                                                    <div class="answer">
+                                                        「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>*@
+                                            </div>*@
 
                                     </div>
                                 </div>
@@ -319,7 +328,7 @@
                                 <div class="row">
                                     @foreach (var item in Model.SelectPlanCards.PlanCardItems)
                                     {
-                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
                                     }
                                     <!-- <h4>選擇方案</h4> -->
                                 </div>
@@ -333,27 +342,39 @@
 </section>
 
 @section topCSS{
-<link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+    <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
 }
 @section endJS{
-<script>
-    //var message_btn = document.getElementById("ask-btn");
-    //message_btn.addEventListener('click', function SendMessage() {
-    //    document.createElement("div");
-    //})
-
-    var project_status = document.getElementById("goal-wrap");
+    <script>
+        /*判斷募資進度的狀態(已成功/募資中/募資失敗)*/
+        var project_status = document.getElementById("goal-wrap");
 
 
-         
+
+        /*聯絡提案人按鈕*/
+        var message_btn = document.getElementById("ask-btn");
+        message_btn.addEventListener('click', function SendMessage() {
+            document.createElement("div");
+        })
+
         $('#ask-btn').on('shown.bs.modal', function () {
             $('#ask-modal').trigger('focus')
         })
 
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('#Message') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('傳送訊息 ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
 
 
 
-
+        //取得目前網址
+        var currentUri = document.querySelector('[rel="canonical"]').href;
         //Facebook分享的Api
         window.fbAsyncInit = function () {
             FB.init({
@@ -374,31 +395,31 @@
 
 
 
-        //官網傳送訊息程式碼:
-        $(document).on('click', '#send_msg', function () {
-            var content = $('#msg_content').val();
+                    //官網傳送訊息程式碼:
+                    //$(document).on('click', '#send_msg', function () {
+                    //    var content = $('#msg_content').val();
 
-            if (content.length) {
-                $.ajax({
-                    url: laroute.route('api.inbox.send'),
-                    type: 'POST',
-                    data: {
-                        project_id: '27640',
-                        content: content
-                    }
-                })
-                    .success(function (res) {
-                        if (res.error) {
-                            toastr.error(res.error);
-                        } else {
-                            toastr.success('成功傳送訊息');
-                            $('#messageModal').modal('hide');
-                        }
-                    });
-            } else {
-                toastr.warning('請輸入內文！');
-            }
-        });
+                    //    if (content.length) {
+                    //        $.ajax({
+                    //            url: laroute.route('api.inbox.send'),
+                    //            type: 'POST',
+                    //            data: {
+                    //                project_id: '27640',
+                    //                content: content
+                    //            }
+                    //        })
+                    //            .success(function (res) {
+                    //                if (res.error) {
+                    //                    toastr.error(res.error);
+                    //                } else {
+                    //                    toastr.success('成功傳送訊息');
+                    //                    $('#messageModal').modal('hide');
+                    //                }
+                    //            });
+                    //    } else {
+                    //        toastr.warning('請輸入內文！');
+                    //    }
+                    //});
 
     </script>
 }

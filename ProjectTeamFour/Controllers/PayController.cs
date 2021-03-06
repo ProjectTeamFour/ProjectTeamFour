@@ -43,12 +43,24 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay()
         {
-            //var cartlist = new CarCarPlanViewModel();
-            if (true)
-            {                
-               
-                _PayService.CreateOrderToDB();
-            }
+            var result=_PayService.ConnectECPay();
+            ViewData["result"] = result;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CheckECPayFeedBack()
+        {
+
+            _PayService.CheckECPayFeedBack();
+
+            return null;
+        }
+        [HttpPost]
+        public ActionResult Result(FormCollection form)
+        {
+            string RtnCode = form["RtnCode"];
+            string MerchantTradeNo = form["MerchantTradeNo"];
 
             return RedirectToAction("Index", "Home");
         }

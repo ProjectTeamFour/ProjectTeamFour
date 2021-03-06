@@ -71,3 +71,18 @@ function uploadFile(formData) {
         }
     })
 }
+
+function getGender() {
+    var gender = document.getElementById('gender1').innerText();
+    switch (gender) {
+        case "女":
+            selectedOptions[1].setAttribute("selected")
+            break;
+        case "男":
+             selectedOptions[2].setAttribute("selected")
+            break;
+        default:
+            selectedOptions[0].setAttribute("selected")
+            break;
+    }
+}
