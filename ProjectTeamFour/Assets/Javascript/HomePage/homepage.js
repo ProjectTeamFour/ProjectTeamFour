@@ -1,4 +1,17 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function () {
+    
+    //if ('@(TempData["RtnCode"])' == "1") {
+        
+    //        Swal.fire({
+    //            position: 'center',
+    //            icon: 'success',
+    //            title: '付款成功',
+    //            showConfirmButton: false,
+    //            timer: 1500
+    //        })
+    //}
 
     $('.autoplay').slick({
         slidesToShow: 1,

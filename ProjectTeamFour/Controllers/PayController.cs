@@ -61,6 +61,7 @@ namespace ProjectTeamFour.Controllers
         {
             string RtnCode = form["RtnCode"];
             string MerchantTradeNo = form["MerchantTradeNo"];
+            TempData["RtnCode"] = RtnCode;
 
             return RedirectToAction("Index", "Home");
         }

@@ -7,7 +7,27 @@
 
 @section endJS{
     <script src="~/Assets/Javascript/HomePage/homepage.js"></script>
+    @if (TempData["RtnCode"] != null && (TempData["RtnCode"]).ToString() == "1")
+    {
+
+        <script>
+            ShopCompleteAlert();
+
+            function ShopCompleteAlert() {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '付款成功',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            };
+
+        </script>
+
+    }
 }
+
 
 
 <!-- 1st carousel -->
@@ -154,14 +174,14 @@
 
 
                 @for (int i = 0; i < 6; i++)
-                {  
+                {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItem.ProjectItems[i]);
                 }
 
                 @*@foreach (var item in Model.ProjectItem.ProjectItems)
-                {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
-                }*@
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                    }*@
 
             </div>
         </div>
@@ -201,9 +221,9 @@
             <div class="indemand-project-wrap">
 
                 @*@for (int i = 0; i < 20; i++)
-                {
-                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
-                }*@
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
+                    }*@
 
                 @foreach (var item in Model.CarCarPlanItem.CarCarPlanItems)
                 {
@@ -214,5 +234,5 @@
         </div>
     </div>
 </section>
-    
+
 
