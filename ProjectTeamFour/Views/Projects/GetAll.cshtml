@@ -70,7 +70,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu">
                                 <a class="dropdown-item" id="ongoing">進行中</a>
                                 <a class="dropdown-item" id="success">成功專案</a>
-                                <a class="dropdown-item" href="/Projects/Main" id="all">全部專案</a>
+                                <a class="dropdown-item" href="/Projects/GetAll/id" id="all">全部專案</a>
                             </div>
                         </div>
                     </div>
@@ -98,10 +98,14 @@
     <div class="container">
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
-
-                @foreach (var item in Model.ProjectItems)
+                @for (int i = 0; i < Model.ProjectItems.Count; i++)
                 {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                    @*if (Model.ProjectItems.Count >= i)
+                    {
+                        i = Model.ProjectItems.Count;
+                        @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItems[i-1]);
+                    }*@
+                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItems[i]);
                 }
 
             </div>
@@ -124,3 +128,14 @@
     <p id="url3">熱門</p>
 </div>
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["Active"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/Projects/GetAll/@i">@i</a></li>
+        }       
+    </ul>
+</nav>
