@@ -2218,6 +2218,7 @@
     <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
     <Content Include="Views\pay\ConnectECPay.cshtml" />
     <Content Include="Views\Projects\GetAll.cshtml" />
+    <Content Include="Views\pay\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

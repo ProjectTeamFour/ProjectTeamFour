@@ -47,10 +47,22 @@ namespace ProjectTeamFour.Controllers
             ViewData["result"] = result;
             return View();
         }
-        public ActionResult Result()
+
+        [HttpPost]
+        public ActionResult CheckECPayFeedBack()
         {
-            
-            return View();
+
+            _PayService.CheckECPayFeedBack();
+
+            return null;
+        }
+        [HttpPost]
+        public ActionResult Result(FormCollection form)
+        {
+            string RtnCode = form["RtnCode"];
+            string MerchantTradeNo = form["MerchantTradeNo"];
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
