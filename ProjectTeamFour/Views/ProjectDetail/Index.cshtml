@@ -53,9 +53,9 @@
                                         </h5>
                                     </div>
                                     <div id="follow-icon">
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-instagram-square"></i></a>
-                                        <a href="#"><i class="fab fa-youtube-square"></i></a>
+                                        <a href="#"><i class="fab fa-facebook"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -99,54 +99,57 @@
                                     <a href="" id="backit-btn">贊助專案</a>
                                     <!--轉接到加入購物車-->
                                 </div>
+ 
                                 <div class="btn col-8">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
-                                        <span class="comment"><i class="fab fa-comment-dots">留言</i></span>聯絡提案人
+                                        <i class="fab fa-comment-dots">留言</i>聯絡提案人
                                     </button>
                                 </div>
-                                <!-- Modal -->
 
-                                <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="Message" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                <!-- Modal -->
+                                <div class="modal fade" id="messageModal">
+                                    <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-body">
-                                                <h5 class="modal-title" id="Message">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" aria-hidden="true">聯絡提案人</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border-radius:50%; display:inline-block;width:45px; left:-5rem;">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
-
-                                                <!-- Modal -->
-                                                <div class="container-fluid">
-                                                    <div class="modal-dialog modal-lg" id="ask-modal">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <h4>村岸產業株式会社</h4>
-                                                                <p>提案負責人：TW ROTUNDA</p>
-                                                                <i class="fab fa-facebook-official"></i><a href=""></a>
-                                                            </div>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <p>
-                                                                    大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
-                                                                    」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
-                                                                </p>
-                                                                <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
-                                                            </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="bio-img">
+                                                            <img src="https://static.flyingv.asia/static/square/users/5ff3274b96dab.jpg" style="width: 120px;" />
                                                         </div>
-
-                                                        <hr />
-                                                        <label for="message-area" class="form-label">傳訊息給 村岸產業株式会社 </label>
-                                                        <form action="">
-                                                            <textarea class="form-control" rows="10" id="msg-content" placeholder="傳送訊息..."></textarea>
-                                                            <br />
-                                                            <button type="button" class="btn" id="send-msg">
-                                                                傳送訊息
-                                                            </button>
-                                                        </form>
+                                                        <div class="bio-title">
+                                                            <h4>@Model.ProjectDetailItem.CreatorName</h4>
+                                                            @*<p>提案負責人：@Model.ProjectDetailItem.CreatorName</p>*@
+                                                            <i class="fab fa-facebook-official">FB</i><a href=""></a>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <p>
+                                                                大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
+                                                                」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
+                                                            </p>
+                                                            <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>                                                       
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <hr>
 
+                                                <label for="comment-area" class="form-label">
+                                                    傳訊息給 @Model.ProjectDetailItem.CreatorName
+                                                </label>
+                                                <form action="">
+                                                    <textarea class="form-control" rows="10" id="msg-content"
+                                                              placeholder="傳送訊息..."></textarea>
+                                                    <br />
+                                                    <button type="submit" class="btn btn-primary btn-block" id="send-msg" >傳送訊息</button>
+                                                    @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,9 +162,9 @@
 
                                 <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-toggle="popover" data-placement="bottom" data-content="hello">
                                     分享
-                                    <div class="fb-share-button" data-href="https://localhost:44300/ProjectDetail/Index/id=?" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A44300%2FProjectDetail%2FIndex%2Fid%3D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">分享</a></div>                                
-    @*<div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
-                                        <div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
+                                    <div class="fb-share-button" data-href="https://localhost:44300/ProjectDetail/Index/id=?" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A44300%2FProjectDetail%2FIndex%2Fid%3D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">分享</a></div>
+                                    @*<div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
+            <div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
                                     <a href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><img alt='分享給LINE好友 !' height='40' src='https://1.bp.blogspot.com/-FvoBw8lnlC8/WHgA91RmxiI/AAAAAAAAIvA/CazIGx6Jlp8PJ4pE40kt2XMxwFmeBSdjgCLcB/s1600/168x40.png' width='168' /></a>
                                 </div>
                             </div>
