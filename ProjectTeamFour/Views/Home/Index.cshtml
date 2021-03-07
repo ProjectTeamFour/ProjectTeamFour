@@ -7,7 +7,27 @@
 
 @section endJS{
     <script src="~/Assets/Javascript/HomePage/homepage.js"></script>
+    @if (TempData["RtnCode"] != null && (TempData["RtnCode"]).ToString() == "1")
+    {
+
+        <script>
+            ShopCompleteAlert();
+
+            function ShopCompleteAlert() {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '付款成功',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            };
+
+        </script>
+
+    }
 }
+
 
 
 <!-- 1st carousel -->
@@ -145,7 +165,7 @@
                 <h2>熱門項目</h2>
             </div>
             <div class="title-bar-item see-more">
-                <a href="/Projects/Main">查看更多 ></a>
+                <a href="/Projects/GetAll/id">查看更多 ></a>
             </div>
         </div>
 
@@ -154,21 +174,21 @@
 
 
                 @for (int i = 0; i < 6; i++)
-                {  
+                {
                     @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItem.ProjectItems[i]);
                 }
 
                 @*@foreach (var item in Model.ProjectItem.ProjectItems)
-                {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
-                }*@
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                    }*@
 
             </div>
         </div>
 
         <div class="popular-project-item title-bar">
             <div class="title-bar-item phone-see-more">
-                <a href="">查看更多 ></a>
+                <a href="/Projects/GetAll/id">查看更多 ></a>
             </div>
         </div>
 
@@ -201,9 +221,9 @@
             <div class="indemand-project-wrap">
 
                 @*@for (int i = 0; i < 20; i++)
-                {
-                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
-                }*@
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
+                    }*@
 
                 @foreach (var item in Model.CarCarPlanItem.CarCarPlanItems)
                 {
@@ -214,5 +234,5 @@
         </div>
     </div>
 </section>
-    
+
 

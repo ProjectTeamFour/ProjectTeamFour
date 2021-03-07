@@ -264,6 +264,15 @@ button[type="button"] {
     background-color: #000;
 }
 
+.pagination{
+    display:flex;
+    justify-content:center;
+}
+
+.page-item .page-link{
+    color:#000;
+
+}
 
 @media screen and (min-width: 768px) {
     .popular-project .see-more a {

@@ -21,41 +21,8 @@ namespace ProjectTeamFour.Controllers
         {
             _projectsService = new ProjectsService();
         }
-
-        //public ActionResult GetCategory(string category,string projectStatus, string id) //排序狀態  
-        //{
-        //    var all = _projectsService.GetAllTotal();   //找全部的方法                      //後端寫三層過濾 前端用js湊出網址 ex:/Projects/GetCategory/?{id}&&{id2}&&{id3}
-        //    var result = all.ProjectItems.AsEnumerable();    //延遲執行               //湊出網址後window.onload刷新網址 點進新網址
-        //    result = result.Where(x => x.Category == category);  
-        //    result = result.Where(x => x.ProjectStatus == projectStatus);
-        //    if (id == "募資金額")
-        //    {
-        //        result = result.OrderBy(x => x.FundingAmount).AsEnumerable();
-        //    }
-        //    return View(result);
-        //}
+       
         
-
-        public ActionResult OrderByPeople() //排序人數 
-        {
-            var Fundedpeople = _projectsService.OrderBy(x => x.Fundedpeople);
-            return View(Fundedpeople);
-        }
-        public ActionResult OrderByFundingAmount() //排序金錢
-        {
-
-            var FundingAmount = _projectsService.OrderBy(x => x.FundingAmount);
-            return View(FundingAmount);
-        }
-
-        public ActionResult OrderByNew() //排序時間
-        {
-
-            //var dateLine = _projectsService.OrderBy(x => (decimal)x.dateLine);
-            var dateLine = _projectsService.OrderByTime();
-            return View(dateLine);
-        }
-
         // GET: Products
         public ActionResult Index(string category, string projectStatus , string id) //過濾
         {
@@ -75,40 +42,42 @@ namespace ProjectTeamFour.Controllers
             return View(GetAll);
         }
 
-        public ActionResult Main() //主畫面 呼叫全部資料
+        public ActionResult GetAll(int id = 1)
         {
+            
             var projectService = new ProjectsService(); //呼叫service
+            
+            int activePage = id; //目前所在頁
+            int pageRows = 12; //每頁幾筆資料
+            int totalRows = _projectsService.GetAllTotal().ProjectItems.Count(); //總筆數
+
+            //計算page頁面
+            int Pages = 0;
+            if(totalRows % pageRows == 0)
+            {
+                Pages = totalRows / pageRows;
+            }
+            else
+            {
+                Pages = totalRows / pageRows + 1;
+            }
+
+            int starRows = (activePage - 1) * pageRows; //起始紀錄index
+            
+            ViewData["Active"] = id; //頁碼
+            ViewData["Pages"] = Pages; //頁數
 
             var project = new ProjectListViewModel
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
-            var GetAll = projectService.GetAllTotal();
-            foreach (var item in GetAll.ProjectItems)
+            var GetAll = projectService.GetAllTotal().ProjectItems.OrderBy((x) => x.ProjectId).Skip(starRows).Take(pageRows).ToList();
+            foreach (var item in GetAll)
             {
                 project.ProjectItems.Add(item);
             }
 
             return View(project);
         }
-
-        public ActionResult GetAll()
-        {
-            var projectService = new ProjectsService(); //呼叫service
-
-            var project = new ProjectListViewModel
-            {
-                ProjectItems = new List<ProjectViewModel>()
-            };
-            var GetAll = projectService.GetAllTotal();
-            foreach (var item in GetAll.ProjectItems)
-            {
-                project.ProjectItems.Add(item);
-            }
-
-            return View(project);
-        }
-
-
     }
 }

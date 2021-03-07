@@ -43,14 +43,41 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay()
         {
-            var result=_PayService.ConnectECPay();
+            //string RtnCode = "1";   //測試用
+            //string MerchantTradeNo = "1";
+            //_PayService.CreateOrderToDB(RtnCode, MerchantTradeNo);
+            var result = _PayService.ConnectECPay();
             ViewData["result"] = result;
             return View();
         }
-        public ActionResult Result()
+
+        [HttpPost]
+        public ActionResult CheckECPayFeedBack()
         {
-            
-            return View();
+
+            _PayService.CheckECPayFeedBack();
+
+            return null;
         }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Result(FormCollection form)
+        {
+            string RtnCode = form["RtnCode"];
+            string MerchantTradeNo = form["MerchantTradeNo"];
+            TempData["RtnCode"] = RtnCode;
+
+            if (ModelState.IsValid)
+            {
+                if (Convert.ToInt32(RtnCode) == 1)
+                {
+                    _PayService.CreateOrderToDB(RtnCode, MerchantTradeNo);
+                }
+                Console.WriteLine("交易失敗");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        
     }
 }
