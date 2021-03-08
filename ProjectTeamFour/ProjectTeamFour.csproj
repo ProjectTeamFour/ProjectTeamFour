@@ -2142,6 +2142,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff2" />
     <Content Include="App_Code\StringFormat5.cshtml" />
     <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
+    <None Include="Properties\PublishProfiles\projecteteam4 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2198,7 +2199,6 @@
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
-    <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditorPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
@@ -2225,6 +2225,7 @@
     <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
