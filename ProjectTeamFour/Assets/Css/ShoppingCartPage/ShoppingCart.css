@@ -125,6 +125,7 @@ img {
     .cart-out p {
         margin-bottom: 24px;
         font-weight: 500;
+        font-size: 20px;
     }
 
     .cart-out span {
@@ -149,6 +150,7 @@ img {
         display: inline-block;
         line-height: 53px;
         border-radius: 0;
+        font-size: 30px;
     }
 
     .cart-out button {
@@ -221,12 +223,12 @@ img {
 .shop-item .actions {
     width: 20%;
 }
+
 .hamburger .dropdown img {
-   
     width: auto;
 }
+
 .nav-link {
-   
     padding: .5rem 3rem;
 }
 
@@ -234,16 +236,20 @@ img {
     text-align: center;
     font-size: 3rem;
 }
-#navbarDropdownMenuLink img{
-    width:auto;
+
+#navbarDropdownMenuLink img {
+    width: auto;
 }
+
 i.fas.fa-snowplow {
     width: 100%;
     font-size: 20px;
 }
+
 .btn-success {
     margin: 0 20px;
 }
+
 .btn-danger {
     margin: 0 20px;
 }
@@ -290,23 +296,22 @@ i.fas.fa-snowplow {
         top: 20px;
         height: max-content;
     }
-   
 }
-@media screen and (min-width:1200px)
-{
+
+@media screen and (min-width:1200px) {
     .nav-link {
         padding: 0px;
-        padding-bottom:10px;
+        padding-bottom: 10px;
     }
-    
+
     .pcmode-navbar .search {
-         margin-top: 0px; 
-        
+        margin-top: 0px;
     }
-    
+
     .pcmode-navbar .fa-shopping-cart {
         top: 20px;
     }
+
     .navbar-nav .dropdown {
         position: absolute;
         right: 10rem;
