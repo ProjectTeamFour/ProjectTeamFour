@@ -161,78 +161,78 @@ namespace ProjectTeamFour.Service
                     oPayment.Send.CustomField4 = "";
                     oPayment.Send.EncryptType = 1;
 
-        //            foreach(var order in readyToPay.CartItems)
-        //            {
-        //                //訂單的商品資料
-        //                oPayment.Send.Items.Add(new Item()
-        //                {
-                            
-        //                    Name = order.PlanTitle,//商品名稱
-        //                    Price = order.PlanPrice,//商品單價
-        //                    Currency = "新台幣",//幣別單位
-        //                    Quantity = order.Quantity,//購買數量
-        //                    Unit="件",
-        //                    URL = $"/ProjectDetail/Index/{order.ProjectId}",//商品的說明網址
-        //                });
-        //            }
-                    
-                  
+                    foreach (var order in readyToPay.CartItems)
+                    {
+                        //訂單的商品資料
+                        oPayment.Send.Items.Add(new Item()
+                        {
 
-        //            /*************************非即時性付款:ATM、CVS 額外功能參數**************/
-
-        //            #region ATM 額外功能參數
-
-        //            //oPayment.SendExtend.ExpireDate = 3;//允許繳費的有效天數
-        //            //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
-        //            //oPayment.SendExtend.ClientRedirectURL = "";//Client 端回傳付款相關資訊
-
-        //            #endregion
+                            Name = order.PlanTitle,//商品名稱
+                            Price = order.PlanPrice,//商品單價
+                            Currency = "新台幣",//幣別單位
+                            Quantity = order.Quantity,//購買數量
+                            Unit = "件",
+                            URL = $"/ProjectDetail/Index/{order.ProjectId}",//商品的說明網址
+                        });
+                    }
 
 
-        //            #region CVS 額外功能參數
 
-        //            //oPayment.SendExtend.StoreExpireDate = 3; //超商繳費截止時間 CVS:以分鐘為單位 BARCODE:以天為單位
-        //            //oPayment.SendExtend.Desc_1 = "test1";//交易描述 1
-        //            //oPayment.SendExtend.Desc_2 = "test2";//交易描述 2
-        //            //oPayment.SendExtend.Desc_3 = "test3";//交易描述 3
-        //            //oPayment.SendExtend.Desc_4 = "";//交易描述 4
-        //            //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
-        //            //oPayment.SendExtend.ClientRedirectURL = "";///Client 端回傳付款相關資訊
+                    //            /*************************非即時性付款:ATM、CVS 額外功能參數**************/
 
-        //            #endregion
+                    //            #region ATM 額外功能參數
 
-        //            /***************************信用卡額外功能參數***************************/
+                    //            //oPayment.SendExtend.ExpireDate = 3;//允許繳費的有效天數
+                    //            //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
+                    //            //oPayment.SendExtend.ClientRedirectURL = "";//Client 端回傳付款相關資訊
 
-        //            #region Credit 功能參數
+                    //            #endregion
 
-        //            //oPayment.SendExtend.BindingCard = BindingCardType.No; //記憶卡號
-        //            //oPayment.SendExtend.MerchantMemberID = ""; //記憶卡號識別碼
-        //            //oPayment.SendExtend.Language = "ENG"; //語系設定
 
-        //            #endregion Credit 功能參數
+                    //            #region CVS 額外功能參數
 
-        //            #region 一次付清
+                    //            //oPayment.SendExtend.StoreExpireDate = 3; //超商繳費截止時間 CVS:以分鐘為單位 BARCODE:以天為單位
+                    //            //oPayment.SendExtend.Desc_1 = "test1";//交易描述 1
+                    //            //oPayment.SendExtend.Desc_2 = "test2";//交易描述 2
+                    //            //oPayment.SendExtend.Desc_3 = "test3";//交易描述 3
+                    //            //oPayment.SendExtend.Desc_4 = "";//交易描述 4
+                    //            //oPayment.SendExtend.PaymentInfoURL = "";//伺服器端回傳付款相關資訊
+                    //            //oPayment.SendExtend.ClientRedirectURL = "";///Client 端回傳付款相關資訊
 
-        //            //oPayment.SendExtend.Redeem = false;   //是否使用紅利折抵
-        //            //oPayment.SendExtend.UnionPay = true; //是否為銀聯卡交易
+                    //            #endregion
 
-        //            #endregion
+                    //            /***************************信用卡額外功能參數***************************/
 
-        //            #region 分期付款
+                    //            #region Credit 功能參數
 
-        //            //oPayment.SendExtend.CreditInstallment = 3;//刷卡分期期數
+                    //            //oPayment.SendExtend.BindingCard = BindingCardType.No; //記憶卡號
+                    //            //oPayment.SendExtend.MerchantMemberID = ""; //記憶卡號識別碼
+                    //            //oPayment.SendExtend.Language = "ENG"; //語系設定
 
-        //            #endregion 分期付款
+                    //            #endregion Credit 功能參數
 
-        //            #region 定期定額
+                    //            #region 一次付清
 
-        //            //oPayment.SendExtend.PeriodAmount = 1000;//每次授權金額
-        //            //oPayment.SendExtend.PeriodType = PeriodType.Day;//週期種類
-        //            //oPayment.SendExtend.Frequency = 1;//執行頻率
-        //            //oPayment.SendExtend.ExecTimes = 2;//執行次數
-        //            //oPayment.SendExtend.PeriodReturnURL = "";//伺服器端回傳定期定額的執行結果網址。
+                    //            //oPayment.SendExtend.Redeem = false;   //是否使用紅利折抵
+                    //            //oPayment.SendExtend.UnionPay = true; //是否為銀聯卡交易
 
-        //            #endregion
+                    //            #endregion
+
+                    //            #region 分期付款
+
+                    //            //oPayment.SendExtend.CreditInstallment = 3;//刷卡分期期數
+
+                    //            #endregion 分期付款
+
+                    //            #region 定期定額
+
+                    //            //oPayment.SendExtend.PeriodAmount = 1000;//每次授權金額
+                    //            //oPayment.SendExtend.PeriodType = PeriodType.Day;//週期種類
+                    //            //oPayment.SendExtend.Frequency = 1;//執行頻率
+                    //            //oPayment.SendExtend.ExecTimes = 2;//執行次數
+                    //            //oPayment.SendExtend.PeriodReturnURL = "";//伺服器端回傳定期定額的執行結果網址。
+
+                    //            #endregion
 
 
                     /* 產生訂單 */
