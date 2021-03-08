@@ -176,6 +176,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
+    <Compile Include="Service\SubmissionProcessService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -357,6 +359,7 @@
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
+    <Compile Include="ViewModels\SubmissionProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -384,6 +387,7 @@
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2222,7 +2226,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
-    <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Log\" />
