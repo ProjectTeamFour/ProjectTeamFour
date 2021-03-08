@@ -7,11 +7,47 @@ namespace ProjectTeamFour.ViewModels
 {
     public class SubmissionProcessViewModel
     {
-        public ProjectListViewModel ProjectItem { get; set; }
-        public CarCarPlanListViewModel CarCarPlanItem { get; set; }
-        public MemberListViewModel MemberItem { get; set; }
-        public ProjectDetailViewModel ProjectDetailItem { get; set; }
-        public SelectPlanListViewModel SelectPlanCards { get; set; }
+        public string ProjectName { get; set; }
+        public decimal AmountThreshold { get; set; }
+        public string Category { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string ProjectVideoUrl { get; set; }
+        public string ProjectMainUrl { get; set; }
+        public string ProjectCoverUrl { get; set; }
+
+        //ProjectPrincipal
+        public string MemberConEmail { get; set; }
+        public string MemberPhone { get; set; }
+
+        //IdentityNumber
+        public string ProfileImgUrl { get; set; }
+        public string CreatorName { get; set; }
+        public string AboutMe { get; set; }
+        public string MemberWebsite { get; set; }
+        public string ProjectImgUrl { get; set; }
+        public string Project_Question { get; set; }
+        public string Project_Answer { get; set; }
+        public int ProjectPlanId { get; set; }
+        public decimal PlanPrice { get; set; }
+        public string PlanTitle { get; set; }
+        public int QuantityLimit { get; set; }
+
+        //AddCarCarPlan
+        public string PlanDescription { get; set; }
+        public string PlanImgUrl { get; set; }
+        public DateTime PlanShipDate { get; set; }
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

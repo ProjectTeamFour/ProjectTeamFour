@@ -23,55 +23,90 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public SubmissionProcessViewModel ReceiveSubmissionData(SubmissionProcessViewModel input)
+        public OperationResult ReceiveSubmissionData(SubmissionProcessViewModel input)
         {
-            SubmissionProcessViewModel SPVM = new SubmissionProcessViewModel()
+            //SubmissionProcessViewModel SPVM = new SubmissionProcessViewModel();
+
+            var result = new OperationResult();
+
+            try
             {
-                ProjectItem = new ProjectListViewModel()
+                Project pr_entity = new Project
                 {
-                    ProjectItems = new List<ProjectViewModel>()
-                },
-
-                CarCarPlanItem = new CarCarPlanListViewModel()
-                {
-                    CarCarPlanItems = new List<CarCarPlanViewModel>()
-                },
-
-                MemberItem = new MemberListViewModel()
-                {
-                    Items = new List<MemberViewModel>()
-                },
-
-                ProjectDetailItem = new ProjectDetailViewModel()
-                {
-                    ProjectFAQList = new List<ProjectFAQViewModel>()
-                },
-
-                SelectPlanCards = new SelectPlanListViewModel()
-                {
-                    PlanCardItems = new List<SelectPlanViewModel>()
-                }
-
-            };
-
-            Project entity = new Project
+                    ProjectName = input.ProjectName,
+                    AmountThreshold = input.AmountThreshold,
+                    Category = input.Category,
+                    StartDate = input.StartDate,
+                    EndDate = input.EndDate,
+                    ProjectVideoUrl = input.ProjectVideoUrl,
+                    ProjectMainUrl = input.ProjectMainUrl,
+                    ProjectCoverUrl = input.ProjectCoverUrl,
+                    //ProjectPrincipal
+                    //IdentityNumber
+                    CreatorName = input.CreatorName,
+                    ProjectImgUrl = input.ProjectImgUrl,
+                    Project_Question = input.Project_Question,
+                    Project_Answer = input.Project_Answer,
+                };
+                _repository.Create(pr_entity);
+                result.IsSuccessful = true;
+            }
+            catch (Exception ex)
             {
-                ProjectName = input.ProjectDetailItem.ProjectName,
-                AmountThreshold = input.ProjectDetailItem.AmountThreshold,
-                Category = input.ProjectDetailItem.Category,
-                StartDate = input.ProjectDetailItem.StartDate,
-                EndDate = input.ProjectDetailItem.EndDate,
-                ProjectVideoUrl = input.ProjectDetailItem.ProjectVideoUrl,
-                ProjectMainUrl = input.ProjectDetailItem.ProjectMainUrl,
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = false;
+                return result;
+            }
+            try
+            {
 
-            };
+                Member m_entity = new Member
+                {
+                    MemberConEmail = input.MemberConEmail,
+                    MemberPhone = input.MemberPhone,
+                    ProfileImgUrl = input.ProfileImgUrl,
+                    AboutMe = input.AboutMe,
+                    MemberWebsite = input.MemberWebsite,
+                };
+                _repository.Create(m_entity);
+                result.IsSuccessful = true;
 
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = false;
+                return result;
+            }
+            try
+            {
+                Plan pl_entity = new Plan
+                {
+                    ProjectPlanId = input.ProjectPlanId,
+                    PlanPrice = input.PlanPrice,
+                    PlanTitle = input.PlanTitle,
+                    QuantityLimit = input.QuantityLimit,
+                    //AddCarCarPlan
+                    PlanDescription = input.PlanDescription,
+                    PlanImgUrl = input.PlanImgUrl,
+                    //PlanShipDate
+                };
+                _repository.Create(pl_entity);
+                result.IsSuccessful = true;
 
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = false;
+                return result;
+            }
 
+            return result;
 
-
-
-            return null;
         }
     }
 }

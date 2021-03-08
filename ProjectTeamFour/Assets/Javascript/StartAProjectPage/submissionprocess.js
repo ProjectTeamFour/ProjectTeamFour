@@ -1,5 +1,7 @@
 ﻿
-    Vue.component("multi-text", {
+var splitJoin;
+
+Vue.component("multi-text", {
         template: "#multi-text-template",
         // props: ['value'],
         data: function () {
@@ -156,7 +158,8 @@
                 PlanShipDateErrorMsg: "",
             },
             modalList: [{
-        ID: "",
+                DataId: "",
+                ViewId: "",
                 makePlanCount: "",
                 PlanPrice: "",
                 PlanTitle: "",
@@ -554,7 +557,8 @@
                 SetPlanId += this.modalData.makePlanCount;
 
                 this.modalList.push({
-        ID: SetPlanId,
+                    DataId: this.modalData.makePlanCount,
+                    ViewId: SetPlanId,
                     makePlanCount: this.modalData.makePlanCount,
                     PlanPrice: this.modalData.PlanPrice,
                     PlanTitle: this.modalData.PlanTitle,
@@ -594,17 +598,15 @@
                 this.modalData.PlanShipDateMonth = "month";
             },
             submitProposal() {
-        quill.on('text-change', function () {
-            splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
-            // console.log(splitJoin);
+       
             this.inputData.QuillHtml = splitJoin;
             console.log(this.inputData.QuillHtml);
-        });
+        
 
                 // this.modalList.forEach()
 
                 var UpLoadData = {
-        "ProjectName": this.inputData.ProjectName,
+                    "ProjectName": this.inputData.ProjectName,
                     "AmountThreshold": this.inputData.AmountThreshold,
                     "Category": this.inputData.Category,
                     "StartDate": this.inputData.StartDate,
@@ -635,46 +637,46 @@
                     }
                 });
 
-                $.ajax({
-                    url: '/api/memberapi/update',
-                    type: 'post',
-                    data: {
-                        MemberId: $('#memberid').text(),
-                        MemberConEmail: $('#contactEmail').val(),
-                        Gender: document.getElementById('gender1').selectedOptions[0].text,
-                        MemberBirth: document.getElementById('birthday1').value,
-                        AboutMe: $('#about').val(),
-                        MemberName: $('#name1').val(),
-                        MemberWebsite: $('#personal-site').val(),
-                        ProfileImgUrl: document.getElementById('imgshow').getAttribute('src')
-                    },
-                    success: function (response) {
-                        if (response == "成功") {
-                            debugger;
-                            let imgurl = document.getElementById('imgshow').getAttribute('src');
-                            document.getElementsByName('memberimg').forEach(item => {
-                                console.log(imgurl);
-                                item.setAttribute('src', imgurl);
-                            })
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: '修改成功',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                        else {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'error',
-                                title: '修改失敗',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    }
-                })
+                //$.ajax({
+                //    url: '/api/memberapi/update',
+                //    type: 'post',
+                //    data: {
+                //        MemberId: $('#memberid').text(),
+                //        MemberConEmail: $('#contactEmail').val(),
+                //        Gender: document.getElementById('gender1').selectedOptions[0].text,
+                //        MemberBirth: document.getElementById('birthday1').value,
+                //        AboutMe: $('#about').val(),
+                //        MemberName: $('#name1').val(),
+                //        MemberWebsite: $('#personal-site').val(),
+                //        ProfileImgUrl: document.getElementById('imgshow').getAttribute('src')
+                //    },
+                //    success: function (response) {
+                //        if (response == "成功") {
+                //            debugger;
+                //            let imgurl = document.getElementById('imgshow').getAttribute('src');
+                //            document.getElementsByName('memberimg').forEach(item => {
+                //                console.log(imgurl);
+                //                item.setAttribute('src', imgurl);
+                //            })
+                //            Swal.fire({
+                //                position: 'top-center',
+                //                icon: 'success',
+                //                title: '修改成功',
+                //                showConfirmButton: false,
+                //                timer: 1500
+                //            })
+                //        }
+                //        else {
+                //            Swal.fire({
+                //                position: 'top-center',
+                //                icon: 'error',
+                //                title: '修改失敗',
+                //                showConfirmButton: false,
+                //                timer: 1500
+                //            })
+                //        }
+                //    }
+                //})
             },
 
 
@@ -718,8 +720,8 @@ quill.format(
     'color', 'black');
 
 quill.on('text-change', function () {
-    var splitjoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
-    console.log(splitjoin);
+     splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
+    //console.log(splitjoin);
 });
 
 //---------------------------------------------//
