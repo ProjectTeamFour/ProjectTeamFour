@@ -60,7 +60,15 @@ namespace ProjectTeamFour.Controllers
             return null;
         }
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        public ActionResult SaveData()
+        {
+            _PayService.SaveData();
+
+            return null;
+
+        }
+
+        [HttpPost]
         public ActionResult Result(FormCollection form)
         {
             string RtnCode = form["RtnCode"];

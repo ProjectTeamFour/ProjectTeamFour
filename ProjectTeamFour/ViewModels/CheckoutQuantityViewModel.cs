@@ -8,5 +8,7 @@ namespace ProjectTeamFour.ViewModels
     public class CheckoutQuantityViewModel
     {
         public List<int> Quantity { get; set; }
+
+        public string Comment { get; set; }
     }
 }

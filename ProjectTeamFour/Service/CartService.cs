@@ -136,6 +136,7 @@ namespace ProjectTeamFour.Service
                 {
                     cartItems.CartItems[i].Quantity = QuantityArray.Quantity[i];
                 }
+                cartItems.Comment = QuantityArray.Comment;
                 return cartItems;
             }
             
