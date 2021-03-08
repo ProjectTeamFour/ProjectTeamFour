@@ -94,6 +94,7 @@ namespace ProjectTeamFour.Service
                 OrderPhone = member.MemberPhone,
                 OrderConEmail = member.MemberConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,    
+                condition = "未付款",
             };
             _repository.Create(order);
 
@@ -162,8 +163,7 @@ namespace ProjectTeamFour.Service
             //    item.OrderId = order.OrderId;
             //    _repository.Create(item);
             //}
-
-
+            
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
@@ -178,9 +178,9 @@ namespace ProjectTeamFour.Service
                         OrderTotalAccount = cartSession.TotalAccount,
                         TradeNo = MerchantTradeNo,
                         RtnCode = Convert.ToInt32(RtnCode),
-                        
+                        condition = "已付款",
                     };
-                    _repository.Create(order);
+                    _repository.Update(order);
 
 
                     List<OrderDetail> od = new List<OrderDetail>();
@@ -200,7 +200,7 @@ namespace ProjectTeamFour.Service
                     foreach (var item in od)
                     {
                         item.OrderId = order.OrderId;
-                        _repository.Create(item);
+                        _repository.Update(item);
                     }
                     transaction.Commit(); //交易確認     
 

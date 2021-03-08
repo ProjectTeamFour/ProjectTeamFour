@@ -280,6 +280,10 @@
     <Compile Include="Migrations\202103050617138_EditOrderDetail.Designer.cs">
       <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103081120140_order新增condition.cs" />
+    <Compile Include="Migrations\202103081120140_order新增condition.Designer.cs">
+      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -2322,6 +2326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103050617138_EditOrderDetail.resx">
       <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081120140_order新增condition.resx">
+      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
