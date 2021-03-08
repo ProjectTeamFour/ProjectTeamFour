@@ -136,6 +136,7 @@ namespace ProjectTeamFour.Service
                         OrderTotalAccount = cartSession.TotalAccount,
                         TradeNo = MerchantTradeNo,
                         RtnCode = Convert.ToInt32(RtnCode),
+                        //condition = "未付款",
                     };
                     _repository.Create(order);
 

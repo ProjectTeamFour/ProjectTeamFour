@@ -133,7 +133,7 @@
 
         @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
         {
-            string active = i == (int)ViewData["Active"] ? "active" : "";
+            string active = i == (int)ViewData["Active"] ? "active" : ""; //i == id active 在i頁
 
             <li class="page-item @active"><a class="page-link" href="/Projects/GetAll/@i">@i</a></li>
         }       
