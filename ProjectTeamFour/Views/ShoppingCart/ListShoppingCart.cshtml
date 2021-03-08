@@ -17,7 +17,7 @@
         let qtyArray = document.querySelectorAll(".qty");
         let valuesArray = [];
         let cartSpecialInstructions = document.querySelector("#cartSpecialInstructions");
-        let clientComment = cartSpecialInstructions.value;
+        
         if (shopitems.innerText == "" )
         {
             NewDiv = document.createElement("div");
@@ -144,7 +144,7 @@
         function PrepareToCheckout() {
 
             valuesArray = NodeListPushToArray(qtyArray, valuesArray);
-            LanchArrayAjax(valuesArray, clientComment);
+            LanchArrayAjax(valuesArray, cartSpecialInstructions.value);
         }
 
         function NodeListPushToArray(NodeList, ValueArray) {
@@ -163,6 +163,7 @@
 
 
         function LanchArrayAjax(ValueArray, clientComment) {
+            console.log(clientComment);
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("GetCheckoutQuantity", "ShoppingCart")',
