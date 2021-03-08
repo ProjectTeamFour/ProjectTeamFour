@@ -17,6 +17,8 @@ namespace ProjectTeamFour.Service
         private DbContext _context;
         private BaseRepository _repository;
 
+        
+
         public System.Web.HttpResponse Response { get; }
 
         public PayService()
@@ -25,6 +27,7 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }        
         
+  
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
 
@@ -77,47 +80,96 @@ namespace ProjectTeamFour.Service
             return ((MemberViewModel)session["Member"]).MemberId;
         }
         //回傳訂單資料給資料庫
-        public void CreateOrderToDB() //把購物車的資料&member回傳給資料庫
+        public void CreateOrderToDB(string RtnCode , string MerchantTradeNo) //把購物車的資料&member回傳給資料庫
         {
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var cartSession = ((CartItemListViewModel)session["Cart"]);
-            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓
-            //var cart = cartSession.CartItems.Where(x => x.PlanId == cartPlan.PlanId).Select(x => x).FirstOrDefault(); //從session抓
+            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓           
+            //var order = new Order
+            //{
+            //    MemberId = member.MemberId,
+            //    OrderName = member.MemberName,
+            //    OrderAddress = member.MemberAddress,
+            //    OrderPhone = member.MemberPhone,
+            //    OrderConEmail = member.MemberConEmail,
+            //    OrderTotalAccount = cartSession.TotalAccount,
+            //    TradeNo = MerchantTradeNo,
+            //    RtnCode = Convert.ToInt32(RtnCode),
+            //};
+            //_repository.Create(order);
 
-            var order = new Order
+
+            //List<OrderDetail> od = new List<OrderDetail>();
+            //foreach (var i in cartSession.CartItems)
+            //{
+            //    var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
+            //    var o = new OrderDetail()
+            //    {
+            //        PlanTitle = plan.PlanTitle,
+            //        PlanId = plan.PlanId,
+            //        OrderPrice = plan.PlanPrice,
+            //        OrderQuantity = i.Quantity,
+            //    };
+            //    od.Add(o);
+
+            //}
+
+            //foreach (var item in od)
+            //{
+            //    item.OrderId = order.OrderId;
+            //    _repository.Create(item);
+            //}
+
+
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                MemberId = member.MemberId,
-                OrderName = member.MemberName,
-                OrderAddress = member.MemberAddress,
-                OrderPhone = member.MemberPhone,
-                OrderConEmail = member.MemberConEmail,
-                OrderTotalAccount = cartSession.TotalAccount,                
-            };
-            _repository.Create(order);
-
-
-            List<OrderDetail> od = new List<OrderDetail>();
-            foreach( var i in cartSession.CartItems)
-            {
-                var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId== i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
-                var o = new OrderDetail()
+                try
                 {
-                    PlanTitle = plan.PlanTitle,
-                    PlanId = plan.PlanId,
-                    OrderPrice = plan.PlanPrice,
-                    OrderQuantity = i.Quantity,
-                };
-                od.Add(o);
+                    var order = new Order
+                    {
+                        MemberId = member.MemberId,
+                        OrderName = member.MemberName,
+                        OrderAddress = member.MemberAddress,
+                        OrderPhone = member.MemberPhone,
+                        OrderConEmail = member.MemberConEmail,
+                        OrderTotalAccount = cartSession.TotalAccount,
+                        TradeNo = MerchantTradeNo,
+                        RtnCode = Convert.ToInt32(RtnCode),
+                        //condition = "未付款",
+                    };
+                    _repository.Create(order);
 
+
+                    List<OrderDetail> od = new List<OrderDetail>();
+                    foreach (var i in cartSession.CartItems)
+                    {
+                        var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
+                        var o = new OrderDetail()
+                        {
+                            PlanTitle = plan.PlanTitle,
+                            PlanId = plan.PlanId,
+                            OrderPrice = plan.PlanPrice,
+                            OrderQuantity = i.Quantity,
+                        };
+                        od.Add(o);
+
+                    }
+
+                    foreach (var item in od)
+                    {
+                        item.OrderId = order.OrderId;
+                        _repository.Create(item);
+                    }
+                    transaction.Commit(); //交易確認     
+
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine(ex);
+                }
             }
-           
-            foreach (var item in od)
-            {
-                item.OrderId = order.OrderId;
-                 _repository.Create(item);
-            }
-                                                                                                      
         }
 
         public string ConnectECPay()
