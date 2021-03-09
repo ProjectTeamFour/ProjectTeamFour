@@ -17,11 +17,13 @@ namespace ProjectTeamFour.Controllers
 {
     public class PersonInfoController : Controller
     {
-        private MemberService _memberService;
+        private readonly MemberService _memberService;
+        private readonly MemberSettingService _memberSettingService;
 
         public PersonInfoController()
         {
             _memberService = new MemberService();
+            _memberSettingService = new MemberSettingService();
         }
 
         // GET: PersonInfo

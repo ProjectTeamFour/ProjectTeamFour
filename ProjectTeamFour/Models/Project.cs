@@ -34,7 +34,6 @@ namespace ProjectTeamFour.Models
         public string ProjectMainUrl { get; set; }
         public string ProjectPrincipal { get; set; }
         public string IdentityNumber { get; set; }
-        public bool AddCarCarPlan { get; set; }
         //導覽屬性
         public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
