@@ -26,22 +26,26 @@ namespace ProjectTeamFour.ViewModels
         public string AboutMe { get; set; }
         public string MemberWebsite { get; set; }
         public string ProjectImgUrl { get; set; }
-        public string Project_Question { get; set; }
-        public string Project_Answer { get; set; }
-        public int ProjectPlanId { get; set; }
-        public decimal PlanPrice { get; set; }
-        public string PlanTitle { get; set; }
-        public int QuantityLimit { get; set; }
+
+
+        //public string Project_Question { get; set; }
+        //public string Project_Answer { get; set; }
+
+
+        //public int ProjectPlanId { get; set; }
+        //public decimal PlanPrice { get; set; }
+        //public string PlanTitle { get; set; }
+        //public int QuantityLimit { get; set; }
+        //public string PlanDescription { get; set; }
+        //public string PlanImgUrl { get; set; }
+        //public DateTime PlanShipDate { get; set; }
+
 
         //AddCarCarPlan
-        public string PlanDescription { get; set; }
-        public string PlanImgUrl { get; set; }
-        public DateTime PlanShipDate { get; set; }
 
 
-
-
-
+        public List<string> ProjectQA { get; set; }
+        public List<string> PlanObject { get; set; }
 
 
 

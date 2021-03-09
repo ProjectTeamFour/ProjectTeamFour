@@ -29,6 +29,8 @@ namespace ProjectTeamFour.Service
 
             var result = new OperationResult();
 
+            
+
             try
             {
                 Project pr_entity = new Project
@@ -45,8 +47,7 @@ namespace ProjectTeamFour.Service
                     //IdentityNumber
                     CreatorName = input.CreatorName,
                     ProjectImgUrl = input.ProjectImgUrl,
-                    Project_Question = input.Project_Question,
-                    Project_Answer = input.Project_Answer,
+                    
                 };
                 _repository.Create(pr_entity);
                 result.IsSuccessful = true;
@@ -84,14 +85,14 @@ namespace ProjectTeamFour.Service
             {
                 Plan pl_entity = new Plan
                 {
-                    ProjectPlanId = input.ProjectPlanId,
-                    PlanPrice = input.PlanPrice,
-                    PlanTitle = input.PlanTitle,
-                    QuantityLimit = input.QuantityLimit,
-                    //AddCarCarPlan
-                    PlanDescription = input.PlanDescription,
-                    PlanImgUrl = input.PlanImgUrl,
-                    //PlanShipDate
+                    //ProjectPlanId = input.ProjectPlanId,
+                    //PlanPrice = input.PlanPrice,
+                    //PlanTitle = input.PlanTitle,
+                    //QuantityLimit = input.QuantityLimit,
+                    ////AddCarCarPlan
+                    //PlanDescription = input.PlanDescription,
+                    //PlanImgUrl = input.PlanImgUrl,
+                    ////PlanShipDate
                 };
                 _repository.Create(pl_entity);
                 result.IsSuccessful = true;

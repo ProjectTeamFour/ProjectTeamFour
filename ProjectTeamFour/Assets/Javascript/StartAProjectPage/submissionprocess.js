@@ -631,9 +631,10 @@ Vue.component("multi-text", {
                 $.ajax({
                     url: "/api/projectsubmission/receivedata",
                     type: "post",
+                    contentType: "application/json; charset=utf-8",
                     data: UpLoadData,
                     success: function (response) {
-                        console.log(response);
+                        alert(response);
                     }
                 });
 
