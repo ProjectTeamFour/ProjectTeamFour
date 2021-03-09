@@ -80,7 +80,7 @@ namespace ProjectTeamFour.Service
             return ((MemberViewModel)session["Member"]).MemberId;
         }   
         
-        public void SaveData()
+        public int SaveData()
         {
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
@@ -97,7 +97,7 @@ namespace ProjectTeamFour.Service
                 condition = "未付款",
             };
             _repository.Create(order);
-
+            
 
             List<OrderDetail> od = new List<OrderDetail>();
             foreach (var i in cartSession.CartItems)
@@ -118,17 +118,22 @@ namespace ProjectTeamFour.Service
                 item.OrderId = order.OrderId;
                 _repository.Create(item);
             }
+            return order.OrderId;
         }
 
 
 
         //回傳訂單資料給資料庫
-        public void CreateOrderToDB(string RtnCode , string MerchantTradeNo) //把購物車的資料&member回傳給資料庫
+        public void CreateOrderToDB(string RtnCode , string MerchantTradeNo ,string orderId) //把購物車的資料&member回傳給資料庫
         {
             var session = HttpContext.Current.Session;
-            var memberSession = ((MemberViewModel)session["Member"]);
+            //var memberSession = ((MemberViewModel)session["Member"]);
             var cartSession = ((CartItemListViewModel)session["Cart"]);
-            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓           
+            var orderint = Convert.ToInt32(orderId);
+            var rtnCode = Convert.ToInt32(RtnCode);
+            //var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓    
+
+
             //var order = new Order
             //{
             //    MemberId = member.MemberId,
@@ -163,45 +168,38 @@ namespace ProjectTeamFour.Service
             //    item.OrderId = order.OrderId;
             //    _repository.Create(item);
             //}
-            
+
             using (var transaction = _context.Database.BeginTransaction())
             {
+
+                var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
                 try
                 {
-                    var order = new Order
-                    {
-                        MemberId = member.MemberId,
-                        OrderName = member.MemberName,
-                        OrderAddress = member.MemberAddress,
-                        OrderPhone = member.MemberPhone,
-                        OrderConEmail = member.MemberConEmail,
-                        OrderTotalAccount = cartSession.TotalAccount,
-                        TradeNo = MerchantTradeNo,
-                        RtnCode = Convert.ToInt32(RtnCode),
-                        condition = "已付款",
-                    };
-                    _repository.Update(order);
+                    result.condition = "已付款";                   
+                    result.RtnCode = rtnCode;
+                    result.TradeNo = MerchantTradeNo;
+                    _repository.Update<Order>(result);
 
 
-                    List<OrderDetail> od = new List<OrderDetail>();
-                    foreach (var i in cartSession.CartItems)
-                    {
-                        var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
-                        var o = new OrderDetail()
-                        {
-                            PlanTitle = plan.PlanTitle,
-                            PlanId = plan.PlanId,
-                            OrderPrice = plan.PlanPrice,
-                            OrderQuantity = i.Quantity,
-                        };
-                        od.Add(o);
-                    }
+                    //List<OrderDetail> od = new List<OrderDetail>();
+                    //foreach (var i in cartSession.CartItems)
+                    //{
+                    //    var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
+                    //    var o = new OrderDetail()
+                    //    {
+                    //        PlanTitle = plan.PlanTitle,
+                    //        PlanId = plan.PlanId,
+                    //        OrderPrice = plan.PlanPrice,
+                    //        OrderQuantity = i.Quantity,
+                    //    };
+                    //    od.Add(o);
+                    //}
 
-                    foreach (var item in od)
-                    {
-                        item.OrderId = order.OrderId;
-                        _repository.Update(item);
-                    }
+                    //foreach (var item in od)
+                    //{
+                    //    item.OrderId = order.OrderId;
+                    //    _repository.Update<OrderDetail>(item);
+                    //}
                     transaction.Commit(); //交易確認     
 
                 }
@@ -213,7 +211,7 @@ namespace ProjectTeamFour.Service
             }
         }
 
-        public string ConnectECPay()
+        public string ConnectECPay(int orderId)
         {
             var session = HttpContext.Current.Session;
             List<string> enErrors = new List<string>();
@@ -248,7 +246,7 @@ namespace ProjectTeamFour.Service
                     oPayment.Send.IgnorePayment = ""; //不顯示的付款方式
                     oPayment.Send.PlatformID = "";//特約合作平台商代號
                     oPayment.Send.HoldTradeAMT = HoldTradeType.Yes;
-                    oPayment.Send.CustomField1 = "";
+                    oPayment.Send.CustomField1 = orderId.ToString();
                     oPayment.Send.CustomField2 = "";
                     oPayment.Send.CustomField3 = "";
                     oPayment.Send.CustomField4 = "";
