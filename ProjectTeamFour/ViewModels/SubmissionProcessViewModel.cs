@@ -28,9 +28,13 @@ namespace ProjectTeamFour.ViewModels
         public string MemberWebsite { get; set; }
         public string ProjectImgUrl { get; set; }
 
+        public string ProjectPrincipal { get; set; }
 
-        //public string Project_Question { get; set; }
-        //public string Project_Answer { get; set; }
+        public string IdentityNumber { get; set; }
+
+
+        public string Project_Question { get; set; }
+        public string Project_Answer { get; set; }
 
 
         //public int ProjectPlanId { get; set; }
@@ -45,8 +49,8 @@ namespace ProjectTeamFour.ViewModels
         //AddCarCarPlan
 
 
-        public List<Project> ProjectQA { get; set; }
-        public List<Plan> PlanObject { get; set; }
+
+        public List<SubmissionProcessPlanViewModel> PlanObject { get; set; }
 
 
 

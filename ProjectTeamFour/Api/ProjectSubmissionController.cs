@@ -36,8 +36,6 @@ namespace ProjectTeamFour.Api
 
             var first = sw.ElapsedMilliseconds;
 
-
-
             sw.Restart();
 
             result = _submissionservice.ReceiveSubmissionData(input, Id);

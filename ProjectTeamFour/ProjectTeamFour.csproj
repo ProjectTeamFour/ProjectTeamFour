@@ -368,6 +368,7 @@
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
+    <Compile Include="ViewModels\SubmissionProcessPlanViewModel.cs" />
     <Compile Include="ViewModels\SubmissionProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

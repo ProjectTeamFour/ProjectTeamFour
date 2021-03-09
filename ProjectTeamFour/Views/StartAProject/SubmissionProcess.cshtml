@@ -398,12 +398,12 @@
                                                     <br>
                                                     <div class="set-plan-quantity">
                                                         <p>回饋數量限制</p>
-                                                        <p>{{ item.Quantity }}</p>
+                                                        <p>{{ item.QuantityLimit }}</p>
                                                     </div>
                                                     <br>
                                                     <div class="set-plan-addcarcarplan">
                                                         <p>是否加入車車商城</p>
-                                                        <p>{{ item.AddCarCarPlan }}</p>
+                                                        <p>{{ item.AddCarCarPlanSwitch }}</p>
                                                     </div>
                                                 </div>
 
@@ -665,15 +665,15 @@
                                 </div>
                                 <div class="plan-quantitylimit pb-2 pb-lg-4">
                                     <div class="plan-quantitylimit-item d-flex justify-content-between align-items-center mb-2">
-                                        <p class="small-title">回饋數量限制(Quantity)</p>
+                                        <p class="small-title">回饋數量限制(QuantityLimit)</p>
                                         <p class="sub-text">0即為不限量</p>
                                     </div>
                                     <div class="plan-quantitylimit-item">
                                         <input type="number" class="w-100 form-control" min=0
-                                               v-model="modalData.Quantity"
-                                               v-bind:class="{ 'is-invalid': modalDataCheck.QuantityError}">
+                                               v-model="modalData.QuantityLimit"
+                                               v-bind:class="{ 'is-invalid': modalDataCheck.QuantityLimitError}">
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.QuantityErrorMsg }}
+                                            {{ modalDataCheck.QuantityLimitErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -684,8 +684,8 @@
                                     </div>
                                     <div class="add-carcarplan-item d-flex justify-content-evenly align-items-center add-carcarplan-item-box pt-lg-3">
                                         <input type="checkbox" class="mr-3" style="zoom:150%;"
-                                               v-model="modalData.AddCarCarPlan"
-                                               v-bind:class="{ 'is-invalid': modalDataCheck.AddCarCarPlanError}">
+                                               v-model="modalData.AddCarCarPlanSwitch"
+                                               v-bind:class="{ 'is-invalid': modalDataCheck.AddCarCarPlanSwitchError}">
                                         <p class="checkbox-p">募資成功後是否在車車商城上架</p>
                                     </div>
 

@@ -131,8 +131,8 @@ Vue.component("multi-text", {
             modalData: {
         PlanPrice: "",
                 PlanTitle: "",
-                Quantity: "",
-                AddCarCarPlan: "",
+                QuantityLimit: "",
+                AddCarCarPlanSwitch: "",
                 PlanDescription: "",
                 PlanImgUrl: "",
                 PlanShipDateYear: "year",
@@ -146,10 +146,10 @@ Vue.component("multi-text", {
                 PlanPriceErrorMsg: "",
                 PlanTitleError: "",
                 PlanTitleErrorMsg: "",
-                QuantityError: "",
-                QuantityErrorMsg: "",
-                AddCarCarPlanError: "",
-                AddCarCarPlanErrorMsg: "",
+                QuantityLimitError: "",
+                QuantityLimitErrorMsg: "",
+                AddCarCarPlanSwitchError: "",
+                AddCarCarPlanSwitchErrorMsg: "",
                 PlanDescriptionError: "",
                 PlanDescriptionErrorMsg: "",
                 PlanImgUrlError: "",
@@ -158,17 +158,19 @@ Vue.component("multi-text", {
                 PlanShipDateErrorMsg: "",
             },
             modalList: [{
-                DataId: "",
+                ProjectPlanId: "",
                 ViewId: "",
                 makePlanCount: "",
                 PlanPrice: "",
                 PlanTitle: "",
-                Quantity: "",
+                QuantityLimit: "",
+                AddCarCarPlanSwitch: "",
                 AddCarCarPlan: "",
                 PlanDescription: "",
                 PlanImgUrl: "",
                 PlanShipDateYear: "",
                 PlanShipDateMonth: "",
+                PlanShipDate: "",
             }],
             ProjectQuestionAnswer: [{
     }],
@@ -392,15 +394,15 @@ Vue.component("multi-text", {
                     this.checkAddVerifyModal();
                 }
             },
-            "modalData.Quantity": {
+            "modalData.QuantityLimit": {
         immediate: false,
                 handler: function () {
-                    if (this.modalData.Quantity == "") {
-        this.modalDataCheck.QuantityError = true;
-                        this.modalDataCheck.QuantityErrorMsg = "回饋數量限制不得為空";
+                    if (this.modalData.QuantityLimit == "") {
+        this.modalDataCheck.QuantityLimitError = true;
+                        this.modalDataCheck.QuantityLimitErrorMsg = "回饋數量限制不得為空";
                     } else {
-        this.modalDataCheck.QuantityError = false;
-                        this.modalDataCheck.QuantityErrorMsg = "";
+        this.modalDataCheck.QuantityLimitError = false;
+                        this.modalDataCheck.QuantityLimitErrorMsg = "";
                     }
                     this.checkAddVerifyModal();
                 }
@@ -545,40 +547,49 @@ Vue.component("multi-text", {
         console.log(this.inputData.Category);
             },
             addItem() {
-        let AddCarCarPlanSwitch;
+                let AddCarCarPlan;
+                let AddCarCarPlanSwitch;
                 let SetPlanId = "set-plan";
                 this.modalData.makePlanCount += 1;
-                console.log(this.modalData.AddCarCarPlan);
-                if (this.modalData.AddCarCarPlan === true) {
-        AddCarCarPlanSwitch = "是";
+                console.log(this.modalData.AddCarCarPlanSwitch);
+                if (this.modalData.AddCarCarPlanSwitch === true) {
+                    AddCarCarPlanSwitch = "是";
+                    AddCarCarPlan = true;
                 } else {
-        AddCarCarPlanSwitch = "否";
+                    AddCarCarPlanSwitch = "否";
+                    AddCarCarPlan = false;
                 }
                 SetPlanId += this.modalData.makePlanCount;
 
+                if (this.modalData.PlanShipDateMonth < 10) {
+                    var newMonth = "0" + this.modalData.PlanShipDateMonth;
+                }
+
                 this.modalList.push({
-                    DataId: this.modalData.makePlanCount,
+                    ProjectPlanId: this.modalData.makePlanCount,
                     ViewId: SetPlanId,
                     makePlanCount: this.modalData.makePlanCount,
                     PlanPrice: this.modalData.PlanPrice,
                     PlanTitle: this.modalData.PlanTitle,
-                    Quantity: this.modalData.Quantity,
-                    AddCarCarPlan: AddCarCarPlanSwitch,
+                    QuantityLimit: this.modalData.QuantityLimit,
+                    AddCarCarPlanSwitch: AddCarCarPlanSwitch,
+                    AddCarCarPlan: AddCarCarPlan,
                     PlanDescription: this.modalData.PlanDescription,
                     PlanImgUrl: this.modalData.PlanImgUrl,
                     PlanShipDateYear: this.modalData.tempYear,
                     PlanShipDateMonth: this.modalData.tempMonth,
+                    PlanShipDate: this.modalData.tempYear + newMonth + "15",
                 });
                 // console.log(this.modalList);
                 this.modalData.PlanPrice = "";
                 this.modalData.PlanTitle = "";
-                this.modalData.Quantity = "";
+                this.modalData.QuantityLimit = "";
                 this.modalData.PlanDescription = "";
                 // console.log(this.$refs.planpicfileupload.value);
                 this.modalData.PlanImgUrl = "";
                 this.$refs.planpicfileupload.value = null;
                 // document.querySelector(".gray-block").innerHTML = `<img :src="modalData.PlanImgUrl" alt="planImgUrl" width="250px" height="187.5px" class="planPreviewPic">`;
-                this.modalData.AddCarCarPlan = false;
+                this.modalData.AddCarCarPlanSwitch = false;
                 this.modalData.PlanShipDateYear = "year";
                 this.modalData.PlanShipDateMonth = "month";
                 this.modalData.tempYear = "";
@@ -588,22 +599,33 @@ Vue.component("multi-text", {
             cancelCleanModal() {
         this.modalData.PlanPrice = "";
                 this.modalData.PlanTitle = "";
-                this.modalData.Quantity = "";
+                this.modalData.QuantityLimit = "";
                 this.modalData.PlanDescription = "";
                 this.modalData.PlanImgUrl = "";
                 this.$refs.planpicfileupload.value = null;
                 // document.querySelector(".gray-block").innerHTML = `<img :src="modalData.PlanImgUrl" alt="planImgUrl" width="250px" height="187.5px" class="planPreviewPic">`;
-                this.modalData.AddCarCarPlan = false;
+                this.modalData.AddCarCarPlanSwitch = false;
                 this.modalData.PlanShipDateYear = "year";
                 this.modalData.PlanShipDateMonth = "month";
             },
             submitProposal() {
        
             this.inputData.QuillHtml = splitJoin;
-            console.log(this.inputData.QuillHtml);
-        
+                console.log(this.inputData.QuillHtml);
 
-                // this.modalList.forEach()
+                this.modalList.shift(); //移掉陣列第一個空的
+                this.ProjectQuestionAnswer.shift(); //也是
+
+                var totalQuestion = "";
+                var totalAnswer = "";
+
+                this.ProjectQuestionAnswer.forEach(x => {
+                    totalQuestion = totalQuestion + "," + x.Question;
+                    totalAnswer = totalAnswer + "," + x.Answer;
+                });
+                totalQuestion = totalQuestion.substr(1);
+                totalAnswer = totalAnswer.substr(1);
+             
 
                 var UpLoadData = {
                     "ProjectName": this.inputData.ProjectName,
@@ -625,6 +647,8 @@ Vue.component("multi-text", {
                     "ProjectImgUrl": this.inputData.QuillHtml, //富文本
                     "PlanObject": this.modalList,  //陣列包物件
                     "ProjectQA": this.ProjectQuestionAnswer,  //陣列包物件
+                    "Project_Question": totalQuestion,
+                    "Project_Answer": totalAnswer,
                 }
                 // console.log(this.ProjectQuestionAnswer);
 
