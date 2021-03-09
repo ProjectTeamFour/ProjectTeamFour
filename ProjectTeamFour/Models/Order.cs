@@ -19,6 +19,7 @@ namespace ProjectTeamFour.Models
 
         public string TradeNo { get; set; } //綠界的交易編號
         public int RtnCode { get; set; } //交易狀態
+        public string condition { get; set; } //是否付款
 
         //導覽屬性
         [ForeignKey("MemberId")]

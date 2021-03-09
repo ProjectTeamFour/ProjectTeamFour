@@ -14,7 +14,7 @@ namespace ProjectTeamFour.ViewModels
 
         public  List<CarCarPlanViewModel> CartItems{ get;set;}
 
-       
+       public string Comment { get; set; }
 
         public decimal TotalAccount { get 
             { 

@@ -4,6 +4,8 @@
 @{
     DateTime today = DateTime.Now;
     decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
+    int Progress = (int)num;
+    string ProgressStr = Progress.ToString() + "%";
     double dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - today.Ticks).TotalDays);
 }
 
@@ -29,8 +31,23 @@
             <div class="cardtemplate-item project-team">
                 <p>@Model.CreatorName</p>
             </div>
-            <div class="cardtemplate-item project-progressbar">
-                <div class="project-progressbar-item"></div>
+            <div class="cardtemplate-item project-progressbar progress">
+                @if (Progress <= 25)
+                {
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @ProgressStr" aria-valuenow="@Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                }
+                else if (Progress <= 50)
+                {
+                    <div class="progress-bar bg-info" role="progressbar" style="width: @ProgressStr" aria-valuenow="@Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                }
+                else if (Progress <= 75)
+                {
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: @ProgressStr" aria-valuenow="@Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                }
+                else
+                {
+                     <div class="progress-bar bg-danger" role="progressbar" style="width: @ProgressStr" aria-valuenow="@Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                }
             </div>
             <div class="cardtemplate-item project-progressnumber d-flex justify-content-between">
                 <div class="project-progressnumber-item amount d-flex">

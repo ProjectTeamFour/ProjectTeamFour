@@ -53,14 +53,7 @@ namespace ProjectTeamFour.Controllers
 
             //計算page頁面
             int Pages = 0;
-            if(totalRows % pageRows == 0)
-            {
-                Pages = totalRows / pageRows;
-            }
-            else
-            {
-                Pages = totalRows / pageRows + 1;
-            }
+            Pages = (totalRows % pageRows == 0) ? (totalRows / pageRows) : (totalRows / pageRows + 1);
 
             int starRows = (activePage - 1) * pageRows; //起始紀錄index
             

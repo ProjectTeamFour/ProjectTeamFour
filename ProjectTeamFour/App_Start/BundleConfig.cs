@@ -29,7 +29,7 @@ namespace ProjectTeamFour
                       "~/Assets/Plugin/Vue/Vue_cdn2.6.12.js"));
 
             bundles.Add(new StyleBundle("~/Assets/css").Include(
-                      "~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css",
+                    "~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/css/all.min.css",
                       "~/Assets/HeaderFooterLayout/headerfooter.css",
                       "~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.css", 
                       "~/Assets/Plugin/Normalize.css/normalize.css", 

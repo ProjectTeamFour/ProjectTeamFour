@@ -32,6 +32,9 @@ namespace ProjectTeamFour.Models
         public decimal AmountThreshold { get; set; }
         public string CreatorName { get; set; }
         public string ProjectMainUrl { get; set; }
+        public string ProjectPrincipal { get; set; }
+        public string IdentityNumber { get; set; }
+        public bool AddCarCarPlan { get; set; }
         //導覽屬性
         public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

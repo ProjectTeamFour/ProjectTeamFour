@@ -173,6 +173,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
@@ -277,6 +278,14 @@
     <Compile Include="Migrations\202103050617138_EditOrderDetail.Designer.cs">
       <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103081120140_order新增condition.cs" />
+    <Compile Include="Migrations\202103081120140_order新增condition.Designer.cs">
+      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103090608377_add.cs" />
+    <Compile Include="Migrations\202103090608377_add.Designer.cs">
+      <DependentUpon>202103090608377_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -299,6 +308,7 @@
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
+    <Compile Include="Service\SubmissionProcessService.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -354,6 +364,7 @@
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
+    <Compile Include="ViewModels\SubmissionProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -381,6 +392,7 @@
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2139,6 +2151,8 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.woff2" />
     <Content Include="App_Code\StringFormat5.cshtml" />
     <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
+    <None Include="Properties\PublishProfiles\MyCarPlanWebsite - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\projecteteam4 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2195,10 +2209,8 @@
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
     <Content Include="Views\CarCarPlan\Detail.cshtml" />
-    <Content Include="Views\Log\Test.cshtml" />
     <Content Include="Views\Manager\AccountManger.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditorPartial.cshtml" />
-    <Content Include="Views\Projects\Main.cshtml" />
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
@@ -2216,13 +2228,14 @@
     <Content Include="Views\pay\ConnectECPay.cshtml" />
     <Content Include="Views\Projects\GetAll.cshtml" />
     <Content Include="Views\pay\Result.cshtml" />
+    <Content Include="Views\pay\SaveData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
-    <Folder Include="Assets\Javascript\StartAProjectPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2318,6 +2331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103050617138_EditOrderDetail.resx">
       <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081120140_order新增condition.resx">
+      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103090608377_add.resx">
+      <DependentUpon>202103090608377_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
