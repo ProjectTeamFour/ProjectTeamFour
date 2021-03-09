@@ -6,8 +6,8 @@
 
 }
 
-@* FB分享 *@
-<div id="fb-root"></div>
+@* FBd="分享 *@
+<div ifb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0" nonce="9aOjq2xP"></script>
 
 <section class="main-body">
@@ -99,12 +99,12 @@
                                     <a href="" id="backit-btn">贊助專案</a>
                                     <!--轉接到加入購物車-->
                                 </div>
- 
+
                                 <div class="btn col-8">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                    <a class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
                                         <i class="fab fa-comment-dots">留言</i>聯絡提案人
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <!-- Modal -->
@@ -128,13 +128,13 @@
                                                             @*<p>提案負責人：@Model.ProjectDetailItem.CreatorName</p>*@
                                                             <i class="fab fa-facebook-official">FB</i><a href=""></a>
                                                         </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <p>
-                                                                大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
-                                                                」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
-                                                            </p>
-                                                            <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>                                                       
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <p>
+                                                            大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
+                                                            」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
+                                                        </p>
+                                                        <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -146,7 +146,7 @@
                                                     <textarea class="form-control" rows="10" id="msg-content"
                                                               placeholder="傳送訊息..."></textarea>
                                                     <br />
-                                                    <button type="submit" class="btn btn-primary btn-block" id="send-msg" >傳送訊息</button>
+                                                    <button type="submit" class="btn btn-primary btn-block" id="send-msg">傳送訊息</button>
                                                     @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
                                                 </form>
                                             </div>
@@ -154,18 +154,11 @@
                                     </div>
                                 </div>
 
-
-
-
-
-
-
-                                <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-toggle="popover" data-placement="bottom" data-content="hello">
+                                <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-bs-toggle="popover" data-placement="bottom" data-bs-content="SHARE">
                                     分享
-                                    <div class="fb-share-button" data-href="https://localhost:44300/ProjectDetail/Index/id=?" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A44300%2FProjectDetail%2FIndex%2Fid%3D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">分享</a></div>
-                                    @*<div data-project-url="https://www.flyingv.cc/projects/27640" id="share-fb-btn">FB share</div>
-            <div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
-                                    <a href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><img alt='分享給LINE好友 !' height='40' src='https://1.bp.blogspot.com/-FvoBw8lnlC8/WHgA91RmxiI/AAAAAAAAIvA/CazIGx6Jlp8PJ4pE40kt2XMxwFmeBSdjgCLcB/s1600/168x40.png' width='168' /></a>
+                                    <div class="fb-share-button" data-href="https://www.google.com" data-layout="button"></div>
+                                    @*<div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
+                                    <a href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -174,184 +167,242 @@
                 </div>
             </div>
         </div>
-
     </section>
+    <div class="container">
+        <div class="row blog">
+            <div class="col-md-12">
+                <section class="">
+                    <div class="container">
+                        <!--測試測試測試測試-->
 
-    <div class="below-content">
-        <section id="campaign-details-all">
-            <div class="container">
-                <div class="row">
-                    <!-- 左側欄位 -->
-                    <div id="leftside-main-col" class="col-sm-12 col-md-8">
-                        <!-- 提案詳細介紹，nav with four tabs -->
-                        <section id="campaign-details">
-                            <nav id="info-tabs">
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
-                                       aria-controls="nav-story" aria-selected="true">專案內容</a>
-                                    <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
-                                       aria-controls="nav-faq" aria-selected="false">常見問題</a>
-                                    <a class="nav-link" id="nav-updates-tab" data-toggle="tab" href="#nav-updates" role="tab"
-                                       aria-controls="nav-updates" aria-selected="false">專案進度</a>
-                                    <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab"
-                                       aria-controls="nav-comments" aria-selected="false">留言</a>
-                                </div>
-                            </nav>
-                            <div class="tab-content" id="nav-tabContent">
-                                <!-- 專案內容 -->
-                                <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
-                                    <section id="story">
-                                        <div class="container">
-                                            @*專案詳細說明內文*@
-                                            @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                        <div class="row">
+                            <div id="select-plans" class="carousel slide" data-ride="carousel">
+                                @*<div class="slide-arrow d-flex justify-content-between">
+                                        <a class="carousel-control-prev" href="#select-plans" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#select-plans" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>*@
+                                @*<ol class="carousel-indicators">
+                                        <li data-target="#select-plans" data-slide-to="0" class="active"></li>
+                                        <li data-target="#select-plans" data-slide-to="1"></li>
+                                    </ol>*@
+                                <a class="carousel-control-prev" href="#select-plans" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#select-plans" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            @foreach (var item in Model.SelectPlanCards.PlanCardItems)
                                             {
-                                                <div class="info wrapper">
-                                                    <p>已達成 募資目標!</p>
+                                                <div class="col-xs-4 col-sm-3">
+                                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
                                                 </div>
                                             }
-
-                                            @{
-                                                string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
-                                                foreach (var item in description_str)
-                                                {
-                                                    if (item.Contains("i.imgur"))
-                                                    {
-                                                        <div margin:1rem;">
-                                                            <img src="@item" style="width:100%;" />
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <p>@item</p>
-                                                    }
-                                                }
-                                            }
-                                        </div>
-                                    </section>
-                                </div>
-
-                                <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
-                                    <!-- 問答要做成 collapse -->
-                                    <!-- 這裡要下判斷式，長出提問以及回答 -->
-                                    <div class="accordion" id="accordionExample">
-
-                                        @{
-                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
-                                            {
-                                                <div class="card">
-                                                    <div class="card-header" id="headingOne">
-                                                        <h2 class="mb-0">
-                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                @item.Question
-                                                            </button>
-                                                        </h2>
-                                                    </div>
-                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                         data-parent="#accordionExample">
-                                                        <div class="card-body">
-                                                            @item.Answer
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
-                                        }
-
-                                        @*<div class="faqWrapper">
-                                                <div class="faq">
-                                                    <div class="outer">
-                                                        <div class="arrow">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                <g fill="none" fill-rule="evenodd">
-                                                                    <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                                </g>
-                                                            </svg>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                <g fill="none" fill-rule="evenodd">
-                                                                    <path fill="#F8414A" d="M12.594 9.253l4.16 4.274c.527.543.153 1.473-.595 1.473H7.84c-.748 0-1.122-.93-.594-1.473l4.162-4.274c.325-.337.857-.337 1.185 0z" />
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                        <div class="question"> 家長/老師本身沒有程式基礎，也能引導小孩一起玩嗎？</div>
-                                                    </div>
-                                                    <div class="answer">
-                                                        「沒問題的！這次海霸外傳《解碼傳說》附有詳解手冊，就算沒有程式基礎，也能夠輕鬆看懂唷！」<br />
-
-                                                    </div>
-                                                </div>
-                                            </div>*@
-
-                                    </div>
-                                </div>
-
-                                @* 專案進度更新 *@
-                                <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
-                                    @*下面放專案更新進度貼文的card*@
-
-                                    <div id="goal-wrap" class="container">
-                                        <span class="post-date label-grey">2021/01/05</span>
-                                        <h4 class="post-label">已達成 募資目標!</h4>
-                                        <h4 class="post-title">解鎖事項：募資成功</h4>
-                                        <div class="wrapper">
-
-                                            <div class="goal-detail ">
-                                                <label class="label-grey">贊助金額</label>
-                                                <h3 class="number">$149,140</h3>
-                                            </div>
-                                            <div class="goal-detail ">
-                                                <label class="label-grey">支持者</label>
-                                                <h3>51人</h3>
-                                            </div>
-                                            <div class="goal-detail ">
-                                                <label class="label-grey">贊助比例</label>
-                                                <h3>106.4%</h3>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                @* 專案留言區 *@
-                                <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
-                                    <div id="comment-hint" class="wrapper">
-                                        <p>
-                                            您還不是本案的贊助者，若有問題可直接
-                                            <span class="color-tag"><i class="bi bi-envelope"></i> 聯絡提案人！</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+
                     </div>
-                    <!-- 右側欄位 -->
-                    <div id="rightside-bar-col" class="col-sm-12 col-md-4">
-                        <!-- 選擇方案 -->
-                        <section id="select-perk">
-                            <div class="min-display-slide">
-                                <div class="row">
-                                    @foreach (var item in Model.SelectPlanCards.PlanCardItems)
-                                    {
-                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                    }
-                                    <!-- <h4>選擇方案</h4> -->
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+
+                </section>
+
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+
+                <div class="below-content">
+                    <section id="campaign-details-all">
+                        <div class="container">
+                            <div class="row">
+                                <!-- 左側欄位 -->
+                                <div id="leftside-main-col" class="col-sm-12 col-md-8">
+                                    <!-- 提案詳細介紹，nav with four tabs -->
+                                    <section id="campaign-details">
+                                        <nav id="info-tabs">
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
+                                                   aria-controls="nav-story" aria-selected="true">專案內容</a>
+                                                <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
+                                                   aria-controls="nav-faq" aria-selected="false">常見問題</a>
+                                                <a class="nav-link" id="nav-updates-tab" data-toggle="tab" href="#nav-updates" role="tab"
+                                                   aria-controls="nav-updates" aria-selected="false">專案進度</a>
+                                                <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab"
+                                                   aria-controls="nav-comments" aria-selected="false">留言</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <!-- 專案內容 -->
+                                            <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
+                                                <section id="story container">
+
+
+
+
+                                                    <div class="container">
+                                                        @*專案詳細說明內文*@
+                                                        @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                                                        {
+                                                            <div class="info wrapper">
+                                                                <p>已達成 募資目標!</p>
+                                                            </div>
+                                                        }
+
+                                                        @{
+                                                            string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                                            foreach (var item in description_str)
+                                                            {
+                                                                if (item.Contains("i.imgur"))
+                                                                {
+                                                                    <div margin:1rem;">
+                                                                        <img src="@item" style="width:100%;" />
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p>@item</p>
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            @*專案常見問答*@
+                                            <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
+                                                <!-- 問答要做成 collapse -->
+                                                <!-- 這裡要下判斷式，生成提問以及回答 -->
+                                                <div class="accordion faqWrapper" id="accordionExample">
+                                                    @{
+                                                        int index = 0;
+                                                        foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                                        {
+                                                            <div class="faq">
+                                                                <div class="outer row" @*id="heading-@index"*@>
+                                                                    @*<div class="arrow">
+
+
+                                                                        </div>*@
+                                                                    <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                            <g fill="none" fill-rule="evenodd" id="tri-label">
+                                                                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                                                                            </g>
+                                                                        </svg>
+                                                                        @item.Question
+                                                                    </button>
+
+                                                                </div>
+                                                                <div id="collapse-@index" class="collapse" data-parent="#accordionExample">
+                                                                    <div class="card-body answer">
+                                                                        @item.Answer
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            index++;
+                                                        }
+                                                    }
+
+                                                </div>
+                                            </div>
+
+                                            @* 專案進度更新 *@
+                                            <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
+                                                @*下面放專案更新進度貼文的card*@
+
+                                                <div id="goal-wrap" class="container">
+                                                    <span class="post-date label-grey">2021/01/05</span>
+                                                    <h4 class="post-label">已達成 募資目標!</h4>
+                                                    <h4 class="post-title">解鎖事項：募資成功</h4>
+                                                    <div class="wrapper">
+
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">贊助金額</label>
+                                                            <h3 class="number">$149,140</h3>
+                                                        </div>
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">支持者</label>
+                                                            <h3>51人</h3>
+                                                        </div>
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">贊助比例</label>
+                                                            <h3>106.4%</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @* 專案留言區 *@
+                                            <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                                                <div id="comment-hint" class="wrapper">
+                                                    <p>
+                                                        您還不是本案的贊助者，若有問題可直接
+                                                        <a class="color-tag btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                                            <i class="bi bi-envelope"></i> 聯絡提案人！
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                </div>
+                                <!-- 右側欄位 -->
+                                <div id="rightside-bar-col" class="col-12 col-md-4">
+                                    <!-- 選擇方案 -->
+                                    <!--<section id="select-perk">
+                                    <div class="min-display-slide">
+                                        <div class="row">-->
+                                    @*滑動的slider測試*@
+                                    <!--<div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+                                                    @foreach (var item in Model.SelectPlanCards.PlanCardItems)
+                                                    {
+                                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>-->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 </section>
 
 @section topCSS{
     <link href="~/Assets/Css/campaignDetail.css" rel="stylesheet" />
+
 }
 @section endJS{
+
     <script>
+        //plan card投影片slide動畫
+        $(document).ready(function () {
+            $('#select-plans').carousel({
+                interval: 2000
+            })
+        });
+
         /*判斷募資進度的狀態(已成功/募資中/募資失敗)*/
         var project_status = document.getElementById("goal-wrap");
 
+        /*Enable Popover */
+        var popover = new bootstrap.Popover(document.querySelector('#share-btn'), {
+            container: '分享分享'
+        })
 
 
         /*聯絡提案人按鈕*/
@@ -398,31 +449,33 @@
 
 
 
-                    //官網傳送訊息程式碼:
-                    //$(document).on('click', '#send_msg', function () {
-                    //    var content = $('#msg_content').val();
+                                //官網傳送訊息程式碼:
+                                //$(document).on('click', '#send_msg', function () {
+                                //    var content = $('#msg_content').val();
 
-                    //    if (content.length) {
-                    //        $.ajax({
-                    //            url: laroute.route('api.inbox.send'),
-                    //            type: 'POST',
-                    //            data: {
-                    //                project_id: '27640',
-                    //                content: content
-                    //            }
-                    //        })
-                    //            .success(function (res) {
-                    //                if (res.error) {
-                    //                    toastr.error(res.error);
-                    //                } else {
-                    //                    toastr.success('成功傳送訊息');
-                    //                    $('#messageModal').modal('hide');
-                    //                }
-                    //            });
-                    //    } else {
-                    //        toastr.warning('請輸入內文！');
-                    //    }
-                    //});
+                                //    if (content.length) {
+                                //        $.ajax({
+                                //            url: laroute.route('api.inbox.send'),
+                                //            type: 'POST',
+                                //            data: {
+                                //                project_id: '27640',
+                                //                content: content
+                                //            }
+                                //        })
+                                //            .success(function (res) {
+                                //                if (res.error) {
+                                //                    toastr.error(res.error);
+                                //                } else {
+                                //                    toastr.success('成功傳送訊息');
+                                //                    $('#messageModal').modal('hide');
+                                //                }
+                                //            });
+                                //    } else {
+                                //        toastr.warning('請輸入內文！');
+                                //    }
+                                //});
+
+
 
     </script>
 }

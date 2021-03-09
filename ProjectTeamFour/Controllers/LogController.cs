@@ -24,11 +24,11 @@ namespace ProjectTeamFour.Controllers
         {
             LogListViewModel ListViewModel = new LogListViewModel()
             {
-                Items = new List<LogViewModel>()
+                Items = new List<PersonInfoViewModel>()
             };
             foreach(var item in _logservice.GetAll())
             {
-                LogViewModel vm = new LogViewModel()
+                PersonInfoViewModel vm = new PersonInfoViewModel()
                 {
                     MemberId=item.MemberId,
                     LogId = item.LogId,

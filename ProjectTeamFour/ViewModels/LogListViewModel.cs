@@ -7,6 +7,6 @@ namespace ProjectTeamFour.ViewModels
 {
     public class LogListViewModel
     {
-        public List<LogViewModel> Items { get; set; }
+        public List<PersonInfoViewModel> Items { get; set; }
     }
 }

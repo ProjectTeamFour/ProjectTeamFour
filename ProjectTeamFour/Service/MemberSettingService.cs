@@ -21,29 +21,36 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_ctx);
         }
         //依據Id取得該Member的資料
-        public EditMemberViewModel GetMember(int Id)
+        //public EditMemberViewModel GetMember(int Id)
+        public EditMemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
-            var entity = _repository.GetAll<Member>().FirstOrDefault(x=>x.MemberId==Id);
-            var viewModel = new EditMemberViewModel
+            //var entity = _repository.GetAll<Member>().FirstOrDefault(x=>x.MemberId==Id);
+            var entity = _repository.GetAll<Member>().FirstOrDefault(KeySelector);
+            if(entity!=null)
             {
-                MemberName = entity.MemberName,
-                MemberPassword = entity.MemberPassword,
-                MemberRegEmail = entity.MemberRegEmail,
-                MemberConEmail = entity.MemberConEmail,
-                Gender = entity.Gender,
-                MemberBirth = entity.MemberBirth,
-                AboutMe = entity.AboutMe,
-                ProfileImgUrl = entity.ProfileImgUrl,
-                MemberWebsite = entity.MemberWebsite,
-                MemberMessage = entity.MemberMessage,
-                Permission = entity.Permission
-            };
-            return viewModel;
+                var viewModel = new EditMemberViewModel
+                {
+                    MemberName = entity.MemberName,
+                    MemberPassword = entity.MemberPassword,
+                    MemberRegEmail = entity.MemberRegEmail,
+                    MemberConEmail = entity.MemberConEmail,
+                    Gender = entity.Gender,
+                    MemberBirth = entity.MemberBirth,
+                    AboutMe = entity.AboutMe,
+                    ProfileImgUrl = entity.ProfileImgUrl,
+                    MemberWebsite = entity.MemberWebsite,
+                    MemberMessage = entity.MemberMessage,
+                    Permission = entity.Permission
+                };
+                return viewModel;
+            }
+            return null;
         }
 
-        public EditMemberViewModel Update(EditMemberViewModel input)
+        public OperationResult Update(EditMemberViewModel input)
         {
-            var result = new EditMemberViewModel();
+            var result = new OperationResult();
+            //var result1 = new EditMemberViewModel();
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
@@ -55,21 +62,24 @@ namespace ProjectTeamFour.Service
                 //entity.MemberPhone = input.MemberPhone;
                 entity.MemberRegEmail = input.MemberRegEmail;
                 entity.MemberConEmail = input.MemberConEmail;
-                entity.Gender = input.Gender;
-                entity.MemberBirth = input.MemberBirth;
+                if (input.Gender != "請選擇性別")
+                {
+                    entity.Gender = input.Gender;
+                }
+                //entity.MemberBirth = input.MemberBirth;
                 entity.AboutMe = input.AboutMe;
                 entity.ProfileImgUrl = input.ProfileImgUrl;
                 entity.MemberWebsite = input.MemberWebsite;
                 entity.MemberMessage = input.MemberMessage;
                 _repository.Update(entity);
-                //result.IsSuccessful = true;
+                result.IsSuccessful = true;
             }
             catch (Exception ex)
             {
                 //result.Member
-                //result.DateTime = DateTime.Now;
-                //result.Exception = ex;
-                //result.IsSuccessful = false;
+                result.DateTime = DateTime.Now;
+                result.Exception = ex;
+                result.IsSuccessful = false;
                 Console.WriteLine(ex);
             }
             return result;

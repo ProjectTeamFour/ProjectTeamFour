@@ -89,7 +89,7 @@ namespace ProjectTeamFour.Controllers
         {
             EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberSettingService.GetMember(id);
+            var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
             editMemberVM = memberInfo;
 
             return View(memberInfo);            
@@ -100,7 +100,7 @@ namespace ProjectTeamFour.Controllers
         {
             EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberSettingService.GetMember(id);
+            var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
             editMemberVM = memberInfo;
 
             if (memberInfo != default(ViewModels.EditMemberViewModel))

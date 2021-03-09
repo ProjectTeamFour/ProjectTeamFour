@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class LogViewModel
+    public class PersonInfoViewModel
     {
         public int LogId { get; set; }
         public int MemberId { get; set; }

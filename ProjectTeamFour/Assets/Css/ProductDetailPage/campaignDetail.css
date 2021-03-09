@@ -340,3 +340,14 @@ h4 {
         color: #f9414a;
         text-decoration: none;
     }
+
+
+/*FAQ的三角形樣式*/
+
+#accordionExample .question button{
+    transform:rotate(0deg)
+}
+
+#accordionExample .question svg:enabled {
+    transform: rotate(180deg)
+}
