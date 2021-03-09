@@ -1,10 +1,14 @@
-﻿/*html {
+﻿html {
     background-color: #f7f7f7;
-}*/
+}
 
 .project-proposal {
     background-color: #f7f7f7;
 }
+
+    .project-proposal .container {
+        max-width: 565px;
+    }
 
     /* 四個選項調整 */
 
@@ -32,6 +36,14 @@
         .project-proposal .form-description h3 {
             font-size: 0.7rem;
         }
+
+    .project-proposal .tab-content {
+        letter-spacing: 1px;
+    }
+
+    .project-proposal input {
+        outline: none;
+    }
 
     /* 手機版縮 padding */
     .project-proposal .tab-pane {
@@ -76,7 +88,7 @@
         }
 
 .make-line {
-    border-right: 0.3rem solid rgb(159, 224, 146);
+    border-right: 0.3rem solid #f9414a;
 }
 
 .project-proposal .form-control {
@@ -84,7 +96,7 @@
 }
 
 .project-proposal .project-mixedbox p {
-    font-size: 10px;
+    font-size: 7px;
 }
 
 /* 第一頁共用 */
@@ -165,6 +177,239 @@
     }
 
 
+
+/* 修改刪減 */
+
+
+/* 共用 */
+
+.project-proposal .preview-button {
+    background-color: rgb(235, 235, 235);
+    color: #f9414a;
+    padding: 0.3rem 2rem;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.project-proposal .submit-button {
+    background-color: #f9414a;
+    color: #fff;
+    padding: 0.3rem 2rem;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* 第三頁 */
+.project-proposal .my-custom-editor {
+    height: 400px;
+}
+
+/* 第一頁 */
+
+.project-proposal .category p {
+    background-color: rgb(241, 240, 240);
+    margin-top: 10px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.project-proposal .process p {
+    background-color: rgb(241, 240, 240);
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    color: #f9414a;
+}
+
+.project-proposal .title p {
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.project-proposal .team p {
+    margin-left: 10px;
+    color: rgb(179, 178, 178);
+    padding-bottom: 10px;
+}
+
+.project-proposal .project-cardpreview .team {
+    height: 100px;
+}
+
+.project-proposal .project-video-item input::placeholder {
+    font-size: 0.8rem;
+}
+
+
+/* quill */
+
+.project-proposal .ql-snow .ql-color-picker .ql-picker-label,
+.project-proposal .ql-snow .ql-icon-picker .ql-picker-label {
+    padding: 0px 1px 1px 1px;
+}
+
+
+/* 回饋卡預覽編輯 */
+
+.project-proposal .project-rewardcard-preview .discount-amount p {
+    color: #f9414a;
+    font-size: 0.7rem;
+}
+
+.project-proposal .project-rewardcard-preview .plan-title p {
+    font-size: 0.8rem;
+}
+
+.project-proposal .project-rewardcard-preview .small-title {
+    color: #9f9d9d;
+}
+
+.project-proposal .project-rewardcard-preview h5 {
+    font-size: 1rem;
+}
+
+
+/* modal 裝飾 */
+
+.project-proposal-modal {
+    letter-spacing: 0.5px;
+}
+
+    .project-proposal-modal input {
+        outline: none;
+    }
+
+    .project-proposal-modal select {
+        outline: none;
+    }
+
+    .project-proposal-modal .small-title {
+        font-size: 1rem;
+        padding-left: 5px;
+        font-weight: 500;
+    }
+
+        .project-proposal-modal .small-title::before {
+            content: '';
+            width: 6px;
+            background-color: #f9414a;
+            height: 15px;
+            position: relative;
+            display: inline-block;
+            top: 2px;
+            right: 5px;
+        }
+
+    .project-proposal-modal p {
+        font-size: 0.65rem;
+        margin-bottom: 0;
+    }
+
+    .project-proposal-modal .checkbox-p {
+        font-size: 0.8rem;
+    }
+
+    .project-proposal-modal .plan-description-item input {
+        padding-bottom: 5rem;
+    }
+
+    .project-proposal-modal .gray-block {
+        width: 250px;
+        height: 187.5px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+.project-proposal .ProjectMainUrlGrayBox {
+    height: 257.72px;
+    background-color: #aaa;
+    position: relative;
+}
+
+    .project-proposal .ProjectMainUrlGrayBox img {
+        height: 257.72px;
+        position: relative;
+    }
+
+
+.project-proposal .VideoCoverGrayBox {
+    height: 239.41px;
+    background-color: #aaa;
+    position: relative;
+}
+
+    .project-proposal .VideoCoverGrayBox img {
+        height: 239.41px;
+        position: relative;
+    }
+
+
+
+
+.project-proposal-modal .plan-img-item-p {
+    font-weight: 500;
+}
+
+.project-proposal-modal .sub-text {
+    color: rgb(136, 131, 133);
+    text-decoration: underline;
+}
+
+.project-proposal-modal .add-carcarplan-item input {
+    margin-bottom: 2px;
+}
+
+.project-proposal-modal .add-carcarplan-item-box {
+    padding-top: 3px;
+}
+
+.project-proposal-modal .gray-block img:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+}
+
+.project-proposal .ProjectMainUrlGrayBox img:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #aaa;
+}
+
+
+.project-proposal .VideoCoverGrayBox img:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #aaa;
+}
+
+.project-proposal-modal .card-result-box .set-plan-description {
+    position: relative;
+}
+
+    .project-proposal-modal .card-result-box .set-plan-description p {
+        overflow: scroll;
+    }
+
+
+
+
+
+
 @media screen and (max-width: 575px) {
     .project-proposal .project-mixedbox p {
         font-size: 7.5px;
@@ -173,6 +418,25 @@
     .project-proposal .project-summary-item input {
         padding-bottom: 2rem;
     }
+
+    /* modal */
+
+    .project-proposal-modal .plan-img-item-p {
+        font-weight: 500;
+        font-size: 0.62rem;
+    }
+
+    .project-proposal-modal .gray-block {
+        width: 250px;
+        height: 187.5px;
+        background-color: #aaa;
+    }
+
+        .project-proposal-modal .gray-block .planPreviewPic {
+            width: 250px;
+            height: 187.5px;
+            /* background-color: #aaa; */
+        }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -190,11 +454,63 @@
     .project-proposal .project-summary-item input {
         padding-bottom: 6rem;
     }
+
+    /* 第一頁 */
+
+    .project-proposal .project-mixedbox p {
+        font-size: 10px;
+    }
+
+    /* modal */
+
+    .project-proposal-modal .plan-img-item-p {
+        font-weight: 500;
+        font-size: 0.58rem;
+        padding-bottom: 3px;
+    }
+
+    .project-proposal-modal .gray-block {
+        width: 218px;
+        height: 163.5px;
+        background-color: #aaa;
+    }
+
+
+        .project-proposal-modal .gray-block .planPreviewPic {
+            width: 218px;
+            height: 163.5px;
+            /* background-color: #aaa; */
+        }
+
+    .project-proposal .ProjectMainUrlGrayBox {
+        height: 173.48px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .ProjectMainUrlGrayBox img {
+            height: 173.48px;
+            position: relative;
+        }
+
+    .project-proposal .VideoCoverGrayBox {
+        height: 279px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .VideoCoverGrayBox img {
+            height: 279px;
+            position: relative;
+        }
 }
 
 
 
 @media screen and (min-width: 768px) {
+    .project-proposal .container {
+        max-width: 767px;
+    }
 
 
     /* 四個選項調整 */
@@ -226,7 +542,7 @@
     /* 所有task紅線 */
     .project-proposal .task-title {
         /* border-left: 0.2rem solid #f9414a;
-                padding-left: 0.4rem; */
+        padding-left: 0.4rem; */
     }
 
         .project-proposal .task-title h3 {
@@ -249,11 +565,11 @@
     }
 
     .make-line {
-        border-right: 0.4rem solid rgb(159, 224, 146);
+        border-right: 0.4rem solid #f9414a;
     }
 
     .project-proposal .project-mixedbox p {
-        font-size: 12px;
+        font-size: 11.2px;
     }
 
     .project-proposal .project-summary-item input {
@@ -278,7 +594,7 @@
     }
 
     .project-proposal .reward li {
-        font-size: 0.7rem;
+        font-size: 0.84rem;
     }
 
     .project-proposal .project-rewardlist button {
@@ -330,10 +646,65 @@
         .project-proposal .contact-item p {
             padding-top: 0.7rem;
         }
+
+    /* modal */
+    .project-proposal-modal .plan-img-item-p {
+        font-weight: 500;
+        font-size: 0.58rem;
+        padding-bottom: 3px;
+    }
+
+    .project-proposal-modal .gray-block {
+        width: 218px;
+        height: 163.5px;
+        background-color: #aaa;
+    }
+
+        .project-proposal-modal .gray-block .planPreviewPic {
+            width: 218px;
+            height: 163.5px;
+            /* background-color: #aaa; */
+        }
+
+
+    .project-proposal .ProjectMainUrlGrayBox {
+        height: 179.62px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .ProjectMainUrlGrayBox img {
+            height: 179.62px;
+            position: relative;
+        }
+
+    .project-proposal .VideoCoverGrayBox {
+        height: 288.56px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .VideoCoverGrayBox img {
+            height: 288.56px;
+            position: relative;
+        }
 }
 
 
 @media screen and (min-width: 992px) {
+
+    .project-proposal .container {
+        max-width: 920px;
+    }
+
+    .project-proposal .nav-item a {
+        letter-spacing: 3px;
+        padding: 11.2px 45px;
+        border-bottom: 0.3rem solid #aaa;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+
 
     /* 四個選項調整 */
 
@@ -364,7 +735,7 @@
     /* 所有task紅線 */
     .project-proposal .task-title {
         /* border-left: 0.2rem solid #f9414a;
-                padding-left: 0.4rem; */
+        padding-left: 0.4rem; */
     }
 
         .project-proposal .task-title h3 {
@@ -391,7 +762,7 @@
     }
 
     .project-proposal .project-mixedbox p {
-        font-size: 14px;
+        font-size: 13.2px;
     }
 
     .project-proposal .project-summary-item input {
@@ -416,7 +787,7 @@
     }
 
     .project-proposal .reward li {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     .project-proposal .project-rewardlist button {
@@ -468,11 +839,65 @@
         .project-proposal .contact-item p {
             padding-top: 1.1rem;
         }
+
+
+    /* modal */
+
+    .project-proposal-modal p {
+        font-size: 0.8rem;
+    }
+
+    .project-proposal-modal .plan-img-item-p {
+        font-size: 0.68rem;
+    }
+
+    .project-proposal-modal .gray-block {
+        width: 300px;
+        height: 225px;
+        background-color: #aaa;
+    }
+
+        .project-proposal-modal .gray-block .planPreviewPic {
+            width: 300px;
+            height: 225px;
+            /* background-color: #aaa; */
+        }
+
+    .project-proposal .ProjectMainUrlGrayBox {
+        height: 189px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .ProjectMainUrlGrayBox img {
+            height: 189px;
+            position: relative;
+        }
+
+
+    .project-proposal .VideoCoverGrayBox {
+        height: 302.62px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .VideoCoverGrayBox img {
+            height: 302.62px;
+            position: relative;
+        }
 }
+
 
 @media screen and (min-width: 1200px) {
 
+    .project-proposal .container {
+        max-width: 1024px;
+    }
+
     /* 四個選項調整 */
+    .project-proposal p {
+        font-size: 0.9rem;
+    }
 
     .project-proposal .nav-link {
         padding: .7rem 4.5rem;
@@ -483,11 +908,60 @@
         font-size: 1.2rem;
     }
 
+    .project-proposal .reward li {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
     .project-proposal .project-mixedbox p {
-        font-size: 17px;
+        font-size: 13px;
     }
 
     .project-proposal .project-summary-item input {
         padding-bottom: 12rem;
     }
+
+    .project-proposal .nav-item a {
+        letter-spacing: 3px;
+        padding: 11.2px 45px;
+        border-bottom: 0.3rem solid #aaa;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+
+
+    .project-proposal-modal .modal-xl {
+        width: 700px;
+        margin: auto;
+    }
+
+    .project-proposal-modal p {
+        font-size: 0.8rem;
+    }
+
+    .project-proposal-modal .plan-img-item-p {
+        font-size: 0.68rem;
+    }
+
+    .project-proposal .ProjectMainUrlGrayBox {
+        height: 228px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .ProjectMainUrlGrayBox img {
+            height: 228px;
+            position: relative;
+        }
+
+    .project-proposal .VideoCoverGrayBox {
+        height: 361.12px;
+        background-color: #aaa;
+        position: relative;
+    }
+
+        .project-proposal .VideoCoverGrayBox img {
+            height: 361.12px;
+            position: relative;
+        }
 }

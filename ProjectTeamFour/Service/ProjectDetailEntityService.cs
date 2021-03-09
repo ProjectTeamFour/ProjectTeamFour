@@ -65,7 +65,8 @@ namespace ProjectTeamFour.Service
                     //Project_Question = entity.Project_Question,
                     //Project_Answer = entity.Project_Answer​,
                     EndDate = entity.EndDate,
-                    StartDate = entity.StartDate
+                    StartDate = entity.StartDate,
+                    ProjectMainUrl = entity.ProjectMainUrl,
                 };
                 
             //}
