@@ -11,7 +11,7 @@ namespace ProjectTeamFour.Models
         
         public int PlanId { get; set; }
         public int ProjectPlanId { get; set; }
-        
+        public bool AddCarCarPlan { get; set; }
         public string ProjectName { get; set; }
         public int ProjectId { get; set; }
         public string PlanTitle { get; set; }

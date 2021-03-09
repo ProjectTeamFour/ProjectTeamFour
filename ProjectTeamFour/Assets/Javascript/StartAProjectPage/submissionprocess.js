@@ -454,7 +454,7 @@ Vue.component("multi-text", {
                     const reader = new FileReader();
                     reader.readAsDataURL(e.target.files[0]);
                     reader.onload = () => {
-        this.inputData.TeamPictureError = reader.result;
+        this.inputData.TeamPicture = reader.result;
                     }
                     this.inputDataCheck.TeamPictureError = false;
                     this.inputDataCheck.TeamPictureErrorMsg = "";
@@ -609,8 +609,8 @@ Vue.component("multi-text", {
                     "ProjectName": this.inputData.ProjectName,
                     "AmountThreshold": this.inputData.AmountThreshold,
                     "Category": this.inputData.Category,
-                    "StartDate": this.inputData.StartDate,
-                    "EndDate": this.inputData.EndDate,
+                    "StartDate": this.inputData.StartDate.split("-").join(""),
+                    "EndDate": this.inputData.EndDate.split("-").join(""),
                     "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
                     "ProjectMainUrl": this.inputData.ProjectMainUrl,
                     "ProjectCoverUrl": this.inputData.ProjectCoverUrl,
@@ -618,8 +618,8 @@ Vue.component("multi-text", {
                     "MemberConEmail": this.inputData.MemberConEmail,
                     "MemberPhone": this.inputData.MemberPhone,
                     "IdentityNumber": this.inputData.IdentityNumber,
-                    "TeamPicture": this.inputData.TeamPicture,
-                    "MemberName": this.inputData.MemberName,
+                    "ProfileImgUrl": this.inputData.TeamPicture,
+                    "CreatorName": this.inputData.MemberName,
                     "AboutMe": this.inputData.AboutMe,
                     "MemberWebsite": this.inputData.MemberWebsite,
                     "ProjectImgUrl": this.inputData.QuillHtml, //富文本
@@ -631,7 +631,7 @@ Vue.component("multi-text", {
                 $.ajax({
                     url: "/api/projectsubmission/receivedata",
                     type: "post",
-                    contentType: "application/json; charset=utf-8",
+                    //contentType: "application/json; charset=utf-8",
                     data: UpLoadData,
                     success: function (response) {
                         alert(response);

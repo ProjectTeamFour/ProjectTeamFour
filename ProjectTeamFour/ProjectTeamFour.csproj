@@ -286,6 +286,10 @@
     <Compile Include="Migrations\202103090608377_add.Designer.cs">
       <DependentUpon>202103090608377_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091305440_addplandatamodel.cs" />
+    <Compile Include="Migrations\202103091305440_addplandatamodel.Designer.cs">
+      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -2337,6 +2341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103090608377_add.resx">
       <DependentUpon>202103090608377_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091305440_addplandatamodel.resx">
+      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
