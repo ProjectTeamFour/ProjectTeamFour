@@ -447,7 +447,7 @@
                                 </div>
 
                                 <div class="project-rewardcard-preview-item addnew-rewardcard my-3">
-                                    <button id="add-plan-button" class="addnew w-100 py-1" data-toggle="modal"
+                                    <button id="add-plan-button" class="addnew w-100 py-2 mb-3" data-toggle="modal"
                                             data-target="#staticBackdrop" v-on:click.prevent="">
                                         + 新增一個回饋
                                     </button>
@@ -611,7 +611,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="submit-group d-flex justify-content-center">
+                        <div class="submit-group d-flex justify-content-center mb-5">
                             <input class="preview-button mx-2" type="button" value="預覽專案">
                             <input class="submit-button mx-2" id="submit-button" type="button" value="提交專案"
                                    v-bind:disable="AddVerify == false" v-on:click="submitProposal">
@@ -819,7 +819,7 @@
             </div>
         </div>
         <div class="project-qanda-item pb-5">
-            <button v-on:click="addInput()" v-on:click.prevent="" class="w-100 addQAbutton mt-2"
+            <button v-on:click="addInput()" v-on:click.prevent="" class="w-100 addQAbutton mt-2 py-2"
                     id="addQAbutton">
                 +增加常見問答
             </button>
