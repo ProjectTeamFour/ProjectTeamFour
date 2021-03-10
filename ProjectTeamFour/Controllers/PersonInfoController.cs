@@ -22,11 +22,11 @@ namespace ProjectTeamFour.Controllers
 		//private readonly MyProjectService _myProjectService;
 		private readonly CommentService _commentService;
 
-
-		public PersonInfoController()
-		{
-			_memberService = new MemberService();
-		}
+        public PersonInfoController()
+        {
+            _memberService = new MemberService();
+            _memberSettingService = new MemberSettingService();
+        }
 
 		// GET: PersonInfo
 		//[CustomAuthorize(flagNum = 1)]
