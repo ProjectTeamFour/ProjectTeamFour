@@ -288,6 +288,14 @@
     <Compile Include="Migrations\202103090608377_add.Designer.cs">
       <DependentUpon>202103090608377_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091305440_addplandatamodel.cs" />
+    <Compile Include="Migrations\202103091305440_addplandatamodel.Designer.cs">
+      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.cs" />
+    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.Designer.cs">
+      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -367,6 +375,7 @@
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
+    <Compile Include="ViewModels\SubmissionProcessPlanViewModel.cs" />
     <Compile Include="ViewModels\SubmissionProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -395,6 +404,7 @@
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
+    <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Connect.cshtml" />
@@ -2197,7 +2207,6 @@
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
@@ -2219,7 +2228,10 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
+    <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Edit.cshtml" />
+    <Content Include="Views\PersonInfo\Setting.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
@@ -2345,6 +2357,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103090608377_add.resx">
       <DependentUpon>202103090608377_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091305440_addplandatamodel.resx">
+      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101142409_AddProjectIdForOD.resx">
+      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

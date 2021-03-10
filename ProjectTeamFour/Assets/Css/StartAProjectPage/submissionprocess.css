@@ -99,8 +99,11 @@
     font-size: 7px;
 }
 
+.project-proposal .card-template .category p,
+.project-proposal .card-template .process p{
+    padding-top: 8px;
+}
 /* 第一頁共用 */
-
 .project-proposal .outline-item {
     padding-bottom: 1rem;
 }

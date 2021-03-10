@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjectTeamFour.Models;
 
 namespace ProjectTeamFour.ViewModels
 {
@@ -10,8 +11,8 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectName { get; set; }
         public decimal AmountThreshold { get; set; }
         public string Category { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public string ProjectVideoUrl { get; set; }
         public string ProjectMainUrl { get; set; }
         public string ProjectCoverUrl { get; set; }
@@ -27,9 +28,13 @@ namespace ProjectTeamFour.ViewModels
         public string MemberWebsite { get; set; }
         public string ProjectImgUrl { get; set; }
 
+        public string ProjectPrincipal { get; set; }
 
-        //public string Project_Question { get; set; }
-        //public string Project_Answer { get; set; }
+        public string IdentityNumber { get; set; }
+
+
+        public string Project_Question { get; set; }
+        public string Project_Answer { get; set; }
 
 
         //public int ProjectPlanId { get; set; }
@@ -44,8 +49,8 @@ namespace ProjectTeamFour.ViewModels
         //AddCarCarPlan
 
 
-        public List<string> ProjectQA { get; set; }
-        public List<string> PlanObject { get; set; }
+
+        public List<SubmissionProcessPlanViewModel> PlanObject { get; set; }
 
 
 
