@@ -564,6 +564,9 @@ Vue.component("multi-text", {
                 if (this.modalData.PlanShipDateMonth < 10) {
                     var newMonth = "0" + this.modalData.PlanShipDateMonth;
                 }
+                else {
+                    newMonth = this.modalData.PlanShipDateMonth;
+                }
 
                 this.modalList.push({
                     ProjectPlanId: this.modalData.makePlanCount,

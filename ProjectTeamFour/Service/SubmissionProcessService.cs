@@ -28,87 +28,96 @@ namespace ProjectTeamFour.Service
 
             var member = _repository.GetAll<Member>().Where((x) => x.MemberId == Id).FirstOrDefault();
 
-           
 
-            try
-            {
-                member.MemberConEmail = input.MemberConEmail;
-                member.MemberPhone = input.MemberPhone;
-                member.ProfileImgUrl = input.ProfileImgUrl;
-                member.AboutMe = input.AboutMe;
-                member.MemberWebsite = input.MemberWebsite;
-
-                _repository.Update(member);
-                result.IsSuccessful = true;
-
-
-                //
-
-
-                Project pr_entity = new Project
+            //using (var transaction = _context.Database.BeginTransaction())
+            //{
+                try
                 {
-                    MemberId = member.MemberId, //foreign
-                    ProjectName = input.ProjectName,
-                    AmountThreshold = input.AmountThreshold,
-                    Category = input.Category,
-                    StartDate = DateTime.ParseExact(input.StartDate, "yyyyMMdd", null),
-                    EndDate = DateTime.ParseExact(input.EndDate, "yyyyMMdd", null),
-                    ProjectVideoUrl = input.ProjectVideoUrl,
-                    ProjectMainUrl = input.ProjectMainUrl,
-                    ProjectCoverUrl = input.ProjectCoverUrl,
-                    ProjectPrincipal = input.ProjectPrincipal,
-                    IdentityNumber = input.IdentityNumber,
-                    CreatorName = input.CreatorName,
-                    ProjectImgUrl = input.ProjectImgUrl,
-                    Project_Question = input.Project_Question,
-                    Project_Answer = input.Project_Answer,
-
-                };
-                _repository.Create(pr_entity);
-                result.IsSuccessful = true;
- 
-
-                //
-
-                List<SubmissionProcessPlanViewModel> planObj = input.PlanObject;
-
-                foreach (var item in planObj)
-                {
-                    Plan pl_entity = new Plan
-                    {
-                        ProjectId = pr_entity.ProjectId,  //foreign
-                        ProjectName = pr_entity.ProjectName,  //同步寫入
-                        ProjectPlanId = item.ProjectPlanId,
-                        PlanPrice = item.PlanPrice,
-                        PlanTitle = item.PlanTitle,
-                        QuantityLimit = item.QuantityLimit,
-                        PlanDescription = item.PlanDescription,
-                        PlanImgUrl = item.PlanImgUrl,
-                        PlanShipDate = DateTime.ParseExact(item.PlanShipDate, "yyyyMMdd", null),
-                        AddCarCarPlan = item.AddCarCarPlan,
-                        
-                    };
-
-                    _repository.Create(pl_entity);
+                    member.MemberConEmail = input.MemberConEmail;
+                    member.MemberPhone = input.MemberPhone;
+                    member.ProfileImgUrl = input.ProfileImgUrl;
+                    member.AboutMe = input.AboutMe;
+                    member.MemberWebsite = input.MemberWebsite;
+                    member.MemberName = input.CreatorName;   //可以同步更動改會員名
+                 
+                    _repository.Update(member);
                     result.IsSuccessful = true;
+                    
+
+
+                    //
+
+
+                    Project pr_entity = new Project
+                    {
+                        MemberId = member.MemberId, //foreign
+                        ProjectName = input.ProjectName,
+                        AmountThreshold = input.AmountThreshold,
+                        Category = input.Category,
+                        StartDate = DateTime.ParseExact(input.StartDate, "yyyyMMdd", null),
+                        EndDate = DateTime.ParseExact(input.EndDate, "yyyyMMdd", null),
+                        ProjectVideoUrl = input.ProjectVideoUrl,
+                        ProjectMainUrl = input.ProjectMainUrl,
+                        ProjectCoverUrl = input.ProjectCoverUrl,
+                        ProjectPrincipal = input.ProjectPrincipal,
+                        IdentityNumber = input.IdentityNumber,
+                        CreatorName = input.CreatorName,
+                        ProjectImgUrl = input.ProjectImgUrl,
+                        Project_Question = input.Project_Question,
+                        Project_Answer = input.Project_Answer,
+                        ProjectPlansCount = input.PlanObject.Count,
+                        ProjectStatus = "審核中",
+                    };
+                    _repository.Create(pr_entity);
+                    result.IsSuccessful = true;
+                   
+
+
+                    //
+
+                    List<SubmissionProcessPlanViewModel> planObj = input.PlanObject;
+
+                    foreach (var item in planObj)
+                    {
+                        Plan pl_entity = new Plan
+                        {
+                            ProjectId = pr_entity.ProjectId,  //foreign
+                            ProjectName = pr_entity.ProjectName,  //同步寫入
+                            ProjectPlanId = item.ProjectPlanId,
+                            PlanPrice = item.PlanPrice,
+                            PlanTitle = item.PlanTitle,
+                            QuantityLimit = item.QuantityLimit,
+                            PlanDescription = item.PlanDescription,
+                            PlanImgUrl = item.PlanImgUrl,
+                            PlanShipDate = DateTime.ParseExact(item.PlanShipDate, "yyyyMMdd", null),
+                            AddCarCarPlan = item.AddCarCarPlan,
+
+                        };
+
+                        _repository.Create(pl_entity);
+                        result.IsSuccessful = true;
+                       
+                    }
+
+
+                    ////這裡以下還沒測
+                    //var project = _repository.GetAll<Project>().LastOrDefault((x) => x.MemberId == Id);
+                    //var planCount = _repository.GetAll<Plan>().Where((x) => x.ProjectId == project.ProjectId).Count();
+
+                    //project.ProjectPlansCount = planCount;  //寫入幾個plans
+
+                    //_repository.Update(project);
+                    //result.IsSuccessful = true;
+                    //transaction.Commit();
                 }
-
-
-                //這裡以下還沒測
-                var project = _repository.GetAll<Project>().Where((x) => x.MemberId == Id).FirstOrDefault();
-                var planCount = _repository.GetAll<Plan>().Where((x) => x.ProjectId == project.ProjectId).Count();
-
-                project.ProjectPlansCount = planCount;  //寫入幾個plans
-
-                _repository.Update(project);
-                result.IsSuccessful = true;
-            }
-            catch (Exception ex)
-            {
-                result.Exception = ex;
-                result.DateTime = DateTime.Now;
-                result.IsSuccessful = false;
-            }
+                catch (Exception ex)
+                {
+                    result.Exception = ex;
+                    result.DateTime = DateTime.Now;
+                    result.IsSuccessful = false;
+                    //transaction.Rollback();
+                }
+            //}
             return result;
 
 
