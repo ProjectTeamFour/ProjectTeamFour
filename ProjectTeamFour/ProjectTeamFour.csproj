@@ -179,6 +179,8 @@
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
+    <Compile Include="Controllers\MyProjectController.cs" />
+    <Compile Include="Controllers\MyProjectViewModel.cs" />
     <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
@@ -309,6 +311,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
+    <Compile Include="ViewModels\BackingRecordViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -393,6 +396,12 @@
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Views\PersonInfo\Account.cshtml" />
+    <Content Include="Views\PersonInfo\Connect.cshtml" />
+    <Content Include="Views\PersonInfo\New.cshtml" />
+    <Content Include="Views\PersonInfo\Setting.cshtml" />
+    <Content Include="Views\PersonInfo\Sponser.cshtml" />
+    <Content Include="Views\PersonInfo\Submit.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2184,10 +2193,6 @@
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
     <Content Include="Views\PersonInfo\Index.cshtml" />
-    <Content Include="Views\PersonInfo\Sponser.cshtml" />
-    <Content Include="Views\PersonInfo\Submit.cshtml" />
-    <Content Include="Views\PersonInfo\Connect.cshtml" />
-    <Content Include="Views\PersonInfo\New.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\Index.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
@@ -2214,21 +2219,24 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
-    <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Edit.cshtml" />
-    <Content Include="Views\PersonInfo\Setting.cshtml" />
-    <Content Include="Views\Shared\PartialView\_personInfoNavPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_notifactionPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_messagePartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_notifactionPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_messagePartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_myProjectPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_backingRecordsPartial.cshtml" />
     <Content Include="Views\pay\ConnectECPay.cshtml" />
     <Content Include="Views\Projects\GetAll.cshtml" />
     <Content Include="Views\pay\Result.cshtml" />
     <Content Include="Views\pay\SaveData.cshtml" />
+    <Content Include="Views\MyProject\OverView.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_resetPasswordPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_usersPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
