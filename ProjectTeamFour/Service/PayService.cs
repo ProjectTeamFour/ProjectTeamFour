@@ -171,9 +171,9 @@ namespace ProjectTeamFour.Service
                     oPayment.MerchantID = "2000132";//ECPay提供的特店編號
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "https://localhost:44300/Pay/CheckECPayFeedBack";//付款完成通知回傳的網址
-                    oPayment.Send.ClientBackURL = "https://localhost:44300/Home/Index";//瀏覽器端返回的廠商網址
-                    oPayment.Send.OrderResultURL = "https://localhost:44300/pay/Result";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.ReturnURL = "http://mycarplanwebsite.azurewebsites.net/Pay/CheckECPayFeedBack";//付款完成通知回傳的網址
+                    oPayment.Send.ClientBackURL = "http://mycarplanwebsite.azurewebsites.net/Home/Index";//瀏覽器端返回的廠商網址
+                    oPayment.Send.OrderResultURL = "http://mycarplanwebsite.azurewebsites.net/pay/Result";//瀏覽器端回傳付款結果網址
                     oPayment.Send.MerchantTradeNo = "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     oPayment.Send.TotalAmount = Decimal.Parse(TotalAmount);
