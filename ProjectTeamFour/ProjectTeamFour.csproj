@@ -2202,7 +2202,6 @@
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
@@ -2227,7 +2226,7 @@
     <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Edit.cshtml" />
     <Content Include="Views\PersonInfo\Setting.cshtml" />
-    <Content Include="Views\Shared\PartialView\_personInfoNavPartial.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />

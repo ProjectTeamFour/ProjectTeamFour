@@ -25,10 +25,11 @@ namespace ProjectTeamFour.Controllers
         }
 
         // GET: PersonInfo
-        [CustomAuthorize(flagNum =1)]
+        //[CustomAuthorize(flagNum = 1)]
         public ActionResult Index()
         {
-            return View();
+            var model = (MemberViewModel)Session["Member"];
+            return View(model);
         }
 
         public ActionResult Sponser()
@@ -69,12 +70,6 @@ namespace ProjectTeamFour.Controllers
         //    {
         //        return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         //    }
-        //    Member member = db.Members.Find(id);
-        //    if (member == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(member);
         //}
 
         //[HttpPost]
@@ -92,18 +87,6 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult Account()
         {
-            //ViewBag.ResultMessage = TempData["ResultMessage"];
-            //using (ProjectContext db = new ProjectContext())
-            //{   //抓取所有AspNetMembers中的資料，並且放入Models.ManageMember模型中
-            //    var result = (from s in db.Members
-            //                  select new Member
-            //                  {
-            //                      MemberId = s.MemberId,
-            //                      MemberName = s.MemberName,
-            //                      MemberRegEmail = s.MemberRegEmail
-            //                  }).ToList();
-            //    return View(result);
-            //}
             return View();
         }
 
