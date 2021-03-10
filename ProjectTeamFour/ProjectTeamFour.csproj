@@ -305,6 +305,7 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
+    <Compile Include="Service\BackingViewModel.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\CommentService.cs" />
@@ -333,6 +334,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\MyProjectsViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -2228,6 +2230,7 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\PersonInfo\Account.cshtml" />
     <Content Include="Views\PersonInfo\Edit.cshtml" />
     <Content Include="Views\PersonInfo\Setting.cshtml" />

@@ -15,86 +15,88 @@ using ProjectTeamFour.Helpers;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class PersonInfoController : Controller
-    {
-        private readonly MemberService _memberService;
-        private readonly MemberSettingService _memberSettingService;
+	public class PersonInfoController : Controller
+	{
+		private readonly MemberService _memberService;
+		//private readonly BackingService _backingService;
+		//private readonly MyProjectService _myProjectService;
+		private readonly CommentService _commentService;
 
-        public PersonInfoController()
-        {
-            _memberService = new MemberService();
-            _memberSettingService = new MemberSettingService();
-        }
 
-        // GET: PersonInfo
-        //[CustomAuthorize(flagNum = 1)]
-        public ActionResult Index()
-        {
-            var model = (MemberViewModel)Session["Member"];
-            return View(model);
-        }
+		public PersonInfoController()
+		{
+			_memberService = new MemberService();
+		}
 
-        public ActionResult Sponser()
-        {
-            return View();
-        }
+		// GET: PersonInfo
+		//[CustomAuthorize(flagNum = 1)]
+		public ActionResult Index()	//公開的個人資料頁面
+		{
+			var model = (MemberViewModel)Session["Member"];
+			return View(model);
+		}
 
-        public ActionResult Submit()
-        {
-            return View();
-        }
+		public ActionResult Sponser() //贊助紀錄
+		{
+			return View();
+		}
 
-        public ActionResult Connect()
-        {
-            return View();
-        }
+		public ActionResult Submit()
+		{
+			return View();
+		}
 
-        public ActionResult New()
-        {
-            return View();
-        }
+		public ActionResult Connect()
+		{
+			return View();
+		}
 
-        public ActionResult Edit(int id)
-        {
-            var memberService = new MemberService();
+		public ActionResult New()
+		{
+			return View();
+		}
 
-            MemberViewModel memberVM = new MemberViewModel();
+		public ActionResult Edit(int id)
+		{
+			var memberService = new MemberService();
 
-            var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-            //return View(memberInfo);
-            //return RedirectToAction("Index");
-            return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
-        }
+			MemberViewModel memberVM = new MemberViewModel();
 
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-        //    }
-        //}
+			var memberInfo = _memberService.GetMember(m => m.MemberId == id);
+			//return View(memberInfo);
+			//return RedirectToAction("Index");
+			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+		}
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "MemberId,MemberName,MemberTeamName,MemberAccount,MemberPassword,MemberAddress,MemberPhone,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage,Permission")] Member member)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(member).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(member);
-        //}
+		//public ActionResult Edit(int? id)
+		//{
+		//    if (id == null)
+		//    {
+		//        return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+		//    }
+		//}
 
-        public ActionResult Account()
-        {
-            return View();
-        }
+		//[HttpPost]
+		//[ValidateAntiForgeryToken]
+		//public ActionResult Edit([Bind(Include = "MemberId,MemberName,MemberTeamName,MemberAccount,MemberPassword,MemberAddress,MemberPhone,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage,Permission")] Member member)
+		//{
+		//    if (ModelState.IsValid)
+		//    {
+		//        db.Entry(member).State = System.Data.Entity.EntityState.Modified;
+		//        db.SaveChanges();
+		//        return RedirectToAction("Index");
+		//    }
+		//    return View(member);
+		//}
 
-        public ActionResult Setting()
-        {
-            return View();
-        }
-    }
+		public ActionResult Account()
+		{
+			return View();
+		}
+
+		public ActionResult Setting()
+		{
+			return View();
+		}
+	}
 }
