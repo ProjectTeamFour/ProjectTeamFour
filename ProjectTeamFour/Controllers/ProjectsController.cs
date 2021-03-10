@@ -34,7 +34,7 @@ namespace ProjectTeamFour.Controllers
             {
                 ProjectItems = new List<ProjectViewModel>()
             };
-            var GetAll = projectService.GetAllTotal123(category, projectStatus , id);
+            var GetAll = projectService.GetAllTotalFliter(category, projectStatus , id);
 
             ViewData["category"] = category;
             ViewData["status"] = projectStatus;
@@ -42,7 +42,7 @@ namespace ProjectTeamFour.Controllers
             return View(GetAll);
         }
 
-        public ActionResult GetAll(int id = 1)
+        public ActionResult GetAll(int id = 1) //換頁
         {
             
             var projectService = new ProjectsService(); //呼叫service
