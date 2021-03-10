@@ -1,9 +1,11 @@
 ﻿@model ProjectTeamFour.ViewModels.MemberViewModel
-
 @{
-    
-    MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
-    @*ViewBag.Title = "個人頁面";*@
+    var vm = (MemberViewModel)Session["Member"];
+
+    //MemberViewModel vm2 = new MemberViewModel();
+
+    //MemberViewModel vm = Session["Member"] == null ? null : (MemberViewModel)Session["Member"];
+    //ViewBag.Title = "PersonInfo";
 }
 
 @section topCSS{
@@ -112,11 +114,11 @@
             <div class="tab-pane fade" id="pills-edit" role="tabpanel" aria-labelledby="pills-edit-tab">
                 <div class="edit">
                     <div class="wrap-inside">
-                        @if (vm == null)
+                        @if (Model == null)
                         {
                             Html.ActionLink("登入", "Login", "Member");
                         }
-                        else if (vm != null)
+                        else if (Model != null)
                         {
                             //<form method="post" action="" accept-charset="UTF-8">
                             <div id="user-profile" class="container">
@@ -133,7 +135,7 @@
                                                     </mask>
                                                     <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
                                                 </svg>
-                                                <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
+                                                <img src="@Model.ProfileImgUrl" alt="@Model.MemberName"
                                                      class="avatar" style="width: 93px;" id="imgshow">
                                                 <span class="image-hinter">
                                                     <strong>上傳圖片</strong><br>
@@ -143,16 +145,16 @@
                                                 <div id="imgurl" hidden="hidden"></div>
                                             </div>
                                         </div>
-                                        <div id="memberid" hidden="hidden">@vm.MemberId</div>
+                                        <div id="memberid" hidden="hidden">@Model.MemberId</div>
 
                                         <div id="register-email" class="form-group">
                                             <label for="inputEmail">註冊信箱</label>
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="@Model.MemberRegEmail" readonly>
                                             <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
                                         </div>
                                         <div id="contact-email" class="form-group">
                                             <label for="inputEmail">聯絡信箱</label>
-                                            <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
+                                            <input type="email" class="form-control" required id="contactEmail" value="@Model.MemberConEmail" name="MemberConEmail">
                                         </div>
 
                                         <div id="gender" class="form-group">
@@ -170,7 +172,7 @@
 
                                         <div class="form-group">
                                             <label for="birthday">生日</label>
-                                            <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
+                                            <input type="datetime" class="form-control" id="birthday1" value="@Model.MemberBirth" name="MemberBirth">
                                         </div>
 
 
@@ -179,15 +181,15 @@
                                     <div class="right col-12 col-md-6">
                                         <div id="about-me" class="form-group">
                                             <label for="about" class="colored-label">關於我</label>
-                                            <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
+                                            <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@Model.AboutMe</textarea>
                                         </div>
                                         <div id="name" class="form-group">
                                             <label for="name">顯示名稱</label>
-                                            <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
+                                            <input type="text" class="form-control" id="name1" value="@Model.MemberName" name="MemberName">
                                         </div>
                                         <div id="personal-site" class="form-group">
                                             <label for="personal-site">個人網站</label>
-                                            <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
+                                            <input type="url" class="form-control" id="personal-site" value="@Model.MemberWebsite" name="MemberWebsite">
                                         </div>
 
                                     </div>
@@ -216,7 +218,7 @@
                                         </blockquote>
                                         <div class="login-account form-group">
                                             <label for="account">登入帳號</label>
-                                            <input type="text" class="form-control" id="account" placeholder="@vm.MemberRegEmail" readonly>
+                                            <input type="text" class="form-control" id="account" placeholder="@Model.MemberRegEmail" readonly>
                                         </div>
                                         <div class="reset-passward form-group">
                                             <label for="inputPassword">更改密碼</label>
