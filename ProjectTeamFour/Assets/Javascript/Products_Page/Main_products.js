@@ -1,6 +1,4 @@
 ﻿
-var btn_order;
-var btn_status;
 $(document).ready(function () {
     $('.category-group').slick({
         centerMode: false,
@@ -18,18 +16,6 @@ $(document).ready(function () {
             }
         }]
     });
-    btn_order = document.getElementById("dropdownMenuButton-2");
-    btn_status = document.getElementById('dropdownMenuButton');
-    btn_status.innerText = status;
-    if (status == "") {
-        btn_status.innerText = "全部專案";
-    }
-    if (id == "EndDate") {
-        btn_order.innerText = "最新";
-    }
-    else if (id == "FundingAmount") {
-        btn_order.innerText = "募資金額";
-    }
 });
 
 let classurl = document.querySelectorAll(".url1");
@@ -50,19 +36,19 @@ var id = $("id").text();
 
 let all = $(".category-group");//事件綁定父層
 all.click(function () {
-    
+
     if ($(".category-group").children("a#tech")) {
         url1.innerText = '';
         url1.innerText = classurl[0].textContent;
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${url1.innerText}&projectStatus=${status}&id=${id}`));
-        tech.attr("href", url);        
+        tech.attr("href", url);
     }
     if ($(".category-group").children("a#music")) {
         url1.innerText = '';
         url1.innerText = classurl[1].textContent;
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${url1.innerText}&projectStatus=${status}&id=${id}`));
         music.attr("href", url);
-        
+
     }
     if ($(".category-group").children("a#art")) {
         url1.innerText = '';
@@ -88,10 +74,10 @@ all.click(function () {
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${url1.innerText}&projectStatus=${status}&id=${id}`));
         game.attr("href", url);
     }
-    
+
 })
 
-    
+
 let menu = $("#menu");//事件綁定父層
 let ongoing = $("#ongoing");
 let success = $("#success");
@@ -101,9 +87,9 @@ let success = $("#success");
 menu.click(function () {
     if ($(menu).children("a#ongoing")) {
         url2.innerText = '';
-        url2.innerText = '集資中';            
+        url2.innerText = '集資中';
         var url = decodeURI(encodeURI(`/Projects/Index/?category=${category}&projectStatus=${url2.innerText}&id=${id}`));
-        ongoing.attr("href", url);        
+        ongoing.attr("href", url);
     }
     if ($(menu).children("a#success")) {
         url2.innerText = '';
@@ -138,8 +124,3 @@ orderByItem.click(function () {
         money.attr("href", url);
     }
 })
-
-
-
-
-
