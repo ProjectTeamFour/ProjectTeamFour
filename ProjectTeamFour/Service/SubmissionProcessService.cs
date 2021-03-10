@@ -112,8 +112,6 @@ namespace ProjectTeamFour.Service
             return result;
 
 
-
-
             //Plan pl_entity = new Plan
             //{
             //    ProjectPlanId = input.ProjectPlanId,

@@ -1,4 +1,8 @@
 ﻿.project-proposal-landing {
+    width: 575px;
+}
+
+.project-proposal-landing {
     width: 100%;
     background-color: #f7f7f7;
     padding-bottom: 3rem;
@@ -10,7 +14,7 @@
         position: relative;
         width: 25rem;
         margin-bottom: 2rem;
-        padding: 4rem 0;
+        padding-bottom: 4rem;
         font-weight: 700;
     }
 
@@ -22,7 +26,7 @@
             position: absolute;
             border-radius: 1.5px;
             left: 0;
-            top: 7rem;
+            top: 100px;
         }
 
     .project-proposal-landing .project-name-input-item input {
@@ -31,7 +35,6 @@
         background-color: transparent;
         outline: none;
         width: 11.5rem;
-        font-weight: 700;
     }
 
     .project-proposal-landing .project-name-input-item select {
@@ -45,7 +48,7 @@
 
     .project-proposal-landing .check-terms-item li {
         font-size: 0.9rem;
-        font-weight: 600;
+        font-weight: 500;
         color: #4d4c4c;
         padding-left: 5px;
         margin-left: -10px;
@@ -68,7 +71,7 @@
     }
 
     .project-proposal-landing .checkbox {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.15rem;
     }
@@ -96,16 +99,6 @@
         outline: none;
     }
 
-
-    .project-proposal-landing .select .option-name {
-        color: #000;
-        font-weight: 600;
-    }
-
-    .project-proposal-landing select {
-        font-weight: 600;
-    }
-
 @media screen and (max-width: 575px) {
 
     .project-proposal-landing .title {
@@ -118,15 +111,31 @@
     .project-proposal-landing .project-name-input-item input {
         width: 19rem;
     }
+
+
+
+
+    .project-proposal-landing .container,
+    .project-proposal-landing .container-md,
+    .project-proposal-landing .container-sm {
+        max-width: 500px;
+    }
 }
 
 @media screen and (min-width: 768px) {
 
     .project-proposal-landing .title {
-        width: 42rem;
+        width: 460px;
     }
 
     .project-proposal-landing .project-name-input-item input {
         width: 34rem;
+    }
+
+
+    .project-proposal-landing .container,
+    .project-proposal-landing .container-md,
+    .project-proposal-landing .container-sm {
+        max-width: 500px;
     }
 }
