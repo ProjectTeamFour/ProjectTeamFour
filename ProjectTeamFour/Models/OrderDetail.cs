@@ -11,7 +11,7 @@ namespace ProjectTeamFour.Models
         public int OrderDetailId { get; set; }
         public string OrderDetailDes { get; set; }
         public int OrderId { get; set; }
-
+        public int ProjectId { get; set; }
         public int PlanId { get; set; }
         public string PlanTitle { get; set; }
         public int OrderQuantity { get; set; }
