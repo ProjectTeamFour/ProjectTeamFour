@@ -70,6 +70,7 @@ namespace ProjectTeamFour.Controllers
         //    return RedirectToAction("Result");
 
         //}
+       
 
         [HttpPost]
         public ActionResult Result(FormCollection form)
