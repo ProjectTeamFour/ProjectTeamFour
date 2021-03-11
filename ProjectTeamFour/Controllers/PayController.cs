@@ -44,7 +44,7 @@ namespace ProjectTeamFour.Controllers
         public ActionResult ConnectECPay()
         {
             var orderId = _PayService.SaveData();
-            
+            var projectId = _PayService.SaveData();
             var result = _PayService.ConnectECPay(orderId);
             ViewData["result"] = result;
             return View();
@@ -66,7 +66,6 @@ namespace ProjectTeamFour.Controllers
             string RtnCode = form["RtnCode"];
             string MerchantTradeNo = form["MerchantTradeNo"];
             string OrderId = form["CustomField1"];
-           
             if (ModelState.IsValid)
             {
                 if (Convert.ToInt32(RtnCode) == 1)

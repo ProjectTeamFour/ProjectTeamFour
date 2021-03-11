@@ -27,15 +27,11 @@ namespace ProjectTeamFour.Service
             _repository = new BaseRepository(_context);
         }        
         
-  
+        
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
 
             
-            //var listviewmodel = new PayViewModel()
-            //{
-            //    CartItems = new List<CarCarPlanViewModel>()
-            //};
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
@@ -61,7 +57,7 @@ namespace ProjectTeamFour.Service
                     PlanPrice = plan.PlanPrice,
                     PlanImgUrl = plan.PlanImgUrl,
                     PlanTitle = plan.PlanTitle,
-                    ProjectId = plan.ProjectId,                   
+                    ProjectId = plan.ProjectId,                    
                 };
                 viewmodel.CartItems.Add(CartItem);                                                                            
             }
@@ -109,7 +105,8 @@ namespace ProjectTeamFour.Service
                     PlanId = plan.PlanId,
                     OrderPrice = plan.PlanPrice,
                     OrderQuantity = i.Quantity,
-                    OrderDetailDes = cartSession.Comment
+                    OrderDetailDes = cartSession.Comment,
+                    ProjectId = plan.ProjectId,
                 };
                 od.Add(o);
             }
@@ -127,19 +124,42 @@ namespace ProjectTeamFour.Service
         //回傳訂單資料給資料庫
         public void CreateOrderToDB(string RtnCode , string MerchantTradeNo ,string orderId) //把購物車的資料&member回傳給資料庫
         {
+            
             var orderint = Convert.ToInt32(orderId);
-            var rtnCode = Convert.ToInt32(RtnCode);
-
-
+            var rtnCode = Convert.ToInt32(RtnCode);             
+            
             using (var transaction = _context.Database.BeginTransaction())
             {
 
                 var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
+                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).FirstOrDefault(); //有問題 不能只抓first
+                var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == odData.ProjectId);
+                var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == odData.PlanId);
+                //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
+               
                 try
                 {
-                    result.condition = "已付款";                   
+                    result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
+                    foreach(var item in projectview)
+                    {
+                        item.FundingAmount = item.FundingAmount + odData.OrderPrice;
+                        item.Fundedpeople = item.Fundedpeople + 1;
+                    }
+                    foreach(var p in planview)
+                    {
+                        p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                    }
+                    
+                    //foreach (var item in odData)
+                    //{                        
+                    //    var payview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
+                    //    foreach(var items in payview)
+                    //    {
+                    //        items.FundingAmount = items.FundingAmount + item.OrderPrice;
+                    //    }
+                    //}                    
                     _repository.Update<Order>(result);
                     transaction.Commit(); //交易確認     
 
@@ -204,7 +224,7 @@ namespace ProjectTeamFour.Service
                             Currency = "新台幣",//幣別單位
                             Quantity = order.Quantity,//購買數量
                             Unit = "件",
-                            URL = $"/ProjectDetail/Index/{order.ProjectId}",//商品的說明網址
+                            URL = $"/ProjectDetail/Index/{order}",//商品的說明網址
                         });
                     }
 
