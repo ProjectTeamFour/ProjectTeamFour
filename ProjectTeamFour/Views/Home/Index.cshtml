@@ -6,7 +6,10 @@
 }
 
 @section endJS{
-    <script src="~/Assets/Javascript/HomePage/homepage.js"></script>
+    <script src="~/Assets/Javascript/HomePage/homepage.js">
+    </script>
+
+
     @if (TempData["RtnCode"] != null && (TempData["RtnCode"]).ToString() == "1")
     {
 
@@ -26,8 +29,8 @@
             };
 
         </script>
-        
-      }
+        TempData.Clear();
+    }
 }
 
 

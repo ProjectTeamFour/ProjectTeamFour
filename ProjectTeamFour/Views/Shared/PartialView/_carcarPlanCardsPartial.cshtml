@@ -1,5 +1,7 @@
 ﻿@model ProjectTeamFour.ViewModels.CarCarPlanViewModel
-
+@{
+    var vm = (MemberViewModel)Session["Member"];
+}
 
 <div class="cardtemplate-section-item cardtemplate">
     <a href="~/CarCarPlan/Detail/@Model.PlanId">
@@ -14,12 +16,12 @@
         <div class="cardtemplate-item project-name">
             <h4>@Model.ProjectName</h4>
         </div>
-        <div  class="cardtemplate-item plan-title">
+        <div class="cardtemplate-item plan-title">
             <h3>@Model.PlanTitle</h3>
         </div>
         @*<div class="cardtemplate-item plan-description">
-            <h3>@Model.PlanDescription</h3>
-        </div>*@
+                <h3>@Model.PlanDescription</h3>
+            </div>*@
         <div class="cardtemplate-item project-team">
             <p>@Model.CreatorName</p>
         </div>
@@ -44,6 +46,6 @@
 
 @section endJS{
     <script>
-       
+
     </script>
-    }
+}

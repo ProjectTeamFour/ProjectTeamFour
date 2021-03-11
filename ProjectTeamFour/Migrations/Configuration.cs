@@ -744,7 +744,7 @@
                 ProjectDescription = "",
                 ProjectImgUrl = "https://i.imgur.com/orQ8HcD.jpg,https://i.imgur.com/hlzHEoh.jpg,https://i.imgur.com/QZEu1IV.gif,https://i.imgur.com/wOXJpH8.jpg,https://i.imgur.com/8bIzSJY.gif,https://i.imgur.com/nlU6CzQ.jpg,https://i.imgur.com/oWfBErd.jpg,https://i.imgur.com/AMje1iS.gif,https://i.imgur.com/I0YADR1.jpg,https://i.imgur.com/aszux4j.jpg,https://i.imgur.com/h4Luebc.jpg,https://i.imgur.com/unf9sle.gif,https://i.imgur.com/Nt3MGP9.jpg,https://i.imgur.com/EPlBeuG.jpg,https://i.imgur.com/kQnCA8z.jpg",
                 //	原圖格式
-                ProjectVideoUrl = "https://www.youtube.com/embed/bOvZt-Rn590",
+                ProjectVideoUrl = "https://www.youtube.com/embed/bOvZt-Rn590llowfullscreen",
                 Project_Question = "《SWOL雙水箱旋轉拖把》水箱內置的毛刷是否需要定期更換或清洗？,《SWOL雙水箱旋轉拖把》的水箱應該要如何清理呢？,《SWOL雙水箱旋轉拖把》如果故障應該如何修理？,耗材（拖把毛、水箱內毛刷）要在哪裡購買更換？",
                 Project_Answer = "毛刷不需要更換，採用的是尼龍材料，韌性和強度都比較好。若使用上造成損壞，未來官網也會提供備品讓您可以付費更換！,清水區的蓋子拿掉之後，清水區和髒水區都是可以直接清洗的，搭配小刷子清潔的話會更乾淨喔！,基本故障可以透過購買零件自行更換，也可以送回SWOL團隊，由我們替您處理。,未來官網我們會上架備品給各位選購，請放心下單！",
                 ProjectPlansCount = 5
@@ -1886,9 +1886,9 @@
                 ProjectCoverUrl = "https://i.imgur.com/99sWgpxl.jpg",
                 //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "https://i.imgur.com/5RZVX0P.jpg,https://i.imgur.com/2j2h8vF.jpg,https://i.imgur.com/UQjxte9.jpg,https://i.imgur.com/SzTqnM1.jpg,https://i.imgur.com/w82hyDW.jpg,https://i.imgur.com/T0w6u7B.jpg,https://i.imgur.com/TAvWRXe.jpg,https://i.imgur.com/AJb6zsf.jpg,https://i.imgur.com/7kD5N1A.jpg,https://i.imgur.com/VEjNukC.jpg,https://i.imgur.com/HRQ1Bcl.gifv,https://i.imgur.com/owhlFNQ.jpg,https://i.imgur.com/OGx8IZr.jpg,https://i.imgur.com/pIuH2Uy.gifv,https://i.imgur.com/wLS3K0P.jpg,https://i.imgur.com/6mwBOLT.jpg,https://i.imgur.com/fxHrNfc.jpg,https://i.imgur.com/towH2lE.jpg,https://i.imgur.com/DYXnY5A.jpg,https://i.imgur.com/OLDlSl9.jpg,https://i.imgur.com/4UgdQZC.jpg,https://i.imgur.com/9jtZnuS.jpg,https://i.imgur.com/JQzAmYx.jpg,https://i.imgur.com/3YOp8M9.jpg,https://i.imgur.com/eM9qtVd.jpg,https://i.imgur.com/3Mwz1l6.jpg",
+                ProjectImgUrl = "https://i.imgur.com/5RZVX0P.jpg,❙ 超過 90 年歷史 ❙對美的熱忱與執著,https://i.imgur.com/2j2h8vF.jpg, 大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品, 秉持對品質的追求，我們於 1956 年開始和廣島熊野的製造廠合作開發，將「 熊野筆 」的工法應用於高級化妝刷具 ❙ 從職人手作到享譽全國 ❙,https://i.imgur.com/UQjxte9.jpg, 日文的漢字【 筆 】，即有【 刷 】的含義。遠自江戶末期，日本廣島縣熊野町就因盛產毛筆，獲得「 筆之都 」的稱號,https://i.imgur.com/SzTqnM1.jpg, 現今不論毛筆、畫筆、化妝刷具等，仍佔全日本約 80% 以上的產量，「熊野筆」因而被日本經濟產業大臣指名為傳統工藝品,https://i.imgur.com/w82hyDW.jpg, 尤其熊野出品的化妝刷具，刷毛柔軟細緻的觸感、能帶出自然妝感的特色，深受大眾女性及專業模特兒喜愛，也成為高品質的象徵,❙ 向世界傳達熊野筆的美 ❙ 造一把沐浴專用的【 筆 】,熊野筆「 柔軟且親膚 」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛的應用於日常生活中,❙ 堅持職人手工打造 ❙ 每個成品，都蘊含最真誠的浪漫,https://i.imgur.com/T0w6u7B.jpg, 去除多餘的裁切工序，最重要的排列平整、順毛組裝等製成，熊野老師傅仍堅持全手工進行，貫徹對品質的絕對要求,https://i.imgur.com/TAvWRXe.jpg, 將近百年化妝刷製作技術的累積，投注於身體刷重新設計改良，《 熊野筆 ROTUNDA 沐浴刷 》就此傳承新生, 對許多女生來說，熊野筆化妝刷是一生必定要嘗試的夢幻單品；我們相信《 熊野筆 ROTUNDA 沐浴刷 》同樣能帶來前所未有的沐浴享受,https://i.imgur.com/AJb6zsf.jpg, ❙ 溫柔觸感·舒適呵護 ❙, 每次搓揉，都像深層 SPA 按摩, 每組《 熊野筆 ROTUNDA 沐浴刷 》由超過 150,000 根 0.1 mm 極細柔軟刷毛製成,https://i.imgur.com/7kD5N1A.jpg, 極上沐浴體驗！, 享受每日最療癒的時刻,https://i.imgur.com/VEjNukC.jpg, https://i.imgur.com/HRQ1Bcl.gifv,https://i.imgur.com/owhlFNQ.jpg,https://i.imgur.com/OGx8IZr.jpg,https://i.imgur.com/pIuH2Uy.gifv,https://i.imgur.com/wLS3K0P.jpg,https://i.imgur.com/6mwBOLT.jpg,https://i.imgur.com/fxHrNfc.jpg, 【 去污力實測！】, 徒手清潔 vs. 熊野筆 ROTUNDA 沐浴刷, 單純以手洗時，仍有殘留物卡在橘皮隙縫；經過《 熊野筆 ROTUNDA 沐浴刷 》刷洗，如同將毛細孔內的頑垢徹底清除, ❙ 不放過任何髒污死角 ❙, 長短柄 兩種規格選擇, 身體全身、或是需要仔細刷洗的指縫，都能輕鬆清潔,https://i.imgur.com/towH2lE.jpg, 身體全身、或是需要仔細刷洗的指縫，都能輕鬆清潔,https://i.imgur.com/DYXnY5A.jpg, ❙ 長期護理方法 ❙,https://i.imgur.com/OLDlSl9.jpg, ❙ 特別贈禮！ ❙,https://i.imgur.com/4UgdQZC.jpg,  前 60 名贊助者，額外贈送 熊野筆唇刷 1 支, ❙ 產品規格 ❙,https://i.imgur.com/9jtZnuS.jpg,《 熊野筆 ROTUNDA 沐浴刷 》長柄, 尺寸：70 x 62 x 300 mm, 重量:180g, 材質：PBT/天然山羊毛 混毛, 產地：日本,https://i.imgur.com/JQzAmYx.jpg, 《 熊野筆 ROTUNDA 沐浴刷 》短柄 ,尺寸：70 x 50 mm ,重量：105g ,材質：PBT/天然山羊毛 混毛 ,產地：日本, ❙ 贊助方案 ❙ （ 全方案開放 刷卡 3、6 期零利率 ）,https://i.imgur.com/3YOp8M9.jpg, ❙ 關於村岸株式会社 ❙,https://i.imgur.com/eM9qtVd.jpg, 自成立 90 年來，從以化妝刷為中心的美容相關產品的批發銷售，到開發各種各樣的刷具。秉承專業知識和堅定不移的信念，精心製作的最高品質的產品, https://i.imgur.com/3Mwz1l6.jpg",
                 //格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
+                ProjectVideoUrl = "https://youtube/embed/3cO7pC7SeXY",
                 Project_Question = "「熊野筆」是化妝刷具的高品質象徵，怎麼會想要拿來做沐浴刷呢？,刷毛的材質為何呢？,《 熊野筆 ROTUNDA 沐浴刷 》中間的凹槽有什麼功能呢？,清潔使用後，該如何收納與保養呢？,如果收到產品後不夠滿意，可以做退換貨嗎？,《 熊野筆 ROTUNDA 沐浴刷 》是否會提供保固呢？",
                 Project_Answer = "遠自江戶末期，日本廣島縣熊野町就因盛產毛筆，獲得「 筆之都 」的稱號，我們相信熊野筆「 柔軟且親膚 」的特性，不僅適合臉部妝容，更能用於全身清潔！,我們選用天然山羊毛與PBT纖維，沿襲熊野筆「混毛」的製作方式，由超過 150,000 根 0.1 mm 極細柔軟刷毛製成，除了能深度清潔毛細孔內的污垢、同時達到去角質的效果,以毫米為單位多次重複測試精修，可讓刷洗時產生更細緻且大量的泡沫；不僅帶來更強的去污力，光看著就很療癒,建議用浴巾將沐浴刷擦乾後，採刷毛倒立方式至通風處晾乾，長柄刷亦可透過末端的圈繩吊掛收納,可以的，依照消費者保護法的規定，我們提供商品貨到日起七天猶豫期的權益。請注意猶豫期非試用期，您所退回或要更換的商品若經檢測後有毀損狀況，我們可能會向您收取相關的費用,在 flyingV 參與募資計畫的朋友，都享有收到貨後起算 6 個月保固的權益；若為正常使用耗損、人為因素導致商品毀損，則不在保固範圍內。",
                 ProjectPlansCount = 1
@@ -2024,9 +2024,9 @@
                 ProjectCoverUrl = "https://i.imgur.com/jwLGY3Kl.png",
                 //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "為什麼要出書？,你的毛孩...曾經被景點或商家拒絕嗎？,你大概會有這個經驗，你心愛的寶貝，曾經被拒絕於餐館或飯店門外，飽受交通不便， 到了旅遊景點，才發現你的寶貝，無法進入，是不受歡迎的！,https://i.imgur.com/hlwC762.jpg, 如影片所述，期望透過小米的旅遊介紹以及照片，鼓勵大家帶毛孩到一些戶外地點去遊玩並記錄下珍貴的點滴，希望這本書可以讓大家帶著毛小孩們，平安順利的體驗台灣之美。,藉由出書募得資金，重新啟動公益計畫,https://i.imgur.com/jXa7iTX.jpg, 我們費時2年2萬公里探訪台灣的景點寵物友善狀況，產生了大量的寫真照片和景點資訊，在許多粉絲、網友鼓勵下，決定將這些資料和照片製作出高品質的旅遊寫真書，並將書的所得扣除成本後投入公益事業，組成一個公益協會和社會企業，啟動 FURKID 毛小孩計畫，這是寵物專屬平台，並以降低棄養率為主的研發計畫，追蹤寵物過去和未來、寵物友善環境搜尋、提供並協助中途之家媒合平台和分析追蹤工具。,成立推動寵物友善環境及生命教育的公益協會,https://i.imgur.com/EPOQNCM.jpg, 台灣景點和周邊商家，許多地方寵物都可以進入，但也有許多地方仍禁止寵物進入，而我們希望能將這些地方有條件的變成寵物可進入，「透過正確的方式和規劃讓環境對寵物友善，同時也約束毛孩父母，教育好毛孩並做好自身責任對環境友善」，建立起相互信賴，並推動雙向分級「寵物友善環境認證」和「好爸媽及乖毛孩認證（飼主責任和寵物穩定度認定）」，讓友善環境也能有選擇權。,https://i.imgur.com/vChSG9c.jpg, 這是寫真書？還是旅遊書？,https://i.imgur.com/ES9VPa2.jpg,https://i.imgur.com/scvSlbt.jpg, 小米景點寫真, 以台灣北部、中部、南部、東部景點的介紹以及特色，讓我們一起透過小米看看美美的台灣。,https://i.imgur.com/3FXQFis.jpg,https://i.imgur.com/dNpA2Bq.jpg,https://i.imgur.com/bAmvyEX.jpg,https://i.imgur.com/L6ukvAE.jpg,https://i.imgur.com/H7FpUBJ.jpg,https://i.imgur.com/i8Oq6bD.jpg,https://i.imgur.com/s5SzX1V.jpg,https://i.imgur.com/lPjUKQ4.jpg,https://i.imgur.com/9CnlLC8.jpg,https://i.imgur.com/mlzMZ06.jpg,https://i.imgur.com/iiFmdgy.png,https://i.imgur.com/XYlTuV1.jpg, 一個國家的文明程度就看她怎樣對待動物,要讓整個環境能夠更朝友善寵物前進，有兩個最主要的因素。第一個就是商家和景點的開放，另外一個則是飼主本身的配合和進步。我們深信提升生命教育和飼主應盡責任是降低棄養率及對寵物友善的根本。因此我們準備將出書所得成立一家社會企業和計畫發展的公益協會, https://i.imgur.com/Of9YDuJ.jpg, 成立寵物友善環境發展協會, 透過協會進行寵物友善環境發展、生命教育、飼主教育、寵物證照推廣（乖寶寶證照）、寵物緊急救難基金等。,https://i.imgur.com/Jzz5S15.jpg,https://i.imgur.com/hz7we9i.jpg, 經費使用說明, https://i.imgur.com/VAHpMU2.png",
+                ProjectImgUrl = "為什麼要出書？,你的毛孩...曾經被景點或商家拒絕嗎？,你大概會有這個經驗，你心愛的寶貝，曾經被拒絕於餐館或飯店門外，飽受交通不便， 到了旅遊景點，才發現你的寶貝，無法進入，是不受歡迎的！,https://i.imgur.com/hlwC762.jpg, 如影片所述，期望透過小米的旅遊介紹以及照片，鼓勵大家帶毛孩到一些戶外地點去遊玩並記錄下珍貴的點滴，希望這本書可以讓大家帶著毛小孩們，平安順利的體驗台灣之美。,藉由出書募得資金，重新啟動公益計畫,https://i.imgur.com/jXa7iTX.jpg, 我們費時2年2萬公里探訪台灣的景點寵物友善狀況，產生了大量的寫真照片和景點資訊，在許多粉絲、網友鼓勵下，決定將這些資料和照片製作出高品質的旅遊寫真書，並將書的所得扣除成本後投入公益事業，組成一個公益協會和社會企業，啟動 FURKID 毛小孩計畫，這是寵物專屬平台，並以降低棄養率為主的研發計畫，追蹤寵物過去和未來、寵物友善環境搜尋、提供並協助中途之家媒合平台和分析追蹤工具。,成立推動寵物友善環境及生命教育的公益協會,https://i.imgur.com/EPOQNCM.jpg, 台灣景點和周邊商家，許多地方寵物都可以進入，但也有許多地方仍禁止寵物進入，而我們希望能將這些地方有條件的變成寵物可進入，「透過正確的方式和規劃讓環境對寵物友善，同時也約束毛孩父母，教育好毛孩並做好自身責任對環境友善」，建立起相互信賴，並推動雙向分級「寵物友善環境認證」和「好爸媽及乖毛孩認證（飼主責任和寵物穩定度認定）」，讓友善環境也能有選擇權。,https://i.imgur.com/vChSG9c.jpg, 這是寫真書？還是旅遊書？,https://i.imgur.com/ES9VPa2.jpg,https://i.imgur.com/scvSlbt.jpg, 小米景點寫真, 以台灣北部、中部、南部、東部景點的介紹以及特色，讓我們一起透過小米看看美美的台灣。,https://i.imgur.com/3FXQFis.jpg,https://i.imgur.com/dNpA2Bq.jpg,https://i.imgur.com/bAmvyEX.jpg,https://i.imgur.com/L6ukvAE.jpg,https://i.imgur.com/H7FpUBJ.jpg,https://i.imgur.com/i8Oq6bD.jpg,https://i.imgur.com/s5SzX1V.jpg,https://i.imgur.com/lPjUKQ4.jpg,https://i.imgur.com/9CnlLC8.jpg,https://i.imgur.com/mlzMZ06.jpg,https://i.imgur.com/XYlTuV1.jpg, 一個國家的文明程度就看她怎樣對待動物,要讓整個環境能夠更朝友善寵物前進，有兩個最主要的因素。第一個就是商家和景點的開放，另外一個則是飼主本身的配合和進步。我們深信提升生命教育和飼主應盡責任是降低棄養率及對寵物友善的根本。因此我們準備將出書所得成立一家社會企業和計畫發展的公益協會, https://i.imgur.com/Of9YDuJ.jpg, 成立寵物友善環境發展協會, 透過協會進行寵物友善環境發展、生命教育、飼主教育、寵物證照推廣（乖寶寶證照）、寵物緊急救難基金等。,https://i.imgur.com/Jzz5S15.jpg,https://i.imgur.com/hz7we9i.jpg, 經費使用說明, https://i.imgur.com/VAHpMU2.png",
                 //格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://youtu.be/embed/3cO7pC7SeXY",
+                ProjectVideoUrl = "https://www.youtube.com/embed/ivij40C-BSs",
                 Project_Question = "",
                 Project_Answer = "",
                 ProjectPlansCount = 1
@@ -2056,10 +2056,10 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 83,
-                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄1【台灣北部、中部】1本",
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
                 ProjectId = 15,
                 ProjectPlanId = 1,
-                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanTitle = "《小米遊記》第一本寵物友善環境探訪實錄1【台灣北部、中部】1本",
                 PlanFundedPeople = 24,
                 PlanDescription = "我們費時2年2萬多公里，探訪台灣景點的寵物友善狀況。藉由出書募資，將所得投入寵物友善環境發展和生命教育推動，及重啟動降低棄養率的公益研發計畫。",
                 PlanShipDate = new DateTime(2021, 10, 01),
@@ -2071,14 +2071,14 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 84,
-                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄2【台灣東部、南部】1本",
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
                 ProjectId = 16,
                 ProjectPlanId = 2,
-                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanTitle = "《小米遊記》第一本寵物友善環境探訪實錄2【台灣東部、南部】1本",
                 PlanFundedPeople = 19,
-                PlanDescription = "https://i.imgur.com/Y3uAEeqm.png",
+                PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "",
+                PlanImgUrl = "https://i.imgur.com/Y3uAEeqm.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 500,
                 QuantityLimit = 999
@@ -2086,10 +2086,10 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 85,
-                ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄寫真書1套2冊含外盒",
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
                 ProjectId = 16,
                 ProjectPlanId = 3,
-                PlanTitle = "寵物友善環境探訪實錄寫真書5套",
+                PlanTitle = "《小米遊記》第一本寵物友善環境探訪實錄寫真書1套2冊含外盒",
                 PlanFundedPeople = 188,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 10, 01),
@@ -2104,9 +2104,9 @@
                 ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
                 ProjectId = 16,
                 ProjectPlanId = 4,
-                PlanTitle = "",
+                PlanTitle = "9折，寵物友善環境探訪實錄寫真書5套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
                 PlanFundedPeople = 7,
-                PlanDescription = "9折，寵物友善環境探訪實錄寫真書5套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
+                PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 10, 01),
                 PlanImgUrl = "https://i.imgur.com/YLHUNUC.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
@@ -2119,9 +2119,9 @@
                 ProjectName = "《小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
                 ProjectId = 16,
                 ProjectPlanId = 5,
-                PlanTitle = "",
+                PlanTitle = "85折，寵物友善環境探訪實錄寫真書10套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
                 PlanFundedPeople = 10,
-                PlanDescription = "85折，寵物友善環境探訪實錄寫真書10套，亦可指定捐贈國小或者指定單位和是否露出捐贈者",
+                PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 10, 01),
                 PlanImgUrl = "https://i.imgur.com/YLHUNUC.png",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m

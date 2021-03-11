@@ -1,0 +1,206 @@
+﻿@model IEnumerable<ProjectTeamFour.Controllers.MyProjectViewModel>
+
+
+@{
+    //MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
+    var vm = (MemberViewModel)Session["Member"];
+}
+
+@section topCSS{
+    <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
+    <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
+}
+
+<div class="case-title">
+    <h2>提案紀錄</h2>
+    <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
+</div>
+
+<div class="case-doing">
+
+    <div class="case-doing-funding">
+        <h3>募資中專案</h3>
+        <hr />
+        <p>目前您沒有募資中專案</p>
+        <div class="container">
+            @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml")
+        </div>
+    </div>
+    <div class="case-doing-creating">
+        <h3>創建中專案</h3>
+        <hr />
+        @*<p>目前您沒有創建中專案</p>*@
+        <div class="container">
+            @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml")
+        </div>
+
+    </div>
+
+    <div class="case-doing-creating">
+        <h3>已結束專案</h3>
+        <hr />
+        @*<p>目前您沒有已結束專案</p>*@
+        <div class="container">
+            @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml")
+        </div>
+
+    </div>
+</div>
+
+
+@*
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FundingAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastEditDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fundedpeople)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectImgUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectVideoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project_Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project_Answer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectPlansCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectCoverUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountThreshold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectMainUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectPrincipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentityNumber)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FundingAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastEditDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fundedpeople)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectImgUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectVideoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project_Question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project_Answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectPlansCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectCoverUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountThreshold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectMainUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectPrincipal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>-->*@

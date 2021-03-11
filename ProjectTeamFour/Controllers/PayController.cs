@@ -66,6 +66,7 @@ namespace ProjectTeamFour.Controllers
             string RtnCode = form["RtnCode"];
             string MerchantTradeNo = form["MerchantTradeNo"];
             string OrderId = form["CustomField1"];
+            TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {
                 if (Convert.ToInt32(RtnCode) == 1)

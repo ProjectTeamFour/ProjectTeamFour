@@ -1,7 +1,5 @@
-﻿@model ProjectTeamFour.ViewModels.EditMemberViewModel
-@*@{
-    ViewBag.Title = "Sponser";
-}*@
+﻿@model ProjectTeamFour.ViewModels.MemberViewModel
+
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
@@ -16,9 +14,9 @@
                 <a class="nav-links" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">個人資料</a>
             </li>
             <li class="nav-item-tag" role="presentation">
-                <a class="nav-links  active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">贊助紀錄</a>
+                <a class="nav-links" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">贊助紀錄</a>
             </li>
-            <li class="nav-item-tag" role="presentation">
+            <li class="nav-item-tag  active" role="presentation">
                 <a class="nav-links" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">提案紀錄</a>
             </li>
             <li class="nav-item-tag" role="presentation">
@@ -43,19 +41,7 @@
                     <div class="wrap-inside">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
-                                <div class="person-data">
-                                    <div class="person-data-pic">
-                                        <img src="@Model.ProfileImgUrl" alt="個人圖片">
-                                    </div>
-                                    <div class="person-data-text">
-                                        <h2>@Model.MemberName</h2>
-                                        <p>
-                                            贊助過
-                                            <span>0</span>件專案/發起過
-                                            <span>0</span>件專案
-                                        </p>
-                                    </div>
-                                </div>
+                                ppppppppppppppppp
                             </div>
                         </div>
                     </div>
@@ -74,7 +60,7 @@
                     </div>
                 </section>
             </div>
-            <div class="tab-pane fade  show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <section class="record">
                     <div class="wrap-inside">
                         <div class="record-content">
@@ -289,14 +275,6 @@
                                             <label for="personal-site">個人網站</label>
                                             <input type="url" class="form-control" id="personal-site" placeholder="[webside]">
                                         </div>
-                                        @*<div id="language-preference" class="form-group">
-                                                <label for="gender">語言偏好</label>
-                                                <select class="form-control" id="language">
-                                                    <option>中文</option>
-                                                    <option>英文</option>
-                                                    <option>日文</option>
-                                                </select>
-                                            </div>*@
                                     </div>
                                 </div>
                                 <hr>
@@ -343,7 +321,7 @@
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/PartialView/_notifactionPartial.cshtml")
+                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_notifactionPartial.cshtml")
                     </div>
                 </div>
             </div>
