@@ -2158,6 +2158,7 @@
     <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
     <None Include="Properties\PublishProfiles\MyCarPlanWebsite - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\projecteteam4 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ProjectTeamFour20210310122749 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
