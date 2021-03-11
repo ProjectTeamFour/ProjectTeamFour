@@ -342,6 +342,19 @@ h4 {
     }
 
 
+
+
+/*很麻煩的那個nav-bar*/
+#campaign-details-all .stickyProjectNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin: 0;
+}
+
+
 /*FAQ的三角形樣式*/
 
 #accordionExample .question button{

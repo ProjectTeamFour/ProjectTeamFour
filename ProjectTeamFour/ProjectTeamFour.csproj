@@ -179,7 +179,8 @@
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
-    <Compile Include="Controllers\ProjectUser_JustTestController.cs" />
+    <Compile Include="Controllers\MyProjectController.cs" />
+    <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
@@ -290,6 +291,10 @@
     <Compile Include="Migrations\202103091305440_addplandatamodel.Designer.cs">
       <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.cs" />
+    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.Designer.cs">
+      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -299,6 +304,7 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
+    <Compile Include="Service\BackingViewModel.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\CommentService.cs" />
@@ -313,6 +319,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
+    <Compile Include="ViewModels\BackingRecordViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -326,6 +333,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\MyProjectsViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -342,7 +350,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
     <Compile Include="Controllers\PayController.cs" />
-    <Compile Include="Controllers\PersonInfoController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -397,7 +405,14 @@
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
+    <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Views\UserInfo\Account.cshtml" />
+    <Content Include="Views\UserInfo\Message.cshtml" />
+    <Content Include="Views\UserInfo\New.cshtml" />
+    <Content Include="Views\UserInfo\Setting.cshtml" />
+    <Content Include="Views\UserInfo\Sponser.cshtml" />
+    <Content Include="Views\UserInfo\Submit.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2189,16 +2204,11 @@
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
-    <Content Include="Views\PersonInfo\Index.cshtml" />
-    <Content Include="Views\PersonInfo\Sponser.cshtml" />
-    <Content Include="Views\PersonInfo\Submit.cshtml" />
-    <Content Include="Views\PersonInfo\Connect.cshtml" />
-    <Content Include="Views\PersonInfo\New.cshtml" />
+    <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\Index.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\testPageForSonia.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
     <Content Include="Views\Member\Login.cshtml" />
@@ -2220,21 +2230,29 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
-    <Content Include="Views\PersonInfo\Account.cshtml" />
-    <Content Include="Views\PersonInfo\Edit.cshtml" />
-    <Content Include="Views\PersonInfo\Setting.cshtml" />
-    <Content Include="Views\Shared\PartialView\_personInfoNavPartial.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
+    <Content Include="Views\UserInfo\Account.cshtml" />
+    <Content Include="Views\UserInfo\Edit.cshtml" />
+    <Content Include="Views\UserInfo\Setting.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_notifactionPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_messagePartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_myProjectPartial.cshtml" />
-    <Content Include="Views\Shared\PartialView\_backingRecordsPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_notifactionPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_messagePartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_myProjectPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_backingRecordsPartial.cshtml" />
     <Content Include="Views\pay\ConnectECPay.cshtml" />
     <Content Include="Views\Projects\GetAll.cshtml" />
     <Content Include="Views\pay\Result.cshtml" />
     <Content Include="Views\pay\SaveData.cshtml" />
+    <Content Include="Views\MyProject\OverView.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_resetPasswordPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_usersPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2346,6 +2364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103091305440_addplandatamodel.resx">
       <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101142409_AddProjectIdForOD.resx">
+      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

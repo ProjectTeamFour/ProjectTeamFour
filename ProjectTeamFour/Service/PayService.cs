@@ -61,7 +61,7 @@ namespace ProjectTeamFour.Service
                     PlanPrice = plan.PlanPrice,
                     PlanImgUrl = plan.PlanImgUrl,
                     PlanTitle = plan.PlanTitle,
-                    ProjectId = plan.ProjectId                    
+                    ProjectId = plan.ProjectId,                   
                 };
                 viewmodel.CartItems.Add(CartItem);                                                                            
             }
@@ -109,6 +109,7 @@ namespace ProjectTeamFour.Service
                     PlanId = plan.PlanId,
                     OrderPrice = plan.PlanPrice,
                     OrderQuantity = i.Quantity,
+                    OrderDetailDes = cartSession.Comment
                 };
                 od.Add(o);
             }
@@ -126,48 +127,9 @@ namespace ProjectTeamFour.Service
         //回傳訂單資料給資料庫
         public void CreateOrderToDB(string RtnCode , string MerchantTradeNo ,string orderId) //把購物車的資料&member回傳給資料庫
         {
-            var session = HttpContext.Current.Session;
-            //var memberSession = ((MemberViewModel)session["Member"]);
-            var cartSession = ((CartItemListViewModel)session["Cart"]);
             var orderint = Convert.ToInt32(orderId);
             var rtnCode = Convert.ToInt32(RtnCode);
-            //var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId); //從會員資料庫抓    
 
-
-            //var order = new Order
-            //{
-            //    MemberId = member.MemberId,
-            //    OrderName = member.MemberName,
-            //    OrderAddress = member.MemberAddress,
-            //    OrderPhone = member.MemberPhone,
-            //    OrderConEmail = member.MemberConEmail,
-            //    OrderTotalAccount = cartSession.TotalAccount,
-            //    TradeNo = MerchantTradeNo,
-            //    RtnCode = Convert.ToInt32(RtnCode),
-            //};
-            //_repository.Create(order);
-
-
-            //List<OrderDetail> od = new List<OrderDetail>();
-            //foreach (var i in cartSession.CartItems)
-            //{
-            //    var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
-            //    var o = new OrderDetail()
-            //    {
-            //        PlanTitle = plan.PlanTitle,
-            //        PlanId = plan.PlanId,
-            //        OrderPrice = plan.PlanPrice,
-            //        OrderQuantity = i.Quantity,
-            //    };
-            //    od.Add(o);
-
-            //}
-
-            //foreach (var item in od)
-            //{
-            //    item.OrderId = order.OrderId;
-            //    _repository.Create(item);
-            //}
 
             using (var transaction = _context.Database.BeginTransaction())
             {
@@ -179,27 +141,6 @@ namespace ProjectTeamFour.Service
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
                     _repository.Update<Order>(result);
-
-
-                    //List<OrderDetail> od = new List<OrderDetail>();
-                    //foreach (var i in cartSession.CartItems)
-                    //{
-                    //    var plan = _repository.GetAll<Plan>().Where((x) => x.PlanId == i.PlanId).Select((X) => X).FirstOrDefault(); //從PLAN資料庫抓
-                    //    var o = new OrderDetail()
-                    //    {
-                    //        PlanTitle = plan.PlanTitle,
-                    //        PlanId = plan.PlanId,
-                    //        OrderPrice = plan.PlanPrice,
-                    //        OrderQuantity = i.Quantity,
-                    //    };
-                    //    od.Add(o);
-                    //}
-
-                    //foreach (var item in od)
-                    //{
-                    //    item.OrderId = order.OrderId;
-                    //    _repository.Update<OrderDetail>(item);
-                    //}
                     transaction.Commit(); //交易確認     
 
                 }

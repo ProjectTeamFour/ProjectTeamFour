@@ -1,0 +1,29 @@
+﻿<div class="wrap-inside">
+    <form action="">
+        <div id="user-setting" class="container">
+            <div class="form-group row">
+                <div class="col-12 col-md-6">
+                    <blockquote class="colored-label">
+                        <p>帳號管理</p>
+                    </blockquote>
+                    <div class="login-account form-group">
+                        <label for="account">登入帳號</label>
+                        <input type="text" class="form-control" id="account" placeholder="@Model.MemberRegEmail" readonly>
+                    </div>
+                    <div class="reset-passward form-group">
+                        <label for="inputPassword">更改密碼</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="請輸入舊密碼">
+                    </div>
+                    <button type="submit" class="btn btn-primary">更改密碼</button>
+                </div>
+                <div class="col-12 col-md-6">
+                    <blockquote for="linked-account" class="colored-label">
+                        <p>社群綁定</p>
+                    </blockquote>
+                </div>
+            </div>
+            <hr>
+            <button id="delete-account" class=" btn btn-secondary">刪除帳號</button>
+        </div>
+    </form>
+</div>

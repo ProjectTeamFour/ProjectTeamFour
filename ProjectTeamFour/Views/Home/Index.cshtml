@@ -6,7 +6,10 @@
 }
 
 @section endJS{
-    <script src="~/Assets/Javascript/HomePage/homepage.js"></script>
+    <script src="~/Assets/Javascript/HomePage/homepage.js">
+    </script>
+
+
     @if (TempData["RtnCode"] != null && (TempData["RtnCode"]).ToString() == "1")
     {
 
@@ -20,11 +23,13 @@
                     title: '付款成功',
                     showConfirmButton: false,
                     timer: 3000
+                }).then((Response) => {
+
                 })
             };
 
         </script>
-
+        TempData.Clear();
     }
 }
 

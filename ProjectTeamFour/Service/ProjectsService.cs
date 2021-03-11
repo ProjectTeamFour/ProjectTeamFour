@@ -147,7 +147,7 @@ namespace ProjectTeamFour.Service
             return project;
         }
 
-        public ProjectListViewModel GetAllTotal123(string category, string projectStatus ,string id) //全部產生過濾完3層
+        public ProjectListViewModel GetAllTotalFliter(string category, string projectStatus ,string id) //全部產生過濾完3層
         {
             var project = new ProjectListViewModel
             {
@@ -176,18 +176,6 @@ namespace ProjectTeamFour.Service
                 {
                     source = source.OrderBy((x) => x.EndDate);
                 }
-                //switch (id)
-                //{
-                //    case Fliter.FundingAmount:
-                //        source = source.OrderBy((x) => x.FundingAmount);
-                //        break;
-                //    case Fliter.Fundedpeople:
-                //        source = source.OrderBy((x) => x.Fundedpeople);
-                //        break;
-                //    case Fliter.Time:
-                //        source = source.OrderBy((x) => x.EndDate);
-                //        break;
-                //}
             }
             foreach (var item in source)
             {
