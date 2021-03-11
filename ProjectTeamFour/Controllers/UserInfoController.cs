@@ -15,14 +15,14 @@ using ProjectTeamFour.Helpers;
 
 namespace ProjectTeamFour.Controllers
 {
-	public class PersonInfoController : Controller
+	public class UserInfoController : Controller
 	{
 		private readonly MemberService _memberService;
 		//private readonly BackingService _backingService;
 		//private readonly MyProjectService _myProjectService;
 		private readonly CommentService _commentService;
 
-        public PersonInfoController()
+        public UserInfoController()
         {
             _memberService = new MemberService();
             //_memberSettingService = new MemberSettingService();
@@ -38,25 +38,29 @@ namespace ProjectTeamFour.Controllers
 
 		public ActionResult Sponser() //贊助紀錄
 		{
-			return View();
+			var model = (MemberViewModel)Session["Member"];
+			return View(model);
 		}
 
-		public ActionResult Submit()
+		public ActionResult Submit()	//專案提交紀錄
 		{
-			return View();
+			var model = (MemberViewModel)Session["Member"];
+			return View(model);
 		}
 
-		public ActionResult Connect()
+		public ActionResult Message()		//第三方連動帳號
 		{
-			return View();
+			var model = (MemberViewModel)Session["Member"];
+			return View(model);
 		}
 
-		public ActionResult New()
+		public ActionResult Activity()	//最新通知(可以連動贊助或購買商品後收發訂單狀態的email功能)
 		{
-			return View();
+			var model = (MemberViewModel)Session["Member"];
+			return View(model);
 		}
 
-		public ActionResult Edit(int id)
+		public ActionResult Edit(int id)	//修改個人資料
 		{
 			var memberService = new MemberService();
 
@@ -89,12 +93,12 @@ namespace ProjectTeamFour.Controllers
 		//    return View(member);
 		//}
 
-		public ActionResult Account()
+		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
 		{
 			return View();
 		}
 
-		public ActionResult Setting()
+		public ActionResult Setting()	//通知設定
 		{
 			return View();
 		}
