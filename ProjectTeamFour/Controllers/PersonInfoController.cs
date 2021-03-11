@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Controllers
         public PersonInfoController()
         {
             _memberService = new MemberService();
-            _memberSettingService = new MemberSettingService();
+            //_memberSettingService = new MemberSettingService();
         }
 
 		// GET: PersonInfo
