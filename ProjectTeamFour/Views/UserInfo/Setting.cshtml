@@ -1,7 +1,5 @@
 ﻿@model ProjectTeamFour.ViewModels.MemberViewModel
-@{
-    ViewBag.Title = "PersonInfo";
-}*@
+
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
@@ -24,7 +22,7 @@
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-message-tab" data-toggle="pill" href="#pills-message" role="tab" aria-controls="pills-message" aria-selected="false">聯絡訊息</a>
             </li>
-            <li class="nav-item-tag" role="presentation">
+            <li class="nav-item-tag active" role="presentation">
                 <a class="nav-links" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">最新通知</a>
             </li>
             <li class="nav-item-tag" role="presentation">
@@ -33,12 +31,12 @@
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account" aria-selected="false">帳號管理</a>
             </li>
-            <li class="nav-item-tag active" role="presentation">
+            <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-setting-tab" data-toggle="pill" href="#pills-setting" role="tab" aria-controls="pills-setting" aria-selected="false">通知設定</a>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <section class=person>
                     <div class="wrap-inside">
                         <div class="row">
@@ -211,7 +209,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+            <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
                 <div class="news">
                     <div class="wrap-inside">
                         <div class="col-sm-12 col-md-9">
@@ -332,7 +330,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade show active" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
+            <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
                         <form action="">

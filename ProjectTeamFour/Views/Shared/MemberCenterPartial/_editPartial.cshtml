@@ -1,9 +1,7 @@
 ﻿@model ProjectTeamFour.ViewModels.MemberViewModel
 
 @{
-
-    MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
-    ViewBag.Title = "帳戶設定-個人資料";
+    var vm = (MemberViewModel)Session["Member"];
 }
 
 
@@ -100,5 +98,5 @@
 @section endJs{
 
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
-    
-        }
+
+}

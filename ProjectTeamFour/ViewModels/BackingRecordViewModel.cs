@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTeamFour.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ProjectTeamFour.ViewModels
 {
     public class BackingRecordViewModel
     {
+        public List<OrderDetail> MyOrdersList { get; set; } 
         public int OrderId { get; set; }
         public int MemberId { get; set; }
         public string OrderName { get; set; }
