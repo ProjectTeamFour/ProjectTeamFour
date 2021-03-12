@@ -22,7 +22,20 @@
             var app = new Vue({
                 el: "#app",
                 data: {
-                    Model:@Html.Raw(modelJS)
+                    Models:@Html.Raw(modelJS),
+                    
+                },
+                methods: {
+                    RemoveFromCart: function (PlanId) {
+                        LanchRemoveAlert(PlanId);
+                    }
+                },
+                computed: {
+                    TotalPrice: function () {
+                        var result = 0;
+                        this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
+                        return result;
+                    }
                 }
                 
             })
@@ -69,10 +82,10 @@
         }
 
         //移除購物清單
-        function RemoveFromCart(PlanId) {
-            LanchRemoveAlert(PlanId);
+        //function RemoveFromCart(PlanId) {
+        //    LanchRemoveAlert(PlanId);
 
-        }
+        //}
 
         function LanchRemoveAlert(PlanId) {
             Swal.fire({
@@ -223,10 +236,9 @@
                     
                         @if (Model != null)
                         {
-                            foreach (var item in Model.CartItems)
-                            {
-                                @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
-                            }
+                           
+                                @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
+                            
 
 
                         }
@@ -260,14 +272,11 @@
                 <div class="col-sm-12 col-lg-6">
                     <p class="total" id="CartTotal">
                         Total:
-                        @if (@Model == null)
+                        @if (Model != null)
                         {
-                            <span>0</span>
+                        <span>{{TotalPrice}}</span>
                         }
-                        else
-                        {
-                    <span>0</span>
-                        }
+                      
                     </p>
                 </div>
                 <div class="col-lg-6"></div>
