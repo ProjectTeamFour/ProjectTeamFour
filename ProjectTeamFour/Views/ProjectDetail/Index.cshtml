@@ -1,11 +1,9 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 @{
-int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
-DateTime today = DateTime.Now;
-int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
     int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     DateTime today = DateTime.Now;
     int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+
 
 }
 
