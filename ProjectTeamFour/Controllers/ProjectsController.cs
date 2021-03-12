@@ -26,9 +26,9 @@ namespace ProjectTeamFour.Controllers
         // GET: Products
         public ActionResult Index(string category, string projectStatus , string id) //過濾
         {
-            category = category ?? "科技設計";
-            projectStatus = projectStatus ?? "集資中";
-            id = id ?? "Fundedpeople";
+            //category = category ?? "科技設計";
+            //projectStatus = projectStatus ?? "集資中";
+            //id = id ?? "Fundedpeople";
             var projectService = new ProjectsService(); //呼叫service
             var project = new ProjectListViewModel
             {

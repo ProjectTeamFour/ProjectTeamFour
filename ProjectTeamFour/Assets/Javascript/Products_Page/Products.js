@@ -21,8 +21,12 @@ $(document).ready(function () {
     btn_order = document.getElementById("dropdownMenuButton-2");
     btn_status = document.getElementById('dropdownMenuButton');
     btn_status.innerText = status;
+    //btn_order.innerText = id;
     if (status == "") {
         btn_status.innerText = "全部專案";
+    }
+    if (id == "") {
+        btn_order.innerText = "熱門";
     }
     if (id == "EndDate") {
         btn_order.innerText = "最新";
@@ -46,7 +50,7 @@ let local = $("#local");
 let game = $("#game");
 var category = $("#category").text();
 var status = $("#status").text();
-var id = $("id").text();
+var id = $("#id").text();
 
 let all = $(".category-group");//事件綁定父層
 all.click(function () {
