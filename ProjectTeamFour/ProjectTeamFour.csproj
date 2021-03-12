@@ -321,7 +321,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
-    <Compile Include="ViewModels\BackingRecordViewModel.cs" />
+    <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
-    public class BackingRecordViewModel
+    public class BackingRecordsViewModel
     {
         public List<OrderDetail> MyOrdersList { get; set; } 
         public int OrderId { get; set; }
@@ -24,7 +24,7 @@ namespace ProjectTeamFour.ViewModels
         public int RtnCode { get; set; } //交易狀態
         public string condition { get; set; } //是否付款
 
-        //導覽屬性
+        
         //[ForeignKey("MemberId")]
         //public virtual Member Member { get; set; }
         //public virtual ICollection<OrderDetail> OrderDetails { get; set; }
