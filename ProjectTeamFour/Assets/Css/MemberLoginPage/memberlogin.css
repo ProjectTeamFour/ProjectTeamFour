@@ -159,11 +159,12 @@
     font-weight: 500;
 }
 
-    .login-page .changestatus input {
-        background-color: transparent;
+    .login-page .changestatus a{
+        background-color: #f9414a;
+        text-decoration: none;
         border: 1px solid #f9414a;
         padding: 0.4rem 2rem;
-        color: #f9414a;
+        color: #fff;
         outline: none;
         font-weight: 600;
     }

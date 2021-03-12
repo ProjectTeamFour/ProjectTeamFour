@@ -120,22 +120,6 @@ namespace ProjectTeamFour.Service
             //}
             return result;
 
-
-            //Plan pl_entity = new Plan
-            //{
-            //    ProjectPlanId = input.ProjectPlanId,
-            //    PlanPrice = input.PlanPrice,
-            //    PlanTitle = input.PlanTitle,
-            //    QuantityLimit = input.QuantityLimit,
-            //    AddCarCarPlan
-            //        PlanDescription = input.PlanDescription,
-            //    PlanImgUrl = input.PlanImgUrl,
-            //    //PlanShipDate
-            //};
-            //_repository.Create(pl_entity);
-            //result.IsSuccessful = true;
-
-
         }
 
         public int ReturnLoginnerId()

@@ -7,6 +7,8 @@
         let formData = new FormData();
         formData.append(files[0].name, files[0]);
         uploadFile(formData);
+        console.log(files);
+        console.log(formData);
     })
 
     var btn_submit = document.querySelector('#btnSub');

@@ -475,6 +475,12 @@ Vue.component("multi-text", {
                     reader.onload = () => {
         this.inputData.ProjectMainUrl = reader.result;
                     }
+
+                    let formData = new FormData();
+                    formData.append('image', e.target.files[0]); //required
+                    this.uploadImg(formData);
+
+
                     this.inputDataCheck.ProjectMainUrlError = false;
                     this.inputDataCheck.ProjectMainUrlErrorMsg = "";
                 }
@@ -706,6 +712,39 @@ Vue.component("multi-text", {
                 //    }
                 //})
             },
+
+            uploadImg(formData) {
+                console.log(file);
+                $.ajax({
+                    url: "/api/projectsubmission/UploadFiles",
+                    type: "post",
+                    //async: true,
+                    //crossDomain: true,
+                    processData: false,
+                    contentType: false,
+                    //contentType: "application/json; charset=utf-8",
+                    data: formData,
+                    success: function (response) {
+                        console.log(response);
+
+                    }
+                });
+
+            },
+        //    function uploadFile(formData) {
+        ////debugger;
+        //console.log(formData);
+        //$.ajax({
+        //    url: '/api/memberapi/UploadFiles',
+        //    method: 'post',
+        //    data: formData,
+        //    processData: false,
+        //    contentType: false,
+        //    success: function (response) {
+        //        document.getElementById('imgshow').setAttribute('src', response);
+        //    }
+        })
+    }
 
 
         },
