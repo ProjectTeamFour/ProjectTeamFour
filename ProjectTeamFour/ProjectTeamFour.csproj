@@ -184,7 +184,13 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\MyProjectController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Migrations\202103120658088_edit_Projects_and_Commets_col.cs" />
+    <Compile Include="Migrations\202103120658088_edit_Projects_and_Commets_col.Designer.cs">
+      <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
+    <Compile Include="Service\MyProjectsService.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
@@ -309,7 +315,6 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectContext.cs" />
-    <Compile Include="Service\BackingViewModel.cs" />
     <Compile Include="Service\CarCarPlanService.cs" />
     <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\CommentService.cs" />
@@ -324,7 +329,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
-    <Compile Include="ViewModels\BackingRecordViewModel.cs" />
+    <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -2370,6 +2375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103101142409_AddProjectIdForOD.resx">
       <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103120658088_edit_Projects_and_Commets_col.resx">
+      <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

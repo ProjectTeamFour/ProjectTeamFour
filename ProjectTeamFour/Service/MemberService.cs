@@ -179,5 +179,9 @@ namespace ProjectTeamFour.Service
             int id= ((MemberViewModel)session["Member"]).MemberId;
              session["Member"] = GetMember(p=>p.MemberId==id);
         }
+
+        
+
+
     }      
 }

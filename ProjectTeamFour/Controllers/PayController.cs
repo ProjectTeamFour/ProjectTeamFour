@@ -44,7 +44,7 @@ namespace ProjectTeamFour.Controllers
         public ActionResult ConnectECPay()
         {
             var orderId = _PayService.SaveData();
-            
+            var projectId = _PayService.SaveData();
             var result = _PayService.ConnectECPay(orderId);
             ViewData["result"] = result;
             return View();

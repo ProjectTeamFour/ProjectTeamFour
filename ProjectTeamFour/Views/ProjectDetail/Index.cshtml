@@ -1,15 +1,12 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
+
 @{
 int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
 DateTime today = DateTime.Now;
 int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
-    int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
-    DateTime today = DateTime.Now;
-    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
-
 }
 
-@* FBd="分享 *@
+<!--FB分享API初始化-->
 <div ifb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0" nonce="9aOjq2xP"></script>
 
@@ -173,29 +170,17 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
             </div>
         </div>
     </section>
-    <div class="container">
+    @*//先放棄用幻燈片
+        <div class="container">
         <div class="row blog">
             <div class="col-md-12">
                 <section class="">
-                    <div class="container">
+                    <div class="container">-->
                         <!--測試測試測試測試-->
 
-                        <div class="row">
+                        <!--<div class="row">
                             <div id="select-plans" class="carousel slide" data-ride="carousel">
-                                @*<div class="slide-arrow d-flex justify-content-between">
-                                        <a class="carousel-control-prev" href="#select-plans" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#select-plans" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>*@
-                                @*<ol class="carousel-indicators">
-                                        <li data-target="#select-plans" data-slide-to="0" class="active"></li>
-                                        <li data-target="#select-plans" data-slide-to="1"></li>
-                                    </ol>*@
+                                
                                 <a class="carousel-control-prev" href="#select-plans" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
@@ -227,7 +212,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
 
                 </div>
             </div>
-        </div>
+        </div>*@
 
                 <div class="below-content">
                     <section id="campaign-details-all">
@@ -367,19 +352,16 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                                 <!-- 右側欄位 -->
                                 <div id="rightside-bar-col" class="col-12 col-md-4">
                                     <!-- 選擇方案 -->
-                                    <!--<section id="select-perk">
-                                    <div class="min-display-slide">
-                                        <div class="row">-->
-                                    @*滑動的slider測試*@
-                                    <!--<div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
-                                                    @foreach (var item in Model.SelectPlanCards.PlanCardItems)
-                                                    {
-                                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item);
-                                                    }
+                                    <section id="select-perk">
+
+                                        @*滑動的slider測試*@
+                                        @foreach (var item in Model.SelectPlanCards.PlanCardItems)
+                                        {
+                                                <div class="card-deck">
+                                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </section>-->
+                                        }
+                                     </section>
                                 </div>
                             </div>
                         </div>

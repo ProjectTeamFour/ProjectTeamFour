@@ -1,28 +1,29 @@
-﻿@model CarCarPlanViewModel
-<div class="col-sm-12 col-md-12 shop-item">
+﻿@*@model CarCarPlanViewModel*@
+<div class="col-sm-12 col-md-12 shop-item" v-for="model in Models">
     <div class="cart-item">
         <a href="#" class="thumbnail">
-            <img src="@Model.PlanImgUrl">
+            <img v-bind:src="model.PlanImgUrl">
         </a>
         <div class="content">
-            <a href="#" class="title">@Model.PlanTitle</a>
-            <span class="price">@Model.PlanPrice</span>
+            <a href="#" class="title">{{model.PlanTitle}}</a>
+            <span class="price">{{model.PlanPrice}}</span>
         </div>
         <div class="actions">
             <input class="qty" type="number" name="updates[]"
-                   id="updates_13864137195572" value="@Model.Quantity" min="1" max="99" aria-label="Quantity" step="1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required> 
-            <a  class="remove" aria-label="Remove item from cart">
+                   id="updates_13864137195572" @*value="@Model.Quantity"*@ v-model="model.Quantity" min="1" max="99" aria-label="Quantity" step="1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required>
+            <a class="remove" aria-label="Remove item from cart">
                 <span aria-hidden="true">
-                    <svg version="1.1" class="svg close" onclick="RemoveFromCart(@Model.PlanId)"   xmlns="//www.w3.org  /2000/svg"
+                    <svg version="1.1" class="svg close" v-on:click="RemoveFromCart(model.PlanId)" xmlns="//www.w3.org  /2000/svg"
                          xmlns:xlink="//www.w3.org  /1999/xlink" x="0px" y="0px" width="45px"
                          height="45px" viewBox="0 0 60 60" enable-background="new 0 0 60 60"
                          xml:space="preserve">
                     <polygon points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812   22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812 ">
                                             </polygon>
                                         </svg>
-                    <div class="@Model.PlanId"></div>
+                    
                 </span>
             </a>
         </div>
     </div>
+
 </div>

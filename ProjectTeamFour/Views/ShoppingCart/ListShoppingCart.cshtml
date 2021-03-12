@@ -1,13 +1,53 @@
 ﻿@model CartItemListViewModel
 @{
     ViewBag.Title = "ShoppingCart";
-    
+    string modelJS =string.Empty;
+    if (Model != null)
+    {
+
+        modelJS= Json.Encode(Model.CartItems);
+    }
+
+
 }
 @section topCSS{
     <link href="~/Assets/Css/ShoppingCartPage/ShoppingCart.css" rel="stylesheet" />
 }
 @section endJS{
+    @if (Model != null)
+    {
+
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    Models:@Html.Raw(modelJS),
+                    
+                },
+                methods: {
+                    RemoveFromCart: function (PlanId) {
+                        LanchRemoveAlert(PlanId);
+                    }
+                },
+                computed: {
+                    TotalPrice: function () {
+                        var result = 0;
+                        this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
+                        return result;
+                    }
+                }
+                
+            })
+            var x = 100;
+        </script>
+    }
+    
     <script>
+
+
+
+
 
         let remove = document.querySelector("#remove");
         let forseller = document.querySelector(".for-seller");
@@ -17,7 +57,7 @@
         let qtyArray = document.querySelectorAll(".qty");
         let valuesArray = [];
         let cartSpecialInstructions = document.querySelector("#cartSpecialInstructions");
-        
+
         if (shopitems.innerText == "" )
         {
             NewDiv = document.createElement("div");
@@ -42,10 +82,10 @@
         }
 
         //移除購物清單
-        function RemoveFromCart(PlanId) {
-            LanchRemoveAlert(PlanId);
+        //function RemoveFromCart(PlanId) {
+        //    LanchRemoveAlert(PlanId);
 
-        }
+        //}
 
         function LanchRemoveAlert(PlanId) {
             Swal.fire({
@@ -63,7 +103,7 @@
                         '刪除!',
                         '此項商品已被刪除。',
                         'success'
-                    );
+                     );
                     LanchRemoveAjax(PlanId);
                 }
             })
@@ -179,83 +219,82 @@
 
     </script>
 }
+<div id="app">
 
-<section class="shopping-cart">
-    <div class="container">
-        <div class="row ">
-            <div class="col-sm-12 col-md-12 col-lg-6 main-title">
-                <div class="sticky">
-                    <h1>Shopping Cart</h1>
+    <section class="shopping-cart">
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-12 col-md-12 col-lg-6 main-title">
+                    <div class="sticky">
+                        <h1>Shopping Cart</h1>
+                    </div>
+
                 </div>
 
-            </div>
+
+                <div class="shop-items col-lg-6">
+                    
+                        @if (Model != null)
+                        {
+                           
+                                @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
+                            
 
 
-            <div class="shop-items col-lg-6">
-                @if (Model != null)
-                {
-                    foreach (var item in Model.CartItems)
-                    {
-                        @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml", item);
-                    }
+                        }
 
+                        else
+                        {
+                            <div class="no-result">
 
-                }
+                                <p>購物車無任何商品</p>
 
-                else
-                {
-                        <div class="no-result">
-
-                        <p>購物車無任何商品</p>
-
-                        </div>
-                }
-
+                            </div>
+                        }
 
 
 
 
-            </div>   
+                    
+                </div>
+                    <div class="col-lg-6"></div>
+                    <div class="col-sm-12 col-lg-6 for-seller">
+                        <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
+                                  aria-label="Special instructions for seller"></textarea>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <section class="cart-out">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-6"></div>
-                <div class="col-sm-12 col-lg-6 for-seller">
-                    <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
-                              aria-label="Special instructions for seller"></textarea>
+                <div class="col-sm-12 col-lg-6">
+                    <p class="total" id="CartTotal">
+                        Total:
+                        @if (Model != null)
+                        {
+                        <span>{{TotalPrice}}</span>
+                        }
+                      
+                    </p>
                 </div>
-            </div>
-    </div>
-</section>
-<section class="cart-out">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6"></div>
-            <div class="col-sm-12 col-lg-6">
-                <p class="total" id="CartTotal">
-                    Total:
-                    @if (@Model == null)
-                    {
-                        <span>0</span>
-                    }
-                    else
-                    {
-                        <span>@Model.TotalAccount</span>
-                    }
-                </p>
-            </div>
-            <div class="col-lg-6"></div>
-            <div class="col-sm-12 buttons-group col-lg-6">
+                <div class="col-lg-6"></div>
+                <div class="col-sm-12 buttons-group col-lg-6">
 
-                <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'>
-                <input type="submit" name="checkout" value="結  帳" class="checkout" onclick="PrepareToCheckout()">
-                </a>
-                
-                <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart">
-                    <p>清空購物車</p>
-                </button>
-                
+                    <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'>
+                        <input type="submit" name="checkout" value="結  帳" class="checkout" onclick="PrepareToCheckout()">
+                    </a>
+
+                    <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart">
+                        <p>清空購物車</p>
+                    </button>
+
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 <section class="wish-list">
     <div class="container">
         <div class="row">
@@ -318,7 +357,7 @@
 
 
     </div>
-    
+
 </section>
 
 

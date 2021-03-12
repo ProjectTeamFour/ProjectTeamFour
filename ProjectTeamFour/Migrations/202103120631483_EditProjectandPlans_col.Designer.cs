@@ -7,13 +7,13 @@ namespace ProjectTeamFour.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initalDB : IMigrationMetadata
+    public sealed partial class EditProjectandPlans_col : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initalDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(EditProjectandPlans_col));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103091627378_initalDB"; }
+            get { return "202103120631483_EditProjectandPlans_col"; }
         }
         
         string IMigrationMetadata.Source
