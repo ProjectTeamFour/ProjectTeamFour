@@ -672,6 +672,19 @@ var form = new Vue({
             });
         },
 
+        uploadImg(formData) {   //479-481行
+
+            $.ajax({
+                url: "/api/projectsubmission/uploadimg",
+                type: "post",
+                contentType: "application/json; charset=utf-8",
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        },
+
       }
     });
 
