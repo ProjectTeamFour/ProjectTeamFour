@@ -180,6 +180,8 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\MyProjectController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Service\BackingService.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
@@ -319,7 +321,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
-    <Compile Include="ViewModels\BackingRecordViewModel.cs" />
+    <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -350,7 +352,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryQAController.cs" />
     <Compile Include="Controllers\PayController.cs" />
-    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -410,7 +411,6 @@
     <Content Include="Views\UserInfo\Account.cshtml" />
     <Content Include="Views\UserInfo\Message.cshtml" />
     <Content Include="Views\UserInfo\New.cshtml" />
-    <Content Include="Views\UserInfo\Setting.cshtml" />
     <Content Include="Views\UserInfo\Sponser.cshtml" />
     <Content Include="Views\UserInfo\Submit.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
@@ -2173,6 +2173,7 @@
     <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
     <None Include="Properties\PublishProfiles\MyCarPlanWebsite - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\projecteteam4 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ProjectTeamFour20210310122749 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2232,7 +2233,6 @@
     <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\UserInfo\Account.cshtml" />
     <Content Include="Views\UserInfo\Edit.cshtml" />
-    <Content Include="Views\UserInfo\Setting.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
     <Content Include="Views\MemberSettings\Edit.cshtml" />
@@ -2252,6 +2252,7 @@
     <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
+    <Content Include="Views\UserInfo\Setting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2375,6 +2376,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -2395,6 +2399,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:56831/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

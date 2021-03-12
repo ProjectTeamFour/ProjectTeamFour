@@ -19,7 +19,7 @@ namespace ProjectTeamFour.Controllers
 	{
 		private readonly MemberService _memberService;
 		//private readonly BackingService _backingService;
-		//private readonly MyProjectService _myProjectService;
+		private readonly ProjectsService _ProjectsService;
 		private readonly CommentService _commentService;
 
         public UserInfoController()

@@ -13,12 +13,12 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectStatus { get; set; }
         public string ProjectName { get; set; }
         public string CreatorName { get; set; }
-        public decimal FundingAmount { get; set; }
+        public decimal FundingAmount { get; set; } //price
         public decimal AmountThreshold { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime StartDate { get; set; }
         public TimeSpan dateLine { get; set; }
-        public int Fundedpeople { get; set; }        
+        public int Fundedpeople { get; set; }    //people
 
     }
 }
