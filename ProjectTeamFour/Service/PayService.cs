@@ -132,24 +132,29 @@ namespace ProjectTeamFour.Service
             {
 
                 var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
-                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).FirstOrDefault(); //有問題 不能只抓first
-                var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == odData.ProjectId);
-                var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == odData.PlanId);
+                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();//有問題 不能只抓first
+                
                 //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
-               
+                
+
                 try
                 {
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
-                    foreach(var item in projectview)
+                    foreach (var item in odData)
                     {
-                        item.FundingAmount = item.FundingAmount + odData.OrderPrice;
-                        item.Fundedpeople = item.Fundedpeople + 1;
-                    }
-                    foreach(var p in planview)
-                    {
-                        p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                        var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
+                        var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
+                        foreach(var pj in projectview)
+                        {
+                            pj.Fundedpeople = pj.Fundedpeople + 1;
+                            pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
+                        }
+                        foreach(var p in planview)
+                        {                            
+                            p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                        }
                     }
                     
                     //foreach (var item in odData)
