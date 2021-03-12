@@ -180,17 +180,7 @@ namespace ProjectTeamFour.Service
              session["Member"] = GetMember(p=>p.MemberId==id);
         }
 
-        //取得訂單資料
-        //public BackingRecordsViewModel GetMemberOrderRecords()
-        //{
-        //    var session = HttpContext.Current.Session;
-        //    var memberSession = ((MemberViewModel)session["Member"]);
-
-        //    var listViewmodel = new BackingRecordsViewModel()
-        //    {
-        //        Items = new List<BackingRecordsViewModel>()
-        //    };
-        //}
+        
 
 
     }      

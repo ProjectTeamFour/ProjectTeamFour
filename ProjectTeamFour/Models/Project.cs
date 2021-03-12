@@ -38,5 +38,11 @@ namespace ProjectTeamFour.Models
         public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime SubmittedDate { get; set; }
+        public DateTime LastEditTime { get; set; }
+        public int ApprovingStatus { get; set; }
+        //未審核:0;審核中:1;審核通過:2
     }
 }

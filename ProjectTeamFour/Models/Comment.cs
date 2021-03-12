@@ -16,5 +16,6 @@ namespace ProjectTeamFour.Models
         //導覽屬性
         public Member Member { get; set; }
         public Project Project { get; set; }
+        public bool ReadStatus { get; set; }
     }
 }

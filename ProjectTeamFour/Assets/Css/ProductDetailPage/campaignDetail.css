@@ -18,9 +18,9 @@ html {
   /* #leftside-main-col {
     width: 33.5rem;
   } */
-  /* #select-perk .card-deck .card {
-    width: 331px;
-  } */
+   #select-perk .card-deck {
+    width: 100%;
+  } 
 
   .number-row {
     display: flex;
