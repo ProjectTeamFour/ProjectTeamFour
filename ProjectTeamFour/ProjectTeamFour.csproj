@@ -79,6 +79,9 @@
     <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
@@ -201,12 +204,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ProjectSubmissionController.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\MyProjectController.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
