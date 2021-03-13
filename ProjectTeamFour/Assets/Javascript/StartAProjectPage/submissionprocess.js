@@ -918,6 +918,8 @@ function saveToServer(file) {
 
     //settings.data = form;
 
+    console.log(form);
+
     $.ajax({
         async: true,
         crossDomain: true,
@@ -932,14 +934,14 @@ function saveToServer(file) {
         data: form,
         success: function (res) {
 
-            setTimeout(() => {
+            setTimeout(() => { //debug
 
 
                 console.log(res); // 可以看見上傳成功後回的值
                 console.log(JSON.parse(res));
-                var jsonObj = JSON.parse(res);  //轉json物件
+                var jsonObj = JSON.parse(res);  
                 console.log(jsonObj.data.link);
-                // console.log(JSON.stringify(res));
+                
                 alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
                 url = jsonObj.data.link;  //拿imgur link
                 imgurArray.push(url);
