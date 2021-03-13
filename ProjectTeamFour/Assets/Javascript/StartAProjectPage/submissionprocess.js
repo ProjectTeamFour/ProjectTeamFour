@@ -932,16 +932,23 @@ function saveToServer(file) {
         data: form,
         success: function (res) {
 
-            console.log(res); // 可以看見上傳成功後回的值
-            console.log(JSON.parse(res));
-            var jsonObj = JSON.parse(res);  //轉json物件
-            console.log(jsonObj.data.link);
-            // console.log(JSON.stringify(res));
-            alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
-            url = jsonObj.data.link;  //拿imgur link
-            imgurArray.push(url);
-            console.log(imgurArray);
+            setTimeout(() => {
 
+
+                console.log(res); // 可以看見上傳成功後回的值
+                console.log(JSON.parse(res));
+                var jsonObj = JSON.parse(res);  //轉json物件
+                console.log(jsonObj.data.link);
+                // console.log(JSON.stringify(res));
+                alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
+                url = jsonObj.data.link;  //拿imgur link
+                imgurArray.push(url);
+                console.log(imgurArray);
+
+
+            }, 3000);
+
+            
         },
         error: function () {
             alert("失敗");
