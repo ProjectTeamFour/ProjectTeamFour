@@ -45,15 +45,21 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <section class="record">
                     <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml")
+                        @if (Model.Records != null)
+                        {
+                            foreach (var item in Model.Records)
+                            {
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", item)
+                            }
+                        }
+                        else
+                        {
+                                Console.WriteLine("13");                                 
+                        }
                     </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <section class="case">
-                    <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml")
-                    </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">

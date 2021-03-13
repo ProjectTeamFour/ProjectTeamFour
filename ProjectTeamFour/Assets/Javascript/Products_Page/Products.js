@@ -95,7 +95,7 @@ all.click(function () {
     
 })
 
-    
+
 let menu = $("#menu");//事件綁定父層
 let ongoing = $("#ongoing");
 let success = $("#success");
