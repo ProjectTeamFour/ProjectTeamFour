@@ -213,6 +213,7 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\MyProjectController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
