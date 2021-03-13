@@ -120,20 +120,20 @@ namespace ProjectTeamFour.Api
         //}
 
 
-        //public string UploadFiles()
-        //{
-        //    HttpFileCollection files = HttpContext.Current.Request.Files;
-        //    HttpPostedFile file = files[0];
-        //    var stream = file.InputStream;
-        //    var myAccount = new Account { ApiKey = "846843815975652", ApiSecret = "qMRPPwm3IgED3Uzefx5CRhz_W7g", Cloud = "dymc0bi31" };
-        //    Cloudinary _cloudinary = new Cloudinary(myAccount);
+        public string UploadFiles()
+        {
+            HttpFileCollection files = HttpContext.Current.Request.Files;
+            HttpPostedFile file = files[0];
+            var stream = file.InputStream;
+            var myAccount = new Account { ApiKey = "846843815975652", ApiSecret = "qMRPPwm3IgED3Uzefx5CRhz_W7g", Cloud = "dymc0bi31" };
+            Cloudinary _cloudinary = new Cloudinary(myAccount);
 
-        //    var uploadParams = new ImageUploadParams()
-        //    {
-        //        File = new FileDescription(file.FileName, stream)
-        //    };
-        //    ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
-        //    return uploadResult.SecureUri.AbsoluteUri;
-        //}
+            var uploadParams = new ImageUploadParams()
+            {
+                File = new FileDescription(file.FileName, stream)
+            };
+            ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
+            return uploadResult.SecureUri.AbsoluteUri;
+        }
     }
 }

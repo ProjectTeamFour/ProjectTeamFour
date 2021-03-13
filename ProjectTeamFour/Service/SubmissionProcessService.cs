@@ -42,31 +42,37 @@ namespace ProjectTeamFour.Service
                  
                     _repository.Update(member);
                     result.IsSuccessful = true;
-                    
 
 
-                    //
+
+                //
 
 
-                    Project pr_entity = new Project
-                    {
-                        MemberId = member.MemberId, //foreign
-                        ProjectName = input.ProjectName,
-                        AmountThreshold = input.AmountThreshold,
-                        Category = input.Category,
-                        StartDate = DateTime.ParseExact(input.StartDate, "yyyyMMdd", null),
-                        EndDate = DateTime.ParseExact(input.EndDate, "yyyyMMdd", null),
-                        ProjectVideoUrl = input.ProjectVideoUrl,
-                        ProjectMainUrl = input.ProjectMainUrl,
-                        ProjectCoverUrl = input.ProjectCoverUrl,
-                        ProjectPrincipal = input.ProjectPrincipal,
-                        IdentityNumber = input.IdentityNumber,
-                        CreatorName = input.CreatorName,
-                        ProjectImgUrl = input.ProjectImgUrl,
-                        Project_Question = input.Project_Question,
-                        Project_Answer = input.Project_Answer,
-                        ProjectPlansCount = input.PlanObject.Count,
-                        ProjectStatus = "審核中",
+                Project pr_entity = new Project
+                {
+                    MemberId = member.MemberId, //foreign
+                    ProjectName = input.ProjectName,
+                    AmountThreshold = input.AmountThreshold,
+                    Category = input.Category,
+                    StartDate = DateTime.ParseExact(input.StartDate, "yyyyMMdd", null),
+                    EndDate = DateTime.ParseExact(input.EndDate, "yyyyMMdd", null),
+                    ProjectVideoUrl = input.ProjectVideoUrl,
+                    ProjectMainUrl = input.ProjectMainUrl,
+                    ProjectCoverUrl = input.ProjectCoverUrl,
+                    ProjectPrincipal = input.ProjectPrincipal,
+                    IdentityNumber = input.IdentityNumber,
+                    CreatorName = input.CreatorName,
+                    ProjectImgUrl = input.ProjectImgUrl,
+                    Project_Question = input.Project_Question,
+                    Project_Answer = input.Project_Answer,
+                    ProjectPlansCount = input.PlanObject.Count,
+                    ProjectStatus = "審核中",
+                    CreatedDate = input.CreatedDate,
+                    SubmittedDate = input.SubmittedDate,
+                    LastEditTime = input.LastEditTime,
+                    FundingAmount = 0,
+                    Fundedpeople = 0,
+                        
                     };
                     _repository.Create(pr_entity);
                     result.IsSuccessful = true;

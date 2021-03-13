@@ -34,5 +34,6 @@ namespace ProjectTeamFour.ViewModels
         //public virtual ICollection<Plan> Plans { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
         public string ProjectMainUrl { get; set; }
+
     }
 }

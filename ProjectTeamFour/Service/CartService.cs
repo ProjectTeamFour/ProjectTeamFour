@@ -38,7 +38,7 @@ namespace ProjectTeamFour.Service
                 PlanPrice = plan.PlanPrice,
                 PlanImgUrl = plan.PlanImgUrl,
 
-                Quantity = 1
+                QuantityLimit = 1
 
             };
             return cartItem;
@@ -67,7 +67,7 @@ namespace ProjectTeamFour.Service
                     PlanTitle = carcarPlanVM.PlanTitle,
                     PlanImgUrl = carcarPlanVM.PlanImgUrl,
                     PlanPrice = carcarPlanVM.PlanPrice,
-                    Quantity = carcarPlanVM.Quantity,
+                    QuantityLimit = carcarPlanVM.QuantityLimit,
 
 
                 };
@@ -76,7 +76,7 @@ namespace ProjectTeamFour.Service
             }
             else
             {
-               result.Quantity += 1;
+               result.QuantityLimit += 1;
                 return cartItems;
             }
         }
@@ -90,7 +90,7 @@ namespace ProjectTeamFour.Service
                 PlanTitle = CarCarPlanVM.PlanTitle,
                 PlanImgUrl = CarCarPlanVM.PlanImgUrl,
                 PlanPrice = CarCarPlanVM.PlanPrice,
-                Quantity = CarCarPlanVM.Quantity,
+                QuantityLimit = CarCarPlanVM.QuantityLimit,
 
 
             };
@@ -134,7 +134,7 @@ namespace ProjectTeamFour.Service
             {
                 for(int i=0;i<QuantityArray.Quantity.Count;i++)
                 {
-                    cartItems.CartItems[i].Quantity = QuantityArray.Quantity[i];
+                    cartItems.CartItems[i].QuantityLimit = QuantityArray.Quantity[i];
                 }
                 cartItems.Comment = QuantityArray.Comment;
                 return cartItems;
