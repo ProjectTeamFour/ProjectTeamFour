@@ -16,7 +16,8 @@ namespace ProjectTeamFour.ViewModels
         public string PlanDescription { get; set; }
         public string CreatorName { get; set; }
         public decimal PlanPrice { get; set; }
-        public int QuantityLimit { get; set; }
+        public int QuantityLimit { get; set; } // 方案限量個數
+        public int Quantity { get; set; } // 購物車未付款品項數量
         public int CartId { get; set; }
         public decimal Account { get { return this.PlanPrice * QuantityLimit; } }
 
