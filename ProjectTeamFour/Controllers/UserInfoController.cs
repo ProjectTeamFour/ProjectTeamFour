@@ -19,7 +19,7 @@ namespace ProjectTeamFour.Controllers
 	{
 		private readonly MemberService _memberService;
 		//private readonly BackingService _backingService;
-		private readonly ProjectsService _ProjectsService;
+		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
 
         public UserInfoController()
@@ -45,6 +45,23 @@ namespace ProjectTeamFour.Controllers
 		public ActionResult Submit()	//專案提交紀錄
 		{
 			var model = (MemberViewModel)Session["Member"];
+			
+			var myProjectsService = new MyProjectsService();
+
+			MyProjectsViewModel myProjectList = new MyProjectsViewModel()
+			{
+				OngoingProjects = new List<MyProjectsViewModel.OngoingProject>(),
+				EditingProjects=new List<MyProjectsViewModel.EditingProject>(),
+				EndedProjects=new List<MyProjectsViewModel.EndedProject>()
+			};
+
+			//根據專案的提交與審核狀態進行分類
+			var myProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+			//foreach(var item in myProjects.MyProjectsList)
+   //         {
+			//	myProjects.OngoingProjects.Add(item);
+   //         }
+
 			return View(model);
 		}
 
@@ -71,27 +88,6 @@ namespace ProjectTeamFour.Controllers
 			//return RedirectToAction("Index");
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
-
-		//public ActionResult Edit(int? id)
-		//{
-		//    if (id == null)
-		//    {
-		//        return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-		//    }
-		//}
-
-		//[HttpPost]
-		//[ValidateAntiForgeryToken]
-		//public ActionResult Edit([Bind(Include = "MemberId,MemberName,MemberTeamName,MemberAccount,MemberPassword,MemberAddress,MemberPhone,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage,Permission")] Member member)
-		//{
-		//    if (ModelState.IsValid)
-		//    {
-		//        db.Entry(member).State = System.Data.Entity.EntityState.Modified;
-		//        db.SaveChanges();
-		//        return RedirectToAction("Index");
-		//    }
-		//    return View(member);
-		//}
 
 		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
 		{

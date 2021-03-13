@@ -188,7 +188,6 @@
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
-    <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
@@ -323,7 +322,6 @@
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
-    <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
     <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
