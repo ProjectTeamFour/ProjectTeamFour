@@ -176,6 +176,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\PayController.cs" />
     <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />

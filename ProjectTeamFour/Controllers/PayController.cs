@@ -40,13 +40,17 @@ namespace ProjectTeamFour.Controllers
             
             return View(cartt);
         }
-        
+        //[HttpPost]
         public ActionResult ConnectECPay()
-        {
-            var orderId = _PayService.SaveData();
-            var projectId = _PayService.SaveData();
-            var result = _PayService.ConnectECPay(orderId);
-            ViewData["result"] = result;
+        {           
+            //if(Session["Order"] == null)
+            //{
+            //    var o = _PayService.CreateANewMemberData(oVM);
+            //    Session["Order"] = o;
+                var orderId = _PayService.SaveData(); //傳更改的viewmodel當參數
+                var result = _PayService.ConnectECPay(orderId);
+                ViewData["result"] = result;                
+            //}
             return View();
         }
 

@@ -283,7 +283,7 @@
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <a href="/Pay/ConnectECPay" class="btn-pay">確認購買</a>
+                    <a href="/Pay/ConnectECPay" class="btn-pay" @*onclick="function() { ConnectToECPay(@Model.OrderName,@Model.OrderAddress, @Model.OrderPhone, @Model.OrderConEmail)*@ }">確認購買</a>
                 </div>
             </div>
         </section>
