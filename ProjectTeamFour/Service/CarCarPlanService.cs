@@ -53,7 +53,8 @@ namespace ProjectTeamFour.Service
                     PlanTitle = planCard.PlanTitle,
                     PlanDescription = planCard.PlanDescription,
                     PlanPrice = (int)planCard.PlanPrice,
-                    CreatorName = planCard.Project.CreatorName
+                    CreatorName = planCard.Project.CreatorName,
+                    QuantityLimit = planCard.QuantityLimit
                 };
             
             return cv;
@@ -78,7 +79,9 @@ namespace ProjectTeamFour.Service
                     CreatorName = item.Project.CreatorName,
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
-                    PlanDescription = item.PlanDescription
+                    PlanDescription = item.PlanDescription,
+                    QuantityLimit = item.QuantityLimit
+                    
                 };
                 CarCarPlanItems.Add(cv);
             }
@@ -113,7 +116,8 @@ namespace ProjectTeamFour.Service
                     CreatorName = item.Project.CreatorName,
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
-                    PlanDescription = item.PlanDescription
+                    PlanDescription = item.PlanDescription,
+                    QuantityLimit = item.QuantityLimit
 
                 };
                 lccpvm.Add(cv);
