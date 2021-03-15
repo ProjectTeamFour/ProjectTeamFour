@@ -53,7 +53,7 @@ namespace ProjectTeamFour.Service
                 var CartItem = new CarCarPlanViewModel
                 {                    
                     PlanId = plan.PlanId,
-                    Quantity = item.Quantity,
+                    QuantityLimit = item.QuantityLimit,
                     PlanPrice = plan.PlanPrice,
                     PlanImgUrl = plan.PlanImgUrl,
                     PlanTitle = plan.PlanTitle,
@@ -104,7 +104,7 @@ namespace ProjectTeamFour.Service
                     PlanTitle = plan.PlanTitle,
                     PlanId = plan.PlanId,
                     OrderPrice = plan.PlanPrice,
-                    OrderQuantity = i.Quantity,
+                    OrderQuantity = i.QuantityLimit,
                     OrderDetailDes = cartSession.Comment,
                     ProjectId = plan.ProjectId,
                 };
@@ -227,7 +227,7 @@ namespace ProjectTeamFour.Service
                             Name = order.PlanTitle,//商品名稱
                             Price = order.PlanPrice,//商品單價
                             Currency = "新台幣",//幣別單位
-                            Quantity = order.Quantity,//購買數量
+                            Quantity = order.QuantityLimit,//購買數量
                             Unit = "件",
                             URL = $"/ProjectDetail/Index/{order}",//商品的說明網址
                         });

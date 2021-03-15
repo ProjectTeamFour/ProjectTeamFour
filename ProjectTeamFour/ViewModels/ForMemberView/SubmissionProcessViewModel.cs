@@ -37,6 +37,17 @@ namespace ProjectTeamFour.ViewModels
         public string Project_Answer { get; set; }
 
 
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime SubmittedDate { get; set; }
+        public DateTime LastEditTime { get; set; }
+
+        public decimal FundingAmount { get; set; }
+
+        public int Fundedpeople { get; set; }
+
+
+
         //public int ProjectPlanId { get; set; }
         //public decimal PlanPrice { get; set; }
         //public string PlanTitle { get; set; }

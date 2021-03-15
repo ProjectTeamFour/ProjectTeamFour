@@ -39,3 +39,27 @@ market.onclick = function () {
     sp_market.classList.add("widthOfblock");
 }
 
+
+
+function ConnectToECPay(memberName , memberAddress , memberPhone , memberEmail) {
+    $.ajax({
+        type: "POST",
+        url: "/pay/connectecpay",
+        data: { MemberName: memberName, MemberAddress: memberAddress, MemberPhone: memberPhone, MemberConEmail: memberEmail },
+        dataType: "text",
+        success: function (response) {
+
+            $(".btn-pay").text(`${response}`);
+        }
+    }).then(function TriggerAlert() {
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    })
+}

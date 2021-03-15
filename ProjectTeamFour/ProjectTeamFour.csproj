@@ -329,7 +329,7 @@
     <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
-    <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
+    <Compile Include="ViewModels\ForMemberView\BackingRecordsViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanViewModel.cs" />
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
@@ -385,8 +385,8 @@
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
-    <Compile Include="ViewModels\SubmissionProcessPlanViewModel.cs" />
-    <Compile Include="ViewModels\SubmissionProcessViewModel.cs" />
+    <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
+    <Compile Include="ViewModels\ForMemberView\SubmissionProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />

@@ -1,5 +1,18 @@
 ﻿
 var splitJoin;
+var pmu;
+var pcu;
+var piu;
+var priu;
+var imgSwitch;
+var editorImgId = 0;
+var imgurArray = [];
+const id = 'ae6d69a08006f9d'; // 填入 App 的 Client ID
+const token = 'da270109cacdb90f4dd7f0539f983217e184c45a'; // 填入 token
+const album = 'J1vm7F3'; // 若要指定傳到某個相簿，就填入相簿的 ID
+var url;
+
+
 
 Vue.component("multi-text", {
     template: "#multi-text-template",
@@ -44,7 +57,7 @@ Vue.component("multi-text", {
                     .Count + 1,
             });
             this.$emit("input", this.ProjectQuestionAnswer);
-            console.log(this.ProjectQuestionAnswer);
+            //console.log(this.ProjectQuestionAnswer);
         },
         checkAddVerifyQA: function () {
             for (let index in this.ProjectQuestionAnswer) {
@@ -448,7 +461,7 @@ var form = new Vue({
             this.checkAddVerify();
         },
         getTeamPicture(e) {
-            console.log(e.target.files[0]);
+            //console.log(e.target.files[0]);
             if (e.target.files[0] == undefined) {
                 this.inputDataCheck.TeamPictureError = true;
                 this.inputDataCheck.TeamPictureErrorMsg = "團隊圖片不能為空";
@@ -458,13 +471,28 @@ var form = new Vue({
                 reader.onload = () => {
                     this.inputData.TeamPicture = reader.result;
                 }
+
+                let formData = new FormData();
+                formData.append('image', e.target.files[0]); //required
+                imgSwitch = "ProfileImgUrl";
+                this.uploadImg(formData, imgSwitch);
+
+
+                console.log(pmu);
+                console.log(pcu);
+                console.log(piu);
+                console.log(priu);
+
+                
+
+
                 this.inputDataCheck.TeamPictureError = false;
                 this.inputDataCheck.TeamPictureErrorMsg = "";
             }
             this.checkAddVerify();
         },
         getProjectMainUrl(e) {
-            console.log(e.target.files[0]);
+            //console.log(e.target.files[0]);
             if (e.target.files[0] == undefined) {
                 this.inputData.ProjectMainUrl = "";
                 this.inputDataCheck.ProjectMainUrlError = true;
@@ -478,7 +506,15 @@ var form = new Vue({
 
                 let formData = new FormData();
                 formData.append('image', e.target.files[0]); //required
-                this.uploadImg(formData);
+                imgSwitch = "ProjectMainUrl";
+                this.uploadImg(formData, imgSwitch);
+
+                console.log(pmu);
+                console.log(pcu);
+                console.log(piu);
+                console.log(priu);
+
+                
 
 
                 this.inputDataCheck.ProjectMainUrlError = false;
@@ -487,7 +523,7 @@ var form = new Vue({
             this.checkAddVerify();
         },
         getProjectCoverUrl(e) {
-            console.log(e.target.files[0]);
+            //console.log(e.target.files[0]);
             if (e.target.files[0] == undefined) {
                 this.inputData.ProjectCoverUrl = "";
                 this.inputDataCheck.ProjectCoverUrlError = true;
@@ -496,9 +532,24 @@ var form = new Vue({
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
-                    console.log(reader.result);
+                    //console.log(reader.result);
                     this.inputData.ProjectCoverUrl = reader.result;
                 }
+
+                let formData = new FormData();
+                formData.append('image', e.target.files[0]); //required
+                imgSwitch = "ProjectCoverUrl";
+                this.uploadImg(formData, imgSwitch);
+
+
+                console.log(pmu);
+                console.log(pcu);
+                console.log(piu);
+                console.log(priu);
+
+                
+
+
                 this.inputDataCheck.ProjectCoverUrlError = false;
                 this.inputDataCheck.ProjectCoverUrlErrorMsg = "";
             }
@@ -514,9 +565,24 @@ var form = new Vue({
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
-                    console.log(reader.result);
+                    //console.log(reader.result);
                     this.modalData.PlanImgUrl = reader.result;
                 }
+
+                let formData = new FormData();
+                formData.append('image', e.target.files[0]); //required
+                imgSwitch = "PlanImgUrl";
+                this.uploadImg(formData, imgSwitch);
+
+
+                console.log(pmu);
+                console.log(pcu);
+                console.log(piu);
+                console.log(priu);
+
+                
+
+
                 this.modalDataCheck.PlanImgUrlError = false;
                 this.modalDataCheck.PlanImgUrlErrorMsg = "";
             }
@@ -541,23 +607,23 @@ var form = new Vue({
             this.AddVerify = true;
         },
         onChangeYear: function (event) {
-            console.log(this.modalData.PlanShipDateYear);
-            console.log(typeof this.modalData.PlanShipDateYear);
+            //console.log(this.modalData.PlanShipDateYear);
+            //console.log(typeof this.modalData.PlanShipDateYear);
             this.modalData.tempYear = this.modalData.PlanShipDateYear;
         },
         onChangeMonth: function (event) {
-            console.log(this.modalData.PlanShipDateMonth);
+            //console.log(this.modalData.PlanShipDateMonth);
             this.modalData.tempMonth = this.modalData.PlanShipDateMonth;
         },
         getCategory() {
-            console.log(this.inputData.Category);
+            //console.log(this.inputData.Category);
         },
         addItem() {
             let AddCarCarPlan;
             let AddCarCarPlanSwitch;
             let SetPlanId = "set-plan";
             this.modalData.makePlanCount += 1;
-            console.log(this.modalData.AddCarCarPlanSwitch);
+            //console.log(this.modalData.AddCarCarPlanSwitch);
             if (this.modalData.AddCarCarPlanSwitch === true) {
                 AddCarCarPlanSwitch = "是";
                 AddCarCarPlan = true;
@@ -584,7 +650,7 @@ var form = new Vue({
                 AddCarCarPlanSwitch: AddCarCarPlanSwitch,
                 AddCarCarPlan: AddCarCarPlan,
                 PlanDescription: this.modalData.PlanDescription,
-                PlanImgUrl: this.modalData.PlanImgUrl,
+                PlanImgUrl: piu,
                 PlanShipDateYear: this.modalData.tempYear,
                 PlanShipDateMonth: this.modalData.tempMonth,
                 PlanShipDate: this.modalData.tempYear + newMonth + "15",
@@ -604,6 +670,12 @@ var form = new Vue({
             this.modalData.tempYear = "";
             this.modalData.tempMonth = "";
             SetPlanId = "set-plan";
+
+
+
+            console.log(this.modalList[0].PlanShipDate);
+            console.log(this.modalList[1].PlanShipDate);
+            //console.log(this.modalList[2].PlanShipDate);
         },
         cancelCleanModal() {
             this.modalData.PlanPrice = "";
@@ -619,11 +691,23 @@ var form = new Vue({
         },
         submitProposal() {
 
+
+            for (i = 1; i <= editorImgId; i++) {
+                document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
+            }
+
+
             this.inputData.QuillHtml = splitJoin;
             console.log(this.inputData.QuillHtml);
 
             this.modalList.shift(); //移掉陣列第一個空的
             this.ProjectQuestionAnswer.shift(); //也是
+
+            console.log(this.modalList[0].PlanShipDate);
+            console.log(this.inputData.StartDate.split("-").join(""));
+            console.log(this.inputData.EndDate.split("-").join(""));
+            //console.log(this.modalList[1].PlanShipDate);
+            //console.log(this.modalList[2].PlanShipDate);
 
             var totalQuestion = "";
             var totalAnswer = "";
@@ -636,6 +720,17 @@ var form = new Vue({
             totalAnswer = totalAnswer.substr(1);
 
 
+            console.log(pmu);
+            console.log(pcu);
+            console.log(piu);
+            console.log(priu);
+
+
+            var date = new Date();
+            
+          
+
+
             var UpLoadData = {
                 "ProjectName": this.inputData.ProjectName,
                 "AmountThreshold": this.inputData.AmountThreshold,
@@ -643,13 +738,13 @@ var form = new Vue({
                 "StartDate": this.inputData.StartDate.split("-").join(""),
                 "EndDate": this.inputData.EndDate.split("-").join(""),
                 "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
-                "ProjectMainUrl": this.inputData.ProjectMainUrl,
-                "ProjectCoverUrl": this.inputData.ProjectCoverUrl,
+                "ProjectMainUrl": pmu,
+                "ProjectCoverUrl": pcu,
                 "ProjectPrincipal": this.inputData.ProjectPrincipal,
                 "MemberConEmail": this.inputData.MemberConEmail,
                 "MemberPhone": this.inputData.MemberPhone,
                 "IdentityNumber": this.inputData.IdentityNumber,
-                "ProfileImgUrl": this.inputData.TeamPicture,
+                "ProfileImgUrl": priu,
                 "CreatorName": this.inputData.MemberName,
                 "AboutMe": this.inputData.AboutMe,
                 "MemberWebsite": this.inputData.MemberWebsite,
@@ -658,6 +753,10 @@ var form = new Vue({
                 "ProjectQA": this.ProjectQuestionAnswer,  //陣列包物件
                 "Project_Question": totalQuestion,
                 "Project_Answer": totalAnswer,
+                "CreatedDate": date.toJSON(),
+                "SubmittedDate": date.toJSON(),
+                "LastEditTime": date.toJSON(),
+                "ApprovingStatus": 1,
             }
             // console.log(this.ProjectQuestionAnswer);
 
@@ -672,21 +771,37 @@ var form = new Vue({
             });
         },
 
-        uploadImg(formData) {   //479-481行
+        uploadImg(formData, imgSwitch) {   //479-481行
 
             $.ajax({
-                url: "/api/projectsubmission/uploadimg",
+                url: "/api/projectsubmission/uploadfiles",
                 type: "post",
-                contentType: "application/json; charset=utf-8",
+                //contentType: "application/json; charset=utf-8",
                 data: formData,
+                method: 'post',
+                processData: false,
+                contentType: false,
                 success: function (response) {
+
                     console.log(response);
-                    console.log("123");
+
+                    if (imgSwitch == "ProjectMainUrl") {
+                        pmu = response;
+                    }
+                    else if (imgSwitch == "ProjectCoverUrl") {
+                        pcu = response;
+                    }
+                    else if (imgSwitch == "PlanImgUrl") {
+                        piu = response;
+                    }
+                    else {
+                        priu = response;
+                    }                    
+
                 }
             });
         },
-
-      }
+    }
     });
 
 
@@ -729,6 +844,138 @@ quill.on('text-change', function () {
     splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
     //console.log(splitjoin);
 });
+
+
+quill.getModule("toolbar").addHandler("image", () => {
+    this.selectLocalImage();
+});
+
+function selectLocalImage() {
+    editorImgId++;
+    var input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.click();
+    // Listen upload local image and save to server
+    input.onchange = () => {
+        const file = input.files[0];
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+
+            var base64 = reader.result;
+            var img = document.createElement("img");
+            var qlEditor = document.querySelector(".ql-editor");
+            img.src = base64;
+            img.id = `editorImgId${editorImgId}`;
+            qlEditor.appendChild(img);
+
+        }
+
+        // file type is only image.
+        if (/^image\//.test(file.type)) {
+
+            this.saveToServer(file, "image");
+
+            // 胖羽
+            // let formData = new FormData();
+            // formData.append('image', file); 
+            // imgSwitch = "editor";
+            // this.uploadImg(formData, imgSwitch);
+
+        } else {
+            console.warn("Only images can be uploaded here.");
+        }
+    };
+}
+
+
+function saveToServer(file) {
+    // this.file = e.target.files[0]; // input type="file" 的值
+    var name = file.name; // input的圖檔名稱
+    var size = Math.floor(file.size * 0.001) + 'KB'; // input的圖片大小
+    var thumbnail = window.URL.createObjectURL(file); // input的圖片縮圖
+    var title = name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
+
+    //let settings = {
+    //    async: true,
+    //    crossDomain: true,
+    //    processData: false,
+    //    contentType: false,
+    //    type: 'POST',
+    //    url: 'https://api.imgur.com/3/image',
+    //    headers: {
+    //        Authorization: 'Bearer ' + token
+    //    },
+    //    mimeType: 'multipart/form-data'
+    //};
+
+    let form = new FormData();
+    form.append('image', file);
+    form.append('title', title);
+    // form.append('description', des);
+    form.append('album', album); // 有要指定的相簿就加這行
+
+    //settings.data = form;
+
+    console.log(form);
+
+    $.ajax({
+        async: true,
+        crossDomain: true,
+        processData: false,
+        contentType: false,
+        type: 'post',
+        url: 'https://api.imgur.com/3/image',
+        headers: {
+            Authorization: 'Bearer ' + token
+        },
+        mimeType: 'multipart/form-data',
+        data: form,
+        success: function (res) {
+
+            setTimeout(() => { //debug
+
+
+                console.log(res); // 可以看見上傳成功後回的值
+                console.log(JSON.parse(res));
+                var jsonObj = JSON.parse(res);  
+                console.log(jsonObj.data.link);
+                
+                alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
+                url = jsonObj.data.link;  //拿imgur link
+                imgurArray.push(url);
+                console.log(imgurArray);
+
+
+            }, 3000);
+
+            
+        },
+        error: function () {
+            alert("失敗");
+        }       
+    });
+
+
+    //$.ajax(settings).done(function (res) {
+    //    console.log(res); // 可以看見上傳成功後回的值
+    //    console.log(JSON.parse(res));
+    //    var jsonObj = JSON.parse(res);  //轉json物件
+    //    console.log(jsonObj.data.link);
+    //    // console.log(JSON.stringify(res));
+    //    alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
+    //    url = jsonObj.data.link;  //拿imgur link
+    //    imgurArray.push(url);
+    //    console.log(imgurArray);
+
+
+    //}).fail(function (data) {
+    //    alert("Try again champ!");
+    //});
+
+    
+}
 
 //---------------------------------------------//
 
