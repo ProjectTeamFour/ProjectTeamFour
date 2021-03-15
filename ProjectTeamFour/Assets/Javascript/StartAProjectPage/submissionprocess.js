@@ -681,6 +681,7 @@ var form = new Vue({
                 data: formData,
                 success: function (response) {
                     console.log(response);
+                    console.log("123");
                 }
             });
         },

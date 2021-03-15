@@ -43,7 +43,7 @@
         </script>
     }
     
-    <script>
+<script>
 
 
 
@@ -185,6 +185,7 @@
 
             valuesArray = NodeListPushToArray(qtyArray, valuesArray);
             LanchArrayAjax(valuesArray, cartSpecialInstructions.value);
+            valuesArray.length = 0;
         }
 
         function NodeListPushToArray(NodeList, ValueArray) {
@@ -212,12 +213,12 @@
                 data: { Quantity: ValueArray, Comment: clientComment},
 
                 success: function (response) {
-                    console.log("123");
+                    ValueArray.length = 0;
                 }
             })
         }
 
-    </script>
+</script>
 }
 <div id="app">
 
@@ -282,7 +283,7 @@
                 <div class="col-lg-6"></div>
                 <div class="col-sm-12 buttons-group col-lg-6">
 
-                    <a href='@Url.Action("PrepareToCheckout","ShoppingCart")'>
+                    <a href="@Url.Action("PrepareToCheckout","ShoppingCart")">
                         <input type="submit" name="checkout" value="結  帳" class="checkout" onclick="PrepareToCheckout()">
                     </a>
 

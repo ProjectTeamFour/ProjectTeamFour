@@ -125,6 +125,8 @@ namespace ProjectTeamFour.Api
             return uploadResult.SecureUri.AbsoluteUri;
         }
 
+       
+
 
         public string GetManagerIndex()
         {
