@@ -132,11 +132,13 @@ namespace ProjectTeamFour.Service
             }
             else
             {
+                
                 for(int i=0;i<QuantityArray.Quantity.Count;i++)
                 {
                     cartItems.CartItems[i].QuantityLimit = QuantityArray.Quantity[i];
                 }
                 cartItems.Comment = QuantityArray.Comment;
+                QuantityArray.Quantity.Clear();
                 return cartItems;
             }
             
