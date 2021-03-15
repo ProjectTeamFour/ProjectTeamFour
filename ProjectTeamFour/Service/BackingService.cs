@@ -101,7 +101,7 @@ namespace ProjectTeamFour.Service
                     PlanTitle = plan.PlanTitle,
                     PlanId = plan.PlanId,
                     OrderPrice = plan.PlanPrice,
-                    OrderQuantity = i.QuantityLimit,
+                    OrderQuantity = i.Quantity,
                     OrderDetailDes = cartSession.Comment
                 };
                 od.Add(o);
@@ -195,7 +195,7 @@ namespace ProjectTeamFour.Service
                             Name = order.PlanTitle,//商品名稱
                             Price = order.PlanPrice,//商品單價
                             Currency = "新台幣",//幣別單位
-                            Quantity = order.QuantityLimit,//購買數量
+                            Quantity = order.Quantity,//購買數量
                             Unit = "件",
                             URL = $"/ProjectDetail/Index/{order.ProjectId}",//商品的說明網址
                         });

@@ -19,7 +19,7 @@ namespace ProjectTeamFour.ViewModels
         public int QuantityLimit { get; set; } // 方案限量個數
         public int Quantity { get; set; } // 購物車未付款品項數量
         public int CartId { get; set; }
-        public decimal Account { get { return this.PlanPrice * QuantityLimit; } }
+        public decimal Account { get { return this.PlanPrice * Quantity; } }
 
     }
 }
