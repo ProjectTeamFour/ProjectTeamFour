@@ -1,5 +1,4 @@
-﻿
-var splitJoin;
+﻿var splitJoin;
 var pmu;
 var pcu;
 var piu;
@@ -185,8 +184,7 @@ var form = new Vue({
             PlanShipDateMonth: "",
             PlanShipDate: "",
         }],
-        ProjectQuestionAnswer: [{
-        }],
+        ProjectQuestionAnswer: [{}],
     },
     watch: {
         "inputData.ProjectName": {
@@ -483,7 +481,7 @@ var form = new Vue({
                 console.log(piu);
                 console.log(priu);
 
-                
+
 
 
                 this.inputDataCheck.TeamPictureError = false;
@@ -514,7 +512,7 @@ var form = new Vue({
                 console.log(piu);
                 console.log(priu);
 
-                
+
 
 
                 this.inputDataCheck.ProjectMainUrlError = false;
@@ -547,7 +545,7 @@ var form = new Vue({
                 console.log(piu);
                 console.log(priu);
 
-                
+
 
 
                 this.inputDataCheck.ProjectCoverUrlError = false;
@@ -580,7 +578,7 @@ var form = new Vue({
                 console.log(piu);
                 console.log(priu);
 
-                
+
 
 
                 this.modalDataCheck.PlanImgUrlError = false;
@@ -635,8 +633,7 @@ var form = new Vue({
 
             if (this.modalData.PlanShipDateMonth < 10) {
                 var newMonth = "0" + this.modalData.PlanShipDateMonth;
-            }
-            else {
+            } else {
                 newMonth = this.modalData.PlanShipDateMonth;
             }
 
@@ -682,12 +679,16 @@ var form = new Vue({
             this.modalData.PlanTitle = "";
             this.modalData.QuantityLimit = "";
             this.modalData.PlanDescription = "";
+            // console.log(this.$refs.planpicfileupload.value);
             this.modalData.PlanImgUrl = "";
             this.$refs.planpicfileupload.value = null;
             // document.querySelector(".gray-block").innerHTML = `<img :src="modalData.PlanImgUrl" alt="planImgUrl" width="250px" height="187.5px" class="planPreviewPic">`;
             this.modalData.AddCarCarPlanSwitch = false;
             this.modalData.PlanShipDateYear = "year";
             this.modalData.PlanShipDateMonth = "month";
+            this.modalData.tempYear = "";
+            this.modalData.tempMonth = "";
+            SetPlanId = "set-plan";
         },
         submitProposal() {
 
@@ -727,8 +728,8 @@ var form = new Vue({
 
 
             var date = new Date();
-            
-          
+
+
 
 
             var UpLoadData = {
@@ -749,8 +750,8 @@ var form = new Vue({
                 "AboutMe": this.inputData.AboutMe,
                 "MemberWebsite": this.inputData.MemberWebsite,
                 "ProjectImgUrl": this.inputData.QuillHtml, //富文本
-                "PlanObject": this.modalList,  //陣列包物件
-                "ProjectQA": this.ProjectQuestionAnswer,  //陣列包物件
+                "PlanObject": this.modalList, //陣列包物件
+                "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
                 "Project_Question": totalQuestion,
                 "Project_Answer": totalAnswer,
                 "CreatedDate": date.toJSON(),
@@ -771,7 +772,7 @@ var form = new Vue({
             });
         },
 
-        uploadImg(formData, imgSwitch) {   //479-481行
+        uploadImg(formData, imgSwitch) { //479-481行
 
             $.ajax({
                 url: "/api/projectsubmission/uploadfiles",
@@ -787,22 +788,19 @@ var form = new Vue({
 
                     if (imgSwitch == "ProjectMainUrl") {
                         pmu = response;
-                    }
-                    else if (imgSwitch == "ProjectCoverUrl") {
+                    } else if (imgSwitch == "ProjectCoverUrl") {
                         pcu = response;
-                    }
-                    else if (imgSwitch == "PlanImgUrl") {
+                    } else if (imgSwitch == "PlanImgUrl") {
                         piu = response;
-                    }
-                    else {
+                    } else {
                         priu = response;
-                    }                    
+                    }
 
                 }
             });
         },
     }
-    });
+});
 
 
 
@@ -842,7 +840,6 @@ quill.format(
 
 quill.on('text-change', function () {
     splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
-    //console.log(splitjoin);
 });
 
 
@@ -855,7 +852,8 @@ function selectLocalImage() {
     var input = document.createElement("input");
     input.setAttribute("type", "file");
     input.click();
-    // Listen upload local image and save to server
+
+    //監聽本地圖片上傳 和 上傳server
     input.onchange = () => {
         const file = input.files[0];
 
@@ -863,6 +861,7 @@ function selectLocalImage() {
         reader.readAsDataURL(file);
         reader.onload = () => {
 
+            //塞 base64 在富文本上顯示
             var base64 = reader.result;
             var img = document.createElement("img");
             var qlEditor = document.querySelector(".ql-editor");
@@ -875,16 +874,32 @@ function selectLocalImage() {
         // file type is only image.
         if (/^image\//.test(file.type)) {
 
+            //上傳的時候跳swal
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '上傳中..',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            //在這邊再去上傳server
             this.saveToServer(file, "image");
 
-            // 胖羽
-            // let formData = new FormData();
-            // formData.append('image', file); 
-            // imgSwitch = "editor";
-            // this.uploadImg(formData, imgSwitch);
-
         } else {
-            console.warn("Only images can be uploaded here.");
+
+            //上傳的時候跳swal
+            Swal.fire({
+                position: 'top-end',
+                icon: 'warning',
+                // type: 'warning',
+                title: '親愛的，只能上傳圖片喔',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            console.warn("親愛的，只能上傳圖片喔");
+
         }
     };
 }
@@ -897,18 +912,7 @@ function saveToServer(file) {
     var thumbnail = window.URL.createObjectURL(file); // input的圖片縮圖
     var title = name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
 
-    //let settings = {
-    //    async: true,
-    //    crossDomain: true,
-    //    processData: false,
-    //    contentType: false,
-    //    type: 'POST',
-    //    url: 'https://api.imgur.com/3/image',
-    //    headers: {
-    //        Authorization: 'Bearer ' + token
-    //    },
-    //    mimeType: 'multipart/form-data'
-    //};
+
 
     let form = new FormData();
     form.append('image', file);
@@ -916,9 +920,26 @@ function saveToServer(file) {
     // form.append('description', des);
     form.append('album', album); // 有要指定的相簿就加這行
 
-    //settings.data = form;
-
     console.log(form);
+
+
+
+    //axios({
+    //    method: 'POST',
+    //    url: 'https://api.imgur.com/3/image',
+    //    data: form,
+    //    headers: {
+    //        Authorization: "Bearer " + token,
+
+    //        //放置你剛剛申請的Client-ID
+    //    },
+    //    mimeType: 'multipart/form-data'
+    //}).then(res => {
+    //    console.log(res)
+    //}).catch(e => {
+    //    console.log(e)
+    //})
+
 
     $.ajax({
         async: true,
@@ -934,47 +955,44 @@ function saveToServer(file) {
         data: form,
         success: function (res) {
 
-            setTimeout(() => { //debug
+            console.log(res); // 可以看見上傳成功後回的值
+            var jsonObj = JSON.parse(res); //轉json物件為了取裡面的東西
+
+            // alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
+            url = jsonObj.data.link; //拿imgur link 從json物件裡面取
+            imgurArray.push(url);
+            console.log(imgurArray);
+
+            //塞 imgurUrl
+            //var img = document.getElementById(`editorImgId${editorImgId}`);
+            //img.setAttribute("data-imgururl", url);
+
+            var img = document.getElementById(`editorImgId${editorImgId}`);
+            img.src = url;
+
+            //成功就跳swal
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '成功',
+                showConfirmButton: false,
+                timer: 1500
+            });
 
 
-                console.log(res); // 可以看見上傳成功後回的值
-                console.log(JSON.parse(res));
-                var jsonObj = JSON.parse(res);  
-                console.log(jsonObj.data.link);
-                
-                alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
-                url = jsonObj.data.link;  //拿imgur link
-                imgurArray.push(url);
-                console.log(imgurArray);
-
-
-            }, 3000);
-
-            
         },
         error: function () {
-            alert("失敗");
-        }       
-    });
 
-
-    //$.ajax(settings).done(function (res) {
-    //    console.log(res); // 可以看見上傳成功後回的值
-    //    console.log(JSON.parse(res));
-    //    var jsonObj = JSON.parse(res);  //轉json物件
-    //    console.log(jsonObj.data.link);
-    //    // console.log(JSON.stringify(res));
-    //    alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
-    //    url = jsonObj.data.link;  //拿imgur link
-    //    imgurArray.push(url);
-    //    console.log(imgurArray);
-
-
-    //}).fail(function (data) {
-    //    alert("Try again champ!");
-    //});
-
-    
+            //失敗就跳swal
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '上傳失敗',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 }
 
 //---------------------------------------------//
