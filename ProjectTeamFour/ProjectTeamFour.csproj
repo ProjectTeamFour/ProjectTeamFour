@@ -2262,6 +2262,7 @@
     <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
     <Content Include="Views\UserInfo\Setting.cshtml" />
+    <Content Include="Views\pay\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

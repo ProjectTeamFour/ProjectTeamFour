@@ -79,6 +79,7 @@ namespace ProjectTeamFour.Service
 
         public PayViewModel CreateANewMemberData(PayViewModel odVM)
         {
+
             var o = new PayViewModel
             {
                 OrderName = odVM.OrderName,
@@ -89,8 +90,14 @@ namespace ProjectTeamFour.Service
 
             return o;
         }
-        public int SaveData()
+
+        //public PayViewModel UpdateOrderMember(PayViewModel odVM) //更改訂單寄送資料
+        //{
+        //    var result = 
+        //}
+        public int SaveData(PayViewModel orderMem) //要抓到修改的pay頁面 會員資料
         {
+
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var cartSession = ((CartItemListViewModel)session["Cart"]);            
@@ -98,11 +105,12 @@ namespace ProjectTeamFour.Service
             var order = new Order //會員註冊時的資料
             {
                 MemberId = member.MemberId,
-                OrderName = member.MemberName,
-                OrderAddress = member.MemberAddress,
-                OrderPhone = member.MemberPhone,
-                OrderConEmail = member.MemberConEmail,
+                OrderName = orderMem.MemberName,
+                OrderAddress = orderMem.MemberAddress,
+                OrderPhone = orderMem.MemberPhone,
+                OrderConEmail = orderMem.MemberConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,    
+
                 condition = "未付款",
             };
             _repository.Create(order);
@@ -183,7 +191,7 @@ namespace ProjectTeamFour.Service
             }
         }
 
-        public string ConnectECPay(int orderId)
+        public string ConnectECPay(int orderId, MemberViewModel member)
         {
             var session = HttpContext.Current.Session;
             List<string> enErrors = new List<string>();
@@ -219,7 +227,7 @@ namespace ProjectTeamFour.Service
                     oPayment.Send.PlatformID = "";//特約合作平台商代號
                     oPayment.Send.HoldTradeAMT = HoldTradeType.Yes;
                     oPayment.Send.CustomField1 = orderId.ToString();
-                    oPayment.Send.CustomField2 = "";
+                    oPayment.Send.CustomField2 = member.MemberId.ToString();
                     oPayment.Send.CustomField3 = "";
                     oPayment.Send.CustomField4 = "";
                     oPayment.Send.EncryptType = 1;

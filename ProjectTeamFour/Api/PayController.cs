@@ -19,15 +19,5 @@ namespace ProjectTeamFour.Api
         {
             _payService = new PayService();
         }
-        //[AcceptVerbs("GET", "POST")]
-        //public string ConnectECPay(PayViewModel orderVM)
-        //{
-            
-        //    var orderId = _payService.SaveData(orderVM);
-        //    var result = _payService.ConnectECPay(orderId);
-            
-        //    //ViewData["result"] = result;
-        //    return result;
-        //}
     }
 }

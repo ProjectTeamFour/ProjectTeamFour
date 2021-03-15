@@ -15,13 +15,16 @@
 }
 @section endJS{
     <script src="~/Assets/Javascript/PaymentPage/pay.js"></script>
-    <script>        
+    <script>
+
         let getjson = document.getElementById('transJSON');
         let obj = JSON.parse(getjson.value);
+        console.log(obj);
+
 
         var form = new Vue({
             el: "#app",
-            data: {
+            data:{
                 inputData: {
                     Name: obj.MemberName,
                     Address: obj.MemberAddress,
@@ -113,6 +116,26 @@
                 }
             }
         })
+
+
+function Save2Server() {
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("ConnectECPay", "Pay")',
+        data: JSON.stringify(obj), //注意是放JSON  字串
+        dataType: "json",
+        headers: {
+            'Content-type': 'application/json'
+        }, //注意 Content-type
+        success: function (response) {
+
+                alert('儲存成功');
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
 
     </script>
 
@@ -215,22 +238,22 @@
                     <div class="content-deliver">
                         <div id="app" class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName">
+                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
                             <div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
                             </div>
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>">
+                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>" id="orderAddress">
                             <div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone>
+                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
                             <div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail">
+                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
                             <div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
                             </div>
@@ -283,7 +306,8 @@
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <a href="/Pay/ConnectECPay" class="btn-pay" @*onclick="function() { ConnectToECPay(@Model.OrderName,@Model.OrderAddress, @Model.OrderPhone, @Model.OrderConEmail)*@ }">確認購買</a>
+                    <button id="Save2Sever" onclick="Save2Server()">儲存寄送資料</button>
+                    <a href="/Pay/test" class="btn-pay">確認購買</a>
                 </div>
             </div>
         </section>

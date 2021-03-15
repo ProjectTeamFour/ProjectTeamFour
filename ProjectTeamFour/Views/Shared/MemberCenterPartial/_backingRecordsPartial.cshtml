@@ -1,9 +1,9 @@
-﻿
+﻿@*@using ProjectTeamFour.Service;*@
 @model BackingRecordsViewModel
 @{
-    
-    var vm = (MemberViewModel)Session["Member"];
-}
+    @*private readonly BackingService _backingService;*@
+    var vm = (MemberViewModel)Session["Member"]; //該會員資料    
+} 
 
 <div class="record-content">
     <h2>贊助紀錄</h2>
@@ -12,14 +12,30 @@
 <span>單筆贊助</span>
 <div class="record-detail">
     <div class="record-detillist">
-        @foreach (var item in Model.MyOrdersList)
-        {
-            <div class="record-detail-col">贊助專案</div>@item.ProjectId<br>
-            <div class="record-detail-col">贊助金額</div>@item.OrderPrice<br>
-            <div class="record-detail-col">回饋項目</div>@item.PlanTitle<br>
-            <div class="record-detail-col">金流單號</div>@Model.TradeNo<br>
-            <div class="record-detail-col">收到了?</div>
-        }
+        <table id="mytable" style="width:100%">            
+            <tbody>
+                <tr v-for="item in items">
+                    <td>{{item.ID}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.Phone}}</td>
+                    <td>
+                        <img class="img-responsive pull-right" style="width: 50px; margin-top: 10px"
+                             v-bind:src="item.PictureURL" />
+                    </td>
+                    <td>{{item.isValid}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td  class="record-detail-col">購買專案</td>
+                    <td  class="record-detail-col">購買金額</td>
+                    <td  class="record-detail-col">回饋項目</td>
+                    <td  class="record-detail-col">金流單號</td>
+                    <td  class="record-detail-col">收到了?</td>
+                </tr>
+            </tfoot>
+        </table>   
     </div>
     <p>目前沒有任何贊助歷史</p>
 </div>
