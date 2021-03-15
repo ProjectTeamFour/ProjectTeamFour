@@ -20,14 +20,17 @@
         let getjson = document.getElementById('transJSON');
         let obj = JSON.parse(getjson.value);
         console.log(obj);
-
+        @*obj.Name = $("#orderName").val();
+        obj.Address = $("#orderAddress").val();
+        obj.Tel = $("#orderPhone").val();
+        obj.Email = $("#orderEmail").val()*@
 
         var form = new Vue({
             el: "#app",
             data:{
                 inputData: {
                     Name: obj.MemberName,
-                    Address: obj.MemberAddress,
+                    Address: obj.OrderAddress,
                     Tel: obj.MemberPhone,
                     Email: obj.MemberConEmail,
                 },
@@ -122,7 +125,7 @@ function Save2Server() {
     $.ajax({
         type: "POST",
         url: '@Url.Action("ConnectECPay", "Pay")',
-        data: JSON.stringify(obj), //注意是放JSON  字串
+        data: JSON.stringify({ OrderName: form.$data.inputData.MemberName, OrderAddress: form.$data.inputData.OrderAddress, OrderPhone: form.$data.inputData.MemberPhone, OrderConEmail: form.$data.inputData.MemberConEmail }), //注意是放JSON  字串
         dataType: "json",
         headers: {
             'Content-type': 'application/json'

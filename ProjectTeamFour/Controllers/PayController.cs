@@ -40,7 +40,7 @@ namespace ProjectTeamFour.Controllers
             
             return View(cartt);
         }
-        //[HttpPost]
+        [HttpPost]
         public ActionResult ConnectECPay(PayViewModel oVM)
         {
             
@@ -83,6 +83,7 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult test(PayViewModel oVM)
         {
+
             var o = _PayService.CreateANewMemberData(oVM);
             //var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
