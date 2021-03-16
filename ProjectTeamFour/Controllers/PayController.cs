@@ -43,15 +43,28 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
-            
-            //var o = _PayService.CreateANewMemberData(oVM);
+            var order = Convert.ToInt32(TempData["orderId"]);
+            var o = _PayService.CreateANewMemberData(oVM);
             var memberId = (MemberViewModel)Session["Member"];
-            var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
-            //var result = _PayService.ConnectECPay(orderId,memberId);
-            //ViewData["result"] = result;                
-            
+            //var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
+            var result = _PayService.ConnectECPay(order, memberId);
+            ViewData["result"] = result;
+
             return View();
         }
+
+        [HttpPost]
+        public ActionResult test(PayViewModel oVM)
+        {
+
+            var o = _PayService.CreateANewMemberData(oVM);
+            //var memberId = (MemberViewModel)Session["Member"];
+            var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
+            TempData["orderId"] = orderId ;
+
+            return RedirectToAction("ConnectECPay");
+        }
+
 
         [HttpPost]
         public ActionResult CheckECPayFeedBack()
@@ -80,14 +93,6 @@ namespace ProjectTeamFour.Controllers
             return RedirectToAction("Index", "Home");
         }        
 
-        [HttpPost]
-        public ActionResult test(PayViewModel oVM)
-        {
-
-            var o = _PayService.CreateANewMemberData(oVM);
-            //var memberId = (MemberViewModel)Session["Member"];
-            var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
-            return View();
-        }
+        
     }
 }
