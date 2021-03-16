@@ -14,10 +14,10 @@
                 <a class="nav-links" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">個人資料</a>
             </li>
             <li class="nav-item-tag" role="presentation">
-                <a class="nav-links" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">贊助紀錄</a>
+                <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="#pills-backings" role="tab" aria-controls="pills-backings" aria-selected="false">贊助紀錄</a>
             </li>
             <li class="nav-item-tag  active" role="presentation">
-                <a class="nav-links" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">提案紀錄</a>
+                <a class="nav-links" id="pills-myprojects-tab" data-toggle="pill" href="#pills-myprojects" role="tab" aria-controls="pills-myprojects" aria-selected="false">提案紀錄</a>
             </li>
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-message-tab" data-toggle="pill" href="#pills-message" role="tab" aria-controls="pills-message" aria-selected="false">聯絡訊息</a>
@@ -41,7 +41,8 @@
                     <div class="wrap-inside">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
-                                ppppppppppppppppp
+                                <p>我的會員資料</p>
+
                             </div>
                         </div>
                     </div>
@@ -60,13 +61,13 @@
                     </div>
                 </section>
             </div>
-            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="tab-pane fade show active" id="pills-backings" role="tabpanel" aria-labelledby="pills-backings-tab">
                 <section class="record">
                     <div class="wrap-inside">
                         <div class="record-content">
                             <h2>贊助紀錄</h2>
                             <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
-                        </div>
+                    </div>
                         <span>單筆贊助</span>
                         <div class="record-detail">
                             <div class="record-detillist">
@@ -81,7 +82,7 @@
                     </div>
                 </section>
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="tab-pane fade" id="pills-myprojects" role="tabpanel" aria-labelledby="pills-myprojects-tab">
                 <section class="case">
                     <div class="test">
                         @*@model IEnumerable<ProjectTeamFour.ViewModels.MyProjectsViewModel>*@
@@ -141,105 +142,109 @@
                         </table>*@
                     </div>
                     <div class="wrap-inside">
+                        <div class="case-title">
+                            <h2>提案紀錄</h2>
+                            <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
+                        </div>
                         @{
                             foreach (var item in Model.MyProjects)
                             {
                                 <div>
-                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_notifactionPartial.cshtml",item)
+                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml",item)
                                 </div>
 
                             }
-                        }
+                            }
                         <div class="case-title">
                             <h2>提案紀錄</h2>
                             <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
                         </div>
                         <div class="case-doing">
-                            <div class="case-doing-funding">
-                                <h3>募資中專案</h3>
-                                <p>目前您沒有募資中專案</p>
-                            </div>
-                            <div class="case-doing-creating">
-                                <h3>創建中專案</h3>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="https://picsum.photos/800/600/?random=1">
+                                <div class="case-doing-funding">
+                                    <h3>募資中專案</h3>
+                                    <p>目前您沒有募資中專案</p>
+                                </div>
+                                <div class="case-doing-creating">
+                                    <h3>創建中專案</h3>
+                                    <div class="case-doing-item">
+                                        <div class="case-doing-pic">
+                                            <img src="https://picsum.photos/800/600/?random=1">
+                                        </div>
+                                        <div class="case-doing-text">
+                                            <div class="case-doing-name">
+                                                <h4>專案名稱:<span>1</span></h4>
+                                            </div>
+                                            <div class="case-doing-money">
+                                                <h4>目標金額:<span>$5000</span></h4>
+                                            </div>
+                                            <div class="case-doing-creat">
+                                                <h4><span>創建日期:2021/01/28</span></h4>
+                                            </div>
+                                            <div class="case-doing-givedate">
+                                                <h4><span>提交日期:尚未提交</span></h4>
+                                            </div>
+                                            <div class="case-doing-fix">
+                                                <h4><span>上次修改日期:2021/01/29</span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <button id="btn-fix">修改</button>
+                                            <button id="btn-view">預覽</button>
+                                        </div>
                                     </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>專案名稱:<span>1</span></h4>
+                                    <div class="case-doing-item">
+                                        <div class="case-doing-pic">
+                                            <img src="https://picsum.photos/800/600/?random=1">
                                         </div>
-                                        <div class="case-doing-money">
-                                            <h4>目標金額:<span>$5000</span></h4>
+                                        <div class="case-doing-text">
+                                            <div class="case-doing-name">
+                                                <h4>專案名稱:<span>1</span></h4>
+                                            </div>
+                                            <div class="case-doing-money">
+                                                <h4>目標金額:<span>$5000</span></h4>
+                                            </div>
+                                            <div class="case-doing-creat">
+                                                <h4><span>創建日期:2021/01/28</span></h4>
+                                            </div>
+                                            <div class="case-doing-givedate">
+                                                <h4><span>提交日期:尚未提交</span></h4>
+                                            </div>
+                                            <div class="case-doing-fix">
+                                                <h4><span>上次修改日期:2021/01/29</span></h4>
+                                            </div>
                                         </div>
-                                        <div class="case-doing-creat">
-                                            <h4><span>創建日期:2021/01/28</span></h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4><span>提交日期:尚未提交</span></h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4><span>上次修改日期:2021/01/29</span></h4>
+                                        <div class="button-group">
+                                            <button id="btn-fix">修改</button>
+                                            <button id="btn-view">預覽</button>
                                         </div>
                                     </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
+                                    <div class="case-doing-item">
+                                        <div class="case-doing-pic">
+                                            <img src="~/Assets/Img/personal/dog.jpg" alt="肉">
+                                        </div>
+                                        <div class="case-doing-text">
+                                            <div class="case-doing-name">
+                                                <h4>專案名稱:<span>1</span></h4>
+                                            </div>
+                                            <div class="case-doing-money">
+                                                <h4>目標金額:<span>$5000</span></h4>
+                                            </div>
+                                            <div class="case-doing-creat">
+                                                <h4><span>創建日期:2021/01/28</span></h4>
+                                            </div>
+                                            <div class="case-doing-givedate">
+                                                <h4><span>提交日期:尚未提交</span></h4>
+                                            </div>
+                                            <div class="case-doing-fix">
+                                                <h4><span>上次修改日期:2021/01/29</span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <button id="btn-fix">修改</button>
+                                            <button id="btn-view">預覽</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="https://picsum.photos/800/600/?random=1">
-                                    </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>專案名稱:<span>1</span></h4>
-                                        </div>
-                                        <div class="case-doing-money">
-                                            <h4>目標金額:<span>$5000</span></h4>
-                                        </div>
-                                        <div class="case-doing-creat">
-                                            <h4><span>創建日期:2021/01/28</span></h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4><span>提交日期:尚未提交</span></h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4><span>上次修改日期:2021/01/29</span></h4>
-                                        </div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
-                                    </div>
-                                </div>
-                                <div class="case-doing-item">
-                                    <div class="case-doing-pic">
-                                        <img src="~/Assets/Img/personal/dog.jpg" alt="肉">
-                                    </div>
-                                    <div class="case-doing-text">
-                                        <div class="case-doing-name">
-                                            <h4>專案名稱:<span>1</span></h4>
-                                        </div>
-                                        <div class="case-doing-money">
-                                            <h4>目標金額:<span>$5000</span></h4>
-                                        </div>
-                                        <div class="case-doing-creat">
-                                            <h4><span>創建日期:2021/01/28</span></h4>
-                                        </div>
-                                        <div class="case-doing-givedate">
-                                            <h4><span>提交日期:尚未提交</span></h4>
-                                        </div>
-                                        <div class="case-doing-fix">
-                                            <h4><span>上次修改日期:2021/01/29</span></h4>
-                                        </div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button id="btn-fix">修改</button>
-                                        <button id="btn-view">預覽</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -354,33 +359,7 @@
             <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
                 <div class="account">
                     <div class="wrap-inside">
-                        <form action="">
-                            <div id="user-setting" class="container">
-                                <div class="form-group row">
-                                    <div class="col-12 col-md-6">
-                                        <blockquote class="colored-label">
-                                            <p>帳號管理</p>
-                                        </blockquote>
-                                        <div class="login-account form-group">
-                                            <label for="account">登入帳號</label>
-                                            <input type="text" class="form-control" id="account" placeholder="example@gmail.com" readonly>
-                                        </div>
-                                        <div class="reset-passward form-group">
-                                            <label for="inputPassword">更改密碼</label>
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="請輸入舊密碼">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">更改密碼</button>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="linked-account" class="colored-label">
-                                            <p>社群綁定</p>
-                                        </label>
-                                    </div>
-                                </div>
-                                <hr>
-                                <button id="delete-account" class=" btn btn-secondary">刪除帳號</button>
-                            </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -393,3 +372,4 @@
             </div>
         </div>
     </div>
+</div>

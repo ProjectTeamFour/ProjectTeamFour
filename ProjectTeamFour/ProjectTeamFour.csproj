@@ -326,7 +326,6 @@
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
-    <Compile Include="Service\ProjectDetailMockService .cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
     <Compile Include="ViewModels\ForMemberView\BackingRecordsViewModel.cs" />
@@ -2212,10 +2211,8 @@
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
-    <Content Include="Views\UserInfo\Index.cshtml" />
-    <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\Index.cshtml" />
+    <Content Include="Views\UserInfo\Member.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
-    <Content Include="Views\ProfileSettings_DONT_USE_THIS_VIEW\_UsersEdit_Partial.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
@@ -2227,8 +2224,6 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanCardsPartial.cshtml" />
     <Content Include="Views\ShoppingCart\ListShoppingCart.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemPartial.cshtml" />
-    <Content Include="Views\MemberSettings\Edit_Old.cshtml" />
-    <Content Include="Views\ProjectUser_JustTest\edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\PartialView\_cartItemForPay.cshtml" />
     <Content Include="Views\CarCarPlan\Index.cshtml" />
@@ -2238,12 +2233,10 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
-    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\UserInfo\Account.cshtml" />
     <Content Include="Views\UserInfo\Edit.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
-    <Content Include="Views\MemberSettings\Edit.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_notifactionPartial.cshtml" />
@@ -2268,6 +2261,7 @@
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
+    <Folder Include="ViewModels\ForMemberView\" />
     <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>

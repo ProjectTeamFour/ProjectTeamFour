@@ -1,9 +1,10 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
 @{
-int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
-DateTime today = DateTime.Now;
-int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+    int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount/ Model.ProjectDetailItem.AmountThreshold) * 100;
+    string progressBar = num.ToString() + "%";
+    DateTime today = DateTime.Now;
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
 }
 
 <!--FB分享API初始化-->
@@ -31,7 +32,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                     <div id="campaign-summary" class="">
                         <p>@Model.ProjectDetailItem.ProjectName</p>
                         <div id="campaign-progress " class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="@num"
+                            <div class="progress-bar" role="progressbar" style="width:@progressBar" aria-valuenow="@num.ToString()"
                                 aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
