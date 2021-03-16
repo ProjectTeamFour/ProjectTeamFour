@@ -1,6 +1,6 @@
 ﻿@*@model CarCarPlanViewModel*@
 <div class="col-sm-12 col-md-12 shop-item" v-for="model in Models">
-    <div class="cart-item">
+    <div class="cart-item" v-if="model.QuantityLimit>=0">
         <a href="#" class="thumbnail">
             <img v-bind:src="model.PlanImgUrl">
         </a>
@@ -8,7 +8,7 @@
             <a href="#" class="title">{{model.PlanTitle}}</a>
             <div class="sales">
                 <p class="price">{{model.PlanPrice}}</p>
-                <p class="stock">庫存：{{model.QuantityLimit}}</p>
+                <p class="stock" >庫存：{{model.QuantityLimit}}</p>
             </div>
         </div>
         <div class="actions">
@@ -29,4 +29,6 @@
         </div>
     </div>
 
+    
 </div>
+

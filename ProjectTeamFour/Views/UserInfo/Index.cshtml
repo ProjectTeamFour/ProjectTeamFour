@@ -60,6 +60,34 @@
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <section class="case">
+                    <div class="wrap-inside">
+                        <div class="case-title">
+                            <h2>提案紀錄</h2>
+                            <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
+                        </div>
+                        <div class="case-doing">
+                            <div class="case-doing-funding">
+                                <h3>募資中專案</h3>
+                                <p>目前您沒有募資中專案</p>
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml")
+
+                            </div>
+                            <div class="case-doing-creating">
+                                <h3>審核中專案</h3>
+                                
+
+                            </div>
+                            <div class="case-doing-funding">
+                                <h3>募資成功專案</h3>
+                                <p>目前您沒有募資成功專案</p>
+                            </div>
+                            <div class="case-doing-funding">
+                                <h3>募資失敗專案</h3>
+                                <p>目前您沒有募資失敗專案</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">

@@ -90,7 +90,7 @@
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/dmoLRa1m.png",
                 PlanPrice = 11800m,
-                QuantityLimit = 20
+                QuantityLimit = 100
 
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -202,7 +202,7 @@
                 PlanImgUrl = "https://i.imgur.com/eCm2xggm.jpg",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 500m,
-                QuantityLimit = 10
+                QuantityLimit = 100
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -216,7 +216,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/hSE6nFam.jpg",
                 PlanPrice = 800m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -230,7 +230,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/WRP6FKnm.jpg",
                 PlanPrice = 980m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -244,7 +244,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/QHpTRMum.jpg",
                 PlanPrice = 980m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -258,7 +258,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/wnqwp61m.jpg",
                 PlanPrice = 1980m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -272,7 +272,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/sLuiuPHm.jpg",
                 PlanPrice = 2180m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -286,7 +286,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/aLPQXYgm.jpg",
                 PlanPrice = 3880m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -300,7 +300,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/YnlACWOm.jpg",
                 PlanPrice = 2680m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -314,7 +314,7 @@
                 PlanShipDate = new DateTime(2021, 3, 21),
                 PlanImgUrl = "https://i.imgur.com/RYrTiN5m.jpg",
                 PlanPrice = 3980m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             //第三個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
@@ -379,7 +379,7 @@
                 PlanImgUrl = "https://i.imgur.com/S0pVvGNm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 100m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -394,7 +394,7 @@
                 PlanImgUrl = "https://i.imgur.com/q1U8EY1m.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 589m,
-                QuantityLimit = 30
+                QuantityLimit = 300
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -409,7 +409,7 @@
                 PlanImgUrl = "https://i.imgur.com/u8c75kZm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1299m,
-                QuantityLimit = 20
+                QuantityLimit = 200
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
