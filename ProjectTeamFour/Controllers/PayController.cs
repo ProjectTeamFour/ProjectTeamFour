@@ -41,14 +41,14 @@ namespace ProjectTeamFour.Controllers
             return View(cartt);
         }
         [HttpPost]
-        public ActionResult ConnectECPay(PayViewModel oVM)
+        public ActionResult ConnectECPay123(PayViewModel oVM)
         {
             
             //var o = _PayService.CreateANewMemberData(oVM);
             var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
-            var result = _PayService.ConnectECPay(orderId,memberId);
-            ViewData["result"] = result;                
+            //var result = _PayService.ConnectECPay(orderId,memberId);
+            //ViewData["result"] = result;                
             
             return View();
         }

@@ -124,7 +124,7 @@
 function Save2Server() {
     $.ajax({
         type: "POST",
-        url: '@Url.Action("ConnectECPay", "Pay")',
+        url: '@Url.Action("ConnectECPay123", "Pay")',
         data: JSON.stringify({ OrderName: form.$data.inputData.MemberName, OrderAddress: form.$data.inputData.OrderAddress, OrderPhone: form.$data.inputData.MemberPhone, OrderConEmail: form.$data.inputData.MemberConEmail }), //注意是放JSON  字串
         dataType: "json",
         headers: {
