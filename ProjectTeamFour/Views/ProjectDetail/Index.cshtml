@@ -1,9 +1,9 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
 @{
-int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
-DateTime today = DateTime.Now;
-int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+    int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+    DateTime today = DateTime.Now;
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
 }
 
 <!--FB分享API初始化-->
@@ -24,7 +24,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
                         <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
+                                allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
                             主要介紹影片
                         </iframe>
                     </div>
@@ -32,7 +32,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                         <p>@Model.ProjectDetailItem.ProjectName</p>
                         <div id="campaign-progress " class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="@num"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div id="creator-info" class="item-wrap">
@@ -49,8 +49,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                                 <div class="wrapper">
                                     <div class="item-text">
                                         <h5>
-                                            <span
-                                                class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
+                                            <span class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
                                         </h5>
                                     </div>
                                     <div id="follow-icon">
@@ -73,8 +72,10 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                         <div id="campaign-info-item">
                             <span class="badge badge-secondary">@Model.ProjectDetailItem.ProjectStatus</span>
                             <div id="donating-amount" class="number-row">
-                                <span class="label-grey">目標
-                                    @Model.ProjectDetailItem.AmountThreshold.ToString("C2")</span>
+                                <span class="label-grey">
+                                    目標
+                                    @Model.ProjectDetailItem.AmountThreshold.ToString("C2")
+                                </span>
                                 <h2>$@Model.ProjectDetailItem.FundingAmount.ToString("###,###")</h2>
                             </div>
                             <hr class="display-sm">
@@ -146,7 +147,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
                                                 </label>
                                                 <form action="">
                                                     <textarea class="form-control" rows="10" id="msg-content"
-                                                            placeholder="傳送訊息..."></textarea>
+                                                              placeholder="傳送訊息..."></textarea>
                                                     <br />
                                                     <button type="submit" class="btn btn-primary btn-block" id="send-msg">傳送訊息</button>
                                                     @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
@@ -180,7 +181,7 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
 
                         <!--<div class="row">
                             <div id="select-plans" class="carousel slide" data-ride="carousel">
-                                
+
                                 <a class="carousel-control-prev" href="#select-plans" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
@@ -214,163 +215,169 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
             </div>
         </div>*@
 
-                <div class="below-content">
-                    <section id="campaign-details-all">
-                        <div class="container">
-                            <div class="row">
-                                <!-- 左側欄位 -->
-                                <div id="leftside-main-col" class="col-sm-12 col-md-8">
-                                    <!-- 提案詳細介紹，nav with four tabs -->
-                                    <section id="campaign-details">
-                                        <nav id="info-tabs">
-                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
-                                                aria-controls="nav-story" aria-selected="true">專案內容</a>
-                                                <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
-                                                aria-controls="nav-faq" aria-selected="false">常見問題</a>
-                                                <a class="nav-link" id="nav-updates-tab" data-toggle="tab" href="#nav-updates" role="tab"
-                                                aria-controls="nav-updates" aria-selected="false">專案進度</a>
-                                                <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab"
-                                                aria-controls="nav-comments" aria-selected="false">留言</a>
-                                            </div>
-                                        </nav>
-                                        <div class="tab-content" id="nav-tabContent">
-                                            <!-- 專案內容 -->
-                                            <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
-                                                <section id="story container">
+    <div class="below-content">
+        <section id="campaign-details-all">
+            <div class="container">
+                <div class="row">
+                    <!-- 左側欄位 -->
+                    <div id="leftside-main-col" class="col-sm-12 col-md-8">
+                        <!-- 提案詳細介紹，nav with four tabs -->
+                        <section id="campaign-details">
+                            <nav id="info-tabs">
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
+                                       aria-controls="nav-story" aria-selected="true">專案內容</a>
+                                    <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
+                                       aria-controls="nav-faq" aria-selected="false">常見問題</a>
+                                    <a class="nav-link" id="nav-updates-tab" data-toggle="tab" href="#nav-updates" role="tab"
+                                       aria-controls="nav-updates" aria-selected="false">專案進度</a>
+                                    <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab"
+                                       aria-controls="nav-comments" aria-selected="false">留言</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <!-- 專案內容 -->
+                                <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
+                                    <section id="story container">
 
 
 
 
-                                                    <div class="container">
-                                                        @*專案詳細說明內文*@
-                                                        @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                                        <div class="container">
+                                            @*專案詳細說明內文*@
+                                            @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                                            {
+                                                <div class="info wrapper">
+                                                    <p>已達成 募資目標!</p>
+                                                </div>
+                                            }
+
+                                            @{
+                                                if (Model.ProjectDetailItem.ProjectId < 17)
+                                                {
+                                                    string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
+                                                    foreach (var item in description_str)
+                                                    {
+                                                        if (item.Contains("i.imgur"))
                                                         {
-                                                            <div class="info wrapper">
-                                                                <p>已達成 募資目標!</p>
+                                                            <div margin:1rem;">
+                                                                <img src="@item" style="width:100%;" />
                                                             </div>
                                                         }
-
-                                                        @{
-                                                            string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
-                                                            foreach (var item in description_str)
-                                                            {
-                                                                if (item.Contains("i.imgur"))
-                                                                {
-                                                                    <div margin:1rem;">
-                                                                        <img src="@item" style="width:100%;" />
-                                                                    </div>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <p>@item</p>
-                                                                }
-                                                            }
-                                                        }
-                                                    </div>
-                                                </section>
-                                            </div>
-                                            @*專案常見問答*@
-                                            <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
-                                                <!-- 問答要做成 collapse -->
-                                                <!-- 這裡要下判斷式，生成提問以及回答 -->
-                                                <div class="accordion faqWrapper" id="accordionExample">
-                                                    @{
-                                                        int index = 0;
-                                                        foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                                        else
                                                         {
-                                                            <div class="faq">
-                                                                <div class="outer row" @*id="heading-@index"*@>
-                                                                    @*<div class="arrow">
-
-
-                                                                        </div>*@
-                                                                    <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                            <g fill="none" fill-rule="evenodd" id="tri-label">
-                                                                                <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                                            </g>
-                                                                        </svg>
-                                                                        @item.Question
-                                                                    </button>
-
-                                                                </div>
-                                                                <div id="collapse-@index" class="collapse" data-parent="#accordionExample">
-                                                                    <div class="card-body answer">
-                                                                        @item.Answer
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            index++;
+                                                            <p>@item</p>
                                                         }
                                                     }
+                                                } else
+                                                {
+                                                    Html.Raw(Model.ProjectDetailItem.ProjectImgUrl);
+                                                }
+                                            }
+                                        </div>
+                                    </section>
+                                </div>
+                                @*專案常見問答*@
+                                <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
+                                    <!-- 問答要做成 collapse -->
+                                    <!-- 這裡要下判斷式，生成提問以及回答 -->
+                                    <div class="accordion faqWrapper" id="accordionExample">
+                                        @{
+                                            int index = 0;
+                                            foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
+                                            {
+                                                <div class="faq">
+                                                    <div class="outer row" @*id="heading-@index"*@>
+                                                        @*<div class="arrow">
 
-                                                </div>
-                                            </div>
 
-                                            @* 專案進度更新 *@
-                                            <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
-                                                @*下面放專案更新進度貼文的card*@
+                                                            </div>*@
+                                                        <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                <g fill="none" fill-rule="evenodd" id="tri-label">
+                                                                    <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                                                                </g>
+                                                            </svg>
+                                                            @item.Question
+                                                        </button>
 
-                                                <div id="goal-wrap" class="container">
-                                                    <span class="post-date label-grey">2021/01/05</span>
-                                                    <h4 class="post-label">已達成 募資目標!</h4>
-                                                    <h4 class="post-title">解鎖事項：募資成功</h4>
-                                                    <div class="wrapper">
-
-                                                        <div class="goal-detail ">
-                                                            <label class="label-grey">贊助金額</label>
-                                                            <h3 class="number">$149,140</h3>
-                                                        </div>
-                                                        <div class="goal-detail ">
-                                                            <label class="label-grey">支持者</label>
-                                                            <h3>51人</h3>
-                                                        </div>
-                                                        <div class="goal-detail ">
-                                                            <label class="label-grey">贊助比例</label>
-                                                            <h3>106.4%</h3>
+                                                    </div>
+                                                    <div id="collapse-@index" class="collapse" data-parent="#accordionExample">
+                                                        <div class="card-body answer">
+                                                            @item.Answer
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                index++;
+                                            }
+                                        }
 
-                                            @* 專案留言區 *@
-                                            <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
-                                                <div id="comment-hint" class="wrapper">
-                                                    <p>
-                                                        您還不是本案的贊助者，若有問題可直接
-                                                        <a class="color-tag btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
-                                                            <i class="bi bi-envelope"></i> 聯絡提案人！
-                                                        </a>
-                                                    </p>
-                                                </div>
+                                    </div>
+                                </div>
+
+                                @* 專案進度更新 *@
+                                <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
+                                    @*下面放專案更新進度貼文的card*@
+
+                                    <div id="goal-wrap" class="container">
+                                        <span class="post-date label-grey">2021/01/05</span>
+                                        <h4 class="post-label">已達成 募資目標!</h4>
+                                        <h4 class="post-title">解鎖事項：募資成功</h4>
+                                        <div class="wrapper">
+
+                                            <div class="goal-detail ">
+                                                <label class="label-grey">贊助金額</label>
+                                                <h3 class="number">$149,140</h3>
+                                            </div>
+                                            <div class="goal-detail ">
+                                                <label class="label-grey">支持者</label>
+                                                <h3>51人</h3>
+                                            </div>
+                                            <div class="goal-detail ">
+                                                <label class="label-grey">贊助比例</label>
+                                                <h3>106.4%</h3>
                                             </div>
                                         </div>
-
-                                    </section>
+                                    </div>
                                 </div>
-                                <!-- 右側欄位 -->
-                                <div id="rightside-bar-col" class="col-12 col-md-4">
-                                    <!-- 選擇方案 -->
-                                    <section id="select-perk">
 
-                                        @*滑動的slider測試*@
-                                        @foreach (var item in Model.SelectPlanCards.PlanCardItems)
-                                        {
-                                                <div class="card-deck">
-                                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
-                                                </div>
-                                        }
-                                     </section>
+                                @* 專案留言區 *@
+                                <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                                    <div id="comment-hint" class="wrapper">
+                                        <p>
+                                            您還不是本案的贊助者，若有問題可直接
+                                            <a class="color-tag btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                                <i class="bi bi-envelope"></i> 聯絡提案人！
+                                            </a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+
+                        </section>
+                    </div>
+                    <!-- 右側欄位 -->
+                    <div id="rightside-bar-col" class="col-12 col-md-4">
+                        <!-- 選擇方案 -->
+                        <section id="select-perk">
+
+                            @*滑動的slider測試*@
+                            @foreach (var item in Model.SelectPlanCards.PlanCardItems)
+                            {
+                                <div class="card-deck">
+                                    @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
+                                </div>
+                            }
+                        </section>
+                    </div>
                 </div>
+            </div>
+        </section>
+    </div>
 </section>
 
 @section topCSS{
-    
+
     <link href="~/Assets/Css/ProductDetailPage/campaignDetail.css" rel="stylesheet" />
 }
 @section endJS{
@@ -425,47 +432,47 @@ int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Tick
             });
         };
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 
 
 
 
-    //官網傳送訊息程式碼:
-    $(document).on('click', '#send_msg', function () {
-        var content = $('#msg_content').val();
-                                //官網傳送訊息程式碼:
-                                //$(document).on('click', '#send_msg', function () {
-                                //    var content = $('#msg_content').val();
+        //官網傳送訊息程式碼:
+        $(document).on('click', '#send_msg', function () {
+            var content = $('#msg_content').val();
+                                    //官網傳送訊息程式碼:
+                                    //$(document).on('click', '#send_msg', function () {
+                                    //    var content = $('#msg_content').val();
 
-                                //    if (content.length) {
-                                //        $.ajax({
-                                //            url: laroute.route('api.inbox.send'),
-                                //            type: 'POST',
-                                //            data: {
-                                //                project_id: '27640',
-                                //                content: content
-                                //            }
-                                //        })
-                                //            .success(function (res) {
-                                //                if (res.error) {
-                                //                    toastr.error(res.error);
-                                //                } else {
-                                //                    toastr.success('成功傳送訊息');
-                                //                    $('#messageModal').modal('hide');
-                                //                }
-                                //            });
-                                //    } else {
-                                //        toastr.warning('請輸入內文！');
-                                //    }
-                                //});
+                                    //    if (content.length) {
+                                    //        $.ajax({
+                                    //            url: laroute.route('api.inbox.send'),
+                                    //            type: 'POST',
+                                    //            data: {
+                                    //                project_id: '27640',
+                                    //                content: content
+                                    //            }
+                                    //        })
+                                    //            .success(function (res) {
+                                    //                if (res.error) {
+                                    //                    toastr.error(res.error);
+                                    //                } else {
+                                    //                    toastr.success('成功傳送訊息');
+                                    //                    $('#messageModal').modal('hide');
+                                    //                }
+                                    //            });
+                                    //    } else {
+                                    //        toastr.warning('請輸入內文！');
+                                    //    }
+                                    //});
 
 
 
-</script>
+    </script>
 }

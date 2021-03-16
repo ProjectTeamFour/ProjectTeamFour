@@ -11,7 +11,6 @@
     <script src="~/Assets/Javascript/StartAProjectPage/submissionprocess.js"></script>
 }
 
-
 <div id="myApp">
 
     <section class="project-proposal pt-5">
@@ -169,13 +168,18 @@
 
                                                 <div class="project-cover">
                                                     <div class="project-cover-item task-title mt-0">
-                                                        <h3>專案封面(ProjectMainUrl)</h3>
+                                                        <h3>專案封面(ProjectMainUrl)(ok)</h3>
                                                     </div>
                                                     <div class="project-cover-item">
                                                         <div class="custom-file">
-                                                            <input class="w-100 bg-white form-control" type="file"
-                                                                   v-on:change="getProjectMainUrl"
-                                                                   ref="projectmainpicfileupload">
+                                                            <label class="uploadreplace btn w-100">
+                                                                <i class="fas fa-images"></i> 點我上傳
+                                                                <input class="w-100 bg-white form-control"
+                                                                       id="uploadoriginal" type="file"
+                                                                       v-on:change="getProjectMainUrl"
+                                                                       ref="projectmainpicfileupload"
+                                                                       style="display: none;">
+                                                            </label>
                                                             <div class="text-danger small mt-1">
                                                                 {{ inputDataCheck.ProjectMainUrlErrorMsg }}
                                                             </div>
@@ -191,12 +195,12 @@
                                 </div>
                                 <div class="outline-item project-category">
                                     <div class="project-category-item task-title">
-                                        <h3>專案分類(Category)</h3>
+                                        <h3>專案分類(Category)(ok)</h3>
                                     </div>
                                     <div class="project-category-item w-100">
                                         <select id="categories" class="w-100 form-control"
                                                 v-model="inputData.Category" v-on:change="getCategory">
-                                            <option disabled selected>選擇領域</option>
+                                            <option disabled value="專案領域">選擇領域</option>
                                             <option value="科技設計">科技設計</option>
                                             <option value="音樂">音樂</option>
                                             <option value="藝術影視">藝術影視</option>
@@ -208,7 +212,7 @@
                                 </div>
                                 <div class="outline-item project-period">
                                     <div class="project-period-item task-title">
-                                        <h3>募資開始與結束時間(StartDate & EndDate)(未驗證Vue有問題)</h3>
+                                        <h3>募資開始與結束時間(StartDate & EndDate)(ok)</h3>
                                     </div>
                                     <div class="project-period-item d-flex justify-content-center">
                                         <input class="w-50 pl-3 form-control" type="date"
@@ -233,14 +237,16 @@
                                 </div>
                                 <div class="outline-item project-video">
                                     <div class="project-video-item task-title">
-                                        <h3>專案影片(ProjectVideoUrl)</h3>
+                                        <h3>專案影片(ProjectVideoUrl)(ok)</h3>
                                     </div>
                                     <div class="project-video-item">
+
                                         <input class="w-100 pl-3 form-control" type="url"
                                                placeholder="請輸入 Youtube 或 Vimeo 影片網址"
                                                v-model="inputData.ProjectVideoUrl"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.ProjectVideoUrlError}"
                                                required>
+
                                         <div class="text-danger small mt-1">
                                             {{ inputDataCheck.ProjectVideoUrlErrorMsg }}
                                         </div>
@@ -254,7 +260,7 @@
                                 </div>
                                 <div class="outline-item project-videocover">
                                     <div class="videocover-item task-title">
-                                        <h3>影片封面預覽(ProjectCoverUrl)</h3>
+                                        <h3>影片封面預覽(ProjectCoverUrl)(ok)</h3>
                                     </div>
                                     <div class="videocover-item">
                                         <div class="VideoCoverGrayBox">
@@ -270,7 +276,12 @@
                                         </p>
                                     </div>
                                     <div class="videocover-item">
-                                        <input class="w-100 bg-white" type="file" v-on:change="getProjectCoverUrl">
+                                        <label class="uploadreplace btn w-100">
+                                            <i class="fas fa-images"></i> 點我上傳
+                                            <input class="w-100 bg-white" type="file"
+                                                   v-on:change="getProjectCoverUrl" ref="projectcoverpicfileupload"
+                                                   style="display: none;">
+                                        </label>
                                         <div class="text-danger small mt-1">
                                             {{ inputDataCheck.ProjectCoverUrlErrorMsg }}
                                         </div>
@@ -293,7 +304,7 @@
                                         <h3>專案內容(ProjectImgUrl)</h3>
                                     </div>
                                     <div class="project-content-item editor my-custom-editor" id="editor">
-                                        <p></p>
+
                                     </div>
                                     <div class="project-content-item pt-3">
                                         <p>
@@ -304,7 +315,7 @@
                                 </div>
                                 <div class="content-item project-qanda">
                                     <div class="project-qanda-item task-title">
-                                        <h3>常見問答(Project_Question & Project_Answer)</h3>
+                                        <h3>常見問答(Project_Question & Project_Answer)(ok)</h3>
                                     </div>
                                     <div class="QAinput d-flex flex-column" id="QAinput">
                                         <multi-text v-model="ProjectQuestionAnswer">
@@ -389,6 +400,8 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-6 col-sm-6 col-md-6 d-flex flex-column justify-content-center w-100">
+                                                    <a href="#" v-on:click="deletePlan(index)" v-on:click.prevent=""
+                                                       class="text-danger small pb-5">x</a>
                                                     <div class="set-plan-description w-100">
                                                         <p>回饋方案內容</p>
                                                         <!-- <div class="w-100"> -->
@@ -447,7 +460,7 @@
                                 </div>
 
                                 <div class="project-rewardcard-preview-item addnew-rewardcard my-3">
-                                    <button id="add-plan-button" class="addnew w-100 py-2 mb-3" data-toggle="modal"
+                                    <button id="add-plan-button" class="addnew w-100 py-2" data-toggle="modal"
                                             data-target="#staticBackdrop" v-on:click.prevent="">
                                         + 新增一個回饋
                                     </button>
@@ -528,9 +541,9 @@
                                         <input class="w-100 pl-2 form-control" type="text" placeholder="請輸入身分證字號"
                                                v-model="inputData.IdentityNumber"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.IdentityNumberError}">
-                                        <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.IdentityNumberErrorMsg }}
-                                        </div>
+                                    </div>
+                                    <div class="text-danger small mt-1">
+                                        {{ inputDataCheck.IdentityNumberErrorMsg }}
                                     </div>
                                     <div class="project-identity-item">
                                         <p>
@@ -548,33 +561,53 @@
                                     </div>
                                 </div>
 
-                                <div class="contact-item project-teampicture">
-                                    <div class="project-teampicture-item task-title">
-                                        <h3>團隊圖片(ProfileImgUrl)</h3>
-                                    </div>
-                                    <div class="project-teampicture-item">
-                                        <input class="w-100 bg-white" type="file" v-on:change="getTeamPicture">
-                                        <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.TeamPictureErrorMsg }}
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 col-md-6 pt-2">
+
+                                        <div class="ProjectTeamPictureGrayBox">
+                                            <img :src="inputData.TeamPicture" alt="ProfileImgUrl"
+                                                 class="ProfileImgUrlPreviewPic w-100" id="ProfileImgUrlPreviewPic">
                                         </div>
+
                                     </div>
-                                    <div class="project-teampicture-item">
-                                        <p>此圖片為您目前的會員圖片，建議更新為適合此專案的個人或團隊照片。</p>
-                                    </div>
-                                </div>
-                                <div class="contact-item prject-teamname">
-                                    <div class="project-teamname-item task-title">
-                                        <h3>顯示名稱(MemberName)</h3>
-                                    </div>
-                                    <div class="project-teamname-item">
-                                        <input class="w-100 form-control" type="text" v-model="inputData.MemberName"
-                                               v-bind:class="{ 'is-invalid': inputDataCheck.MemberNameError}">
-                                        <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.MemberNameErrorMsg }}
+                                    <div class="col-12 col-sm-6 col-md-6 pt-2">
+
+                                        <div class="contact-item project-teampicture">
+                                            <div class="project-teampicture-item task-title">
+                                                <h3>團隊圖片(ProfileImgUrl)</h3>
+                                            </div>
+                                            <div class="project-teampicture-item">
+                                                <label class="uploadreplace btn w-100">
+                                                    <i class="fas fa-images"></i> 點我上傳
+                                                    <input class="w-100 bg-white" type="file"
+                                                           v-on:change="getTeamPicture" style="display: none;">
+                                                </label>
+
+                                                <div class="text-danger small mt-1">
+                                                    {{ inputDataCheck.TeamPictureErrorMsg }}
+                                                </div>
+                                            </div>
+                                            <div class="project-teampicture-item">
+                                                <p>此圖片為您目前的會員圖片，建議更新為適合此專案的個人或團隊照片。</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="project-teamname-item">
-                                        <p>顯示名稱將會被瀏覽者視為此計畫的執行團隊。此名稱為您目前的會員名稱，建議更新為適合此專案的個人或團隊名稱。</p>
+                                        <div class="contact-item prject-teamname">
+                                            <div class="project-teamname-item task-title">
+                                                <h3>顯示名稱(MemberName)</h3>
+                                            </div>
+                                            <div class="project-teamname-item">
+                                                <input class="w-100 form-control" type="text"
+                                                       v-model="inputData.MemberName"
+                                                       v-bind:class="{ 'is-invalid': inputDataCheck.MemberNameError}"
+                                                       ref="profilepicupload">
+                                                <div class="text-danger small mt-1">
+                                                    {{ inputDataCheck.MemberNameErrorMsg }}
+                                                </div>
+                                            </div>
+                                            <div class="project-teamname-item">
+                                                <p>顯示名稱將會被瀏覽者視為此計畫的執行團隊。此名稱為您目前的會員名稱，建議更新為適合此專案的個人或團隊名稱。</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="contact-item project-teamsummary">
@@ -611,10 +644,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="submit-group d-flex justify-content-center mb-5">
+                        <div class="submit-group d-flex justify-content-center pb-5">
                             <input class="preview-button mx-2" type="button" value="預覽專案">
                             <input class="submit-button mx-2" id="submit-button" type="button" value="提交專案"
-                                   v-bind:disable="AddVerify == false" v-on:click="submitProposal">
+                                   v-bind:disable="AddVerify == false" v-on:click="submitProposal" v-on:click.prevent="">
                         </div>
                     </form>
                 </div>
@@ -630,7 +663,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">新增方案回饋</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close"
+                                v-on:click="cancelCleanModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -639,7 +673,7 @@
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="plan-amount pb-2 pb-lg-4">
                                     <div class="plan-amount-item d-flex justify-content-between align-items-center mb-2">
-                                        <p class="small-title">回饋金額(PlanPrice)</p>
+                                        <p class="small-title">回饋金額(PlanPrice)(ok)</p>
                                         <p class="sub-text">最低金額為 $100</p>
                                     </div>
                                     <div class="plan-amount-item">
@@ -653,7 +687,7 @@
                                 </div>
                                 <div class="plan-title pb-2 pb-lg-4">
                                     <div class="plan-title-item mb-2">
-                                        <p class="small-title">回饋標題(PlanTitle)</p>
+                                        <p class="small-title">回饋標題(PlanTitle)(ok)</p>
                                     </div>
                                     <div class="plan-title-item">
                                         <input type="text" class="w-100 form-control" v-model="modalData.PlanTitle"
@@ -665,7 +699,7 @@
                                 </div>
                                 <div class="plan-quantitylimit pb-2 pb-lg-4">
                                     <div class="plan-quantitylimit-item d-flex justify-content-between align-items-center mb-2">
-                                        <p class="small-title">回饋數量限制(QuantityLimit)</p>
+                                        <p class="small-title">回饋數量限制(QuantityLimit)(ok)</p>
                                         <p class="sub-text">0即為不限量</p>
                                     </div>
                                     <div class="plan-quantitylimit-item">
@@ -680,7 +714,7 @@
 
                                 <div class="add-carcarplan">
                                     <div class="add-carcarplan-item mb-2">
-                                        <p class="small-title">加入車車商城？</p>
+                                        <p class="small-title">加入車車商城？(ok)</p>
                                     </div>
                                     <div class="add-carcarplan-item d-flex justify-content-evenly align-items-center add-carcarplan-item-box pt-lg-3">
                                         <input type="checkbox" class="mr-3" style="zoom:150%;"
@@ -711,7 +745,11 @@
                                         </p>
                                     </div>
                                     <div class="plan-img-item">
-                                        <input type="file" v-on:change="getPlanImgUrl" ref="planpicfileupload">
+                                        <label class="uploadreplace btn w-100">
+                                            <i class="fas fa-images"></i> 點我上傳
+                                            <input type="file" v-on:change="getPlanImgUrl" ref="planpicfileupload"
+                                                   style="display: none;">
+                                        </label>
                                         <div class="text-danger small mt-1">
                                             {{ modalDataCheck.PlanImgUrlErrorMsg }}
                                         </div>
@@ -726,22 +764,23 @@
                                         <p class="sub-text">回饋預計送達時程(月份擇一即可)</p>
                                     </div>
                                     <div class="plan-ship-date-item d-flex">
-                                        <select id="year" class="w-100" v-model="modalData.PlanShipDateYear"
+                                        <select id="year" class="w-100 form-control"
+                                                v-model="modalData.PlanShipDateYear"
                                                 v-on:change="onChangeYear(this.value)">
-                                            <option value="year">年份</option>
+                                            <option disabled value="year">年份</option>
                                             <option value="2021" data-year="2021">2021年</option>
                                             <option value="2022" data-year="2022">2022年</option>
                                             <option value="2023" data-year="2022">2023年</option>
                                             <option value="2024" data-year="2022">2024年</option>
                                         </select>
-                                        <select id="forward-month" class="w-100"
+                                        <select id="forward-month" class="w-100 form-control"
                                                 v-model="modalData.PlanShipDateMonth"
                                                 v-on:change="onChangeMonth(this.value)">
                                             <!-- <option v-for="option in modalData.PlanShipDateForwardMonthOptions"
                                                 v-bind:value="option.value">
                                                 {{ option.text }}
                                             </option> -->
-                                            <option value="month">月份</option>
+                                            <option disabled value="month">月份</option>
                                             <option value="1" data-month="1">1月</option>
                                             <option value="2" data-month="2">2月</option>
                                             <option value="3" data-month="3">3月</option>
@@ -771,7 +810,7 @@
                             <div class="col-12">
                                 <div class="plan-description pb-3">
                                     <div class="plan-description-item mb-2">
-                                        <p class="small-title">回饋方案內容(PlanDescription)</p>
+                                        <p class="small-title">回饋方案內容(PlanDescription)(ok)</p>
                                     </div>
                                     <div class="plan-description-item">
                                         <textarea class="w-100 form-control" v-model="modalData.PlanDescription"
@@ -792,10 +831,7 @@
                                 v-on:click="cancelCleanModal">
                             取消新增
                         </button>
-                        <button type="button" class="btn btn-primary" id="store-plan-card"
-                                v-on:click="addItem">
-                            儲存回饋
-                        </button>
+                        <button type="button" class="btn" id="store-plan-card" v-on:click="addItem">儲存回饋</button>
                     </div>
                 </div>
             </div>
@@ -813,7 +849,8 @@
             </div>
             <input type="text" v-model="item.Question" v-on:input="updateValue()" class="form-control"
                    placeholder="Q:" />
-            <input type="text" v-model="item.Answer" v-on:input="updateValue()" class="form-control" placeholder="A:" />
+            <input type="text" v-model="item.Answer" v-on:input="updateValue()" class="form-control"
+                   placeholder="A:" />
             <div class="text-danger small mt-1">
                 {{ item.QAErrorMsg }}
             </div>

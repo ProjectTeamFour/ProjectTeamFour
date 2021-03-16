@@ -86,12 +86,12 @@ Vue.component("multi-text", {
 var form = new Vue({
     el: "#myApp",
     data: {
-        AddVerify: true,
-        // isShow: true,
+        AddVerify: false,
+        AddVerifyModal: false,
         inputData: {
             ProjectName: "取個好標題",
             AmountThreshold: "",
-            Category: "",
+            Category: "專案領域",
             StartDate: "",
             EndDate: "",
             ProjectVideoUrl: "",
@@ -139,7 +139,6 @@ var form = new Vue({
             MemberWebsiteError: "",
             MemberWebsiteErrorMsg: "",
         },
-
         modalData: {
             PlanPrice: "",
             PlanTitle: "",
@@ -155,18 +154,27 @@ var form = new Vue({
         },
         modalDataCheck: {
             PlanPriceError: "",
-            PlanPriceErrorMsg: "",
+            // PlanPriceErrorMsg: "",
             PlanTitleError: "",
-            PlanTitleErrorMsg: "",
+            // PlanTitleErrorMsg: "",
             QuantityLimitError: "",
-            QuantityLimitErrorMsg: "",
+            // QuantityLimitErrorMsg: "",
             AddCarCarPlanSwitchError: "",
-            AddCarCarPlanSwitchErrorMsg: "",
+            // AddCarCarPlanSwitchErrorMsg: "",
             PlanDescriptionError: "",
-            PlanDescriptionErrorMsg: "",
-            PlanImgUrlError: "",
-            PlanImgUrlErrorMsg: "",
+            // PlanDescriptionErrorMsg: "",
+            PlanImgUrlError: true,
+            // PlanImgUrlErrorMsg: "",
             PlanShipDateError: "",
+            // PlanShipDateErrorMsg: "",
+        },
+        modalDataCheckErrorMsg: {
+            PlanPriceErrorMsg: "",
+            PlanTitleErrorMsg: "",
+            QuantityLimitErrorMsg: "",
+            AddCarCarPlanSwitchErrorMsg: "",
+            PlanDescriptionErrorMsg: "",
+            PlanImgUrlErrorMsg: "",
             PlanShipDateErrorMsg: "",
         },
         modalList: [{
@@ -188,11 +196,14 @@ var form = new Vue({
     },
     watch: {
         "inputData.ProjectName": {
-            immediate: false,
+            // immediate: false,
             handler: function () {
                 if (this.inputData.ProjectName == "") {
                     this.inputDataCheck.ProjectNameError = true;
                     this.inputDataCheck.ProjectNameErrorMsg = "專案標題不得為空";
+                } else if (this.inputData.ProjectName == "取個好標題") {
+                    this.inputDataCheck.ProjectNameError = true;
+                    this.inputDataCheck.ProjectNameErrorMsg = "請取專案標題";
                 } else if (this.inputData.ProjectName.length > 40) {
                     this.inputDataCheck.ProjectNameError = true;
                     this.inputDataCheck.ProjectNameErrorMsg = "專案標題不得超過40字";
@@ -205,9 +216,16 @@ var form = new Vue({
         },
         "inputData.AmountThreshold": {
             handler: function () {
+                noZeroFirst = /^[1-9]\d*$/;
                 if (this.inputData.AmountThreshold == "") {
                     this.inputDataCheck.AmountThresholdError = true;
                     this.inputDataCheck.AmountThresholdErrorMsg = "募資目標不得為空";
+                } else if (!noZeroFirst.test(this.inputData.AmountThreshold)) {
+                    this.inputDataCheck.AmountThresholdError = true;
+                    this.inputDataCheck.AmountThresholdErrorMsg = "第一個數字不得為0，也不得為負";
+                } else if (this.inputData.AmountThreshold < 5000) {
+                    this.inputDataCheck.AmountThresholdError = true;
+                    this.inputDataCheck.AmountThresholdErrorMsg = "最低金額為$5000";
                 } else if (this.inputData.AmountThreshold > 1000000000) {
                     this.inputDataCheck.AmountThresholdError = true;
                     this.inputDataCheck.AmountThresholdErrorMsg = "上限為10億, 特殊情況請聯絡我們!";
@@ -250,9 +268,14 @@ var form = new Vue({
         // },
         "inputData.ProjectVideoUrl": { //缺一個正則
             handler: function () {
+                let videoUrlRegexp =
+                    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (this.inputData.ProjectVideoUrl == "") {
                     this.inputDataCheck.ProjectVideoUrlError = true;
                     this.inputDataCheck.ProjectVideoUrlErrorMsg = "專案影片不得為空";
+                } else if (!videoUrlRegexp.test(this.inputData.ProjectVideoUrl)) {
+                    this.inputDataCheck.ProjectVideoUrlError = true;
+                    this.inputDataCheck.ProjectVideoUrlErrorMsg = "Url格式不對";
                 } else {
                     this.inputDataCheck.ProjectVideoUrlError = false;
                     this.inputDataCheck.ProjectVideoUrlErrorMsg = "";
@@ -274,9 +297,14 @@ var form = new Vue({
         },
         "inputData.MemberConEmail": {
             handler: function () {
+                let emailRegexp =
+                    /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
                 if (this.inputData.MemberConEmail == "") {
                     this.inputDataCheck.MemberConEmailError = true;
                     this.inputDataCheck.MemberConEmailErrorMsg = "電子郵件不能為空";
+                } else if (!emailRegexp.test(this.inputData.MemberConEmail)) {
+                    this.inputDataCheck.MemberConEmailError = true;
+                    this.inputDataCheck.MemberConEmailErrorMsg = "請符合Email格式";
                 } else {
                     this.inputDataCheck.MemberConEmailError = false;
                     this.inputDataCheck.MemberConEmailErrorMsg = "";
@@ -302,7 +330,7 @@ var form = new Vue({
         },
         "inputData.IdentityNumber": {
             handler: function () {
-                let phoneRegexp = /^09[0-9]{8}$/;
+                let phoneRegexp = /^[A-Za-z][12]\d{8}$/;
                 if (!phoneRegexp.test(this.inputData.IdentityNumber)) {
                     this.inputDataCheck.IdentityNumberError = true;
                     this.inputDataCheck.IdentityNumberErrorMsg = "身分證字號格式不對";
@@ -342,9 +370,14 @@ var form = new Vue({
         },
         "inputData.MemberWebsite": {
             handler: function () {
+                let siteRegexp =
+                    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (this.inputData.MemberWebsite == "") {
                     this.inputDataCheck.MemberWebsiteError = true;
                     this.inputDataCheck.MemberWebsiteErrorMsg = "專案網站不能為空";
+                } else if (!siteRegexp.test(this.inputData.MemberWebsite)) {
+                    this.inputDataCheck.MemberWebsiteError = true;
+                    this.inputDataCheck.MemberWebsiteErrorMsg = "網址格式不正確";
                 } else {
                     this.inputDataCheck.MemberWebsiteError = false;
                     this.inputDataCheck.MemberWebsiteErrorMsg = "";
@@ -377,72 +410,90 @@ var form = new Vue({
         //     }
         // },
         "modalData.PlanPrice": {
-            immediate: false,
+            immediate: true,
             handler: function () {
+                noZeroFirst = /^[1-9]\d*$/;
                 if (this.modalData.PlanPrice == "") {
                     this.modalDataCheck.PlanPriceError = true;
-                    this.modalDataCheck.PlanPriceErrorMsg = "回饋金額不得為空";
+                    this.modalDataCheckErrorMsg.PlanPriceErrorMsg = "回饋金額不得為空";
+                } else if (!noZeroFirst.test(this.modalData.PlanPrice)) {
+                    this.modalDataCheck.PlanPriceError = true;
+                    this.modalDataCheckErrorMsg.PlanPriceErrorMsg = "第一個數字不得為0";
+                } else if (this.modalData.PlanPrice < 100) {
+                    this.modalDataCheck.PlanPriceError = true;
+                    this.modalDataCheckErrorMsg.PlanPriceErrorMsg = "最低金額為$100";
                 } else if (this.modalData.PlanPrice > 500000) {
                     this.modalDataCheck.PlanPriceError = true;
-                    this.modalDataCheck.PlanPriceErrorMsg = "上限為50萬, 特殊情況請聯絡我們!";
+                    this.modalDataCheckErrorMsg.PlanPriceErrorMsg = "上限為50萬, 特殊情況請聯絡我們!";
                 } else {
                     this.modalDataCheck.PlanPriceError = false;
-                    this.modalDataCheck.PlanPriceErrorMsg = "";
+                    this.modalDataCheckErrorMsg.PlanPriceErrorMsg = "";
                 }
                 this.checkAddVerifyModal();
             }
         },
         "modalData.PlanTitle": {
-            immediate: false,
+            immediate: true,
             handler: function () {
                 if (this.modalData.PlanTitle == "") {
                     this.modalDataCheck.PlanTitleError = true;
-                    this.modalDataCheck.PlanTitleErrorMsg = "回饋標題不得為空";
+                    this.modalDataCheckErrorMsg.PlanTitleErrorMsg = "回饋標題不得為空";
                 } else {
                     this.modalDataCheck.PlanTitleError = false;
-                    this.modalDataCheck.PlanTitleErrorMsg = "";
+                    this.modalDataCheckErrorMsg.PlanTitleErrorMsg = "";
                 }
                 this.checkAddVerifyModal();
             }
         },
         "modalData.QuantityLimit": {
-            immediate: false,
+            immediate: true,
             handler: function () {
                 if (this.modalData.QuantityLimit == "") {
                     this.modalDataCheck.QuantityLimitError = true;
-                    this.modalDataCheck.QuantityLimitErrorMsg = "回饋數量限制不得為空";
+                    this.modalDataCheckErrorMsg.QuantityLimitErrorMsg = "回饋數量限制不得為空";
                 } else {
                     this.modalDataCheck.QuantityLimitError = false;
-                    this.modalDataCheck.QuantityLimitErrorMsg = "";
+                    this.modalDataCheckErrorMsg.QuantityLimitErrorMsg = "";
                 }
                 this.checkAddVerifyModal();
             }
         },
         "modalData.PlanShipDateYear": {
+            immediate: true,
             handler: function () {
                 if (this.modalData.PlanShipDateYear == "") {
                     this.modalDataCheck.PlanShipDateYearError = true;
-                    this.modalDataCheck.PlanShipDateYearErrorMsg = "年份不得為空";
+                    this.modalDataCheckErrorMsg.PlanShipDateYearErrorMsg = "年份不得為空";
                 } else {
                     this.modalDataCheck.PlanShipDateYearError = false;
-                    this.modalDataCheck.PlanShipDateYearErrorMsg = "";
+                    this.modalDataCheckErrorMsg.PlanShipDateYearErrorMsg = "";
                 }
                 this.checkAddVerifyModal();
             }
         },
         "modalData.PlanDescription": {
-            immediate: false,
+            immediate: true,
             handler: function () {
                 if (this.modalData.PlanDescription == "") {
                     this.modalDataCheck.PlanDescriptionError = true;
-                    this.modalDataCheck.PlanDescriptionErrorMsg = "請填寫回饋方案內容";
+                    this.modalDataCheckErrorMsg.PlanDescriptionErrorMsg = "請填寫回饋方案內容";
                 } else {
                     this.modalDataCheck.PlanDescriptionError = false;
-                    this.modalDataCheck.PlanDescriptionErrorMsg = "";
+                    this.modalDataCheckErrorMsg.PlanDescriptionErrorMsg = "";
                 }
                 this.checkAddVerifyModal();
             }
         },
+        // "modalList": {
+        //     immediate: false,
+        //     deep: true,
+        //     handler: function () {
+        //         this.modalList.forEach((el, index) => {
+        //             el.ProjectPlanId = index;
+        //             console.log(modalList[index]);
+        //         });
+        //     }
+        // }
 
     },
     methods: {
@@ -467,21 +518,39 @@ var form = new Vue({
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
+
+
+                    Swal.fire({
+                        title: '照片上傳中',
+                        html: '請耐心稍等一下',
+                        timer: 7000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        // willClose: () => {
+                        //     clearInterval(timerInterval)
+                        // }
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) { }
+                    })
+
+
                     this.inputData.TeamPicture = reader.result;
                 }
 
                 let formData = new FormData();
                 formData.append('image', e.target.files[0]); //required
                 imgSwitch = "ProfileImgUrl";
+
+
                 this.uploadImg(formData, imgSwitch);
 
 
-                console.log(pmu);
-                console.log(pcu);
-                console.log(piu);
-                console.log(priu);
-
-
+                // console.log(pmu);
+                // console.log(pcu);
+                // console.log(piu);
+                // console.log(priu);
 
 
                 this.inputDataCheck.TeamPictureError = false;
@@ -499,6 +568,25 @@ var form = new Vue({
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
+
+
+                    Swal.fire({
+                        title: '照片上傳中',
+                        html: '請耐心稍等一下',
+                        timer: 15000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        // willClose: () => {
+                        //     clearInterval(timerInterval)
+                        // }
+                    })
+                    // .then((result) => {
+                    //     if (result.dismiss === Swal.DismissReason.timer) {}
+                    // })
+
+
                     this.inputData.ProjectMainUrl = reader.result;
                 }
 
@@ -507,10 +595,10 @@ var form = new Vue({
                 imgSwitch = "ProjectMainUrl";
                 this.uploadImg(formData, imgSwitch);
 
-                console.log(pmu);
-                console.log(pcu);
-                console.log(piu);
-                console.log(priu);
+                // console.log(pmu);
+                // console.log(pcu);
+                // console.log(piu);
+                // console.log(priu);
 
 
 
@@ -531,6 +619,24 @@ var form = new Vue({
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
                     //console.log(reader.result);
+
+
+                    Swal.fire({
+                        title: '照片上傳中',
+                        html: '請耐心稍等一下',
+                        timer: 7000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        // willClose: () => {
+                        //     clearInterval(timerInterval)
+                        // }
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) { }
+                    })
+
+
                     this.inputData.ProjectCoverUrl = reader.result;
                 }
 
@@ -540,10 +646,10 @@ var form = new Vue({
                 this.uploadImg(formData, imgSwitch);
 
 
-                console.log(pmu);
-                console.log(pcu);
-                console.log(piu);
-                console.log(priu);
+                // console.log(pmu);
+                // console.log(pcu);
+                // console.log(piu);
+                // console.log(priu);
 
 
 
@@ -558,12 +664,30 @@ var form = new Vue({
             if (e.target.files[0] == undefined) {
                 this.modalData.PlanImgUrl = "";
                 this.modalDataCheck.PlanImgUrlError = true;
-                this.modalDataCheck.PlanImgUrlErrorMsg = "回饋封面不能為空";
+                this.modalDataCheckErrorMsg.PlanImgUrlErrorMsg = "回饋封面不能為空";
             } else {
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
                     //console.log(reader.result);
+
+                    Swal.fire({
+                        title: '照片上傳中',
+                        html: '請耐心稍等一下',
+                        timer: 7000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                        },
+                        // willClose: () => {
+                        //     clearInterval(timerInterval)
+                        // }
+                    })
+                    // .then((result) => {
+                    //     if (result.dismiss === Swal.DismissReason.timer) {}
+                    // })
+
+
                     this.modalData.PlanImgUrl = reader.result;
                 }
 
@@ -573,12 +697,10 @@ var form = new Vue({
                 this.uploadImg(formData, imgSwitch);
 
 
-                console.log(pmu);
-                console.log(pcu);
-                console.log(piu);
-                console.log(priu);
-
-
+                // console.log(pmu);
+                // console.log(pcu);
+                // console.log(piu);
+                // console.log(priu);
 
 
                 this.modalDataCheck.PlanImgUrlError = false;
@@ -590,90 +712,164 @@ var form = new Vue({
             for (let index in this.inputDataCheck) {
                 if (this.inputDataCheck[index] == true) {
                     this.AddVerify = false;
-                    return;
+                    // console.log(this.inputDataCheck[index]);
+                    break;
+                } else {
+                    this.AddVerify = true;
                 }
             }
-            this.AddVerify = true;
+            return;
         },
+        // checkAddVerifyModal() {
+        //     for (let index in this.modalDataCheck) {
+        //         if (this.modalDataCheck[index] == true) {
+        //             this.AddVerifyModal = false;
+        //             return;
+        //         }
+        //     }
+        //     this.AddVerifyModal = true;
+        // },
         checkAddVerifyModal() {
             for (let index in this.modalDataCheck) {
-                if (this.modalDataCheck[index] == true) {
-                    this.AddVerify = false;
-                    return;
+                if (this.modalDataCheck[index] != false) {
+                    this.AddVerifyModal = false;
+                    // console.log(this.modalDataCheck[index]);
+                    // console.log(this.AddVerifyModal);
+                    break;
+                } else {
+                    this.AddVerifyModal = true;
+                    // console.log(this.AddVerifyModal);
+                    // console.log(this.modalDataCheck[index]);
+
                 }
             }
-            this.AddVerify = true;
+            return;
         },
         onChangeYear: function (event) {
+            immediate: true;
+            if (this.modalData.PlanShipDateYear == "year") {
+                this.modalDataCheck.PlanShipDateError = true;
+                this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "請選擇年份";
+            } else {
+                this.modalDataCheck.PlanShipDateError = false;
+                this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "";
+            }
+            this.checkAddVerify();
             //console.log(this.modalData.PlanShipDateYear);
             //console.log(typeof this.modalData.PlanShipDateYear);
             this.modalData.tempYear = this.modalData.PlanShipDateYear;
         },
         onChangeMonth: function (event) {
+            immediate: true;
+            if (this.modalData.PlanShipDateMonth == "month") {
+                this.modalDataCheck.PlanShipDateError = true;
+                this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "請選擇年份";
+            } else {
+                this.modalDataCheck.PlanShipDateError = false;
+                this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "";
+            }
+            this.checkAddVerify();
             //console.log(this.modalData.PlanShipDateMonth);
             this.modalData.tempMonth = this.modalData.PlanShipDateMonth;
         },
         getCategory() {
-            //console.log(this.inputData.Category);
+            // console.log(this.AddVerify);
+
+            if (this.inputData.Category == "專案領域") {
+                this.inputDataCheck.CategoryError = true;
+                this.inputDataCheck.CategoryErrorMsg = "請選擇領域";
+            } else {
+                this.inputDataCheck.CategoryError = false;
+                this.inputDataCheck.CategoryErrorMsg = "";
+            }
+            // console.log(this.AddVerify);
+            this.checkAddVerify();
+            // console.log(this.AddVerify);
         },
+        //增加回饋方案
         addItem() {
-            let AddCarCarPlan;
-            let AddCarCarPlanSwitch;
-            let SetPlanId = "set-plan";
-            this.modalData.makePlanCount += 1;
-            //console.log(this.modalData.AddCarCarPlanSwitch);
-            if (this.modalData.AddCarCarPlanSwitch === true) {
-                AddCarCarPlanSwitch = "是";
-                AddCarCarPlan = true;
+            // this.checkAddVerifyModal();
+            if (this.AddVerifyModal === true) {
+
+                // console.log(this.AddVerifyModal);
+
+                let AddCarCarPlan;
+                let AddCarCarPlanSwitch;
+                let SetPlanId = "set-plan";
+                this.modalData.makePlanCount += 1;
+                //console.log(this.modalData.AddCarCarPlanSwitch);
+                if (this.modalData.AddCarCarPlanSwitch === true) {
+                    AddCarCarPlanSwitch = "是";
+                    AddCarCarPlan = true;
+                } else {
+                    AddCarCarPlanSwitch = "否";
+                    AddCarCarPlan = false;
+                }
+                SetPlanId += this.modalData.makePlanCount;
+
+                if (this.modalData.PlanShipDateMonth < 10) {
+                    var newMonth = "0" + this.modalData.PlanShipDateMonth;
+                } else {
+                    newMonth = this.modalData.PlanShipDateMonth;
+                }
+
+                if (this.modalData.QuantityLimit == 0) {
+                    this.modalData.QuantityLimit == 999;
+                }
+
+                this.modalList.push({
+                    ProjectPlanId: this.modalData.makePlanCount,
+                    ViewId: SetPlanId,
+                    makePlanCount: this.modalData.makePlanCount,
+                    PlanPrice: this.modalData.PlanPrice,
+                    PlanTitle: this.modalData.PlanTitle,
+                    QuantityLimit: this.modalData.QuantityLimit,
+                    AddCarCarPlanSwitch: AddCarCarPlanSwitch,
+                    AddCarCarPlan: AddCarCarPlan,
+                    PlanDescription: this.modalData.PlanDescription,
+                    PlanImgUrl: piu,
+                    PlanShipDateYear: this.modalData.tempYear,
+                    PlanShipDateMonth: this.modalData.tempMonth,
+                    PlanShipDate: this.modalData.tempYear + newMonth + "15",
+                });
+                // console.log(this.modalList);
+                this.modalData.PlanPrice = "";
+                this.modalData.PlanTitle = "";
+                this.modalData.QuantityLimit = "";
+                this.modalData.PlanDescription = "";
+                // console.log(this.$refs.planpicfileupload.value);
+                this.modalData.PlanImgUrl = "";
+                this.$refs.planpicfileupload.value = null;
+                this.modalData.AddCarCarPlanSwitch = false;
+                this.modalData.PlanShipDateYear = "year";
+                this.modalData.PlanShipDateMonth = "month";
+                this.modalData.tempYear = "";
+                this.modalData.tempMonth = "";
+                SetPlanId = "set-plan";
+
+                // console.log(this.modalList[0].ProjectPlanId);
+                // console.log(this.modalList[1].ProjectPlanId);
+                // console.log(this.modalList[0].ViewId);
+                // console.log(this.modalList[1].ViewId);
+                // console.log(this.modalList[0].makePlanCount);
+                // console.log(this.modalList[1].makePlanCount);
+
+                this.hideModal();
             } else {
-                AddCarCarPlanSwitch = "否";
-                AddCarCarPlan = false;
+
+                // console.log(this.AddVerifyModal);
+
+                Swal.fire({
+                    position: 'top',
+                    icon: 'warning',
+                    // type: 'warning',
+                    title: '親愛的，回饋方案要填完整喔！',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
             }
-            SetPlanId += this.modalData.makePlanCount;
-
-            if (this.modalData.PlanShipDateMonth < 10) {
-                var newMonth = "0" + this.modalData.PlanShipDateMonth;
-            } else {
-                newMonth = this.modalData.PlanShipDateMonth;
-            }
-
-            this.modalList.push({
-                ProjectPlanId: this.modalData.makePlanCount,
-                ViewId: SetPlanId,
-                makePlanCount: this.modalData.makePlanCount,
-                PlanPrice: this.modalData.PlanPrice,
-                PlanTitle: this.modalData.PlanTitle,
-                QuantityLimit: this.modalData.QuantityLimit,
-                AddCarCarPlanSwitch: AddCarCarPlanSwitch,
-                AddCarCarPlan: AddCarCarPlan,
-                PlanDescription: this.modalData.PlanDescription,
-                PlanImgUrl: piu,
-                PlanShipDateYear: this.modalData.tempYear,
-                PlanShipDateMonth: this.modalData.tempMonth,
-                PlanShipDate: this.modalData.tempYear + newMonth + "15",
-            });
-            // console.log(this.modalList);
-            this.modalData.PlanPrice = "";
-            this.modalData.PlanTitle = "";
-            this.modalData.QuantityLimit = "";
-            this.modalData.PlanDescription = "";
-            // console.log(this.$refs.planpicfileupload.value);
-            this.modalData.PlanImgUrl = "";
-            this.$refs.planpicfileupload.value = null;
-            // document.querySelector(".gray-block").innerHTML = `<img :src="modalData.PlanImgUrl" alt="planImgUrl" width="250px" height="187.5px" class="planPreviewPic">`;
-            this.modalData.AddCarCarPlanSwitch = false;
-            this.modalData.PlanShipDateYear = "year";
-            this.modalData.PlanShipDateMonth = "month";
-            this.modalData.tempYear = "";
-            this.modalData.tempMonth = "";
-            SetPlanId = "set-plan";
-
-
-
-            console.log(this.modalList[0].PlanShipDate);
-            console.log(this.modalList[1].PlanShipDate);
-            //console.log(this.modalList[2].PlanShipDate);
         },
+        //擦擦和取消重置表單
         cancelCleanModal() {
             this.modalData.PlanPrice = "";
             this.modalData.PlanTitle = "";
@@ -682,7 +878,6 @@ var form = new Vue({
             // console.log(this.$refs.planpicfileupload.value);
             this.modalData.PlanImgUrl = "";
             this.$refs.planpicfileupload.value = null;
-            // document.querySelector(".gray-block").innerHTML = `<img :src="modalData.PlanImgUrl" alt="planImgUrl" width="250px" height="187.5px" class="planPreviewPic">`;
             this.modalData.AddCarCarPlanSwitch = false;
             this.modalData.PlanShipDateYear = "year";
             this.modalData.PlanShipDateMonth = "month";
@@ -690,115 +885,238 @@ var form = new Vue({
             this.modalData.tempMonth = "";
             SetPlanId = "set-plan";
         },
+        //最後提交
         submitProposal() {
+            // this.checkAddVerify();
+
+            // for (i = 1; i <= editorImgId; i++) {
+            //     document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
+            // }
+
+            // this.checkAddVerify();
 
 
-            for (i = 1; i <= editorImgId; i++) {
-                document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
-            }
+            if (this.AddVerify == true) {
+
+                // console.log(this.AddVerify);
+
+                this.inputData.QuillHtml = splitJoin;
+                // console.log(this.inputData.QuillHtml);
+
+                this.modalList.shift(); //移掉陣列第一個空的
+                this.ProjectQuestionAnswer.shift(); //也是
+
+                // console.log(this.inputData.StartDate.split("-").join(""));
+                // console.log(this.inputData.EndDate.split("-").join(""));
+
+                var totalQuestion = "";
+                var totalAnswer = "";
+
+                this.ProjectQuestionAnswer.forEach(x => {
+                    totalQuestion = totalQuestion + "," + x.Question;
+                    totalAnswer = totalAnswer + "," + x.Answer;
+                });
+                totalQuestion = totalQuestion.substr(1);
+                totalAnswer = totalAnswer.substr(1);
 
 
-            this.inputData.QuillHtml = splitJoin;
-            console.log(this.inputData.QuillHtml);
+                // console.log(pmu);
+                // console.log(pcu);
+                // console.log(piu);
+                // console.log(priu);
 
-            this.modalList.shift(); //移掉陣列第一個空的
-            this.ProjectQuestionAnswer.shift(); //也是
+                var date = new Date();
 
-            console.log(this.modalList[0].PlanShipDate);
-            console.log(this.inputData.StartDate.split("-").join(""));
-            console.log(this.inputData.EndDate.split("-").join(""));
-            //console.log(this.modalList[1].PlanShipDate);
-            //console.log(this.modalList[2].PlanShipDate);
-
-            var totalQuestion = "";
-            var totalAnswer = "";
-
-            this.ProjectQuestionAnswer.forEach(x => {
-                totalQuestion = totalQuestion + "," + x.Question;
-                totalAnswer = totalAnswer + "," + x.Answer;
-            });
-            totalQuestion = totalQuestion.substr(1);
-            totalAnswer = totalAnswer.substr(1);
-
-
-            console.log(pmu);
-            console.log(pcu);
-            console.log(piu);
-            console.log(priu);
-
-
-            var date = new Date();
-
-
-
-
-            var UpLoadData = {
-                "ProjectName": this.inputData.ProjectName,
-                "AmountThreshold": this.inputData.AmountThreshold,
-                "Category": this.inputData.Category,
-                "StartDate": this.inputData.StartDate.split("-").join(""),
-                "EndDate": this.inputData.EndDate.split("-").join(""),
-                "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
-                "ProjectMainUrl": pmu,
-                "ProjectCoverUrl": pcu,
-                "ProjectPrincipal": this.inputData.ProjectPrincipal,
-                "MemberConEmail": this.inputData.MemberConEmail,
-                "MemberPhone": this.inputData.MemberPhone,
-                "IdentityNumber": this.inputData.IdentityNumber,
-                "ProfileImgUrl": priu,
-                "CreatorName": this.inputData.MemberName,
-                "AboutMe": this.inputData.AboutMe,
-                "MemberWebsite": this.inputData.MemberWebsite,
-                "ProjectImgUrl": this.inputData.QuillHtml, //富文本
-                "PlanObject": this.modalList, //陣列包物件
-                "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
-                "Project_Question": totalQuestion,
-                "Project_Answer": totalAnswer,
-                "CreatedDate": date.toJSON(),
-                "SubmittedDate": date.toJSON(),
-                "LastEditTime": date.toJSON(),
-                "ApprovingStatus": 1,
-            }
-            // console.log(this.ProjectQuestionAnswer);
-
-            $.ajax({
-                url: "/api/projectsubmission/receivedata",
-                type: "post",
-                //contentType: "application/json; charset=utf-8",
-                data: UpLoadData,
-                success: function (response) {
-                    alert(response);
+                var UpLoadData = {
+                    "ProjectName": this.inputData.ProjectName,
+                    "AmountThreshold": this.inputData.AmountThreshold,
+                    "Category": this.inputData.Category,
+                    "StartDate": this.inputData.StartDate.split("-").join(""),
+                    "EndDate": this.inputData.EndDate.split("-").join(""),
+                    "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
+                    "ProjectMainUrl": pmu,
+                    "ProjectCoverUrl": pcu,
+                    "ProjectPrincipal": this.inputData.ProjectPrincipal,
+                    "MemberConEmail": this.inputData.MemberConEmail,
+                    "MemberPhone": this.inputData.MemberPhone,
+                    "IdentityNumber": this.inputData.IdentityNumber,
+                    "ProfileImgUrl": priu,
+                    "CreatorName": this.inputData.MemberName,
+                    "AboutMe": this.inputData.AboutMe,
+                    "MemberWebsite": this.inputData.MemberWebsite,
+                    "ProjectImgUrl": this.inputData.QuillHtml, //富文本
+                    "PlanObject": this.modalList, //陣列包物件
+                    "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
+                    "Project_Question": totalQuestion,
+                    "Project_Answer": totalAnswer,
+                    "CreatedDate": date.toJSON(),
+                    "SubmittedDate": date.toJSON(),
+                    "LastEditTime": date.toJSON(),
+                    "ApprovingStatus": 1,
+                    "ProjectStatus": 0,
                 }
-            });
-        },
+                // console.log(this.ProjectQuestionAnswer);
 
-        uploadImg(formData, imgSwitch) { //479-481行
-
-            $.ajax({
-                url: "/api/projectsubmission/uploadfiles",
-                type: "post",
-                //contentType: "application/json; charset=utf-8",
-                data: formData,
-                method: 'post',
-                processData: false,
-                contentType: false,
-                success: function (response) {
-
-                    console.log(response);
-
-                    if (imgSwitch == "ProjectMainUrl") {
-                        pmu = response;
-                    } else if (imgSwitch == "ProjectCoverUrl") {
-                        pcu = response;
-                    } else if (imgSwitch == "PlanImgUrl") {
-                        piu = response;
-                    } else {
-                        priu = response;
+                $.ajax({
+                    url: "/api/projectsubmission/receivedata",
+                    type: "post",
+                    //contentType: "application/json; charset=utf-8",
+                    data: UpLoadData,
+                    success: function (response) {
+                        alert(response);
                     }
+                });
 
-                }
-            });
+            } else {
+
+                // console.log(this.AddVerify);
+
+                Swal.fire({
+                    position: 'top',
+                    icon: 'warning',
+                    // type: 'warning',
+                    title: '親愛的，專案提交要填完整喔！',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+            }
+
+
         },
+        //富文本以外的上傳
+        uploadImg(formData, imgSwitch) { //479-481行
+            // $.ajax({
+            //     url: "/api/projectsubmission/uploadfiles",
+            //     type: "post",
+            //     //contentType: "application/json; charset=utf-8",
+            //     data: formData,
+            //     method: 'post',
+            //     processData: false,
+            //     contentType: false,
+            //     success: function (response) {
+
+            //         console.log(response);
+
+            //         if (imgSwitch == "ProjectMainUrl") {
+            //             pmu = response;
+            //         } else if (imgSwitch == "ProjectCoverUrl") {
+            //             pcu = response;
+            //         } else if (imgSwitch == "PlanImgUrl") {
+            //             piu = response;
+            //         } else {
+            //             priu = response;
+            //         }
+
+            //         //成功就跳swal
+            //         Swal.fire({
+            //             position: 'top',
+            //             icon: 'success',
+            //             title: '成功',
+            //             showConfirmButton: false,
+            //             timer: 1500
+            //         });
+
+            //     },
+            //     error: function () {
+            //         console.log(imgSwitch);
+
+
+
+            //         //失敗就跳swal
+            //         Swal.fire({
+            //             position: 'top',
+            //             icon: 'error',
+            //             title: '上傳失敗',
+            //             showConfirmButton: false,
+            //             timer: 1500
+            //         });
+
+            //     }
+            // });
+
+            //axios方法
+            axios({
+                method: 'POST',
+                url: 'https://api.imgur.com/3/image',
+                data: formData,
+                headers: {
+                    Authorization: "Bearer " + token,
+
+                    //放置剛剛申請的Client-ID
+                },
+                mimeType: 'multipart/form-data'
+            }).then(res => {
+                console.log(res)
+                console.log(res.data.data.link);
+
+                if (imgSwitch == "ProjectMainUrl") {
+                    pmu = res.data.data.link;
+                } else if (imgSwitch == "ProjectCoverUrl") {
+                    pcu = res.data.data.link;
+                } else if (imgSwitch == "PlanImgUrl") {
+                    piu = res.data.data.link;
+                } else {
+                    priu = res.data.data.link;
+                }
+
+                //成功就跳swal
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: '成功',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+
+            }).catch(e => {
+                console.log(e)
+
+                //失敗就跳swal
+                Swal.fire({
+                    position: 'top',
+                    icon: 'error',
+                    title: '上傳失敗',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            })
+        },
+        //點儲存讓 modal 消失
+        hideModal() {
+            $(".modal").modal("hide");
+        },
+        //刪除Plan重新刷index
+        deletePlan(index) {
+            this.modalList.splice(index, 1);
+            this.modalList.forEach((el, index) => {
+                el.ProjectPlanId = index;
+                el.makePlanCount = index;
+                el.ViewId = "set-plan" + index;
+                // console.log(el.ProjectPlanId);
+                // console.log(el.makePlanCount);
+                // console.log(el.ViewId);
+            });
+
+        },
+        //處理 input value reset
+        // inputValueReset(imgSwitch) {
+        //     if (imgSwitch == "ProjectMainUrl") {
+        //         document.querySelector("#ProjectMainUrlPreviewPic").src = "";
+        //         this.$refs.projectmainpicfileupload = null;
+        //     } else if (imgSwitch == "ProjectCoverUrl") {
+        //         document.querySelector("#ProjectCoverUrlPreviewPic").src = "";
+        //         this.$refs.projectcoverpicfileupload.value = null;
+        //     } else if (imgSwitch == "PlanImgUrl") {
+        //         document.querySelector("#planPreviewPic").src = "";
+        //         this.$refs.planpicfileupload.value = null;
+        //     } else {
+        //         this.inputData.ProfileImgUrl = null;
+        //         this.$refs.profilepicupload.value = null;
+        //     }
+        // },
     }
 });
 
@@ -874,14 +1192,42 @@ function selectLocalImage() {
         // file type is only image.
         if (/^image\//.test(file.type)) {
 
-            //上傳的時候跳swal
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: '上傳中..',
-                showConfirmButton: false,
-                timer: 3000
-            });
+                title: '照片上傳中',
+                html: '請耐心稍等一下',
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    // timerInterval = setInterval(() => {
+                    //     const content = Swal.getContent()
+                    //     if (content) {
+                    //         const b = content.querySelector('b')
+                    //         if (b) {
+                    //             b.textContent = Swal.getTimerLeft()
+                    //         }
+                    //     }
+                    // }, 100)
+                },
+                // willClose: () => {
+                //     clearInterval(timerInterval)
+                // }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    // console.log('I was closed by the timer')
+                }
+            })
+
+
+            //上傳的時候跳swal
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'success',
+            //     title: '上傳中..',
+            //     showConfirmButton: false,
+            //     timer: 6000
+            // });
 
             //在這邊再去上傳server
             this.saveToServer(file, "image");
@@ -890,7 +1236,7 @@ function selectLocalImage() {
 
             //上傳的時候跳swal
             Swal.fire({
-                position: 'top-end',
+                position: 'top',
                 icon: 'warning',
                 // type: 'warning',
                 title: '親愛的，只能上傳圖片喔',
@@ -913,7 +1259,6 @@ function saveToServer(file) {
     var title = name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
 
 
-
     let form = new FormData();
     form.append('image', file);
     form.append('title', title);
@@ -921,25 +1266,6 @@ function saveToServer(file) {
     form.append('album', album); // 有要指定的相簿就加這行
 
     console.log(form);
-
-
-
-    //axios({
-    //    method: 'POST',
-    //    url: 'https://api.imgur.com/3/image',
-    //    data: form,
-    //    headers: {
-    //        Authorization: "Bearer " + token,
-
-    //        //放置你剛剛申請的Client-ID
-    //    },
-    //    mimeType: 'multipart/form-data'
-    //}).then(res => {
-    //    console.log(res)
-    //}).catch(e => {
-    //    console.log(e)
-    //})
-
 
     $.ajax({
         async: true,
@@ -964,15 +1290,15 @@ function saveToServer(file) {
             console.log(imgurArray);
 
             //塞 imgurUrl
-            //var img = document.getElementById(`editorImgId${editorImgId}`);
-            //img.setAttribute("data-imgururl", url);
-
             var img = document.getElementById(`editorImgId${editorImgId}`);
+            img.setAttribute("data-imgururl", url);
             img.src = url;
+            const range = quill.getSelection();
+            quill.setSelection(range.index + 2);
 
             //成功就跳swal
             Swal.fire({
-                position: 'top-end',
+                position: 'top',
                 icon: 'success',
                 title: '成功',
                 showConfirmButton: false,
@@ -985,55 +1311,83 @@ function saveToServer(file) {
 
             //失敗就跳swal
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
+                position: 'top',
+                icon: 'error',
                 title: '上傳失敗',
                 showConfirmButton: false,
                 timer: 1500
             });
         }
     })
+
+
+    //axios方法
+    // axios({
+    //     method: 'POST',
+    //     url: 'https://api.imgur.com/3/image',
+    //     data: form,
+    //     headers: {
+    //         Authorization: "Bearer " + token,
+
+    //         //放置你剛剛申請的Client-ID
+    //     },
+    //     mimeType: 'multipart/form-data'
+    // }).then(res => {
+    //     console.log(res)
+    // }).catch(e => {
+    //     console.log(e)
+    // })
+
+
+
+
+    // const config = {
+    //     type: "post",
+    //     url: "https://api.imgur.com/3/image",
+    //     data: form,
+    //     headers: {
+    //         Authorization: 'Bearer ' + token,
+    //         // contentType: 'application/x-www-form-urlencoded',
+    //         "Content-type": "multipart/form-data",
+    //         "Access-Control-Allow-Origin": "*",
+    //         'Access-Control-Allow-Methods': "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    //         "Access-Control-Allow-Credentials": "true",
+    //         "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+    //     },
+    // }
+    // axios.request(config)
+    //     .then(function (response) {
+    //         console.log(response.data[0]);
+    //     })
+    //     .catch((error) => {
+    //         console.log("失敗");
+    //     })
+
+
+    //------------------------------------------------
+
+    // const headers = {
+    //     async: true,
+    //     crossDomain: true,
+    //     processData: false,
+    //     contentType: 'application/x-www-form-urlencoded',
+    //     Authorization: 'Bearer ' + token,
+
+    //     // mimeType: 'multipart/form-data',
+    // }
+    // // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+
+    // axios.post('https://api.imgur.com/3/image', form, {
+    //     headers: headers
+    // })
+    // .then((response) => {
+    //     console.log(response.data[0]);
+    // })
+    // .catch((error) => {
+    //     console.log("失敗");
+    // })
+
+
 }
 
 //---------------------------------------------//
-
-
-
-//-------彈出 modal 製作-------//
-
-//點下新增一個回饋
-var addPlanButton = document.querySelector("#add-plan-button");
-addPlanButton.addEventListener("click",
-    function (e) {
-        e.preventDefault(); //取消預設跳轉
-    });
-
-var submitButton = document.querySelector("#submit-button");
-submitButton.addEventListener("click",
-    function (e) {
-        e.preventDefault();
-    })
-
-
-//每次只要 modal消失都讓它為空表單
-// var originalModal = $('.modal-body').clone(); //先clone一個空的
-// $(".modal").on("hidden.bs.modal", function () {
-//     $(".modal-body").html("");
-//     var myClone = originalModal.clone();
-//     $('.modal-body').append(myClone); //把空的蓋上去
-// });
-
-//製作plan卡片
-var storePlanCard = document.querySelector("#store-plan-card");
-storePlanCard.addEventListener("click",
-    function (e) {
-
-        // makePlan();
-        hideModal();
-    });
-
-
-//點儲存讓 modal 消失
-function hideModal() {
-    $(".modal").modal("hide");
-}
