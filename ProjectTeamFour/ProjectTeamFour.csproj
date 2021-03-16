@@ -192,7 +192,6 @@
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
-    <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
     <Compile Include="Migrations\202102091059315_m5.cs" />
@@ -344,7 +343,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\MyProjectsViewModel.cs" />
+    <Compile Include="ViewModels\ForMemberView\MyProjectsViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -421,7 +420,7 @@
     <Content Include="Views\UserInfo\Message.cshtml" />
     <Content Include="Views\UserInfo\New.cshtml" />
     <Content Include="Views\UserInfo\Sponser.cshtml" />
-    <Content Include="Views\UserInfo\Submit.cshtml" />
+    <Content Include="Views\UserInfo\Myprojects.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />

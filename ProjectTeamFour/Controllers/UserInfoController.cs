@@ -43,9 +43,12 @@ namespace ProjectTeamFour.Controllers
 			return View(model);
 		}
 
-		public ActionResult Submit()	//專案提交紀錄
+		public ActionResult Myprojects()	//專案提交紀錄
 		{
 			var model = (MemberViewModel)Session["Member"];
+
+
+
 			return View(model);
 		}
 

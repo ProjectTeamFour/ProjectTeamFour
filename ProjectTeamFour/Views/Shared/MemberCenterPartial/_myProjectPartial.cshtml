@@ -1,7 +1,14 @@
-﻿@{
+﻿@*@model IEnumerable<MyProjectsViewModel>*@
+@model IEnumerable<MyProjectsViewModel>
+
+@{
     var vm = (MemberViewModel)Session["Member"];
+    string approvingstatus = (string)ViewData["ApprovingStatus"];
+    string id = (string)ViewData["Id"];
 }
 
+@foreach (var item in Model)
+{
 <div class="container">
     <div class="case-doing-pic">
         <img src="https://picsum.photos/800/600/?random=1">
@@ -10,28 +17,29 @@
         <div class="case-doing-name">
             <h4>
                 專案名稱:
-                <span>1</span>
+                <span>@Html.DisplayFor(modelItem => item.ProjectName)</span>
             </h4>
         </div>
         <div class="case-doing-money">
             <h4>
                 目標金額:
-                <span>$5000</span>
+                <span>$ @Html.DisplayFor(modelItem =>item.GoalMoney)</span>
             </h4>
         </div>
         <div class="case-doing-creat">
             <h4>
-                <span>創建日期:2021/01/28</span>
+                <span>創建日期:@Html.DisplayFor(modelItem => item.CreatedDate)</span>
             </h4>
         </div>
         <div class="case-doing-givedate">
             <h4>
                 <span>提交日期:尚未提交</span>
+                <span>提交日期:@Html.DisplayFor(modelItem => item.SubmitStatus)</span>
             </h4>
         </div>
         <div class="case-doing-fix">
             <h4>
-                <span>上次修改日期:2021/01/29</span>
+                <span>上次修改日期:@Html.DisplayFor(modelItem => item.LastEditTime)</span>
             </h4>
         </div>
     </div>
@@ -40,3 +48,7 @@
         <button id="btn-view">預覽</button>
     </div>
 </div>
+}
+@section endJs{
+    <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
+}
