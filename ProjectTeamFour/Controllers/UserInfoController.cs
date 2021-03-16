@@ -19,23 +19,37 @@ namespace ProjectTeamFour.Controllers
 	{
 		private readonly MemberService _memberService;
 		//private readonly BackingService _backingService;
-		private readonly ProjectsService _ProjectsService;
+		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
 		private readonly BackingService _backingService;
 
-        public UserInfoController()
+	 //	int result = _MemberService.ReturnLoginnerId();
+
+	 //           if (result == 0)
+	 //           {
+	 //               return RedirectToAction("Login", "Member");
+	 //}
+
+	public UserInfoController()
         {
             _memberService = new MemberService();
-            //_memberSettingService = new MemberSettingService();
-        }
+			_myProjectsService = new MyProjectsService();
+			_commentService = new CommentService();
+			//_memberSettingService = new MemberSettingService();
+		}
 
 		// GET: PersonInfo
 		//[CustomAuthorize(flagNum = 1)]
-		public ActionResult Index()	//公開的個人資料頁面
+		public ActionResult Member(int Id)	//公開的個人資料頁面
 		{
-			var model = (MemberViewModel)Session["Member"];			
-			return View(model);
+			//var model = (MemberViewModel)Session["Member"];
+
+			var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+			//return View(memberInfo);
+			//return RedirectToAction("Index");
+			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
+
 
 		public ActionResult Sponser() //贊助紀錄
 		{
@@ -46,13 +60,22 @@ namespace ProjectTeamFour.Controllers
 		public ActionResult Myprojects()	//專案提交紀錄
 		{
 			var model = (MemberViewModel)Session["Member"];
+			if (model != null)
+			{
 
 
+				//根據專案的提交與審核狀態進行分類
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
 
-			return View(model);
+				return View(model);
+			}
+            else
+            {
+				return RedirectToAction("Login", "Member");
+			}
 		}
 
-		public ActionResult Message()		//第三方連動帳號
+		public ActionResult Message()		//聯絡訊息
 		{
 			var model = (MemberViewModel)Session["Member"];
 			return View(model);
@@ -66,6 +89,7 @@ namespace ProjectTeamFour.Controllers
 
 		public ActionResult Edit(int id)	//修改個人資料
 		{
+			var model = (MemberViewModel)Session["Member"];
 			var memberService = new MemberService();
 
 			MemberViewModel memberVM = new MemberViewModel();
@@ -76,33 +100,12 @@ namespace ProjectTeamFour.Controllers
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
 
-		//public ActionResult Edit(int? id)
-		//{
-		//    if (id == null)
-		//    {
-		//        return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-		//    }
-		//}
-
-		//[HttpPost]
-		//[ValidateAntiForgeryToken]
-		//public ActionResult Edit([Bind(Include = "MemberId,MemberName,MemberTeamName,MemberAccount,MemberPassword,MemberAddress,MemberPhone,MemberRegEmail,MemberConEmail,Gender,MemberBirth,AboutMe,ProfileImgUrl,MemberWebsite,MemberMessage,Permission")] Member member)
-		//{
-		//    if (ModelState.IsValid)
-		//    {
-		//        db.Entry(member).State = System.Data.Entity.EntityState.Modified;
-		//        db.SaveChanges();
-		//        return RedirectToAction("Index");
-		//    }
-		//    return View(member);
-		//}
-
 		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
 		{
 			return View();
 		}
 
-		public ActionResult Setting()	//通知設定
+		public ActionResult Notifactions()	//通知設定
 		{
 			return View();
 		}
