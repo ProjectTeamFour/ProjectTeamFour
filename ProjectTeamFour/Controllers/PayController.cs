@@ -43,12 +43,12 @@ namespace ProjectTeamFour.Controllers
         
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
-            var cart = (CartItemListViewModel)Session["Cart"];
+            
             //var o = _PayService.CreateANewMemberData(oVM);
             var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
-            var result = _PayService.ConnectECPay(orderId,memberId);
-            ViewData["result"] = result;                
+            //var result = _PayService.ConnectECPay(orderId,memberId);
+            //ViewData["result"] = result;                
             
             return View();
         }
