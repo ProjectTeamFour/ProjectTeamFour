@@ -39,6 +39,8 @@
 
     .button-group {
         width: 15rem;
+        text-align:center;
+        font-size:30px;
     }
 
     .news .col-md-9 {

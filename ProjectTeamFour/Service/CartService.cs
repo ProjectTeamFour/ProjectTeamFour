@@ -83,6 +83,7 @@ namespace ProjectTeamFour.Service
         //購物車新增一筆方案
         public CarCarPlanViewModel CreateANewCart(CarCarPlanViewModel CarCarPlanVM)
         {
+           
             var cart = new CarCarPlanViewModel
             {
                 CartId = 1,
@@ -136,6 +137,13 @@ namespace ProjectTeamFour.Service
                 for(int i=0;i<QuantityArray.Quantity.Count;i++)
                 {
                     cartItems.CartItems[i].Quantity = QuantityArray.Quantity[i];
+                    
+                     if (cartItems.CartItems[i].Quantity> cartItems.CartItems[i].QuantityLimit)
+                    {
+                        cartItems.CartItems[i].Quantity = cartItems.CartItems[i].QuantityLimit;
+                    }
+                    
+                    
                 }
                 cartItems.Comment = QuantityArray.Comment;
                 QuantityArray.Quantity.Clear();
