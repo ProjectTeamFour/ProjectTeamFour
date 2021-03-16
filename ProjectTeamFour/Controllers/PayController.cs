@@ -82,6 +82,9 @@ namespace ProjectTeamFour.Controllers
             string RtnCode = form["RtnCode"];
             string MerchantTradeNo = form["MerchantTradeNo"];
             string OrderId = form["CustomField1"];
+            string memberId = form["CustomField2"];
+            //var member = (MemberViewModel)Session["Member"];
+
             TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {

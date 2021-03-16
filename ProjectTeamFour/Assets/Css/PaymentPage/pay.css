@@ -241,10 +241,10 @@ label {
     font-size: 1.2rem;
 }
 
-.btn-pay {
+#Save2Sever {
     border: none;
     font-size: 1.5rem;
-/*    width: 50%;*/
+    /*    width: 50%;*/
     display: flex;
     justify-content: center;
     margin: 1rem auto;
@@ -253,6 +253,9 @@ label {
     background-color: #F8414A;
 }
 
+#Save2Sever :hover{
+    text-decoration:none;
+}
 
 #transJSON{
     display:none;

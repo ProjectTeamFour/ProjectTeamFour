@@ -43,7 +43,8 @@
                     TelErrorMsg: '',
                     EmailError: '',
                     EmailErrorMsg: '',
-                }
+                },
+                isdisabled:true
             },
             watch: {
                 'inputData.Name': function () {
@@ -56,7 +57,7 @@
                         this.inputDataCheck.NameError = false;
                         this.inputDataCheck.NameErrorMsg = '';
                     }
-                    this.checkAddVerify();
+                    @*this.isButtonDisabled();*@
                 },
                 'inputData.Address': function () {
                     let addressRegexp = /^[0-9]{3}/;  //開頭為數字
@@ -69,7 +70,7 @@
                         this.inputDataCheck.AddressError = false;
                         this.inputDataCheck.AddressErrorMsg = '';
                     }
-                    this.checkAddVerify();
+                    @*this.isButtonDisabled();*@
                 },
                 'inputData.Tel': function () {
                     let telRegexp = /^09/; //開頭為09
@@ -91,7 +92,7 @@
                         this.inputDataCheck.TelError = false;
                         this.inputDataCheck.TelErrorMsg = '';
                     }
-                    this.checkAddVerify();
+                    @*this.isButtonDisabled();*@
                 },
                 'inputData.Email': function () {
                     let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
@@ -103,9 +104,22 @@
                         this.inputDataCheck.EmailError = false;
                         this.inputDataCheck.EmailErrorMsg = '';
                     }
-                    this.checkAddVerify();
+                    @*this.isButtonDisabled();*@
                 }
 
+            },    
+            computed: {
+                isButtonDisabled() {                    
+                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
+                            @*this.AddVerify = false; //不能按*@
+                        return this.isdisabled = true
+                    }
+                    else {
+                        return this.isdisabled = false
+                    }
+                    
+                    @*this.AddVerify = true; //可以按*@
+                }
             },
             methods: {
                 checkAddVerify() {
@@ -194,7 +208,7 @@ function Save2Server() {
 </div>
 
 
-<div class="body-reverse">
+<div id="app" class="body-reverse">
     <div class="wrap wrap-outside col-lg-5">
         <section class="pay-col">
             <div class="row">
@@ -239,24 +253,24 @@ function Save2Server() {
                         <h3 id="delivery">寄送資訊</h3>
                     </div>
                     <div class="content-deliver">
-                        <div id="app" class="inside content-deliver-detail">
+                        <div  class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
+                            <input type="text" v-model="inputData.Name" @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
                             <div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
                             </div>
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>" id="orderAddress">
+                            <input type="text" v-model="inputData.Address"  @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>" id="orderAddress">
                             <div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
+                            <input type="text" v-model="inputData.Tel" @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
                             <div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
+                            <input type="text" v-model="inputData.Email" @*v-validate="'required|email'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
                             <div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
                             </div>
@@ -310,10 +324,8 @@ function Save2Server() {
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay">                        
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()">儲存寄送資料
-                    </a>
-                    
-                    <a href="/Pay/test" class="btn-pay">確認購買</a>
+                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  :disabled="isButtonDisabled" >
+                    </a>                       
                 </div>
             </div>
         </section>

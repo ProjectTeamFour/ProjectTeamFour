@@ -41,7 +41,7 @@ namespace ProjectTeamFour.Service
                 MemberName = member.MemberName,
                 MemberAddress = member.MemberAddress,
                 MemberPhone = member.MemberPhone,
-                MemberConEmail = member.MemberConEmail,
+                MemberConEmail = member.MemberRegEmail,
                 MemberId = member.MemberId,
                 CartItems = new List<CarCarPlanViewModel>() //先給他一個空的集合 讓viewmodel知道我需要這筆資料
             };
