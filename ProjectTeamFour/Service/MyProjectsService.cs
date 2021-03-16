@@ -15,8 +15,6 @@ namespace ProjectTeamFour.Service
     //    Approval,
 
     //}
-
-
     public class MyProjectsService
     {
         private readonly DbContext _ctx;
@@ -28,32 +26,30 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public MyProjectListViewModel GetProjectsbyMemberId(int memberId)
+        public List<MyProjectViewModel> GetProjectsbyMemberId(int memberId)
         {
-            var myProjects = new MyProjectListViewModel
-            {
-                MyProjects = new List<MyProjectViewModel>()
-            };
-            Project entity = _repository.GetAll<Project>().FirstOrDefault(m => m.MemberId == memberId);
-            if (entity != (Project)default)
+            var myProjectsListVM = new List<MyProjectViewModel>();
+            
+            var ProjectItems = _repository.GetAll<Project>().Where(m => m.MemberId == memberId);
+
+            foreach (Project entity in ProjectItems)
             {
                 var myProjectVM = new MyProjectViewModel
                 {
                     ProjectId = entity.ProjectId,
                     ProjectName = entity.ProjectName,
+                    GoalMoney = entity.AmountThreshold,
                     CreatedDate = entity.CreatedDate,
-                    SubmittedDate = entity.SubmittedDate,
                     LastEditTime = entity.LastEditTime,
+                    SubmittedDate = entity.SubmittedDate,
                     ApprovingStatus = entity.ApprovingStatus,
-                    GoalMoney=entity.AmountThreshold
+
+                    ProjectStatus = entity.ProjectStatus,
+
                 };
-                myProjects.MyProjects.Add(myProjectVM);
+                myProjectsListVM.Add(myProjectVM);
             }
-            else
-            {
-                return null;
-            }
-            return myProjects;
+            return myProjectsListVM;
         }
         //0:draft/1:approving/2:ongoing/3:ended
         //public  List<MyProjectViewModel> SortMyProjectsbyStatus(int approvingStatus)

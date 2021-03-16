@@ -338,7 +338,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\ForMemberView\MyProjectsViewModel.cs" />
+    <Compile Include="ViewModels\MyProjectsViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -2207,7 +2207,7 @@
     <Content Include="Views\pay\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\StartAProject\Index.cshtml" />
-    <Content Include="Views\UserInfo\User.cshtml" />
+    <Content Include="Views\UserInfo\Member.cshtml" />
     <Content Include="Views\StartAProject\SubmissionProcess.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Indextest.cshtml" />
@@ -2229,7 +2229,6 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
-    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\UserInfo\Account.cshtml" />
     <Content Include="Views\UserInfo\Edit.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
@@ -2257,6 +2256,7 @@
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
+    <Folder Include="ViewModels\ForMemberView\" />
     <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>

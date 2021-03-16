@@ -99,5 +99,14 @@
 @section endJs{
 
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
+    <script>
+        $('#birthday1').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '-100:+0',
+            maxDate: 0,
+            dateFormat:'yyyy-mm-dd'
 
+        });
+    </script>
 }

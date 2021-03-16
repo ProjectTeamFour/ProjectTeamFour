@@ -1,7 +1,7 @@
-﻿@*@model ProjectTeamFour.ViewModels.MemberViewModel*@
-@{
+﻿@model ProjectTeamFour.ViewModels.MemberViewModel
+@*@{
     var vm = (MemberViewModel)Session["Member"];
-}
+}*@
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     <div class="wrap">
         <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
             <li class="nav-item-tag" role="presentation">
-                <a class="nav-links active" id="pills-home-tab" data-toggle="pill" href="~/UserInfo/User/@vm.MemberId" role="tab" aria-controls="pills-home" aria-selected="true">個人資料</a>
+                <a class="nav-links active" id="pills-home-tab" data-toggle="pill" href="~/UserInfo/Member/@Model.MemberId" role="tab" aria-controls="pills-home" aria-selected="true">個人資料</a>
             </li>
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="~/UserInfo/Sponser" role="tab" aria-controls="pills-backings" aria-selected="false">贊助紀錄</a>

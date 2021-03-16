@@ -1,6 +1,7 @@
-﻿@{
+﻿@*@{
     var vm = (MemberViewModel)Session["Member"];
-}
+}*@
+@model MemberViewModel
 
 <section class=person>
     <div class="wrap-inside">
@@ -8,10 +9,10 @@
             <div class="col-sm-12 col-md-12">
                 <div class="person-data">
                     <div class="person-data-pic">
-                        <img src="@vm.ProfileImgUrl" alt="個人圖片">
+                        <img src="@Model.ProfileImgUrl" alt="個人圖片">
                     </div>
                     <div class="person-data-text">
-                        <h2>@vm.MemberName</h2>
+                        <h2>@Model.MemberName</h2>
                         <p>
                             贊助過
                             <span>0</span>件專案/發起過
@@ -32,6 +33,13 @@
                     <h2>贊助過的專案</h2>
                     <p>目前還沒有贊助過任何專案</p>
                 </div>
+
+                @*@{ 
+                    foreach(var item in Model.)
+                    { 
+
+                    };
+                }*@
             </div>
         </div>
     </div>

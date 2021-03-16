@@ -39,18 +39,16 @@ namespace ProjectTeamFour.Controllers
 
 		// GET: PersonInfo
 		//[CustomAuthorize(flagNum = 1)]
-		public ActionResult User(int Id)	//公開的個人資料頁面
+		public ActionResult Member(int Id)	//公開的個人資料頁面
 		{
-			var model = (MemberViewModel)Session["Member"];
-			var memberService = new MemberService();
-
-			MemberViewModel memberVM = new MemberViewModel();
+			//var model = (MemberViewModel)Session["Member"];
 
 			var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
 			//return View(memberInfo);
 			//return RedirectToAction("Index");
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
+
 
 		public ActionResult Sponser() //贊助紀錄
 		{
@@ -63,19 +61,12 @@ namespace ProjectTeamFour.Controllers
 			var model = (MemberViewModel)Session["Member"];
 			if (model != null)
 			{
-				MyProjectListViewModel myProjectList = new MyProjectListViewModel()
-				{
-					MyProjects = new List<MyProjectViewModel>()
-				};
+
 
 				//根據專案的提交與審核狀態進行分類
-				myProjectList = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
-				//foreach(var item in myProjects.MyProjects)
-				//         {
-				//	myProjects.OngoingProjects.Add(item);
-				//         }
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
 
-				return View(myProjectList);
+				return View(model);
 			}
             else
             {
