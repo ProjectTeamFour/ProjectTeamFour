@@ -338,8 +338,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\MyProjectListViewModel.cs" />
-    <Compile Include="ViewModels\MyProjectViewModel.cs" />
+    <Compile Include="ViewModels\ForMemberView\MyProjectsViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
