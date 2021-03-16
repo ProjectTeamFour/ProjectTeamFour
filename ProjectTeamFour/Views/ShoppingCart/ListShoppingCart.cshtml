@@ -23,7 +23,7 @@
                 el: "#app",
                 data: {
                     Models:@Html.Raw(modelJS),
-                    
+                    watchInput: 0
                 },
                 methods: {
                     RemoveFromCart: function (PlanId) {
@@ -35,6 +35,13 @@
                         var result = 0;
                         this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
                         return result;
+                    }
+                },
+                watch: {
+                    watchInput: function (newValue, oldValue) {
+                        if (newValue.Quantity > newValue.QuantityLimit) {
+                            newValue.Quantity = newValue.QuantityLimit;
+                        }
                     }
                 }
                 

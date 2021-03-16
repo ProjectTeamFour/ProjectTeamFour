@@ -6,11 +6,14 @@
         </a>
         <div class="content">
             <a href="#" class="title">{{model.PlanTitle}}</a>
-            <span class="price">{{model.PlanPrice}}</span>
+            <div class="sales">
+                <p class="price">{{model.PlanPrice}}</p>
+                <p class="stock">庫存：{{model.QuantityLimit}}</p>
+            </div>
         </div>
         <div class="actions">
             <input class="qty" type="number" name="updates[]"
-                   id="updates_13864137195572" @*value="@Model.Quantity"*@ v-model="model.Quantity" min="1" max="99" aria-label="Quantity" step="1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required>
+                   id="updates_13864137195572"  v-model="watchInput=model.Quantity" min="1" :max="model.QuantityLimit" aria-label="Quantity" step="1" onkeyup="this.value=this.value.replace(/^-[1-9]\d\s*|0$/g,'')" onafterpaste="clipboardData.setData('text',clipboardData.getData('text').replace(/^-[1-9]\d*|0$/g,''))"  required>
             <a class="remove" aria-label="Remove item from cart">
                 <span aria-hidden="true">
                     <svg version="1.1" class="svg close" v-on:click="RemoveFromCart(model.PlanId)" xmlns="//www.w3.org  /2000/svg"

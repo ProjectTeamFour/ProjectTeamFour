@@ -201,8 +201,22 @@ img {
         color: #222;
     }
 
+.sales {
+    display: flex;
+    justify-content: space-between;
+}
+
 .price {
     display: block;
+    font-family: "Work Sans", sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 14px;
+    font-style: italic;
+    color: #565656;
+}
+
+.stock {
     font-family: "Work Sans", sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -253,6 +267,7 @@ i.fas.fa-snowplow {
 .btn-danger {
     margin: 0 20px;
 }
+
 /* Set RWD */
 @media screen and (min-width: 992px) {
     .main-title::after {

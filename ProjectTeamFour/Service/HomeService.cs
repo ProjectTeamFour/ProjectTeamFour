@@ -70,7 +70,8 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    ProjectId=item.ProjectId
+                    ProjectId=item.ProjectId,
+                    QuantityLimit=item.QuantityLimit
                 };
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
             }
@@ -193,7 +194,8 @@ namespace ProjectTeamFour.Service
                     CreatorName = item.Project.CreatorName,
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
-                    PlanDescription = item.PlanDescription
+                    PlanDescription = item.PlanDescription,
+                    QuantityLimit=item.QuantityLimit
                 };
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(planbox); 
             }

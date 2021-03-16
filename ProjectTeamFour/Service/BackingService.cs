@@ -50,7 +50,7 @@ namespace ProjectTeamFour.Service
                 var CartItem = new CarCarPlanViewModel
                 {
                     PlanId = plan.PlanId,
-                    QuantityLimit = item.QuantityLimit,
+                    Quantity = item.Quantity,
                     PlanPrice = plan.PlanPrice,
                     PlanImgUrl = plan.PlanImgUrl,
                     PlanTitle = plan.PlanTitle,
