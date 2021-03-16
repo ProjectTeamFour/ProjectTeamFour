@@ -39,13 +39,16 @@ namespace ProjectTeamFour.ViewModels
         {
             get
             {
-                decimal totalAccount = 0.0m;
-
-                foreach (var item in CartItems)
+                decimal totalAccount = 0m;
+                if(CartItems!=null)
                 {
-                    totalAccount = totalAccount + item.Account;
+                    foreach (var item in CartItems)
+                    {
+                        totalAccount = totalAccount + item.Account;
+                    }
+                    return totalAccount;
                 }
-                return totalAccount;
+                return 0m;
             }
         }
     }
