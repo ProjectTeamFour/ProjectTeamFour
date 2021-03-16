@@ -22,18 +22,34 @@ namespace ProjectTeamFour.Controllers
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
 
-        public UserInfoController()
+	 //	int result = _MemberService.ReturnLoginnerId();
+
+	 //           if (result == 0)
+	 //           {
+	 //               return RedirectToAction("Login", "Member");
+	 //}
+
+	public UserInfoController()
         {
             _memberService = new MemberService();
-            //_memberSettingService = new MemberSettingService();
-        }
+			_myProjectsService = new MyProjectsService();
+			_commentService = new CommentService();
+			//_memberSettingService = new MemberSettingService();
+		}
 
 		// GET: PersonInfo
 		//[CustomAuthorize(flagNum = 1)]
-		public ActionResult Index()	//公開的個人資料頁面
+		public ActionResult User(int Id)	//公開的個人資料頁面
 		{
 			var model = (MemberViewModel)Session["Member"];
-			return View(model);
+			var memberService = new MemberService();
+
+			MemberViewModel memberVM = new MemberViewModel();
+
+			var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+			//return View(memberInfo);
+			//return RedirectToAction("Index");
+			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
 
 		public ActionResult Sponser() //贊助紀錄
@@ -42,30 +58,32 @@ namespace ProjectTeamFour.Controllers
 			return View(model);
 		}
 
-		public ActionResult Submit()	//專案提交紀錄
+		public ActionResult Myprojects()	//專案提交紀錄
 		{
 			var model = (MemberViewModel)Session["Member"];
-			
-			var myProjectsService = new MyProjectsService();
-
-			MyProjectsViewModel myProjectList = new MyProjectsViewModel()
+			if (model != null)
 			{
-				OngoingProjects = new List<MyProjectsViewModel.OngoingProject>(),
-				EditingProjects=new List<MyProjectsViewModel.EditingProject>(),
-				EndedProjects=new List<MyProjectsViewModel.EndedProject>()
-			};
+				MyProjectListViewModel myProjectList = new MyProjectListViewModel()
+				{
+					MyProjects = new List<MyProjectViewModel>()
+				};
 
-			//根據專案的提交與審核狀態進行分類
-			var myProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
-			//foreach(var item in myProjects.MyProjectsList)
-   //         {
-			//	myProjects.OngoingProjects.Add(item);
-   //         }
+				//根據專案的提交與審核狀態進行分類
+				myProjectList = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+				//foreach(var item in myProjects.MyProjects)
+				//         {
+				//	myProjects.OngoingProjects.Add(item);
+				//         }
 
-			return View(model);
+				return View(myProjectList);
+			}
+            else
+            {
+				return RedirectToAction("Login", "Member");
+			}
 		}
 
-		public ActionResult Message()		//第三方連動帳號
+		public ActionResult Message()		//聯絡訊息
 		{
 			var model = (MemberViewModel)Session["Member"];
 			return View(model);
@@ -79,6 +97,7 @@ namespace ProjectTeamFour.Controllers
 
 		public ActionResult Edit(int id)	//修改個人資料
 		{
+			var model = (MemberViewModel)Session["Member"];
 			var memberService = new MemberService();
 
 			MemberViewModel memberVM = new MemberViewModel();
@@ -94,7 +113,7 @@ namespace ProjectTeamFour.Controllers
 			return View();
 		}
 
-		public ActionResult Setting()	//通知設定
+		public ActionResult Notifactions()	//通知設定
 		{
 			return View();
 		}

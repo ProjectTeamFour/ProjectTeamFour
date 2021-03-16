@@ -28,25 +28,26 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public MyProjectsViewModel GetProjectsbyMemberId(int memberId)
+        public MyProjectListViewModel GetProjectsbyMemberId(int memberId)
         {
-            var myProjects = new MyProjectsViewModel
+            var myProjects = new MyProjectListViewModel
             {
-                MyProjectsList = new List<MyProjectsViewModel.MyProject>()
+                MyProjects = new List<MyProjectViewModel>()
             };
             Project entity = _repository.GetAll<Project>().FirstOrDefault(m => m.MemberId == memberId);
             if (entity != (Project)default)
             {
-                var myProjectVM = new MyProjectsViewModel.MyProject()
+                var myProjectVM = new MyProjectViewModel
                 {
                     ProjectId = entity.ProjectId,
                     ProjectName = entity.ProjectName,
                     CreatedDate = entity.CreatedDate,
                     SubmittedDate = entity.SubmittedDate,
                     LastEditTime = entity.LastEditTime,
-                    ApprovingStatus = entity.ApprovingStatus
+                    ApprovingStatus = entity.ApprovingStatus,
+                    GoalMoney=entity.AmountThreshold
                 };
-                myProjects.MyProjectsList.Add(myProjectVM);
+                myProjects.MyProjects.Add(myProjectVM);
             }
             else
             {
@@ -54,10 +55,15 @@ namespace ProjectTeamFour.Service
             }
             return myProjects;
         }
+        //0:draft/1:approving/2:ongoing/3:ended
+        //public  List<MyProjectViewModel> SortMyProjectsbyStatus(int approvingStatus)
+        //{
+        //    return (List<MyProjectViewModel>)_repository.GetAll<MyProjectViewModel>().Where(x => x.ApprovingStatus == approvingStatus);
+        //}
 
-
-
-
-
+        public List<MyProjectViewModel> SortMyProjectsbyStatus(int approvingStatus)
+        {
+            return (List<MyProjectViewModel>)_repository.GetAll<MyProjectViewModel>().Where(x => x.ApprovingStatus == approvingStatus);
+        }
     }
 }

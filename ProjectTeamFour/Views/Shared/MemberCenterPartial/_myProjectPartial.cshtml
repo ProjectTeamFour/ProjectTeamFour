@@ -1,54 +1,51 @@
-﻿@model MyProjectsViewModel
+﻿@model MyProjectViewModel
 
 @{
     var vm = (MemberViewModel)Session["Member"];
+    string approvingstatus = (string)ViewData["ApprovingStatus"];
+    string id = (string)ViewData["Id"];
 }
 
-@*@if (vm == null)
-{
-    Html.ActionLink("登入", "Login", "Member");
-}
-else if (vm != null)
-{*@
-    <div class="container">
-        <div class="case-doing-pic">
-            <img src="https://picsum.photos/800/600/?random=1">
+
+        <div class="container">
+            <div class="case-doing-pic">
+                <img src="https://picsum.photos/800/600/?random=1">
+            </div>
+            <div class="case-doing-text">
+                <div class="case-doing-name">
+                    <h4>
+                        專案名稱:
+                        <span>@Model.ProjectName</span>
+                    </h4>
+                </div>
+                <div class="case-doing-money">
+                    <h4>
+                        目標金額:
+                        <span>$ @Model.GoalMoney</span>
+                    </h4>
+                </div>
+                <div class="case-doing-creat">
+                    <h4>
+                        <span>創建日期:@Model.CreatedDate</span>
+                    </h4>
+                </div>
+                <div class="case-doing-givedate">
+                    <h4>
+                        <span>提交日期:尚未提交</span>
+                        <span>提交日期:@Model.SubmittedDate</span>
+                    </h4>
+                </div>
+                <div class="case-doing-fix">
+                    <h4>
+                        <span>上次修改日期:@Model.LastEditTime</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="btn-fix">修改</button>
+                <button id="btn-view">預覽</button>
+            </div>
         </div>
-        <div class="case-doing-text">
-            <div class="case-doing-name">
-                <h4>
-                    專案名稱:
-                    <span>1</span>
-                </h4>
-            </div>
-            <div class="case-doing-money">
-                <h4>
-                    目標金額:
-                    <span>$5000</span>
-                </h4>
-            </div>
-            <div class="case-doing-creat">
-                <h4>
-                    <span>創建日期:@Model.MyProjectsList.Count</span>
-                </h4>
-            </div>
-            <div class="case-doing-givedate">
-                <h4>
-                    <span>提交日期:尚未提交</span>
-                </h4>
-            </div>
-            <div class="case-doing-fix">
-                <h4>
-                    <span>上次修改日期:2021/01/29</span>
-                </h4>
-            </div>
-        </div>
-        <div class="button-group">
-            <button id="btn-fix">修改</button>
-            <button id="btn-view">預覽</button>
-        </div>
-    </div>
-@*}*@
 
 @section endJs{
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
