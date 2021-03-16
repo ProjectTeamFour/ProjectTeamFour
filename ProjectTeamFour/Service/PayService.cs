@@ -105,10 +105,10 @@ namespace ProjectTeamFour.Service
             var order = new Order //會員註冊時的資料
             {
                 MemberId = member.MemberId,
-                OrderName = orderMem.MemberName,
-                OrderAddress = orderMem.MemberAddress,
-                OrderPhone = orderMem.MemberPhone,
-                OrderConEmail = orderMem.MemberConEmail,
+                OrderName = orderMem.OrderName,
+                OrderAddress = orderMem.OrderAddress,
+                OrderPhone = orderMem.OrderPhone,
+                OrderConEmail = orderMem.OrderConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,    
 
                 condition = "未付款",
@@ -171,11 +171,13 @@ namespace ProjectTeamFour.Service
                         var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
                         foreach(var pj in projectview)
                         {
+
                             pj.Fundedpeople = pj.Fundedpeople + 1;
                             pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
                         }
                         foreach(var p in planview)
-                        {                            
+                        {
+                            p.QuantityLimit = p.QuantityLimit - 1;
                             p.PlanFundedPeople = p.PlanFundedPeople + 1;
                         }
                     }                    

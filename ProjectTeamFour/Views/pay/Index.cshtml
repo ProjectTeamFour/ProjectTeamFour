@@ -124,7 +124,7 @@
 function Save2Server() {
     $.ajax({
         type: "POST",
-        url: '@Url.Action("ConnectECPay", "Pay")',
+        url: '@Url.Action("test", "Pay")',
         data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串
         dataType: "json",
         headers: {
@@ -309,7 +309,10 @@ function Save2Server() {
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <button id="Save2Sever" onclick="Save2Server()">儲存寄送資料</button>
+                    <a href="/Pay/ConnectECPay">                        
+                        <input type="submit" id="Save2Sever" onclick="Save2Server()">儲存寄送資料
+                    </a>
+                    
                     <a href="/Pay/test" class="btn-pay">確認購買</a>
                 </div>
             </div>
