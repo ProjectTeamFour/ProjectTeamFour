@@ -40,13 +40,16 @@ namespace ProjectTeamFour.Controllers
             
             return View(cartt);
         }
-        
-        public ActionResult ConnectECPay()
+        [HttpPost]
+        public ActionResult ConnectECPay(PayViewModel oVM)
         {
-            var orderId = _PayService.SaveData();
-            var projectId = _PayService.SaveData();
-            var result = _PayService.ConnectECPay(orderId);
-            ViewData["result"] = result;
+            
+            //var o = _PayService.CreateANewMemberData(oVM);
+            var memberId = (MemberViewModel)Session["Member"];
+            var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
+            var result = _PayService.ConnectECPay(orderId,memberId);
+            ViewData["result"] = result;                
+            
             return View();
         }
 
@@ -76,5 +79,15 @@ namespace ProjectTeamFour.Controllers
             }
             return RedirectToAction("Index", "Home");
         }        
+
+        [HttpPost]
+        public ActionResult test(PayViewModel oVM)
+        {
+
+            var o = _PayService.CreateANewMemberData(oVM);
+            //var memberId = (MemberViewModel)Session["Member"];
+            var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
+            return View();
+        }
     }
 }

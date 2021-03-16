@@ -39,27 +39,26 @@ market.onclick = function () {
     sp_market.classList.add("widthOfblock");
 }
 
+//function ConnectToECPay() {
+//    $.ajax({
+//        type: "post",
+//        url: "/pay/test",
+//        data: { OrderName: $('#orderName').val(), OrderAddress: $('#orderAddress').val(), OrderPhone: $('#orderPhone').val(), OrderConEmail: $('#orderEmail').val() },
+//        dataType: "text",
+//        success: function (response) {
+//            console.log("123");
+//            //$(".btn-pay").text(`${response}`);
+//        }
+//    }).then(function TriggerAlert() {
 
+//        Swal.fire({
+//            position: 'top-end',
+//            icon: 'success',
+//            title: '',
+//            showConfirmButton: false,
+//            timer: 1500
+//        });
 
-function ConnectToECPay(memberName , memberAddress , memberPhone , memberEmail) {
-    $.ajax({
-        type: "POST",
-        url: "/pay/connectecpay",
-        data: { MemberName: memberName, MemberAddress: memberAddress, MemberPhone: memberPhone, MemberConEmail: memberEmail },
-        dataType: "text",
-        success: function (response) {
+//    })
+//}
 
-            $(".btn-pay").text(`${response}`);
-        }
-    }).then(function TriggerAlert() {
-
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '',
-            showConfirmButton: false,
-            timer: 1500
-        });
-
-    })
-}

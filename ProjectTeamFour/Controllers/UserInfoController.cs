@@ -21,6 +21,7 @@ namespace ProjectTeamFour.Controllers
 		//private readonly BackingService _backingService;
 		private readonly ProjectsService _ProjectsService;
 		private readonly CommentService _commentService;
+		private readonly BackingService _backingService;
 
         public UserInfoController()
         {
@@ -32,7 +33,7 @@ namespace ProjectTeamFour.Controllers
 		//[CustomAuthorize(flagNum = 1)]
 		public ActionResult Index()	//公開的個人資料頁面
 		{
-			var model = (MemberViewModel)Session["Member"];
+			var model = (MemberViewModel)Session["Member"];			
 			return View(model);
 		}
 

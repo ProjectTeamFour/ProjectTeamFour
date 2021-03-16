@@ -28,7 +28,7 @@ namespace ProjectTeamFour.Service
 
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
-            
+
             var session = HttpContext.Current.Session;
             var memberSession = ((MemberViewModel)session["Member"]);
             var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
@@ -225,7 +225,24 @@ namespace ProjectTeamFour.Service
 
         }
 
-    
+        public BackingRecordsViewModel OrderRecord(MemberViewModel records) //回寫回歷史訂單紀錄
+        {
+            var session = HttpContext.Current.Session;
+            records = (MemberViewModel)session["Member"]; //該會員資料
+            var re = new BackingRecordsViewModel();
+            var memberRecords = _repository.GetAll<Order>().Where((x) => x.MemberId == records.MemberId).FirstOrDefault(); //order的memberid 匹配 該登入的會員
+            var orderRecords = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == memberRecords.OrderId).ToList(); //該會員詳細訂單資料
+            foreach (var item in orderRecords)
+            {
+                foreach (var i in re.MyOrdersList)
+                {
+                    i.OrderPrice = item.OrderPrice;
+                    i.OrderQuantity = item.OrderQuantity;
+                    i.PlanTitle = item.PlanTitle;
+                }
+                re.TradeNo = memberRecords.TradeNo;
+            }
+            return re;
+        }
     }
-                
-}
+}                
