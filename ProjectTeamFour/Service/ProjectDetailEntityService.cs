@@ -67,6 +67,7 @@ namespace ProjectTeamFour.Service
                     EndDate = entity.EndDate,
                     StartDate = entity.StartDate,
                     ProjectMainUrl = entity.ProjectMainUrl,
+                    ProjectId = entity.ProjectId,
 
                 };
                 
