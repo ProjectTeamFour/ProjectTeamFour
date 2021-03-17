@@ -87,22 +87,29 @@ namespace ProjectTeamFour.Controllers
 			return View(model);
 		}
 
-		public ActionResult Edit(int id)	//修改個人資料
+		public ActionResult Edit()	//修改個人資料
 		{
 			var model = (MemberViewModel)Session["Member"];
-			var memberService = new MemberService();
 
 			MemberViewModel memberVM = new MemberViewModel();
 
-			var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-			//return View(memberInfo);
+			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+
 			//return RedirectToAction("Index");
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
 
 		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
 		{
-			return View();
+			var model = (MemberViewModel)Session["Member"];
+
+			MemberViewModel memberVM = new MemberViewModel();
+
+			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+
+			//return RedirectToAction("Index");
+			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+			//return View();
 		}
 
 		public ActionResult Notifactions()	//通知設定
