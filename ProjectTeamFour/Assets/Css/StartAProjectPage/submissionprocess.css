@@ -351,6 +351,31 @@
 
 
 
+.project-proposal .ProjectTeamPictureGrayBox {
+    height: 200px;
+    border: 1px solid #f1bfc1;
+    background-color: #f7f7f7;
+    position: relative;
+}
+
+    .project-proposal .ProjectTeamPictureGrayBox img {
+        height: 200px;
+        position: relative;
+    }
+
+        .project-proposal .ProjectTeamPictureGrayBox img:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #f7f7f7;
+        }
+
+
+
+
 
 .project-proposal-modal .plan-img-item-p {
     font-weight: 500;
@@ -691,6 +716,18 @@
             height: 288.56px;
             position: relative;
         }
+
+    .project-proposal .ProjectTeamPictureGrayBox {
+        height: 250px;
+        border: 1px solid #f1bfc1;
+        background-color: #f7f7f7;
+        position: relative;
+    }
+
+        .project-proposal .ProjectTeamPictureGrayBox img {
+            height: 250px;
+            position: relative;
+        }
 }
 
 
@@ -888,6 +925,18 @@
             height: 302.62px;
             position: relative;
         }
+
+    .project-proposal .ProjectTeamPictureGrayBox {
+        height: 290px;
+        border: 1px solid #f1bfc1;
+        background-color: #f7f7f7;
+        position: relative;
+    }
+
+        .project-proposal .ProjectTeamPictureGrayBox img {
+            height: 290px;
+            position: relative;
+        }
 }
 
 
@@ -967,4 +1016,93 @@
             height: 361.12px;
             position: relative;
         }
+
+
+    .project-proposal .ProjectTeamPictureGrayBox {
+        height: 310px;
+        border: 1px solid #f1bfc1;
+        background-color: #f7f7f7;
+        position: relative;
+    }
+
+        .project-proposal .ProjectTeamPictureGrayBox img {
+            height: 310px;
+            position: relative;
+        }
 }
+
+
+
+
+
+
+
+/*input file modal button等等--------------------------------*/
+
+
+.project-proposal .uploadreplace {
+    border: #f9414a 1px solid;
+    color: rgb(95, 89, 89);
+    transition: .3s;
+    font-weight: 500;
+}
+
+    .project-proposal .uploadreplace:hover {
+        background-color: #fff;
+        color: rgb(32, 30, 30);
+        transform: scale(1.02);
+    }
+
+.project-proposal-modal .uploadreplace {
+    background-color: #f9414a;
+    transition: .3s;
+}
+
+    .project-proposal-modal .uploadreplace:hover {
+        background-color: transparent;
+        border: #161515 1px solid;
+        color: rgb(95, 89, 89);
+        transition: .3s;
+        font-weight: 500;
+        transform: scale(1.02);
+    }
+
+
+/* 加planmodal button */
+
+.project-proposal #add-plan-button {
+    border: 1px solid #f9414a;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+    .project-proposal #add-plan-button:hover {
+        background-color: #fff;
+        transform: scale(1.02);
+    }
+
+
+/* QA */
+
+.project-proposal .addQAbutton {
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+    .project-proposal .addQAbutton:hover {
+        letter-spacing: 1px;
+        transform: scale(1.02);
+        color: #f9414a;
+    }
+
+/* modal 儲存按鈕 */
+
+.project-proposal-modal #store-plan-card {
+    background-color: #f9414a;
+    transition: .3s;
+}
+
+    .project-proposal-modal #store-plan-card:hover {
+        color: #fff;
+    }
