@@ -85,30 +85,30 @@ namespace ProjectTeamFour.Controllers
 
         //}
 
-        public ActionResult Info(int id)
-        {
-            EditMemberViewModel editMemberVM = new EditMemberViewModel();
+        //public ActionResult Info(int id)
+        //{
+        //    EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
-            editMemberVM = memberInfo;
+        //    var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
+        //    editMemberVM = memberInfo;
 
-            return View(memberInfo);            
-        }
+        //    return View(memberInfo);            
+        //}
 
-        // GET: Member/Edit/5
-        public ActionResult Edit(int id) //編輯該會員個人資料
-        {
-            EditMemberViewModel editMemberVM = new EditMemberViewModel();
+        //// GET: Member/Edit/5
+        //public ActionResult Edit(int id) //編輯該會員個人資料
+        //{
+        //    EditMemberViewModel editMemberVM = new EditMemberViewModel();
 
-            var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
-            editMemberVM = memberInfo;
+        //    var memberInfo = _memberSettingService.GetMember(m => m.MemberId == id);
+        //    editMemberVM = memberInfo;
 
-            if (memberInfo != default(ViewModels.EditMemberViewModel))
-            {
-                return View(memberInfo);
-            }
-            return View();
-        }
+        //    if (memberInfo != default(ViewModels.EditMemberViewModel))
+        //    {
+        //        return View(memberInfo);
+        //    }
+        //    return View();
+        //}
 
         //[ValidateAntiForgeryToken]
         //[HttpPost]

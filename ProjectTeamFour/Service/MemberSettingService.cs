@@ -22,13 +22,13 @@ namespace ProjectTeamFour.Service
         }
         //依據Id取得該Member的資料
         //public EditMemberViewModel GetMember(int Id)
-        public EditMemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
+        public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
             //var entity = _repository.GetAll<Member>().FirstOrDefault(x=>x.MemberId==Id);
             var entity = _repository.GetAll<Member>().FirstOrDefault(KeySelector);
             if(entity!=null)
             {
-                var viewModel = new EditMemberViewModel
+                var viewModel = new MemberViewModel
                 {
                     MemberName = entity.MemberName,
                     MemberPassword = entity.MemberPassword,
@@ -47,7 +47,7 @@ namespace ProjectTeamFour.Service
             return null;
         }
 
-        public OperationResult Update(EditMemberViewModel input)
+        public OperationResult Update(MemberViewModel input)
         {
             var result = new OperationResult();
             //var result1 = new EditMemberViewModel();

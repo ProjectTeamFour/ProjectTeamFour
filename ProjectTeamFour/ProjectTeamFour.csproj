@@ -342,7 +342,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
-    <Compile Include="ViewModels\ForMemberView\MyProjectsViewModel.cs" />
+    <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -2253,7 +2253,7 @@
     <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
-    <Content Include="Views\UserInfo\Setting.cshtml" />
+    <Content Include="Views\UserInfo\Notifaction.cshtml" />
     <Content Include="Views\pay\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2261,7 +2261,6 @@
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
-    <Folder Include="ViewModels\ForMemberView\" />
     <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
