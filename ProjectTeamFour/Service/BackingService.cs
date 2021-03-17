@@ -9,6 +9,7 @@ using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
 using ECPay.Payment.Integration;
 using System.Collections;
+using ProjectTeamFour.ViewModels.ForMemberView;
 
 namespace ProjectTeamFour.Service
 {

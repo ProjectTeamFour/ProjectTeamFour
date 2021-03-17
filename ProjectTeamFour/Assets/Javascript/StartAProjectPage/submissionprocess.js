@@ -1206,7 +1206,8 @@ quill.format(
     'color', 'black');
 
 quill.on('text-change', function () {
-    splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
+    //splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
+    splitJoin = quill.root.innerHTML;
 });
 
 

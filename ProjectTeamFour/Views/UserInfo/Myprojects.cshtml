@@ -92,7 +92,11 @@
                             <hr />
                         </div>
                         @{
-                            if (Model.MyProjects != null)
+                            if (Model.MyProjects == null)
+                            {
+                                <p>目前沒有任何提案</p>
+                            }
+                            else
                             {
                                 foreach (var item in Model.MyProjects)
                                 {
@@ -102,14 +106,6 @@
 
                                 }
                             }
-                            else
-                            {
-                                <div class="case-doing-funding">
-                                    <h3>募資中專案</h3>
-                                    <p>您目前沒有提案紀錄!</p>
-                                </div>
-                            }
-
                         }
 
                         <div class="case-doing">

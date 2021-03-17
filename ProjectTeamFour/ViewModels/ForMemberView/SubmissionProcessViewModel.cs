@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels.ForMemberView;
 
 namespace ProjectTeamFour.ViewModels
 {
