@@ -112,7 +112,7 @@ namespace ProjectTeamFour.Controllers
 			//return View();
 		}
 
-		public ActionResult Notifactions()	//通知設定
+		public ActionResult Notifaction()	//通知設定
 		{
 			return View();
 		}
