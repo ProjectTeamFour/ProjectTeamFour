@@ -270,9 +270,11 @@
                                                             <p>@item</p>
                                                         }
                                                     }
-                                                } else
+                                                }
+                                                else
                                                 {
-                                                    Html.Raw(Model.ProjectDetailItem.ProjectImgUrl);
+                                                    string msg = Model.ProjectDetailItem.ProjectImgUrl;
+                                                    @Html.Raw(msg);
                                                 }
                                             }
                                         </div>
