@@ -65,7 +65,7 @@ namespace ProjectTeamFour.Controllers
 
 
 				//根據專案的提交與審核狀態進行分類
-				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
+				//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
 
 				return View(model);
 			}

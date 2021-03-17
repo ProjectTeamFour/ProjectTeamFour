@@ -92,24 +92,35 @@
                             <hr />
                         </div>
                         @{
-                            foreach (var item in Model.MyProjects)
+                            if (Model.MyProjects != null)
                             {
-                                <div>
-                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml",item)
-                                </div>
+                                foreach (var item in Model.MyProjects)
+                                {
+                                    <div>
+                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                    </div>
 
+                                }
                             }
-                         }
-                        
-                        <div class="case-doing">
+                            else
+                            {
                                 <div class="case-doing-funding">
                                     <h3>募資中專案</h3>
-                                    <p>目前您沒有募資中專案</p>
+                                    <p>您目前沒有提案紀錄!</p>
                                 </div>
-                                <div class="case-doing-creating">
-                                    <h3>創建中專案</h3>
-                                    
-                                </div>
+                            }
+
+                        }
+
+                        <div class="case-doing">
+                            <div class="case-doing-funding">
+                                <h3>募資中專案</h3>
+                                <p>目前您沒有募資中專案</p>
+                            </div>
+                            <div class="case-doing-creating">
+                                <h3>創建中專案</h3>
+
+                            </div>
                         </div>
                     </div>
                 </section>
