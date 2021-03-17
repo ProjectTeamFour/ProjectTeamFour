@@ -1,6 +1,7 @@
 ﻿using ProjectTeamFour.Models;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.ViewModels.ForMemberView;
 using System;
 using System.Collections;
 using System.Collections.Generic;

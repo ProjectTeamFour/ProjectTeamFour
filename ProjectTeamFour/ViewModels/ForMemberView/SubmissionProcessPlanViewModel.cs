@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ProjectTeamFour.ViewModels
+namespace ProjectTeamFour.ViewModels.ForMemberView
 {
     public class SubmissionProcessPlanViewModel
     {
