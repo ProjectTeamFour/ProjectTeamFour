@@ -105,15 +105,7 @@
                             <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
                             <hr />
                         </div>
-                        @{
-                            foreach (var item in Model.MyProjects)
-                            {
-                                <div>
-                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                </div>
 
-                            }
-                        }
 
                         <div class="case-doing">
                             <div class="case-doing-funding">

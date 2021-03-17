@@ -887,7 +887,6 @@ var form = new Vue({
         },
         //最後提交
         submitProposal() {
-            // this.checkAddVerify();
 
             // for (i = 1; i <= editorImgId; i++) {
             //     document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
@@ -898,90 +897,76 @@ var form = new Vue({
 
             if (this.AddVerify == true) {
 
-                // console.log(this.AddVerify);
 
-                this.inputData.QuillHtml = splitJoin;
-                // console.log(this.inputData.QuillHtml);
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-outline-danger ml-2',
+                        cancelButton: 'btn btn-secondary mr-2'
+                    },
+                    buttonsStyling: false
+                })
 
-                this.modalList.shift(); //移掉陣列第一個空的
-                this.ProjectQuestionAnswer.shift(); //也是
+                swalWithBootstrapButtons.fire({
+                    title: '確定提交?',
+                    text: "一旦提交就不可返回",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '確定',
+                    cancelButtonText: '返回',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                // console.log(this.inputData.StartDate.split("-").join(""));
-                // console.log(this.inputData.EndDate.split("-").join(""));
+                        var SwalColors = {
+                            red: "rgba(250, 50, 50, 0.45)",
+                            green: "rgba(50, 250, 50, 0.45)",
+                            gray: "#ECF0F1",
+                            white: "rgba(255, 255, 255, 1)",
+                        };
 
-                var totalQuestion = "";
-                var totalAnswer = "";
+                        function SwalOverlayColor(color) {
+                            setTimeout(function () {
+                                $(".swal2-container").css({
+                                    "background-color": SwalColors[color]
+                                });
+                            }, 200);
+                        }
 
-                this.ProjectQuestionAnswer.forEach(x => {
-                    totalQuestion = totalQuestion + "," + x.Question;
-                    totalAnswer = totalAnswer + "," + x.Answer;
-                });
-                totalQuestion = totalQuestion.substr(1);
-                totalAnswer = totalAnswer.substr(1);
+                        Swal.fire({
+                            title: '提案資料提交中',
+                            html: '資料將會匯入到我們的資料中心，請耐心稍等一下',
+                            timer: 50000,
+                            timerProgressBar: true,
+                            background: '#FDC6C8',
+                            didOpen: () => {
+                                SwalOverlayColor("gray");
+                                Swal.showLoading();
+                            },
+                        })
+                        saveSubmissionToServer();
 
+                    } else if (
 
-                // console.log(pmu);
-                // console.log(pcu);
-                // console.log(piu);
-                // console.log(priu);
-
-                var date = new Date();
-
-                var UpLoadData = {
-                    "ProjectName": this.inputData.ProjectName,
-                    "AmountThreshold": this.inputData.AmountThreshold,
-                    "Category": this.inputData.Category,
-                    "StartDate": this.inputData.StartDate.split("-").join(""),
-                    "EndDate": this.inputData.EndDate.split("-").join(""),
-                    "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
-                    "ProjectMainUrl": pmu,
-                    "ProjectCoverUrl": pcu,
-                    "ProjectPrincipal": this.inputData.ProjectPrincipal,
-                    "MemberConEmail": this.inputData.MemberConEmail,
-                    "MemberPhone": this.inputData.MemberPhone,
-                    "IdentityNumber": this.inputData.IdentityNumber,
-                    "ProfileImgUrl": priu,
-                    "CreatorName": this.inputData.MemberName,
-                    "AboutMe": this.inputData.AboutMe,
-                    "MemberWebsite": this.inputData.MemberWebsite,
-                    "ProjectImgUrl": this.inputData.QuillHtml, //富文本
-                    "PlanObject": this.modalList, //陣列包物件
-                    "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
-                    "Project_Question": totalQuestion,
-                    "Project_Answer": totalAnswer,
-                    "CreatedDate": date.toJSON(),
-                    "SubmittedDate": date.toJSON(),
-                    "LastEditTime": date.toJSON(),
-                    "ApprovingStatus": 1,
-                    "ProjectStatus": 0,
-                }
-                // console.log(this.ProjectQuestionAnswer);
-
-                $.ajax({
-                    url: "/api/projectsubmission/receivedata",
-                    type: "post",
-                    //contentType: "application/json; charset=utf-8",
-                    data: UpLoadData,
-                    success: function (response) {
-                        alert(response);
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            '沒問題！繼續填寫',
+                        )
                     }
-                });
+                })
 
             } else {
 
                 // console.log(this.AddVerify);
 
                 Swal.fire({
-                    position: 'top',
                     icon: 'warning',
-                    // type: 'warning',
                     title: '親愛的，專案提交要填完整喔！',
                     showConfirmButton: false,
                     timer: 3000
                 });
 
             }
-
 
         },
         //富文本以外的上傳
@@ -1101,27 +1086,91 @@ var form = new Vue({
             });
 
         },
-        //處理 input value reset
-        // inputValueReset(imgSwitch) {
-        //     if (imgSwitch == "ProjectMainUrl") {
-        //         document.querySelector("#ProjectMainUrlPreviewPic").src = "";
-        //         this.$refs.projectmainpicfileupload = null;
-        //     } else if (imgSwitch == "ProjectCoverUrl") {
-        //         document.querySelector("#ProjectCoverUrlPreviewPic").src = "";
-        //         this.$refs.projectcoverpicfileupload.value = null;
-        //     } else if (imgSwitch == "PlanImgUrl") {
-        //         document.querySelector("#planPreviewPic").src = "";
-        //         this.$refs.planpicfileupload.value = null;
-        //     } else {
-        //         this.inputData.ProfileImgUrl = null;
-        //         this.$refs.profilepicupload.value = null;
-        //     }
-        // },
+        saveSubmissionToServer() {
+
+            // console.log(this.AddVerify);
+
+            this.inputData.QuillHtml = splitJoin;
+            // console.log(this.inputData.QuillHtml);
+
+            this.modalList.shift(); //移掉陣列第一個空的
+            this.ProjectQuestionAnswer.shift(); //也是
+
+            // console.log(this.inputData.StartDate.split("-").join(""));
+            // console.log(this.inputData.EndDate.split("-").join(""));
+
+            var totalQuestion = "";
+            var totalAnswer = "";
+
+            this.ProjectQuestionAnswer.forEach(x => {
+                totalQuestion = totalQuestion + "," + x.Question;
+                totalAnswer = totalAnswer + "," + x.Answer;
+            });
+            totalQuestion = totalQuestion.substr(1);
+            totalAnswer = totalAnswer.substr(1);
+
+            var date = new Date();
+
+            var UpLoadData = {
+                "ProjectName": this.inputData.ProjectName,
+                "AmountThreshold": this.inputData.AmountThreshold,
+                "Category": this.inputData.Category,
+                "StartDate": this.inputData.StartDate.split("-").join(""),
+                "EndDate": this.inputData.EndDate.split("-").join(""),
+                "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
+                "ProjectMainUrl": pmu,
+                "ProjectCoverUrl": pcu,
+                "ProjectPrincipal": this.inputData.ProjectPrincipal,
+                "MemberConEmail": this.inputData.MemberConEmail,
+                "MemberPhone": this.inputData.MemberPhone,
+                "IdentityNumber": this.inputData.IdentityNumber,
+                "ProfileImgUrl": priu,
+                "CreatorName": this.inputData.MemberName,
+                "AboutMe": this.inputData.AboutMe,
+                "MemberWebsite": this.inputData.MemberWebsite,
+                "ProjectImgUrl": this.inputData.QuillHtml, //富文本
+                "PlanObject": this.modalList, //陣列包物件
+                "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
+                "Project_Question": totalQuestion,
+                "Project_Answer": totalAnswer,
+                "CreatedDate": date.toJSON(),
+                "SubmittedDate": date.toJSON(),
+                "LastEditTime": date.toJSON(),
+                "ApprovingStatus": 1,
+                "ProjectStatus": 0,
+            }
+            // console.log(this.ProjectQuestionAnswer);
+
+            $.ajax({
+                url: "/api/projectsubmission/receivedata",
+                type: "post",
+                //contentType: "application/json; charset=utf-8",
+                data: UpLoadData,
+                success: function (response) {
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: '成功',
+                        html: '已提交到我們的資料中心，後續會有專人與您聯絡',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    window.location.href = "/Home/Index/";
+                },
+                error: function (response) {
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'error',
+                        title: '上傳失敗',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+        }
     }
 });
-
-
-
 
 
 
@@ -1390,4 +1439,4 @@ function saveToServer(file) {
 
 }
 
-//---------------------------------------------//
+        //---------------------------------------------//
