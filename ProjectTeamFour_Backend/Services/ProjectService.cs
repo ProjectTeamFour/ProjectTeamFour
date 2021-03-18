@@ -21,28 +21,6 @@ namespace ProjectTeamFour_Backend.Services
         {
             var result = new ProjectViewModel.ProjectListResult();
 
-            //result.ProjectList = (from p in _dbRepository.GetAll<Project>()
-            //                      join v in _dbRepository.GetAll<Plan>()
-            //                      on p.ProjectId equals v.ProjectId
-            //                      where v.Sort == 0
-            //                      join c in _dbRepository.GetAll<Category>()
-            //                      on p.CategoryId equals c.CategoryId
-            //                      join s in _dbRepository.GetAll<Supplier>()
-            //                      on p.SupplierId equals s.SupplierId
-            //                      select new ProductViewModels.ProductSingleResult()
-            //                      {
-            //                          ProductId = p.ProductId,
-            //                          ProductName = p.ProductName,
-            //                          UnitPrice = p.UnitPrice,
-            //                          Author = p.Author,
-            //                          Supplier = s.Name,
-            //                          PublishDate = p.PublishDate,
-            //                          CreateTime = p.CreateTime,
-            //                          Introduction = p.Introduction,
-            //                          Inventory = p.Inventory,
-            //                          TotalSales = p.TotalSales,
-
-            //                      }).ToList();
 
             return result;
         }
