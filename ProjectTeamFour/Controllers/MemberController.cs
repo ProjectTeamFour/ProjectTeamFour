@@ -118,6 +118,11 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
+        public ActionResult Forgetpassword()
+        {
+            return View();
+        }
+
 
 
         //private MemberService _memberService;
