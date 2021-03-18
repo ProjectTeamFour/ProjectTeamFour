@@ -10,6 +10,7 @@ namespace ProjectTeamFour.ViewModels
     {
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public string ProjectImgUrl { get; set; }
         public decimal GoalMoney { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool SubmitStatus { get; set; }

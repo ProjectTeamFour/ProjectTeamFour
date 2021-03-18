@@ -42,12 +42,39 @@ namespace ProjectTeamFour.Controllers
 		//[CustomAuthorize(flagNum = 1)]
 		public ActionResult Member(int Id)	//公開的個人資料頁面
 		{
-			//var model = (MemberViewModel)Session["Member"];
+			
+            var model = (MemberViewModel)Session["Member"];
+			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+			if (model != null)
+                {
+				//var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+				//根據專案的提交與審核狀態進行分類
+				model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
 
-			var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
-			//return View(memberInfo);
-			//return RedirectToAction("Index");
-			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+				return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+			//Myprojects
+
+			//if (model != null)
+			//{
+				////根據專案的提交與審核狀態進行分類
+				//model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+
+				//return View(model);
+			//}
+			//else
+			//{
+				//return RedirectToAction("Login", "Member");
+			//}
+			//edit
+
+			//var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+			//return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+
 		}
 
 
@@ -65,7 +92,7 @@ namespace ProjectTeamFour.Controllers
 
 
 				//根據專案的提交與審核狀態進行分類
-				//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
 
 				return View(model);
 			}
@@ -99,18 +126,18 @@ namespace ProjectTeamFour.Controllers
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
 
-		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
-		{
-			var model = (MemberViewModel)Session["Member"];
+		//public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
+		//{
+		//	var model = (MemberViewModel)Session["Member"];
 
-			MemberViewModel memberVM = new MemberViewModel();
+		//	MemberViewModel memberVM = new MemberViewModel();
 
-			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+		//	var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
 
-			//return RedirectToAction("Index");
-			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
-			//return View();
-		}
+		//	//return RedirectToAction("Index");
+		//	return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+		//	//return View();
+		//}
 
 		public ActionResult Notifaction()	//通知設定
 		{

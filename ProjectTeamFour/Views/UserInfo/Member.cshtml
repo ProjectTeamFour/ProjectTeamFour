@@ -1,7 +1,7 @@
 ﻿@model ProjectTeamFour.ViewModels.MemberViewModel
 @*@{
-    var vm = (MemberViewModel)Session["Member"];
-}*@
+        var vm = (MemberViewModel)Session["Member"];
+    }*@
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
@@ -47,39 +47,54 @@
             <div class="tab-pane fade" id="pills-backings" role="tabpanel" aria-labelledby="pills-backings-tab">
                 <section class="record">
                     <div class="wrap-inside">
+                        <div class="case-title">
+                            <h2>贊助紀錄</h2>
+                            <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
+                            <hr />
+                        </div>
                         @if (Model.Records != null)
                         {
                             foreach (var item in Model.Records)
                             {
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", item)
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("13");
-                        }
+            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", item)}
+    }
+    else
+    {
+<div>您目前沒有任何贊助歷史!</div>Console.WriteLine("13");
+            }
                     </div>
                 </section>
             </div>
             <div class="tab-pane fade" id="pills-myprojects" role="tabpanel" aria-labelledby="pills-myprojects-tab">
                 <section class="case">
-
                     <div class="wrap-inside">
                         <div class="case-title">
                             <h2>提案紀錄</h2>
                             <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
                             <hr />
                         </div>
-
-
+                        @{ 
+                            if (Model.MyProjects == null)
+                            {
+                                <p>目前還沒有任何提案!歡迎隨時發起提案</p> 
+                            }
+                            else
+                            {
+                                foreach (var item in Model.MyProjects)
+                                {
+                                <div>
+                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                </div> 
+                                }
+                            } 
+                        }
                         <div class="case-doing">
                             <div class="case-doing-funding">
                                 <h3>募資中專案</h3>
-                                <p>目前您沒有募資中專案</p>
+                                <p>???目前您沒有募資中專案???</p>
                             </div>
                             <div class="case-doing-creating">
                                 <h3>創建中專案</h3>
-
                             </div>
                         </div>
                     </div>
@@ -103,9 +118,7 @@
             <div class="tab-pane fade" id="pills-edit" role="tabpanel" aria-labelledby="pills-edit-tab">
                 <div class="edit">
                     <div class="wrap-inside">
-                        @{
-                            var vm = (MemberViewModel)Session["Member"];
-                         }
+                        @{ var vm = (MemberViewModel)Session["Member"]; }
                         @if (vm == null)
                         {
                             Html.ActionLink("登入", "Login", "Member");
@@ -113,83 +126,83 @@
                         else if (vm != null)
                         {
                             //<form method="post" action="" accept-charset="UTF-8">
-                    <div id="user-profile" class="container">
-                        <div class="form-group row">
-                            <!-- 左欄 -->
-                            <div class="left col-12 col-md-6">
-                                <div id="upload-img">
-                                    <!-- 這裡是複製的 -->
-                                    <div class="flyingUpload">
-                                        <svg width="93" height="93" class="transpCircle">
-                                            <mask id="mask">
-                                                <rect fill="white" width="100%" height="100%" />
-                                                <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
-                                            </mask>
-                                            <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
-                                        </svg>
-                                        <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
-                                             class="avatar" style="width: 93px;" id="imgshow">
-                                        <span class="image-hinter">
-                                            <strong>上傳圖片</strong><br>
-                                            <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
-                                        </span>
-                                        <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file">
-                                        <div id="imgurl" hidden="hidden"></div>
-                                    </div>
-                                </div>
-                                <div id="memberid" hidden="hidden">@vm.MemberId</div>
-
-                                <div id="register-email" class="form-group">
-                                    <label for="inputEmail">註冊信箱</label>
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
-                                    <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
-                                </div>
-                                <div id="contact-email" class="form-group">
-                                    <label for="inputEmail">聯絡信箱</label>
-                                    <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
-                                </div>
-
-                                <div id="gender" class="form-group">
-                                    <label for="gender">性別</label>
-                                    <select class="form-control" id="gender1" name="Gender">
-                                        <option>請選擇性別</option>
-                                        <option>男性</option>
-                                        <option>女性</option>
-                                        <option>其他</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="birthday">生日</label>
-                                    <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
-                                </div>
-
-
-                            </div>
-                            <!-- 右欄 -->
-                            <div class="right col-12 col-md-6">
-                                <div id="about-me" class="form-group">
-                                    <label for="about" class="colored-label">關於我</label>
-                                    <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
-                                </div>
-                                <div id="name" class="form-group">
-                                    <label for="name">顯示名稱</label>
-                                    <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
-                                </div>
-                                <div id="personal-site" class="form-group">
-                                    <label for="personal-site">個人網站</label>
-                                    <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
-                                </div>
-
+            <div id="user-profile" class="container">
+                <div class="form-group row">
+                    <!-- 左欄 -->
+                    <div class="left col-12 col-md-6">
+                        <div id="upload-img">
+                            <!-- 這裡是複製的 -->
+                            <div class="flyingUpload">
+                                <svg width="93" height="93" class="transpCircle">
+                                    <mask id="mask">
+                                        <rect fill="white" width="100%" height="100%" />
+                                        <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
+                                    </mask>
+                                    <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
+                                </svg>
+                                <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
+                                     class="avatar" style="width: 93px;" id="imgshow">
+                                <span class="image-hinter">
+                                    <strong>上傳圖片</strong><br>
+                                    <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
+                                </span>
+                                <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file">
+                                <div id="imgurl" hidden="hidden"></div>
                             </div>
                         </div>
-                        <hr>
-                        @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
-                        <button id="btnSub" class="btn btn-primary">儲存</button>
-                        <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
-                        @*@Html.ActionLink("會員資料", "Index", "PersonInfo")*@
-                    </div> //</form>
-                                } @*表單提交區域!!!*@
+                        <div id="memberid" hidden="hidden">@vm.MemberId</div>
+
+                        <div id="register-email" class="form-group">
+                            <label for="inputEmail">註冊信箱</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
+                            <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
+                        </div>
+                        <div id="contact-email" class="form-group">
+                            <label for="inputEmail">聯絡信箱</label>
+                            <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
+                        </div>
+
+                        <div id="gender" class="form-group">
+                            <label for="gender">性別</label>
+                            <select class="form-control" id="gender1" name="Gender">
+                                <option>請選擇性別</option>
+                                <option>男性</option>
+                                <option>女性</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthday">生日</label>
+                            <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
+                        </div>
+
+
+                    </div>
+                    <!-- 右欄 -->
+                    <div class="right col-12 col-md-6">
+                        <div id="about-me" class="form-group">
+                            <label for="about" class="colored-label">關於我</label>
+                            <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
+                        </div>
+                        <div id="name" class="form-group">
+                            <label for="name">顯示名稱</label>
+                            <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
+                        </div>
+                        <div id="personal-site" class="form-group">
+                            <label for="personal-site">個人網站</label>
+                            <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
+                <button id="btnSub" class="btn btn-primary">儲存</button>
+                <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
+                @*@Html.ActionLink("會員資料", "Index", "PersonInfo")*@
+            </div> //</form>
+        } @*表單提交區域!!!*@
                     </div>
 
                 </div>
@@ -251,63 +264,63 @@
 //            );
 //            xhr.send();
 //        }
-                        //const app = new Vue({
-                        //    el: '#app',
-                        //    data() {
-                        //        return {
-                        //            formObj: {
-                        //                contry: '',
-                        //                province: '',
-                        //                city: '',
-                        //                area: '',
-                        //                detail: '',
-                        //                phone: '',
-                        //                number: ''
-                        //            }
-                        //        }
-                        //    },
-                        //    methods: {
-                        //        onSubmit(event) {
-                        //            event.preventDefault();
-                        //            let formData = JSON.stringify(this.formObj);
-                        //            console.log(formData);
-                        //            this.$http.post('', formData).then(function (res) {
-                        //                if (res.status === 2000) {
+                            //const app = new Vue({
+                            //    el: '#app',
+                            //    data() {
+                            //        return {
+                            //            formObj: {
+                            //                contry: '',
+                            //                province: '',
+                            //                city: '',
+                            //                area: '',
+                            //                detail: '',
+                            //                phone: '',
+                            //                number: ''
+                            //            }
+                            //        }
+                            //    },
+                            //    methods: {
+                            //        onSubmit(event) {
+                            //            event.preventDefault();
+                            //            let formData = JSON.stringify(this.formObj);
+                            //            console.log(formData);
+                            //            this.$http.post('', formData).then(function (res) {
+                            //                if (res.status === 2000) {
 
-                        //                }
-                        //                else {
+                            //                }
+                            //                else {
 
-                        //                }
-                        //            });
-                        //        },
-                        //}
+                            //                }
+                            //            });
+                            //        },
+                            //}
 
-                        //})
+                            //})
 
-                        //export default {
-                        //    data: {
-                        //        return {
-                        //            student: {
-                        //                userName: "",
-                        //                gender: ""
-                        //            }
-                        //        }
-                        //    },
-                        //    methods: {
-                        //        submit() {
+                            //export default {
+                            //    data: {
+                            //        return {
+                            //            student: {
+                            //                userName: "",
+                            //                gender: ""
+                            //            }
+                            //        }
+                            //    },
+                            //    methods: {
+                            //        submit() {
 
-                        //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
-                        //            this.$http.post('', formData).then(function (data) {
-                        //                if (data.json().state == "success")
-                        //                    console.log("success");
-                        //            }
-                        //    }).catch(function () {
-                        //                console.log("服务器异常！");
-                        //            });
+                            //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
+                            //            this.$http.post('', formData).then(function (data) {
+                            //                if (data.json().state == "success")
+                            //                    console.log("success");
+                            //            }
+                            //    }).catch(function () {
+                            //                console.log("服务器异常！");
+                            //            });
 
-                        //    }
+                            //    }
 
-                        //}
-                        //}
+                            //}
+                            //}
     </script>
 }

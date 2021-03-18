@@ -9,7 +9,7 @@
 
         <div class="container case-doing-item">
             <div class="case-doing-pic">
-                <img src="https://picsum.photos/800/600/?random=1">
+                <img src="@Model.ProjectImgUrl">
             </div>
             <div class="case-doing-text">
                 <div class="case-doing-name">
@@ -43,7 +43,7 @@
             </div>
             <div class="button-group">
                 <button id="btn-fix">修改</button>
-                <button id="btn-view">預覽</button>
+                <a id="btn-view" href="/ProjectDetail/Index/@Model.ProjectId">預覽</a>
             </div>
         </div>
 
