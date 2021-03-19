@@ -94,13 +94,8 @@ namespace ProjectTeamFour.Controllers
                 }
             }
 
-            //MemberViewModel viewmodel = new MemberViewModel();
-            //viewmodel.MemberId = Convert.ToInt32(memberId);
-            //Session["Member"] = viewmodel.MemberId;
             _MemberService.Reloging(intmember);
             return RedirectToAction("Index", "Home");
         }
-
-
     }
 }
