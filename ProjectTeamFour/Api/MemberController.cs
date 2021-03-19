@@ -11,6 +11,8 @@ using System.Linq.Expressions;
 using System.Web.Hosting;
 using Newtonsoft.Json;
 using System.Web;
+using Imgur.API.Authentication;
+using Imgur.API.Endpoints;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using System.Web.Mvc;

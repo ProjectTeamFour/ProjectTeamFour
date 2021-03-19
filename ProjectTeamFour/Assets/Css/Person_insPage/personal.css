@@ -171,7 +171,7 @@
 .case-doing-creating h3 {
     font-size: 1.2rem;
     font-weight: 800;
-    border-bottom: 1px solid #000;
+/*    border-bottom: 1px solid #000;*/
     padding: 0.5rem 0;
 }
 
@@ -218,7 +218,14 @@
     border: #f00;
 }
 
-    #btn-view:hover {
+#btn-view a{
+    display:block;
+    padding:0.25rem 0.5rem;
+    text-decoration:none;
+    color:#ffffff;
+}
+
+ #btn-view a:hover {
         background-color: #F8414A;
     }
 
@@ -281,11 +288,57 @@
 }
 
 /* ------------------------------ */
-
 html {
     color: #212121;
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
 }
+
+.flyingUpload {
+      border-width: 1px;
+      border-style: dashed;
+      border-color: #cdcdcd;
+      padding: 5px;
+      
+    }
+
+    .flyingUpload .img{
+      display: inline-block;
+    }
+
+    .flyingUpload .img img{
+      display: inline-block;
+      width: 93px;
+      position: absolute;
+      left: 13px;
+      z-index:2;
+    }
+
+    .flyingUpload .transpCircle{
+      position: relative;
+      z-index:3;
+    }
+
+    .flyingUpload .image-hinter{
+      display:block;
+      position: absolute;
+      left: 125px;
+      top:28px;
+      height: 66px;
+      
+    }
+
+    .flyingUpload .image-hinter strong {
+      display: inline-block;
+      color: #f8414a;
+    }
+
+    .flyingUpload .image-hinter strong:hover {
+      color: #212121;
+    }
+
+    .flyingUpload .image-hinter .grey{
+      color:#737373;
+    }
 
 .btn {
     padding: 0.5rem 0.8rem;
@@ -314,11 +367,11 @@ html {
     font-size: 0.8rem;
 }
 
-.avatar img {
+/*.avatar img {
     left: -6.5px;
     z-index: -1;
 }
-
+*/
 /* .upload {
     display: none;
   } */

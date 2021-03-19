@@ -18,36 +18,36 @@ namespace ProjectTeamFour.Controllers
 	public class UserInfoController : Controller
 	{
 		private readonly MemberService _memberService;
-		//private readonly BackingService _backingService;
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
-		private readonly BackingService _backingService;
-
-	 //	int result = _MemberService.ReturnLoginnerId();
-
-	 //           if (result == 0)
-	 //           {
-	 //               return RedirectToAction("Login", "Member");
-	 //}
 
 		public UserInfoController()
-        {
-            _memberService = new MemberService();
-			_myProjectsService = new MyProjectsService();
-			_commentService = new CommentService();
-			//_memberSettingService = new MemberSettingService();
-		}
+			{
+				_memberService = new MemberService();
+				_myProjectsService = new MyProjectsService();
+				_commentService = new CommentService();
+			}
 
 		// GET: PersonInfo
 		//[CustomAuthorize(flagNum = 1)]
 		public ActionResult Member(int Id)	//公開的個人資料頁面
 		{
-			//var model = (MemberViewModel)Session["Member"];
+			var model = (MemberViewModel)Session["Member"];
+			if (model != null)
+			{
+				var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
 
-			var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
-			//return View(memberInfo);
-			//return RedirectToAction("Index");
-			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+
+				//根據專案的提交與審核狀態進行分類
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
+
+
+				return model != default(ViewModels.MemberViewModel) ? View(model) : View();
+			}
+            else
+            {
+				return RedirectToAction("Login", "Member");
+            }
 		}
 
 
@@ -57,23 +57,20 @@ namespace ProjectTeamFour.Controllers
 			return View(model);
 		}
 
-		public ActionResult Myprojects()	//專案提交紀錄
-		{
-			var model = (MemberViewModel)Session["Member"];
-			if (model != null)
-			{
-
-
-				//根據專案的提交與審核狀態進行分類
-				//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
-
-				return View(model);
-			}
-            else
-            {
-				return RedirectToAction("Login", "Member");
-			}
-		}
+		//public ActionResult Myprojects()	//專案提交紀錄
+		//{
+		//	var model = (MemberViewModel)Session["Member"];
+		//	if (model != null)
+		//	{
+		//		//根據專案的提交與審核狀態進行分類
+		//		//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
+		//		return View(model);
+		//	}
+  //          else
+  //          {
+		//		return RedirectToAction("Login", "Member");
+		//	}
+		//}
 
 		public ActionResult Message()		//聯絡訊息
 		{
@@ -112,9 +109,9 @@ namespace ProjectTeamFour.Controllers
 			//return View();
 		}
 
-		public ActionResult Notifaction()	//通知設定
-		{
-			return View();
-		}
+		//public ActionResult Notifaction()	//通知設定
+		//{
+		//	return View();
+		//}
 	}
 }
