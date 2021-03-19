@@ -30,7 +30,7 @@ namespace ProjectTeamFour.Controllers
 	 //               return RedirectToAction("Login", "Member");
 	 //}
 
-	public UserInfoController()
+		public UserInfoController()
         {
             _memberService = new MemberService();
 			_myProjectsService = new MyProjectsService();
@@ -94,7 +94,7 @@ namespace ProjectTeamFour.Controllers
 			MemberViewModel memberVM = new MemberViewModel();
 
 			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
-
+			//memberInfo = memberVM;
 			//return RedirectToAction("Index");
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 		}
