@@ -11,10 +11,10 @@
     color: #555;
 }
 
-    .btn-link:hover {
-        text-decoration: none;
-        color: #000;
-    }
+.btn-link:hover {
+    text-decoration: none;
+    color: #000;
+}
 
 .products {
     display: flex;
@@ -48,10 +48,10 @@
     height: 100%;
 }
 
-    .product-item-text h3 {
-        font-size: 1rem;
-        text-align: center;
-    }
+.product-item-text h3 {
+    font-size: 1rem;
+    text-align: center;
+}
 
 .checkout {
     border-top: 1px solid #000;
@@ -59,9 +59,10 @@
     padding: 1rem 0;
 }
 
-    .checkout h4 {
-        font-size: 1rem;
-    }
+.checkout h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
 
 .checkout-price, .check-total {
     display: flex;
@@ -94,9 +95,7 @@
 h2 {
     font-weight: 800;
 }
-/* .title{
-    padding: 1rem 1rem;
-} */
+
 
 h3 {
     padding: 0 1rem;
@@ -153,13 +152,13 @@ form {
     flex-direction: column;
 }
 
-    .button-group button {
-        height: 3rem;
-        margin: 0.5rem 0;
-        font-weight: 600;
-        background-color: #fff;
-        border-radius: 10px;
-    }
+.button-group button {
+    height: 3rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
+    background-color: #fff;
+    border-radius: 10px;
+}
 
 
 .span-group {
@@ -167,9 +166,9 @@ form {
     flex-direction: column;
 }
 
-    .span-group span {
-        margin: 1rem 0;
-    }
+.span-group span {
+    margin: 1rem 0;
+}
 
 .content-payment span {
     display: none;
@@ -202,16 +201,16 @@ form {
     justify-content: flex-start;
 }
 
-    .pay-money:last-child {
-        margin: 1.5rem 0;
-        border-top: solid #aaa;
-    }
+.pay-money:last-child {
+    margin: 1.5rem 0;
+    border-top: solid #aaa;
+}
 
-    .pay-money input[type="text"] {
-        width: 5rem;
-        border: transparent;
-        border-bottom: 1px solid #F8414A;
-    }
+.pay-money input[type="text"] {
+    width: 5rem;
+    border: transparent;
+    border-bottom: 1px solid #F8414A;
+}
 
 #bonus {
     border: none;

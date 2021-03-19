@@ -301,8 +301,4 @@ button[type="button"] {
     .popular-project .project-progressnumber p {
         font-size: 0.95rem;
     }
-
-    .check-total h4 {
-        line-height: 1.5rem;
-    }
 }
