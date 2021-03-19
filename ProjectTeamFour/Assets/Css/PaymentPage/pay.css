@@ -244,7 +244,7 @@ label {
 #Save2Sever {
     border: none;
     font-size: 1.5rem;
-    /*    width: 50%;*/
+        width: 100%;
     display: flex;
     justify-content: center;
     margin: 1rem auto;

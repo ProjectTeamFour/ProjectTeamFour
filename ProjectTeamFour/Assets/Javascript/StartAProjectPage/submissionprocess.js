@@ -943,7 +943,7 @@ var form = new Vue({
                                 Swal.showLoading();
                             },
                         })
-                        saveSubmissionToServer();
+                        this.saveSubmissionToServer();
 
                     } else if (
 

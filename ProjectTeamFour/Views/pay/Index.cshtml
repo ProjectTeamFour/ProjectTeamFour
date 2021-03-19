@@ -44,11 +44,11 @@
                     EmailError: '',
                     EmailErrorMsg: '',
                 },
-                isdisabled:true
+                disableInputBool: false,
             },
             watch: {
                 'inputData.Name': {
-                    immediate: true,        //點開即驗證            
+                    immediate: true,        //點開即驗證
                     handler: function () {
                         let nameRegexp = /^[0-9]*$/; //只能數字
                         if (this.inputData.Name.length > 8) {
@@ -59,11 +59,10 @@
                             this.inputDataCheck.NameError = false;
                             this.inputDataCheck.NameErrorMsg = '';
                         }
-                        @* this.isButtonDisabled();*@
                     }
-                },                    
+                },
                 'inputData.Address': {
-                    immediate: true,        //點開即驗證            
+                    immediate: true,        //點開即驗證
                     handler: function () {
                         let addressRegexp = /^[0-9]{3}/;  //開頭為數字
 
@@ -75,11 +74,10 @@
                             this.inputDataCheck.AddressError = false;
                             this.inputDataCheck.AddressErrorMsg = '';
                         }
-                    @*this.isButtonDisabled();*@
                     },
                 },
                 'inputData.Tel': {
-                    immediate: true,        //點開即驗證            
+                    immediate: true,        //點開即驗證
                     handler: function () {
                         let telRegexp = /^09/; //開頭為09
                         let telRegexpNum = /^[0-9]*$/;
@@ -100,73 +98,70 @@
                             this.inputDataCheck.TelError = false;
                             this.inputDataCheck.TelErrorMsg = '';
                         }
-                    @*this.isButtonDisabled();*@
                     },
                 },
-                'inputData.Email': function () {
-                    let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
-                    if (!emailRegexp.test(this.inputData.Email)) {
-                        this.inputDataCheck.EmailError = true;
-                        this.inputDataCheck.EmailErrorMsg = '不符合email格式';
+                'inputData.Email': {
+                    immediate: true,        //點開即驗證
+                    handler: function () {
+                        let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
+                        if (!emailRegexp.test(this.inputData.Email)) {
+                            this.inputDataCheck.EmailError = true;
+                            this.inputDataCheck.EmailErrorMsg = '不符合email格式';
+                        }
+                        else {
+                            this.inputDataCheck.EmailError = false;
+                            this.inputDataCheck.EmailErrorMsg = '';
+                        }
                     }
-                    else {
-                        this.inputDataCheck.EmailError = false;
-                        this.inputDataCheck.EmailErrorMsg = '';
-                    }
-                    @*this.isButtonDisabled();*@
-                }
-
-            },    
+                },
+            },
             computed: {
-                isButtonDisabled() {                    
+                isButtonDisabled() {
                     if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
-                            @*this.AddVerify = false; //不能按*@
+
+                        Swal.fire(
+                            '請填寫符合資料'
+                        );
                         return this.isdisabled = true
                     }
                     else {
                         return this.isdisabled = false
                     }
-                    
-                    @*this.AddVerify = true; //可以按*@
                 }
             },
             methods: {
-                checkAddVerify() {
-                    for (let index in this.inputDataCheck) {
-                        if (this.inputDataCheck[index] == true) {
-                            this.AddVerify = false;
-                            return;
-                        }
-                    }
-                    this.AddVerify = true;
+                checkAddVerify:function(e) {                   
+                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {                            
+                        Swal.fire(
+                            '請填寫符合資料'
+                        );
+                        e.preventDefault(); //防止跳轉                     
+                    }                       
                 }
             }
         })
 
 
-function Save2Server() {
-    $.ajax({
-        type: "POST",
-        url: '@Url.Action("test", "Pay")',
-        data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串
-        dataType: "json",
-        headers: {
-            'Content-type': 'application/json'
-        }, //注意 Content-type
-        success: function (response) {
+    function Save2Server() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("test", "Pay")',
+            data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串
+            dataType: "json",
+            headers: {
+                'Content-type': 'application/json'
+            }, //注意 Content-type
+            success: function (response) {
 
-                alert('儲存成功');
-        },
-        error: function (err) {
-            console.log(err);
-        }
-    });
-}
-
+                    @*alert('儲存成功');*@
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+        } 
     </script>
-
 }
-
 <input type="text" value="@jsonStringResult" id="transJSON" />
 <div class="accordion" id="accordionExample">
 
@@ -240,7 +235,7 @@ function Save2Server() {
                     <div class="checkout">
                         <div class="checkout-price">
                             <h4>shipping</h4>
-                            <span>Calculated at next step</span>
+                            <span>Calculated at next step</span
                         </div>
                         <div class="check-total">
                             <h4>Total</h4>
@@ -332,8 +327,8 @@ function Save2Server() {
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <a href="/Pay/ConnectECPay">                        
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  :disabled="isButtonDisabled" >
+                    <a href="/Pay/ConnectECPay" >                        
+                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  :disabled="disableInputBool" v-on:click ="checkAddVerify" >
                     </a>                       
                 </div>
             </div>

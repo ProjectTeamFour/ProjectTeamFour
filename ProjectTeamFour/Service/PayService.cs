@@ -62,8 +62,17 @@ namespace ProjectTeamFour.Service
                 viewmodel.CartItems.Add(CartItem);                                                                            
             }
             return viewmodel;
-        }    
-        
+        }
+
+        //public PayViewModel QueryOrder(MemberViewModel memberId) //撈資料庫資料 用登入會員id找order訂單紀錄
+        //{
+        //    var session = HttpContext.Current.Session;
+        //    var memberSession = ((MemberViewModel)session["Member"]);
+        //    var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
+
+        //    var ordermodel
+        //}
+
         public int ReturnLoginnerId()
         {
             var session = HttpContext.Current.Session;
@@ -405,5 +414,7 @@ namespace ProjectTeamFour.Service
                 }
             }
         }
+
+        
     }
 }

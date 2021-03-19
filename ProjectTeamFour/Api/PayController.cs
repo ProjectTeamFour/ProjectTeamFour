@@ -18,6 +18,11 @@ namespace ProjectTeamFour.Api
         public PayController(PayService payService)
         {
             _payService = new PayService();
-        }
+        } 
+
+        //public PayViewModel GetOrderData()
+        //{
+            
+        //}
     }
 }

@@ -34,9 +34,17 @@ namespace ProjectTeamFour.Controllers
                     Gender=input.gender,
                     Permission=1 
                 };
-                _api.CreateMember(vm);
+                string registerResult = _api.CreateMember(vm);
+                if (registerResult == "成功")
+                {
+                    return RedirectToAction("RegisterSuccess", "Member");
+                }
+                else
+                {
+                    return RedirectToAction("RegisterFail", "Member");
+                }
             }
-            return View();
+            return RedirectToAction("RegisterFail", "Member");
         }
         private DateTime StringtoDate(string input)
         {
@@ -97,6 +105,24 @@ namespace ProjectTeamFour.Controllers
             Session["Permission"] = null;
             return RedirectToAction("Login", "Member");
         }
+
+
+
+        public ActionResult RegisterSuccess()
+        {
+            return View();
+        }
+
+        public ActionResult RegisterFail()
+        {
+            return View();
+        }
+
+        public ActionResult Forgetpassword()
+        {
+            return View();
+        }
+
 
 
         //private MemberService _memberService;

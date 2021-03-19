@@ -1,0 +1,34 @@
+﻿
+
+@section topCSS{
+    <link href="~/Assets/Css/RegisterFailPage/RegisterFail.css" rel="stylesheet" />
+}
+
+
+<section class="registerfail-page">
+
+    <div class="container d-flex flex-column">
+        <div class="registerfail-page-item text-center">
+            <h3>註冊失敗!</h3>
+        </div>
+
+        <div class="registerfail-page-item other-registerfail">
+            <div class="other-registerfail-item pb-3">
+                <p class="d-flex justify-content-center welcome">可能是網路造成的問題，請再註冊一次</p>
+            </div>
+            <div class="other-registerfail-item">
+                <a href="/Member/Register" class="d-flex justify-content-center gologin">
+                    <p>- 返回註冊頁 -</p>
+                </a>
+            </div>
+            <hr>
+        </div>
+        <div class="registerfail-page-item d-flex justify-content-between changestatus">
+            <a href="/Member/Login" class="d-flex again">
+                <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                <p>已經是會員？</p>
+            </a>
+            <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+        </div>
+    </div>
+</section>

@@ -39,7 +39,7 @@ namespace ProjectTeamFour.Service
 
             foreach (var item in _repository.GetAll<Project>())
             {
-                
+
                 ProjectViewModel pv = new ProjectViewModel()
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -70,10 +70,13 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    ProjectId=item.ProjectId,
-                    QuantityLimit=item.QuantityLimit
+                    ProjectId = item.ProjectId,
+                    QuantityLimit = item.QuantityLimit
                 };
-                homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
+                if (cv.QuantityLimit > 0)
+                {
+                    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
+                }
             }
 
             return homeviewmodel;
@@ -113,7 +116,7 @@ namespace ProjectTeamFour.Service
 
         public HomeViewModel GetSearchPlanTitle(string searchString)    //待處理 -phil
         {
-            return GetSearchCardPlan(x => x.PlanTitle.Contains(searchString));  
+            return GetSearchCardPlan(x => x.PlanTitle.Contains(searchString));
         }
 
         public HomeViewModel GetSearchPlanDescription(string searchString)  //待處理 -phil
@@ -123,7 +126,7 @@ namespace ProjectTeamFour.Service
 
 
 
-      
+        //搜尋 project
 
         public HomeViewModel GetSearchCardProject(Expression<Func<Project, bool>> Keyselector)
         {
@@ -165,6 +168,7 @@ namespace ProjectTeamFour.Service
 
 
 
+        //搜尋 plan
         public HomeViewModel GetSearchCardPlan(Expression<Func<Plan, bool>> Keyselector)
         {
 
@@ -195,9 +199,12 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    QuantityLimit=item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit
                 };
-                homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(planbox); 
+                if (planbox.QuantityLimit > 0)
+                {
+                    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(planbox);
+                }
             }
             return homeviewmodel;
         }
@@ -226,7 +233,7 @@ namespace ProjectTeamFour.Service
 
 
     public static class DistinctExtensions   //-phil
-    { 
+    {
         public static IEnumerable<T> Distinct<T, V>(this IEnumerable<T> source, Func<T, V> keySelector)
         {
             return source.Distinct(new CommonEqualityComparer<T, V>(keySelector));
