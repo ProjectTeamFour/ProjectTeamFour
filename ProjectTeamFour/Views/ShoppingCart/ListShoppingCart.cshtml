@@ -23,7 +23,8 @@
                 el: "#app",
                 data: {
                     Models:@Html.Raw(modelJS),
-                    watchInput: 0
+                    watchInput: 0,
+                    detailUrl:"/ProjectDetail/Index/"
                 },
                 methods: {
                     RemoveFromCart: function (PlanId) {

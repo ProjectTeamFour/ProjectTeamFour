@@ -43,8 +43,8 @@ a:hover {
         }
 
 .menu-dropdown-group {
-    padding-top: 1rem;
     display: flex;
+    padding: 1rem;
 }
 
 .menu-dropdown-group-filter {
@@ -137,9 +137,9 @@ button[type="button"] {
         display: none;
     }
 
-        .popular-project .see-more a:hover {
-            color: #000;
-        }
+    .popular-project .see-more a:hover {
+        color: #000;
+    }
 
     .popular-project .phone-see-more a {
         text-decoration: none;
@@ -248,8 +248,8 @@ button[type="button"] {
         }
 
 
-.ForCategory{
-    display:none;
+.ForCategory {
+    display: none;
 }
 
 .btn-more {
@@ -261,19 +261,24 @@ button[type="button"] {
     margin: 1rem 0;
 }
 
-.btn-more:hover {
-    background-color: #000;
+    .btn-more:hover {
+        background-color: #000;
+    }
+
+.pagination {
+    display: flex;
+    justify-content: center;
 }
 
-.pagination{
-    display:flex;
-    justify-content:center;
+.page-item .page-link {
+    color: #000;
 }
 
-.page-item .page-link{
-    color:#000;
-
+.page-item.active .page-link{
+    background-color:#f9414a;
+    border:none;
 }
+
 
 @media screen and (min-width: 768px) {
     .popular-project .see-more a {
@@ -294,9 +299,6 @@ button[type="button"] {
     }
 
     .popular-project .project-progressnumber p {
-       
         font-size: 0.95rem;
     }
-
-    
 }

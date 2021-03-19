@@ -164,7 +164,7 @@ namespace ProjectTeamFour.Service
             {
 
                 var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
-                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();//有問題 不能只抓first
+                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();
                 
                 //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
                 

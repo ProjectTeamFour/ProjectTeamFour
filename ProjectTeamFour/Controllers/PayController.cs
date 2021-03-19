@@ -14,7 +14,7 @@ namespace ProjectTeamFour.Controllers
 
         private PayService _PayService;
         private MemberService _MemberService;
-        
+
         public PayController()
         {
             _PayService = new PayService();
@@ -25,22 +25,22 @@ namespace ProjectTeamFour.Controllers
         public ActionResult Index() //從session抓Id&Qty
         {
 
-            
+
 
             int result = _MemberService.ReturnLoginnerId();
 
             if (result == 0)
             {
                 return RedirectToAction("Login", "Member");
-            }     
-            
+            }
+
             var cart = (CartItemListViewModel)Session["Cart"];
 
-            var cartt=_PayService.QueryByPlanId(cart);
-            
+            var cartt = _PayService.QueryByPlanId(cart);
+
             return View(cartt);
         }
-        
+
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
             var order = Convert.ToInt32(TempData["orderId"]);
@@ -60,7 +60,7 @@ namespace ProjectTeamFour.Controllers
             var o = _PayService.CreateANewMemberData(oVM);
             //var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
-            TempData["orderId"] = orderId ;
+            TempData["orderId"] = orderId;
 
             return RedirectToAction("ConnectECPay");
         }
@@ -74,28 +74,28 @@ namespace ProjectTeamFour.Controllers
 
             return null;
         }
-        
+
 
         [HttpPost]
         public ActionResult Result(FormCollection form)
-        {           
+        {
             string RtnCode = form["RtnCode"];
             string MerchantTradeNo = form["MerchantTradeNo"];
             string OrderId = form["CustomField1"];
-            string memberId = form["CustomField2"];
-            //var member = (MemberViewModel)Session["Member"];
+            string memberId = form["CustomField2"]; //會員id
+            var intmember = Convert.ToInt32(memberId);
 
             TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {
                 if (Convert.ToInt32(RtnCode) == 1)
                 {
-                    _PayService.CreateOrderToDB(RtnCode, MerchantTradeNo,OrderId);
-                }                
+                    _PayService.CreateOrderToDB(RtnCode, MerchantTradeNo, OrderId);
+                }
             }
-            return RedirectToAction("Index", "Home");
-        }        
 
-        
+            _MemberService.Reloging(intmember);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
