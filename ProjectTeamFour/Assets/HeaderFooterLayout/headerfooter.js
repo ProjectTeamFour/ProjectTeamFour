@@ -35,11 +35,11 @@ faSearch.addEventListener("click", function () {
 });
 
 //購物車功能
-function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit) {
+function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit,ProjectId) {
     $.ajax({
         type: "POST",
         url: "/ShoppingCart/AddtoCart",
-        data: { PlanId: PlanId, PlanTitle: PlanTitle, PlanPrice: PlanPrice, PlanImgUrl: PlanImgUrl, Quantity: 1, QuantityLimit : QuantityLimit },
+        data: { PlanId: PlanId, PlanTitle: PlanTitle, PlanPrice: PlanPrice, PlanImgUrl: PlanImgUrl, Quantity: 1, QuantityLimit: QuantityLimit, ProjectId: ProjectId },
         dataType: "text",
         success: function (response) {
 

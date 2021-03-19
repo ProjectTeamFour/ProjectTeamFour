@@ -84,7 +84,8 @@ namespace ProjectTeamFour.Controllers
             string OrderId = form["CustomField1"];
             string memberId = form["CustomField2"];
             //var member = (MemberViewModel)Session["Member"];
-
+            Session["Member"] = null;
+            ((MemberViewModel)Session["Member"]).MemberId = Int32.Parse(memberId);
             TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {
