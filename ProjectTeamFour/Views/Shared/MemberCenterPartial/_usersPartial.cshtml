@@ -1,7 +1,14 @@
 ﻿@*@{
-    var vm = (MemberViewModel)Session["Member"];
-}*@
+        var vm = (MemberViewModel)Session["Member"];
+    }*@
 @model MemberViewModel
+
+@section topCSS{
+    <link href="~/Assets/Css/setting.css" rel="stylesheet" />
+    <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
+    <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
+}
+
 
 <section class=person>
     <div class="wrap-inside">
@@ -14,9 +21,10 @@
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
                         <p>
-                            贊助過
-                            <span>0</span>件專案/發起過
-                            <span>0</span>件專案
+                            @*贊助過 
+                            <span>@Model.ProjectRecords.Count</span>件專案*@
+                            <br />發起過
+                            @*<span>@Model.MyProjects.Count</span>件專案*@
                         </p>
                     </div>
                 </div>
@@ -34,12 +42,12 @@
                     <p>目前還沒有贊助過任何專案</p>
                 </div>
 
-                @*@{ 
-                    foreach(var item in Model.)
-                    { 
+                @*@{
+                        foreach(var item in Model.)
+                        {
 
-                    };
-                }*@
+                        };
+                    }*@
             </div>
         </div>
     </div>

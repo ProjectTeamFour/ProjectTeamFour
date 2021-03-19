@@ -421,11 +421,6 @@
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
-    <Content Include="Views\UserInfo\Account.cshtml" />
-    <Content Include="Views\UserInfo\Message.cshtml" />
-    <Content Include="Views\UserInfo\New.cshtml" />
-    <Content Include="Views\UserInfo\Sponser.cshtml" />
-    <Content Include="Views\UserInfo\Myprojects.cshtml" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2239,8 +2234,6 @@
     <Content Include="Views\Shared\PartialView\_carcarPlanIndexPartial.cshtml" />
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
-    <Content Include="Views\UserInfo\Account.cshtml" />
-    <Content Include="Views\UserInfo\Edit.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
@@ -2259,7 +2252,6 @@
     <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
-    <Content Include="Views\UserInfo\Notifaction.cshtml" />
     <Content Include="Views\pay\test.cshtml" />
     <Content Include="Views\Member\RegisterSuccess.cshtml" />
     <Content Include="Views\Member\RegisterFail.cshtml" />

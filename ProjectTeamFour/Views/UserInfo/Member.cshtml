@@ -78,27 +78,67 @@
                             {
                                 foreach (var item in Model.MyProjects)
                                 {
-                                    <div>
-                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                    </div>
+                                    if (item.ApprovingStatus == 0)
+                                    {
+                                        <div class="case-doing-creating">
+                                            <h3>創建中專案</h3>
+                                            <hr />
+                                            <div class="case-doing-creating-content">
+                                                @if (item == null)
+                                                {<p>目前您沒有創建中專案</p>}
+                                                else
+                                                {
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.ApprovingStatus == 1)
+                                    {
+                                        <div class="case-doing">
+                                            <div class="case-doing-funding">
+                                                <h3>募資中專案</h3>
+                                                <hr />
+                                                <div class="case-doing-creating-content">
+                                                    @if (item == null)
+                                                    {<p>目前您沒有募資中專案</p>}
+                                                    else
+                                                    {
+                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="case-doing-funding">
+                                            <div class="case-doing-funding">
+                                                <h3>已結束專案</h3>
+                                                <hr />
+                                                <div class="case-doing-creating-content">
+                                                    @if (item == null)
+                                                    {<p>目前您沒有已結束專案</p>}
+                                                    else
+                                                    {
+                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
                                 }
                             }
                         }
-                        <div class="case-doing">
-                            <div class="case-doing-funding">
-                                <h3>募資中專案</h3>
-                                <p>目前您沒有募資中專案</p>
-                            </div>
-                            <div class="case-doing-creating">
-                                <h3>創建中專案</h3>
 
-                            </div>
-                        </div>
                     </div>
                 </section>
 
             </div>
             <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">
+                <!--聯絡訊息-->
                 <div class="message">
                     <div class="wrap-inside">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml")
@@ -106,6 +146,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+                <!--帳戶活動與通知-->
                 <div class="news">
                     <div class="wrap-inside">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml")
@@ -113,11 +154,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-edit" role="tabpanel" aria-labelledby="pills-edit-tab">
+                <!--會員資料編輯-->
                 <div class="edit">
                     <div class="wrap-inside">
                         @{
                             var vm = (MemberViewModel)Session["Member"];
-                         }
+                        }
                         @if (vm == null)
                         {
                             Html.ActionLink("登入", "Login", "Member");
@@ -131,7 +173,7 @@
                                     <div class="left col-12 col-md-6">
                                         <div id="upload-img">
                                             <!-- 這裡是複製的 -->
-                                            <div class="flyingUpload">
+                                            <div class="flyingUpload" style="border-width:2px;border-style:dashed;border-color:#FF;padding:5px;">
                                                 <svg width="93" height="93" class="transpCircle">
                                                     <mask id="mask">
                                                         <rect fill="white" width="100%" height="100%" />
@@ -163,17 +205,18 @@
 
                                         <div id="gender" class="form-group">
                                             <label for="gender">性別</label>
+                                            <p id="get-gender" hidden>@vm.Gender</p>
                                             <select class="form-control" id="gender1" name="Gender">
-                                                <option>請選擇性別</option>
-                                                <option>男性</option>
-                                                <option>女性</option>
-                                                <option>其他</option>
+                                                <option value="0">請選擇性別</option>
+                                                <option value="1">男性</option>
+                                                <option value="2">女性</option>
+                                                <option value="3">其他</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="birthday">生日</label>
-                                            <input type="datetime" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
+                                            <input type="date" class="form-control" id="birthday1" value="@vm.MemberBirth" name="MemberBirth">
                                         </div>
 
 
@@ -199,8 +242,8 @@
                                 <hr />
                                 @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
                                 <button id="btnSub" class="btn btn-primary">儲存</button>
-                                <button id="btn-black" class="btn btn-primary">查看檔案頁</button>
-                                @*@Html.ActionLink("會員資料", "Index", "PersonInfo")*@
+                                <a id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</a>
+                                @*Html.ActionLink("會員資料", $"Member/{@vm.MemberId}", "UserInfo")*@
                             </div> //</form>
                         } @*表單提交區域!!!*@
                     </div>
@@ -208,6 +251,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+                <!--修改密碼-->
                 <div class="account">
                     <div class="wrap-inside">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_resetPasswordPartial.cshtml")
@@ -215,6 +259,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
+                <!--通知設定-->
                 <div class="setting">
                     <div class="wrap-inside">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_notifactionPartial.cshtml")
@@ -229,109 +274,52 @@
         <p>@vm.MemberRegEmail</p>
     }*@
 
-@section endJs{
-
+@section endJs
+{
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-        //$('#birthday1').datepicker({
-        //    changeMonth: true,
-        //    changeYear: true,
-        //    yearRange: '-100:+0',
-        //    maxDate: 0,
-        //    dateFormat: 'yyyy-mm-dd'
+        document.onload.getGender();
+                    //$('#birthday1').datepicker({
+                    //    changeMonth: true,
+                    //    changeYear: true,
+                    //    yearRange: '-100:+0',
+                    //    maxDate: 0,
+                    //    dateFormat: 'yyyy-mm-dd'
 
-        //});
+                    //});
     
+                    //import { json } from "modernizr";
+                    //let editapi = "/api/products";
+                    //let memberId = document.getElementById("memberid").value;
+                    //$(document).ready(function () {
+                    //    //$.ajax("xxx/XXX/getPersonalInfo", { id:})
+                    //    $.ajax({
+                    //        url: "/PersonInfo/Index" + "/" + memberId,
+                    //        method: "GET",
+                    //        dataType: "json",
+                    //        data: memberArray,
 
+                    //        success: function (res) { console.log(res) },
+                    //        error: function (err) { console.log(err) },
 
-            //import { json } from "modernizr";
-                    let editapi = "/api/products";
-                    let memberId = document.getElementById("memberid").value;
-                    $(document).ready(function () {
-                        //$.ajax("xxx/XXX/getPersonalInfo", { id:})
-                        $.ajax({
-                            url: "/PersonInfo/Index" + "/" + memberId,
-                            method: "GET",
-                            dataType: "json",
-                            data: memberArray,
+                    //    });
 
-                            success: function (res) { console.log(res) },
-                            error: function (err) { console.log(err) },
+                    //});
 
-                        });
+                    //        window.onload = getMemberInfoJSON();
+                    //        let memberArray = [];
+                    //        function getMemberInfoJSON() {
+                    //            let xhr = new XMLHttpRequest();
+                    //            xhr.onload = function () {
+                    //                memberArray = JSON.parse(this.responseText);
 
-                    });
-
-            //        window.onload = getMemberInfoJSON();
-            //        let memberArray = [];
-            //        function getMemberInfoJSON() {
-            //            let xhr = new XMLHttpRequest();
-            //            xhr.onload = function () {
-            //                memberArray = JSON.parse(this.responseText);
-
-//            };
-//            xhr.open(
-//                "GET", "/PersonInfo/Index"
-//            );
-//            xhr.send();
-//        }
-                        //const app = new Vue({
-                        //    el: '#app',
-                        //    data() {
-                        //        return {
-                        //            formObj: {
-                        //                contry: '',
-                        //                province: '',
-                        //                city: '',
-                        //                area: '',
-                        //                detail: '',
-                        //                phone: '',
-                        //                number: ''
-                        //            }
-                        //        }
-                        //    },
-                        //    methods: {
-                        //        onSubmit(event) {
-                        //            event.preventDefault();
-                        //            let formData = JSON.stringify(this.formObj);
-                        //            console.log(formData);
-                        //            this.$http.post('', formData).then(function (res) {
-                        //                if (res.status === 2000) {
-
-                        //                }
-                        //                else {
-
-                        //                }
-                        //            });
-                        //        },
-                        //}
-
-                        //})
-
-                        //export default {
-                        //    data: {
-                        //        return {
-                        //            student: {
-                        //                userName: "",
-                        //                gender: ""
-                        //            }
-                        //        }
-                        //    },
-                        //    methods: {
-                        //        submit() {
-
-                        //            var formData = JSON.stringify(this.student); // this指向这个VUE实例 data默认绑定在实例下的。所以直接this.student就是要提交的数据
-                        //            this.$http.post('', formData).then(function (data) {
-                        //                if (data.json().state == "success")
-                        //                    console.log("success");
-                        //            }
-                        //    }).catch(function () {
-                        //                console.log("服务器异常！");
-                        //            });
-
-                        //    }
-
-                        //}
-                        //}
+                    //            };
+                    //            xhr.open(
+                    //                "GET", "/PersonInfo/Index"
+                    //            );
+                    //            xhr.send();
+                    //        }
+                        
+                        
     </script>
 }
