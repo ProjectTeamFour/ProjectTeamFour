@@ -1,5 +1,4 @@
-﻿document.getElementById('personinfo').addEventListener('click', function () {
-
+﻿$(document.getElementById('user-profile')).ready(function () {
     var uploadimg = document.querySelector('#uploadimg');
     uploadimg.addEventListener('change', function (e) {
         //debugger;
@@ -10,6 +9,10 @@
         console.log(files);
         console.log(formData);
     })
+
+    //document.getElementById('user-profile').addEventListener('',)
+
+    //document.getElementById('user-profile').addEventListener('click', function () {
 
     var btn_submit = document.querySelector('#btnSub');
     btn_submit.addEventListener('click', function () {
@@ -31,12 +34,15 @@
             },
             success: function (response) {
                 if (response == "成功") {
-                    debugger;
+                    //debugger;
                     let imgurl = document.getElementById('imgshow').getAttribute('src');
-                    document.getElementsByName('memberimg').forEach(item => {
-                        console.log(imgurl);
-                        item.setAttribute('src', imgurl);
-                    })
+                    console.log(imgurl);
+                    document.getElementsByName('memberimg').setAttribute('src', imgurl.val);
+                    //document.getElementsByName('memberimg').forEach(item => {
+                    //    console.log(imgurl);
+                    //    item.setAttribute('src', imgurl);
+                    //})
+
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
@@ -75,16 +81,28 @@ function uploadFile(formData) {
 }
 
 function getGender() {
-    var gender = document.getElementById('gender1').innerText();
-    switch (gender) {
-        case "女":
-            selectedOptions[1].setAttribute("selected")
+    let mygender = document.getElementById('gender1');
+    let myselect = mygender.options[mygender.selectedIndex].text;
+    //e.options[e.selectedIndex].text;
+    //let genderselect = document.getElementById('gender1');
+    switch (myselect) {
+        case "女性":
+            //setgender.selectedOptions[1].setAttribute("selected")
+            genderselect.selectedIndex = "1";
             break;
-        case "男":
-             selectedOptions[2].setAttribute("selected")
+        case "男性":
+            //setgender.selectedOptions[2].setAttribute("selected")
+            genderselect.selectedIndex = "2";
+            break;
+        case "其他":
+            //setgender.selectedOptions[3].setAttribute("selected")
+            genderselect.selectedIndex = "3";
             break;
         default:
-            selectedOptions[0].setAttribute("selected")
+            //setgender.selectedOptions[0].setAttribute("selected")
+            genderselect.selectedIndex = "0";
             break;
     }
 }
+
+

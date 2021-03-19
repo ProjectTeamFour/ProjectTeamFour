@@ -50,5 +50,7 @@ namespace ProjectTeamFour.Controllers
 
             return View(projectTotalVM);
         }
+
+
     }
 }

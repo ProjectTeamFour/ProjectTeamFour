@@ -31,8 +31,14 @@
                 </div>
                 <div class="case-doing-givedate">
                     <h4>
-                        <span>提交日期:尚未提交</span>
-                        <span>提交日期:@Model.SubmittedDate</span>
+                        @if (Model.SubmitStatus == false)
+                        {
+                            <span>提交日期:尚未提交</span>
+                        }
+                        else
+                        {
+                            <span>提交日期:@Model.SubmittedDate</span>
+                        }
                     </h4>
                 </div>
                 <div class="case-doing-fix">
@@ -42,8 +48,8 @@
                 </div>
             </div>
             <div class="button-group">
-                <button id="btn-fix">修改</button>
-                <button id="btn-view">預覽</button>
+                @*<button id="btn-fix">修改</button>*@
+                <a id="btn-view" href="~/ProjectDetail/Index/@Model.ProjectId">預覽</a>
             </div>
         </div>
 
