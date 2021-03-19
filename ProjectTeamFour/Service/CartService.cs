@@ -68,7 +68,8 @@ namespace ProjectTeamFour.Service
                     PlanImgUrl = carcarPlanVM.PlanImgUrl,
                     PlanPrice = carcarPlanVM.PlanPrice,
                     Quantity = carcarPlanVM.Quantity,
-                    QuantityLimit=carcarPlanVM.QuantityLimit
+                    QuantityLimit=carcarPlanVM.QuantityLimit,
+                    ProjectId=carcarPlanVM.ProjectId
 
                 };
                 cartItems.CartItems.Add(cart);
@@ -92,7 +93,8 @@ namespace ProjectTeamFour.Service
                 PlanImgUrl = CarCarPlanVM.PlanImgUrl,
                 PlanPrice = CarCarPlanVM.PlanPrice,
                 Quantity = CarCarPlanVM.Quantity,
-                QuantityLimit=CarCarPlanVM.QuantityLimit
+                QuantityLimit=CarCarPlanVM.QuantityLimit,
+                ProjectId=CarCarPlanVM.ProjectId
 
             };
 
