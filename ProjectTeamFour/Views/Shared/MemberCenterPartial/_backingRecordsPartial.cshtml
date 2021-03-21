@@ -1,41 +1,57 @@
-﻿@*@using ProjectTeamFour.Service;*@
-@model BackingRecordsViewModel
+﻿
 @{
-    @*private readonly BackingService _backingService;*@
-    var vm = (MemberViewModel)Session["Member"]; //該會員資料    
-} 
+    var vm = (MemberViewModel)Session["Member"]; //該會員資料
+}
 
-<div class="record-content">
-    <h2>贊助紀錄</h2>
-    <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
-</div>
-<span>單筆贊助</span>
-<div class="record-detail">
-    <div class="record-detillist">
-        <table id="mytable" style="width:100%">            
-            <tbody>
-                <tr v-for="item in items">
-                    <td>{{item.ID}}</td>
-                    <td>{{item.title}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.Phone}}</td>
-                    <td>
-                        <img class="img-responsive pull-right" style="width: 50px; margin-top: 10px"
-                             v-bind:src="item.PictureURL" />
-                    </td>
-                    <td>{{item.isValid}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td  class="record-detail-col">購買專案</td>
-                    <td  class="record-detail-col">購買金額</td>
-                    <td  class="record-detail-col">回饋項目</td>
-                    <td  class="record-detail-col">金流單號</td>
-                    <td  class="record-detail-col">收到了?</td>
-                </tr>
-            </tfoot>
-        </table>   
+@section topCSS{
+    <link href="~/Assets/Plugin/JQuery/jquery_datatable_1.10.24.css" rel="stylesheet" />
+
+}
+
+@section endJS{
+    <script src="~/Assets/Plugin/JQuery/jquery_datatable1.10.24.js"></script>
+
+    @*<script>
+        $.ajax({
+            url:
+        })
+
+    </script>*@
+}
+
+
+
+    <div class="record-content" id="record">
+        <h2>購買紀錄</h2>
+        <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
     </div>
-    <p>目前沒有任何贊助歷史</p>
-</div>
+    <span>單筆購買</span>
+    <div class="record-detail">
+        <div class="record-detillist">
+            <table id="mytable" style="width:100%">
+                <tbody>
+                    <tr v-for="item in items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.Phone}}</td>
+                        <td>
+                            <img class="img-responsive pull-right" style="width: 50px; margin-top: 10px"
+                                 v-bind:src="item.PictureURL" />
+                        </td>
+                        <td>{{item.isValid}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="record-detail-col">購買專案</td>
+                        <td class="record-detail-col">購買金額</td>
+                        <td class="record-detail-col">回饋項目</td>
+                        <td class="record-detail-col">金流單號</td>
+                        <td class="record-detail-col">收到了?</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <p>目前沒有任何購買歷史</p>
+    </div>

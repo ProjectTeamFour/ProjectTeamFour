@@ -27,6 +27,48 @@ namespace ProjectTeamFour.Service
         }
 
 
+        public BackingRecordsViewModel QueryOrder(int member) //撈資料庫資料 用登入會員id找order訂單紀錄  畫面資料 == 資料庫資料 先找出現在的memberid => memberid找尋 orderId (foreach) =>再找od
+        {
+            var session = HttpContext.Current.Session;
+            member = ((MemberViewModel)session["Member"]).MemberId; //現在登入的id
+            var backorder = new BackingRecordsViewModel();                                          
+            var ordermodel = _repository.GetAll<Order>().Where((x) => x.MemberId == member).Select((x) => x); //找到匹配memberid的訂單
+
+            
+
+
+            var od = ordermodel.SelectMany(x => x.OrderDetails.Select(y => y)); //訂單的詳細(好幾筆)          
+            foreach (var i in od)
+            {
+                foreach (var items in backorder.MyOrdersList)
+                {
+                    items.OrderPrice = i.OrderPrice;
+                    items.PlanId = i.PlanId;
+                    items.PlanTitle = i.PlanTitle;
+                    items.OrderQuantity = i.OrderQuantity;
+                    items.OrderDetailDes = i.OrderDetailDes;
+                }
+                backorder.MyOrdersList.Add(i);
+            }
+            return backorder;
+
+            //foreach(var item in ordermodel)
+            //{
+            //    var od = _repository.GetAll<OrderDetail>().Where(x => x.OrderId == item.OrderId).Select((x) => x).ToList();
+            //    foreach(var i in od)
+            //    {
+            //        foreach(var o in backorder.MyOrdersList)
+            //        {
+            //            o.OrderPrice = i.OrderPrice;
+            //            o.OrderQuantity = i.OrderQuantity;
+            //        }                    
+            //    }                
+            //}
+            //return backorder;
+        }
+
+
+
         public PayViewModel QueryByPlanId(CartItemListViewModel cart) //撈資料庫資料 用購物車的planId找到資料庫的planId
         {
 

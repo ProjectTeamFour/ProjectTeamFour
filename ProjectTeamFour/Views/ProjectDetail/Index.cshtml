@@ -106,9 +106,9 @@
 
                                 <div class="btn col-8">
                                     <!-- Button trigger modal -->
-                                    <a class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                    <button class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
                                         <i class="fab fa-comment-dots">留言</i>聯絡提案人
-                                    </a>
+                                    </button>
                                 </div>
 
                                 <!-- Modal -->
@@ -148,9 +148,9 @@
                                                 </label>
                                                 <form action="">
                                                     <textarea class="form-control" rows="10" id="msg-content"
-                                                              placeholder="傳送訊息..."></textarea>
+                                                              placeholder="傳送訊息..." ></textarea>
                                                     <br />
-                                                    <button type="submit" class="btn btn-primary btn-block" id="send-msg">傳送訊息</button>
+                                                    <a href="javascript:void(0)" class="btn btn-primary btn-block" id="send-msg" onclick="LanchCommentAjax(@Model.ProjectDetailItem.ProjectId)">傳送訊息</a>
                                                     @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
                                                 </form>
                                             </div>
@@ -383,8 +383,39 @@
 
     <link href="~/Assets/Css/ProductDetailPage/campaignDetail.css" rel="stylesheet" />
 }
-@section endJS{
 
+@section endCSS{
+    <style>
+        .modal-backdrop{
+            position:relative;
+        }
+    </style>
+    }
+@section endJS{
+    <script>
+
+       function LanchCommentAjax(ProjectId) {
+           let clientComment = document.querySelector(".form-control");
+           $.ajax({
+               url:"/api/Comment/UpdateComment",
+               type: "POST",
+               dataType: "json",
+               data: { ProjectId: ProjectId, Comment_Question: clientComment.value },
+               success: function (data, textStatus, jqXHR) {
+                   console.log(data);
+                   console.log(textStatus);
+                   console.log(jqXHR.getAllResponseHeaders());
+                   
+               },
+               error: function (jqXHR, textStatus, errorThrown) {
+                   console.log(jqXHR);
+                   console.log(textStatus);
+
+               }
+           })
+
+       }
+    </script>
     <script>
         //plan card投影片slide動畫
         $(document).ready(function () {
