@@ -31,8 +31,9 @@ namespace ProjectTeamFour.Service
         {
             var session = HttpContext.Current.Session;
             member = ((MemberViewModel)session["Member"]).MemberId; //現在登入的id
-            var backorder = new BackingRecordsViewModel();                                          
-            var ordermodel = _repository.GetAll<Order>().Where((x) => x.MemberId == member).Select((x) => x); //找到匹配memberid的訂單
+            var backorder = new BackingRecordsViewModel();
+            var odlist = new List<OrderDetail>();
+            var ordermodel = _repository.GetAll<Order>().Where((x) => x.MemberId == member).Select((x) => x).ToList(); //找到匹配memberid的訂單
 
             
 
@@ -40,17 +41,22 @@ namespace ProjectTeamFour.Service
             var od = ordermodel.SelectMany(x => x.OrderDetails.Select(y => y)); //訂單的詳細(好幾筆)          
             foreach (var i in od)
             {
-                foreach (var items in backorder.MyOrdersList)
+                var order = new OrderDetail()
                 {
-                    items.OrderPrice = i.OrderPrice;
-                    items.PlanId = i.PlanId;
-                    items.PlanTitle = i.PlanTitle;
-                    items.OrderQuantity = i.OrderQuantity;
-                    items.OrderDetailDes = i.OrderDetailDes;
-                }
-                backorder.MyOrdersList.Add(i);
-            }
+                    OrderId = i.OrderId,
+                    OrderPrice = i.OrderPrice,
+                    PlanId = i.PlanId,
+                    PlanTitle = i.PlanTitle,
+                    OrderQuantity = i.OrderQuantity,
+                    OrderDetailDes = i.OrderDetailDes,
+                };
+                odlist.Add(order);
+            };
+            backorder.MyOrderDetailList = odlist;
+            backorder.MyOrder = ordermodel;            
             return backorder;
+                    
+        }        
 
             //foreach(var item in ordermodel)
             //{
@@ -65,7 +71,7 @@ namespace ProjectTeamFour.Service
             //    }                
             //}
             //return backorder;
-        }
+    
 
 
 
@@ -267,25 +273,6 @@ namespace ProjectTeamFour.Service
             return html;
 
         }
-
-        public BackingRecordsViewModel OrderRecord(MemberViewModel records) //回寫回歷史訂單紀錄
-        {
-            var session = HttpContext.Current.Session;
-            records = (MemberViewModel)session["Member"]; //該會員資料
-            var re = new BackingRecordsViewModel();
-            var memberRecords = _repository.GetAll<Order>().Where((x) => x.MemberId == records.MemberId).FirstOrDefault(); //order的memberid 匹配 該登入的會員
-            var orderRecords = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == memberRecords.OrderId).ToList(); //該會員詳細訂單資料
-            foreach (var item in orderRecords)
-            {
-                foreach (var i in re.MyOrdersList)
-                {
-                    i.OrderPrice = item.OrderPrice;
-                    i.OrderQuantity = item.OrderQuantity;
-                    i.PlanTitle = item.PlanTitle;
-                }
-                re.TradeNo = memberRecords.TradeNo;
-            }
-            return re;
-        }
+       
     }
 }                

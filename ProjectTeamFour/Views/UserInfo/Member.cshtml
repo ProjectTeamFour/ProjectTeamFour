@@ -49,9 +49,9 @@
                     <div class="wrap-inside">
                         @if (Model.Records != null)
                         {
-                            foreach (var item in Model.Records)
-                            {
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", item)}
+                           
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
+                            
                         }
                         else
                         {

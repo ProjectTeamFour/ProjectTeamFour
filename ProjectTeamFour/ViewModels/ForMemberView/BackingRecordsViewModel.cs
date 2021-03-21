@@ -11,18 +11,20 @@ namespace ProjectTeamFour.ViewModels.ForMemberView
 {
     public class BackingRecordsViewModel
     {
-        public List<OrderDetail> MyOrdersList { get; set; } 
-        public int OrderId { get; set; }
-        public int MemberId { get; set; }
-        public string OrderName { get; set; }
-        public string OrderAddress { get; set; }
-        public string OrderPhone { get; set; }
-        public string OrderConEmail { get; set; }
-        public decimal OrderTotalAccount { get; set; }
+        public List<OrderDetail> MyOrderDetailList { get; set; } 
 
-        public string TradeNo { get; set; } //綠界的交易編號
-        public int RtnCode { get; set; } //交易狀態
-        public string condition { get; set; } //是否付款
+        public List<Order> MyOrder { get; set; }
+        //public int OrderId { get; set; }
+        //public int MemberId { get; set; }
+        //public string OrderName { get; set; }
+        //public string OrderAddress { get; set; }
+        //public string OrderPhone { get; set; }
+        //public string OrderConEmail { get; set; }
+        //public decimal OrderTotalAccount { get; set; }
+
+        //public string TradeNo { get; set; } //綠界的交易編號
+        //public int RtnCode { get; set; } //交易狀態
+        //public string condition { get; set; } //是否付款
 
         
         //[ForeignKey("MemberId")]
