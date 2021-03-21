@@ -17,12 +17,12 @@ namespace ProjectTeamFour.Controllers
     public class ForgotPasswordController : Controller
     {
 
-        //private static readonly Byte[] _privateKey = new Byte[] { 0xDE, 0xAD, 0xBE, 0xEF };
-        private static readonly TimeSpan _passwordResetExpiry = TimeSpan.FromMinutes(5);
-        private static readonly Byte[] _privateKey = new HMACSHA256().Key;
-        private const Byte _version = 1; // Increment this whenever the structure of the message changes.
-
        
+        private static readonly TimeSpan _passwordResetExpiry = TimeSpan.FromMinutes(5); //限制5分鐘
+        private static readonly Byte[] _privateKey = new HMACSHA256().Key; //做key
+        private const Byte _version = 1;
+
+
         private MemberApiController _api;
         private MemberService _memberService;
         private LogService _logservice;
@@ -43,11 +43,13 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
+        //找回密碼填email頁
         public ActionResult SendMail()
         {
             return View();
         }
 
+        //找回密碼填email頁的post 送出email
         [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SendMail([Bind(Include = "sender, receiver, MailTitle, MailBody")] MailViewModel mailVM)
@@ -91,6 +93,13 @@ namespace ProjectTeamFour.Controllers
         }
 
 
+        //送完email頁跳轉
+        public ActionResult FinishedSending()
+        {
+            return View();
+        }
+
+        //使用者點連結進到這裡 check 對了返回 View
         public ActionResult CheckMemberUrl(string forgotpw)
         {
             if (!VerifyPasswordResetHmacCode(forgotpw, out Int32 userId))
@@ -103,6 +112,8 @@ namespace ProjectTeamFour.Controllers
 
         }
 
+
+        // CheckMemberUrl View 重設密碼 post 傳入這裡  --input ajax要再處理
         public String ResetPassword(EditMemberViewModel input)
         {
 
@@ -130,51 +141,59 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
+
+
+        //----------加密的東西 int 都先寫 int32 比較好換算理解
+
+       // 做 Hmac金鑰雜湊 用 SHA256 包 memberId 和 時間 去做
         public String CreatePasswordResetHmacCode(Int32 userId)
         {
             Byte[] message = Enumerable.Empty<Byte>()
-            .Append(_version)
-            .Concat(BitConverter.GetBytes(userId))
-            .Concat(BitConverter.GetBytes(DateTime.UtcNow.ToBinary()))
-            .ToArray();
+            .Append(_version) //加 1 個 int 也就是 4個byte 32bit
+            .Concat(BitConverter.GetBytes(userId))  //Id  回傳4個byte 32bit
+            .Concat(BitConverter.GetBytes(DateTime.UtcNow.ToBinary())) //Time 回傳8個byte 64bit  取國際標準時間就好
+            .ToArray(); //byte => byte[]
 
-            using (HMACSHA256 hmacSha256 = new HMACSHA256(key: _privateKey))
+            using (HMACSHA256 hmacSha256 = new HMACSHA256(key: _privateKey))  //開始做 code
             {
-                Byte[] hash = hmacSha256.ComputeHash(buffer: message, offset: 0, count: message.Length);
-
-                Byte[] outputMessage = message.Concat(hash).ToArray();
-                String outputCodeB64 = Convert.ToBase64String(outputMessage);
-                String outputCode = outputCodeB64.Replace('+', '-').Replace('/', '_');
+                Byte[] hash = hmacSha256.ComputeHash(buffer: message, offset: 0, count: message.Length);  //buffer 材料 //offset 材料起始點 //count 材料使用長度 做出原始 hash
+                Byte[] outputMessage = message.Concat(hash).ToArray(); //串在一起 增加複雜度
+                String outputCodeB64 = Convert.ToBase64String(outputMessage); //轉 base64string  
+                String outputCode = outputCodeB64.Replace('+', '-').Replace('/', '_');  //最後再一次增加複雜度 替換 + 和 /
                 return outputCode;
             }
         }
 
-        public static Boolean VerifyPasswordResetHmacCode(String codeBase64Url, out Int32 userId)
-        {
-            String base64 = codeBase64Url.Replace('-', '+').Replace('_', '/');
-            Byte[] message = Convert.FromBase64String(base64);
 
-            Byte version = message[0];
+        // 解碼
+        public static Boolean VerifyPasswordResetHmacCode(String codeBase64Url, out Int32 userId)   //Id 原本被包在裡面 , 所以先用 out 不用初始化 , 在裡面咐值
+        {
+            String base64 = codeBase64Url.Replace('-', '+').Replace('_', '/');  //解最外層
+            Byte[] messagePlusHash = Convert.FromBase64String(base64); //轉回 byte陣列 index 0 會是 1
+
+            Byte version = messagePlusHash[0];    // 這裡做判斷，但 肯定 1 不會小於 1 所以我有點不懂一開始 append 1 和現在這件事的意義 //也許算是制定一個小規則增加解密難度 讓中間這裡開頭一定是1
             if (version < _version)
             {
                 userId = 0;
                 return false;
             }
 
-            userId = BitConverter.ToInt32(message, 1);
-            Int64 createdUtcBinary = BitConverter.ToInt64(message, 1 + sizeof(Int32));
-
-            DateTime createdUtc = DateTime.FromBinary(createdUtcBinary);
-            if (createdUtc.Add(_passwordResetExpiry) < DateTime.UtcNow) return false;
-
-            const Int32 _messageLength = 1 + sizeof(Int32) + sizeof(Int64);
-
-            using (HMACSHA256 hmacSha256 = new HMACSHA256(key: _privateKey))
+            userId = BitConverter.ToInt32(messagePlusHash, 1); //拿id
+            Int64 createdUtcBinary = BitConverter.ToInt64(messagePlusHash, 1 + sizeof(Int32));  //拿時間bit
+             
+            DateTime createdUtc = DateTime.FromBinary(createdUtcBinary);  //bit => 真正時間
+            if (createdUtc.Add(_passwordResetExpiry) < DateTime.UtcNow)  //如果超過5分鐘就失效 
             {
-                Byte[] hash = hmacSha256.ComputeHash(message, offset: 0, count: _messageLength);
+                return false;
+            }
 
-                Byte[] messageHash = message.Skip(_messageLength).ToArray();
-                return Enumerable.SequenceEqual(hash, messageHash);
+            const Int32 _messageLength = 1 + sizeof(Int32) + sizeof(Int64);  //計算原本傳入的長度 32 32 64
+
+            using (HMACSHA256 hmacSha256 = new HMACSHA256(key: _privateKey)) 
+            {
+                Byte[] hash = hmacSha256.ComputeHash(messagePlusHash, offset: 0, count: _messageLength);   // 取前面 => 所以得到一開始作的時候的原始 hash
+                Byte[] messageHash = messagePlusHash.Skip(_messageLength).ToArray(); // 這整串去掉原始message長度  => 會是得到傳進來的 hash
+                return Enumerable.SequenceEqual(hash, messageHash);  //原始的 比對 傳進來的 一樣就是 true 
             }
         }
 

@@ -1,28 +1,28 @@
-﻿.forgetpassword-page .container,
-.forgetpassword-page .container-sm {
+﻿.resetpassword-page .container,
+.resetpassword-page .container-sm {
     max-width: 350px;
 }
 
 
-.forgetpassword-page {
+.resetpassword-page {
     padding-top: 2.5rem;
     padding-bottom: 6rem;
 }
 
-    .forgetpassword-page h3 {
+    .resetpassword-page h3 {
         font-size: 1.4rem;
         font-weight: 700;
         padding: 4rem 0 2rem 0;
         letter-spacing: 1px;
     }
 
-    .forgetpassword-page p {
+    .resetpassword-page p {
         margin-bottom: 0;
     }
 
     /*  */
 
-    .forgetpassword-page .inputbox-item a {
+    .resetpassword-page .inputbox-item a {
         font-size: 1.3rem;
         margin-bottom: 0.5rem;
         letter-spacing: 0.1rem;
@@ -31,25 +31,48 @@
         transition: .3s;
     }
 
-        .forgetpassword-page .inputbox-item a:hover {
+        .resetpassword-page .inputbox-item a:hover {
             transform: scale(1.05);
         }
 
-    .forgetpassword-page .inputbox-item .send-email {
+    .resetpassword-page .inputbox-item .send-email {
         background-color: #f9414a;
         color: #fff;
         padding: 0.43rem 0;
         border-radius: 5px;
     }
 
-    .forgetpassword-page .welcome {
+    .resetpassword-page .welcome {
         font-weight: 500;
         letter-spacing: 1.5px;
     }
 
 
 
-    .forgetpassword-page .email-input input {
+    .resetpassword-page .email-input input {
+        padding: 0.6rem 0 0.6rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #a7a7a7;
+        outline: none;
+        letter-spacing: 0.1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+
+    .resetpassword-page .password-input input {
+        padding: 0.6rem 0 0.6rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #a7a7a7;
+        outline: none;
+        letter-spacing: 0.1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .resetpassword-page .confirmpassword-input input {
         padding: 0.6rem 0 0.6rem 1rem;
         margin-bottom: 0.5rem;
         border-radius: 5px;
@@ -62,7 +85,7 @@
 
     /*  */
 
-    .forgetpassword-page .changestatus {
+    .resetpassword-page .changestatus {
         font-size: 0.9rem;
         letter-spacing: 1px;
         padding-bottom: 3rem;
@@ -70,7 +93,7 @@
         font-weight: 500;
     }
 
-        .forgetpassword-page .changestatus .again {
+        .resetpassword-page .changestatus .again {
             background-color: transparent;
             border: 1px solid #f9414a;
             padding: 0.16rem 1rem;
@@ -81,12 +104,12 @@
             transition: .3s;
         }
 
-            .forgetpassword-page .changestatus .again:hover {
+            .resetpassword-page .changestatus .again:hover {
                 background-color: #f9414a;
                 color: #fff;
             }
 
-        .forgetpassword-page .changestatus .normal-question {
+        .resetpassword-page .changestatus .normal-question {
             background-color: rgb(212, 209, 209);
             padding: 0.2rem 0.6rem;
             color: #0e0d0d;
@@ -97,8 +120,8 @@
 
 @media (min-width: 576px) {
 
-    .forgetpassword-page .container,
-    .forgetpassword-page .container-sm {
+    .resetpassword-page .container,
+    .resetpassword-page .container-sm {
         max-width: 350px;
     }
 }

@@ -193,8 +193,6 @@ namespace ProjectTeamFour.Service
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
-                //entity.MemberName = input.MemberName;
-                //entity.MemberConEmail = input.MemberConEmail;
                 if (input.MemberRegEmail == entity.MemberRegEmail)
                 {
                     entity.MemberPassword = input.MemberPassword;

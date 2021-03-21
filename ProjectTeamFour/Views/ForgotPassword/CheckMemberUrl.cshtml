@@ -1,0 +1,65 @@
+﻿
+@section topCSS{
+    <link href="~/Assets/Css/ForgotPasswordPage/checkmemberurl.css" rel="stylesheet" />
+}
+
+@section endJS{
+    <script src="~/Assets/Javascript/ForgotPasswordPage/CheckMemberUrl.js">
+    </script>
+}
+
+<div class="resetpassword" id="resetpassword">
+    <section class="resetpassword-page">
+
+        <div class="container d-flex flex-column">
+            <div class="resetpassword-page-item text-center">
+                <h3>重設密碼</h3>
+            </div>
+
+            <div class="resetpassword-page-item inputbox">
+                <div class="inputbox-item pb-3">
+                    <p class="d-flex justify-content-center welcome text-center">請再輸入一次<br>您的會員信箱以及重設密碼</p>
+                </div>
+                <div class="inputbox-item email-input">
+                    <input type="email" class="w-100 form-control inputemail" placeholder="信箱"
+                           v-model="inputData.Email" v-bind:class="{ 'is-invalid': Error.EmailError}">
+                </div>
+                <div class="text-danger small mb-1">
+                    {{ ErrorMsg.EmailErrorMsg }}
+                </div>
+
+                <div class="inputbox-item password-input">
+                    <input type="password" class="w-100 form-control inputpassword" placeholder="新的密碼"
+                           v-model="inputData.Password" v-bind:class="{ 'is-invalid': Error.PasswordError}">
+                </div>
+                <div class="text-danger small mb-1">
+                    {{ ErrorMsg.PasswordErrorMsg }}
+                </div>
+
+                <div class="inputbox-item confirmpassword-input">
+                    <input type="password" class="w-100 form-control inputconfirmpassword" placeholder="確認密碼"
+                           v-model="inputData.ConfirmPassword"
+                           v-bind:class="{ 'is-invalid': Error.ConfirmPasswordError}">
+                </div>
+                <div class="text-danger small mb-1">
+                    {{ ErrorMsg.ConfirmPasswordErrorMsg }}
+                </div>
+
+                <div class="inputbox-item">
+                    <a href="#" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 送出 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="resetpassword-page-item d-flex justify-content-between changestatus">
+                <a href="#" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>再註冊一次?</p>
+                </a>
+                <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -403,7 +403,9 @@
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
     <Content Include="Assets\css\CarCarPlanPage\carcarplandetail.css" />
     <Content Include="Assets\css\CarCarPlanPage\carcarplanindex.css" />
-    <Content Include="Assets\css\ForgetPasswordPage\forgetpassword.css" />
+    <Content Include="Assets\css\ForgotPasswordPage\checkmemberurl.css" />
+    <Content Include="Assets\css\ForgotPasswordPage\finishedsending.css" />
+    <Content Include="Assets\css\ForgotPasswordPage\sendmail.css" />
     <Content Include="Assets\css\HomePage\homepagesearch.css" />
     <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
@@ -425,7 +427,8 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
-    <Content Include="Assets\Javascript\ForgetPasswordPage\ForgetPassword.js" />
+    <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
+    <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
@@ -2267,7 +2270,9 @@
     <Content Include="Views\pay\test.cshtml" />
     <Content Include="Views\Member\RegisterSuccess.cshtml" />
     <Content Include="Views\Member\RegisterFail.cshtml" />
-    <Content Include="Views\Member\Forgetpassword.cshtml" />
+    <Content Include="Views\ForgotPassword\SendMail.cshtml" />
+    <Content Include="Views\ForgotPassword\FinishedSending.cshtml" />
+    <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
