@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202103120658088_edit_Projects_and_Commets_col.Designer.cs">
       <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103211514418_addmemberproperties.cs" />
+    <Compile Include="Migrations\202103211514418_addmemberproperties.Designer.cs">
+      <DependentUpon>202103211514418_addmemberproperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
@@ -2375,6 +2379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103120658088_edit_Projects_and_Commets_col.resx">
       <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103211514418_addmemberproperties.resx">
+      <DependentUpon>202103211514418_addmemberproperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
