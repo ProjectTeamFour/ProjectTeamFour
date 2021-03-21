@@ -181,6 +181,7 @@
     <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\ForgotPasswordController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberSettingsController.cs" />
@@ -348,6 +349,7 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
+    <Compile Include="ViewModels\MailViewModel.cs" />
     <Compile Include="ViewModels\MemberListViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
@@ -2273,6 +2275,7 @@
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Log\" />
+    <Folder Include="Views\Mail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
