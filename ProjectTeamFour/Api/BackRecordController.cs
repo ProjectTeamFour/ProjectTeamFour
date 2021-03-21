@@ -20,11 +20,12 @@ namespace ProjectTeamFour.Api
             _backingService = new BackingService();
         }
 
-        //[HttpGet]
-        public BackingRecordsViewModel GetOrderData(int id)
+        [HttpGet]
+        public BackingRecordsViewModel GetOrderData()
         {
-            return _backingService.QueryOrder(id);
-            
+            //return _backingService.QueryOrder(id);
+
+            return null;
         }
     }
 }

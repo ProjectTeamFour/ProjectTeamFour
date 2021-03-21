@@ -20,12 +20,14 @@ namespace ProjectTeamFour.Controllers
 		private readonly MemberService _memberService;
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
+		private readonly BackingService _backingService;
 
 		public UserInfoController()
 			{
 				_memberService = new MemberService();
 				_myProjectsService = new MyProjectsService();
 				_commentService = new CommentService();
+			    _backingService = new BackingService();
 			}
 
 		// GET: PersonInfo
@@ -39,8 +41,9 @@ namespace ProjectTeamFour.Controllers
 
 
 				//根據專案的提交與審核狀態進行分類
-				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
-
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+				
+			    model.Records = _backingService.QueryOrder(model.MemberId);
 
 				return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
