@@ -15,9 +15,8 @@
     //document.getElementById('user-profile').addEventListener('click', function () {
 
     var btn_submit = document.querySelector('#btnSub');
+    var imgUrl = document.getElementById('imgshow');
     btn_submit.addEventListener('click', function () {
-
-        // console.log(document.getElementById('imgshow').getAttribute('src'));
 
         $.ajax({
             url: '/api/memberapi/update',
@@ -25,7 +24,7 @@
             data: {
                 MemberId: $('#memberid').text(),
                 MemberConEmail: $('#contactEmail').val(),
-                Gender: document.getElementById('gender1').selectedOptions[0].text,
+                Gender: document.getElementById('gender1').value;
                 MemberBirth: document.getElementById('birthday1').value,
                 AboutMe: $('#about').val(),
                 MemberName: $('#name1').val(),
@@ -37,7 +36,7 @@
                     //debugger;
                     let imgurl = document.getElementById('imgshow').getAttribute('src');
                     console.log(imgurl);
-                    document.getElementsByName('memberimg').setAttribute('src', imgurl.val);
+                    imgUrl.setAttribute('src', imgurl);
                     //document.getElementsByName('memberimg').forEach(item => {
                     //    console.log(imgurl);
                     //    item.setAttribute('src', imgurl);
@@ -81,8 +80,7 @@ function uploadFile(formData) {
 }
 
 function getGender() {
-    let mygender = document.getElementById('gender1');
-    let myselect = mygender.options[mygender.selectedIndex].text;
+    let mygender = document.getElementById('gender1').value;
     //e.options[e.selectedIndex].text;
     //let genderselect = document.getElementById('gender1');
     switch (myselect) {
