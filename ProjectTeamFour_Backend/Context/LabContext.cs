@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ProjectTeamFour_Backend.Models;
+using ProjectTeamFour_Backend.DataTable;
 
 #nullable disable
 
