@@ -1,12 +1,11 @@
-﻿using System;
+﻿using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Repositories;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using ProjectTeamFour.Repositories;
-using ProjectTeamFour.Models;
-using System.Data.Entity;
-using System.Net.Http;
-using ProjectTeamFour.ViewModels;
 using System.Linq.Expressions;
 
 namespace ProjectTeamFour.Service
@@ -25,7 +24,8 @@ namespace ProjectTeamFour.Service
         {
             ProjectTotalViewModel projectTotalVM = new ProjectTotalViewModel
             {
-                
+                CreatorInfo =new MemberViewModel(), 
+
                 ProjectDetailItem = new ProjectDetailViewModel(),
 
                 SelectPlanCards = new SelectPlanListViewModel()
@@ -37,7 +37,21 @@ namespace ProjectTeamFour.Service
             return projectTotalVM;
         }
 
+        public MemberViewModel GetCreatorInfo(Expression<Func<Member, bool>> memberId)
+        {
 
+            var entity = _repository.GetAll<Member>().FirstOrDefault(memberId);
+            var memberVM = new MemberViewModel()
+            {
+                ProfileImgUrl = entity.ProfileImgUrl,
+                MemberTeamName = entity.MemberTeamName,
+                MemberName = entity.MemberName,
+                AboutMe = entity.AboutMe,
+                MemberWebsite = entity.MemberWebsite
+            };
+
+            return memberVM;
+        }
 
         public ProjectDetailViewModel GetProjectDetail(int projectId)
         {

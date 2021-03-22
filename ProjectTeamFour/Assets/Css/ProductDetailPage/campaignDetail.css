@@ -128,14 +128,15 @@ html {
   text-decoration: none;
   padding: 0.25rem 0.5rem;
 }
-#backing-section #backit-btn {
+#backing-section #backit-btn,#ask-btn {
   background-color: #f9414a;
   color: #ffffff;
+  border:none;
 }
-#backing-section #ask-btn {
+
+#backing-section #ask-btn:hover {
   background-color: #ffffff;
   color: #f9414a;
-
   border: 1px solid #f9414a;
 }
 /* #ask-btn .comment {

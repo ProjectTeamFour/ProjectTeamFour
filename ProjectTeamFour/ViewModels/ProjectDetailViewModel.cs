@@ -21,6 +21,7 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectDescription { get; set; }
         public string ProjectImgUrl { get; set; }
         public string ProjectVideoUrl { get; set; }
+        public int MemberId { get; set; }
 
         public List<ProjectFAQViewModel> ProjectFAQList { get; set; }
   
