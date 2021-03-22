@@ -91,7 +91,7 @@
             if (this.AddVerify == true) {
 
                 var uploadData = {
-                    "TargetPageId": targetPageId,
+                    "ResetPasswordCode": targetPageId,
                     "MemberRegEmail": this.inputData.MemberEmail,
                     "MemberPassword": this.inputData.MemberPassword,
                     "ConfirmPassword": this.inputData.ConfirmPassword,

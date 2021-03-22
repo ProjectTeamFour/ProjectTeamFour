@@ -4,6 +4,7 @@ using ProjectTeamFour.Service;
 using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -24,14 +25,16 @@ namespace ProjectTeamFour.Controllers
 
 
         private MemberApiController _api;
-        private MemberService _memberService;
+        private MemberService _memberservice;
         private LogService _logservice;
+        private MailService _mailservice;
 
 
         public ForgotPasswordController()
         {
+            _mailservice = new MailService();
             _api = new MemberApiController();
-            _memberService = new MemberService();
+            _memberservice = new MemberService();
             _logservice = new LogService();
         }
 
@@ -62,6 +65,7 @@ namespace ProjectTeamFour.Controllers
             }
 
             MemberViewModel viewModel = _api.GetMember(p => p.MemberRegEmail == mailVM.receiver);
+          
 
             if (viewModel == null)
             {
@@ -70,6 +74,14 @@ namespace ProjectTeamFour.Controllers
             }
 
             var outputCode = CreatePasswordResetHmacCode(viewModel.MemberId);
+
+            string key = "A5fG35HTNCV7h8d9"; //DES KEY
+
+            byte[] bCipherText = Encryption(Convert.FromBase64String(key), Convert.FromBase64String(outputCode));  //加密
+
+            string stringDBCode = Convert.ToBase64String(bCipherText); //轉 string 存回 db
+
+
 
             var link = "<a href='"
                         + Request.Url.Scheme + "://"
@@ -114,7 +126,7 @@ namespace ProjectTeamFour.Controllers
 
 
         // CheckMemberUrl View 重設密碼 post 傳入這裡  --input ajax要再處理
-        public String ResetPassword(EditMemberViewModel input)
+        public String ResetPassword(MailViewModel input)
         {
 
             //if (!VerifyPasswordResetHmacCode(input., out Int32 userId))
@@ -123,10 +135,10 @@ namespace ProjectTeamFour.Controllers
             //}
 
             var result = new OperationResult();
-            result = _memberService.ResetPassWord(input);
+            result = _mailservice.ResetPassWord(input);
             if (result.IsSuccessful)
             {
-                _memberService.Relogin();
+                //_mailservice.Relogin();
                 return "成功";
             }
             else
@@ -198,6 +210,66 @@ namespace ProjectTeamFour.Controllers
         }
 
 
+
+        //DES加密將HmacSha256code存進去
+        public static byte[] Encryption(byte[] Deskey, byte[] plainText)
+        {
+            SymmetricAlgorithm mCSP = new DESCryptoServiceProvider();
+            //設定金鑰
+            mCSP.Key = Deskey;
+            //加密工作模式:CBC
+            mCSP.Mode = CipherMode.CBC;
+            //補充字元方式:0
+            mCSP.Padding = PaddingMode.Zeros;
+            //初始向量IV = 0
+            mCSP.IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            //建立對稱加密物件
+            ICryptoTransform ct = mCSP.CreateEncryptor(mCSP.Key, mCSP.IV);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (CryptoStream cs = new CryptoStream(ms, ct, CryptoStreamMode.Write))
+                {
+                    cs.Write(plainText, 0, plainText.Length);
+                    cs.FlushFinalBlock();
+                    cs.Close();
+                    return ms.ToArray();
+                }
+            }
+        }
+
+        //DES解密
+        public static byte[] Decryption(byte[] Deskey, byte[] CipherText)
+        {
+            SymmetricAlgorithm desAlg = new DESCryptoServiceProvider();
+            //設定金鑰
+            desAlg.Key = Deskey;
+            //加密工作模式:CBC
+            desAlg.Mode = CipherMode.CBC;
+            //補充字元方式:0
+            desAlg.Padding = PaddingMode.Zeros;
+            //初始向量IV = 0
+            desAlg.IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            ICryptoTransform ict = desAlg.CreateDecryptor(desAlg.Key, desAlg.IV);
+            using (MemoryStream mStream = new MemoryStream())
+            {
+                using (CryptoStream cStream = new CryptoStream(mStream, ict, CryptoStreamMode.Write))
+                {
+                    cStream.Write(CipherText, 0, CipherText.Length);
+                    cStream.FlushFinalBlock();
+                }
+                return mStream.ToArray();
+            }
+        }
+
+       
+        //public void ()
+        //{
+           
+        //    byte[] bCipherText = Encryption(key.HexToByte(), PlaintText.HexToByte());
+        //    Console.WriteLine("加密:{0}", bCipherText.BToHex());
+        //    byte[] bPlaintText = Decryption(key.HexToByte(), bCipherText);
+        //    Console.WriteLine("解密:{0}", bPlaintText.BToHex());
+        //}
 
 
     }

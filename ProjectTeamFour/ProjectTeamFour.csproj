@@ -201,6 +201,7 @@
     </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
+    <Compile Include="Service\MailService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
