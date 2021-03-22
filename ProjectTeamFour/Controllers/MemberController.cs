@@ -118,10 +118,6 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        public ActionResult Forgetpassword()
-        {
-            return View();
-        }
 
 
 

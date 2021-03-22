@@ -254,6 +254,7 @@ label {
 
 #Save2Sever :hover{
     text-decoration:none;
+    border:none;
 }
 
 #transJSON{
