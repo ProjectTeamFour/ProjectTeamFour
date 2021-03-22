@@ -6,15 +6,20 @@ using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Api;
 using System.Web.Security;
+using ProjectTeamFour.Service;
 
 namespace ProjectTeamFour.Controllers
 {
     public class MemberController : Controller
     {
+        //private PasswordService _passwordservice;
+        private MemberService _memberservice;
         private MemberApiController _api;
         public MemberController()
         {
+            //_passwordservice = new PasswordService();
             _api = new MemberApiController();
+            _memberservice = new MemberService();
         }
         public ActionResult Register()
         {
@@ -31,8 +36,8 @@ namespace ProjectTeamFour.Controllers
                     MemberRegEmail = input.Email,
                     MemberPassword = input.Password,
                     MemberBirth = StringtoDate(input.BirthDay),
-                    Gender=input.gender,
-                    Permission=1 
+                    Gender = input.gender,
+                    Permission = 1 
                 };
                 string registerResult = _api.CreateMember(vm);
                 if (registerResult == "成功")
@@ -64,17 +69,21 @@ namespace ProjectTeamFour.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(input);
+                return View(input);  //輸錯通知要改
             }
-            MemberViewModel viewModel = _api.GetMember(p => p.MemberRegEmail == input.Email &&
-              p.MemberPassword == input.Password);
-            if (viewModel == null)
+
+            //確認 hashcode
+            bool verify = _memberservice.VerifyPasswordWithHash(input);
+
+            if (verify == false)
             {
-                ModelState.AddModelError("NotFount", "帳號或密碼輸入錯誤");
-                return View(input);
+                ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
+                return View(input); //輸錯通知要改
             }
-            Session["Permission"] = viewModel.Permission;
-            Session["Member"] = viewModel;
+
+            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
+            Session["Permission"] = memberinfo.Permission;
+            Session["Member"] = memberinfo;
             //1.Create FormsAuthenticationTicket
            var ticket = new FormsAuthenticationTicket(
            version: 1,
@@ -105,7 +114,6 @@ namespace ProjectTeamFour.Controllers
             Session["Permission"] = null;
             return RedirectToAction("Login", "Member");
         }
-
 
 
         public ActionResult RegisterSuccess()

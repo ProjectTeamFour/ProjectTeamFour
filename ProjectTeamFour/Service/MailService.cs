@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Service
             var result = new OperationResult();
             try
             {
-                Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
+                Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberRegEmail == input.MemberRegEmail);
                 if (input.MemberRegEmail == entity.MemberRegEmail)
                 {
                     entity.MemberPassword = input.MemberPassword;
@@ -48,7 +48,7 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public OperationResult SaveResetCode(MailViewModel input)
+        public OperationResult SaveResetCode(MemberViewModel input)
         {
             var result = new OperationResult();
             try

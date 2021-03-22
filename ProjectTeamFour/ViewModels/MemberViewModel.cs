@@ -48,6 +48,9 @@ namespace ProjectTeamFour.ViewModels
         [Display(Name = "聯絡訊息")]
         public string MemberMessage { get; set; }
         public int Permission { get; set; }
+        public string ResetPasswordCode { get; set; }
+        public string Salt { get; set; }
+        public string Hash { get; set; }
 
         public BackingRecordsViewModel Records { get; set; }
         public List<SubmissionProcessViewModel> ProjectRecords { get; set; }

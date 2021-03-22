@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202103211525577_新增projectid22.Designer.cs">
       <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103220631443_addmemberproperties1.cs" />
+    <Compile Include="Migrations\202103220631443_addmemberproperties1.Designer.cs">
+      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -334,6 +338,7 @@
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\MemberSettingService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
@@ -2398,6 +2403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103211525577_新增projectid22.resx">
       <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103220631443_addmemberproperties1.resx">
+      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -92,13 +92,13 @@
 
                 var uploadData = {
                     "ResetPasswordCode": targetPageId,
-                    "MemberRegEmail": this.inputData.MemberEmail,
-                    "MemberPassword": this.inputData.MemberPassword,
+                    "MemberRegEmail": this.inputData.Email,
+                    "MemberPassword": this.inputData.Password,
                     "ConfirmPassword": this.inputData.ConfirmPassword,
                 }
 
                 $.ajax({
-                    url: "/Mail/CheckMemberUrl/",
+                    url: "/ForgotPassword/ResetPassword/",
                     type: "post",
                     //contentType: "application/json; charset=utf-8",
                     data: uploadData,
