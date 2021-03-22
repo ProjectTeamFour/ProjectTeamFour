@@ -45,6 +45,8 @@ namespace ProjectTeamFour.Controllers
 				
 			    model.Records = _backingService.QueryOrder(model.MemberId);
 
+				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+
 				return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
             else

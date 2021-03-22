@@ -141,6 +141,24 @@
                 <!--聯絡訊息-->
                 <div class="message">
                     <div class="wrap-inside">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="search-item">
+                                    <select class="message-input" name="option">
+                                        <option value="1">最新</option>
+                                        <option value="2">未讀</option>
+                                        <option value="3">已讀</option>
+                                    </select>
+                                    <i class="fas fa-search"></i>
+                                    <input type="search">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml")
                     </div>
                 </div>

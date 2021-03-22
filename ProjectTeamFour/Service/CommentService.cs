@@ -41,7 +41,7 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
-
+        //贊助者留言後，在資料庫創造一筆Comment資料
         public string CreateANewComment(CommentViewModel commentVM)
         {
             var newComment = new Comment
@@ -67,6 +67,48 @@ namespace ProjectTeamFour.Service
                     return ex.ToString();
                 }
             }
+        }
+
+
+        public List<CommentForMemberViewModel> QueryCommentByMemberId(int memberId )
+        {
+           
+            
+            var result = new List<CommentForMemberViewModel>();
+
+            var mycomment = _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(c => c).ToList();
+            if(mycomment!=null)
+            {
+                foreach (var comment in mycomment)
+                {
+                    var commentProject = _repository.GetAll<Project>().FirstOrDefault(p => p.ProjectId == comment.ProjectId);
+                    CommentForMemberViewModel commentForMemberVM = new CommentForMemberViewModel
+                    {
+                        ProjectId=comment.ProjectId,
+                        ProjectName=commentProject.ProjectName,
+                        ProjectMainUrl=commentProject.ProjectMainUrl,
+                        CommentId=comment.CommentId,
+                        Comment_Answer=comment.Comment_Answer,
+                        Comment_Question=comment.Comment_Question,
+                        Comment_Time=comment.Comment_Time,
+                        ReadStatus=comment.ReadStatus,
+                        MemberId= memberId,
+                        AskedMemberId= commentProject.MemberId
+                    };
+                    int i = 0;
+                    result.Add(commentForMemberVM);
+                }
+                
+                return result;
+                
+            }
+            else
+            {
+                return result;
+            }
+
+
+            
         }
     }
 }
