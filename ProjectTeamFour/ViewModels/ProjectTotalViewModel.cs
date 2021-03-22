@@ -10,5 +10,6 @@ namespace ProjectTeamFour.ViewModels
     {
         public ProjectDetailViewModel ProjectDetailItem { get;set; }
         public SelectPlanListViewModel SelectPlanCards { get; set; }
+        public MemberViewModel CreatorInfo { get; set; }
     }
 }
