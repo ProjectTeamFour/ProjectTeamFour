@@ -185,5 +185,35 @@ namespace ProjectTeamFour.Service
             //id = ((MemberViewModel)session["Member"]).MemberId;
             session["Member"] = GetMember(p => p.MemberId == id);
         }
-    }      
+
+
+        public OperationResult ResetPassWord(EditMemberViewModel input)
+        {
+            var result = new OperationResult();
+            try
+            {
+                Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
+                if (input.MemberRegEmail == entity.MemberRegEmail)
+                {
+                    entity.MemberPassword = input.MemberPassword;
+                }
+                else
+                {
+                    result.IsSuccessful = false;
+                    return result;
+                }
+                _repository.Update(entity);
+                result.IsSuccessful = true;
+            }
+            catch (Exception ex)
+            {
+                //result.Member
+                result.DateTime = DateTime.Now;
+                result.Exception = ex;
+                result.IsSuccessful = false;
+            }
+            return result;
+        }
+
+    }
 }

@@ -1,4 +1,5 @@
-﻿using ProjectTeamFour.ViewModels;
+﻿using ProjectTeamFour.Service;
+using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,47 @@ namespace ProjectTeamFour.Api
 {
     public class CommentController : ApiController
     {
+        private readonly CommentService _commentService;
 
-        [System.Web.Mvc.HttpPost]
-        public  ActionResult UpdateComment([FromBody] CommentViewModel commentVM)
+        public CommentController()
+        {
+            _commentService = new CommentService();
+        }
+        
+
+        //[System.Web.Mvc.HttpPost]
+        public  string UpdateComment([FromBody] CommentViewModel commentVM)
         {
             var session = System.Web.HttpContext.Current.Session;
-            var memberId = (MemberViewModel)session["Member"];
-            //return new HttpStatusCodeResult(HttpStatusCode.OK);
-            return null;
+            
+            var member= (MemberViewModel)session["Member"];
+            if(member==null)
+            {
+               
+                return "login";
+            }
+            else if(commentVM.Comment_Question==null)
+            {
+                return "try";
+            }
+            else
+            {
+                commentVM.MemberId = member.MemberId;
+                commentVM.Comment_Time = DateTime.Now;
+                var result = _commentService.CreateANewComment(commentVM);
+                if(result== "success")
+                {
+                    return "ok";
+                }
+                else
+                {
+                    return "fail";
+                }
+                
+            }
+            
         }
+
+       
     }
 }

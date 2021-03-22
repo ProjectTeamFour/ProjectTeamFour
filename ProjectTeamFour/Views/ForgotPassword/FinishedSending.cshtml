@@ -1,0 +1,37 @@
+﻿
+@section topCSS{
+    <link href="~/Assets/Css/ForgotPasswordPage/finishedsending.css" rel="stylesheet" />
+}
+
+
+<div class="finishedsendemail" id="finishedsendemail">
+    <section class="finishedsendemail-page">
+
+        <div class="container d-flex flex-column">
+            <div class="finishedsendemail-page-item text-center">
+                <h3>驗證信已寄至您的信箱</h3>
+            </div>
+
+            <div class="inputbox-item pb-3">
+                <p class="d-flex justify-content-center welcome text-center">請通過驗證信來重設密碼</p>
+            </div>
+
+            <div class="finishedsendemail-page-item inputbox">
+                <div class="inputbox-item">
+                    <a href="/Home/Index" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 返回首頁 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="finishedsendemail-page-item d-flex justify-content-between changestatus">
+                <a href="/Member/Login" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>已經是會員？</p>
+                </a>
+                <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+            </div>
+        </div>
+    </section>
+
+</div>

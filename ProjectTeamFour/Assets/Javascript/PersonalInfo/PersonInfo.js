@@ -24,7 +24,7 @@
             data: {
                 MemberId: $('#memberid').text(),
                 MemberConEmail: $('#contactEmail').val(),
-                Gender: document.getElementById('gender1').value;
+                Gender: document.getElementById('gender1').value,
                 MemberBirth: document.getElementById('birthday1').value,
                 AboutMe: $('#about').val(),
                 MemberName: $('#name1').val(),

@@ -41,5 +41,32 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
+
+        public string CreateANewComment(CommentViewModel commentVM)
+        {
+            var newComment = new Comment
+            {
+                ProjectId=commentVM.ProjectId,
+                MemberId=commentVM.MemberId,
+                Comment_Question=commentVM.Comment_Question,
+                Comment_Time=commentVM.Comment_Time,
+                ReadStatus=false
+            };
+            
+            using(var transaction=_ctx.Database.BeginTransaction())
+            {
+                try
+                {
+                    _repository.Create(newComment);
+                    transaction.Commit();
+                    return "success";
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    return ex.ToString();
+                }
+            }
+        }
     }
 }

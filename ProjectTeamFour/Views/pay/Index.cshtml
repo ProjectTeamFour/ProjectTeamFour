@@ -14,7 +14,7 @@
     <link href="~/Assets/Css/PaymentPage/rwd-pay.css" rel="stylesheet" />
 }
 @section endJS{
-    <script src="~/Assets/Javascript/PaymentPage/pay.js"></script>
+    @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
     <script>
 
         let getjson = document.getElementById('transJSON');
@@ -231,7 +231,7 @@
                     <div class="checkout">
                         <div class="checkout-price">
                             <h4>shipping</h4>
-                            <span>Calculated at next step</span
+                            <span>Calculated at next step</span>
                         </div>
                         <div class="check-total">
                             <h4>Total</h4>
@@ -286,17 +286,18 @@
                         <h4 class="h4">付款方式</h4>
                         <div class="button-group">
                             <button id="credit-card">信用卡(一次付清)</button>
-                            <button id="credit-card-split">信用卡(分期0利率)</button>
-                            <button id="credit-atm">ATM</button>
-                            <button id="credit-market">超商付款</button>
+                            <div id="one">可用卡別：VISA／MASTERCARD／JCB／銀聯卡，無手續費產生</div>
+                            @*<button id="credit-card-split">信用卡(分期0利率)</button>
+        <button id="credit-atm">ATM</button>
+        <button id="credit-market">超商付款</button>*@
                         </div>
-                        <span id="one">可用卡別：VISA／MASTERCARD／JCB／銀聯卡，無手續費產生</span>
-                        <span id="split">分期選項將於點選「進行付款」後出現，可分期銀行：中信、台新、玉山、永豐（銀聯卡僅限一次付清）</span>
+                        
+                        @*<span id="split">分期選項將於點選「進行付款」後出現，可分期銀行：中信、台新、玉山、永豐（銀聯卡僅限一次付清）</span>
                         <span id="atm">
                             Web ATM 轉帳 / 實體 ATM 繳款：當匯款銀行與金流特定銀行不同時，您的銀行將會額外收取 10 ~ 15 元
                             轉帳手續費，此費用為銀行端收取的一次性服務費用，若遇退款需求時不計算在退還款項中，將依據實際贊助金額退費。
                         </span>
-                        <span id="market">超商代碼繳費：可至全台「7-11、全家、萊爾富、OK超商」之多媒體機台列印繳費單，持繳費單至超商櫃台以現金付款。</span>
+                        <span id="market">超商代碼繳費：可至全台「7-11、全家、萊爾富、OK超商」之多媒體機台列印繳費單，持繳費單至超商櫃台以現金付款。</span>*@
                     </div>
                 </div>
                 <div class="col-12">
@@ -324,7 +325,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay" >                        
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  :disabled="disableInputBool" v-on:click ="checkAddVerify" >
+                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  v-on:click ="checkAddVerify" >
                     </a>                       
                 </div>
             </div>

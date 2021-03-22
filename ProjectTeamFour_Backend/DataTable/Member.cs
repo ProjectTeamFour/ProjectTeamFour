@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace ProjectTeamFour.Models
+#nullable disable
+
+namespace ProjectTeamFour_Backend.DataTable
 {
-    public class Member
+    public partial class Member
     {
+        public Member()
+        {
+            Comments = new HashSet<Comment>();
+            Orders = new HashSet<Order>();
+        }
+
         public int MemberId { get; set; }
-        //提案者真實姓名
         public string MemberName { get; set; }
-        //提案顯示姓名
         public string MemberTeamName { get; set; }
-        //這裡到時候可以作為儲存第三方登入帳號的資料
         public string MemberAccount { get; set; }
         public string MemberPassword { get; set; }
         public string MemberAddress { get; set; }
@@ -30,9 +33,7 @@ namespace ProjectTeamFour.Models
         public string Hash { get; set; }
         public string ResetPasswordCode { get; set; }
 
-        //Navigation Property 導覽屬性
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
