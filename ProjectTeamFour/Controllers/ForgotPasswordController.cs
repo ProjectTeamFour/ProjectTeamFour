@@ -61,7 +61,7 @@ namespace ProjectTeamFour.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱");  //安全問題就算錯也報這樣的提示
-                return View(mailVM);
+                return RedirectToAction("FinishedSending", "ForgotPassword");
             }
 
             MemberViewModel currentMember = _api.GetMember(p => p.MemberRegEmail == mailVM.receiver);
@@ -70,7 +70,7 @@ namespace ProjectTeamFour.Controllers
             if (currentMember == null)
             {
                 ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱"); //安全問題就算錯也報這樣的提示
-                return View(mailVM);
+                return RedirectToAction("FinishedSending", "ForgotPassword");
             }
 
             var outputCode = CreatePasswordResetHmacCode(currentMember.MemberId);
@@ -88,15 +88,15 @@ namespace ProjectTeamFour.Controllers
             //var result = _mailservice.SaveResetCode(currentMember); //轉存回 db
 
 
-            var link = "<a href='"
+            var link = "<html><body><a href='"
                         + Request.Url.Scheme + "://"
                         + Request.Url.Authority
                         + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode })
-                        + "'>Click here to reset your password</a>";
+                        + "'>Click here to reset your password</a></body><html>";
 
             mailVM.receiver = currentMember.MemberRegEmail;
             mailVM.sender = "11@a.com";
-            mailVM.MailTitle = "test";
+            mailVM.MailTitle = "集資車車 - 找回密碼";
             mailVM.MailBody = link;
             string id = WebConfigurationManager.AppSettings["GmailId"];
             string password = WebConfigurationManager.AppSettings["GmailPassword"];
@@ -129,7 +129,7 @@ namespace ProjectTeamFour.Controllers
 
 
         // CheckMemberUrl View 重設密碼 post 傳入這裡  --input ajax要再處理
-        public String ResetPassword(MailViewModel input)
+        public String ResetPassword(MemberViewModel input)
         {
 
             int getMemberId = 0;
@@ -144,7 +144,7 @@ namespace ProjectTeamFour.Controllers
             input.MemberId = getMemberId;
 
             var result = new OperationResult();
-            result = _mailservice.ResetPassWord(input);
+            result = _memberservice.ResetPassWord(input);
             if (result.IsSuccessful)
             {
                 return "成功";
@@ -217,7 +217,7 @@ namespace ProjectTeamFour.Controllers
 
 
 
-        //DES加密將HmacSha256code存進去
+        //DES加密將HmacSha256code存進去  //沒用到
         public static byte[] Encryption(byte[] Deskey, byte[] plainText)
         {
             SymmetricAlgorithm mCSP = new DESCryptoServiceProvider();
@@ -243,7 +243,7 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
-        //DES解密
+        //DES解密  //沒用到
         public static byte[] Decryption(byte[] Deskey, byte[] CipherText)
         {
             SymmetricAlgorithm desAlg = new DESCryptoServiceProvider();

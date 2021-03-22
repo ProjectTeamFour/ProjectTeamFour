@@ -83,7 +83,8 @@ namespace ProjectTeamFour.Service
                     MemberWebsite = entity.MemberWebsite,
                     MemberMessage = entity.MemberMessage,
                     Permission = entity.Permission,
-                    Hash = entity.Hash
+                    Hash = entity.Hash,
+                    Salt = entity.Salt
                 };
                 listViewmodel.Items.Add(viewModel);
             }
@@ -92,7 +93,7 @@ namespace ProjectTeamFour.Service
         //新增
         public OperationResult Create(MemberViewModel input)
         {
-
+            //做hash
             byte[] _salt = MakeSalt();
             byte[] _hash = MakeHash(input.MemberPassword, _salt);
             byte[] _totalHashByte = TotalHashByte(_hash, _salt);
@@ -203,7 +204,7 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public OperationResult ResetPassWord(EditMemberViewModel input)
+        public OperationResult ResetPassWord(MemberViewModel input)
         {
             var result = new OperationResult();
             try
@@ -211,7 +212,14 @@ namespace ProjectTeamFour.Service
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
                 if (input.MemberRegEmail == entity.MemberRegEmail)
                 {
-                    entity.MemberPassword = input.MemberPassword;
+                    //做hash
+                    byte[] _salt = MakeSalt();
+                    byte[] _hash = MakeHash(input.MemberPassword, _salt);
+                    byte[] _totalHashByte = TotalHashByte(_hash, _salt);
+                    string savedPasswordHash = HashBytesToString(_totalHashByte);
+                    string savedSaltString = SaltToString(_salt);
+                    entity.Hash = savedPasswordHash;
+                    entity.Salt = savedSaltString;
                 }
                 else
                 {
@@ -230,6 +238,7 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
+
 
 
 
@@ -280,6 +289,11 @@ namespace ProjectTeamFour.Service
         {
             //找會員
             MemberViewModel memberInfo = GetMember(x => x.MemberRegEmail == memberLoginInfo.Email);
+
+            if (memberInfo == null)
+            {
+                return false;
+            }
 
             //找會員hash字串
             string savedPasswordwithHash = memberInfo.Hash;  //7vfJ9hbD4S+FtmFUKNCDmaGxCn2pNuxRRzS8NZRI1VmfjnZ3

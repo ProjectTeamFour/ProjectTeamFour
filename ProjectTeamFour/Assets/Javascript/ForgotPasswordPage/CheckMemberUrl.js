@@ -82,11 +82,11 @@
         sendToApi() {
 
             var searchURL = window.location.search;
-            console.log(searchURL);
+            //console.log(searchURL);
             searchURL = searchURL.substring(1, searchURL.length);
-            console.log(searchURL);
+            //console.log(searchURL);
             var targetPageId = searchURL.split("&")[0].split("=")[1];
-            console.log(targetPageId);
+            //console.log(targetPageId);
 
             if (this.AddVerify == true) {
 
@@ -107,14 +107,14 @@
                         Swal.fire({
                             position: 'top',
                             icon: 'success',
-                            title: '寄送驗證信成功',
-                            html: '如果您的填寫都無誤，已幫您修改完成<br>請用新密碼登入',
+                            title: '修改完成',
+                            html: '已幫您修改完成<br>請用新密碼登入',
                             showConfirmButton: false,
                             timer: 3000
                         });
 
                         setTimeout(() => {
-                            window.location.href = "/Home/Index/";
+                            window.location.href = "/Member/Login/";
                         }, 3000);
 
                     },

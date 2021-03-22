@@ -7,6 +7,8 @@ using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Api;
 using System.Web.Security;
 using ProjectTeamFour.Service;
+using System.Net.Http;
+using System.Net;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -69,7 +71,7 @@ namespace ProjectTeamFour.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(input);  //輸錯通知要改
+                return RedirectToAction("LoginFail", "Member");
             }
 
             //確認 hashcode
@@ -78,7 +80,8 @@ namespace ProjectTeamFour.Controllers
             if (verify == false)
             {
                 ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
-                return View(input); //輸錯通知要改
+                return RedirectToAction("LoginFail", "Member");
+
             }
 
             MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
@@ -122,6 +125,11 @@ namespace ProjectTeamFour.Controllers
         }
 
         public ActionResult RegisterFail()
+        {
+            return View();
+        }
+
+        public ActionResult LoginFail()
         {
             return View();
         }

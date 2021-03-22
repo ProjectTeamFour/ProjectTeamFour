@@ -413,6 +413,7 @@
     <Content Include="Assets\css\ForgotPasswordPage\finishedsending.css" />
     <Content Include="Assets\css\ForgotPasswordPage\sendmail.css" />
     <Content Include="Assets\css\HomePage\homepagesearch.css" />
+    <Content Include="Assets\css\MemberLoginPage\loginfail.css" />
     <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
@@ -2279,6 +2280,7 @@
     <Content Include="Views\ForgotPassword\SendMail.cshtml" />
     <Content Include="Views\ForgotPassword\FinishedSending.cshtml" />
     <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
+    <Content Include="Views\Member\LoginFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

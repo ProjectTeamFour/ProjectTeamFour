@@ -1,0 +1,38 @@
+﻿
+
+@section topCSS{
+    <link href="~/Assets/Css/MemberLoginPage/loginfail.css" rel="stylesheet" />
+}
+
+
+<div class="finishedsendemail" id="finishedsendemail">
+    <section class="loginfail-page">
+
+        <div class="container d-flex flex-column">
+            <div class="loginfail-page-item text-center">
+                <h3>登入失敗</h3>
+            </div>
+
+            <div class="inputbox-item pb-3">
+                <p class="d-flex justify-content-center welcome text-center">信箱與密碼請輸入正確</p>
+            </div>
+
+            <div class="loginfail-page-item inputbox">
+                <div class="inputbox-item">
+                    <a href="/Member/Login" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 再登入一次 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="loginfail-page-item d-flex justify-content-between changestatus">
+                <a href="/Member/Register" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>還沒註冊？</p>
+                </a>
+                <a href="/Home/Index" class="normal-question">先逛逛！</a>
+            </div>
+        </div>
+    </section>
+
+</div>
