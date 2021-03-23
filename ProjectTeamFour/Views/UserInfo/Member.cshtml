@@ -361,6 +361,7 @@
     </script>
     <script>
         let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
+        
         ///回覆按鈕觸發事件
         function LanchCommentAnswerAjax(CommentId)
         {
@@ -397,9 +398,11 @@
                                 title: '已成功回覆！',
                                 showConfirmButton: false,
                                 timer: 1500
-                            })
-
+                            });
+                            window.setTimeout(reloading, 1000);
+                           
                         }
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
@@ -408,6 +411,9 @@
                 })
 
             }
+        }
+        function reloading() {
+            window.location.assign(window.location.href);
         }
     </script>
 }
