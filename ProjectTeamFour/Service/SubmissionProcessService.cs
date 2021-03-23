@@ -73,6 +73,7 @@ namespace ProjectTeamFour.Service
                     LastEditTime = input.LastEditTime,
                     FundingAmount = 0,
                     Fundedpeople = 0,
+                    ApprovingStatus = 1,
                         
                     };
                     _repository.Create(pr_entity);

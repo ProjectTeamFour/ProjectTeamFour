@@ -1154,10 +1154,14 @@ var form = new Vue({
                         title: '成功',
                         html: '已提交到我們的資料中心，後續會有專人與您聯絡',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 3000
                     });
 
-                    window.location.href = "/Home/Index/";
+
+                    setTimeout(() => {
+                        window.location.href = "/Home/Index/";
+                    }, 6000)
+
                 },
                 error: function (response) {
                     Swal.fire({
@@ -1165,8 +1169,12 @@ var form = new Vue({
                         icon: 'error',
                         title: '上傳失敗',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 3000
                     });
+
+                    setTimeout(() => {
+                        window.location.href = "/Home/Index/";
+                    }, 6000)
                 }
             });
         }
@@ -1246,7 +1254,7 @@ function selectLocalImage() {
             Swal.fire({
                 title: '照片上傳中',
                 html: '請耐心稍等一下',
-                timer: 10000,
+                timer: 20000,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading()
