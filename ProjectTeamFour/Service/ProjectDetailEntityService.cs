@@ -37,17 +37,18 @@ namespace ProjectTeamFour.Service
             return projectTotalVM;
         }
 
-        public MemberViewModel GetCreatorInfo(Expression<Func<Member, bool>> memberId)
+        public MemberViewModel GetCreatorInfo(Expression<Func<Member, bool>> KeySelector)
         {
 
-            var entity = _repository.GetAll<Member>().FirstOrDefault(memberId);
+            var entity = _repository.GetAll<Member>().FirstOrDefault(KeySelector);
             var memberVM = new MemberViewModel()
             {
                 ProfileImgUrl = entity.ProfileImgUrl,
                 MemberTeamName = entity.MemberTeamName,
                 MemberName = entity.MemberName,
                 AboutMe = entity.AboutMe,
-                MemberWebsite = entity.MemberWebsite
+                MemberWebsite = entity.MemberWebsite,
+                MemberId = entity.MemberId
             };
 
             return memberVM;
@@ -82,7 +83,7 @@ namespace ProjectTeamFour.Service
                     StartDate = entity.StartDate,
                     ProjectMainUrl = entity.ProjectMainUrl,
                     ProjectId = entity.ProjectId,
-
+                    MemberId=entity.MemberId
                 };
                 
             //}

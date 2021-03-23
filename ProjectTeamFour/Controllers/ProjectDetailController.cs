@@ -46,8 +46,9 @@ namespace ProjectTeamFour.Controllers
                 var projectDetail = projectDetailService.GetProjectDetail(id);
                 projectTotalVM.ProjectDetailItem = projectDetail;
 
-                
-                var creatorInfo = projectDetailService.GetCreatorInfo(x => x.MemberId == projectTotalVM.ProjectDetailItem.MemberId);
+
+                // var creatorInfo = projectDetailService.GetCreatorInfo(x => x.MemberId == MemberService.membMemberId);
+                var creatorInfo = projectDetailService.GetCreatorInfo(p => p.MemberId == projectTotalVM.ProjectDetailItem.MemberId);
                 projectTotalVM.CreatorInfo = creatorInfo;
 
                 var plancards = projectDetailService.GetPlanCards(x => x.ProjectId == id);
