@@ -160,19 +160,23 @@
                 <div class="container">
                     <div class="row">
 
-                        @if (Model.Comments.Count==0)
-                        {
-                            <div class="row nomessage" style="text-align: center;justify-content: center;">
-                                <h3 >您尚未有任何留言</h3>
-                            </div>
-                        }
-                        else
-                        {
-                            foreach (var comment in Model.Comments)
+                        
+                            @if (Model.Comments.Count == 0)
                             {
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
+                                <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                    <h3>您尚未有任何留言</h3>
+                                </div>
                             }
-                        }
+                            else
+                            {
+                                foreach (var comment in Model.Comments)
+                                {
+                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
+                                }
+                            }
+                        
+                        
+
 
 
                     </div>
@@ -356,11 +360,12 @@
                         
     </script>
     <script>
+        let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
         ///回覆按鈕觸發事件
         function LanchCommentAnswerAjax(CommentId)
         {
-            let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
-            if (LanchCommentAnswer.value == null)
+            
+            if (LanchCommentAnswer.value == "")
             {
                 Swal.fire({
                     icon: 'error',
@@ -372,7 +377,7 @@
             else
             {
                 $.ajax({
-                    url: "/api/Comment/UpdateComment",
+                    url: "/api/Comment/ReplyComment",
                     type: "POST",
                     data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer.value },
                     success: function (data, textStatus, jqXHR) {

@@ -19,7 +19,11 @@ namespace ProjectTeamFour.Api
             _commentService = new CommentService();
         }
         
-
+        /// <summary>
+        /// 提案詳細頁之聯繫提案者的API
+        /// </summary>
+        /// <param name="commentVM"></param>
+        /// <returns></returns>
         //[System.Web.Mvc.HttpPost]
         public  string UpdateComment([FromBody] CommentViewModel commentVM)
         {
@@ -52,7 +56,11 @@ namespace ProjectTeamFour.Api
             }
             
         }
-
+        /// <summary>
+        /// 回覆後，更新Comment資料庫
+        /// </summary>
+        /// <param name="commentVM"></param>
+        /// <returns></returns>
         public string ReplyComment([FromBody] CommentViewModel commentVM)
         {
             var result = _commentService.UpdateComment(commentVM);

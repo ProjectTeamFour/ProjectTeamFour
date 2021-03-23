@@ -27,22 +27,22 @@
         </div>
 
     </div>
-    @if (Model.Comment_Answer == null && Model.AskedMemberId != Model.MemberId)
+    @if (Model.Comment_Answer == null && Model.AskMemberId == vm.MemberId)
     {
         <div class="text" style="text-align:center">
             <h4>該留言尚未回覆</h4>
         </div>
     }
-    else if (Model.Comment_Answer == null && Model.AskedMemberId == Model.MemberId)
+    else if (Model.Comment_Answer == null && Model.AskedMemberId == vm.MemberId)
     {
         <div>
-            <strong class="message-member">回覆者:</strong>
+            <strong class="message-member">回覆者:@Model.AskedMemberName</strong>
 
-            <textarea class="reply-area" placeholder="請於此處回覆"></textarea>
+            <textarea class="reply-area LanchCommentAnswer" placeholder="請於此處回覆"></textarea>
         </div>
-        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
+        <button class="btn btn-success" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
     }
-    else if (Model.Comment_Answer != null && Model.AskedMemberId != Model.MemberId)
+    else if (Model.Comment_Answer != null && Model.AskMemberId == vm.MemberId)
     {
         <div>
             <strong class="message-member">回覆者:@Model.AskedMemberName</strong>
@@ -54,9 +54,9 @@
     else
     {
         <div>
-            <textarea class="reply-area">@Model.Comment_Answer</textarea>
+            <textarea class="reply-area LanchCommentAnswer">@Model.Comment_Answer</textarea>
         </div>
-        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
+        <button class="btn btn-success" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
 
     }
 

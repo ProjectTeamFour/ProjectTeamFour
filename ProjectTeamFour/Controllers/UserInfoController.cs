@@ -45,13 +45,16 @@ namespace ProjectTeamFour.Controllers
 				
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
-
-				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
-				//該會員為提案者沒有留過言，卻要回覆留言
-				if (model.Comments.Count==0)
+				if(model.MyProjects.Count==0)
                 {
-
-                }
+					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+				}
+				else
+                {
+					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+				}
+				//該會員為提案者沒有留過言，卻要回覆留言
+				
 
 					return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
