@@ -105,46 +105,68 @@ namespace ProjectTeamFour.Service
         /// <param name="memberId"></param>
         /// <returns></returns>
         
-        public List<CommentForMemberViewModel> QueryCommentByMemberId(int memberId )
+        public List<CommentForMemberViewModel> QueryCommentByMemberId(int memberId)
         {
            
             
             var result = new List<CommentForMemberViewModel>();
 
             var mycomment = _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(c => c).ToList();
-            if(mycomment!=null)
+            if (mycomment != null)
             {
                 foreach (var comment in mycomment)
                 {
                     var commentProject = _repository.GetAll<Project>().FirstOrDefault(p => p.ProjectId == comment.ProjectId);
                     CommentForMemberViewModel commentForMemberVM = new CommentForMemberViewModel
                     {
-                        ProjectId=comment.ProjectId,
-                        ProjectName=commentProject.ProjectName,
-                        ProjectMainUrl=commentProject.ProjectMainUrl,
-                        CommentId=comment.CommentId,
-                        Comment_Answer=comment.Comment_Answer,
-                        Comment_Question=comment.Comment_Question,
-                        Comment_Time=comment.Comment_Time,
-                        ReadStatus=comment.ReadStatus,
-                        MemberId= memberId,
-                        AskedMemberId= commentProject.MemberId,
-                        AskedMemberName=commentProject.CreatorName
+                        ProjectId = comment.ProjectId,
+                        ProjectName = commentProject.ProjectName,
+                        ProjectMainUrl = commentProject.ProjectMainUrl,
+                        CommentId = comment.CommentId,
+                        Comment_Answer = comment.Comment_Answer,
+                        Comment_Question = comment.Comment_Question,
+                        Comment_Time = comment.Comment_Time,
+                        ReadStatus = comment.ReadStatus,
+                        MemberId = memberId,
+                        AskedMemberId = commentProject.MemberId,
+                        AskedMemberName = commentProject.CreatorName
                     };
-                    
+
                     result.Add(commentForMemberVM);
                 }
-                
+
                 return result;
-                
+
             }
+          
             else
             {
                 return result;
             }
 
 
+
+        }
+
+        public List<CommentForMemberViewModel> QueryCommentByaskedMemberId(int memberId)
+        {
+            var result = new List<CommentForMemberViewModel>();
+             /// 該會員為提案者沒有留過言，卻要回覆留言
+            var commentsProject = _repository.GetAll<Project>().Where(p => p.MemberId == memberId).Select(x => x).ToList();
+            if (commentsProject == null)
+            {
+                    return result;
+            }
+            else
+            {
+                    foreach (var comment in commentsProject)
+                    {
+                        var relatedComment = _repository.GetAll<Comment>().Where(c => c.ProjectId == comment.ProjectId).Select(x => x).ToList();
+                    }
+             }
             
+
+            return result;
         }
     }
 }

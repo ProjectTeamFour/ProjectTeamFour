@@ -203,6 +203,10 @@
     <Compile Include="Migrations\202103220631443_addmemberproperties1.Designer.cs">
       <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.cs" />
+    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.Designer.cs">
+      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2410,6 +2414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103220631443_addmemberproperties1.resx">
       <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230913559_AddAskedMemberIdToComment.resx">
+      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

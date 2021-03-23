@@ -294,7 +294,8 @@
 
 .project-main-url,
 .project-title {
-    width: 50%
+    width: 50%;
+    padding:5px;
 }
 .main-url {
     width: 100%

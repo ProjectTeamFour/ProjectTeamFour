@@ -170,7 +170,7 @@
                         {
                             foreach (var comment in Model.Comments)
                             {
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml")
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
                             }
                         }
 

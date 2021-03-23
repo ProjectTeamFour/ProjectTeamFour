@@ -47,8 +47,13 @@ namespace ProjectTeamFour.Controllers
 			    model.Records = _backingService.QueryOrder(model.MemberId);
 
 				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+				//該會員為提案者沒有留過言，卻要回覆留言
+				if (model.Comments.Count==0)
+                {
 
-				return model != default(ViewModels.MemberViewModel) ? View(model) : View();
+                }
+
+					return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
             else
             {
