@@ -9,18 +9,18 @@
             <img class="main-url" src="@Model.ProjectMainUrl" />
         </div>
         <div class="project-title">
-            <p style="color:red">@Model.ProjectName</p>
+
             @if (Model.ReadStatus == false)
             {
-                <strong class="message-member reply-status badge bg-warning text-dark">未回覆</strong>
+                <strong class="message-member reply-status badge bg-warning text-dark" style="display:block;">未回覆</strong>
             }
             else
             {
-                <strong class="message-member badge bg-success">已回覆</strong>
+                <strong class="message-member badge bg-success" style="display:block;">已回覆</strong>
             }
-
+            <p style="color:red;height:100px;overflow-y: hidden;font-size:15px">@Model.ProjectName</p>
         </div>
-        <div style="width:100%;text-align:center">留言時間：@Model.Comment_Time</div>
+        <div style="width:100%;text-align:center;">留言時間：@Model.Comment_Time</div>
 
         <div class="message-content">
             <p class="mymessages">@Model.Comment_Question</p>
