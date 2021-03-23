@@ -160,10 +160,10 @@
                 <div class="container">
                     <div class="row">
 
-                        @if (Model.Comments == null)
+                        @if (Model.Comments.Count==0)
                         {
-                            <div style="text-align:center;">
-                                <span class="badge bg-info text-dark">您尚未有任何留言</span>
+                            <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                <h3 >您尚未有任何留言</h3>
                             </div>
                         }
                         else
@@ -311,7 +311,7 @@
 {
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-        document.onload.getGender();
+        /*document.onload.getGender();*/
                     //$('#birthday1').datepicker({
                     //    changeMonth: true,
                     //    changeYear: true,
@@ -357,7 +357,7 @@
     </script>
     <script>
         ///回覆按鈕觸發事件
-        LanchCommentAnswerAjax(CommentId)
+        function LanchCommentAnswerAjax(CommentId)
         {
             let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
             if (LanchCommentAnswer.value == null)
