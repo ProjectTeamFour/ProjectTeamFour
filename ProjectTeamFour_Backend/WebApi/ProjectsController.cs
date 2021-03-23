@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProjectTeamFour_Backend.Context;
-using ProjectTeamFour_Backend.Models;
+using ProjectTeamFour_Backend.DataTable;
 
 namespace ProjectTeamFour_Backend.WebApi
 {

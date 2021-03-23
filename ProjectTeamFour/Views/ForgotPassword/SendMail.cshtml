@@ -1,15 +1,20 @@
-﻿
+﻿@model ProjectTeamFour.ViewModels.MailViewModel
+
+
+
 @section topCSS{
-    <link href="~/Assets/Css/ForgetPasswordPage/forgetpassword.css" rel="stylesheet" />
+    <link href="~/Assets/Css/ForgotPasswordPage/sendmail.css" rel="stylesheet" />
 }
 
 @section endJS{
-    <script src="~/Assets/Javascript/ForgetPasswordPage/ForgetPassword.js">
+    <script src="~/Assets/Javascript/ForgotPasswordPage/SendMail.js">
     </script>
-    }
+}
 
 
-
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
     <div class="forgetpassword" id="forgetpassword">
         <section class="forgetpassword-page">
@@ -25,16 +30,14 @@
                     </div>
                     <div class="inputbox-item email-input">
                         <input type="email" class="w-100 form-control inputemail" placeholder="信箱" v-model="inputData.Email"
-                               v-bind:class="{ 'is-invalid': inputData.EmailError}">
+                               v-bind:class="{ 'is-invalid': inputData.EmailError}" id="receiver" name="receiver">
                     </div>
                     <div class="text-danger small mb-1">
                         {{ inputData.EmailErrorMsg }}
                     </div>
 
                     <div class="inputbox-item">
-                        <a href="#" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
-                            <p>- 送出 -</p>
-                        </a>
+                        <input type="submit" class="w-100 d-flex justify-content-center send-email" v-on:click="sendToApi" value="- 送出 -">
                     </div>
                     <hr>
                 </div>
@@ -49,3 +52,5 @@
         </section>
 
     </div>
+}
+

@@ -77,7 +77,7 @@ function uploadFile(formData) {
             document.getElementById('imgshow').setAttribute('src', response);
         }
     })
-}
+};
 
 function getGender() {
     let mygender = document.getElementById('gender1').value;

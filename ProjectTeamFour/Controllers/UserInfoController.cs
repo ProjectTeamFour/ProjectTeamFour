@@ -35,7 +35,14 @@ namespace ProjectTeamFour.Controllers
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
 
-				return model != default(ViewModels.MemberViewModel) ? View(model) : View();
+				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+				//該會員為提案者沒有留過言，卻要回覆留言
+				if (model.Comments.Count==0)
+                {
+
+                }
+
+					return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
             else
             {

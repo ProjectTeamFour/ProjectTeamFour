@@ -6,15 +6,22 @@ using System.Web.Mvc;
 using ProjectTeamFour.ViewModels;
 using ProjectTeamFour.Api;
 using System.Web.Security;
+using ProjectTeamFour.Service;
+using System.Net.Http;
+using System.Net;
 
 namespace ProjectTeamFour.Controllers
 {
     public class MemberController : Controller
     {
+        //private PasswordService _passwordservice;
+        private MemberService _memberservice;
         private MemberApiController _api;
         public MemberController()
         {
+            //_passwordservice = new PasswordService();
             _api = new MemberApiController();
+            _memberservice = new MemberService();
         }
         public ActionResult Register()
         {
@@ -31,8 +38,8 @@ namespace ProjectTeamFour.Controllers
                     MemberRegEmail = input.Email,
                     MemberPassword = input.Password,
                     MemberBirth = StringtoDate(input.BirthDay),
-                    Gender=input.gender,
-                    Permission=1 
+                    Gender = input.gender,
+                    Permission = 1 
                 };
                 string registerResult = _api.CreateMember(vm);
                 if (registerResult == "成功")
@@ -64,17 +71,27 @@ namespace ProjectTeamFour.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(input);
+                return RedirectToAction("LoginFail", "Member");
             }
-            MemberViewModel viewModel = _api.GetMember(p => p.MemberRegEmail == input.Email &&
-              p.MemberPassword == input.Password);
-            if (viewModel == null)
+
+            //確認 hashcode
+            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
+            if (memberinfo.MemberId <= 17)
             {
-                ModelState.AddModelError("NotFount", "帳號或密碼輸入錯誤");
-                return View(input);
+                Session["Permission"] = memberinfo.Permission;
+                Session["Member"] = memberinfo;
             }
-            Session["Permission"] = viewModel.Permission;
-            Session["Member"] = viewModel;
+            else
+            {
+                bool verify = _memberservice.VerifyPasswordWithHash(input);
+                if (verify == false)
+                {
+                    ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
+                    return RedirectToAction("LoginFail", "Member");
+                }
+                Session["Permission"] = memberinfo.Permission;
+                Session["Member"] = memberinfo;
+            }
             //1.Create FormsAuthenticationTicket
            var ticket = new FormsAuthenticationTicket(
            version: 1,
@@ -107,7 +124,6 @@ namespace ProjectTeamFour.Controllers
         }
 
 
-
         public ActionResult RegisterSuccess()
         {
             return View();
@@ -118,10 +134,11 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
 
-        public ActionResult Forgetpassword()
+        public ActionResult LoginFail()
         {
             return View();
         }
+
 
 
 

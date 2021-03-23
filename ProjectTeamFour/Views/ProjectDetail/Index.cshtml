@@ -1,7 +1,7 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
 @{
-    int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount/ Model.ProjectDetailItem.AmountThreshold) * 100;
+    int num = Convert.ToInt32(Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     string progressBar = num.ToString() + "%";
     DateTime today = DateTime.Now;
     int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
@@ -39,9 +39,9 @@
                     <div id="creator-info" class="item-wrap">
                         <div class="row">
                             <div class="item-logo">
-                                @*<a href="#" data-target="" data-toggle="modal">
-                                        <img src="https://static.flyingv.asia/static/square/users/5c126a0e32b49.png" alt="" srcset="">
-                                    </a>*@
+                                <a href="/UserInfo/Member/@Model.CreatorInfo.MemberId" data-target="" data-toggle="modal">
+                                        <img src="@Model.CreatorInfo.ProfileImgUrl" alt="" srcset="">
+                                    </a>
                             </div>
                             <div class="item-text">
                                 <h5>
@@ -53,10 +53,10 @@
                                             <span class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
                                         </h5>
                                     </div>
-                                    <div id="follow-icon">
-                                        <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <div id="follow-icon" hidden>
+                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
                                         <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-youtube-square"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                             <div id="donating-amount" class="number-row">
                                 <span class="label-grey">
                                     目標
-                                    @Model.ProjectDetailItem.AmountThreshold.ToString("C2")
+                                    @Model.ProjectDetailItem.AmountThreshold.ToString("###,###")
                                 </span>
                                 <h2>$@Model.ProjectDetailItem.FundingAmount.ToString("###,###")</h2>
                             </div>
@@ -99,15 +99,16 @@
                         <!-- 手機的按鈕會變成fixed在body的bottom -->
                         <div id="backing-section" class="wrapper">
                             <div class="row">
+                                <!--=================暫時先屏蔽掉=============-->
                                 <div class="btn col-12">
-                                    <a href="" id="backit-btn">贊助專案</a>
+                                    <a href="" id="backit-btn" hidden>贊助專案</a>
                                     <!--轉接到加入購物車-->
                                 </div>
 
                                 <div class="btn col-8">
                                     <!-- Button trigger modal -->
-                                    <button class="btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
-                                        <i class="fab fa-comment-dots">留言</i>聯絡提案人
+                                    <button  id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                        <i class="fas fa-comment-dots"></i><span>聯絡提案人</span>
                                     </button>
                                 </div>
 
@@ -125,7 +126,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="bio-img">
-                                                            <img src="https://static.flyingv.asia/static/square/users/5ff3274b96dab.jpg" style="width: 120px;" />
+                                                            <img src="@Model.CreatorInfo.ProfileImgUrl" style="width: 120px;" />
                                                         </div>
                                                         <div class="bio-title">
                                                             <h4>@Model.ProjectDetailItem.CreatorName</h4>
@@ -135,10 +136,10 @@
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <p>
-                                                            大家好，我們是村岸產業株式会社，自 1929 年於大阪創立以來，持續銷售化妝刷具與美妝用品。 熊野筆「 柔軟且親膚、細緻卻強韌
-                                                            」的特性，不僅適合臉部妝容，更能用於全身清潔，我們希望將「熊野筆」的優點，更廣泛.......
+                                                            @Model.CreatorInfo.AboutMe
                                                         </p>
-                                                        <a href="https://www.flyingv.cc/users/762305">瀏覽全部</a>
+
+                                                        <a href="~/UserInfo/Member/@Model.CreatorInfo.MemberId">瀏覽全部</a>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -148,7 +149,7 @@
                                                 </label>
                                                 <form action="">
                                                     <textarea class="form-control" rows="10" id="msg-content"
-                                                              placeholder="傳送訊息..." ></textarea>
+                                                              placeholder="傳送訊息..."></textarea>
                                                     <br />
                                                     <a href="javascript:void(0)" class="btn btn-primary btn-block" id="send-msg" onclick="LanchCommentAjax(@Model.ProjectDetailItem.ProjectId)">傳送訊息</a>
                                                     @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
@@ -158,7 +159,7 @@
                                     </div>
                                 </div>
 
-                                <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-bs-toggle="popover" data-placement="bottom" data-bs-content="SHARE">
+                                <div id="share-btn" type="button" class="btn btn-secondary col-4" data-container="body" data-bs-toggle="popover" data-placement="bottom" data-bs-content="">
                                     分享
                                     <div class="fb-share-button" data-href="https://www.google.com" data-layout="button"></div>
                                     @*<div id="share-line-btn"><script type="text/javascript">LineIt.loadButton();</script></div>*@
@@ -240,10 +241,6 @@
                                 <!-- 專案內容 -->
                                 <div class="tab-pane fade show active" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
                                     <section id="story container">
-
-
-
-
                                         <div class="container">
                                             @*專案詳細說明內文*@
                                             @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
@@ -252,7 +249,6 @@
                                                     <p>已達成 募資目標!</p>
                                                 </div>
                                             }
-
                                             @{
                                                 if (Model.ProjectDetailItem.ProjectId < 17)
                                                 {
@@ -292,8 +288,6 @@
                                                 <div class="faq">
                                                     <div class="outer row" @*id="heading-@index"*@>
                                                         @*<div class="arrow">
-
-
                                                             </div>*@
                                                         <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -330,15 +324,15 @@
 
                                             <div class="goal-detail ">
                                                 <label class="label-grey">贊助金額</label>
-                                                <h3 class="number">$149,140</h3>
+                                                <h3 class="number">$ @Model.ProjectDetailItem.Fundedpeople</h3>
                                             </div>
                                             <div class="goal-detail ">
                                                 <label class="label-grey">支持者</label>
-                                                <h3>51人</h3>
+                                                <h3>@Model.ProjectDetailItem.Fundedpeople 人</h3>
                                             </div>
                                             <div class="goal-detail ">
                                                 <label class="label-grey">贊助比例</label>
-                                                <h3>106.4%</h3>
+                                                <h3>@progressBar</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -396,62 +390,68 @@
 
        function LanchCommentAjax(ProjectId) {
            let clientComment = document.querySelector(".form-control");
-           $.ajax({
-               url:"/api/Comment/UpdateComment",
-               type: "POST",
-               /*dataType: "json",*/
-               data: { ProjectId: ProjectId, Comment_Question: clientComment.value },
-               success: function (data, textStatus, jqXHR) {
-                   console.log(data);
-                   console.log(textStatus);
-                   console.log(jqXHR.getAllResponseHeaders());
-                   if (data == "login")
-                   {
-                       Swal.fire(
-                           '尚未登入?',
-                           '請先登入！',
-                           'question'
-                       ).then(result => {
-                           reloading();
-                       })
+           if (clientComment.value == null) {
+               Swal.fire({
+                   icon: 'error',
+                   title: 'Oops...',
+                   text: '請留言!',
+
+               });
+           }
+           else
+           {
+               $.ajax({
+                   url: "/api/Comment/UpdateComment",
+                   type: "POST",
+                   /*dataType: "json",*/
+                   data: { ProjectId: ProjectId, Comment_Question: clientComment.value },
+                   success: function (data, textStatus, jqXHR) {
                        
-                   }
-                   else if (data == "try")
-                   {
-                       Swal.fire({
-                           icon: 'error',
-                           title: 'Oops...',
-                           text: '請留言!',
-                           
-                       })
-                   }
-                   else if (data == "fail")
-                   {
-                       Swal.fire({
-                           icon: 'error',
-                           title: 'Oops...',
-                           text: '發生錯誤，請再試一次!',
+                       if (data == "login") {
+                           Swal.fire(
+                               '尚未登入?',
+                               '請先登入！',
+                               'question'
+                           ).then(result => {
+                               reloading();
+                           })
 
-                       })
-                   }
-                   else 
-                   {
-                       Swal.fire({
-                           position: 'top-center',
-                           icon: 'success',
-                           title: '已成功留言！',
-                           showConfirmButton: false,
-                           timer: 1500
-                       })
-                   }
-                   
-               },
-               error: function (jqXHR, textStatus, errorThrown) {
-                   console.log(jqXHR);
-                   console.log(textStatus);
+                       }
+                       else if (data == "try") {
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Oops...',
+                               text: '請留言!',
 
-               }
-           })
+                           })
+                       }
+                       else if (data == "fail") {
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Oops...',
+                               text: '發生錯誤，請再試一次!',
+
+                           })
+                       }
+                       else {
+                           Swal.fire({
+                               position: 'top-center',
+                               icon: 'success',
+                               title: '已成功留言！',
+                               showConfirmButton: false,
+                               timer: 1500
+                           })
+                       }
+
+                   },
+                   error: function (jqXHR, textStatus, errorThrown) {
+                       console.log(jqXHR);
+                       console.log(textStatus);
+
+                   }
+               })
+           }
+           
 
         }
 
@@ -525,8 +525,7 @@
         $(document).on('click', '#send_msg', function () {
             var content = $('#msg_content').val();
                                     //官網傳送訊息程式碼:
-                                    //$(document).on('click', '#send_msg', function () {
-                                    //    var content = $('#msg_content').val();
+
 
                                     //    if (content.length) {
                                     //        $.ajax({
