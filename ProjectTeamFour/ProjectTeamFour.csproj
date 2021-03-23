@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202103211525577_新增projectid22.Designer.cs">
       <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103220631443_addmemberproperties1.cs" />
+    <Compile Include="Migrations\202103220631443_addmemberproperties1.Designer.cs">
+      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -334,6 +338,7 @@
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\MemberSettingService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
@@ -408,6 +413,7 @@
     <Content Include="Assets\css\ForgotPasswordPage\finishedsending.css" />
     <Content Include="Assets\css\ForgotPasswordPage\sendmail.css" />
     <Content Include="Assets\css\HomePage\homepagesearch.css" />
+    <Content Include="Assets\css\MemberLoginPage\loginfail.css" />
     <Content Include="Assets\css\ProductDetailPage\campaignDetail.css" />
     <Content Include="Assets\css\HomePage\homepage.css" />
     <Content Include="Assets\css\MemberLoginPage\memberlogin.css" />
@@ -2274,6 +2280,7 @@
     <Content Include="Views\ForgotPassword\SendMail.cshtml" />
     <Content Include="Views\ForgotPassword\FinishedSending.cshtml" />
     <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
+    <Content Include="Views\Member\LoginFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2398,6 +2405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103211525577_新增projectid22.resx">
       <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103220631443_addmemberproperties1.resx">
+      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
