@@ -52,35 +52,35 @@ namespace ProjectTeamFour.Controllers
 
 
 
-		//public ActionResult Sponser() //贊助紀錄
-		//{
-		//	var model = (MemberViewModel)Session["Member"];
-		//	if (model != null)
-		//	{
+        //public ActionResult Sponser() //贊助紀錄
+        //{
+        //    var model = (MemberViewModel)Session["Member"];
+        //    if (model != null)
+        //    {
 
-		//		//根據會員id抓取會員購買紀錄
-		//		model.Records = _backingService.QueryOrder(model.MemberId);				
-		//	}
-		//	return View();
-			
-		//}
+        //        //根據會員id抓取會員購買紀錄
+        //        model.Records = _backingService.QueryOrder(model.MemberId);
+        //    }
+        //    return View();
 
-		//public ActionResult Myprojects()	//專案提交紀錄
-		//{
-		//	var model = (MemberViewModel)Session["Member"];
-		//	if (model != null)
-		//	{
-		//		//根據專案的提交與審核狀態進行分類
-		//		//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
-		//		return View(model);
-		//	}
-  //          else
-  //          {
-		//		return RedirectToAction("Login", "Member");
-		//	}
-		//}
+        //}
 
-		public ActionResult Message()		//聯絡訊息
+        //public ActionResult Myprojects()	//專案提交紀錄
+        //{
+        //	var model = (MemberViewModel)Session["Member"];
+        //	if (model != null)
+        //	{
+        //		//根據專案的提交與審核狀態進行分類
+        //		//model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);				
+        //		return View(model);
+        //	}
+        //          else
+        //          {
+        //		return RedirectToAction("Login", "Member");
+        //	}
+        //}
+
+        public ActionResult Message()		//聯絡訊息
 		{
 			var model = (MemberViewModel)Session["Member"];
 			return View(model);

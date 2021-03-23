@@ -456,6 +456,34 @@ html {
     position: relative;
 }
 
-detail-group{
+.detail-group{
     display:flex;
+    justify-content:space-around;
 }
+
+
+td.details-control {
+    background: url('~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/svgs/regular/circle.svg') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('~/Assets/Plugin/FontAwesome/fontawesome-free-5.15.2-web/svgs/solid/times-circle.svg') no-repeat center center;
+}
+
+#transJSON , #odtransJSON{
+    display:none;
+}
+
+.itemTitle {
+    display: flex;
+    flex: auto;
+    justify-content: space-around;
+}
+
+#qty, #plantitle {
+    position: relative;
+    left: 3rem;
+}
+
+

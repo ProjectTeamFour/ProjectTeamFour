@@ -314,60 +314,12 @@
     <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
     @*datatable套件*@
-
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
+    <script src="~/Assets/Javascript/PersonalInfo/record.js"></script>
+    
 
-    <script>
-
-        @*function transData() {
-            $.ajax({
-                type: "get",
-                url:""
-            })
-        }*@
-
-
-
-        let getodjson = document.getElementById("odtransJSON");
-        let getjson = document.getElementById("transJSON");
-        var obj = JSON.parse(getjson.value);//order 陣列
-        var objod = JSON.parse(getodjson.value); //orderdetail 陣列
-        console.log(obj);
-        console.log(objod); 
-
-        var jsonObj = {
-                "items": obj,
-                "detail": objod,
-                "modeldata": []
-        };
-
-        var odData = jsonObj.modeldata;
-
-        function Binding() {
-            new Vue({
-                el: "#record",
-                data: jsonObj,
-                methods: {
-                    changeJsonOd(orderId) {
-                        this.modeldata = [];
-                        this.modeldata = objod.filter(x => x.OrderId == orderId);
-                    }
-                }
-            });
-        };
-
-        $(document).ready(function () {
-            Binding();
-            $("#mytable").DataTable({
-                "info": false,
-                "bLengthChange": false,
-                "pageLength": 5
-            })
-        });
-
-
-        //Add event details
-        $("#mytable tfoot").on("click", "td.details-control", function () {
+        @*//Add event details*@
+        @*$("#mytable tfoot").on("click", "td.details-control", function () {
             var tr = $(this).closest("tr");
             var row = table.row(tr);
 
@@ -376,34 +328,31 @@
                 tr.removeClass("shown");
             }
             else {
-                row.child(format(row.data())).show();
+                row.child(format(odData)).show();
                 tr.addClass("shown");
             }
         });
 
         function format(odData) {
-            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +  
-                '<div v-for="">'+
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;  v-for="(item, index) in odData">' +                  
                     '<tr>' +
                         '<td>orderDetailId:</td>' +
-                        '<td>' + modeldata.OrderDerailId + '</td>' +
+                        '<td>' + ${ item.OrderDetailId } + '</td>' +
                     '</tr>' +
                     '<tr>' +
                         '<td>OrderPrice:</td>' +
-                        '<td>' + modeldata.OrderPrice + '</td>' +
+                '       <td>' + ${item.OrderPrice} + '</td>' +
                     '</tr>' +
                     '<tr>' +
                         '<td>OrderQuantity:</td>' +
-                        '<td>' + modeldata.OrderQuantity+'</td>' +
+                        '<td>' + ${ item.OrderQuantity } +'</td>' +
                     '</tr>' +
                     '<tr>' +
                         '<td>PlanTitle:</td>' +
-                        '<td>' + modeldata.PlanTitle + '</td>' +
+                        '<td>' + ${ item.PlanTitle} + '</td>' +
                     '</tr>' +
-                '</div>' +
                 '</table>';
-        }
-    </script>
+        }*@
 }
 
 
