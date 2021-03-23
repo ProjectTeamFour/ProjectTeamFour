@@ -53,6 +53,21 @@ namespace ProjectTeamFour.Api
             
         }
 
+        public string ReplyComment([FromBody] CommentViewModel commentVM)
+        {
+            var result = _commentService.UpdateComment(commentVM);
+
+            if(result== "success")
+            {
+                return "ok";
+            }
+            else
+            {
+                return "fail";
+            }
+            
+        }
+
        
     }
 }

@@ -286,7 +286,55 @@
     left: -1.5rem;
     top: 1rem;
 }
+.project-anydetail {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+}
 
+.project-main-url,
+.project-title {
+    width: 50%;
+    padding:5px;
+}
+.main-url {
+    width: 100%
+}
+.message-block {
+    
+    
+    margin:20px 0px;
+}
+.comment-time {
+    width: 100%;
+    text-align: center
+}
+.mymessages {
+    display: block;
+    color: dimgrey;
+}
+.message-content {
+    overflow-y:auto;
+    border-bottom: 1px solid #ccc;
+}
+.message-member {
+    font-weight: 700;
+    color: red;
+}
+.reply-area {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #c7c7c7;
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    line-height: 1.42857143;
+    color: #555;
+    display: block;
+    height:150px;
+}
 /* ------------------------------ */
 html {
     color: #212121;

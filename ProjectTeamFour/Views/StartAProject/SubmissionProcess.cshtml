@@ -40,8 +40,9 @@
 
 
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-myprojects-tab" data-toggle="pill" href="#pills-myprojects"
-                               role="tab" aria-controls="pills-myprojects" aria-selected="false">提案資料</a>
+                            <a class="nav-link" id="pills-myprojects-tab" data-toggle="pill"
+                               href="#pills-myprojects" role="tab" aria-controls="pills-myprojects"
+                               aria-selected="false">提案資料</a>
                         </li>
 
                     </ul>
@@ -136,7 +137,7 @@
                                                                v-model="inputData.ProjectName"
                                                                v-bind:class="{ 'is-invalid': inputDataCheck.ProjectNameError}">
                                                         <div class="text-danger small mt-1">
-                                                            {{ inputDataCheck.ProjectNameErrorMsg }}
+                                                            {{ inputDataCheckErrorMsg.ProjectNameErrorMsg }}
                                                         </div>
                                                     </div>
                                                     <div class="project-title-item pb-2">
@@ -155,7 +156,7 @@
                                                                v-model="inputData.AmountThreshold"
                                                                v-bind:class="{ 'is-invalid': inputDataCheck.AmountThresholdError}">
                                                         <div class="text-danger small mt-1">
-                                                            {{ inputDataCheck.AmountThresholdErrorMsg }}
+                                                            {{ inputDataCheckErrorMsg.AmountThresholdErrorMsg }}
                                                         </div>
                                                     </div>
                                                     <div class="targetamount-item pb-2">
@@ -181,7 +182,7 @@
                                                                        style="display: none;">
                                                             </label>
                                                             <div class="text-danger small mt-1">
-                                                                {{ inputDataCheck.ProjectMainUrlErrorMsg }}
+                                                                {{ inputDataCheckErrorMsg.ProjectMainUrlErrorMsg }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -225,7 +226,7 @@
                                                v-on:change="getStartDateAndEndDate">
                                     </div>
                                     <div class="text-danger small mt-1">
-                                        {{ inputDataCheck.StartDateAndEndDateErrorMsg }}
+                                        {{ inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg }}
                                     </div>
                                     <div class="project-period-item">
                                         <p>
@@ -248,7 +249,7 @@
                                                required>
 
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.ProjectVideoUrlErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.ProjectVideoUrlErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-video-item">
@@ -283,7 +284,7 @@
                                                    style="display: none;">
                                         </label>
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.ProjectCoverUrlErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.ProjectCoverUrlErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -487,7 +488,7 @@
                                                v-model="inputData.ProjectPrincipal"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.ProjectPrincipalError}">
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.ProjectPrincipalErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.ProjectPrincipalErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-person-in-charge-item">
@@ -507,7 +508,7 @@
                                                v-model="inputData.MemberConEmail"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.MemberConEmailError}">
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.MemberConEmailErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.MemberConEmailErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-email-item">
@@ -526,7 +527,7 @@
                                                v-model="inputData.MemberPhone"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.MemberPhoneError}">
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.MemberPhoneErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.MemberPhoneErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-phone-item">
@@ -543,7 +544,7 @@
                                                v-bind:class="{ 'is-invalid': inputDataCheck.IdentityNumberError}">
                                     </div>
                                     <div class="text-danger small mt-1">
-                                        {{ inputDataCheck.IdentityNumberErrorMsg }}
+                                        {{ inputDataCheckErrorMsg.IdentityNumberErrorMsg }}
                                     </div>
                                     <div class="project-identity-item">
                                         <p>
@@ -584,7 +585,7 @@
                                                 </label>
 
                                                 <div class="text-danger small mt-1">
-                                                    {{ inputDataCheck.TeamPictureErrorMsg }}
+                                                    {{ inputDataCheckErrorMsg.TeamPictureErrorMsg }}
                                                 </div>
                                             </div>
                                             <div class="project-teampicture-item">
@@ -601,7 +602,7 @@
                                                        v-bind:class="{ 'is-invalid': inputDataCheck.MemberNameError}"
                                                        ref="profilepicupload">
                                                 <div class="text-danger small mt-1">
-                                                    {{ inputDataCheck.MemberNameErrorMsg }}
+                                                    {{ inputDataCheckErrorMsg.MemberNameErrorMsg }}
                                                 </div>
                                             </div>
                                             <div class="project-teamname-item">
@@ -618,7 +619,7 @@
                                         <input class="w-100 form-control" type="text" v-model="inputData.AboutMe"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.AboutMeError}">
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.AboutMeErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.AboutMeErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-teamsummary-item">
@@ -635,7 +636,7 @@
                                                v-model="inputData.MemberWebsite"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.MemberWebsiteError}">
                                         <div class="text-danger small mt-1">
-                                            {{ inputDataCheck.MemberWebsiteErrorMsg }}
+                                            {{ inputDataCheckErrorMsg.MemberWebsiteErrorMsg }}
                                         </div>
                                     </div>
                                     <div class="project-teamwebsite-item">
@@ -647,7 +648,8 @@
                         <div class="submit-group d-flex justify-content-center pb-5">
                             <input class="preview-button mx-2" type="button" value="預覽專案">
                             <input class="submit-button mx-2" id="submit-button" type="button" value="提交專案"
-                                   v-bind:disable="AddVerify == false" v-on:click="submitProposal" v-on:click.prevent="">
+                                   v-bind:disable="AddVerify == false" v-on:click="submitProposal"
+                                   v-on:click.prevent="">
                         </div>
                     </form>
                 </div>
@@ -681,7 +683,7 @@
                                                v-model="modalData.PlanPrice"
                                                v-bind:class="{ 'is-invalid': modalDataCheck.PlanPriceError}">
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.PlanPriceErrorMsg }}
+                                            {{ modalDataCheckErrorMsg.PlanPriceErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -693,7 +695,7 @@
                                         <input type="text" class="w-100 form-control" v-model="modalData.PlanTitle"
                                                v-bind:class="{ 'is-invalid': modalDataCheck.PlanTitleError}">
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.PlanTitleErrorMsg }}
+                                            {{ modalDataCheckErrorMsg.PlanTitleErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -707,7 +709,7 @@
                                                v-model="modalData.QuantityLimit"
                                                v-bind:class="{ 'is-invalid': modalDataCheck.QuantityLimitError}">
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.QuantityLimitErrorMsg }}
+                                            {{ modalDataCheckErrorMsg.QuantityLimitErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -751,7 +753,7 @@
                                                    style="display: none;">
                                         </label>
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.PlanImgUrlErrorMsg }}
+                                            {{ modalDataCheckErrorMsg.PlanImgUrlErrorMsg }}
                                         </div>
                                     </div>
                                 </div>
@@ -819,7 +821,7 @@
                                             v-model="modalData.PlanDescription"
                                             v-bind:class="{ 'is-invalid': modalDataCheck.PlanDescriptionError}"> -->
                                         <div class="text-danger small mt-1">
-                                            {{ modalDataCheck.PlanDescriptionErrorMsg }}
+                                            {{ modalDataCheckErrorMsg.PlanDescriptionErrorMsg }}
                                         </div>
                                     </div>
                                 </div>

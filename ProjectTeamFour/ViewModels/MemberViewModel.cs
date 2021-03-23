@@ -56,5 +56,6 @@ namespace ProjectTeamFour.ViewModels
         public List<SubmissionProcessViewModel> ProjectRecords { get; set; }
         public List<SubmissionProcessPlanViewModel> PlanRecords { get; set; }
         public List<MyProjectViewModel> MyProjects { get; set; }
+        public List<CommentForMemberViewModel> Comments { get; set; }
     }
 }

@@ -203,6 +203,10 @@
     <Compile Include="Migrations\202103220631443_addmemberproperties1.Designer.cs">
       <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.cs" />
+    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.Designer.cs">
+      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -344,6 +348,7 @@
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
+    <Compile Include="ViewModels\CommentForMemberViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
     <Compile Include="ViewModels\CarCarPlanListViewModel.cs" />
@@ -441,6 +446,7 @@
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\JQuery\jquery_datatable.css" />
     <Content Include="Assets\Plugin\JQuery\jquery_dataTable.js" />
@@ -2410,6 +2416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103220631443_addmemberproperties1.resx">
       <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230913559_AddAskedMemberIdToComment.resx">
+      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

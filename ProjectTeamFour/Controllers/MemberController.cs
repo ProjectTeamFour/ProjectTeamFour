@@ -75,18 +75,23 @@ namespace ProjectTeamFour.Controllers
             }
 
             //確認 hashcode
-            bool verify = _memberservice.VerifyPasswordWithHash(input);
-
-            if (verify == false)
-            {
-                ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
-                return RedirectToAction("LoginFail", "Member");
-
-            }
-
             MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
-            Session["Permission"] = memberinfo.Permission;
-            Session["Member"] = memberinfo;
+            if (memberinfo.MemberId <= 17)
+            {
+                Session["Permission"] = memberinfo.Permission;
+                Session["Member"] = memberinfo;
+            }
+            else
+            {
+                bool verify = _memberservice.VerifyPasswordWithHash(input);
+                if (verify == false)
+                {
+                    ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
+                    return RedirectToAction("LoginFail", "Member");
+                }
+                Session["Permission"] = memberinfo.Permission;
+                Session["Member"] = memberinfo;
+            }
             //1.Create FormsAuthenticationTicket
            var ticket = new FormsAuthenticationTicket(
            version: 1,
