@@ -60,38 +60,43 @@ namespace ProjectTeamFour.Controllers
 
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱");
-                return View(mailVM);
+                ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱");  //安全問題就算錯也報這樣的提示
+                return RedirectToAction("FinishedSending", "ForgotPassword");
             }
 
-            MemberViewModel viewModel = _api.GetMember(p => p.MemberRegEmail == mailVM.receiver);
+            MemberViewModel currentMember = _api.GetMember(p => p.MemberRegEmail == mailVM.receiver);
           
 
-            if (viewModel == null)
+            if (currentMember == null)
             {
-                ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱");
-                return View(mailVM);
+                ModelState.AddModelError("", "如果您的信箱輸入正確，已經發送驗證信至您信箱"); //安全問題就算錯也報這樣的提示
+                return RedirectToAction("FinishedSending", "ForgotPassword");
             }
 
-            var outputCode = CreatePasswordResetHmacCode(viewModel.MemberId);
+            var outputCode = CreatePasswordResetHmacCode(currentMember.MemberId);
 
-            string key = "A5fG35HTNCV7h8d9"; //DES KEY
+            //byte[] key = new byte[] { 0xAB, 0x12, 0xCD, 0x34, 0xEF, 0x56, 0xCF, 0x7D };
 
-            byte[] bCipherText = Encryption(Convert.FromBase64String(key), Convert.FromBase64String(outputCode));  //加密
+            //String base64String = outputCode.Replace('-', '+').Replace('_', '/');  //解最外層
 
-            string stringDBCode = Convert.ToBase64String(bCipherText); //轉 string 存回 db
+            //byte[] bCipherText = Encryption(key, Convert.FromBase64String(base64String));  //加密
+
+            //string stringDBCode = Convert.ToBase64String(bCipherText); //轉 string => 為了存回 db
+
+            //currentMember.ResetPasswordCode = stringDBCode;   //先放到目前的 user
+
+            //var result = _mailservice.SaveResetCode(currentMember); //轉存回 db
 
 
-
-            var link = "<a href='"
+            var link = "<html><body><a href='"
                         + Request.Url.Scheme + "://"
                         + Request.Url.Authority
-                        + @Url.Action("CheckMemberUrl", "Mail", new { forgotpw = outputCode })
-                        + "'>Click here to reset your password</a>";
+                        + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode })
+                        + "'>Click here to reset your password</a></body><html>";
 
-            mailVM.receiver = viewModel.MemberRegEmail;
+            mailVM.receiver = currentMember.MemberRegEmail;
             mailVM.sender = "11@a.com";
-            mailVM.MailTitle = "test";
+            mailVM.MailTitle = "集資車車 - 找回密碼";
             mailVM.MailBody = link;
             string id = WebConfigurationManager.AppSettings["GmailId"];
             string password = WebConfigurationManager.AppSettings["GmailPassword"];
@@ -101,7 +106,7 @@ namespace ProjectTeamFour.Controllers
                 EnableSsl = true
             };
             client.Send(mailVM.sender, mailVM.receiver, mailVM.MailTitle, mailVM.MailBody);
-            return RedirectToAction("FinishedSending", "Member");
+            return RedirectToAction("FinishedSending", "ForgotPassword");
         }
 
 
@@ -116,43 +121,44 @@ namespace ProjectTeamFour.Controllers
         {
             if (!VerifyPasswordResetHmacCode(forgotpw, out Int32 userId))
             {
-                // Message is invalid, such as the HMAC hash being incorrect, or the code has expired.
                 return null;
             }
 
             return View();
-
         }
 
 
         // CheckMemberUrl View 重設密碼 post 傳入這裡  --input ajax要再處理
-        public String ResetPassword(MailViewModel input)
+        public String ResetPassword(MemberViewModel input)
         {
 
-            //if (!VerifyPasswordResetHmacCode(input., out Int32 userId))
-            //{
-            //    return null;
-            //}
+            int getMemberId = 0;
+            if (!VerifyPasswordResetHmacCode(input.ResetPasswordCode, out Int32 userId))
+            {
+                return null;
+            }
+            else
+            {
+                getMemberId = userId;
+            }
+            input.MemberId = getMemberId;
 
             var result = new OperationResult();
-            result = _mailservice.ResetPassWord(input);
+            result = _memberservice.ResetPassWord(input);
             if (result.IsSuccessful)
             {
-                //_mailservice.Relogin();
                 return "成功";
             }
             else
             {
                 Log entity = new Log()
                 {
-                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
                 return "失敗";
             }
         }
-
 
 
         //----------加密的東西 int 都先寫 int32 比較好換算理解
@@ -211,7 +217,7 @@ namespace ProjectTeamFour.Controllers
 
 
 
-        //DES加密將HmacSha256code存進去
+        //DES加密將HmacSha256code存進去  //沒用到
         public static byte[] Encryption(byte[] Deskey, byte[] plainText)
         {
             SymmetricAlgorithm mCSP = new DESCryptoServiceProvider();
@@ -237,7 +243,7 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
-        //DES解密
+        //DES解密  //沒用到
         public static byte[] Decryption(byte[] Deskey, byte[] CipherText)
         {
             SymmetricAlgorithm desAlg = new DESCryptoServiceProvider();

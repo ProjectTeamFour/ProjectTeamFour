@@ -341,12 +341,11 @@ html {
 }
 
 .flyingUpload {
-      border-width: 1px;
-      border-style: dashed;
-      border-color: #cdcdcd;
-      padding: 5px;
-      
-    }
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #FFFFFF ;
+    padding:5px;
+}
 
     .flyingUpload .img{
       display: inline-block;
