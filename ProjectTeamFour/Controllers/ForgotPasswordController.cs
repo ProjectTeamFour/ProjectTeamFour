@@ -201,7 +201,7 @@ namespace ProjectTeamFour.Controllers
             int getMemberId = 0;
             if (!VerifyPasswordResetHmacCode(input.ResetPasswordCode, out Int32 userId))
             {
-                return null;
+                return "失敗";
             }
             else
             {
@@ -333,15 +333,10 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
-       
-        //public void ()
-        //{
-           
-        //    byte[] bCipherText = Encryption(key.HexToByte(), PlaintText.HexToByte());
-        //    Console.WriteLine("加密:{0}", bCipherText.BToHex());
-        //    byte[] bPlaintText = Decryption(key.HexToByte(), bCipherText);
-        //    Console.WriteLine("解密:{0}", bPlaintText.BToHex());
-        //}
+
+        
+
+
 
 
     }

@@ -12,23 +12,26 @@ using ProjectTeamFour.Service;
 using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
+using System.Web.Http;
 
 namespace ProjectTeamFour.Controllers
 {
-    public class UserInfoController : Controller
-    {
-        private readonly MemberService _memberService;
-        private readonly MyProjectsService _myProjectsService;
-        private readonly CommentService _commentService;
-        private readonly BackingService _backingService;
+	public class UserInfoController : Controller
+	{
+		private readonly LogService _logService;
+		private readonly MemberService _memberService;
+		private readonly MyProjectsService _myProjectsService;
+		private readonly CommentService _commentService;
+		private readonly BackingService _backingService;
 
-        public UserInfoController()
-        {
-            _memberService = new MemberService();
-            _myProjectsService = new MyProjectsService();
-            _commentService = new CommentService();
-            _backingService = new BackingService();
-        }
+		public UserInfoController()
+			{
+			    _logService = new LogService();
+				_memberService = new MemberService();
+				_myProjectsService = new MyProjectsService();
+				_commentService = new CommentService();
+			    _backingService = new BackingService();
+			}
 
         // GET: PersonInfo
         //[CustomAuthorize(flagNum = 1)]
@@ -145,9 +148,31 @@ namespace ProjectTeamFour.Controllers
         //	//return View();
         //}
 
-        //public ActionResult Notifaction()	//通知設定
-        //{
-        //	return View();
-        //}
-    }
+
+		public string LoginedChangePassword([FromBody] MemberViewModel input)
+		{
+			var result = new OperationResult();
+			result = _memberService.ResetPassWord(input);
+			if (result.IsSuccessful)
+			{
+				_memberService.Relogin();
+				return "成功";
+			}
+			else
+			{
+				//Log entity = new Log()
+				//{
+				//	DateTime = result.DateTime
+				//};
+				//_logService.Create(entity);
+				return "失敗";
+			}
+		}
+
+
+		//public ActionResult Notifaction()	//通知設定
+		//{
+		//	return View();
+		//}
+	}
 }

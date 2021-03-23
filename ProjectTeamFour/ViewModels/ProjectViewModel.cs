@@ -19,6 +19,7 @@ namespace ProjectTeamFour.ViewModels
         public DateTime StartDate { get; set; }
         public TimeSpan dateLine { get; set; }
         public int Fundedpeople { get; set; }    //people
+        public int ApprovingStatus { get; set; }
 
     }
 }
