@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Configuration;
@@ -88,16 +89,81 @@ namespace ProjectTeamFour.Controllers
             //var result = _mailservice.SaveResetCode(currentMember); //轉存回 db
 
 
-            var link = "<html><body><a href='"
-                        + Request.Url.Scheme + "://"
-                        + Request.Url.Authority
-                        + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode })
-                        + "'>Click here to reset your password</a></body><html>";
+            //var link = "<a href='"
+            //            + Request.Url.Scheme + "://"
+            //            + Request.Url.Authority
+            //            + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode })
+            //            + "'>Click here to reset your password</a>";
+
+            //LinkedResource theEmailImage = new LinkedResource("../Assets/Img/logo.png");
+            //theEmailImage.ContentId = "myImageID";
+
+            //string picture = @"<html>
+            //              <body>
+            //                <table width=""100%"">
+            //                <tr>
+            //                    <td style=""font-style:arial; color:maroon; font-weight:bold"">
+            //                   Hi! <br>
+            //                    <img src=cid:myImageID>
+            //                    </td>
+            //                </tr>
+            //                </table>
+            //                </body>
+            //                </html>";
+
+
+            //var mail = new MailMessage();
+            //mail.IsBodyHtml = true;
+
+            //var res = new LinkedResource("/logo.png");
+            //res.ContentId = Guid.NewGuid().ToString();
+            ////使用<img src="/img/loading.svg" data-src="cid:..."方式引用內嵌圖片
+            //var htmlBody = $@"
+            //<div>.NET Core 3 架構圖如下：</div>
+            //<div><img src='cid:{res.ContentId}'/></div>";
+            ////建立AlternativeView
+            //var altView = AlternateView.CreateAlternateViewFromString(
+            //    htmlBody, null, MediaTypeNames.Text.Html);
+            ////將圖檔資源加入AlternativeView
+            //altView.LinkedResources.Add(res);
+            ////將AlternativeView加入MailMessage
+            //mail.AlternateViews.Add(altView);
+            //mail.To.Add("linooohon@gmail.com");
+            //mail.From = new MailAddress("raisebubu@gmail.com");
+            //mail.Subject = "內嵌圖檔測試";
+            ////送出郵件
+            //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+
+            //smtp.Send(mail);
+
+
+
+            //string attachmentPath = Environment.CurrentDirectory + @"\test.png";
+            //var res = new LinkedResource(attachmentPath);
+            //res.ContentId = Guid.NewGuid().ToString();
+            //Attachment inline = new Attachment(attachmentPath);
+            //inline.ContentDisposition.Inline = true;
+            //inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+            //inline.ContentId = res.ContentId;
+            //inline.ContentType.MediaType = "image/png";
+            //inline.ContentType.Name = Path.GetFileName(attachmentPath);
+
+
+
+
+
+
+            var link = Request.Url.Scheme + "://"
+                       + Request.Url.Authority
+                       + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode });
+                       //+ "< img src = 'cid:{/logo.png}' />";
 
             mailVM.receiver = currentMember.MemberRegEmail;
             mailVM.sender = "11@a.com";
             mailVM.MailTitle = "集資車車 - 找回密碼";
             mailVM.MailBody = link;
+            
+            
             string id = WebConfigurationManager.AppSettings["GmailId"];
             string password = WebConfigurationManager.AppSettings["GmailPassword"];
             var client = new SmtpClient("smtp.gmail.com", 587)
