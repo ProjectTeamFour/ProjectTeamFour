@@ -142,6 +142,26 @@ namespace ProjectTeamFour.Api
             return JsonConvert.SerializeObject(result);
         }
 
+        public string LoginedChangePassword([FromBody] MemberViewModel input)
+        {
+            var result = new OperationResult();
+            result = _memberService.ResetPassWord(input);
+            if (result.IsSuccessful)
+            {
+                _memberService.Relogin();
+                return "成功";
+            }
+            else
+            {
+                Log entity = new Log()
+                {
+                    DateTime = result.DateTime
+                };
+                _logservice.Create(entity);
+                return "失敗";
+            }
+        }
+
         //沒有登入回傳0
         //[System.Web.Http.HttpGet]
         //[System.Web.Http.Route("MyApi")]

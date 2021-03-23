@@ -12,11 +12,13 @@ using ProjectTeamFour.Service;
 using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
+using System.Web.Http;
 
 namespace ProjectTeamFour.Controllers
 {
 	public class UserInfoController : Controller
 	{
+		private readonly LogService _logService;
 		private readonly MemberService _memberService;
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
@@ -24,6 +26,7 @@ namespace ProjectTeamFour.Controllers
 
 		public UserInfoController()
 			{
+			    _logService = new LogService();
 				_memberService = new MemberService();
 				_myProjectsService = new MyProjectsService();
 				_commentService = new CommentService();
@@ -126,6 +129,28 @@ namespace ProjectTeamFour.Controllers
 			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
 			//return View();
 		}
+
+
+		public string LoginedChangePassword([FromBody] MemberViewModel input)
+		{
+			var result = new OperationResult();
+			result = _memberService.ResetPassWord(input);
+			if (result.IsSuccessful)
+			{
+				_memberService.Relogin();
+				return "成功";
+			}
+			else
+			{
+				//Log entity = new Log()
+				//{
+				//	DateTime = result.DateTime
+				//};
+				//_logService.Create(entity);
+				return "失敗";
+			}
+		}
+
 
 		//public ActionResult Notifaction()	//通知設定
 		//{
