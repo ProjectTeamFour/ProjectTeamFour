@@ -9,54 +9,54 @@
             <img class="main-url" src="@Model.ProjectMainUrl" />
         </div>
         <div class="project-title">
-            <p style="color:red">@Model.ProjectName</p>
+
             @if (Model.ReadStatus == false)
             {
-                <strong class="message-member badge bg-warning text-dark">未回覆</strong>
+                <strong class="message-member reply-status badge bg-warning text-dark" style="display:block;">未回覆</strong>
             }
             else
             {
-                <strong class="message-member badge bg-success">已回覆</strong>
+                <strong class="message-member badge bg-success" style="display:block;">已回覆</strong>
             }
-
+            <p style="color:red;height:100px;overflow-y: hidden;font-size:15px">@Model.ProjectName</p>
         </div>
-        <div style="width:100%;text-align:center">留言時間：@Model.Comment_Time</div>
+        <div style="width:100%;text-align:center;">留言時間：@Model.Comment_Time</div>
 
         <div class="message-content">
             <p class="mymessages">@Model.Comment_Question</p>
         </div>
 
     </div>
-    @if (Model.Comment_Answer == null && Model.AskedMemberId != Model.MemberId)
+    @if (Model.Comment_Answer == null && Model.AskMemberId == vm.MemberId)
     {
         <div class="text" style="text-align:center">
             <h4>該留言尚未回覆</h4>
         </div>
     }
-    else if (Model.Comment_Answer == null && Model.AskedMemberId == Model.MemberId)
-    {
-        <div>
-            <strong class="message-member">回覆者:</strong>
-
-            <textarea class="reply-area" placeholder="請於此處回覆"></textarea>
-        </div>
-        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
-    }
-    else if (Model.Comment_Answer != null && Model.AskedMemberId != Model.MemberId)
+    else if (Model.Comment_Answer == null && Model.AskedMemberId == vm.MemberId)
     {
         <div>
             <strong class="message-member">回覆者:@Model.AskedMemberName</strong>
 
-            <p class="mymessages">@Model.Comment_Answer</p>
+            <textarea class="reply-area LanchCommentAnswer" placeholder="請於此處回覆"></textarea>
+        </div>
+        <button class="btn btn-success" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
+    }
+    else if (Model.Comment_Answer != null && Model.AskMemberId == vm.MemberId)
+    {
+        <div>
+            <strong class="message-member">回覆者:@Model.AskedMemberName</strong>
+
+            <p class="mymessages" style="overflow-y: hidden;">@Model.Comment_Answer</p>
         </div>
 
     }
     else
     {
         <div>
-            <textarea class="reply-area">@Model.Comment_Answer</textarea>
+            <textarea class="reply-area LanchCommentAnswer">@Model.Comment_Answer</textarea>
         </div>
-        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
+        <button class="btn btn-success" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
 
     }
 

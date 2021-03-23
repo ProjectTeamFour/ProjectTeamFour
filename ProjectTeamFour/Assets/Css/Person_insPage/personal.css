@@ -296,6 +296,7 @@
 .project-title {
     width: 50%;
     padding:5px;
+   
 }
 .main-url {
     width: 100%
@@ -319,7 +320,7 @@
 }
 .message-member {
     font-weight: 700;
-    color: red;
+    color: dodgerblue;
 }
 .reply-area {
     width: 100%;

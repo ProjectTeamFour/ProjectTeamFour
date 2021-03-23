@@ -1,11 +1,19 @@
 ﻿using ProjectTeamFour.Service;
 using ProjectTeamFour.ViewModels;
 using System.Web.Mvc;
+using ProjectTeamFour.Models;
+using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.Service;
+using System.Linq.Expressions;
+using ProjectTeamFour.Repositories;
+using ProjectTeamFour.Helpers;
+using System.Web.Http;
 
 namespace ProjectTeamFour.Controllers
 {
     public class UserInfoController : Controller
 	{
+		private readonly LogService _logService;
 		private readonly MemberService _memberService;
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
@@ -13,20 +21,21 @@ namespace ProjectTeamFour.Controllers
 
 		public UserInfoController()
 			{
+			    _logService = new LogService();
 				_memberService = new MemberService();
 				_myProjectsService = new MyProjectsService();
 				_commentService = new CommentService();
 			    _backingService = new BackingService();
 			}
 
-		// GET: PersonInfo
-		//[CustomAuthorize(flagNum = 1)]
-		public ActionResult Member(int Id)	//公開的個人資料頁面
-		{
-			var model = (MemberViewModel)Session["Member"];
-			if (model != null)
-			{
-				var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+        // GET: PersonInfo
+        //[CustomAuthorize(flagNum = 1)]
+        public ActionResult Member(int Id)  //公開的個人資料頁面
+        {
+            var model = (MemberViewModel)Session["Member"];
+            if (model != null)
+            {
+                var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
 
 
 				//根據專案的提交與審核狀態進行分類
@@ -34,36 +43,56 @@ namespace ProjectTeamFour.Controllers
 				
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
-
-				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
-				//該會員為提案者沒有留過言，卻要回覆留言
-				if (model.Comments.Count==0)
+				if(model.MyProjects.Count==0)
                 {
-
-                }
+					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+				}
+				else
+                {
+					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+				}
+				//該會員為提案者沒有留過言，卻要回覆留言
+				
 
 					return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
             else
             {
-				return RedirectToAction("Login", "Member");
+                return RedirectToAction("Login", "Member");
             }
-		}
+        }
+        public ActionResult Users(int Id)
+        {
 
+            var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+            if (memberInfo != null)
+            {
+                //根據專案的提交與審核狀態進行分類
+                memberInfo.MyProjects = _myProjectsService.GetProjectsbyMemberId(memberInfo.MemberId);
 
+                //根據會員id抓取會員購買紀錄
+                memberInfo.Records = _backingService.QueryOrder(memberInfo.MemberId);
+
+                return View();
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
 
         //public ActionResult Sponser() //贊助紀錄
         //{
-        //    var model = (MemberViewModel)Session["Member"];
-        //    if (model != null)
-        //    {
+        //	var model = (MemberViewModel)Session["Member"];
+        //	if (model != null)
+        //	{
 
-        //        //根據會員id抓取會員購買紀錄
-        //        model.Records = _backingService.QueryOrder(model.MemberId);
-        //    }
-        //    return View();
-
-        //}
+		//		//根據會員id抓取會員購買紀錄
+		//		model.Records = _backingService.QueryOrder(model.MemberId);				
+		//	}
+		//	return View();
+			
+		//}
 
         //public ActionResult Myprojects()	//專案提交紀錄
         //{
@@ -80,42 +109,64 @@ namespace ProjectTeamFour.Controllers
         //	}
         //}
 
-        public ActionResult Message()		//聯絡訊息
+        //public ActionResult Message()		//聯絡訊息
+        //{
+        //	var model = (MemberViewModel)Session["Member"];
+        //	return View(model);
+        //}
+
+        //public ActionResult Activity()	//最新通知(可以連動贊助或購買商品後收發訂單狀態的email功能)
+        //{
+        //	var model = (MemberViewModel)Session["Member"];
+        //	return View(model);
+        //}
+
+        //public ActionResult Edit()	//修改個人資料
+        //{
+        //	var model = (MemberViewModel)Session["Member"];
+
+        //	MemberViewModel memberVM = new MemberViewModel();
+
+        //	var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+        //	//memberInfo = memberVM;
+        //	//return RedirectToAction("Index");
+        //	return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+        //}
+
+        //public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
+        //{
+        //	var model = (MemberViewModel)Session["Member"];
+
+        //	MemberViewModel memberVM = new MemberViewModel();
+
+        //	var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
+
+        //	//return RedirectToAction("Index");
+        //	return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
+        //	//return View();
+        //}
+
+
+		public string LoginedChangePassword([FromBody] MemberViewModel input)
 		{
-			var model = (MemberViewModel)Session["Member"];
-			return View(model);
+			var result = new OperationResult();
+			result = _memberService.ResetPassWord(input);
+			if (result.IsSuccessful)
+			{
+				_memberService.Relogin();
+				return "成功";
+			}
+			else
+			{
+				//Log entity = new Log()
+				//{
+				//	DateTime = result.DateTime
+				//};
+				//_logService.Create(entity);
+				return "失敗";
+			}
 		}
 
-		public ActionResult Activity()	//最新通知(可以連動贊助或購買商品後收發訂單狀態的email功能)
-		{
-			var model = (MemberViewModel)Session["Member"];
-			return View(model);
-		}
-
-		public ActionResult Edit()	//修改個人資料
-		{
-			var model = (MemberViewModel)Session["Member"];
-
-			MemberViewModel memberVM = new MemberViewModel();
-
-			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
-			//memberInfo = memberVM;
-			//return RedirectToAction("Index");
-			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
-		}
-
-		public ActionResult Account()	//修改密碼以及紀錄第三方登入的會員資料
-		{
-			var model = (MemberViewModel)Session["Member"];
-
-			MemberViewModel memberVM = new MemberViewModel();
-
-			var memberInfo = _memberService.GetMember(m => m.MemberId == model.MemberId);
-
-			//return RedirectToAction("Index");
-			return memberInfo != default(ViewModels.MemberViewModel) ? View(memberInfo) : View();
-			//return View();
-		}
 
 		//public ActionResult Notifaction()	//通知設定
 		//{

@@ -11,7 +11,7 @@ namespace ProjectTeamFour.ViewModels
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string ProjectMainUrl { get; set; }
-        public int MemberId { get; set; }
+        public int AskMemberId { get; set; }
         public int AskedMemberId { get; set; }
         public string AskedMemberName { get; set; }
         public string Comment_Question { get; set; }

@@ -44,5 +44,7 @@ namespace ProjectTeamFour.ViewModels
         public int Permission { get; set; }
         public string MemberPassword { get; set; }
         public string MemberMessage { get; set; }
+        public string Salt { get; set; }
+        public string Hash { get; set; }
     }
 }
