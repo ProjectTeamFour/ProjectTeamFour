@@ -95,7 +95,7 @@ namespace ProjectTeamFour.Service
                         MemberId= memberId,
                         AskedMemberId= commentProject.MemberId
                     };
-                    int i = 0;
+                    
                     result.Add(commentForMemberVM);
                 }
                 
