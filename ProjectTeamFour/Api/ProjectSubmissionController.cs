@@ -41,7 +41,7 @@ namespace ProjectTeamFour.Api
             int Id = _submissionservice.ReturnLoginnerId();
 
             sw.Stop();
-            Console.WriteLine($"MD5 {sw.ElapsedMilliseconds}ms");
+            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
 
             var first = sw.ElapsedMilliseconds;
 
@@ -52,7 +52,7 @@ namespace ProjectTeamFour.Api
             result = _submissionservice.ReceiveSubmissionData(input, Id);
 
             sw.Stop();
-            Console.WriteLine($"SHA1 {sw.ElapsedMilliseconds}ms");
+            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
 
             var second = sw.ElapsedMilliseconds;
 

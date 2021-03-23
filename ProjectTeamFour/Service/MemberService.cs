@@ -210,8 +210,7 @@ namespace ProjectTeamFour.Service
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
-                if (input.MemberRegEmail == entity.MemberRegEmail)
-                {
+                
                     //做hash
                     byte[] _salt = MakeSalt();
                     byte[] _hash = MakeHash(input.MemberPassword, _salt);
@@ -220,12 +219,9 @@ namespace ProjectTeamFour.Service
                     string savedSaltString = SaltToString(_salt);
                     entity.Hash = savedPasswordHash;
                     entity.Salt = savedSaltString;
-                }
-                else
-                {
-                    result.IsSuccessful = false;
-                    return result;
-                }
+              
+                    
+                
                 _repository.Update(entity);
                 result.IsSuccessful = true;
             }

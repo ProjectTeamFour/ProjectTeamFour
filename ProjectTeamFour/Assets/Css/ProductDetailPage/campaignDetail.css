@@ -122,16 +122,22 @@ html {
   background-color: #f9414a;
 }
 
-#backing-section a,button {
-  display: inline-block;
-  width: 100%;
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
+#backing-section a, button {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
 }
-#backing-section #backit-btn,#ask-btn {
+#backing-section #backit-btn{
   background-color: #f9414a;
   color: #ffffff;
   border:none;
+  
+}
+#ask-btn {
+    background-color: #f9414a;
+    color: #ffffff;
+    border: none;
 }
 
 #backing-section #ask-btn:hover {
@@ -365,3 +371,43 @@ h4 {
 #accordionExample .question svg:enabled {
     transform: rotate(180deg)
 }
+
+/*聯絡提案人modal樣式*/
+.bio-img img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+}
+.bio-title h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.bio-title p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+.btn-more {
+    color: #f8414a;
+    font-weight: 700;
+}
+
+.btn-more:hover {
+    color: #212121;
+    font-weight: 700;
+}
+
+#send-msg a {
+    display: inline-block;
+    font-size: 16px;
+    padding: 1rem 2rem;
+    color:#f8414a;
+    background-color:#f6f6f6;
+    border:1px solid #f8414a;
+}
+
+    #send-msg a:hover {
+        transition: .2s all ease;
+        color: #ffffff;
+        background-color: #f8414a;
+        border: none;
+    }

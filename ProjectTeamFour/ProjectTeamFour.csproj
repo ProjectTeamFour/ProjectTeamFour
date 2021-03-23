@@ -2288,6 +2288,7 @@
     <Content Include="Views\ForgotPassword\FinishedSending.cshtml" />
     <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
     <Content Include="Views\Member\LoginFail.cshtml" />
+    <Content Include="Views\UserInfo\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,7 +51,9 @@ namespace ProjectTeamFour.Service
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
-                    ProjectId = item.ProjectId
+                    ProjectId = item.ProjectId,
+                    ApprovingStatus = item.ApprovingStatus,
+                    Fundedpeople = item.Fundedpeople,
                 };
                 homeviewmodel.ProjectItem.ProjectItems.Add(pv);
             }
