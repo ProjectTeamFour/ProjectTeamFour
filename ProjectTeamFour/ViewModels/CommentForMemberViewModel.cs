@@ -13,6 +13,7 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectMainUrl { get; set; }
         public int MemberId { get; set; }
         public int AskedMemberId { get; set; }
+        public string AskedMemberName { get; set; }
         public string Comment_Question { get; set; }
         public DateTime Comment_Time { get; set; }
         public string Comment_Answer { get; set; }

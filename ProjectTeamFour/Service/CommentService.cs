@@ -41,7 +41,12 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
-        //贊助者留言後，在資料庫創造一筆Comment資料
+        /// <summary>
+        /// 贊助者留言後，在資料庫創造一筆Comment資料
+        /// </summary>
+        /// <param name="commentVM"></param>
+        /// <returns></returns>
+        
         public string CreateANewComment(CommentViewModel commentVM)
         {
             var newComment = new Comment
@@ -68,8 +73,38 @@ namespace ProjectTeamFour.Service
                 }
             }
         }
+        /// <summary>
+        /// 將回覆答案更新至舊留言
+        /// </summary>
+        /// <param name="commentVM"></param>
+        /// <returns></returns>
+        public string UpdateComment(CommentViewModel commentVM)
+        {
+            var originalComment = _repository.GetAll<Comment>().FirstOrDefault(c => c.CommentId == commentVM.CommentId);
+            originalComment.Comment_Answer = commentVM.Comment_Answer;
+            
+            using(var transaction=_ctx.Database.BeginTransaction())
+            {
+                try 
+                {
+                    _repository.Update<Comment>(originalComment);
+                    transaction.Commit();
+                    return "success";
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    return ex.ToString();
+                }
+            }
+        }
 
-
+        /// <summary>
+        /// 將Commit DataModel及Project DataModel 轉成會員中心留言頁專用的CommentForMemberViewModel
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        
         public List<CommentForMemberViewModel> QueryCommentByMemberId(int memberId )
         {
            
@@ -93,7 +128,8 @@ namespace ProjectTeamFour.Service
                         Comment_Time=comment.Comment_Time,
                         ReadStatus=comment.ReadStatus,
                         MemberId= memberId,
-                        AskedMemberId= commentProject.MemberId
+                        AskedMemberId= commentProject.MemberId,
+                        AskedMemberName=commentProject.CreatorName
                     };
                     
                     result.Add(commentForMemberVM);

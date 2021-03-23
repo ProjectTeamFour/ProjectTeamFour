@@ -1,148 +1,63 @@
-﻿@{
+﻿@model CommentForMemberViewModel
+@{
     var vm = (MemberViewModel)Session["Member"];
 }
 
 <div class="col-sm-12 col-md-6 col-lg-4 message-block">
     <div class="project-anydetail">
         <div class="project-main-url">
-            <img class="main-url"  src="https://i.imgur.com/fEmjPnym.png" />
+            <img class="main-url" src="@Model.ProjectMainUrl" />
         </div>
         <div class="project-title">
-            <p style="color:red">提案標題</p>
-            <strong class="message-member">留言者:</strong>
-            
-        </div>
-        <div style="width:100%">留言時間</div>
-        
-        <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
-        </div>
-        
-    </div>
-    <div>
-        <strong class="message-member">回覆者:</strong>
-        
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success" >回覆</button>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
-    <div class="project-anydetail">
-        <div class="project-main-url">
-            <img class="main-url" src="https://i.imgur.com/fEmjPnym.png" />
-        </div>
-        <div class="project-title">
-            <p style="color:red">提案標題</p>
-            <strong class="message-member">留言者:</strong>
+            <p style="color:red">@Model.ProjectName</p>
+            @if (Model.ReadStatus == false)
+            {
+                <strong class="message-member">未回覆</strong>
+            }
+            else
+            {
+                <strong class="message-member">已回覆</strong>
+            }
 
         </div>
-        <div style="width:100%">留言時間</div>
+        <div style="width:100%">@Model.Comment_Time</div>
 
         <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
+            <p class="mymessages">@Model.Comment_Question</p>
         </div>
 
     </div>
-    <div>
-        <strong class="message-member">回覆者:</strong>
-
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success">回覆</button>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
-    <div class="project-anydetail">
-        <div class="project-main-url">
-            <img class="main-url" src="https://i.imgur.com/fEmjPnym.png" />
+    @if (Model.Comment_Answer == null && Model.AskedMemberId != Model.MemberId)
+    {
+        <div class="text">
+            <span class="badge bg-secondary">該留言尚未回覆</span>
         </div>
-        <div class="project-title">
-            <p style="color:red">提案標題</p>
-            <strong class="message-member">留言者:</strong>
+    }
+    else if (Model.Comment_Answer == null && Model.AskedMemberId == Model.MemberId)
+    {
+        <div>
+            <strong class="message-member">回覆者:</strong>
 
+            <textarea class="reply-area" placeholder="請於此處回覆"></textarea>
         </div>
-        <div style="width:100%">留言時間</div>
+        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
+    }
+    else if (Model.Comment_Answer != null && Model.AskedMemberId != Model.MemberId)
+    {
+        <div>
+            <strong class="message-member">回覆者:@Model.AskedMemberName</strong>
 
-        <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
-        </div>
-
-    </div>
-    <div>
-        <strong class="message-member">回覆者:</strong>
-
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success">回覆</button>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
-    <div class="project-anydetail">
-        <div class="project-main-url">
-            <img class="main-url" src="https://i.imgur.com/fEmjPnym.png" />
-        </div>
-        <div class="project-title">
-            <p style="color:red">提案標題</p>
-            <strong class="message-member">留言者:</strong>
-
-        </div>
-        <div style="width:100%">留言時間</div>
-
-        <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
+            <p class="mymessages">@Model.Comment_Answer</p>
         </div>
 
-    </div>
-    <div>
-        <strong class="message-member">回覆者:</strong>
-
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success">回覆</button>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
-    <div class="project-anydetail">
-        <div class="project-main-url">
-            <img class="main-url" src="https://i.imgur.com/fEmjPnym.png" />
+    }
+    else
+    {
+        <div>
+            <textarea class="reply-area">@Model.Comment_Answer</textarea>
         </div>
-        <div class="project-title">
-            <p style="color:red">提案標題</p>
-            <strong class="message-member">留言者:</strong>
+        <button class="btn btn-success LanchCommentAnswer" onclick="LanchCommentAnswerAjax(@Model.CommentId)">回覆</button>
 
-        </div>
-        <div style="width:100%">留言時間</div>
+    }
 
-        <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
-        </div>
-
-    </div>
-    <div>
-        <strong class="message-member">回覆者:</strong>
-
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success">回覆</button>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
-    <div class="project-anydetail">
-        <div class="project-main-url">
-            <img class="main-url" src="https://i.imgur.com/fEmjPnym.png" />
-        </div>
-        <div class="project-title">
-            
-            <strong class="message-member">提案標題</strong>
-
-        </div>
-        <div class="comment-time" >留言時間</div>
-
-        <div class="message-content">
-            <p class="mymessages">wqewewdsdasjojsalcskmcmc;sm;asmc;asckasdpiwqipwie[wpwds[lx'sa</p>
-        </div>
-
-    </div>
-    <div>
-        
-
-        <textarea class="reply-area"></textarea>
-    </div>
-    <button class="btn btn-success">回覆</button>
 </div>

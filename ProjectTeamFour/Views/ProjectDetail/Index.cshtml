@@ -396,7 +396,7 @@
                    title: 'Oops...',
                    text: '請留言!',
 
-               })
+               });
            }
            else
            {
@@ -406,9 +406,7 @@
                    /*dataType: "json",*/
                    data: { ProjectId: ProjectId, Comment_Question: clientComment.value },
                    success: function (data, textStatus, jqXHR) {
-                       console.log(data);
-                       console.log(textStatus);
-                       console.log(jqXHR.getAllResponseHeaders());
+                       
                        if (data == "login") {
                            Swal.fire(
                                '尚未登入?',
