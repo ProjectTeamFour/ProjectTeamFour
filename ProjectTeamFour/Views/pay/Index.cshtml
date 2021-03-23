@@ -47,9 +47,9 @@
                     immediate: true,        //點開即驗證
                     handler: function () {
                         let nameRegexp = /^[0-9]*$/; //只能數字
-                        if (this.inputData.Name.length > 8) {
+                        if (this.inputData.Name.length < 0) {
                             this.inputDataCheck.NameError = true;
-                            this.inputDataCheck.NameErrorMsg = '名稱不得超過8個字';
+                            this.inputDataCheck.NameErrorMsg = '名稱不得為空';
                         }
                         else {
                             this.inputDataCheck.NameError = false;

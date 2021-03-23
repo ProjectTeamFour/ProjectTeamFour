@@ -207,6 +207,10 @@
     <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.Designer.cs">
       <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103231639258_新增orderdetail欄位.cs" />
+    <Compile Include="Migrations\202103231639258_新增orderdetail欄位.Designer.cs">
+      <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -449,8 +453,6 @@
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
-    <Content Include="Assets\Plugin\JQuery\jquery_datatable.css" />
-    <Content Include="Assets\Plugin\JQuery\jquery_dataTable.js" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24dataTable.js" />
@@ -2295,6 +2297,7 @@
     <Content Include="Views\UserInfo\Users.cshtml" />
     <Content Include="Views\Member\Forgetpassword.cshtml" />
     <Content Include="Views\UserInfo\Record.cshtml" />
+    <Content Include="Views\Shared\PartialView\_cardForMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2425,6 +2428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103230913559_AddAskedMemberIdToComment.resx">
       <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103231639258_新增orderdetail欄位.resx">
+      <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
