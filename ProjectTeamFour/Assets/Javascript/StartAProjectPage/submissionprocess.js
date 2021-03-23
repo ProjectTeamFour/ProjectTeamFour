@@ -83,6 +83,15 @@ Vue.component("multi-text", {
 
 
 
+// A = "",  A == false 成立 , A === false 不成立  
+// A = null , A 不是true 也不是 false  就是 null
+// A = 數字 , A == true 成立, A === true 不成立
+// A = 字串 , A 不是true 也不是 false 就是 null
+// 特殊情況 A = "1" , A == true 成立, A === true 不成立
+// 特殊情況 A = "0", A == true 成立, A === true 不成立
+
+
+
 var form = new Vue({
     el: "#myApp",
     data: {
@@ -108,35 +117,37 @@ var form = new Vue({
             QuillHtml: "",
         },
         inputDataCheck: {
-            ProjectNameError: "",
-            ProjectNameErrorMsg: "",
-            AmountThresholdError: "",
+            ProjectNameError: 1,
+            AmountThresholdError: 1,
+            CategoryError: 1,
+            StartDateAndEndDateError: 1,
+            ProjectVideoUrlError: 1,
+            ProjectMainUrlError: 1,
+            ProjectCoverUrlError: 1,
+            ProjectPrincipalError: 1,
+            MemberConEmailError: 1,
+            MemberPhoneError: 1,
+            IdentityNumberError: 1,
+            TeamPictureError: 1,
+            MemberNameError: 1,
+            AboutMeError: 1,
+            MemberWebsiteError: 1,
+        },
+        inputDataCheckErrorMsg: {
             AmountThresholdErrorMsg: "",
-            CategoryError: "",
+            ProjectNameErrorMsg: "",
             CategoryErrorMsg: "",
-            StartDateAndEndDateError: "",
             StartDateAndEndDateErrorMsg: "",
-            ProjectVideoUrlError: "",
             ProjectVideoUrlErrorMsg: "",
-            ProjectMainUrlError: "",
             ProjectMainUrlErrorMsg: "",
-            ProjectCoverUrlError: "",
             ProjectCoverUrlErrorMSg: "",
-            ProjectPrincipalError: "",
             ProjectPrincipalErrorMsg: "",
-            MemberConEmailError: "",
             MemberConEmailErrorMsg: "",
-            MemberPhoneError: "",
             MemberPhoneErrorMsg: "",
-            IdentityNumberError: "",
             IdentityNumberErrorMsg: "",
-            TeamPictureError: "",
-            TeamPictureErrorMsg: "",
-            MemberNameError: "",
             MemberNameErrorMsg: "",
-            AboutMeError: "",
+            TeamPictureErrorMsg: "",
             AboutMeErrorMsg: "",
-            MemberWebsiteError: "",
             MemberWebsiteErrorMsg: "",
         },
         modalData: {
@@ -152,21 +163,14 @@ var form = new Vue({
             tempMonth: "",
             makePlanCount: 0,
         },
-        modalDataCheck: {
+        modalDataCheck: {    //這裡一開始空字串 我是用 immediate 去watch 所以一開始就是 true 也就是有缺漏 必須填完，跟inputDataCheck 做法不一樣
             PlanPriceError: "",
-            // PlanPriceErrorMsg: "",
             PlanTitleError: "",
-            // PlanTitleErrorMsg: "",
             QuantityLimitError: "",
-            // QuantityLimitErrorMsg: "",
             AddCarCarPlanSwitchError: "",
-            // AddCarCarPlanSwitchErrorMsg: "",
             PlanDescriptionError: "",
-            // PlanDescriptionErrorMsg: "",
             PlanImgUrlError: true,
-            // PlanImgUrlErrorMsg: "",
             PlanShipDateError: "",
-            // PlanShipDateErrorMsg: "",
         },
         modalDataCheckErrorMsg: {
             PlanPriceErrorMsg: "",
@@ -200,16 +204,16 @@ var form = new Vue({
             handler: function () {
                 if (this.inputData.ProjectName == "") {
                     this.inputDataCheck.ProjectNameError = true;
-                    this.inputDataCheck.ProjectNameErrorMsg = "專案標題不得為空";
+                    this.inputDataCheckErrorMsg.ProjectNameErrorMsg = "專案標題不得為空";
                 } else if (this.inputData.ProjectName == "取個好標題") {
                     this.inputDataCheck.ProjectNameError = true;
-                    this.inputDataCheck.ProjectNameErrorMsg = "請取專案標題";
+                    this.inputDataCheckErrorMsg.ProjectNameErrorMsg = "請取專案標題";
                 } else if (this.inputData.ProjectName.length > 40) {
                     this.inputDataCheck.ProjectNameError = true;
-                    this.inputDataCheck.ProjectNameErrorMsg = "專案標題不得超過40字";
+                    this.inputDataCheckErrorMsg.ProjectNameErrorMsg = "專案標題不得超過40字";
                 } else {
                     this.inputDataCheck.ProjectNameError = false;
-                    this.inputDataCheck.ProjectNameErrorMsg = "";
+                    this.inputDataCheckErrorMsg.ProjectNameErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -219,19 +223,19 @@ var form = new Vue({
                 noZeroFirst = /^[1-9]\d*$/;
                 if (this.inputData.AmountThreshold == "") {
                     this.inputDataCheck.AmountThresholdError = true;
-                    this.inputDataCheck.AmountThresholdErrorMsg = "募資目標不得為空";
+                    this.inputDataCheckErrorMsg.AmountThresholdErrorMsg = "募資目標不得為空";
                 } else if (!noZeroFirst.test(this.inputData.AmountThreshold)) {
                     this.inputDataCheck.AmountThresholdError = true;
-                    this.inputDataCheck.AmountThresholdErrorMsg = "第一個數字不得為0，也不得為負";
+                    this.inputDataCheckErrorMsg.AmountThresholdErrorMsg = "第一個數字不得為0，也不得為負";
                 } else if (this.inputData.AmountThreshold < 5000) {
                     this.inputDataCheck.AmountThresholdError = true;
-                    this.inputDataCheck.AmountThresholdErrorMsg = "最低金額為$5000";
+                    this.inputDataCheckErrorMsg.AmountThresholdErrorMsg = "最低金額為$5000";
                 } else if (this.inputData.AmountThreshold > 1000000000) {
                     this.inputDataCheck.AmountThresholdError = true;
-                    this.inputDataCheck.AmountThresholdErrorMsg = "上限為10億, 特殊情況請聯絡我們!";
+                    this.inputDataCheckErrorMsg.AmountThresholdErrorMsg = "上限為10億, 特殊情況請聯絡我們!";
                 } else {
                     this.inputDataCheck.AmountThresholdError = false;
-                    this.inputDataCheck.AmountThresholdErrorMsg = "";
+                    this.inputDataCheckErrorMsg.AmountThresholdErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -272,13 +276,13 @@ var form = new Vue({
                     /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (this.inputData.ProjectVideoUrl == "") {
                     this.inputDataCheck.ProjectVideoUrlError = true;
-                    this.inputDataCheck.ProjectVideoUrlErrorMsg = "專案影片不得為空";
+                    this.inputDataCheckErrorMsg.ProjectVideoUrlErrorMsg = "專案影片不得為空";
                 } else if (!videoUrlRegexp.test(this.inputData.ProjectVideoUrl)) {
                     this.inputDataCheck.ProjectVideoUrlError = true;
-                    this.inputDataCheck.ProjectVideoUrlErrorMsg = "Url格式不對";
+                    this.inputDataCheckErrorMsg.ProjectVideoUrlErrorMsg = "Url格式不對";
                 } else {
                     this.inputDataCheck.ProjectVideoUrlError = false;
-                    this.inputDataCheck.ProjectVideoUrlErrorMsg = "";
+                    this.inputDataCheckErrorMsg.ProjectVideoUrlErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -287,10 +291,10 @@ var form = new Vue({
             handler: function () {
                 if (this.inputData.ProjectPrincipal == "") {
                     this.inputDataCheck.ProjectPrincipalError = true;
-                    this.inputDataCheck.ProjectPrincipalErrorMsg = "負責人姓名不能為空";
+                    this.inputDataCheckErrorMsg.ProjectPrincipalErrorMsg = "負責人姓名不能為空";
                 } else {
                     this.inputDataCheck.ProjectPrincipalError = false;
-                    this.inputDataCheck.ProjectPrincipalErrorMsg = "";
+                    this.inputDataCheckErrorMsg.ProjectPrincipalErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -301,13 +305,13 @@ var form = new Vue({
                     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
                 if (this.inputData.MemberConEmail == "") {
                     this.inputDataCheck.MemberConEmailError = true;
-                    this.inputDataCheck.MemberConEmailErrorMsg = "電子郵件不能為空";
+                    this.inputDataCheckErrorMsg.MemberConEmailErrorMsg = "電子郵件不能為空";
                 } else if (!emailRegexp.test(this.inputData.MemberConEmail)) {
                     this.inputDataCheck.MemberConEmailError = true;
-                    this.inputDataCheck.MemberConEmailErrorMsg = "請符合Email格式";
+                    this.inputDataCheckErrorMsg.MemberConEmailErrorMsg = "請符合Email格式";
                 } else {
                     this.inputDataCheck.MemberConEmailError = false;
-                    this.inputDataCheck.MemberConEmailErrorMsg = "";
+                    this.inputDataCheckErrorMsg.MemberConEmailErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -317,13 +321,13 @@ var form = new Vue({
                 let phoneRegexp = /09\d{2}(\d{6}|-\d{3}-\d{3})/;
                 if (!phoneRegexp.test(this.inputData.MemberPhone)) {
                     this.inputDataCheck.MemberPhoneError = true;
-                    this.inputDataCheck.MemberPhoneErrorMsg = "行動電話格式不對";
+                    this.inputDataCheckErrorMsg.MemberPhoneErrorMsg = "行動電話格式不對";
                 } else if (this.inputData.MemberPhone == "") {
                     this.inputDataCheck.MemberPhoneError = true;
-                    this.inputDataCheck.MemberPhoneErrorMsg = "行動電話不能為空";
+                    this.inputDataCheckErrorMsg.MemberPhoneErrorMsg = "行動電話不能為空";
                 } else {
                     this.inputDataCheck.MemberPhoneError = false;
-                    this.inputDataCheck.MemberPhoneErrorMsg = "";
+                    this.inputDataCheckErrorMsg.MemberPhoneErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -333,13 +337,13 @@ var form = new Vue({
                 let phoneRegexp = /^[A-Za-z][12]\d{8}$/;
                 if (!phoneRegexp.test(this.inputData.IdentityNumber)) {
                     this.inputDataCheck.IdentityNumberError = true;
-                    this.inputDataCheck.IdentityNumberErrorMsg = "身分證字號格式不對";
+                    this.inputDataCheckErrorMsg.IdentityNumberErrorMsg = "身分證字號格式不對";
                 } else if (this.inputData.IdentityNumber == "") {
                     this.inputDataCheck.IdentityNumberError = true;
-                    this.inputDataCheck.IdentityNumberErrorMsg = "身分證字號不能為空";
+                    this.inputDataCheckErrorMsg.IdentityNumberErrorMsg = "身分證字號不能為空";
                 } else {
                     this.inputDataCheck.IdentityNumberError = false;
-                    this.inputDataCheck.IdentityNumberErrorMsg = "";
+                    this.inputDataCheckErrorMsg.IdentityNumberErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -348,10 +352,10 @@ var form = new Vue({
             handler: function () {
                 if (this.inputData.MemberName == "") {
                     this.inputDataCheck.MemberNameError = true;
-                    this.inputDataCheck.MemberNameErrorMsg = "執行團隊名稱不能為空";
+                    this.inputDataCheckErrorMsg.MemberNameErrorMsg = "執行團隊名稱不能為空";
                 } else {
                     this.inputDataCheck.MemberNameError = false;
-                    this.inputDataCheck.MemberNameErrorMsg = "";
+                    this.inputDataCheckErrorMsg.MemberNameErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -360,10 +364,10 @@ var form = new Vue({
             handler: function () {
                 if (this.inputData.AboutMe == "") {
                     this.inputDataCheck.AboutMeError = true;
-                    this.inputDataCheck.AboutMeErrorMsg = "自我介紹不能為空";
+                    this.inputDataCheckErrorMsg.AboutMeErrorMsg = "自我介紹不能為空";
                 } else {
                     this.inputDataCheck.AboutMeError = false;
-                    this.inputDataCheck.AboutMeErrorMsg = "";
+                    this.inputDataCheckErrorMsg.AboutMeErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -374,13 +378,13 @@ var form = new Vue({
                     /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (this.inputData.MemberWebsite == "") {
                     this.inputDataCheck.MemberWebsiteError = true;
-                    this.inputDataCheck.MemberWebsiteErrorMsg = "專案網站不能為空";
+                    this.inputDataCheckErrorMsg.MemberWebsiteErrorMsg = "專案網站不能為空";
                 } else if (!siteRegexp.test(this.inputData.MemberWebsite)) {
                     this.inputDataCheck.MemberWebsiteError = true;
-                    this.inputDataCheck.MemberWebsiteErrorMsg = "網址格式不正確";
+                    this.inputDataCheckErrorMsg.MemberWebsiteErrorMsg = "網址格式不正確";
                 } else {
                     this.inputDataCheck.MemberWebsiteError = false;
-                    this.inputDataCheck.MemberWebsiteErrorMsg = "";
+                    this.inputDataCheckErrorMsg.MemberWebsiteErrorMsg = "";
                 }
                 this.checkAddVerify();
             }
@@ -500,12 +504,12 @@ var form = new Vue({
         getStartDateAndEndDate(e) {
             if (this.inputData.StartDate == "" || this.inputData.EndDate == "") {
                 this.inputDataCheck.StartDateAndEndDateError = true;
-                this.inputDataCheck.StartDateAndEndDateErrorMsg = "募資時間必須填妥";
+                this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "募資時間必須填妥";
             } else {
                 console.log(this.inputData.StartDate);
                 console.log(this.inputData.EndDate);
                 this.inputDataCheck.StartDateAndEndDateError = false;
-                this.inputDataCheck.StartDateAndEndDateErrorMsg = "";
+                this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "";
             }
             this.checkAddVerify();
         },
@@ -513,7 +517,7 @@ var form = new Vue({
             //console.log(e.target.files[0]);
             if (e.target.files[0] == undefined) {
                 this.inputDataCheck.TeamPictureError = true;
-                this.inputDataCheck.TeamPictureErrorMsg = "團隊圖片不能為空";
+                this.inputDataCheckErrorMsg.TeamPictureErrorMsg = "團隊圖片不能為空";
             } else {
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
@@ -554,7 +558,7 @@ var form = new Vue({
 
 
                 this.inputDataCheck.TeamPictureError = false;
-                this.inputDataCheck.TeamPictureErrorMsg = "";
+                this.inputDataCheckErrorMsg.TeamPictureErrorMsg = "";
             }
             this.checkAddVerify();
         },
@@ -563,7 +567,7 @@ var form = new Vue({
             if (e.target.files[0] == undefined) {
                 this.inputData.ProjectMainUrl = "";
                 this.inputDataCheck.ProjectMainUrlError = true;
-                this.inputDataCheck.ProjectMainUrlErrorMsg = "專案封面不能為空";
+                this.inputDataCheckErrorMsg.ProjectMainUrlErrorMsg = "專案封面不能為空";
             } else {
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
@@ -604,7 +608,7 @@ var form = new Vue({
 
 
                 this.inputDataCheck.ProjectMainUrlError = false;
-                this.inputDataCheck.ProjectMainUrlErrorMsg = "";
+                this.inputDataCheckErrorMsg.ProjectMainUrlErrorMsg = "";
             }
             this.checkAddVerify();
         },
@@ -613,7 +617,7 @@ var form = new Vue({
             if (e.target.files[0] == undefined) {
                 this.inputData.ProjectCoverUrl = "";
                 this.inputDataCheck.ProjectCoverUrlError = true;
-                this.inputDataCheck.ProjectCoverUrlErrorMsg = "影片封面預覽不能為空";
+                this.inputDataCheckErrorMsg.ProjectCoverUrlErrorMsg = "影片封面預覽不能為空";
             } else {
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
@@ -655,7 +659,7 @@ var form = new Vue({
 
 
                 this.inputDataCheck.ProjectCoverUrlError = false;
-                this.inputDataCheck.ProjectCoverUrlErrorMsg = "";
+                this.inputDataCheckErrorMsg.ProjectCoverUrlErrorMsg = "";
             }
             this.checkAddVerify();
         },
@@ -704,7 +708,7 @@ var form = new Vue({
 
 
                 this.modalDataCheck.PlanImgUrlError = false;
-                this.modalDataCheck.PlanImgUrlErrorMsg = "";
+                this.modalDataCheckErrorMsg.PlanImgUrlErrorMsg = "";
             }
             this.checkAddVerifyModal();
         },
@@ -712,13 +716,10 @@ var form = new Vue({
             for (let index in this.inputDataCheck) {
                 if (this.inputDataCheck[index] == true) {
                     this.AddVerify = false;
-                    // console.log(this.inputDataCheck[index]);
-                    break;
-                } else {
-                    this.AddVerify = true;
+                    return;
                 }
             }
-            return;
+            this.AddVerify = true;
         },
         // checkAddVerifyModal() {
         //     for (let index in this.modalDataCheck) {
@@ -892,10 +893,10 @@ var form = new Vue({
             //     document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
             // }
 
-            // this.checkAddVerify();
-
+            // console.log(this.AddVerify);
 
             if (this.AddVerify == true) {
+                // console.log(this.AddVerify);
 
 
                 const swalWithBootstrapButtons = Swal.mixin({
