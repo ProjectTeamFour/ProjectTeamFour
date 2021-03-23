@@ -446,6 +446,7 @@
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\JQuery\jquery_datatable.css" />
     <Content Include="Assets\Plugin\JQuery\jquery_dataTable.js" />
