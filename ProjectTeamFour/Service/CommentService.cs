@@ -41,12 +41,13 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
+
+        
         /// <summary>
         /// 贊助者留言後，在資料庫創造一筆Comment資料
         /// </summary>
         /// <param name="commentVM"></param>
         /// <returns></returns>
-        
         public string CreateANewComment(CommentViewModel commentVM)
         {
             var newComment = new Comment
