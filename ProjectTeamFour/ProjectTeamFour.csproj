@@ -429,8 +429,9 @@
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
-    <Content Include="Assets\Plugin\JQuery\jquery_datatable.css" />
-    <Content Include="Assets\Plugin\JQuery\jquery_dataTable.js" />
+    <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
+    <Content Include="Assets\Plugin\JQuery\jquery_1.10.24dataTable.js" />
+    <Content Include="Assets\Plugin\JQuery\jquery_3.5.1_code.js" />
     <Content Include="Views\Shared\PartialView\_textEditor.html" />
     <Content Include="Assets\Img\HomePageCarousel\coatproject.jpg" />
     <Content Include="Assets\Img\HomePageCarousel\dogproject.jpg" />
@@ -2266,6 +2267,7 @@
     <Content Include="Views\Member\RegisterSuccess.cshtml" />
     <Content Include="Views\Member\RegisterFail.cshtml" />
     <Content Include="Views\Member\Forgetpassword.cshtml" />
+    <Content Include="Views\UserInfo\Record.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

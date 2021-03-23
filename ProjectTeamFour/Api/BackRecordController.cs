@@ -21,16 +21,19 @@ namespace ProjectTeamFour.Api
         }
 
         //[HttpGet]
-        //public BackingRecordsViewModel GetOrderData()
+        //public BackingRecordsViewModel GetOrderData(MemberViewModel id)
         //{
         //    var session = System.Web.HttpContext.Current.Session;
-        //    var memberId = (MemberViewModel)session["Member"];
-        //    if (memberId != null)
+
+        //    var member = (MemberViewModel)session["Member"];
+           
+        //    if (member != null)
         //    {
+        //        //var memberInfo = _memberService.GetMember(m => m.MemberId == id);
         //        //根據會員id抓取會員購買紀錄
-        //        memberId.Records = _backingService.QueryOrder(memberId.MemberId);
+        //        member.Records = _backingService.QueryOrder(member.MemberId);
+                              
         //    }
-        //    return memberId.Records;
         //}
     }
 }

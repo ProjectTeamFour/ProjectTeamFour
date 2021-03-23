@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ProjectTeamFour.Models;
+﻿using ProjectTeamFour.Service;
 using ProjectTeamFour.ViewModels;
-using ProjectTeamFour.Service;
-using System.Linq.Expressions;
-using ProjectTeamFour.Repositories;
-using ProjectTeamFour.Helpers;
+using System.Web.Mvc;
 
 namespace ProjectTeamFour.Controllers
 {
-	public class UserInfoController : Controller
+    public class UserInfoController : Controller
 	{
 		private readonly MemberService _memberService;
 		private readonly MyProjectsService _myProjectsService;
@@ -53,6 +42,7 @@ namespace ProjectTeamFour.Controllers
 				return RedirectToAction("Login", "Member");
             }
 		}
+
 
 
 		//public ActionResult Sponser() //贊助紀錄

@@ -1,11 +1,12 @@
 ﻿@model MemberViewModel
 @*@{
-    var vm = (MemberViewModel)Session["Member"];
-}*@
+        var vm = (MemberViewModel)Session["Member"];
+    }*@
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
+    <link href="~/Assets/Plugin/JQuery/jquery_1.10.24datatable.css" rel="stylesheet" />
 }
 
 <div class="banner">
@@ -49,9 +50,9 @@
                     <div class="wrap-inside">
                         @if (Model.Records != null)
                         {
-                           
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
-                            
+
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
+
                         }
                         else
                         {
@@ -276,9 +277,133 @@
 
 @section endJs
 {
+    <script src="~/Assets/Plugin/JQuery/jquery_3.5.1_code.js"></script>
+    <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
+    <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
+    @*datatable套件*@
+
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
+
     <script>
-        document.onload.getGender();
+
+        @*function transData() {
+            $.ajax({
+                type: "get",
+                url:""
+            })
+        }*@
+
+
+
+        let getodjson = document.getElementById("odtransJSON");
+        let getjson = document.getElementById("transJSON");
+        var obj = JSON.parse(getjson.value);//order 陣列
+        var objod = JSON.parse(getodjson.value); //orderdetail 陣列
+        console.log(obj);
+        console.log(objod); 
+
+        var jsonObj = {
+                "items": obj,
+                "detail": objod,
+                "modeldata": []
+        };
+
+        var odData = jsonObj.modeldata;
+
+        function Binding() {
+            new Vue({
+                el: "#record",
+                data: jsonObj,
+                methods: {
+                    changeJsonOd(orderId) {
+                        this.modeldata = [];
+                        this.modeldata = objod.filter(x => x.OrderId == orderId);
+                    }
+                }
+            });
+        };
+
+        $(document).ready(function () {
+            Binding();
+            $("#mytable").DataTable({
+                "info": false,
+                "bLengthChange": false,
+                "pageLength": 5
+            })
+        });
+
+
+        //Add event details
+        $("#mytable tfoot").on("click", "td.details-control", function () {
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass("shown");
+            }
+            else {
+                row.child(format(row.data())).show();
+                tr.addClass("shown");
+            }
+        });
+
+        function format(odData) {
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +  
+                '<div v-for="">'+
+                    '<tr>' +
+                        '<td>orderDetailId:</td>' +
+                        '<td>' + modeldata.OrderDerailId + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>OrderPrice:</td>' +
+                        '<td>' + modeldata.OrderPrice + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>OrderQuantity:</td>' +
+                        '<td>' + modeldata.OrderQuantity+'</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>PlanTitle:</td>' +
+                        '<td>' + modeldata.PlanTitle + '</td>' +
+                    '</tr>' +
+                '</div>' +
+                '</table>';
+        }
+    </script>
+}
+
+
+
+
+@*<script>
+
+        let getjsonNoPay = document.getElementById("transNoJSON");
+            var obj1 = JSON.parse(getjsonNoPay.value); //order
+            var jsonObj1 = {
+                "its": obj1
+            };
+
+            function Binding() {
+                new Vue({
+                    el: "#nopay",
+                    data: jsonObj1
+                });
+            };
+
+            $(document).ready(function () {
+                Binding();
+                $("#mytable-2").DataTable({
+                    "info": false,
+                    "bLengthChange": false,
+                    "pageLength": 5
+                })
+            });
+    </script>*@
+
+<script>
+
+        @*document.onload.getGender();*@
                     //$('#birthday1').datepicker({
                     //    changeMonth: true,
                     //    changeYear: true,
@@ -287,7 +412,7 @@
                     //    dateFormat: 'yyyy-mm-dd'
 
                     //});
-    
+
                     //import { json } from "modernizr";
                     //let editapi = "/api/products";
                     //let memberId = document.getElementById("memberid").value;
@@ -319,7 +444,4 @@
                     //            );
                     //            xhr.send();
                     //        }
-                        
-                        
-    </script>
-}
+</script>

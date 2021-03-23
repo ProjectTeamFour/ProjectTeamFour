@@ -3,32 +3,123 @@
 @using System.Web.Script.Serialization
 @*@using Newtonsoft.Json;*@
 @{
-    var userOrder = Model.MyOrder.Select(x => new { x.OrderName, x.condition, x.OrderAddress, x.OrderTotalAccount, x.OrderId });
+    
+    var userOrder = Model.MyOrder.Where(x => x.condition == "已付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
     var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //o詳細json
-    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle });
+    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle ,y.OrderId});
     var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
-    @*string JSONString = string.Empty;
-        JSONString = JsonConvert.SerializeObject(Model, Formatting.None,
-            new JsonSerializerSettings
-            {
-                ReferenceLoopHandling =
-                  ReferenceLoopHandling.Ignore
-            });*@
+
+
+    //-------------------------------------------------------------------------
+    var userOrderNoPay = Model.MyOrder.Where(x => x.condition == "未付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
+    var userOrderDataNoPay = new JavaScriptSerializer().Serialize(userOrderNoPay);
+    //-----------------------------------------------------
 }
 
-@section topCSS{
-    @*<link href="~/Assets/Plugin/JQuery/jquery_datatable_1.10.24.css" rel="stylesheet" />*@
 
-}
 
-@section endJS{
-    @*<script src="~/Assets/Plugin/JQuery/jquery_datatable1.10.24.js"></script>*@
-    @if (Model.MyOrder != null)
-    {
-        <script>
-            var array = $("#transJSON").val();
+<div class="record-content">
+    <h2>購買紀錄</h2>
+    <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
+</div>
+<span>單筆購買</span>
+<div class="record-detail" id="record">
+    <div class="record-detillist">
+        <table id="mytable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>購買編號</th>
+                    <th>收貨人名稱</th>
+                    <th>購買總金額</th>
+                    <th>金流單號</th>
+                    <th>當前狀態</th>
+                    <th>詳細訂單</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr v-for="item in items">                    
+                    <td>{{item.OrderId}}</td>
+                    <td>{{item.OrderName}}</td>
+                    <td>{{item.OrderTotalAccount}}</td>
+                    <td>{{item.TradeNo}}</td>
+                    <td>{{item.condition}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" v-on:click="changeJsonOd(item.OrderId)" data-target="#exampleModal"></button></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <input type="text" name="name" value="@userOrderData" id="transJSON" />
+    <input type="text" name="name" value="@userOrderDetailData" id="odtransJSON" />
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="dataitems">
+                        <div class="row">
+                            <div v-for="item in modeldata " class="detail-group col-12" >
+                                <label>詳細單號:{{item.OrderDetailId}}</label>                                
+                                <label>方案單價:{{item.OrderPrice}}</label>                                
+                                <label>方案數量:{{item.OrderQuantity}}</label>
+                                <label>方案名稱:{{item.PlanTitle}}</label>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@*//-----------------------------------------------------------------------------------*@
+
+@*<div class="record-detail" id="nopay">
+    <div class="record-detillist">
+        <table id="mytable-2" style="width:100%">
+            <thead>
+                <tr>
+                    <th>購買編號</th>
+                    <th>收貨人名稱</th>
+                    <th>購買總金額</th>
+                    <th>金流單號</th>
+                    <th>收到了?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="it in its">
+                    <td>{{it.OrderId}}</td>
+                    <td>{{it.OrderName}}</td>
+                    <td>{{it.OrderTotalAccount}}</td>
+                    <td>{{it.TradeNo}}</td>
+                    <td>{{it.condition}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="text" name="name" value="@userOrderDataNoPay" id="transNoJSON" />
+</div>*@
+
+
+@section endJS{    
+    @*@if (Model != null)
+    {*@
+        @*<script>
+            let getjson = document.getElementById('transJSON');
+            var obj = JSON.parse(getjson.value);
+            console.log(obj);
             var jsonObj = {
-                "items": array
+                "items": obj
             };
             var jsondata = JSON.stringify(jsonObj);
 
@@ -46,66 +137,11 @@
                     "bLengthChange": false,
                     "pageLength": 5
                 })
-                debugger;
             });
-        </script>
-    }
+        </script>*@
+    @*}
     else
     {
         <p>您目前沒有任何一筆購買紀錄</p>
-    }
+    }*@
 }
-
-<div class="record-content" >
-    <h2>購買紀錄</h2>
-    <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
-</div>
-<span>單筆購買</span>
-<div class="record-detail" id="record">
-    <div class="record-detillist">
-        <table id="mytable" style="width:100%">
-            <thead>
-                <tr>
-                    <th>購買專案</th>
-                    <th>購買金額</th>
-                    <th>回饋項目</th>
-                    <th>金流單號</th>
-                    <th>收到了?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in items">
-                    <td>
-                        <button id="delete" v-if="item.isValid">刪除</button>
-                        <span v-else>已刪除</span>
-                    </td>
-                    <td>{{item.OrderId}}</td>
-                    <td>{{item.OrderName}}</td>
-                    <td>{{item.OrderTotalAccount}}</td>
-                    <td>{{item.OrderAddress}}</td>
-                    <td>{{item.condition}}</td>              
-                </tr>
-            </tbody>
-            @*<tbody>
-                <tr v-for="item in items">
-                    <td>{{item.OrderId}}</td>
-                    <td>{{item.OrderName}}</td>
-                    <td>{{item.OrderTotalAccount}}</td>
-                    <td>{{item.OrderAddress}}</td>
-                    <td>{{item.condition}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="record-detail-col">購買專案</td>
-                    <td class="record-detail-col">購買金額</td>
-                    <td class="record-detail-col">回饋項目</td>
-                    <td class="record-detail-col">金流單號</td>
-                    <td class="record-detail-col">收到了?</td>
-                </tr>
-            </tfoot>*@
-        </table>
-    </div>
-    <p>目前沒有任何購買歷史</p>
-    <input type="text" name="name" value="@userOrderData" id="transJSON" />
-</div>
