@@ -434,6 +434,7 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Html\campaignDetail.html" />
     <Content Include="Assets\Html\selectPlanCard.html" />
+    <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
