@@ -141,7 +141,40 @@
                 <!--聯絡訊息-->
                 <div class="message">
                     <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml")
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="search-item">
+                                    <select class="message-input" name="option">
+                                        <option value="1">最新</option>
+                                        <option value="2">未讀</option>
+                                        <option value="3">已讀</option>
+                                    </select>
+                                    <i class="fas fa-search"></i>
+                                    <input type="search">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+
+                        @if (Model.Comments.Count==0)
+                        {
+                            <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                <h3 >您尚未有任何留言</h3>
+                            </div>
+                        }
+                        else
+                        {
+                            foreach (var comment in Model.Comments)
+                            {
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
+                            }
+                        }
+
+
                     </div>
                 </div>
             </div>
@@ -278,7 +311,7 @@
 {
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script>
-        document.onload.getGender();
+        /*document.onload.getGender();*/
                     //$('#birthday1').datepicker({
                     //    changeMonth: true,
                     //    changeYear: true,
@@ -321,5 +354,55 @@
                     //        }
                         
                         
+    </script>
+    <script>
+        ///回覆按鈕觸發事件
+        function LanchCommentAnswerAjax(CommentId)
+        {
+            let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
+            if (LanchCommentAnswer.value == null)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '請留言!',
+
+                });
+            }
+            else
+            {
+                $.ajax({
+                    url: "/api/Comment/UpdateComment",
+                    type: "POST",
+                    data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer.value },
+                    success: function (data, textStatus, jqXHR) {
+                        if (data == "fail") {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '發生錯誤，請再試一次!',
+
+                            });
+                        }
+                        else
+                        {
+                            Swal.fire({
+                                position: 'top-center',
+                                icon: 'success',
+                                title: '已成功回覆！',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                    }
+                })
+
+            }
+        }
     </script>
 }
