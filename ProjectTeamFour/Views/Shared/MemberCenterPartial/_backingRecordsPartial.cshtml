@@ -13,7 +13,7 @@
     //-------------------------------------------------------------------------
     var userOrderNoPay = Model.MyOrder.Where(x => x.condition == "未付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
     var userOrderDataNoPay = new JavaScriptSerializer().Serialize(userOrderNoPay);
-    //-----------------------------------------------------
+    //-----------------------------------------------------    
 }
 
 
@@ -45,6 +45,7 @@
     </div>
     <input type="text" name="name" value="@userOrderData" id="transJSON" />
     <input type="text" name="name" value="@userOrderDetailData" id="odtransJSON" />
+    <input type="text" name="name" value="@Model" />
 
 
     <!-- Modal -->
@@ -77,9 +78,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <a href="/Pay/ConnectECPay">
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()" value="重新購買">
-                    </a>
                 </div>
             </div>
         </div>

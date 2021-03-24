@@ -62,11 +62,12 @@
 .checkout h4 {
     font-size: 1rem;
     line-height: 1.5rem; !important;
+    padding:0 0.5rem;
 }
 
 .checkout-price, .check-total {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 #tag {
@@ -259,4 +260,8 @@ label {
 
 #transJSON{
     display:none;
+}
+
+#ToBuy:hover{
+    text-decoration:none;
 }
