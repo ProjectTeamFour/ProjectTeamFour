@@ -123,9 +123,21 @@
     font-weight: 600;
 }
 
-.cart_part{
-    display:flex;
-    flex-wrap:wrap;
+.about-case .card_part {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-wrap{
+    width:30%;
+    padding:0 0.5rem;
+}
+
+.product-item-pic img{
+    width:100%;
+}
+
+.product-item-text h3{
+    font-size:0.6rem;
 }
 
 /* --------------第二格---------------------------------- */
@@ -187,6 +199,10 @@
     flex-direction: column;
 }
 
+.case-doing-name span ,.case-doing-money span ,.case-doing-creat span, .case-doing-givedate spam, .case-doing-fix span{
+    font-weight:400;
+}
+
 .case-doing-item {
     display: flex;
     margin: 1rem 0;
@@ -196,10 +212,9 @@
     width: 12rem;
 }
 
-    .case-doing-pic img {
-        width: 100%;
-        height: 100%;
-    }
+.case-doing-pic img {
+    width: 100%;
+}
 
 .case-doing-text {
     padding: 0 2rem;
@@ -207,9 +222,9 @@
     /* line-height: 2rem;     */
 }
 
-    .case-doing-text h4 {
-        font-size: 0.5rem;
-    }
+.case-doing-text h4 {
+    font-size: 0.5rem;
+}
 
 .button-group {
     margin: auto;
@@ -224,11 +239,12 @@
     border: #f00;
 }
 
-#btn-view a{
+#btn-view{
     display:block;
     padding:0.25rem 0.5rem;
     text-decoration:none;
-    color:#ffffff;
+    color:#f00;
+    font-size:1.5rem:
 }
 
  #btn-view a:hover {
