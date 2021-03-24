@@ -56,9 +56,12 @@
                 <div class="about-case">
                     <h2>購買過的專案</h2>
                     <div class="card_part">
-                        @if (Model.Records != null)
+                        @if (Model.Records.MyOrderDetailList.Where((x) => x.condition=="已付款")!=null)
                         {
-                            @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)
+                            foreach (var i in Model.Records.MyOrderDetailList)
+                            {                                
+                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)                                
+                            }
                         }
                         else
                         {

@@ -223,6 +223,10 @@
     <Compile Include="Migrations\202103241154597_fixed.Designer.cs">
       <DependentUpon>202103241154597_fixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103241058025_新增od欄位.cs" />
+    <Compile Include="Migrations\202103241058025_新增od欄位.Designer.cs">
+      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2447,6 +2451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103241154597_fixed.resx">
       <DependentUpon>202103241154597_fixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241058025_新增od欄位.resx">
+      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
