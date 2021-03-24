@@ -195,9 +195,8 @@ html {
   font-size: 2rem;
 }
 
-#campaign-progress {
-  padding: 1rem;
-  margin: 1rem;
+#campaign-progress{
+    margin: 1rem 0;
 }
 
 #goal-wrap {
@@ -313,9 +312,9 @@ h4 {
   margin: 3rem 0;
 }
 
-/* 統一邊框部分 */
-.color-tag {
-  color: #f9414a;
+.contact-btn {
+    color: #f9414a;
+    text-decoration:none;
 }
 
 .label-grey {
@@ -396,7 +395,7 @@ h4 {
     font-weight: 700;
 }
 
-#send-msg a {
+#send-msg{
     display: inline-block;
     font-size: 16px;
     padding: 1rem 2rem;
@@ -405,7 +404,7 @@ h4 {
     border:1px solid #f8414a;
 }
 
-    #send-msg a:hover {
+    #send-msg:hover {
         transition: .2s all ease;
         color: #ffffff;
         background-color: #f8414a;

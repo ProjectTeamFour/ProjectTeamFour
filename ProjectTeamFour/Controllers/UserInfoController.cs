@@ -2,8 +2,6 @@
 using ProjectTeamFour.ViewModels;
 using System.Web.Mvc;
 using ProjectTeamFour.Models;
-using ProjectTeamFour.ViewModels;
-using ProjectTeamFour.Service;
 using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
