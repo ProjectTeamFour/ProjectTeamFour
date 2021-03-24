@@ -130,6 +130,7 @@ namespace ProjectTeamFour.Service
                     OrderQuantity = i.Quantity,
                     OrderDetailDes = cartSession.Comment,
                     ProjectId = plan.ProjectId,
+                    OrderPlanImgUrl = plan.PlanImgUrl
                 };
                 od.Add(o);
             }

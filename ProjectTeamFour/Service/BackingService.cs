@@ -45,13 +45,13 @@ namespace ProjectTeamFour.Service
                     PlanTitle = i.PlanTitle,
                     OrderQuantity = i.OrderQuantity,
                     OrderDetailDes = i.OrderDetailDes,
+                    OrderPlanImgUrl = i.OrderPlanImgUrl
                 };
                 odlist.Add(order);
             };
             backorder.MyOrderDetailList = odlist;
             backorder.MyOrder = ordermodel;            
-            return backorder;
-                    
-        }                         
+            return backorder;                    
+        }                                  
     }
 }                

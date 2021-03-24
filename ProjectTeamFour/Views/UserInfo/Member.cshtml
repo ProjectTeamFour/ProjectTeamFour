@@ -1,11 +1,12 @@
 ﻿@model MemberViewModel
 @*@{
-    var vm = (MemberViewModel)Session["Member"];
-}*@
+        var vm = (MemberViewModel)Session["Member"];
+    }*@
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
+    <link href="~/Assets/Plugin/JQuery/jquery_1.10.24datatable.css" rel="stylesheet" />
 }
 
 <div class="banner">
@@ -49,13 +50,13 @@
                     <div class="wrap-inside">
                         @if (Model.Records != null)
                         {
-                           
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
-                            
+
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
+
                         }
                         else
                         {
-                            <div>您目前沒有任何贊助歷史!</div>Console.WriteLine("13");
+                            <div>您目前沒有任何贊助歷史!</div>
                         }
                     </div>
                 </section>
@@ -160,19 +161,23 @@
                 <div class="container">
                     <div class="row">
 
-                        @if (Model.Comments.Count==0)
-                        {
-                            <div class="row nomessage" style="text-align: center;justify-content: center;">
-                                <h3 >您尚未有任何留言</h3>
-                            </div>
-                        }
-                        else
-                        {
-                            foreach (var comment in Model.Comments)
+                        
+                            @if (Model.Comments.Count == 0)
                             {
-                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
+                                <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                    <h3>您尚未有任何留言</h3>
+                                </div>
                             }
-                        }
+                            else
+                            {
+                                foreach (var comment in Model.Comments)
+                                {
+                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)
+                                }
+                            }
+                        
+                        
+
 
 
                     </div>
@@ -309,9 +314,118 @@
 
 @section endJs
 {
+    <script src="~/Assets/Plugin/JQuery/jquery_3.5.1_code.js"></script>
+    <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
+    <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
+    @*datatable套件*@
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
+    <script src="~/Assets/Javascript/PersonalInfo/record.js"></script>
     <script>
-        /*document.onload.getGender();*/
+        let getodjson = document.getElementById("odtransJSON");
+        let getjson = document.getElementById("transJSON");
+        var obj = JSON.parse(getjson.value);//order 陣列
+        var objod = JSON.parse(getodjson.value); //orderdetail 陣列
+        console.log(obj);
+        console.log(objod);
+
+        var jsonObj = {
+            "items": obj,
+            "detail": objod,
+            "modeldata": []
+        };
+
+        var odData = jsonObj.modeldata;
+
+        function Binding() {
+            new Vue({
+                el: "#record",
+                data: jsonObj,
+                methods: {
+                    changeJsonOd(orderId) {
+                        this.modeldata = [];
+                        this.modeldata = objod.filter(x => x.OrderId == orderId);
+                    }
+                }
+            });
+        };
+
+        $(document).ready(function () {
+            Binding();
+            $("#mytable").DataTable({
+                "info": false,
+                "bLengthChange": false,
+                "pageLength": 5
+            })
+        });
+    </script>
+        @*//Add event details*@
+        @*$("#mytable tfoot").on("click", "td.details-control", function () {
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass("shown");
+            }
+            else {
+                row.child(format(odData)).show();
+                tr.addClass("shown");
+            }
+        });
+
+        function format(odData) {
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;  v-for="(item, index) in odData">' +                  
+                    '<tr>' +
+                        '<td>orderDetailId:</td>' +
+                        '<td>' + ${ item.OrderDetailId } + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>OrderPrice:</td>' +
+                '       <td>' + ${item.OrderPrice} + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>OrderQuantity:</td>' +
+                        '<td>' + ${ item.OrderQuantity } +'</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>PlanTitle:</td>' +
+                        '<td>' + ${ item.PlanTitle} + '</td>' +
+                    '</tr>' +
+                '</table>';
+        }*@
+}
+
+
+
+
+@*<script>
+
+        let getjsonNoPay = document.getElementById("transNoJSON");
+            var obj1 = JSON.parse(getjsonNoPay.value); //order
+            var jsonObj1 = {
+                "its": obj1
+            };
+
+            function Binding() {
+                new Vue({
+                    el: "#nopay",
+                    data: jsonObj1
+                });
+            };
+
+            $(document).ready(function () {
+                Binding();
+                $("#mytable-2").DataTable({
+                    "info": false,
+                    "bLengthChange": false,
+                    "pageLength": 5
+                })
+            });
+    </script>*@
+
+<script>
+
+        @*document.onload.getGender();*@
                     //$('#birthday1').datepicker({
                     //    changeMonth: true,
                     //    changeYear: true,
@@ -320,7 +434,7 @@
                     //    dateFormat: 'yyyy-mm-dd'
 
                     //});
-    
+
                     //import { json } from "modernizr";
                     //let editapi = "/api/products";
                     //let memberId = document.getElementById("memberid").value;
@@ -356,11 +470,13 @@
                         
     </script>
     <script>
+        let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
+        
         ///回覆按鈕觸發事件
         function LanchCommentAnswerAjax(CommentId)
         {
-            let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
-            if (LanchCommentAnswer.value == null)
+            
+            if (LanchCommentAnswer.value == "")
             {
                 Swal.fire({
                     icon: 'error',
@@ -372,7 +488,7 @@
             else
             {
                 $.ajax({
-                    url: "/api/Comment/UpdateComment",
+                    url: "/api/Comment/ReplyComment",
                     type: "POST",
                     data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer.value },
                     success: function (data, textStatus, jqXHR) {
@@ -392,9 +508,11 @@
                                 title: '已成功回覆！',
                                 showConfirmButton: false,
                                 timer: 1500
-                            })
-
+                            });
+                            window.setTimeout(reloading, 1000);
+                           
                         }
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
@@ -403,6 +521,9 @@
                 })
 
             }
+        }
+        function reloading() {
+            window.location.assign(window.location.href);
         }
     </script>
 }

@@ -16,8 +16,8 @@ namespace ProjectTeamFour.Models
         public string PlanTitle { get; set; }
         public int OrderQuantity { get; set; }
         public decimal OrderPrice { get; set; }
-        
-
+        public string OrderPlanImgUrl { get; set; }
+       
         //導覽屬性
         public virtual Order Order { get; set; }
         public virtual Plan Plan { get; set; }

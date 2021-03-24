@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using ProjectTeamFour.Service;
+using ProjectTeamFour.ViewModels;
 using System.Web.Mvc;
 using ProjectTeamFour.Models;
 using ProjectTeamFour.ViewModels;
@@ -16,7 +11,7 @@ using System.Web.Http;
 
 namespace ProjectTeamFour.Controllers
 {
-	public class UserInfoController : Controller
+    public class UserInfoController : Controller
 	{
 		private readonly LogService _logService;
 		private readonly MemberService _memberService;
@@ -43,18 +38,21 @@ namespace ProjectTeamFour.Controllers
                 var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
 
 
-                //根據專案的提交與審核狀態進行分類
-                model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
-
-                //根據會員id抓取會員購買紀錄
-                model.Records = _backingService.QueryOrder(model.MemberId);
-
-				model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
-				//該會員為提案者沒有留過言，卻要回覆留言
-				if (model.Comments.Count==0)
+				//根據專案的提交與審核狀態進行分類
+				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+				
+				//根據會員id抓取會員購買紀錄
+			    model.Records = _backingService.QueryOrder(model.MemberId);
+				if(model.MyProjects.Count==0)
                 {
-
-                }
+					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+				}
+				else
+                {
+					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+				}
+				//該會員為提案者沒有留過言，卻要回覆留言
+				
 
 					return model != default(ViewModels.MemberViewModel) ? View(model) : View();
 			}
@@ -89,12 +87,12 @@ namespace ProjectTeamFour.Controllers
         //	if (model != null)
         //	{
 
-        //		//根據會員id抓取會員購買紀錄
-        //		model.Records = _backingService.QueryOrder(model.MemberId);				
-        //	}
-        //	return View();
-
-        //}
+		//		//根據會員id抓取會員購買紀錄
+		//		model.Records = _backingService.QueryOrder(model.MemberId);				
+		//	}
+		//	return View();
+			
+		//}
 
         //public ActionResult Myprojects()	//專案提交紀錄
         //{

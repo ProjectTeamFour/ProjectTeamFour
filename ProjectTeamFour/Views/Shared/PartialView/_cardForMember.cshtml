@@ -1,0 +1,13 @@
+﻿@model BackingRecordsViewModel
+@foreach (var item in Model.MyOrderDetailList)
+{
+    <div class="product-item">
+        <div class="product-item-pic col-2 col-sm-2">
+            <img src="@item.OrderPlanImgUrl" alt="肉" class="pic">
+        </div>
+        <div class="product-item-text  col-10 col-sm-10">
+            <h3>@item.PlanTitle</h3>
+            <div><span>@(item.OrderQuantity.ToString())件:</span><span>共@(item.OrderPrice*item.OrderQuantity) NTD</span></div>
+        </div>
+    </div>
+}

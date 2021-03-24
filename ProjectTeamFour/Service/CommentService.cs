@@ -41,18 +41,20 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
+
+        
         /// <summary>
         /// 贊助者留言後，在資料庫創造一筆Comment資料
         /// </summary>
         /// <param name="commentVM"></param>
         /// <returns></returns>
-        
         public string CreateANewComment(CommentViewModel commentVM)
         {
             var newComment = new Comment
             {
                 ProjectId=commentVM.ProjectId,
                 MemberId=commentVM.MemberId,
+                AskedMemberId=commentVM.AskedMemberId,
                 Comment_Question=commentVM.Comment_Question,
                 Comment_Time=commentVM.Comment_Time,
                 ReadStatus=false
@@ -82,6 +84,7 @@ namespace ProjectTeamFour.Service
         {
             var originalComment = _repository.GetAll<Comment>().FirstOrDefault(c => c.CommentId == commentVM.CommentId);
             originalComment.Comment_Answer = commentVM.Comment_Answer;
+            originalComment.ReadStatus = true;
             
             using(var transaction=_ctx.Database.BeginTransaction())
             {
@@ -100,7 +103,7 @@ namespace ProjectTeamFour.Service
         }
 
         /// <summary>
-        /// 將Commit DataModel及Project DataModel 轉成會員中心留言頁專用的CommentForMemberViewModel
+        /// 專為非提案者設計，將Commit DataModel及Project DataModel 轉成會員中心留言頁專用的CommentForMemberViewModel
         /// </summary>
         /// <param name="memberId"></param>
         /// <returns></returns>
@@ -110,12 +113,13 @@ namespace ProjectTeamFour.Service
            
             
             var result = new List<CommentForMemberViewModel>();
-
+            ///該會員問過的所有問題
             var mycomment = _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(c => c).ToList();
             if (mycomment != null)
             {
                 foreach (var comment in mycomment)
                 {
+                    //所有問題對應的提案
                     var commentProject = _repository.GetAll<Project>().FirstOrDefault(p => p.ProjectId == comment.ProjectId);
                     CommentForMemberViewModel commentForMemberVM = new CommentForMemberViewModel
                     {
@@ -126,9 +130,9 @@ namespace ProjectTeamFour.Service
                         Comment_Answer = comment.Comment_Answer,
                         Comment_Question = comment.Comment_Question,
                         Comment_Time = comment.Comment_Time,
+                        AskMemberId= memberId,
                         ReadStatus = comment.ReadStatus,
-                        MemberId = memberId,
-                        AskedMemberId = commentProject.MemberId,
+                        AskedMemberId = comment.AskedMemberId,
                         AskedMemberName = commentProject.CreatorName
                     };
 
@@ -147,26 +151,50 @@ namespace ProjectTeamFour.Service
 
 
         }
-
+        /// <summary>
+        /// 專為提案者設計，將Commit DataModel及Project DataModel 轉成會員中心留言頁專用的CommentForMemberViewModel
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
         public List<CommentForMemberViewModel> QueryCommentByaskedMemberId(int memberId)
         {
             var result = new List<CommentForMemberViewModel>();
-             /// 該會員為提案者沒有留過言，卻要回覆留言
-            var commentsProject = _repository.GetAll<Project>().Where(p => p.MemberId == memberId).Select(x => x).ToList();
-            if (commentsProject == null)
+
+            var askedComments = _repository.GetAll<Comment>().Where(c => c.AskedMemberId == memberId).Select(x => x).ToList();
+
+            if (askedComments != null)
             {
-                    return result;
+                foreach (var comment in askedComments)
+                {
+                    //所有問題對應的提案
+                    var commentProject = _repository.GetAll<Project>().FirstOrDefault(p => p.ProjectId == comment.ProjectId);
+                    CommentForMemberViewModel commentForMemberVM = new CommentForMemberViewModel
+                    {
+                        ProjectId = comment.ProjectId,
+                        ProjectName = commentProject.ProjectName,
+                        ProjectMainUrl = commentProject.ProjectMainUrl,
+                        CommentId = comment.CommentId,
+                        Comment_Answer = comment.Comment_Answer,
+                        Comment_Question = comment.Comment_Question,
+                        Comment_Time = comment.Comment_Time,
+                        ReadStatus = comment.ReadStatus,
+                        AskMemberId = comment.MemberId,
+                        AskedMemberId = memberId,
+                        AskedMemberName = commentProject.CreatorName,
+                        
+                    };
+
+                    result.Add(commentForMemberVM);
+                }
+
+                return result;
+
             }
+
             else
             {
-                    foreach (var comment in commentsProject)
-                    {
-                        var relatedComment = _repository.GetAll<Comment>().Where(c => c.ProjectId == comment.ProjectId).Select(x => x).ToList();
-                    }
-             }
-            
-
-            return result;
+                return result;
+            }
         }
     }
 }

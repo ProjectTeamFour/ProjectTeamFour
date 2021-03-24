@@ -173,7 +173,7 @@
                                                     <textarea class="form-control" rows="10" id="msg-content"
                                                               placeholder="傳送訊息..."></textarea>
                                                     <br />
-                                                    <a href="javascript:void(0)" class="btn btn-primary btn-block" id="send-msg" onclick="LanchCommentAjax(@Model.ProjectDetailItem.ProjectId)">傳送訊息</a>
+                                                    <a href="javascript:void(0)" class="btn btn-primary btn-block" id="send-msg" onclick="LanchCommentAjax(@Model.ProjectDetailItem.ProjectId,@Model.CreatorInfo.MemberId)">傳送訊息</a>
                                                     @*<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>*@
                                                 </form>
                                             </div>
@@ -408,7 +408,7 @@
 @section endJS{
     <script>
 
-       function LanchCommentAjax(ProjectId) {
+       function LanchCommentAjax(ProjectId,AskedMemberId) {
            let clientComment = document.querySelector(".form-control");
            if (clientComment.value == null) {
                Swal.fire({
@@ -424,7 +424,7 @@
                    url: "/api/Comment/UpdateComment",
                    type: "POST",
                    /*dataType: "json",*/
-                   data: { ProjectId: ProjectId, Comment_Question: clientComment.value },
+                   data: { ProjectId: ProjectId, Comment_Question: clientComment.value, AskedMemberId: AskedMemberId },
                    success: function (data, textStatus, jqXHR) {
                        
                        if (data == "login") {
