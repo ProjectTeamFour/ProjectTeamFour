@@ -215,6 +215,10 @@
     <Compile Include="Migrations\202103240838174_集資失敗改已結束.Designer.cs">
       <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103240940169_新增一筆假資料.cs" />
+    <Compile Include="Migrations\202103240940169_新增一筆假資料.Designer.cs">
+      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2434,6 +2438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103240838174_集資失敗改已結束.resx">
       <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240940169_新增一筆假資料.resx">
+      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
