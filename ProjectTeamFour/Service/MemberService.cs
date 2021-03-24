@@ -281,10 +281,10 @@ namespace ProjectTeamFour.Service
             return savedPasswordHash;
         }
 
-        public bool VerifyPasswordWithHash(MemberLoginViewModel memberLoginInfo)
+        public bool VerifyPasswordWithHash(MemberViewModel memberLoginInfo)
         {
             //找會員
-            MemberViewModel memberInfo = GetMember(x => x.MemberRegEmail == memberLoginInfo.Email);
+            MemberViewModel memberInfo = GetMember(x => x.MemberRegEmail == memberLoginInfo.MemberRegEmail);
 
             if (memberInfo == null)
             {
@@ -307,7 +307,7 @@ namespace ProjectTeamFour.Service
             //Array.Copy(originalHashBytes, 0, salt, 0, 16);
 
             //計算使用者傳進來的 hash
-            var pbkdf2 = new Rfc2898DeriveBytes(memberLoginInfo.Password, originalSalt, HashIter);
+            var pbkdf2 = new Rfc2898DeriveBytes(memberLoginInfo.MemberPassword, originalSalt, HashIter);
 
             //轉成 byte[]
             byte[] hash = pbkdf2.GetBytes(20);
@@ -322,5 +322,7 @@ namespace ProjectTeamFour.Service
             }
             return true;
         }
+
+      
     }
 }

@@ -34,7 +34,7 @@
                 MemberId = 1,
                 ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 Category = "科技設計",
-                ProjectStatus = "集資失敗",
+                ProjectStatus = "已結束",
                 StartDate = new DateTime(2021, 2, 1),
                 EndDate = new DateTime(2021, 3, 11),
                 Fundedpeople = 39,
@@ -2261,21 +2261,53 @@
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             ////第22個提案中的方案
-            //context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
-            //{
-            //    PlanId = 83,
-            //    ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
-            //    ProjectId = 22,
-            //    ProjectPlanId = 1,
-            //    PlanTitle = "《小米遊記》第一本寵物友善環境探訪實錄1【台灣北部、中部】1本",
-            //    PlanFundedPeople = 24,
-            //    PlanDescription = "我們費時2年2萬多公里，探訪台灣景點的寵物友善狀況。藉由出書募資，將所得投入寵物友善環境發展和生命教育推動，及重啟動降低棄養率的公益研發計畫。",
-            //    PlanShipDate = new DateTime(2021, 10, 01),
-            //    PlanImgUrl = "https://i.imgur.com/aq6j2Sdm.png",
-            //    //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-            //    PlanPrice = 500,
-            //    QuantityLimit = 99
-            //});
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 120,
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 22,
+                ProjectPlanId = 1,
+                PlanTitle = "單純贊助，不需回饋",
+                PlanFundedPeople = 0,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 01),
+                PlanImgUrl = "https://i.imgur.com/d0350iwm.png",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100,
+                QuantityLimit = 50
+            });
+            ////第22個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 121,
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 22,
+                ProjectPlanId = 2,
+                PlanTitle = "視覺Podcast電子書乙份原訂售價新台幣230元以Readmoo讀墨電子書型式寄出兌換碼",
+                PlanFundedPeople = 0,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 06),
+                PlanImgUrl = "https://i.imgur.com/cgQmhG3m.png",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200,
+                QuantityLimit = 50
+            });
+            ////第22個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 122,
+                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+                ProjectId = 22,
+                ProjectPlanId = 3,
+                PlanTitle = "視覺Podcast中文版電子書五本以Readmoo讀墨電子書型式寄出兌換碼",
+                PlanFundedPeople = 1,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 10, 06),
+                PlanImgUrl = "https://i.imgur.com/5WLDAuXm.png",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 900,
+                QuantityLimit = 50
+            });
         }
     }
 }

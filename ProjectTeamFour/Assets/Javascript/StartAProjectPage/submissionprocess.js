@@ -1351,6 +1351,7 @@ function saveToServer(file) {
             //塞 imgurUrl
             var img = document.getElementById(`editorImgId${editorImgId}`);
             img.setAttribute("data-imgururl", url);
+            img.classList.add("w-100");
             img.src = url;
             const range = quill.getSelection();
             quill.setSelection(range.index + 2);

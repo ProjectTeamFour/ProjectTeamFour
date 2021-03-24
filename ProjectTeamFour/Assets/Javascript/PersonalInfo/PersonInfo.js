@@ -54,7 +54,7 @@
                     Swal.fire({
                         position: 'top-center',
                         icon: 'error',
-                        title: '修改失敗',
+                        title: '修改失敗, 您可能密碼輸入不對',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -62,6 +62,13 @@
             }
         })
     })
+
+    //$('.card_part').slick({
+    //    infinite: true,
+    //    slidesToShow: 3,
+    //    slidesToScroll: 3
+    //});
+
 })
 
 function uploadFile(formData) {
@@ -188,8 +195,9 @@ function SubmitPwd() {
 
     var data = {
         MemberId: $('#memberId').text(),
-        MemberRegMail: $('#account').val(),
+        MemberRegEmail: $('#account').val(),
         MemberPassword: $('#newPassword').val(),
+        //OldPassword: $('#inputPassword').val(),
     };
 
    
@@ -225,6 +233,3 @@ function SubmitPwd() {
             }
         });
 }
-
-
-

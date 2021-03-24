@@ -211,6 +211,22 @@
     <Compile Include="Migrations\202103231639258_新增orderdetail欄位.Designer.cs">
       <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103240838174_集資失敗改已結束.cs" />
+    <Compile Include="Migrations\202103240838174_集資失敗改已結束.Designer.cs">
+      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240940169_新增一筆假資料.cs" />
+    <Compile Include="Migrations\202103240940169_新增一筆假資料.Designer.cs">
+      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241154597_fixed.cs" />
+    <Compile Include="Migrations\202103241154597_fixed.Designer.cs">
+      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241058025_新增od欄位.cs" />
+    <Compile Include="Migrations\202103241058025_新增od欄位.Designer.cs">
+      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2291,7 +2307,6 @@
     <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
     <Content Include="Views\Member\LoginFail.cshtml" />
     <Content Include="Views\UserInfo\Users.cshtml" />
-    <Content Include="Views\Member\Forgetpassword.cshtml" />
     <Content Include="Views\UserInfo\Record.cshtml" />
     <Content Include="Views\Shared\PartialView\_cardForMember.cshtml" />
   </ItemGroup>
@@ -2427,6 +2442,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103231639258_新增orderdetail欄位.resx">
       <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240838174_集資失敗改已結束.resx">
+      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240940169_新增一筆假資料.resx">
+      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241154597_fixed.resx">
+      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241058025_新增od欄位.resx">
+      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

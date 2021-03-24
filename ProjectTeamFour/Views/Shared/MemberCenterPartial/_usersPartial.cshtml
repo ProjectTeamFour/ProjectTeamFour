@@ -26,10 +26,26 @@
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
                         <p>
-                            贊助過
-                            @*<span>@Model.ProjectRecords.Count</span>件專案*@
+                            購買過
+                            @if (Model.Records != null)
+                            {
+                                <span>@Model.Records.MyOrderDetailList.Count 件專案</span>
+                            }
+                            else
+                            {
+                                <span>0件專案</span>
+                            }
+
                             <br />發起過
-                            <span>@Model.MyProjects.Count</span>件專案
+                            @if (@Model.MyProjects.Count == null)
+                            {
+                                <span>0件專案</span>
+                            }
+                            else
+                            {
+                                <span>@Model.MyProjects.Count 件專案</span>
+                            }
+                            
                         </p>
                     </div>
 
@@ -44,23 +60,22 @@
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div class="about-case">
-                    <h2>贊助過的專案</h2>
-                    @if (Model.Records != null)
-                    {
-                        @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)
-                    }
-                    else
-                    {
-                        <p>目前還沒有贊助過任何專案</p>
-                    }
+                    <h2>購買過的專案</h2>
+                    <div class="card_part">
+                        @if (Model.Records.MyOrderDetailList.Where((x) => x.condition=="已付款")!=null)
+                        {
+                            foreach (var i in Model.Records.MyOrderDetailList)
+                            {                                
+                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)                                
+                            }
+                        }
+                        else
+                        {
+                            <p>目前還沒有贊助過任何專案</p>
+                        }
+                    </div>                    
                 </div>
 
-                @*@{
-                        foreach(var item in Model.)
-                        {
-
-                        };
-                    }*@
             </div>
         </div>
     </div>
