@@ -35,8 +35,8 @@
                     TotalPrice: function () {
                         var result = 0;
                         this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
-                        formatMoney(result, 0);
-                        return result;
+                        formatResult=formatMoney(result, 0);
+                        return formatResult;
                     }
                 },
                 watch: {
