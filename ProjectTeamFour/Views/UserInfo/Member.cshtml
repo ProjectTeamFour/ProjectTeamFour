@@ -146,7 +146,7 @@
                             <div class="col-sm-12 col-md-12">
                                 <div class="search-item">
                                     <select class="message-input" name="option">
-                                        <option value="1">最新</option>
+                                        <option value="1" selected="selected">最新</option>
                                         <option value="2">未讀</option>
                                         <option value="3">已讀</option>
                                     </select>
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="row">
+                    <div class="row myComments">
 
                         
                             @if (Model.Comments.Count == 0)
@@ -320,7 +320,7 @@
     @*datatable套件*@
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
     <script src="~/Assets/Javascript/PersonalInfo/record.js"></script>
-    <script>
+    @*<script>
         let getodjson = document.getElementById("odtransJSON");
         let getjson = document.getElementById("transJSON");
         var obj = JSON.parse(getjson.value);//order 陣列
@@ -357,7 +357,7 @@
                 "pageLength": 5
             })
         });
-    </script>
+    </script>*@
         @*//Add event details*@
         @*$("#mytable tfoot").on("click", "td.details-control", function () {
             var tr = $(this).closest("tr");
@@ -529,5 +529,26 @@
 
     <script>
         let messageSelect = document.querySelector(".message-input");
+        let noReply = document.querySelectorAll(".no-reply");
+        let hasReply = document.querySelectorAll(".has-reply");
+        let myComments = document.querySelector(".myComments");
+        messageSelect.addEventListener("change", function () {
+            if (messageSelect.value == "2") {
+                hasReply.forEach(el => el.offsetParent.setAttribute("style", "display:none;"));
+
+            }
+            else if (messageSelect.value == "3") {
+                noReply.forEach(el => el.offsetParent.setAttribute("style", "display:none;"));
+
+            }
+            else {
+
+            }
+        });
+        function Init() {
+
+        }
+
+        
     </script>
 }

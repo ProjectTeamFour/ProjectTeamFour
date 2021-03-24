@@ -12,11 +12,11 @@
 
             @if (Model.ReadStatus == false)
             {
-                <strong class="message-member reply-status badge bg-warning text-dark" style="display:block;">未回覆</strong>
+                <strong class="message-member reply-status badge bg-warning text-dark no-reply" style="display:block;">未回覆</strong>
             }
             else
             {
-                <strong class="message-member badge bg-success" style="display:block;">已回覆</strong>
+                <strong class="message-member badge bg-success has-reply" style="display:block;">已回覆</strong>
             }
             <p style="color:red;height:100px;overflow-y: hidden;font-size:15px">@Model.ProjectName</p>
         </div>
