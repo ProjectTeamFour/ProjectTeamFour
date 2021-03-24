@@ -1148,33 +1148,37 @@ var form = new Vue({
                 //contentType: "application/json; charset=utf-8",
                 data: UpLoadData,
                 success: function (response) {
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'success',
-                        title: '成功',
-                        html: '已提交到我們的資料中心，後續會有專人與您聯絡',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
+                    //Swal.fire({
+                    //    position: 'top',
+                    //    icon: 'success',
+                    //    title: '成功',
+                    //    html: '已提交到我們的資料中心，後續會有專人與您聯絡',
+                    //    showConfirmButton: false,
+                    //    timer: 3000
+                    //});
 
 
-                    setTimeout(() => {
-                        window.location.href = "/Home/Index/";
-                    }, 6000)
+                    //setTimeout(() => {
+                    //    window.location.href = "/Home/Index/";
+                    //}, 6000)
+
+                    window.location.href = "/StartAProject/SubmitSuccess";
 
                 },
                 error: function (response) {
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'error',
-                        title: '上傳失敗',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
+                    //Swal.fire({
+                    //    position: 'top',
+                    //    icon: 'error',
+                    //    title: '上傳失敗',
+                    //    showConfirmButton: false,
+                    //    timer: 3000
+                    //});
 
-                    setTimeout(() => {
-                        window.location.href = "/Home/Index/";
-                    }, 6000)
+                    //setTimeout(() => {
+                    //    window.location.href = "/Home/Index/";
+                    //}, 6000)
+
+                    window.location.href = "/StartAProject/SubmitFail";
                 }
             });
         }
@@ -1215,8 +1219,46 @@ quill.format(
     'color', 'black');
 
 quill.on('text-change', function () {
-    //splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
+
+    var editor = document.querySelector("#editor");
+
+    var p = editor.querySelectorAll("P");
+    var span = editor.querySelectorAll("SPAN");
+    var li = editor.querySelectorAll("LI");
+    var strong = editor.querySelectorAll("STRONG");
+    var em = editor.querySelectorAll("EM");
+    var u = editor.querySelectorAll("U");
+    var iframe = editor.querySelectorAll("IFRAME");
+
+    for (var i = 0; i < p.length; i++) {
+        p[i].classList.add("w-100");
+    }
+
+    for (var i = 0; i < span.length; i++) {
+        span[i].classList.add("w-100");
+    }
+
+    for (var i = 0; i < li.length; i++) {
+        li[i].classList.add("w-100");
+    }
+
+    for (var i = 0; i < strong.length; i++) {
+        strong[i].classList.add("w-100");
+    }
+
+    for (var i = 0; i < em.length; i++) {
+        em[i].classList.add("w-100");
+    }
+
+    for (var i = 0; i < u.length; i++) {
+        u[i].classList.add("w-100");
+    }
+    for (var i = 0; i < iframe.length; i++) {
+        iframe[i].classList.add("w-100");
+    }
+
     splitJoin = quill.root.innerHTML;
+
 });
 
 
