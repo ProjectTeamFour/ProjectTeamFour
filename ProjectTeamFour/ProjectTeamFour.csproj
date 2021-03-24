@@ -2299,7 +2299,6 @@
     <Content Include="Views\ForgotPassword\CheckMemberUrl.cshtml" />
     <Content Include="Views\Member\LoginFail.cshtml" />
     <Content Include="Views\UserInfo\Users.cshtml" />
-    <Content Include="Views\Member\Forgetpassword.cshtml" />
     <Content Include="Views\UserInfo\Record.cshtml" />
     <Content Include="Views\Shared\PartialView\_cardForMember.cshtml" />
   </ItemGroup>
