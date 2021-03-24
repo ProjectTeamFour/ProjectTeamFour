@@ -219,6 +219,10 @@
     <Compile Include="Migrations\202103240940169_新增一筆假資料.Designer.cs">
       <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103241154597_fixed.cs" />
+    <Compile Include="Migrations\202103241154597_fixed.Designer.cs">
+      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2440,6 +2444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103240940169_新增一筆假資料.resx">
       <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241154597_fixed.resx">
+      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

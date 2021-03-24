@@ -74,10 +74,10 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult Login(MemberViewModel input)
         {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("LoginFail", "Member");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return RedirectToAction("LoginFail", "Member");
+            //}
 
             //確認 hashcode
             MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.MemberRegEmail);
