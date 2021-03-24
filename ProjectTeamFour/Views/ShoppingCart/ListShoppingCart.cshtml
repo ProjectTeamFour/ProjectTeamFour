@@ -78,7 +78,7 @@
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
-        else if (noresult.innerText == "購物車無任何商品")
+        else if (noresult!=null&&noresult.innerText == "購物車無任何商品")
         {
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
@@ -242,32 +242,31 @@
 
 
                 <div class="shop-items col-lg-6">
-                    
-                        @if (Model != null)
-                        {
-                           
-                                @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
-                            
 
+                    @if (Model != null)
+                    {
 
-                        }
-
-                        else
-                        {
-                            <div class="no-result">
-
-                                <p>購物車無任何商品</p>
-
-                            </div>
-                        }
+                        @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
 
 
 
+                    }
+                    else
+                    {
+                        <div class="no-result">
 
-                    
-                </div>
+                            <p>購物車無任何商品</p>
+
+                        </div>
+                    }
+
+
+
+
+
+                   
                     <div class="col-lg-6"></div>
-                    <div class="col-sm-12 col-lg-6 for-seller">
+                    <div class="col-sm-12 col-lg-6 for-seller" style="max-width:100%;width:100%">
                         <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
                                   aria-label="Special instructions for seller"></textarea>
                     </div>
