@@ -22,7 +22,6 @@
     <h2>購買紀錄</h2>
     <p>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</p>
 </div>
-<span>單筆購買</span>
 <div class="record-detail" id="record">
     <div class="record-detillist">
         <table id="mytable" style="width:100%">
@@ -32,7 +31,6 @@
                     <th>購買總金額</th>
                     <th>當前狀態</th>
                     <th>詳細訂單</th>
-                    <th>刪除明細</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +39,6 @@
                     <td>{{item.OrderTotalAccount}}</td>
                     <td>{{item.condition}}</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" v-on:click="changeJsonOd(item.OrderId)" data-target="#exampleModal">更多</button></td>
-                    @*<td><button class="btn btn-primary">刪除</button></td>*@
                 </tr>
             </tbody>
         </table>
@@ -62,22 +59,27 @@
                 </div>
                 <div class="modal-body">
                     <div class="dataitems">
-                        <div class="row">                                  
-                            <div class="itemTitle">
-                                <div class="items">方案單價</div>
-                                <div class="items">方案數量</div>
-                                <div class="items">方案名稱</div>                                
-                            </div>                            
-                            <div v-for="item in modeldata " class="detail-group col-12" >                              
-                                <div>{{item.OrderPrice}}</div>                                
-                                <div id="qty">{{item.OrderQuantity}}</div>
-                                <div id="plantitle">{{item.PlanTitle}}</div>
-                            </div>
+                        <div class="row">       
+                            <table>
+                                <tr class="itemTitle">
+                                    <th class="items">方案單價</th>
+                                    <th class="items">方案數量</th>
+                                    <th class="items">方案名稱</th>
+                                </tr>
+                                <tr v-for="item in modeldata " class="detail-group col-12">
+                                    <td>{{item.OrderPrice}}</td>
+                                    <td id="qty">{{item.OrderQuantity}}</td>
+                                    <td id="plantitle">{{item.PlanTitle}}</td>
+                                </tr>
+                            </table>                                                                                    
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <a href="/Pay/ConnectECPay">
+                        <input type="submit" id="Save2Sever" onclick="Save2Server()" value="重新購買">
+                    </a>
                 </div>
             </div>
         </div>

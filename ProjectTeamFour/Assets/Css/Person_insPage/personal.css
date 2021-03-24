@@ -7,6 +7,7 @@
     margin: auto;
 }
 
+
 .wrap-inside {
     width: 80%;
     margin: 0 auto;
@@ -106,21 +107,54 @@
     padding-left: 1rem;
 }
 
-    .about-case h2::before {
-        content: "";
-        position: relative;
-        top: 1.1rem;
-        left: -1rem;
-        width: 0.7rem;
-        height: 1rem;
-        display: block;
-        background-color: #f00;
-    }
+.about-case h2::before {
+    content: "";
+    position: relative;
+    top: 1.1rem;
+    left: -1rem;
+    width: 0.7rem;
+    height: 1rem;
+    display: block;
+    background-color: #f00;
+}
 
 .about-case p {
     font-size: 1rem;
     font-weight: 600;
 }
+
+.about-case .card_part {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-wrap{
+    width:30%;
+    padding:0 0.5rem 0.5rem;
+}
+
+.product-item-pic img{
+    width:100%;
+}
+
+.product-item-text {
+    color: #000;
+}
+
+.product-item:hover {
+    color: #000;
+    text-decoration: none;
+    border: none;
+
+}
+
+.product-items:hover {
+    box-shadow: 0.03rem 0.03rem 1rem #aaa;
+}
+
+.product-item-text h3 {
+    font-size: 0.6rem;
+}
+
 
 /* --------------第二格---------------------------------- */
 
@@ -181,6 +215,10 @@
     flex-direction: column;
 }
 
+.case-doing-name span ,.case-doing-money span ,.case-doing-creat span, .case-doing-givedate spam, .case-doing-fix span{
+    font-weight:400;
+}
+
 .case-doing-item {
     display: flex;
     margin: 1rem 0;
@@ -190,10 +228,9 @@
     width: 12rem;
 }
 
-    .case-doing-pic img {
-        width: 100%;
-        height: 100%;
-    }
+.case-doing-pic img {
+    width: 100%;
+}
 
 .case-doing-text {
     padding: 0 2rem;
@@ -201,9 +238,9 @@
     /* line-height: 2rem;     */
 }
 
-    .case-doing-text h4 {
-        font-size: 0.5rem;
-    }
+.case-doing-text h4 {
+    font-size: 0.5rem;
+}
 
 .button-group {
     margin: auto;
@@ -218,11 +255,12 @@
     border: #f00;
 }
 
-#btn-view a{
+#btn-view{
     display:block;
     padding:0.25rem 0.5rem;
     text-decoration:none;
-    color:#ffffff;
+    color:#f00;
+    font-size:1.5rem:
 }
 
  #btn-view a:hover {

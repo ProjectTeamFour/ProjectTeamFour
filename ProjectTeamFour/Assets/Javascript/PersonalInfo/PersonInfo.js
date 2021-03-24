@@ -62,6 +62,13 @@
             }
         })
     })
+
+    //$('.card_part').slick({
+    //    infinite: true,
+    //    slidesToShow: 3,
+    //    slidesToScroll: 3
+    //});
+
 })
 
 function uploadFile(formData) {
@@ -225,6 +232,3 @@ function SubmitPwd() {
             }
         });
 }
-
-
-

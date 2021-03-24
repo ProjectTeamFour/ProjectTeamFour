@@ -17,7 +17,7 @@
     .nav-links{
         font-size:1rem;
     }
-
+        
     .person-data-pic {
         margin: 0;
         width: 10rem;
@@ -31,11 +31,6 @@
     .case-doing-text {
         margin: auto;
     }
-
-        .case-doing-text h4 {
-            font-size: 1.5rem;
-            line-height: 3rem;
-        }
 
     .button-group {
         width: 15rem;
@@ -58,26 +53,20 @@
     #campaign-info-item {
         background-color: #f6f6f6;
         padding: 1rem;
-    }
-
-    /* #leftside-main-col {
-      width: 33.5rem;
-    } */
-    /* #select-perk .card-deck .card {
-      width: 331px;
-    } */
+    }    
 
     .number-row {
         display: flex;
     }
 
-        .number-row .block {
-            display: block;
-        }
+    .number-row .block {
+        display: block;
+    }
 
     #goal-wrap .wrapper {
         flex-wrap: nowrap;
     }
+
 }
 
 @media screen and (min-width: 768px) {
