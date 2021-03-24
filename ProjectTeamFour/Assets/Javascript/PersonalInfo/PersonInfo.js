@@ -197,6 +197,7 @@ function SubmitPwd() {
         MemberId: $('#memberId').text(),
         MemberRegEmail: $('#account').val(),
         MemberPassword: $('#newPassword').val(),
+        //OldPassword: $('#inputPassword').val(),
     };
 
    
