@@ -72,7 +72,7 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(MemberLoginViewModel input)
+        public ActionResult Login(MemberViewModel input)
         {
             if (!ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace ProjectTeamFour.Controllers
             }
 
             //確認 hashcode
-            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
+            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.MemberRegEmail);
             if (memberinfo.MemberId <= 17)
             {
                 Session["Permission"] = memberinfo.Permission;
