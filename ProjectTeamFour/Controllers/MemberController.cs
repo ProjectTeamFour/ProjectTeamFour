@@ -30,6 +30,11 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult Register(MemberRegisterViewModel input)
         {
+            MemberViewModel memberVM = _memberservice.GetMember(x => x.MemberRegEmail == input.Email);
+            if (memberVM != null)
+            {
+                return RedirectToAction("RegisterFail", "Member");
+            }
             if (ModelState.IsValid)
             {
                 MemberViewModel vm = new MemberViewModel()
