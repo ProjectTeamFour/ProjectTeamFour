@@ -1,5 +1,7 @@
 ﻿@model BackingRecordsViewModel
-@foreach (var item in Model.MyOrderDetailList) { 
+
+
+@foreach (var item in Model.MyOrderDetailList) {
     <div class="card-wrap">
         <a class="product-item"  href="~/CarCarPlan/Detail/@item.PlanId">
             <div class="product-items">
