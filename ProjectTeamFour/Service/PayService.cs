@@ -138,6 +138,7 @@ namespace ProjectTeamFour.Service
             foreach (var item in od)
             {
                 item.OrderId = order.OrderId;
+                item.condition = order.condition;
                 _repository.Create(item);
             }
             return order.OrderId;
@@ -168,6 +169,7 @@ namespace ProjectTeamFour.Service
                     result.TradeNo = MerchantTradeNo;
                     foreach (var item in odData)
                     {
+                        item.condition = result.condition;
                         var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
                         var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
                         foreach(var pj in projectview)
