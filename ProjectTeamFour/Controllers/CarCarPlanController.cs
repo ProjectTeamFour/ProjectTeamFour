@@ -98,17 +98,11 @@ namespace ProjectTeamFour.Controllers
                 CarCarPlanListVM.CarCarPlanItems.Add(item);
             }
 
-
             CarCarPlanListVM.CarCarPlanItems.GroupBy(x => x.PlanTitle).Select(x => x.First());
 
             return View(CarCarPlanListVM);
 
         }
-
-
-
-
-
 
         public ActionResult Detail(int id, string Category)
         {
