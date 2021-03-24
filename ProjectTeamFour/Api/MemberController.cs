@@ -144,6 +144,12 @@ namespace ProjectTeamFour.Api
 
         public string LoginedChangePassword([FromBody] MemberViewModel input)
         {
+            bool verify = _memberService.VerifyPasswordWithHash(input);
+            if (verify == false)
+            {
+                //ModelState.AddModelError("NotFound", "帳號或密碼輸入錯誤");
+                return "失敗";
+            }
             var result = new OperationResult();
             result = _memberService.ResetPassWord(input);
             if (result.IsSuccessful)
