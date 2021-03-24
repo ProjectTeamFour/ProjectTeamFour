@@ -437,8 +437,6 @@
     <Content Include="Assets\css\StartAProjectPage\submissionprocess.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
-    <Content Include="Assets\Html\campaignDetail.html" />
-    <Content Include="Assets\Html\selectPlanCard.html" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
@@ -2138,7 +2136,6 @@
     <Content Include="Assets\Plugin\JQuery\jquery_migrate1.2.1.min.js" />
     <Content Include="Assets\Plugin\Normalize.css\normalize.css" />
     <Content Include="Assets\Css\setting.css" />
-    <Content Include="Assets\Html\setting.html" />
     <Content Include="Assets\Plugin\Plugin使用說明.txt" />
     <Content Include="Assets\Plugin\Popper.js\popper_cdn1.16.1.min.js" />
     <Content Include="Assets\Plugin\Slick\slick_cdn1.8.1.css" />
@@ -2264,7 +2261,7 @@
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
-    <Content Include="Views\Shared\MemberCenterPartial\_personInfoNavPartial.cshtml" />
+    <Content Include="Assets\Html\_personInfoNavPartial.html" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_notifactionPartial.cshtml" />
@@ -2279,7 +2276,6 @@
     <Content Include="Views\Shared\MemberCenterPartial\_resetPasswordPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_usersPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_editPartial.cshtml" />
-    <Content Include="Views\Shared\MemberCenterPartial\_accountPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_activityPartial.cshtml" />
     <Content Include="Views\pay\test.cshtml" />
     <Content Include="Views\Member\RegisterSuccess.cshtml" />

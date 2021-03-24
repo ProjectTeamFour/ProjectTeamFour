@@ -16,15 +16,15 @@
             <div class="col-sm-12 col-md-12">
                 <div class="person-data">
                     <div class="person-data-pic">
-                        <img src="@Model.ProfileImgUrl" alt="個人圖片">
+                        <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
                     </div>
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
                         <p>
-                            @*贊助過 
-                            <span>@Model.ProjectRecords.Count</span>件專案*@
+                            贊助過 
+                            <span>@Model.ProjectRecords.Count</span>件專案
                             <br />發起過
-                            @*<span>@Model.MyProjects.Count</span>件專案*@
+                            <span>@Model.MyProjects.Count</span>件專案
                         </p>
                     </div>
                 </div>
