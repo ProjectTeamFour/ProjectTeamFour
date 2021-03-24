@@ -398,14 +398,40 @@ body {
         letter-spacing: 0.1rem;
     }
 
+
         .indemand-project .tag-item p {
             font-size: 0.8rem;
         }
+
+    .indemand-project .success-item p {
+        font-size: 0.8rem;
+    }
+
+#success-item {
+    background-color: #dffac3;
+    padding: 0.4rem 0.6rem;
+    margin: 0.6rem 0 0.6rem 0.8rem;
+    letter-spacing: 0.1rem;
+/*    margin-left: 0.8rem;*/
+}
+
+
 
     .indemand-project .status p {
         color: #f9414a;
         font-weight: 700;
     }
+
+
+
+
+    #status-text {
+        color: #000;
+/*        background-color: #1bd1a5;*/
+/*        font-weight: 700;*/
+    }
+
+
 
     .indemand-project .status {
         margin-left: 0.8rem;
