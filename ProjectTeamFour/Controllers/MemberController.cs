@@ -30,6 +30,11 @@ namespace ProjectTeamFour.Controllers
         [HttpPost]
         public ActionResult Register(MemberRegisterViewModel input)
         {
+            MemberViewModel memberVM = _memberservice.GetMember(x => x.MemberRegEmail == input.Email);
+            if (memberVM != null)
+            {
+                return RedirectToAction("RegisterFail", "Member");
+            }
             if (ModelState.IsValid)
             {
                 MemberViewModel vm = new MemberViewModel()
@@ -67,7 +72,7 @@ namespace ProjectTeamFour.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(MemberLoginViewModel input)
+        public ActionResult Login(MemberViewModel input)
         {
             if (!ModelState.IsValid)
             {
@@ -75,7 +80,7 @@ namespace ProjectTeamFour.Controllers
             }
 
             //確認 hashcode
-            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.Email);
+            MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.MemberRegEmail);
             if (memberinfo.MemberId <= 17)
             {
                 Session["Permission"] = memberinfo.Permission;
