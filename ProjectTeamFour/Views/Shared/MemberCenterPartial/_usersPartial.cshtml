@@ -39,22 +39,18 @@
             <div class="col-sm-12 col-md-12">
                 <div class="about-case">
                     <h2>贊助過的專案</h2>
-                    @if (Model.Records != null)
-                    {
-                        @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)
-                    }
-                    else
-                    {
-                        <p>目前還沒有贊助過任何專案</p>
-                    }
+                    <div class="card_part">
+                        @if (Model.Records != null)
+                        {
+                            @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)
+                        }
+                        else
+                        {
+                            <p>目前還沒有贊助過任何專案</p>
+                        }
+                    </div>                    
                 </div>
 
-                @*@{
-                        foreach(var item in Model.)
-                        {
-
-                        };
-                    }*@
             </div>
         </div>
     </div>

@@ -53,5 +53,11 @@ namespace ProjectTeamFour.Service
             backorder.MyOrder = ordermodel;            
             return backorder;                    
         }                                  
+
+        //public BackingRecordsViewModel BackToShop(OrderDetail ) //抓取特定的訂單詳細(從資料庫) 畫面==資料庫資料 把資料塞進綠界 
+        //{
+
+        //}
+        
     }
 }                

@@ -319,45 +319,7 @@
     <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
     @*datatable套件*@
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>
-    <script src="~/Assets/Javascript/PersonalInfo/record.js"></script>
-    <script>
-        let getodjson = document.getElementById("odtransJSON");
-        let getjson = document.getElementById("transJSON");
-        var obj = JSON.parse(getjson.value);//order 陣列
-        var objod = JSON.parse(getodjson.value); //orderdetail 陣列
-        console.log(obj);
-        console.log(objod);
-
-        var jsonObj = {
-            "items": obj,
-            "detail": objod,
-            "modeldata": []
-        };
-
-        var odData = jsonObj.modeldata;
-
-        function Binding() {
-            new Vue({
-                el: "#record",
-                data: jsonObj,
-                methods: {
-                    changeJsonOd(orderId) {
-                        this.modeldata = [];
-                        this.modeldata = objod.filter(x => x.OrderId == orderId);
-                    }
-                }
-            });
-        };
-
-        $(document).ready(function () {
-            Binding();
-            $("#mytable").DataTable({
-                "info": false,
-                "bLengthChange": false,
-                "pageLength": 5
-            })
-        });
-    </script>
+    <script src="~/Assets/Javascript/PersonalInfo/record.js"></script>    
         @*//Add event details*@
         @*$("#mytable tfoot").on("click", "td.details-control", function () {
             var tr = $(this).closest("tr");

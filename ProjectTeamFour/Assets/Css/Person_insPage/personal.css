@@ -7,6 +7,7 @@
     margin: auto;
 }
 
+
 .wrap-inside {
     width: 80%;
     margin: 0 auto;
@@ -106,20 +107,25 @@
     padding-left: 1rem;
 }
 
-    .about-case h2::before {
-        content: "";
-        position: relative;
-        top: 1.1rem;
-        left: -1rem;
-        width: 0.7rem;
-        height: 1rem;
-        display: block;
-        background-color: #f00;
-    }
+.about-case h2::before {
+    content: "";
+    position: relative;
+    top: 1.1rem;
+    left: -1rem;
+    width: 0.7rem;
+    height: 1rem;
+    display: block;
+    background-color: #f00;
+}
 
 .about-case p {
     font-size: 1rem;
     font-weight: 600;
+}
+
+.cart_part{
+    display:flex;
+    flex-wrap:wrap;
 }
 
 /* --------------第二格---------------------------------- */
