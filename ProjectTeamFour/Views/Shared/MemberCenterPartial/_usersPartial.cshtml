@@ -56,20 +56,17 @@
                 <div class="about-case">
                     <h2>購買過的專案</h2>
                     <div class="card_part">
-                        @*@if (Model.Records != null)
+                        @if (Model.Records.MyOrderDetailList.Where((x) => x.condition=="已付款")!=null)
                         {
                             foreach (var i in Model.Records.MyOrderDetailList)
-                            {
-                                if (i.condition ==)
-                                {
-                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)
-                                }
+                            {                                
+                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)                                
                             }
                         }
                         else
                         {
                             <p>目前還沒有贊助過任何專案</p>
-                        }*@
+                        }
                     </div>                    
                 </div>
 
