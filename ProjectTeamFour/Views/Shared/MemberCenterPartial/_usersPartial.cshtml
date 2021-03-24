@@ -1,6 +1,8 @@
-﻿@*@{
-        var vm = (MemberViewModel)Session["Member"];
-    }*@
+﻿
+@{
+    var vm = (MemberViewModel)Session["Member"];
+}
+
 @model MemberViewModel
 
 @section topCSS{
@@ -18,15 +20,19 @@
                     <div class="person-data-pic">
                         <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
                     </div>
+                    <div class="person-data-info">
+                        <p>@Model.AboutMe</p>
+                    </div>
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
                         <p>
-                            贊助過 
-                            <span>@Model.ProjectRecords.Count</span>件專案
+                            贊助過
+                            @*<span>@Model.ProjectRecords.Count</span>件專案*@
                             <br />發起過
                             <span>@Model.MyProjects.Count</span>件專案
                         </p>
                     </div>
+
                 </div>
             </div>
         </div>
