@@ -90,11 +90,31 @@
                             </div>
                         </div>
                         <blockquote id="campaign-status-label">
-                            <div class="text-wrap">
-                                專案募資成功！
-                                <br>在 @Model.ProjectDetailItem.EndDate
-                                募資結束前，您都可以持續贊助此計畫。
-                            </div>
+
+
+                            @{
+                                if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
+                                {
+                                    <div class="text-wrap">
+                                        專案募資成功！
+                                        <br>在 @Model.ProjectDetailItem.EndDate
+                                        募資結束前，您都可以持續贊助此計畫。
+                                    </div>
+                                }
+                                else if (Model.ProjectDetailItem.ProjectStatus == "集資失敗")
+                                {
+                                    <div class="text-wrap">
+                                        此計劃於 @Model.ProjectDetailItem.StartDate - @Model.ProjectDetailItem.EndDate 募資結束，很遺憾並未達成目標。
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-wrap">
+                                        <br>在 @Model.ProjectDetailItem.EndDate
+                                        募資結束前，您都可以持續贊助此計畫。
+                                    </div>
+                                }
+                            }
                         </blockquote>
                         <!-- 手機的按鈕會變成fixed在body的bottom -->
                         <div id="backing-section" class="wrapper">
