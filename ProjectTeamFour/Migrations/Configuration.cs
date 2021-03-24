@@ -34,7 +34,7 @@
                 MemberId = 1,
                 ProjectName = "窩窩睏床墊｜從工廠到你家！你的第一張全方位好床墊",
                 Category = "科技設計",
-                ProjectStatus = "集資失敗",
+                ProjectStatus = "已結束",
                 StartDate = new DateTime(2021, 2, 1),
                 EndDate = new DateTime(2021, 3, 11),
                 Fundedpeople = 39,

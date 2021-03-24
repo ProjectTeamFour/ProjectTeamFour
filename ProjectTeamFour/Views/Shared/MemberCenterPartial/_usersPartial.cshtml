@@ -21,14 +21,14 @@
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
                         <p>
-                            贊助過
-                            @if (Model.ProjectRecords== null)
+                            購買過
+                            @if (Model.Records != null)
                             {
-                                <span>0件專案</span>
+                                <span>@Model.Records.MyOrderDetailList.Count 件專案</span>
                             }
                             else
                             {
-                                <span>@Model.ProjectRecords.Count 件專案</span>
+                                <span>0件專案</span>
                             }
 
                             <br />發起過
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div class="about-case">
-                    <h2>贊助過的專案</h2>
+                    <h2>購買過的專案</h2>
                     <div class="card_part">
                         @if (Model.Records != null)
                         {

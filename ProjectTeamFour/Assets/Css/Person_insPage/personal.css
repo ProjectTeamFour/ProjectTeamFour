@@ -129,16 +129,32 @@
 }
 .card-wrap{
     width:30%;
-    padding:0 0.5rem;
+    padding:0 0.5rem 0.5rem;
 }
 
 .product-item-pic img{
     width:100%;
 }
 
-.product-item-text h3{
-    font-size:0.6rem;
+.product-item-text {
+    color: #000;
 }
+
+.product-item:hover {
+    color: #000;
+    text-decoration: none;
+    border: none;
+
+}
+
+.product-items:hover {
+    box-shadow: 0.03rem 0.03rem 1rem #aaa;
+}
+
+.product-item-text h3 {
+    font-size: 0.6rem;
+}
+
 
 /* --------------第二格---------------------------------- */
 

@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202103231639258_新增orderdetail欄位.Designer.cs">
       <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103240838174_集資失敗改已結束.cs" />
+    <Compile Include="Migrations\202103240838174_集資失敗改已結束.Designer.cs">
+      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2427,6 +2431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103231639258_新增orderdetail欄位.resx">
       <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240838174_集資失敗改已結束.resx">
+      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
