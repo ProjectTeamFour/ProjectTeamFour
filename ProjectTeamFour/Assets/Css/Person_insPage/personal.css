@@ -300,8 +300,8 @@
 
     .search-item i {
         position: absolute;
-        left: 4rem;
-        top: 2.5rem;
+        left: 3.8rem;
+        top: 2.3rem;
     }
 
 
@@ -393,7 +393,10 @@
     display: block;
     height:150px;
 }
-/* ------------------------------ */
+input.mysearch {
+    padding: 0 20px;
+}
+    /* ------------------------------ */
 html {
     color: #212121;
     /*font-family: sans-serif;*/

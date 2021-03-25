@@ -399,37 +399,34 @@
             }
             else
             {
-                if (messageSelect.value == "2") {
-                    searchStyle.innerHTML = "";
-                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} + "False"
 
-                        + "\"]){ display: none } `;
-                }
-                else if (messageSelect.value == "3") {
-                    searchStyle.innerHTML = "";
-                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} + "True"
-
-                        + "\"]){ display: none } `;
-                }
-                else
-                {
-                    searchStyle.innerHTML = "";
-                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} 
-
-                        + "\"]){ display: none } `;
-                }
+                searchStyle.innerHTML = ".message-block:not([data-index*=\"" + this.value + "\"]){ display: none } ";
 
             }
            
         });
         messageSelect.addEventListener("change", function () {
-            if (this.value == "2" || mysearch.value != "") {
-                searchStyle.innerHTML = "";
-                searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "False"+ mysearch.value + "\"]){ display: none } ";
+            if (this.value == "2"  ) {
+                
+                if (mysearch.value != "") {
+                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + "False"+ "${mysearch.value}" + "\"]){ display: none } `;
+                }
+                else
+                {
+                    searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "False"+ "\"]){ display: none } ";
+                }
             }
-            else if (this.value == "3" || mysearch.value != "") {
-                searchStyle.innerHTML = "";
-                searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "True" + mysearch.value + "\"]){ display: none } ";
+            else if (this.value == "3" ) {
+                
+                if (mysearch.value != "") {
+                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + "True"+ "${mysearch.value}" + "\"]){ display: none } `;
+                }
+                else
+                
+                {
+                    searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "True" +  "\"]){ display: none } ";
+                }
+                
             }
             else {
                 searchStyle.innerHTML = "";
