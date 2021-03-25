@@ -1,0 +1,37 @@
+﻿@model MemberViewModel
+
+@section topCSS{
+    <link href="~/Assets/Css/StartAProjectPage/submitsuccess.css" rel="stylesheet" />
+}
+
+<div class="finishedsendemail" id="finishedsendemail">
+    <section class="submitsuccesspage">
+
+        <div class="container d-flex flex-column">
+            <div class="submitsuccesspage-item text-center">
+                <h3>提交成功！</h3>
+            </div>
+
+            <div class="inputbox-item pb-3">
+                <p class="d-flex justify-content-center welcome text-center">資料已送至資料中心，專員會幫您審核提案<br>在個人頁面可以看到您的提案進度</p>
+            </div>
+
+            <div class="submitsuccesspage-item inputbox">
+                <div class="inputbox-item">
+                    <a href="/UserInfo/Member/@Model.MemberId" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 返回個人頁面 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="submitsuccesspage-item d-flex justify-content-between changestatus">
+                <a href="/Home/Index" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>返回首頁</p>
+                </a>
+                <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -46,7 +46,6 @@
                 'inputData.Name': {
                     immediate: true,        //點開即驗證
                     handler: function () {
-                        let nameRegexp = /^[0-9]*$/; //只能數字
                         if (this.inputData.Name.length < 0) {
                             this.inputDataCheck.NameError = true;
                             this.inputDataCheck.NameErrorMsg = '名稱不得為空';
@@ -60,11 +59,10 @@
                 'inputData.Address': {
                     immediate: true,        //點開即驗證
                     handler: function () {
-                        let addressRegexp = /^[0-9]{3}/;  //開頭為數字
-
-                        if (!addressRegexp.test(this.inputData.Address)) {
+                        @*let addressRegexp = /^[0-9]{3}/;  //開頭為數字*@
+                        if (this.inputData.Address.length<=0) {
                             this.inputDataCheck.AddressError = true;
-                            this.inputDataCheck.AddressErrorMsg = '開頭必須為3碼郵遞區號';
+                            this.inputDataCheck.AddressErrorMsg = '地址不得為空';
                         }
                         else {
                             this.inputDataCheck.AddressError = false;
@@ -188,18 +186,14 @@
                         </div>
                     }
                 </div>
-                <div class="checkout">
-                    <div class="checkout-price">
-                        <h4>subtotal</h4>
-                        <span>@Model.TotalAccount</span>
-                    </div>
+                <div class="checkout">            
                     <div class="checkout-price">
                         <h4>shipping</h4>
                         <span>Calculated at next step</span>
                     </div>
                     <div class="check-total">
                         <h4>Total</h4>
-                        <P><span>NTD</span>@Model.TotalAccount</P>
+                        <P>NTD @StringFormat5.addComma((int)Model.TotalAccount)</P>
                     </div>
                 </div>
             </div>
@@ -229,13 +223,9 @@
                         }
                     </div>
                     <div class="checkout">
-                        <div class="checkout-price">
-                            <h4>shipping</h4>
-                            <span>Calculated at next step</span>
-                        </div>
                         <div class="check-total">
                             <h4>Total</h4>
-                            <P><span>NTD</span>@Model.TotalAccount</P>
+                            <P>NTD @StringFormat5.addComma((int)Model.TotalAccount)</P>
                         </div>
                     </div>
                 </div>
@@ -306,7 +296,7 @@
                         <div class="support">
                             <div class="pay-money">
                                 <h5>贊助金額</h5>
-                                <p>@Model.TotalAccount</p>
+                                <p>@StringFormat5.addComma((int)Model.TotalAccount)</p>
                             </div>
                             <div class="pay-money">
                                 <h5>+額外支持</h5>
@@ -314,7 +304,7 @@
                             </div>
                             <div class="pay-money">
                                 <h5>= 總金額 NTD</h5>
-                                <P>@Model.TotalAccount</P>
+                                <P>@StringFormat5.addComma((int)Model.TotalAccount)</P>
                             </div>
                         </div>
                     </div>
@@ -324,7 +314,7 @@
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <a href="/Pay/ConnectECPay" >                        
+                    <a href="/Pay/ConnectECPay" id="ToBuy">                        
                         <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  v-on:click ="checkAddVerify" >
                     </a>                       
                 </div>

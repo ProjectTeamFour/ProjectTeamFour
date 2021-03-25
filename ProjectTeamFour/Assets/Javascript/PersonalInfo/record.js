@@ -13,6 +13,17 @@ var jsonObj = {
 
 var odData = jsonObj.modeldata;
 
+function sendDataToRecord() {
+    $.ajax({
+        type: "Get",
+        url: '~/api/BackingRecord/GetOrderData',
+        data: {},
+        success: function (response) {
+            window.setTimeout(reloading, 1000);
+        }
+    })
+}
+
 function Binding() {
     new Vue({
         el: "#record",
@@ -34,3 +45,5 @@ $(document).ready(function () {
         "pageLength": 5
     })
 });
+
+
