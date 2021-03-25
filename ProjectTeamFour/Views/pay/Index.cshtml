@@ -81,7 +81,7 @@
                         }
                         else if (this.inputData.Tel.length < 10) {
                             this.inputDataCheck.TelError = true;
-                            this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼';
+                            this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
                         }
                         else if (!telRegexpNum.test(this.inputData.Tel)) {
                             this.inputDataCheck.TelError = true;
@@ -186,10 +186,6 @@
                     }
                 </div>
                 <div class="checkout">            
-                    <div class="checkout-price">
-                        <h4>shipping</h4>
-                        <span>Calculated at next step</span>
-                    </div>
                     <div class="check-total">
                         <h4>Total</h4>
                         <P>NTD @StringFormat5.addComma((int)Model.TotalAccount)</P>
