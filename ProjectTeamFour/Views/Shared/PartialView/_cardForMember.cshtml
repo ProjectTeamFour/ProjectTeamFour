@@ -1,18 +1,17 @@
-﻿@model BackingRecordsViewModel
+﻿@model OrderDetail
 
 
-@foreach (var item in Model.MyOrderDetailList) {
-    <div class="card-wrap">
-        <a class="product-item"  href="~/CarCarPlan/Detail/@item.PlanId">
-            <div class="product-items">
-                <div class="product-item-pic">
-                    <img src="@item.OrderPlanImgUrl" alt="方案圖片" class="pic">
-                </div>
-                <div class="product-item-text">
-                    <h3>@item.PlanTitle</h3>
-                    <div><span>@(item.OrderQuantity.ToString())件:</span><span>共@(item.OrderPrice*item.OrderQuantity) NTD</span></div>
-                </div>
-            </div>            
-        </a>
-    </div>     
-}
+
+<div class="card-wrap">
+    <a class="product-item"  href="~/CarCarPlan/Detail/@Model.PlanId">
+        <div class="product-items">
+            <div class="product-item-pic">
+                <img src="@Model.OrderPlanImgUrl" alt="方案圖片" class="pic">
+            </div>
+            <div class="product-item-text">
+                <h3>@Model.PlanTitle</h3>
+                <div><span>@(Model.OrderQuantity.ToString())件:</span><span>共@(Model.OrderPrice* Model.OrderQuantity) NTD</span></div>
+            </div>
+        </div>            
+    </a>
+</div>     

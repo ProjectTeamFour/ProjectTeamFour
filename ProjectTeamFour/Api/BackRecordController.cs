@@ -20,24 +20,24 @@ namespace ProjectTeamFour.Api
             _backingService = new BackingService();
         }
 
-        //[HttpGet]
-        //public BackingRecordsViewModel GetOrderData([FromBody] MemberViewModel member)
-        //{
-        //    var session = System.Web.HttpContext.Current.Session;
+        [HttpGet]
+        public BackingRecordsViewModel GetOrderData([FromBody] MemberViewModel member)
+        {
+            var session = System.Web.HttpContext.Current.Session;
 
-        //    member = (MemberViewModel)session["Member"];
+            member = (MemberViewModel)session["Member"];
 
-        //    if (member != null)
-        //    {
-        //        //var memberInfo = _memberService.GetMember(m => m.MemberId == id);
-        //        //根據會員id抓取會員購買紀錄
-        //        member.Records = _backingService.QueryOrder(member.MemberId);
-        //        return member.Records;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+            if (member != null)
+            {
+                //var memberInfo = _memberService.GetMember(m => m.MemberId == id);
+                //根據會員id抓取會員購買紀錄
+                member.Records = _backingService.QueryOrder(member.MemberId);
+                return member.Records;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

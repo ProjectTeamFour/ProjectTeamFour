@@ -81,16 +81,16 @@ namespace ProjectTeamFour.Controllers
 
         //public ActionResult Sponser() //贊助紀錄
         //{
-        //	var model = (MemberViewModel)Session["Member"];
-        //	if (model != null)
-        //	{
+        //    var model = (MemberViewModel)Session["Member"];
+        //    if (model != null)
+        //    {
 
-		//		//根據會員id抓取會員購買紀錄
-		//		model.Records = _backingService.QueryOrder(model.MemberId);				
-		//	}
-		//	return View();
-			
-		//}
+        //        //根據會員id抓取會員購買紀錄
+        //        model.Records = _backingService.QueryOrder(model.MemberId);
+        //    }
+        //    return View();
+
+        //}
 
         //public ActionResult Myprojects()	//專案提交紀錄
         //{
@@ -145,7 +145,7 @@ namespace ProjectTeamFour.Controllers
         //}
 
 
-		public string LoginedChangePassword([FromBody] MemberViewModel input)
+        public string LoginedChangePassword([FromBody] MemberViewModel input)
 		{
 			var result = new OperationResult();
 			result = _memberService.ResetPassWord(input);

@@ -6,10 +6,6 @@ a:hover {
     text-decoration: none;
 }
 
-/*.category {
-    background-color: #F6F6F6
-}
-*/
 .category-group {
     text-align: center;
 }
@@ -20,10 +16,10 @@ a:hover {
     outline: none;
 }
 
-    .category-group-item:hover {
-        color: #CF4148;
-        cursor: pointer;
-    }
+.category-group-item:hover {
+    color: #CF4148;
+    cursor: pointer;
+}
 
 
     .category-group-item .content {

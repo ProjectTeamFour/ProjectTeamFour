@@ -27,15 +27,7 @@
                         <h2>@Model.MemberName</h2>
                         <p>
                             購買過
-                            @if (Model.Records != null)
-                            {
-                                <span>@Model.Records.MyOrderDetailList.Count 件專案</span>
-                            }
-                            else
-                            {
-                                <span>0件專案</span>
-                            }
-
+                            @Model.Records.MyOrderDetailList.Where(x=>x.condition =="已付款").Count()<p>件專案</p>
                             <br />發起過
                             @if (@Model.MyProjects.Count == null)
                             {
@@ -62,16 +54,24 @@
                 <div class="about-case">
                     <h2>購買過的專案</h2>
                     <div class="card_part">
-                        @if (Model.Records.MyOrderDetailList.Where((x) => x.condition=="已付款")!=null)
+                        @*只挑選已付款的訂單*@
+                        @if (Model.Records != null)
                         {
                             foreach (var i in Model.Records.MyOrderDetailList)
-                            {                                
-                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", Model.Records)                                
+                            {
+                                if (i.condition == "已付款")
+                                {
+                                    @Html.Partial("~/Views/Shared/PartialView/_cardForMember.cshtml", i)
+                                }
+                                else
+                                {
+                                    <p></p>
+                                }
                             }
                         }
                         else
                         {
-                            <p>目前還沒有贊助過任何專案</p>
+                            <p>目前無購買方案</p>
                         }
                     </div>                    
                 </div>
