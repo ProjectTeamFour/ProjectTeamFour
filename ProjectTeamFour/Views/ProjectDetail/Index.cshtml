@@ -80,14 +80,16 @@
                                         目標
                                         @Model.ProjectDetailItem.AmountThreshold.ToString("###,###")
                                     </span>
-                                    @{ if (Model.ProjectDetailItem.FundingAmount > 0)
+                                    @{
+                                        if (Model.ProjectDetailItem.FundingAmount > 0)
                                         {
-                                            < h2 >$@Model.ProjectDetailItem.FundingAmount.ToString("###,###") </ h2 >
+                                            <h2>$@Model.ProjectDetailItem.FundingAmount.ToString("###,###") </h2>
                                         }
                                         else
                                         {
                                             <h2>尚未有人贊助</h2>
-                                        } }
+                                        }
+                                    }
                                 </div>
                                 <hr class="display-sm">
                                 <div id="donating-people-count" class="number-row">
