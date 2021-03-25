@@ -48,7 +48,7 @@ namespace ProjectTeamFour.Controllers
             var projectService = new ProjectsService(); //呼叫service
             
             int activePage = id; //目前所在頁
-            int pageRows = 12; //每頁幾筆資料
+            int pageRows = 10; //每頁幾筆資料
             int totalRows = _projectsService.GetAllTotal().ProjectItems.Count(); //總筆數
 
             //計算page頁面
