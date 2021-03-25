@@ -61,20 +61,19 @@
                 <div class="modal-body">
                     <div class="dataitems">
                         <div class="row">       
-                            <table id="mytable-2">
-                                <tr class="itemTitle">
-                                    <th class="items">方案單價</th>
-                                    <th class="items">方案數量</th>
-                                    <th class="items">方案名稱</th>
-                                    @*<th class="items">方案圖片</th>*@
-                                </tr>
-                                <tr v-for="item in modeldata " class="detail-group col-12">
-                                    <td>{{item.OrderPrice}}</td>
-                                    <td id="qty">{{item.OrderQuantity}}</td>
-                                    <td id="plantitle">{{item.PlanTitle}}</td>
-                                    @*<td id="planurl">{{item.OrderPlanImgUrl}}</td>*@
-                                </tr>
-                            </table >                                                                                    
+                            <div id="mytable-2">
+                                <div class="itemTitle">
+                                    <div class="items">方案單價</div>
+                                    <div class="items">方案數量</div>
+                                    <div class="items">方案名稱</div>
+                                </div>
+               
+                                <div v-for="item in modeldata " class="detail-group col-12">
+                                    <div class="detail-item" id="odmoney">{{item.OrderPrice}}</div>
+                                    <div class="detail-item" id="qty">{{item.OrderQuantity}}</div>
+                                    <div class="detail-item" id="plantitle">{{item.PlanTitle}}</div>
+                                </div>
+                            </div>                                                         
                         </div>
                     </div>
                 </div>

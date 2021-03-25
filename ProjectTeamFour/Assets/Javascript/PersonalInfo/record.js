@@ -47,11 +47,6 @@ $(document).ready(function () {
         "pageLength": 5
     })
 
-    $("#mytable-2").DataTable({
-        "info": false,
-        "bLengthChange": false,
-        "pageLength": 5
-    })
     var table_clear = $(".dataTables_empty");
     table_clear.html('<p>目前無任何購買紀錄<p>');   
 });
