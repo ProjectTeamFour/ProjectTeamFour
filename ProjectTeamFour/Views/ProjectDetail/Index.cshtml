@@ -369,4 +369,76 @@
             //});
 
         </script>
+        <script>
+            function LanchCommentAjax(ProjectId, AskedMemberId) {
+                let clientComment = document.querySelector(".form-control");
+                if (clientComment.value == null) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '請留言!',
+
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: "/api/Comment/UpdateComment",
+                        type: "POST",
+                        /*dataType: "json",*/
+                        data: { ProjectId: ProjectId, Comment_Question: clientComment.value, AskedMemberId: AskedMemberId },
+                        success: function (data, textStatus, jqXHR) {
+
+                            if (data == "login") {
+                                Swal.fire(
+                                    '尚未登入?',
+                                    '請先登入！',
+                                    'question'
+                                ).then(result => {
+                                    reloading();
+                                })
+
+                            }
+                            else if (data == "try") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '請留言!',
+
+                                })
+                            }
+                            else if (data == "fail") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '發生錯誤，請再試一次!',
+
+                                })
+                            }
+                            else {
+                                Swal.fire({
+                                    position: 'top-center',
+                                    icon: 'success',
+                                    title: '已成功留言！',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(textStatus);
+
+                        }
+                    })
+                }
+
+
+            }
+
+            function reloading() {
+                window.location.href = "/Member/Login";
+
+            }
+        </script>
     }
