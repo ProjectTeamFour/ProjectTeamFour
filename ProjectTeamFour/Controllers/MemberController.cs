@@ -81,7 +81,12 @@ namespace ProjectTeamFour.Controllers
 
             //確認 hashcode
             MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.MemberRegEmail);
-            if (memberinfo.MemberId <= 17)
+            if (memberinfo == null)
+            {
+                return RedirectToAction("LoginFail", "Member");
+            }
+
+            else if (memberinfo.MemberId <= 17)
             {
                 Session["Permission"] = memberinfo.Permission;
                 Session["Member"] = memberinfo;

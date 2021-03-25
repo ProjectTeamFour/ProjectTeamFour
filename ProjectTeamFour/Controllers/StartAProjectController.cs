@@ -37,16 +37,22 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult SubmissionProcess()
         {
+            int result = _MemberService.ReturnLoginnerId();
+            ViewBag.MemberId = result;
             return View();
         }
 
         public ActionResult SubmitSuccess()
         {
+            int result = _MemberService.ReturnLoginnerId();
+            ViewBag.MemberId = result;
             return View();
         }
 
         public ActionResult SubmitFail()
         {
+            int result = _MemberService.ReturnLoginnerId();
+            ViewBag.MemberId = result;
             return View();
         }
 
