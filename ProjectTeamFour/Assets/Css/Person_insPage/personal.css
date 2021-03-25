@@ -160,7 +160,9 @@
     font-size: 0.6rem;
 }
 
-
+#mytable-2{
+    width:100%;
+}
 /* --------------第二格---------------------------------- */
 
 
@@ -189,16 +191,12 @@
     border-bottom: 1px solid;
 }
 
-.itemTitle th{
+.itemTitle items{
     padding: 0 1rem 0.2rem;
 }
-/*
-.itemTitle th:last-child{
-    margin: 0 0 0 3rem;
-}*/
 
-.detail-group td{
-    margin:0 2rem 0 0;
+.detail-group .detail-item {
+    width: 30%;
 }
 /* -------------第三格---------------------------------------- */
 .case {
@@ -539,11 +537,22 @@ tr.shown td.details-control {
     justify-content: space-around;
 }
 
-#qty, #plantitle {
+#qty{
     position: relative;
     left: 3rem;
 }
 
-.dataTables_wrapper{
-    width:100%;
+
+#odmoney {
+    position: relative;
+    left: 2rem;
+}
+#plantitle {
+    position: relative;
+    left: 1rem;
+    font-size:0.5rem;
+}
+
+.dataTables_wrapper {
+    width: 100%;
 }
