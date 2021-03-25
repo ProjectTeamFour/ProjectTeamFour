@@ -2209,105 +2209,105 @@
             });
 
 
-            //第22個提案
-            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
-            {
-                ProjectId = 22,
-                MemberId = 22,
-                ProjectName = "《視覺Podcast》電子書出版計畫｜一對男同志伴侶的旅外人生",
-                Category = "遊戲出版",
-                ProjectStatus = "集資中",
-                StartDate = new DateTime(2021, 01, 01),
-                EndDate = new DateTime(2021, 04, 16),
-                Fundedpeople = 1,
-                FundingAmount = 1500,
-                AmountThreshold = 50000,
-                CreatorName = "Amyoku 愛苗庫",
-                ProjectMainUrl = "https://imgur.com/Lx4FPgK",
-                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://imgur.com/SfI5Drh",
-                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectDescription = "",
-                ProjectImgUrl = "與國際接軌，閱讀他國同志的故事 每年秋天台灣熱熱鬧鬧舉辦同志遊行，甚至成為亞洲第一個同婚立法的國家。然而在世界其他角落，好比葉門、阿曼、喬治亞等地區的同志們能像在台灣一樣走上街頭表達自己嗎？讓我們透過托拜西和穆斯塔法一窺究竟。這是個文化背景與個人認同離我們如火星般遙遠的故事，成長在保守的英國鄉間托拜西是一位同志，是一位飄泊世界的旅人，一生醉心於藝術和教育事業，遇到一位來自極端保守中東國家的愛人，終於結束遊盪的人生如船隻靠進安定的港灣。Amyoku愛苗庫團隊發掘了這個故事，巴不得疫情鎖國下無奈的人們都能藉此開一扇窗，看看這世界上還有這樣豐富多彩的人生與我們共處在地球上。許許多多的理所當然，是不是如你我所料而不會有另一種發展，或選擇。盼望這樣的故事，帶給我們更多省思與看待事物不同的眼界。,https://imgur.com/0WImNi1,托拜西和伴侶穆斯塔法的精采的對談，加上托拜西迷人的聲線，簡直可以做Podcast，可惜穆斯塔法不希望自己的聲音公諸於世。2020年夏天，愛苗庫團隊將音檔轉化為文字，勾勒出托拜西這輩子曾長住的國家與個人對政治、性別議題與個人認同看法，也有他對該國LGBT發展狀況的描述。另一方面，這個作品也為沒有子女的兩人愛情，留下紀念見證，多一些人記住他們。,出版物內頁示意圖：盡可能與以下英文原版的編排相同,https://imgur.com/u9k46aj,過去的努力與未來的規劃,https://imgur.com/7kgmgNF",
-                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://youtu.be/HAkcVdvD1mw",
-                Project_Question = "為什麼不做紙本書呢？,為何書中大多是穆斯塔法問，托拜西回答？,回饋禮成本佔經費運用太多了吧？平台手續費才8%不是嗎？",
-                Project_Answer = "有的！目前這本英文自傳已經在讀墨上架，也歡迎您拜訪Amyoku愛苗庫官網閱讀免費的版本。www.amyoku.com / blog / visualpodcast,為了響應無紙文化，避免樹木為了這本書而倒下，Amyoku出版都以電子書為主。而且往後如有錯字或改版，購買電子書的讀者都可以收到更新版本。另外，海外的讀者也不必擔心疫情導致包裹在路上遺失等風險，有電腦或手機平板即時享受文字。,因為愛苗庫的主要服務對象是50歲以上的長輩，所以年輕的穆斯塔法戲份較少。,其中成本最高的是限量八位的客製迷你自傳，若以募資目標當分母來算，自傳都算進去的話會這麼高的。",
-                ProjectPlansCount = 3,
-                CreatedDate = new DateTime(2020, 12, 12),
-                SubmittedDate = new DateTime(2020, 12, 31),
-                LastEditTime = new DateTime(2021, 12, 25),
-                ApprovingStatus = 2
-            });
+            ////第22個提案
+            //context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            //{
+            //    ProjectId = 22,
+            //    MemberId = 22,
+            //    ProjectName = "《視覺Podcast》電子書出版計畫｜一對男同志伴侶的旅外人生",
+            //    Category = "遊戲出版",
+            //    ProjectStatus = "集資中",
+            //    StartDate = new DateTime(2021, 01, 01),
+            //    EndDate = new DateTime(2021, 04, 16),
+            //    Fundedpeople = 1,
+            //    FundingAmount = 1500,
+            //    AmountThreshold = 50000,
+            //    CreatorName = "Amyoku 愛苗庫",
+            //    ProjectMainUrl = "https://imgur.com/Lx4FPgK",
+            //    //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+            //    ProjectCoverUrl = "https://imgur.com/SfI5Drh",
+            //    //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+            //    ProjectDescription = "",
+            //    ProjectImgUrl = "與國際接軌，閱讀他國同志的故事 每年秋天台灣熱熱鬧鬧舉辦同志遊行，甚至成為亞洲第一個同婚立法的國家。然而在世界其他角落，好比葉門、阿曼、喬治亞等地區的同志們能像在台灣一樣走上街頭表達自己嗎？讓我們透過托拜西和穆斯塔法一窺究竟。這是個文化背景與個人認同離我們如火星般遙遠的故事，成長在保守的英國鄉間托拜西是一位同志，是一位飄泊世界的旅人，一生醉心於藝術和教育事業，遇到一位來自極端保守中東國家的愛人，終於結束遊盪的人生如船隻靠進安定的港灣。Amyoku愛苗庫團隊發掘了這個故事，巴不得疫情鎖國下無奈的人們都能藉此開一扇窗，看看這世界上還有這樣豐富多彩的人生與我們共處在地球上。許許多多的理所當然，是不是如你我所料而不會有另一種發展，或選擇。盼望這樣的故事，帶給我們更多省思與看待事物不同的眼界。,https://imgur.com/0WImNi1,托拜西和伴侶穆斯塔法的精采的對談，加上托拜西迷人的聲線，簡直可以做Podcast，可惜穆斯塔法不希望自己的聲音公諸於世。2020年夏天，愛苗庫團隊將音檔轉化為文字，勾勒出托拜西這輩子曾長住的國家與個人對政治、性別議題與個人認同看法，也有他對該國LGBT發展狀況的描述。另一方面，這個作品也為沒有子女的兩人愛情，留下紀念見證，多一些人記住他們。,出版物內頁示意圖：盡可能與以下英文原版的編排相同,https://imgur.com/u9k46aj,過去的努力與未來的規劃,https://imgur.com/7kgmgNF",
+            //    //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+            //    ProjectVideoUrl = "https://youtu.be/HAkcVdvD1mw",
+            //    Project_Question = "為什麼不做紙本書呢？,為何書中大多是穆斯塔法問，托拜西回答？,回饋禮成本佔經費運用太多了吧？平台手續費才8%不是嗎？",
+            //    Project_Answer = "有的！目前這本英文自傳已經在讀墨上架，也歡迎您拜訪Amyoku愛苗庫官網閱讀免費的版本。www.amyoku.com / blog / visualpodcast,為了響應無紙文化，避免樹木為了這本書而倒下，Amyoku出版都以電子書為主。而且往後如有錯字或改版，購買電子書的讀者都可以收到更新版本。另外，海外的讀者也不必擔心疫情導致包裹在路上遺失等風險，有電腦或手機平板即時享受文字。,因為愛苗庫的主要服務對象是50歲以上的長輩，所以年輕的穆斯塔法戲份較少。,其中成本最高的是限量八位的客製迷你自傳，若以募資目標當分母來算，自傳都算進去的話會這麼高的。",
+            //    ProjectPlansCount = 3,
+            //    CreatedDate = new DateTime(2020, 12, 12),
+            //    SubmittedDate = new DateTime(2020, 12, 31),
+            //    LastEditTime = new DateTime(2021, 12, 25),
+            //    ApprovingStatus = 2
+            //});
 
-            //第22個提案的會員資料
-            context.Members.AddOrUpdate((x) => x.MemberId, new Member
-            {
-                MemberId = 22,
-                MemberAccount = "Storm Kuo125",
-                MemberPassword = "NO22memberPassword",
-                MemberName = "Mikei",
-                MemberAddress = "",
-                MemberBirth = new DateTime(1940, 10, 1),
-                MemberConEmail = "ggyypodccast@gmail.com",
-                MemberRegEmail = "ggyy@pod.org",
-                MemberMessage = "",
-                MemberPhone = "",
-                MemberTeamName = "汪睦容",
-                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
-                AboutMe = "成立於2020年元旦，志在圓長輩的夢想，送長輩獨一無二的禮物。 帶長輩遊山玩水，了解異國文化差異之外，愛苗庫也提供代寫長輩自傳回憶錄的服務。我們的團隊能用英語、北京語和閩南語訪問長輩，以中英文書寫他們的生命篇章。",
-                Gender = "女",
-                ProfileImgUrl = "https://i.imgur.com/nKfPvUTt.jpg",
-                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
-            });
-            ////第22個提案中的方案
-            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
-            {
-                PlanId = 120,
-                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
-                ProjectId = 22,
-                ProjectPlanId = 1,
-                PlanTitle = "單純贊助，不需回饋",
-                PlanFundedPeople = 0,
-                PlanDescription = "",
-                PlanShipDate = new DateTime(2021, 10, 01),
-                PlanImgUrl = "https://i.imgur.com/d0350iwm.png",
-                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanPrice = 100,
-                QuantityLimit = 50
-            });
-            ////第22個提案中的方案
-            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
-            {
-                PlanId = 121,
-                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
-                ProjectId = 22,
-                ProjectPlanId = 2,
-                PlanTitle = "視覺Podcast電子書乙份原訂售價新台幣230元以Readmoo讀墨電子書型式寄出兌換碼",
-                PlanFundedPeople = 0,
-                PlanDescription = "",
-                PlanShipDate = new DateTime(2021, 10, 06),
-                PlanImgUrl = "https://i.imgur.com/cgQmhG3m.png",
-                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanPrice = 200,
-                QuantityLimit = 50
-            });
-            ////第22個提案中的方案
-            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
-            {
-                PlanId = 122,
-                ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
-                ProjectId = 22,
-                ProjectPlanId = 3,
-                PlanTitle = "視覺Podcast中文版電子書五本以Readmoo讀墨電子書型式寄出兌換碼",
-                PlanFundedPeople = 1,
-                PlanDescription = "",
-                PlanShipDate = new DateTime(2021, 10, 06),
-                PlanImgUrl = "https://i.imgur.com/5WLDAuXm.png",
-                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                PlanPrice = 900,
-                QuantityLimit = 50
-            });
+            ////第22個提案的會員資料
+            //context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            //{
+            //    MemberId = 22,
+            //    MemberAccount = "Storm Kuo125",
+            //    MemberPassword = "NO22memberPassword",
+            //    MemberName = "Mikei",
+            //    MemberAddress = "",
+            //    MemberBirth = new DateTime(1940, 10, 1),
+            //    MemberConEmail = "ggyypodccast@gmail.com",
+            //    MemberRegEmail = "ggyy@pod.org",
+            //    MemberMessage = "",
+            //    MemberPhone = "",
+            //    MemberTeamName = "汪睦容",
+            //    MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
+            //    AboutMe = "成立於2020年元旦，志在圓長輩的夢想，送長輩獨一無二的禮物。 帶長輩遊山玩水，了解異國文化差異之外，愛苗庫也提供代寫長輩自傳回憶錄的服務。我們的團隊能用英語、北京語和閩南語訪問長輩，以中英文書寫他們的生命篇章。",
+            //    Gender = "女",
+            //    ProfileImgUrl = "https://i.imgur.com/nKfPvUTt.jpg",
+            //    //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            //});
+            //////第22個提案中的方案
+            //context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            //{
+            //    PlanId = 120,
+            //    ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+            //    ProjectId = 22,
+            //    ProjectPlanId = 1,
+            //    PlanTitle = "單純贊助，不需回饋",
+            //    PlanFundedPeople = 0,
+            //    PlanDescription = "",
+            //    PlanShipDate = new DateTime(2021, 10, 01),
+            //    PlanImgUrl = "https://i.imgur.com/d0350iwm.png",
+            //    //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+            //    PlanPrice = 100,
+            //    QuantityLimit = 50
+            //});
+            //////第22個提案中的方案
+            //context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            //{
+            //    PlanId = 121,
+            //    ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+            //    ProjectId = 22,
+            //    ProjectPlanId = 2,
+            //    PlanTitle = "視覺Podcast電子書乙份原訂售價新台幣230元以Readmoo讀墨電子書型式寄出兌換碼",
+            //    PlanFundedPeople = 0,
+            //    PlanDescription = "",
+            //    PlanShipDate = new DateTime(2021, 10, 06),
+            //    PlanImgUrl = "https://i.imgur.com/cgQmhG3m.png",
+            //    //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+            //    PlanPrice = 200,
+            //    QuantityLimit = 50
+            //});
+            //////第22個提案中的方案
+            //context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            //{
+            //    PlanId = 122,
+            //    ProjectName = "小米遊記》第一本寵物友善環境探訪實錄／寫真書出版計畫",
+            //    ProjectId = 22,
+            //    ProjectPlanId = 3,
+            //    PlanTitle = "視覺Podcast中文版電子書五本以Readmoo讀墨電子書型式寄出兌換碼",
+            //    PlanFundedPeople = 1,
+            //    PlanDescription = "",
+            //    PlanShipDate = new DateTime(2021, 10, 06),
+            //    PlanImgUrl = "https://i.imgur.com/5WLDAuXm.png",
+            //    //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+            //    PlanPrice = 900,
+            //    QuantityLimit = 50
+            //});
         }
     }
 }
