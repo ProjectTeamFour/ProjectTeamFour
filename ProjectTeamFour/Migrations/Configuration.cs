@@ -36,7 +36,7 @@
                 Category = "科技設計",
                 ProjectStatus = "已結束",
                 StartDate = new DateTime(2021, 3, 1),
-                EndDate = new DateTime(2021, 4, 11),
+                EndDate = new DateTime(2021, 3, 20),
                 Fundedpeople = 39,
                 FundingAmount = 658200m,
                 AmountThreshold = 1000000m,
