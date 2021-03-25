@@ -29,6 +29,11 @@
     padding: .5rem 1rem;
 }
 
+.nav-links:hover {
+    color: #f00;
+    text-decoration: none;
+}
+
 
 .nav-item-tag .account {
     background-color: #F6F6F6;
@@ -179,9 +184,23 @@
     justify-content: space-around;
 }
 
+.itemTitle {
+    display: flex;
+    border-bottom: 1px solid;
+}
+
+.itemTitle th{
+    padding: 0 1rem 0.2rem;
+}
+/*
+.itemTitle th:last-child{
+    margin: 0 0 0 3rem;
+}*/
+
+.detail-group td{
+    margin:0 2rem 0 0;
+}
 /* -------------第三格---------------------------------------- */
-
-
 .case {
     padding: 2rem 0;
 }
@@ -525,4 +544,6 @@ tr.shown td.details-control {
     left: 3rem;
 }
 
-
+.dataTables_wrapper{
+    width:100%;
+}

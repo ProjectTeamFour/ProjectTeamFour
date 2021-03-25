@@ -45,7 +45,7 @@
     </div>
     <input type="text" name="name" value="@userOrderData" id="transJSON" />
     <input type="text" name="name" value="@userOrderDetailData" id="odtransJSON" />
-    <input type="text" name="name" value="@Model" />
+    @*<input type="text" name="name" value="@Model" />*@
 
 
     <!-- Modal -->
@@ -61,18 +61,20 @@
                 <div class="modal-body">
                     <div class="dataitems">
                         <div class="row">       
-                            <table>
+                            <table id="mytable-2">
                                 <tr class="itemTitle">
                                     <th class="items">方案單價</th>
                                     <th class="items">方案數量</th>
                                     <th class="items">方案名稱</th>
+                                    @*<th class="items">方案圖片</th>*@
                                 </tr>
                                 <tr v-for="item in modeldata " class="detail-group col-12">
                                     <td>{{item.OrderPrice}}</td>
                                     <td id="qty">{{item.OrderQuantity}}</td>
                                     <td id="plantitle">{{item.PlanTitle}}</td>
+                                    @*<td id="planurl">{{item.OrderPlanImgUrl}}</td>*@
                                 </tr>
-                            </table>                                                                                    
+                            </table >                                                                                    
                         </div>
                     </div>
                 </div>
