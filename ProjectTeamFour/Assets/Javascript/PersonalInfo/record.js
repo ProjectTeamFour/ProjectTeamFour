@@ -5,6 +5,8 @@ var objod = JSON.parse(getodjson.value); //orderdetail 陣列
 console.log(obj);
 console.log(objod);
 
+
+
 var jsonObj = {
     "items": obj,
     "detail": objod,
@@ -44,6 +46,9 @@ $(document).ready(function () {
         "bLengthChange": false,
         "pageLength": 5
     })
+
+    var table_clear = $(".dataTables_empty");
+    table_clear.html('<p>目前無任何購買紀錄<p>');   
 });
 
 

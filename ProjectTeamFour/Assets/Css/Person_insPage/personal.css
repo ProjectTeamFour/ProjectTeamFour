@@ -43,6 +43,11 @@
     text-align: center;
 }
 
+.nav-links:hover {
+    color: #f00;
+    text-decoration: none;
+}
+
 
 .nav-item-tag .account {
     background-color: #F6F6F6;
@@ -156,7 +161,9 @@
     font-size: 0.6rem;
 }
 
-
+#mytable-2{
+    width:100%;
+}
 /* --------------第二格---------------------------------- */
 
 
@@ -180,9 +187,19 @@
     justify-content: space-around;
 }
 
+.itemTitle {
+    display: flex;
+    border-bottom: 1px solid;
+}
+
+.itemTitle items{
+    padding: 0 1rem 0.2rem;
+}
+
+.detail-group .detail-item {
+    width: 30%;
+}
 /* -------------第三格---------------------------------------- */
-
-
 .case {
     padding: 2rem 0;
 }
@@ -282,8 +299,8 @@
 
     .search-item i {
         position: absolute;
-        left: 4rem;
-        top: 2.5rem;
+        left: 3.8rem;
+        top: 2.3rem;
     }
 
 
@@ -375,7 +392,10 @@
     display: block;
     height:150px;
 }
-/* ------------------------------ */
+input.mysearch {
+    padding: 0 20px;
+}
+    /* ------------------------------ */
 html {
     color: #212121;
     /*font-family: sans-serif;*/
@@ -521,9 +541,22 @@ tr.shown td.details-control {
     justify-content: space-around;
 }
 
-#qty, #plantitle {
+#qty{
     position: relative;
     left: 3rem;
 }
 
 
+#odmoney {
+    position: relative;
+    left: 2rem;
+}
+#plantitle {
+    position: relative;
+    left: 1rem;
+    font-size:0.5rem;
+}
+
+.dataTables_wrapper {
+    width: 100%;
+}

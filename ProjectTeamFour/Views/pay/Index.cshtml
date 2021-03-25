@@ -26,14 +26,14 @@
             data:{
                 inputData: {
                     Name: obj.MemberName,
-                    Address: obj.OrderAddress,
+                    Address: obj.MemberAddress,
                     Tel: obj.MemberPhone,
                     Email: obj.MemberConEmail,
                 },
                 inputDataCheck: {
                     NameError: false,
                     NameErrorMsg: '',
-                    AddressError: '',
+                    AddressError: 1,
                     AddressErrorMsg: '',
                     TelError: '',
                     TelErrorMsg: '',
@@ -46,7 +46,7 @@
                 'inputData.Name': {
                     immediate: true,        //點開即驗證
                     handler: function () {
-                        if (this.inputData.Name.length < 0) {
+                        if (this.inputData.Name == "") {
                             this.inputDataCheck.NameError = true;
                             this.inputDataCheck.NameErrorMsg = '名稱不得為空';
                         }
@@ -59,8 +59,7 @@
                 'inputData.Address': {
                     immediate: true,        //點開即驗證
                     handler: function () {
-                        @*let addressRegexp = /^[0-9]{3}/;  //開頭為數字*@
-                        if (this.inputData.Address.length<=0) {
+                        if (this.inputData.Address == "") {
                             this.inputDataCheck.AddressError = true;
                             this.inputDataCheck.AddressErrorMsg = '地址不得為空';
                         }
@@ -82,7 +81,7 @@
                         }
                         else if (this.inputData.Tel.length < 10) {
                             this.inputDataCheck.TelError = true;
-                            this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼';
+                            this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
                         }
                         else if (!telRegexpNum.test(this.inputData.Tel)) {
                             this.inputDataCheck.TelError = true;
@@ -187,10 +186,6 @@
                     }
                 </div>
                 <div class="checkout">            
-                    <div class="checkout-price">
-                        <h4>shipping</h4>
-                        <span>Calculated at next step</span>
-                    </div>
                     <div class="check-total">
                         <h4>Total</h4>
                         <P>NTD @StringFormat5.addComma((int)Model.TotalAccount)</P>

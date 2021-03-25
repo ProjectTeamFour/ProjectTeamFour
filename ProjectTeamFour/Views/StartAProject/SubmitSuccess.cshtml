@@ -1,5 +1,9 @@
 ﻿@model MemberViewModel
 
+@{
+    int MemberId = ViewBag.MemberId;
+}
+
 @section topCSS{
     <link href="~/Assets/Css/StartAProjectPage/submitsuccess.css" rel="stylesheet" />
 }
@@ -13,12 +17,12 @@
             </div>
 
             <div class="inputbox-item pb-3">
-                <p class="d-flex justify-content-center welcome text-center">資料已送至資料中心，專員會幫您審核提案<br>在個人頁面可以看到您的提案進度</p>
+                <p class="d-flex justify-content-center welcome text-center">資料已送至資料中心，專員會幫您審核<br>在個人頁面可以看到您的提案進度</p>
             </div>
 
             <div class="submitsuccesspage-item inputbox">
                 <div class="inputbox-item">
-                    <a href="/UserInfo/Member/@Model.MemberId" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                    <a href="/UserInfo/Member/@MemberId" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
                         <p>- 返回個人頁面 -</p>
                     </a>
                 </div>

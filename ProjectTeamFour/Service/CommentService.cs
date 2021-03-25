@@ -114,7 +114,7 @@ namespace ProjectTeamFour.Service
             
             var result = new List<CommentForMemberViewModel>();
             ///該會員問過的所有問題
-            var mycomment = _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(c => c).ToList();
+            var mycomment = _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(c => c).ToList().OrderByDescending(x => x.Comment_Time);
             if (mycomment != null)
             {
                 foreach (var comment in mycomment)
@@ -139,6 +139,8 @@ namespace ProjectTeamFour.Service
                     result.Add(commentForMemberVM);
                 }
 
+                
+
                 return result;
 
             }
@@ -160,7 +162,7 @@ namespace ProjectTeamFour.Service
         {
             var result = new List<CommentForMemberViewModel>();
 
-            var askedComments = _repository.GetAll<Comment>().Where(c => c.AskedMemberId == memberId).Select(x => x).ToList();
+            var askedComments = _repository.GetAll<Comment>().Where(c => c.AskedMemberId == memberId).Select(x => x).ToList().OrderByDescending(x => x.Comment_Time);
 
             if (askedComments != null)
             {
@@ -186,6 +188,10 @@ namespace ProjectTeamFour.Service
 
                     result.Add(commentForMemberVM);
                 }
+
+
+
+
 
                 return result;
 

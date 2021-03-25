@@ -27,7 +27,7 @@
                         <h2>@Model.MemberName</h2>
                         <p>
                             購買過
-                            @Model.Records.MyOrderDetailList.Where(x=>x.condition =="已付款").Count()<p>件專案</p>
+                            <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span> 
                             <br />發起過
                             @if (@Model.MyProjects.Count == null)
                             {
