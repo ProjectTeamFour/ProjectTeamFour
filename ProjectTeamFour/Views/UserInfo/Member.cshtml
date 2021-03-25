@@ -1,12 +1,24 @@
 ﻿@model MemberViewModel
 @{
     //var vm = (MemberViewModel)Session["Member"];
-    var birthday = Model.MemberBirth.ToShortDateString().ToString();
+    var birthday = Model.MemberBirth.ToString("yyyy-MM-dd");
     DateTime today = DateTime.Now;
+    var genderval = Model.Gender;
+    switch (genderval)
+    {
+        case ("男性"):
 
- }
+            break;
+        case ("女性"):
+            break;
+        case ("其他"):
+            break;
+        //default:
 
-@section topCSS{
+    }
+            }
+
+            @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
     <link href="~/Assets/Plugin/JQuery/jquery_1.10.24datatable.css" rel="stylesheet" />
@@ -55,9 +67,9 @@
                 <section class="record">
                     <div class="wrap-inside">
                         @if (Model.Records != null)
-                        {
+            {
 
-            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
+                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
         else
         {
 <div>您目前沒有任何贊助歷史!</div>}
@@ -76,21 +88,21 @@
                         @{ if (Model.MyProjects == null)
                             {
                                 <p>目前還沒有任何提案!歡迎隨時發起提案</p>
-                            }
+    }
                             else
-                            {
-                                foreach (var item in Model.MyProjects)
-                                {
+    {
+        foreach (var item in Model.MyProjects)
+        {
                                         <div class="case-doing-creating">
                                             <h3>審核中專案</h3>
                                             <hr />
                                             <div class="case-doing-creating-content">
                                                 @if (item.ApprovingStatus==0)
                                                 {
-                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
                                                 }
                                                 else
-                                                {
+    {
                                                     <p>目前您沒有創建中專案</p>
                                                 }
                                             </div>
@@ -102,10 +114,10 @@
                                                 <div class="case-doing-creating-content">
                                                     @if ((item.EndDate.Ticks-today.Ticks) > 0)
                                                     {
-                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
                                                     }
                                                     else
-                                                    {
+    {
                                                         <p>目前您沒有募資中專案</p>
 
                                                     }
@@ -119,10 +131,10 @@
                                                 <div class="case-doing-creating-content">
                                                     @if ((item.EndDate.Ticks - today.Ticks) < 0)
                                                     {
-                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
                                                     }
                                                     else
-                                                    {
+    {
                                                         <p>目前您沒有已結束專案</p>
 
                                                     }
@@ -168,11 +180,11 @@
                 <h3>您尚未有任何留言</h3>
             </div> }
         else
+    {
+        foreach (var comment in Model.Comments)
         {
-            foreach (var comment in Model.Comments)
-            {
-@Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)}
-}
+            @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)}
+    }
 
 
 
@@ -194,12 +206,12 @@
                 <div class="edit">
                     <div class="wrap-inside">
                         @{ var vm = (MemberViewModel)Session["Member"]; }
-                        @if (vm == null)
+    @if (vm == null)
                         {
-                            Html.ActionLink("登入", "Login", "Member");
-                        }
+        Html.ActionLink("登入", "Login", "Member");
+    }
                         else if (vm != null)
-                        {
+    {
                             //<form method="post" action="" accept-charset="UTF-8">
             <div id="user-profile" class="container">
                 <div class="form-group row">
@@ -208,21 +220,25 @@
                         <div id="upload-img">
                             <!-- 這裡是複製的 -->
                             <div class="flyingUpload">
-                                <svg width="93" height="93" class="transpCircle">
+                                @*<svg width="93" height="93" class="transpCircle">
                                     <mask id="mask">
                                         <rect fill="white" width="100%" height="100%" />
                                         <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
                                     </mask>
                                     <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
-                                </svg>
+                                </svg>*@
                                 <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
-                                     class="avatar" style="width: 93px;" id="imgshow">
-                                <span class="image-hinter">
-                                    <strong>上傳圖片</strong><br>
-                                    <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
-                                </span>
-                                <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file">
-                                <div id="imgurl" hidden="hidden"></div>
+                                     class="avatar" style="width: 93px;height:93px; border-radius" id="imgshow">
+                                <div class="">
+                                    <span class="image-hinter" style="">
+                                        <strong>上傳圖片</strong><br>
+                                        <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
+                                        <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file" style="opacity: 0.1;">
+                                        <span id="imgurl" hidden="hidden"></span>
+                                    </span>
+
+
+                                </div>
                             </div>
                         </div>
                         <div id="memberid" hidden="hidden">@vm.MemberId</div>
@@ -240,17 +256,18 @@
                         <div id="gender" class="form-group">
                             <label for="gender">性別</label>
                             <p id="get-gender" hidden>@vm.Gender</p>
-                            <select class="form-control" id="gender1" name="Gender">
-                                <option value="請選擇性別">請選擇性別</option>
-                                <option value="男性">男性</option>
-                                <option value="女性">女性</option>
-                                <option value="其他">其他</option>
-                            </select>
+                            <input type="text" class="form-control" id="gender1" value="@vm.Gender" name="Gender" disabled>
+                            @*<select class="form-control" id="gender1" name="Gender">
+            <option value="請選擇性別">請選擇性別</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
+            <option value="其他">其他</option>
+        </select>*@
                         </div>
 
                         <div class="form-group">
                             <label for="birthday">生日</label>
-                            <input type="date" class="form-control" id="birthday1" value="@vm.MemberBirth.Date" name="MemberBirth">
+                            <input type="date" class="form-control" id="birthday1" value="@birthday" name="MemberBirth">
                         </div>
 
 
@@ -309,7 +326,7 @@
     }*@
 
 @section endJs
-{
+    {
     <script src="~/Assets/Plugin/JQuery/jquery_3.5.1_code.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
@@ -323,15 +340,15 @@
 
         var LanchCommentAnswer = "";
 
-        
-        
+
+
 
         function changeTextareaValue(event)
         {
-            
+
             LanchCommentAnswer = event.target.value;
             /*LanchCommentAnswer = e;*/
-            
+
         }
 
         ///回覆按鈕觸發事件
@@ -339,7 +356,7 @@
 
             if (LanchCommentAnswer == "") {
                 Swal.fire({
-                    icon: 'error',
+                icon: 'error',
                     title: 'Oops...',
                     text: '請留言!',
 
