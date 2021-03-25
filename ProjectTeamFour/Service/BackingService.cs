@@ -34,7 +34,7 @@ namespace ProjectTeamFour.Service
             var backorder = new BackingRecordsViewModel();
             var odlist = new List<OrderDetail>();
             var ordermodel = _repository.GetAll<Order>().Where((x) => x.MemberId == member).Select((x) => x).ToList(); //找到匹配memberid的訂單           
-            var od = ordermodel.SelectMany(x => x.OrderDetails.Select(y => y)); //訂單的詳細(好幾筆)          
+            var od = ordermodel.SelectMany(x => x.OrderDetails.Select(y => y)); //訂單的詳細(好幾筆)      //依據為登入的memberId
             foreach (var i in od)
             {
                 var order = new OrderDetail()

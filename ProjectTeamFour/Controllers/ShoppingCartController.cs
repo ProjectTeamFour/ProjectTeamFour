@@ -55,6 +55,8 @@ namespace ProjectTeamFour.Controllers
             //還原Session
             var carList = (CartItemListViewModel)Session["Cart"];
 
+            
+
             return View(carList);
         }
 

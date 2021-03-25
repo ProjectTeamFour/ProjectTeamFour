@@ -86,6 +86,10 @@ html {
   margin: 2rem 1.5rem;
 }
 
+.bio-img {
+    margin-right: 1rem;
+}
+
 #creator-info .item-logo img {
   width: 3.5rem;
   height: 3.5rem;
@@ -159,21 +163,29 @@ html {
 }
 
 /* 不太會用tab的客製化樣式 */
-#info-tabs a {
-  text-decoration: none;
-  color: #212121;
-  background-color: #f6f6f6;
-  /* padding: 2rem 0; */
+
+#info-tabs {
+    background-color: #f6f6f6;
+    margin:1rem 0;
 }
-/* 
-#info-tabs a:enabled {
-  border: 0 0 1px 0 solid #212121;
-} */
+
+#info-tabs a {
+    text-decoration: none;
+    color: #212121;
+    background-color: #f6f6f6;
+    padding: 1rem 0;
+    margin:auto;
+    justify-self:baseline;
+}
+ 
+#info-tabs a:active{
+  border-block-end-color: #212121;
+} 
 
 /* 共用區域 */
 
 #campaign-status-label .text-wrap::before {
-  display: block;
+/*  display: block;
   position: relative;
   left: -1rem;
   top: 2.5rem;
@@ -181,14 +193,14 @@ html {
   height: 2.5rem;
   background-color: #9b9b9b;
   content: " ";
-  border-radius: 1.5rem;
-  -webkit-border-radius: 1.5rem;
-  -moz-border-radius: 1.5rem;
+  border-radius: 1.5rem;*/
 }
 
 .text-wrap {
   padding-left: 1rem;
   font-size: 0.8rem;
+  border-left:0.25rem solid #9b9b9b;
+  vertical-align:text-top;
 }
 
 #campaign-abount #campaign-info-item h1 {
@@ -372,6 +384,11 @@ h4 {
 }
 
 /*聯絡提案人modal樣式*/
+
+.modal-backdrop {
+    position: relative;
+}
+
 .bio-img img{
     width:120px;
     height:120px;

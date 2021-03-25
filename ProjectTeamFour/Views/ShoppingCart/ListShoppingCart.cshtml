@@ -24,7 +24,7 @@
                 data: {
                     Models:@Html.Raw(modelJS),
                     watchInput: 0,
-                    detailUrl:"/ProjectDetail/Index/"
+                    detailUrl: "/ProjectDetail/Index/"
                 },
                 methods: {
                     RemoveFromCart: function (PlanId) {
@@ -35,7 +35,8 @@
                     TotalPrice: function () {
                         var result = 0;
                         this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
-                        return result;
+                        formatResult=formatMoney(result, 0);
+                        return formatResult;
                     }
                 },
                 watch: {
@@ -45,9 +46,30 @@
                         }
                     }
                 }
-                
-            })
-            var x = 100;
+
+            });
+
+            function formatMoney(value, type) {
+                if (/[^0-9\.]/.test(value))
+                    return "0";
+                if (value == null || value == "")
+                    return "0";
+                value = value.toString().replace(/^(\d*)$/, "$1.");
+                value = (value + "00").replace(/(\d*\.\d\d)\d*/, "$1");
+                value = value.replace(".", ",");
+                var re = /(\d)(\d{3},)/;
+                while (re.test(value))
+                    value = value.replace(re, "$1,$2");
+                value = value.replace(/,(\d\d)$/, ".$1");
+                if (type == 0) {// 不帶小數點
+                    var a = value.split(".");
+                    if (a[1] == "00") {
+                        value = a[0];
+                    }
+                }
+                return value;
+            }
+
         </script>
     }
     
@@ -78,7 +100,7 @@
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
-        else if (noresult.innerText == "購物車無任何商品")
+        else if (noresult!=null&&noresult.innerText == "購物車無任何商品")
         {
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
@@ -242,37 +264,38 @@
 
 
                 <div class="shop-items col-lg-6">
-                    
-                        @if (Model != null)
-                        {
-                           
-                                @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
-                            
 
+                    @if (Model != null)
+                    {
 
-                        }
-
-                        else
-                        {
-                            <div class="no-result">
-
-                                <p>購物車無任何商品</p>
-
-                            </div>
-                        }
+                        @Html.Partial("~/Views/Shared/PartialView/_cartItemPartial.cshtml");
 
 
 
+                    }
+                    else
+                    {
+                        <div class="no-result">
 
-                    
-                </div>
+                            <p>購物車無任何商品</p>
+
+                        </div>
+                    }
+
+
+
+
+
+
                     <div class="col-lg-6"></div>
                     <div class="col-sm-12 col-lg-6 for-seller">
                         <textarea name="note" id="cartSpecialInstructions" placeholder="Special instructions for seller"
                                   aria-label="Special instructions for seller"></textarea>
                     </div>
                 </div>
+            </div>
         </div>
+            
     </section>
     <section class="cart-out">
         <div class="container">
@@ -296,7 +319,7 @@
                     </a>
 
                     <button name="clearcart" class="button outline less-padding clearcart" onclick=" ClearCart()" aria-label="clear cart">
-                        <p>清空購物車</p>
+                        <p id="clearCart">清空購物車</p>
                     </button>
 
                 </div>
@@ -316,50 +339,47 @@
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="wish-list-image">
-                    <a href="/ProductDetail/Index">
+                    <a href="/ProjectDetail/Index/6">
                         <img src="~/Assets/Img/ShoppingCart/projecttest1.jpg" alt="">
                     </a>
                 </div>
                 <div class="wish-list-text">
-                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD <span>起</span> </span> </a>
+                    <a href="/ProjectDetail/Index/6"> <span class="title">SWOL 雙水箱旋轉拖把 | 分離淨水和污水，才是真正的乾淨</span> <span class="price">$949 NTD <span>起</span> </span> </a>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="wish-list-image">
-                    <a href="/ProductDetail/Index">
+                    <a href="/ProjectDetail/Index/9">
                         <img src="~/Assets/Img/ShoppingCart/projecttest2.jpg" alt="">
                     </a>
                 </div>
                 <div class="wish-list-text">
-                    <a href="/ProductDetail/Index">
+                    <a href="/ProjectDetail/Index/9">
                         <span class="title">
-                            Bento Box in Elements Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Rem vitae libero dolorem atque illum minus rerum cumque sint beatae
-                            ratione distinctio, porro harum! Impedit, necessitatibus quaerat optio sed deserunt
-                            vel?
+                            拍拍打｜SWDK無線吸塵除螨機
                         </span>
-                        <span class="price">$28.00 USD<span>起</span> </span>
+                        <span class="price">$2480 NTD<span>起</span> </span>
                     </a>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="wish-list-image">
-                    <a href="/ProductDetail/Index">
+                    <a href="/ProjectDetail/Index/11">
                         <img src="~/Assets/Img/ShoppingCart/projecttest3.jpg" alt="">
                     </a>
                 </div>
                 <div class="wish-list-text">
-                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD<span>起</span> </span> </a>
+                    <a href="/ProjectDetail/Index/11"> <span class="title">SoulFa靈魂沙發第二張專輯< Slumber Days></span> <span class="price">$200 NTD<span>起</span> </span> </a>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="wish-list-image">
-                    <a href="/ProductDetail/Index">
+                    <a href="/ProjectDetail/Index/10">
                         <img src="~/Assets/Img/ShoppingCart/projecttest4.jpg" alt="">
                     </a>
                 </div>
                 <div class="wish-list-text">
-                    <a href="/ProductDetail/Index"> <span class="title">Food Planner</span> <span class="price">$28.00 USD<span>起</span> </span> </a>
+                    <a href="/ProjectDetail/Index/10"> <span class="title">一個把廢物變寶物的塑膠資源再生計畫-不垃圾場</span> <span class="price">$459 NTD<span>起</span> </span> </a>
                 </div>
             </div>
         </div>
