@@ -3,7 +3,7 @@
     var vm = (MemberViewModel)Session["Member"];
 }
 
-<div class="col-sm-12 col-md-6 col-lg-4 message-block">
+<div class="col-sm-12 col-md-6 col-lg-4 message-block" data-index="@Model.ProjectName@Model.ReadStatus">
     <div class="project-anydetail">
         <div class="project-main-url">
             <img class="main-url" src="@Model.ProjectMainUrl" />

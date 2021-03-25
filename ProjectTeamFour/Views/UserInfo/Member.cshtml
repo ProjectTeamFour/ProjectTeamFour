@@ -151,14 +151,15 @@
                                         <option value="3">已讀</option>
                                     </select>
                                     <i class="fas fa-search"></i>
-                                    <input type="search">
+                                    <input type="search" class="mysearch">
+                                    <style id="search-style"></style>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="container">
+                <div class="container all-comments">
                     <div class="row myComments">
 
                         
@@ -384,25 +385,86 @@
 
     <script>
         let messageSelect = document.querySelector(".message-input");
-        let noReply = document.querySelectorAll(".no-reply");
-        let hasReply = document.querySelectorAll(".has-reply");
+        
+        
         let myComments = document.querySelector(".myComments");
-        messageSelect.addEventListener("change", function () {
-            if (messageSelect.value == "2") {
-                hasReply.forEach(el => el.offsetParent.setAttribute("style", "display:none;"));
+        let allComments = document.querySelector(".all-comments");
+        var cloneMyComments = myComments.cloneNode(true);
+        let mysearch = document.querySelector(".mysearch");
+        let searchStyle = document.querySelector("#search-style");
+        mysearch.addEventListener("input", function () {
+            if (!this.value) {
+                searchStyle.innerHTML = "";
+                return;
+            }
+            else
+            {
+                if (messageSelect.value == "2") {
+                    searchStyle.innerHTML = "";
+                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} + "False"
+
+                        + "\"]){ display: none } `;
+                }
+                else if (messageSelect.value == "3") {
+                    searchStyle.innerHTML = "";
+                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} + "True"
+
+                        + "\"]){ display: none } `;
+                }
+                else
+                {
+                    searchStyle.innerHTML = "";
+                    searchStyle.innerHTML = `.message-block:not([data-index*=\"" + ${this.value} 
+
+                        + "\"]){ display: none } `;
+                }
 
             }
-            else if (messageSelect.value == "3") {
-                noReply.forEach(el => el.offsetParent.setAttribute("style", "display:none;"));
-
+           
+        });
+        messageSelect.addEventListener("change", function () {
+            if (this.value == "2" || mysearch.value != "") {
+                searchStyle.innerHTML = "";
+                searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "False"+ mysearch.value + "\"]){ display: none } ";
+            }
+            else if (this.value == "3" || mysearch.value != "") {
+                searchStyle.innerHTML = "";
+                searchStyle.innerHTML = ".message-block:not([data-index*=\"" + "True" + mysearch.value + "\"]){ display: none } ";
             }
             else {
-
+                searchStyle.innerHTML = "";
+                
             }
-        });
-        function Init() {
+        })
 
-        }
+        //messageSelect.addEventListener("change", function () {
+        //    if (messageSelect.value == "2") {
+                
+        //        var hasReply = document.querySelectorAll(".has-reply");
+        //        hasReply.forEach(node => myComments.removeChild(node.offsetParent));
+        //        Init();
+               
+        //    }
+        //    else if (messageSelect.value == "3") {
+                
+        //        var noReply = document.querySelectorAll(".no-reply");
+        //        noReply.forEach(node =>myComments.removeChild(node.offsetParent));
+        //        Init();
+                
+        //    }
+        //    else {
+
+        //    }
+        //});
+
+        //function Init()
+        //{
+        //            allComments.removeChild(myComments);
+
+        //            allComments.appendChild(cloneMyComments);
+        //}
+
+
 
         
     </script>
