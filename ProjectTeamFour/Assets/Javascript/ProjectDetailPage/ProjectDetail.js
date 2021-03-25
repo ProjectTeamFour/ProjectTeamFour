@@ -153,3 +153,4 @@ $(document).on('click', '#send_msg', function () {
             interval: 2000
         })
     });
+});

@@ -45,9 +45,9 @@ namespace ProjectTeamFour.Service
                     LastEditTime = entity.LastEditTime,
                     SubmittedDate = entity.SubmittedDate,
                     ApprovingStatus = entity.ApprovingStatus,
-
                     ProjectStatus = entity.ProjectStatus,
-
+                    EndDate = entity.EndDate,
+                    StartDate = entity.StartDate,
                 };
                 myProjectsListVM.Add(myProjectVM);
             }

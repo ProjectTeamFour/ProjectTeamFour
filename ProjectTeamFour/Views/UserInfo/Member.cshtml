@@ -1,7 +1,10 @@
 ﻿@model MemberViewModel
-@*@{
-        var vm = (MemberViewModel)Session["Member"];
-    }*@
+@{
+    //var vm = (MemberViewModel)Session["Member"];
+    var birthday = Model.MemberBirth.ToShortDateString().ToString();
+    DateTime today = DateTime.Now;
+
+ }
 
 @section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
@@ -10,7 +13,7 @@
 }
 
 <div class="banner">
-    <div class="wrap">
+    <div class="">
         <ul class="nav nav-pills mb-12" id="pills-tab" role="tablist">
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">個人頁面</a>
@@ -37,6 +40,9 @@
                     <a class="nav-links" id="pills-setting-tab" data-toggle="pill" href="#pills-setting" role="tab" aria-controls="pills-setting" aria-selected="false">通知設定</a>
                 </li>*@
         </ul>
+    </div>
+    <div class="wrap">
+
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <section class="person">
@@ -69,58 +75,63 @@
                         </div>
                         @{ if (Model.MyProjects == null)
                             {
-                <p>目前還沒有任何提案!歡迎隨時發起提案</p> }
-            else
-            {
-                foreach (var item in Model.MyProjects)
-                {
-                    if (item.ApprovingStatus == 0)
-                    {
-<div class="case-doing-creating">
-    <h3>創建中專案</h3>
-    <hr />
-    <div class="case-doing-creating-content">
-        @if (item == null)
-        {<p>目前您沒有創建中專案</p>}
-        else
-        {
-@Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)}
-    </div>
-</div> }
-else if (item.ApprovingStatus == 1)
-{
-<div class="case-doing">
-    <div class="case-doing-funding">
-        <h3>募資中專案</h3>
-        <hr />
-        <div class="case-doing-creating-content">
-            @if (item == null)
-            {<p>目前您沒有募資中專案</p>}
-            else
-            {
-@Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)}
-        </div>
-    </div>
-</div> }
-else
-{
-<div class="case-doing-funding">
-    <div class="case-doing-funding">
-        <h3>已結束專案</h3>
-        <hr />
-        <div class="case-doing-creating-content">
-            @if (item == null)
-            {<p>目前您沒有已結束專案</p>}
-            else
-            {
-@Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)}
-        </div>
-    </div>
-</div> }
+                                <p>目前還沒有任何提案!歡迎隨時發起提案</p>
+                            }
+                            else
+                            {
+                                foreach (var item in Model.MyProjects)
+                                {
+                                        <div class="case-doing-creating">
+                                            <h3>審核中專案</h3>
+                                            <hr />
+                                            <div class="case-doing-creating-content">
+                                                @if (item.ApprovingStatus==0)
+                                                {
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                }
+                                                else
+                                                {
+                                                    <p>目前您沒有創建中專案</p>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="case-doing">
+                                            <div class="case-doing-funding">
+                                                <h3>募資中專案</h3>
+                                                <hr />
+                                                <div class="case-doing-creating-content">
+                                                    @if ((item.EndDate.Ticks-today.Ticks) > 0)
+                                                    {
+                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>目前您沒有募資中專案</p>
 
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="case-doing-funding">
+                                            <div class="case-doing-funding">
+                                                <h3>已結束專案</h3>
+                                                <hr />
+                                                <div class="case-doing-creating-content">
+                                                    @if ((item.EndDate.Ticks - today.Ticks) < 0)
+                                                    {
+                                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>目前您沒有已結束專案</p>
 
-}
-} }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                }
+                            }
+                        }
 
                     </div>
                 </section>

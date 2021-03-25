@@ -4,6 +4,7 @@
     var vm = (MemberViewModel)Session["Member"];
     string approvingstatus = (string)ViewData["ApprovingStatus"];
     string id = (string)ViewData["Id"];
+
 }
 
 
@@ -26,24 +27,25 @@
                 </div>
                 <div class="case-doing-creat">
                     <h4>
-                        <span>創建日期:@Model.CreatedDate</span>
+                        專案開始日期:
+                        <span>@Model.StartDate.ToShortDateString()</span>
                     </h4>
                 </div>
                 <div class="case-doing-givedate">
                     <h4>
-                        @if (Model.SubmitStatus == false)
+                        @*@if (Model.SubmitStatus == false)
                         {
                             <span>提交日期:尚未提交</span>
                         }
                         else
                         {
                             <span>提交日期:@Model.SubmittedDate</span>
-                        }
+                        }*@
                     </h4>
                 </div>
                 <div class="case-doing-fix">
                     <h4>
-                        <span>上次修改日期:@Model.LastEditTime</span>
+                        <span>專案結束日期:@Model.EndDate.ToShortDateString()</span>
                     </h4>
                 </div>
             </div>

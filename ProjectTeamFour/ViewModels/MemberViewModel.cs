@@ -34,8 +34,8 @@ namespace ProjectTeamFour.ViewModels
         [Display(Name ="性別")]
         public string Gender { get; set; }
         [Display(Name = "生日")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime MemberBirth { get; set; }
         [Display(Name = "關於我")]
         [DataType(DataType.Text)]
