@@ -26,7 +26,21 @@
 .nav-links {
     color: #aaa;
     display: block;
-    padding: .5rem 1rem;
+    padding: .75rem 1rem;
+}
+
+.nav-pills {
+    display: flex;
+    justify-content: space-around;
+    background-color: #F6F6F6;
+}
+
+.nav-item-tag {
+    
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #555;
+    text-align: center;
 }
 
 
@@ -46,19 +60,6 @@
     background-color: #fff;
 }
 
-.nav-pills {
-    display: flex;
-    justify-content: space-around;
-    background-color: #F6F6F6;
-}
-
-.nav-item-tag {
-    width: 25%;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #555;
-    text-align: center;
-}
 
 .person {
     padding-bottom: 1.5rem;
