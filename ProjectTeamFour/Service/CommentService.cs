@@ -164,6 +164,8 @@ namespace ProjectTeamFour.Service
 
             var askedComments = _repository.GetAll<Comment>().Where(c => c.AskedMemberId == memberId).Select(x => x).ToList().OrderByDescending(x => x.Comment_Time);
 
+            var askComments= _repository.GetAll<Comment>().Where(c => c.MemberId == memberId).Select(x => x).ToList().OrderByDescending(x => x.Comment_Time);
+
             if (askedComments != null)
             {
                 foreach (var comment in askedComments)
@@ -185,6 +187,32 @@ namespace ProjectTeamFour.Service
                         AskedMemberName = commentProject.CreatorName,
                         
                     };
+
+
+
+                    result.Add(commentForMemberVM);
+                }
+                foreach (var comment in askComments)
+                {
+                    //所有問題對應的提案
+                    var commentProject = _repository.GetAll<Project>().FirstOrDefault(p => p.ProjectId == comment.ProjectId);
+                    CommentForMemberViewModel commentForMemberVM = new CommentForMemberViewModel
+                    {
+                        ProjectId = comment.ProjectId,
+                        ProjectName = commentProject.ProjectName,
+                        ProjectMainUrl = commentProject.ProjectMainUrl,
+                        CommentId = comment.CommentId,
+                        Comment_Answer = comment.Comment_Answer,
+                        Comment_Question = comment.Comment_Question,
+                        Comment_Time = comment.Comment_Time,
+                        ReadStatus = comment.ReadStatus,
+                        AskMemberId = comment.MemberId,
+                        AskedMemberId = memberId,
+                        AskedMemberName = commentProject.CreatorName,
+
+                    };
+
+
 
                     result.Add(commentForMemberVM);
                 }
