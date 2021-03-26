@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Mappings\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

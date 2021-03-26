@@ -43,6 +43,6 @@ namespace ProjectTeamFour.Models
         public DateTime SubmittedDate { get; set; }
         public DateTime LastEditTime { get; set; }
         public int ApprovingStatus { get; set; }
-        //未審核:0;審核中:1;審核通過:2
+        //後臺使用 未審核:0;審核中:1;審核通過:2
     }
 }
