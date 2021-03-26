@@ -15,6 +15,8 @@ namespace ProjectTeamFour_Backend.Models
         public int OrderQuantity { get; set; }
         public decimal OrderPrice { get; set; }
         public int ProjectId { get; set; }
+        public string OrderPlanImgUrl { get; set; }
+        public string Condition { get; set; }
 
         public virtual Order Order { get; set; }
         public virtual Plan Plan { get; set; }
