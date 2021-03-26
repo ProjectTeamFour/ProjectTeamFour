@@ -241,7 +241,4 @@ namespace ProjectTeamFour.Service
             return source.Distinct(new CommonEqualityComparer<T, V>(keySelector));
         }
     }
-
-
-
 }
