@@ -33,6 +33,7 @@ namespace ProjectTeamFour.Models
         //Navigation Property 導覽屬性
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<DraftProject> DraftProjects { get; set; }
 
     }
 }
