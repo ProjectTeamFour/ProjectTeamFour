@@ -11,6 +11,7 @@ namespace ProjectTeamFour_Backend.Models
         {
             Comments = new HashSet<Comment>();
             Orders = new HashSet<Order>();
+            
         }
 
         public int MemberId { get; set; }
@@ -32,5 +33,6 @@ namespace ProjectTeamFour_Backend.Models
 
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<DraftProject> DraftProjects { get; set; }
     }
 }
