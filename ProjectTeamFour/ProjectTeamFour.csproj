@@ -243,6 +243,10 @@
     <Compile Include="Migrations\202103271053140_recoverplanmodel.Designer.cs">
       <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103271315347_FixDraftPlan.cs" />
+    <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
+      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
@@ -2490,6 +2494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271053140_recoverplanmodel.resx">
       <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
+      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
