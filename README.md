@@ -22,6 +22,26 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
+            //第17個後台管理者會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 17,
+                MemberAccount = "admin",
+                MemberPassword = "admin",
+                MemberName = "admin",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1989, 5, 1),
+                MemberConEmail = "admin@gmail.com",
+                MemberRegEmail = "admin@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "admin",
+                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
+                AboutMe = "後台管理者",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/UILd3ZHt.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
             //第一個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             {
