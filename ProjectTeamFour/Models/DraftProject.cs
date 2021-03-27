@@ -69,9 +69,6 @@ namespace ProjectTeamFour.Models
         
         public int ApprovingStatus { get; set; }
         public string ProjectStatus { get; set; }
-
-
-        //可以動態取得看是否拿掉plan.Count(p=>p.projectid==?)......................... 
         /// <summary>
         /// 草稿方案數量
         /// </summary>
@@ -102,6 +99,8 @@ namespace ProjectTeamFour.Models
         public string IdentityNumber { get; set; }
 
         public virtual Member Member { get; set; }
+        
+        public virtual ICollection<DraftPlan> DraftPlans{ get; set; }
 
     }
 }

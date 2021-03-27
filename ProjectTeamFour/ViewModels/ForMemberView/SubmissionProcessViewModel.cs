@@ -20,7 +20,6 @@ namespace ProjectTeamFour.ViewModels
 
         public string MemberConEmail { get; set; }
         public string MemberPhone { get; set; }
-
         public string ProfileImgUrl { get; set; }
         public string CreatorName { get; set; }
         public string AboutMe { get; set; }
