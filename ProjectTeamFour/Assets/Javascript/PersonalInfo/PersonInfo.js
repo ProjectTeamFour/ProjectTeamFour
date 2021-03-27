@@ -233,3 +233,21 @@ function SubmitPwd() {
             }
         });
 }
+
+
+//-----------跳轉指定頁面-------------------
+
+var hash = location.hash; //獲取跳轉頁面引數
+var tab = $('.nav-pills li');
+var con = $('.tab-content .tab-pane');
+console.log(con);
+for (var i = 0; i < con.length; i++) {
+    var page = con[i]; //第幾個
+    var selectCon = "#" + $(page).attr('id');
+    if (hash == selectCon) {
+        tab.siblings().removeClass('active'); //查找每個tab移除active
+        con.siblings().removeClass('active'); 
+        $(tab[i]).addClass('active');//查找每個tab增加active
+        $(con[i]).addClass('active');
+    }
+}
