@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -76,102 +78,44 @@ namespace ProjectTeamFour.Controllers
 
             var outputCode = CreatePasswordResetHmacCode(currentMember.MemberId);
 
-            //byte[] key = new byte[] { 0xAB, 0x12, 0xCD, 0x34, 0xEF, 0x56, 0xCF, 0x7D };
-
-            //String base64String = outputCode.Replace('-', '+').Replace('_', '/');  //解最外層
-
-            //byte[] bCipherText = Encryption(key, Convert.FromBase64String(base64String));  //加密
-
-            //string stringDBCode = Convert.ToBase64String(bCipherText); //轉 string => 為了存回 db
-
-            //currentMember.ResetPasswordCode = stringDBCode;   //先放到目前的 user
-
-            //var result = _mailservice.SaveResetCode(currentMember); //轉存回 db
-
-
-            //var link = "<a href='"
-            //            + Request.Url.Scheme + "://"
-            //            + Request.Url.Authority
-            //            + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode })
-            //            + "'>Click here to reset your password</a>";
-
-            //LinkedResource theEmailImage = new LinkedResource("../Assets/Img/logo.png");
-            //theEmailImage.ContentId = "myImageID";
-
-            //string picture = @"<html>
-            //              <body>
-            //                <table width=""100%"">
-            //                <tr>
-            //                    <td style=""font-style:arial; color:maroon; font-weight:bold"">
-            //                   Hi! <br>
-            //                    <img src=cid:myImageID>
-            //                    </td>
-            //                </tr>
-            //                </table>
-            //                </body>
-            //                </html>";
-
-
-            //var mail = new MailMessage();
-            //mail.IsBodyHtml = true;
-
-            //var res = new LinkedResource("/logo.png");
-            //res.ContentId = Guid.NewGuid().ToString();
-            ////使用<img src="/img/loading.svg" data-src="cid:..."方式引用內嵌圖片
-            //var htmlBody = $@"
-            //<div>.NET Core 3 架構圖如下：</div>
-            //<div><img src='cid:{res.ContentId}'/></div>";
-            ////建立AlternativeView
-            //var altView = AlternateView.CreateAlternateViewFromString(
-            //    htmlBody, null, MediaTypeNames.Text.Html);
-            ////將圖檔資源加入AlternativeView
-            //altView.LinkedResources.Add(res);
-            ////將AlternativeView加入MailMessage
-            //mail.AlternateViews.Add(altView);
-            //mail.To.Add("linooohon@gmail.com");
-            //mail.From = new MailAddress("raisebubu@gmail.com");
-            //mail.Subject = "內嵌圖檔測試";
-            ////送出郵件
-            //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-
-            //smtp.Send(mail);
-
-
-
-            //string attachmentPath = Environment.CurrentDirectory + @"\test.png";
-            //var res = new LinkedResource(attachmentPath);
-            //res.ContentId = Guid.NewGuid().ToString();
-            //Attachment inline = new Attachment(attachmentPath);
-            //inline.ContentDisposition.Inline = true;
-            //inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-            //inline.ContentId = res.ContentId;
-            //inline.ContentType.MediaType = "image/png";
-            //inline.ContentType.Name = Path.GetFileName(attachmentPath);
-
-
-
-
-
 
             var link = Request.Url.Scheme + "://"
-                       + Request.Url.Authority
-                       + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode });
-                       //+ "< img src = 'cid:{/logo.png}' />";
+                    + Request.Url.Authority
+                    + @Url.Action("CheckMemberUrl", "ForgotPassword", new { forgotpw = outputCode });
 
-            mailVM.receiver = currentMember.MemberRegEmail;
-            mailVM.sender = "11@a.com";
-            mailVM.MailTitle = "集資車車 - 找回密碼";
-            mailVM.MailBody = link;
-            
-            
+
+          
+
+            //取Email template
+            string returnData = getEmailData();
+
+            //把該帶的資料塞進 template
+            string finalReturnData = setReplacedEmailData(returnData, link, currentMember.MemberName);
+
+            var msg = new MailMessage("raisebubu@gmail.com",
+              currentMember.MemberRegEmail, "集資車車 - 找回密碼",
+              finalReturnData);
+
+            msg.IsBodyHtml = true;
+
+
+            //mailVM.receiver = currentMember.MemberRegEmail;
+            //mailVM.sender = "11@a.com";
+            //mailVM.MailTitle = "集資車車 - 找回密碼";
+            //mailVM.MailBody = link;
+
+
+
             string id = WebConfigurationManager.AppSettings["GmailId"];
             string password = WebConfigurationManager.AppSettings["GmailPassword"];
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new NetworkCredential(id, password),
-                EnableSsl = true
+                EnableSsl = true,
+                
             };
-            client.Send(mailVM.sender, mailVM.receiver, mailVM.MailTitle, mailVM.MailBody);
+            //client.Send(mailVM.sender, mailVM.receiver, mailVM.MailTitle, mailVM.MailBody);
+            client.Send(msg);
             return RedirectToAction("FinishedSending", "ForgotPassword");
         }
 
@@ -331,6 +275,42 @@ namespace ProjectTeamFour.Controllers
                 }
                 return mStream.ToArray();
             }
+        }
+
+
+   
+        public string getEmailData()
+        {
+            string returnData = "";
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"Template" + @"\\" + @"mailtemplate.html";
+
+            if (path != null)
+            {
+                StreamReader streamReader = new StreamReader(path, Encoding.GetEncoding("Big5"));
+                //轉字串給輸出
+                returnData = streamReader.ReadToEnd();
+            }
+            return returnData;
+        }
+
+
+        public string setReplacedEmailData(string returnData, string link, string memberName)
+        {
+
+            //讀取信件範本
+            returnData = getEmailData();
+
+            //取代文字
+            
+                
+            //returnData = Regex.Replace(returnData, "#name#", mailReplaceData.NameRecipient);
+                
+                
+            returnData = Regex.Replace(returnData, "#link#", link);
+            returnData = Regex.Replace(returnData, "#memberName#", memberName);
+            //...無限向下增加
+
+            return returnData;
         }
 
 

@@ -61,6 +61,14 @@ namespace ProjectTeamFour.Models
         /// 草稿問題答案
         /// </summary>
         public string DraftProject_Answer { get; set; }
+        public DateTime DraftCreatedDate { get; set; }
+        public DateTime DraftSubmittedDate { get; set; }
+        public DateTime DraftLastEditTime { get; set; }
+        public decimal DraftFundingAmount { get; set; }
+        public int DraftFundedpeople { get; set; }
+        public List<DraftPlan> DraftPlanObject { get; set; }
+        public int ApprovingStatus { get; set; }
+        public string ProjectStatus { get; set; }
 
 
         //可以動態取得看是否拿掉plan.Count(p=>p.projectid==?)......................... 
@@ -93,6 +101,5 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string IdentityNumber { get; set; }
 
-        public virtual Member Member { get; set; }
     }
 }

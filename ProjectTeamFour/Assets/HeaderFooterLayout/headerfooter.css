@@ -254,16 +254,11 @@
         transition: .3s;
     }
 
-
-
-
-/* pcmode */
-
-
-
-.pcmode-navbar {
-    padding: 1rem 0;
-}
+    .sidebar-header .message-count{
+        position: absolute;
+        right: 11px;
+        top: 17px;
+    }
 
 
     .pcmode-navbar .dropdown {
@@ -395,6 +390,17 @@
         right: -7px;
         font-weight: 400;
     }
+
+
+.pcmode-navbar .message p {
+    position: absolute;
+    font-size: 4px;
+    top: 14px;
+    right: 16.5rem;
+    font-weight: 400;
+    color: #7f7f7f;
+}
+
 
 
 

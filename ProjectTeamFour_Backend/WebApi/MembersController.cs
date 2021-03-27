@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectTeamFour_Backend.Context;
-using ProjectTeamFour_Backend.DataTable;
+using ProjectTeamFour_Backend.Models;
 
 namespace ProjectTeamFour_Backend.WebApi
 {

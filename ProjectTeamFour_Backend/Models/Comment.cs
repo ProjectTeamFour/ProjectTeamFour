@@ -14,6 +14,7 @@ namespace ProjectTeamFour_Backend.Models
         public DateTime CommentTime { get; set; }
         public string CommentAnswer { get; set; }
         public bool ReadStatus { get; set; }
+        public int AskedMemberId { get; set; }
 
         public virtual Member Member { get; set; }
         public virtual Project Project { get; set; }
