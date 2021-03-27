@@ -26,6 +26,7 @@
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //第18個後台管理者會員資料
+           
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
                 MemberId = 18,
