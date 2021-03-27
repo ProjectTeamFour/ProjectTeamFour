@@ -240,6 +240,7 @@
       <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Backendmember.cs" />
+    <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />

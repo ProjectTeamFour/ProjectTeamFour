@@ -4,62 +4,77 @@
     <link href="~/Assets/Css/MemberLoginPage/memberlogin.css" rel="stylesheet" />
 }
 
-    <section class="login-page">
-        <div class="container d-flex flex-column">
-            <div class="login-page-item text-center">
-                <h3>登入</h3>
-            </div>
-            <div class="login-page-item login">
-                @using (Html.BeginForm())
-                {
-                    <div class="login-item title mb-3">
-                        <p>會員帳號</p>
-                    </div>
-                    <div class="login-item d-flex flex-column name-password">
-
-                        <input type="text" placeholder="電子郵件" name="MemberRegEmail" required>
-
-                        <input type="password" placeholder="密碼" name="MemberPassword" required>
-
-                    </div>
-                    <div class="login-item checkbox d-flex justify-content-between">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="remember" style="zoom:150%;">
-                            <label for="remember">記得我</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <a href="/ForgotPassword/SendMail">忘記密碼</a>
-                        </div>
-                    </div>
-                    <div class="login-item login-button mb-3">
-                        <input type="submit" value="登入" class="submitbutton w-100">
-                    </div>
-                }
-            </div>
-            <div class="login-page-item split-line mb-4">
-                <p>或</p>
-            </div>
-            <div class="login-page-item other-login">
-                <div class="other-login-item">
-                    <a href="#" class="d-flex justify-content-center facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        <p>使用 Facebook 帳號登入</p>
-                    </a>
-                    <a href="#" class="d-flex justify-content-center google">
-                        <i class="fab fa-google"></i>
-                        <p>使用 Google 帳號登入</p>
-                    </a>
-                    <br>
-                    <p class="term">
-                        如果您使用 Facebook 或 Google 登入，我們將在取得您的授權同意後，導入您的姓名和個人資料作為帳號必要資訊。
-                    </p>
-                </div>
-                <hr>
-            </div>
-            <div class="login-page-item d-flex justify-content-between changestatus">
-                <p>還沒有帳號？</p>
-                <a href="~/Member/Register">註冊</a>
-            </div>
+<section class="login-page">
+    <div class="container d-flex flex-column">
+        <div class="login-page-item text-center">
+            <h3>登入</h3>
         </div>
-    </section>
+        <div class="login-page-item login">
+            @using (Html.BeginForm())
+            {
+                <div class="login-item title mb-3">
+                    <p>會員帳號</p>
+                </div>
+                <div class="login-item d-flex flex-column name-password">
+
+                    <input type="text" placeholder="電子郵件" name="MemberRegEmail" required>
+
+                    <input type="password" placeholder="密碼" name="MemberPassword" required>
+
+                </div>
+                <div class="login-item checkbox d-flex justify-content-between">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="remember" style="zoom:150%;">
+                        <label for="remember">記得我</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <a href="/ForgotPassword/SendMail">忘記密碼</a>
+                    </div>
+                </div>
+                <div class="login-item login-button mb-3">
+                    <input type="submit" value="登入" class="submitbutton w-100">
+                </div>
+            }
+        </div>
+        <div class="login-page-item split-line mb-4">
+            <p>或</p>
+        </div>
+        <div class="login-page-item other-login">
+            <div class="other-login-item">
+                <a href="#" class="d-flex justify-content-center facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <p>使用 Facebook 帳號登入</p>
+                </a>
+                <a href="#" class="d-flex justify-content-center google">
+                    <i class="fab fa-google"></i>
+                    <p>使用 Google 帳號登入</p>
+                </a>
+                <br>
+                <p class="term">
+                    如果您使用 Facebook 或 Google 登入，我們將在取得您的授權同意後，導入您的姓名和個人資料作為帳號必要資訊。
+                </p>
+            </div>
+            <hr>
+        </div>
+        <div class="login-page-item d-flex justify-content-between changestatus">
+            <p>還沒有帳號？</p>
+            <a href="~/Member/Register">註冊</a>
+        </div>
+    </div>
+</section>
+
+
+
+@section endJS{
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
+    firebase.initializeApp({
+    apiKey: "AIzaSyBJHjdM414fXNidWafX2CWIIsFONC4sUpc",
+    authDomain: "raisebubu.firebaseapp.com",
+    databaseURL: "https://raisebubu.firebaseio.com/"
+    });
+
+    const database = firebase.database();
+
+}
 
