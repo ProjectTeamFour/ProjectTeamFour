@@ -66,7 +66,7 @@ namespace ProjectTeamFour.Models
         public DateTime DraftLastEditTime { get; set; }
         public decimal DraftFundingAmount { get; set; }
         public int DraftFundedpeople { get; set; }
-        public List<DraftPlan> DraftPlanObject { get; set; }
+        
         public int ApprovingStatus { get; set; }
         public string ProjectStatus { get; set; }
 
@@ -100,6 +100,8 @@ namespace ProjectTeamFour.Models
         /// 提案人身分證號碼:True為管理者；False為客服
         /// </summary>
         public string IdentityNumber { get; set; }
+
+        public virtual Member Member { get; set; }
 
     }
 }

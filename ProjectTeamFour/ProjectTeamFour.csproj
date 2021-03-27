@@ -235,6 +235,10 @@
     <Compile Include="Migrations\202103270951471_CreateBackendMember.Designer.cs">
       <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103271011124_conflictFix.cs" />
+    <Compile Include="Migrations\202103271011124_conflictFix.Designer.cs">
+      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
@@ -2475,6 +2479,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103270951471_CreateBackendMember.resx">
       <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271011124_conflictFix.resx">
+      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
