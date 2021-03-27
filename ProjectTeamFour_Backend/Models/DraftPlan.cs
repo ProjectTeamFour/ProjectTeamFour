@@ -8,10 +8,10 @@ namespace ProjectTeamFour_Backend.Models
     public partial class DraftPlan
     {
         public int DraftPlanId { get; set; }
-        public int DraftProjectPlanId { get; set; }
-        public bool DraftAddCarCarPlan { get; set; }
+        public int? DraftProjectPlanId { get; set; }
+        public bool? DraftAddCarCarPlan { get; set; }
         public string DraftProjectName { get; set; }
-        public int DraftProjectId { get; set; }
+        public int? DraftProjectId { get; set; }
         public string DraftPlanTitle { get; set; }
         public int? DraftPlanFundedPeople { get; set; }
         public DateTime? DraftPlanShipDate { get; set; }

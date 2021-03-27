@@ -18,6 +18,7 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
         public virtual DbSet<DraftProject> DraftProjects { get; set; }
@@ -42,6 +43,16 @@ namespace ProjectTeamFour_Backend.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Backendmember>(entity =>
+            {
+                entity.HasKey(e => e.MemberId)
+                    .HasName("PK_dbo.Backendmembers");
+
+                entity.Property(e => e.MemberId).ValueGeneratedNever();
+
+                entity.Property(e => e.MemberBirth).HasColumnType("datetime");
+            });
 
             modelBuilder.Entity<Comment>(entity =>
             {
@@ -79,24 +90,21 @@ namespace ProjectTeamFour_Backend.Context
                 entity.HasOne(d => d.DraftProject)
                     .WithMany(p => p.DraftPlans)
                     .HasForeignKey(d => d.DraftProjectId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_dbo.DraftPlans_dbo.DraftProjects_DraftProjectId");
             });
 
             modelBuilder.Entity<DraftProject>(entity =>
             {
-                entity.HasIndex(e => e.MemberMemberId, "IX_Member_MemberId");
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
 
-                entity.Property(e => e.ApprovingStatus).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.DraftAmountThreshold)
+                entity.Property(e => e.AmountThreshold)
                     .HasColumnType("decimal(18, 2)")
                     .HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.DraftCreatedDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+                entity.Property(e => e.ApprovingStatus).HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.DraftEndDate)
+                entity.Property(e => e.DraftCreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
 
@@ -112,22 +120,32 @@ namespace ProjectTeamFour_Backend.Context
 
                 entity.Property(e => e.DraftProjectAnswer).HasColumnName("DraftProject_Answer");
 
-                entity.Property(e => e.DraftProjectQuestion).HasColumnName("DraftProject_Question");
+                entity.Property(e => e.DraftProjectPlansCount).HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.DraftStartDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+                entity.Property(e => e.DraftProjectQuestion).HasColumnName("DraftProject_Question");
 
                 entity.Property(e => e.DraftSubmittedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
 
-                entity.Property(e => e.MemberMemberId).HasColumnName("Member_MemberId");
+                entity.Property(e => e.EndDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
 
-                entity.HasOne(d => d.MemberMember)
+                entity.Property(e => e.Fundedpeople).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.FundingAmount)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.StartDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.HasOne(d => d.Member)
                     .WithMany(p => p.DraftProjects)
-                    .HasForeignKey(d => d.MemberMemberId)
-                    .HasConstraintName("FK_dbo.DraftProjects_dbo.Members_Member_MemberId");
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.DraftProjects_dbo.Members_MemberId");
             });
 
             modelBuilder.Entity<Log>(entity =>
