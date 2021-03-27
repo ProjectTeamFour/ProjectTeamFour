@@ -7,7 +7,9 @@ namespace ProjectTeamFour.Models
 {
     public class Member
     {
-        
+        /// <summary>
+        /// 會員唯一識別碼
+        /// </summary>
         public int MemberId { get; set; }
         /// <summary>
         /// 提案者真實姓名
@@ -61,9 +63,7 @@ namespace ProjectTeamFour.Models
         /// 會員網站連結
         /// </summary>
         public string MemberWebsite { get; set; }
-        /// <summary>
-        /// 會員網站連結
-        /// </summary>
+
         public string MemberMessage { get; set; }
         public int Permission { get; set; }
         public string Salt { get; set; }
