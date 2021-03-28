@@ -231,6 +231,11 @@
     <Compile Include="Migrations\202103260810062_CreateDraftDB.Designer.cs">
       <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103270948431_CreateBackendMemberDB.cs" />
+    <Compile Include="Migrations\202103270948431_CreateBackendMemberDB.Designer.cs">
+      <DependentUpon>202103270948431_CreateBackendMemberDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BackendMember.cs" />
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
@@ -2467,6 +2472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103260810062_CreateDraftDB.resx">
       <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103270948431_CreateBackendMemberDB.resx">
+      <DependentUpon>202103270948431_CreateBackendMemberDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
