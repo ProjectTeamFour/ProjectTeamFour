@@ -236,18 +236,29 @@ function SubmitPwd() {
 
 
 //-----------跳轉指定頁面-------------------
-
-var hash = location.hash; //獲取跳轉頁面引數
-var tab = $('.nav-pills li');
-var con = $('.tab-content .tab-pane');
-console.log(con);
-for (var i = 0; i < con.length; i++) {
-    var page = con[i]; //第幾個
-    var selectCon = "#" + $(page).attr('id');
-    if (hash == selectCon) {
-        tab.siblings().removeClass('active'); //查找每個tab移除active
-        con.siblings().removeClass('active'); 
-        $(tab[i]).addClass('active');//查找每個tab增加active
-        $(con[i]).addClass('active');
+function ToNews() {
+    var hash = location.hash; //獲取跳轉頁面引數
+    var tab = $('.nav-pills li');
+    var con = $('.tab-content .tab-pane');
+    console.log(con);
+    for (var i = 0; i < con.length; i++) {
+        var page = con[i]; //第幾個
+        var selectCon = "#" + $(page).attr('id');
+        if (hash == selectCon) {
+            tab.siblings().removeClass('active'); //查找每個tab移除active
+            con.siblings().removeClass('active');
+            $(tab[i]).addClass('active');//查找每個tab增加active
+            $(con[i]).addClass('active');
+        }
     }
+    //var news = $('#pills-news-tab');
+    //var connew = $('#pills-news');
+    //tab.siblings().removeClass('active');
+    //con.siblings().removeClass('active');
+    //tab.attr('aria-selected', 'false');
+    //news.attr('aria-selected', 'true');
+    //news.addClass('active show');
+    //connew.addClass('active show');
+    //console.log(news);
+
 }

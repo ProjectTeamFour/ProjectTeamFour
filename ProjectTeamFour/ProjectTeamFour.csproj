@@ -2337,6 +2337,7 @@
     <Content Include="Views\Shared\PartialView\_cardForMember.cshtml" />
     <Content Include="Views\StartAProject\SubmitSuccess.cshtml" />
     <Content Include="Views\StartAProject\SubmitFail.cshtml" />
+    <Content Include="Views\UserInfo\ToNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

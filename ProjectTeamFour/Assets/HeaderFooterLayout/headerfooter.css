@@ -285,18 +285,24 @@
         top: 0.4rem;
     }
 
-        .pcmode-navbar .dropdown img {
-            border-radius: 50%;
-        }
+    .pcmode-navbar .dropdown img {
+        border-radius: 50%;
+    }
 
 
-        .pcmode-navbar .dropdown .dropdown-menu {
-            min-width: 3rem;
-        }
+    .pcmode-navbar .dropdown .dropdown-menu {
+        min-width: 3rem;
+    }
+
+#message{
+    position:absolute;
+    right:18rem;
+    top:1.1rem;
+}
 
 
 .pcmode-navbar .message {
-    position: absolute;
+/*    position: absolute;*/
     right: 17rem;
     top: 0.8rem;
     font-size: 1.2rem;
