@@ -5,37 +5,37 @@ using System.Web;
 
 namespace ProjectTeamFour.Models
 {
-    public class BackendMember
+    public class Backendmember
     {
-        public int BackendMemberId { get; set; }
+        public int MemberId { get; set; }
         /// <summary>
         /// 後臺會員真實姓名
         /// </summary>
-        public string BackendMemberName { get; set; }
+        public string MemberName { get; set; }
         /// <summary>
         /// 後臺會員顯示姓名
         /// </summary>
-        public string BackendMemberAccount { get; set; }
+        public string MemberAccount { get; set; }
         /// <summary>
         /// 後臺會員密碼
         /// </summary>
-        public string BackendMemberPassword { get; set; }
+        public string MemberPassword { get; set; }
         /// <summary>
         /// 後臺會員註冊地址
         /// </summary>
-        public string BackendMemberAddress { get; set; }
+        public string MemberAddress { get; set; }
         /// <summary>
         /// 後臺會員註冊電話
         /// </summary>
-        public string BackendMemberPhone { get; set; }
+        public string MemberPhone { get; set; }
         /// <summary>
         /// 後臺會員註冊信箱
         /// </summary>
-        public string BackendMemberRegEmail { get; set; }
+        public string MemberRegEmail { get; set; }
         /// <summary>
         /// 後臺會員聯絡信箱
         /// </summary>
-        public string BackendMemberConEmail { get; set; }
+        public string MemberConEmail { get; set; }
         /// <summary>
         /// 後臺會員性別
         /// </summary>
@@ -43,7 +43,7 @@ namespace ProjectTeamFour.Models
         /// <summary>
         /// 後臺會員生日
         /// </summary>
-        public DateTime BackendMemberBirth { get; set; }
+        public DateTime MemberBirth { get; set; }
         /// <summary>
         /// 後臺會員關於我
         /// </summary>
@@ -55,12 +55,12 @@ namespace ProjectTeamFour.Models
         /// <summary>
         /// 後臺會員網站連結
         /// </summary>
-        public string BackendMemberWebsite { get; set; }
+        public string MemberWebsite { get; set; }
         /// <summary>
         /// 後臺會員權限:true為管理者；false為客服
         /// </summary>
         public bool BackendIdentity { get; set; }
-        public string BackendMemberMessage { get; set; }
+        public string MemberMessage { get; set; }
         public int Permission { get; set; }
         public string Salt { get; set; }
         public string Hash { get; set; }
