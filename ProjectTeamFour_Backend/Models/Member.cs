@@ -10,8 +10,8 @@ namespace ProjectTeamFour_Backend.Models
         public Member()
         {
             Comments = new HashSet<Comment>();
+            DraftProjects = new HashSet<DraftProject>();
             Orders = new HashSet<Order>();
-            
         }
 
         public int MemberId { get; set; }
@@ -30,9 +30,12 @@ namespace ProjectTeamFour_Backend.Models
         public string MemberWebsite { get; set; }
         public string MemberMessage { get; set; }
         public int Permission { get; set; }
+        public string Salt { get; set; }
+        public string Hash { get; set; }
+        public string ResetPasswordCode { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<DraftProject> DraftProjects { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        //public virtual ICollection<DraftProject> DraftProjects { get; set; }
     }
 }

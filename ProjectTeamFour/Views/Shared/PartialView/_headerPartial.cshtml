@@ -8,6 +8,7 @@
         var myCart = (CartItemListViewModel)Session["Cart"]; //將Session中的購物車記錄還原成集合
         count = myCart.CartItems.Count;
     }
+
 }
 
 
@@ -25,9 +26,10 @@
             <li class="sidebar-item search">
                 <i class="fas fa-search"></i>
             </li>
-            <li class="sidebar-item">
+            <a class="sidebar-item bullhorn" href="#">
                 <i class="fas fa-bullhorn"></i>
-            </li>
+                <p class="message-count">0</p>    <!-- 通知這裡先放 0 -->
+            </a>
         </div>
 
 
@@ -148,11 +150,22 @@
                     <i class="fas fa-shopping-cart"></i>
                     <p class="MyCart">@count</p>
                 </a>
-
-                <li class="nav-item">
-                    <i class="fas fa-bullhorn"></i>
-                </li>
-
+                @if (vm == null)
+                {
+                    <a href="/Member/Login" class="nav-item message" id="message">
+                        <i class="fas fa-bullhorn">
+                            <p class="message-count">0</p> <!-- 通知這裡先放 0 -->
+                        </i>
+                    </a>
+                }
+                else
+                {                    
+                    <a href="/UserInfo/ToNews/@vm.MemberId#pills-news" class="nav-item message" id="message">
+                        <i class="fas fa-bullhorn">
+                            <p class="message-count">0</p>  
+                        </i>
+                    </a>
+                }
                 <div class="fakebox"></div>
 
                 <li class="nav-item dropdown">
@@ -183,19 +196,19 @@
                         @*尚未登入註冊放這個*@
 
                         @*<a class="dropdown-item" href="/MemberLogin/Index">登入</a>
-        <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>*@
+                <a class="dropdown-item" href="/MemberRegister/Index">註冊</a>*@
 
                         @*已經登入放這個*@
 
 
                         @*<a class="dropdown-item" href="/PersonInfo/User">個人頁面</a>
-                            <hr />
-                            <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
-                            <a class="dropdown-item" href="/PersonInfo/Myprojects">提案紀錄</a>
-                            <hr />
-                            <a class="dropdown-item" href="/PersonInfo/Message">聯絡訊息</a>
-                            <a class="dropdown-item" href="/PersonInfo/Notifactions">最新通知</a>
-                            <a class="dropdown-item" href="/Member/Logout">登出</a>
+                <hr />
+                <a class="dropdown-item" href="/PersonInfo/Sponser">贊助紀錄</a>
+                <a class="dropdown-item" href="/PersonInfo/Myprojects">提案紀錄</a>
+                <hr />
+                <a class="dropdown-item" href="/PersonInfo/Message">聯絡訊息</a>
+                <a class="dropdown-item" href="/PersonInfo/Notifactions">最新通知</a>
+                <a class="dropdown-item" href="/Member/Logout">登出</a>
                         *@
 
                     </div>

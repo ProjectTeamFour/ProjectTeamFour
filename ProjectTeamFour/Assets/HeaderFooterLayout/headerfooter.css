@@ -80,10 +80,28 @@
     margin-top: 0.9rem;
 }
 
-#sidebar .sidebar-item i {
+.sidebar-item{
+    cursor: pointer;
+} 
+
+#sidebar .bullhorn {
+    position: absolute;
     transition: .3s;
     cursor: pointer;
+    /* position: relative; */
+    top: 25px;
+    right: 20px;
+    color: #000;
+    transition: .3s;
 }
+
+    #sidebar .bullhorn:hover i {
+        color: var(--color);
+    }
+
+    #sidebar .bullhorn:hover p {
+        color: var(--color);
+    }
 
     #sidebar .sidebar-item i:hover {
         color: var(--color);
@@ -242,8 +260,6 @@
     text-decoration: none;
 }
 
-
-
     .hamburger .cart p {
         position: relative;
         bottom: 33px;
@@ -253,16 +269,13 @@
         font-weight: 400;
         transition: .3s;
     }
-
-
-
-
-/* pcmode */
-
-
-
-.pcmode-navbar {
-    padding: 1rem 0;
+.sidebar-header .message-count {
+    /* position: relative; */
+    position: absolute;
+    right: -8px;
+    top: -2px;
+    /* bottom: 0px; */
+    font-size: 10px;
 }
 
 
@@ -272,30 +285,46 @@
         top: 0.4rem;
     }
 
-        .pcmode-navbar .dropdown img {
-            border-radius: 50%;
-        }
-
-
-        .pcmode-navbar .dropdown .dropdown-menu {
-            min-width: 3rem;
-        }
-
-    .pcmode-navbar .fa-bullhorn {
-        position: absolute;
-        right: 17rem;
-        top: 1.2rem;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: .3s;
-        color: #7f7f7f;
+    .pcmode-navbar .dropdown img {
+        border-radius: 50%;
     }
+
+
+    .pcmode-navbar .dropdown .dropdown-menu {
+        min-width: 3rem;
+    }
+
+#message{
+    position:absolute;
+    right:18rem;
+    top:1.1rem;
+}
+
+
+.pcmode-navbar .message {
+/*    position: absolute;*/
+    right: 17rem;
+    top: 0.8rem;
+    font-size: 1.2rem;
+/*    cursor: pointer;*/
+    text-decoration: none;
+    transition: .3s;
+    color: #7f7f7f;
+    height: 30px;
+}
+
+
+.pcmode-navbar .fa-bullhorn {
+    cursor: pointer;
+}
+
+
 
     .pcmode-navbar .fa-shopping-cart {
         /*        transition: .3s;*/
     }
 
-    .pcmode-navbar .fa-bullhorn:hover {
+    .pcmode-navbar .message:hover .fa-bullhorn{
         color: var(--color);
     }
 
@@ -395,6 +424,23 @@
         right: -7px;
         font-weight: 400;
     }
+
+
+.pcmode-navbar .message p {
+    position: relative;
+    font-size: 4px;
+    bottom: 28px;
+    left: 22px;
+    font-weight: 400;
+    color: #7f7f7f;
+    cursor: pointer;
+}
+
+
+    .pcmode-navbar .message:hover p{
+        color: var(--color);
+    }
+
 
 
 

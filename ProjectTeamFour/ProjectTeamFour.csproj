@@ -231,11 +231,24 @@
     <Compile Include="Migrations\202103260810062_CreateDraftDB.Designer.cs">
       <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103270948431_CreateBackendMemberDB.cs" />
-    <Compile Include="Migrations\202103270948431_CreateBackendMemberDB.Designer.cs">
-      <DependentUpon>202103270948431_CreateBackendMemberDB.cs</DependentUpon>
+    <Compile Include="Migrations\202103270951471_CreateBackendMember.cs" />
+    <Compile Include="Migrations\202103270951471_CreateBackendMember.Designer.cs">
+      <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BackendMember.cs" />
+    <Compile Include="Migrations\202103271011124_conflictFix.cs" />
+    <Compile Include="Migrations\202103271011124_conflictFix.Designer.cs">
+      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103271053140_recoverplanmodel.cs" />
+    <Compile Include="Migrations\202103271053140_recoverplanmodel.Designer.cs">
+      <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103271315347_FixDraftPlan.cs" />
+    <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
+      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Backendmember.cs" />
+    <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
@@ -480,6 +493,7 @@
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24dataTable.js" />
@@ -2179,7 +2193,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2324,6 +2337,7 @@
     <Content Include="Views\Shared\PartialView\_cardForMember.cshtml" />
     <Content Include="Views\StartAProject\SubmitSuccess.cshtml" />
     <Content Include="Views\StartAProject\SubmitFail.cshtml" />
+    <Content Include="Views\UserInfo\ToNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2473,8 +2487,17 @@
     <EmbeddedResource Include="Migrations\202103260810062_CreateDraftDB.resx">
       <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103270948431_CreateBackendMemberDB.resx">
-      <DependentUpon>202103270948431_CreateBackendMemberDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103270951471_CreateBackendMember.resx">
+      <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271011124_conflictFix.resx">
+      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271053140_recoverplanmodel.resx">
+      <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
+      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -18,11 +18,8 @@ namespace ProjectTeamFour.ViewModels
         public string ProjectMainUrl { get; set; }
         public string ProjectCoverUrl { get; set; }
 
-        //ProjectPrincipal
         public string MemberConEmail { get; set; }
         public string MemberPhone { get; set; }
-
-        //IdentityNumber
         public string ProfileImgUrl { get; set; }
         public string CreatorName { get; set; }
         public string AboutMe { get; set; }
@@ -48,26 +45,7 @@ namespace ProjectTeamFour.ViewModels
         public int Fundedpeople { get; set; }
 
 
-
-        //public int ProjectPlanId { get; set; }
-        //public decimal PlanPrice { get; set; }
-        //public string PlanTitle { get; set; }
-        //public int QuantityLimit { get; set; }
-        //public string PlanDescription { get; set; }
-        //public string PlanImgUrl { get; set; }
-        //public DateTime PlanShipDate { get; set; }
-
-
-        //AddCarCarPlan
-
-
-
         public List<SubmissionProcessPlanViewModel> PlanObject { get; set; }
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ProjectTeamFour_Backend.DataTable;
+using ProjectTeamFour_Backend.Models;
 
 #nullable disable
 
@@ -18,7 +18,10 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<DraftPlan> DraftPlans { get; set; }
+        public virtual DbSet<DraftProject> DraftProjects { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<MigrationHistory> MigrationHistories { get; set; }
@@ -40,6 +43,16 @@ namespace ProjectTeamFour_Backend.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Backendmember>(entity =>
+            {
+                entity.HasKey(e => e.MemberId)
+                    .HasName("PK_dbo.Backendmembers");
+
+                entity.Property(e => e.MemberId).ValueGeneratedNever();
+
+                entity.Property(e => e.MemberBirth).HasColumnType("datetime");
+            });
 
             modelBuilder.Entity<Comment>(entity =>
             {
@@ -64,6 +77,75 @@ namespace ProjectTeamFour_Backend.Context
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.ProjectId)
                     .HasConstraintName("FK_dbo.Comments_dbo.Projects_ProjectId");
+            });
+
+            modelBuilder.Entity<DraftPlan>(entity =>
+            {
+                entity.HasIndex(e => e.DraftProjectId, "IX_DraftProjectId");
+
+                entity.Property(e => e.DraftPlanPrice).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.DraftPlanShipDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.DraftProject)
+                    .WithMany(p => p.DraftPlans)
+                    .HasForeignKey(d => d.DraftProjectId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_dbo.DraftPlans_dbo.DraftProjects_DraftProjectId");
+            });
+
+            modelBuilder.Entity<DraftProject>(entity =>
+            {
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
+
+                entity.Property(e => e.AmountThreshold)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ApprovingStatus).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DraftCreatedDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.Property(e => e.DraftFundedpeople).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DraftFundingAmount)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DraftLastEditTime)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.Property(e => e.DraftProjectAnswer).HasColumnName("DraftProject_Answer");
+
+                entity.Property(e => e.DraftProjectPlansCount).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DraftProjectQuestion).HasColumnName("DraftProject_Question");
+
+                entity.Property(e => e.DraftSubmittedDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.Property(e => e.EndDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.Property(e => e.Fundedpeople).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.FundingAmount)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.StartDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("('1900-01-01T00:00:00.000')");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.DraftProjects)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.DraftProjects_dbo.Members_MemberId");
             });
 
             modelBuilder.Entity<Log>(entity =>
@@ -140,6 +222,8 @@ namespace ProjectTeamFour_Backend.Context
                 entity.HasIndex(e => e.OrderId, "IX_OrderId");
 
                 entity.HasIndex(e => e.PlanId, "IX_PlanId");
+
+                entity.Property(e => e.Condition).HasColumnName("condition");
 
                 entity.Property(e => e.OrderPrice).HasColumnType("decimal(18, 2)");
 
