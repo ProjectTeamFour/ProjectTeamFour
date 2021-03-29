@@ -247,14 +247,9 @@
     <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103291716269_addfacebookmodel.cs" />
-    <Compile Include="Migrations\202103291716269_addfacebookmodel.Designer.cs">
-      <DependentUpon>202103291716269_addfacebookmodel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
-    <Compile Include="Models\FacebookMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -2503,9 +2498,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103291716269_addfacebookmodel.resx">
-      <DependentUpon>202103291716269_addfacebookmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
