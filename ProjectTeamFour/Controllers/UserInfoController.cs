@@ -166,9 +166,41 @@ namespace ProjectTeamFour.Controllers
 		}
 
 
-		//public ActionResult Notifaction()	//通知設定
-		//{
-		//	return View();
-		//}
-	}
+        //public ActionResult Notifaction()	//通知設定
+        //{
+        //	return View();
+        //}
+
+        public ActionResult ToNews(int Id)  //公開的個人資料頁面
+        {
+            var model = (MemberViewModel)Session["Member"];
+            if (model != null)
+            {
+                var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
+
+
+                //根據專案的提交與審核狀態進行分類
+                model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+
+                //根據會員id抓取會員購買紀錄
+                model.Records = _backingService.QueryOrder(model.MemberId);
+                if (model.MyProjects.Count == 0)
+                {
+                    model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+                }
+                else
+                {
+                    model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+                }
+                //該會員為提案者沒有留過言，卻要回覆留言
+
+
+                return model != default(ViewModels.MemberViewModel) ? View(model) : View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Member");
+            }
+        }
+    }
 }
