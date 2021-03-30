@@ -23,9 +23,9 @@ namespace ProjectTeamFour_Backend.Services
             result.MemberList = _dbRepository.GetAll<Member>().Select(
                 m => new MemberViewModel.MemberSingleResult()
                 {
-                    MemberAccount=m.MemberAccount,
+                    
                     MemberAddress=m.MemberAddress,
-                    MemberBirth=m.MemberBirth,
+                    MemberBirth=m.MemberBirth.ToString("d"),
                     MemberConEmail=m.MemberConEmail,
                     MemberId=m.MemberId,
                     MemberName=m.MemberName,

@@ -22,14 +22,6 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// </summary>
             public string MemberTeamName { get; set; }
             /// <summary>
-            /// 暫棄
-            /// </summary>
-            public string MemberAccount { get; set; }
-            /// <summary>
-            /// 會員密碼
-            /// </summary>
-            public string MemberPassword { get; set; }
-            /// <summary>
             /// 會員註冊地址
             /// </summary>
             public string MemberAddress { get; set; }
@@ -52,7 +44,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// <summary>
             /// 會員生日
             /// </summary>
-            public DateTime MemberBirth { get; set; }
+            public string MemberBirth { get; set; }
             /// <summary>
             /// 會員關於我
             /// </summary>
