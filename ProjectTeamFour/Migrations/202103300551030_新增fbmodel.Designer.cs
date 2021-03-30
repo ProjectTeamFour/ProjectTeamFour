@@ -7,18 +7,18 @@ namespace ProjectTeamFour.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class add_draft_model_project_and_plan : IMigrationMetadata
+    public sealed partial class 新增fbmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(add_draft_model_project_and_plan));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(新增fbmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103261955233_add_draft_model_project_and_plan"; }
+            get { return "202103300551030_新增fbmodel"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

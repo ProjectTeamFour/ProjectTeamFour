@@ -247,9 +247,14 @@
     <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300551030_新增fbmodel.cs" />
+    <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
+    <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -454,6 +459,7 @@
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessViewModel.cs" />
+    <Compile Include="ViewModels\ThirdPartyLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -2500,6 +2506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
