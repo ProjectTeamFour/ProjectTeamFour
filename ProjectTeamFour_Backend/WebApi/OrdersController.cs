@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectTeamFour_Backend.Context;
 using ProjectTeamFour_Backend.Models;
+using ProjectTeamFour_Backend.Services;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -15,11 +16,16 @@ namespace ProjectTeamFour_Backend.WebApi
     public class OrdersController : ControllerBase
     {
         private readonly LabContext _context;
+        private readonly OrderService _orderservice;
 
         public OrdersController(LabContext context)
         {
             _context = context;
         }
+
+        //public class Order 
+
+
 
         // GET: api/Orders
         [HttpGet]

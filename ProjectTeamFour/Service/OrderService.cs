@@ -1,26 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProjectTeamFour_Backend.Context;
-using ProjectTeamFour_Backend.Models;
-using ProjectTeamFour_Backend.Repository;
-using ProjectTeamFour_Backend.ViewModels;
+﻿using ProjectTeamFour.Models;
+using ProjectTeamFour.Repositories;
+using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace ProjectTeamFour_Backend.Services
+namespace ProjectTeamFour.Service
 {
     public class OrderService
     {
-        private DbContext _dbContext;
+        private DbContext _context;
         private BaseRepository _repository;
 
-        //public System.Web.HttpResponse Response { get; }
+        public System.Web.HttpResponse Response { get; }
 
         public OrderService()
         {
-            _dbContext = new LabContext();
-            _repository = new BaseRepository();
+            _context = new ProjectContext();
+            _repository = new BaseRepository(_context);
         }
 
         public OrderViewModel CatchOrderDb() //撈出資料庫order的全部資料
@@ -43,7 +42,7 @@ namespace ProjectTeamFour_Backend.Services
                     OrderPhone = item.OrderPhone,
                     OrderTotalAccount = item.OrderTotalAccount,
                     TradeNo = item.TradeNo,
-                    Condition = item.Condition,
+                    condition = item.condition,
                     MemberId = item.MemberId
                 };
                 order.MyOrder.Add(o);
