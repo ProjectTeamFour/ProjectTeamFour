@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjectTeamFour_Backend.Context;
 using ProjectTeamFour_Backend.Data;
+using ProjectTeamFour_Backend.Interfaces;
+using ProjectTeamFour_Backend.Repository;
+using ProjectTeamFour_Backend.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,13 +34,20 @@ namespace ProjectTeamFour_Backend
             services.AddDbContext<LabContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddRazorPages();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<LabContext>();
+
+
             services.AddControllersWithViews();
+
+            services.AddTransient<IRepository, BaseRepository>();
+
+            services.AddTransient<IMemberService, MemberService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

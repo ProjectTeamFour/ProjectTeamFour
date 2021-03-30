@@ -80,7 +80,7 @@ namespace ProjectTeamFour_Backend.ViewModels
         /// <summary>
         /// 取得單一會員模型
         /// </summary>
-        public class MemberSingleResult : MemberBaseModel
+        public class MemberSingleResult : MemberBaseViewModel
         {
 
         }

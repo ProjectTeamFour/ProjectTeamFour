@@ -1,4 +1,6 @@
 ﻿using ProjectTeamFour_Backend.Interfaces;
+using ProjectTeamFour_Backend.Models;
+using ProjectTeamFour_Backend.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,28 @@ namespace ProjectTeamFour_Backend.Services
             _dbRepository = repository;
         }
 
-
-        
+        public MemberViewModel.MemberListResult GetAll()
+        {
+            MemberViewModel.MemberListResult result = new MemberViewModel.MemberListResult();
+            result.MemberList = _dbRepository.GetAll<Member>().Select(
+                m => new MemberViewModel.MemberSingleResult()
+                {
+                    MemberAccount=m.MemberAccount,
+                    MemberAddress=m.MemberAddress,
+                    MemberBirth=m.MemberBirth,
+                    MemberConEmail=m.MemberConEmail,
+                    MemberId=m.MemberId,
+                    MemberName=m.MemberName,
+                    MemberPhone=m.MemberPhone,
+                    MemberRegEmail=m.MemberRegEmail,
+                    MemberWebsite=m.MemberWebsite,
+                    AboutMe=m.AboutMe,
+                    Gender=m.Gender,
+                    ProfileImgUrl=m.ProfileImgUrl,
+                    MemberTeamName=m.MemberTeamName,
+                    
+                }).ToList();
+            return result;
+        }
     }
 }
