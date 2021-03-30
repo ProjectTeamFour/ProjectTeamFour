@@ -69,6 +69,7 @@ namespace ProjectTeamFour.Models
         public string Salt { get; set; }
         public string Hash { get; set; }
         public string ResetPasswordCode { get; set; }
+        public string IsThirdParty { get; set; }
 
         //Navigation Property 導覽屬性
         public virtual ICollection<Order> Orders { get; set; }
