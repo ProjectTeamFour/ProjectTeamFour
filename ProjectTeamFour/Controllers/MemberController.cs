@@ -9,6 +9,8 @@ using System.Web.Security;
 using ProjectTeamFour.Service;
 using System.Net.Http;
 using System.Net;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -148,6 +150,54 @@ namespace ProjectTeamFour.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult LoginWithFacebook()
+        {
+            return null;
+        }
+
+
+        //[HttpPost]
+        //public async Task<ActionResult> GoogleLogin(string token, int type)
+        //{
+        //    var result = await _accountService.GetGoogleInfo(token);
+
+        //    if (result.IsSuccessful)
+        //    {
+        //        var googleTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(result.MessageInfo);
+
+        //        if (_accountService.IsSocialAccountRegister(googleTokenInfo.Email, "Google")) //檢查此帳戶是否存在並註冊
+        //        {
+        //            var cookie = Helpers.SetCookie(_accountService.GetUser(googleTokenInfo.Email).AccountName, false);
+        //            Response.Cookies.Add(cookie);
+        //            return Json(new { response = "第三方登入", status = 1 });
+        //        }
+        //        else
+        //        {
+        //            if (type == 0) //若不是，去判斷是進行註冊還是登入
+        //            {
+        //                var SocialInfo = new SocialInfo
+        //                {
+        //                    Email = googleTokenInfo.Email,
+        //                    SocialPlatform = "Google",
+        //                    ImgUrl = googleTokenInfo.Picture,
+        //                };
+
+        //                return Json(new { response = JsonConvert.SerializeObject(SocialInfo), status = 1 });
+        //            }
+        //            else
+        //            {
+        //                return Json(new { response = "尚未註冊", status = 0 });
+        //            }
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Json(new { response = "發生錯誤", status = 0 });
+        //    }
+        //}
 
 
 

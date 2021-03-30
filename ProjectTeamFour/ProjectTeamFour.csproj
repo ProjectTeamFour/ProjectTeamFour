@@ -247,9 +247,26 @@
     <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300551030_新增fbmodel.cs" />
+    <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.cs" />
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.Designer.cs">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300719050_CreateFBDB.cs" />
+    <Compile Include="Migrations\202103300719050_CreateFBDB.Designer.cs">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.cs" />
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
+    <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -452,6 +469,7 @@
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessViewModel.cs" />
+    <Compile Include="ViewModels\ThirdPartyLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -2498,6 +2516,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300604084_新增foreignkey_fbmodel.resx">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300719050_CreateFBDB.resx">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

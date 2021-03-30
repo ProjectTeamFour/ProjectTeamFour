@@ -67,9 +67,9 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string Project_Answer { get; set; }
 
-        
+
         /// <summary>
-        /// 提案內總方案數量
+        /// 提案內方案總數量
         /// </summary>
         public int ProjectPlansCount { get; set; }
         /// <summary>
@@ -89,7 +89,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string ProjectMainUrl { get; set; }
         /// <summary>
-        /// 
+        /// 提案人真實姓名
         /// </summary>
         public string ProjectPrincipal { get; set; }
         /// <summary>

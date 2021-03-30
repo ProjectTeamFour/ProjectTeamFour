@@ -7,13 +7,13 @@ namespace ProjectTeamFour.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CreateBackendMemberDB : IMigrationMetadata
+    public sealed partial class 新增fbmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateBackendMemberDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(新增fbmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103270948431_CreateBackendMemberDB"; }
+            get { return "202103300551030_新增fbmodel"; }
         }
         
         string IMigrationMetadata.Source

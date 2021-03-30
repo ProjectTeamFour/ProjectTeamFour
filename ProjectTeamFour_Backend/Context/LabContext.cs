@@ -22,6 +22,7 @@ namespace ProjectTeamFour_Backend.Context
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
         public virtual DbSet<DraftProject> DraftProjects { get; set; }
+        public virtual DbSet<FbloginMember> FbloginMembers { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<MigrationHistory> MigrationHistories { get; set; }
@@ -146,6 +147,28 @@ namespace ProjectTeamFour_Backend.Context
                     .WithMany(p => p.DraftProjects)
                     .HasForeignKey(d => d.MemberId)
                     .HasConstraintName("FK_dbo.DraftProjects_dbo.Members_MemberId");
+            });
+
+            modelBuilder.Entity<FbloginMember>(entity =>
+            {
+                entity.HasKey(e => e.FbmemberId)
+                    .HasName("PK_dbo.FBLoginMembers");
+
+                entity.ToTable("FBLoginMembers");
+
+                entity.HasIndex(e => e.FbmemberId, "IX_FBMemberId");
+
+                entity.Property(e => e.FbmemberId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("FBMemberId");
+
+                entity.Property(e => e.GetMemberBirth).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Fbmember)
+                    .WithOne(p => p.FbloginMember)
+                    .HasForeignKey<FbloginMember>(d => d.FbmemberId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_dbo.FBLoginMembers_dbo.Members_FBMemberId");
             });
 
             modelBuilder.Entity<Log>(entity =>
