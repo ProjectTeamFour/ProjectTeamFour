@@ -75,5 +75,7 @@ namespace ProjectTeamFour.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<DraftProject> DraftProjects { get; set; }
 
+        public virtual FBLoginMember FBLoginMember { get; set; }
+
     }
 }
