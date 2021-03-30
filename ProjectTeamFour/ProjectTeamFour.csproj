@@ -259,6 +259,10 @@
     <Compile Include="Migrations\202103300719050_CreateFBDB.Designer.cs">
       <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.cs" />
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
@@ -2521,6 +2525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300719050_CreateFBDB.resx">
       <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
