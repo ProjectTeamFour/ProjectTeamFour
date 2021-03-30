@@ -251,6 +251,10 @@
     <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
       <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.cs" />
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.Designer.cs">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
@@ -2507,6 +2511,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
       <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300604084_新增foreignkey_fbmodel.resx">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

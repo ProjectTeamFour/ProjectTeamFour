@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,13 +8,14 @@ namespace ProjectTeamFour.Models
 {
     public class FBLoginMember
     {
+       
         public int FBId { get; set; }
         public string AuthResponseAccessToken { get; set; }
         public string AuthResponseUserId { get; set; }
         public int AuthResponseExpiresIn { get; set; }
         public string AuthResponseSocialPlatform { get; set; }
 
-
+        [ForeignKey("MemberId")]
         public int OriginalMemberId { get; set; }
 
 
