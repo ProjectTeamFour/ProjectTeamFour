@@ -503,6 +503,7 @@
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
+    <Content Include="Assets\Javascript\LoginPage\Login.js" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
@@ -511,6 +512,7 @@
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
     <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />

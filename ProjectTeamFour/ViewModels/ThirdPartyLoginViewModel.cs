@@ -20,5 +20,14 @@ namespace ProjectTeamFour.ViewModels
         public string GetMemberName { get; set; }
         public DateTime GetMemberBirth { get; set; }
         public string GetMemberEmail { get; set; }
+
+
+    }
+
+    public class SocialInfo
+    {
+        public string Email { get; set; }
+        public string SocialPlatform { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

@@ -85,6 +85,19 @@ document.querySelector("#phone-searchString").addEventListener("keypress", funct
 });
 
 
+//讓fb登出 也讓session 清空
+function Logout() {
+    FB.getLoginStatus(function (response) {
+        FB.logout(function (response) {
+            //console.log("Logged Out!");
+            window.location.href = "/Member/Logout"; //讓session 清空
+        });
+    });
+}
+
+
+
+
 
 
 
