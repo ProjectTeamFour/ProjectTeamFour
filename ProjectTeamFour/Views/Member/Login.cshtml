@@ -49,7 +49,7 @@
                 @*<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>*@
                     <div id="status"></div>
                     @*<button onclick="FbLogin()">fb登入</button>*@
-                    <button onclick="Fblogout()">fb登出</button>
+                    @*<button onclick="Fblogout()">fb登出</button>*@
                 <a href="#" class="d-flex justify-content-center google">
                     <i class="fab fa-google"></i>
                     <p>使用 Google 帳號登入</p>
@@ -150,7 +150,7 @@
 
 
         //登出測試  //實際登出寫在 headerfooter.js
-        function Fblogout() {
+        @*function Fblogout() {
             FB.logout(function (response) {
                 // this part just clears the $_SESSION var
                 // replace with your own code
@@ -158,7 +158,7 @@
                     $('#status').html('<p>Logged out.</p>');
                 });
             });
-        }
+        }*@
 
 
 
