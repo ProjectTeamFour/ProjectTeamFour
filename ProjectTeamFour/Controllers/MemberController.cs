@@ -11,6 +11,8 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text;
+using ProjectTeamFour.Models;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -37,7 +39,7 @@ namespace ProjectTeamFour.Controllers
             {
                 return RedirectToAction("RegisterFail", "Member");
             }
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)  //這裡是後端驗證input欄位對不對
             {
                 MemberViewModel vm = new MemberViewModel()
                 {
@@ -81,13 +83,13 @@ namespace ProjectTeamFour.Controllers
             //    return RedirectToAction("LoginFail", "Member");
             //}
 
-            //確認 hashcode
+            //先抓出email
             MemberViewModel memberinfo = _api.GetMember(x => x.MemberRegEmail == input.MemberRegEmail);
             if (memberinfo == null)
             {
                 return RedirectToAction("LoginFail", "Member");
             }
-
+            //如果是假資料
             else if (memberinfo.MemberId <= 17)
             {
                 Session["Permission"] = memberinfo.Permission;
@@ -95,6 +97,7 @@ namespace ProjectTeamFour.Controllers
             }
             else
             {
+                //確認 hashcode
                 bool verify = _memberservice.VerifyPasswordWithHash(input);
                 if (verify == false)
                 {
@@ -127,6 +130,8 @@ namespace ProjectTeamFour.Controllers
             //5.Response.Redirect
             return Redirect(url);
         }
+
+        //登出清 session
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
@@ -134,6 +139,7 @@ namespace ProjectTeamFour.Controllers
             Session["Permission"] = null;
             return RedirectToAction("Login", "Member");
         }
+
 
 
         public ActionResult RegisterSuccess()
@@ -158,68 +164,55 @@ namespace ProjectTeamFour.Controllers
         }
 
 
-        //[HttpPost]
-        //public async Task<ActionResult> GoogleLogin(string token, int type)
+        [HttpPost]
+        public ActionResult FacebookLogin(string name, string email, string socialPlatform, string imgUrl)
+        {
+            
+            if (_memberservice.IsSocialAccountRegister(email, socialPlatform))   //尋找是不是早已出現在member這張表
+            {
+                MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == email && x.IsThirdParty == socialPlatform);
+
+                Session["Permission"] = member.Permission;  //存session
+                Session["Member"] = member; //存session
+
+                //var cookie = SetCookie(_memberservice.GetMember(x => x.MemberRegEmail == email).MemberName, false);
+                //Response.Cookies.Add(cookie);
+
+                return Json(new { response = "第三方登入", status = 1 }, JsonRequestBehavior.AllowGet);  //吐json物件回去
+            }
+            else   //如果不在db裡幫他註冊一個
+            {
+                OperationResult result = _memberservice.SocialAccountRegisterCreate(name, email, socialPlatform, imgUrl);    //幫使用者註冊一個通過第三方登入的會員
+                if (result.IsSuccessful == true)
+                {
+                    MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == email && x.IsThirdParty == socialPlatform);
+
+                    Session["Permission"] = member.Permission; //存session
+                    Session["Member"] = member; //存session
+
+                    return Json(new { response = "註冊成功", status = 1 }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { response = "目前系統維修中暫時不能申請會員", status = 0 }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+
+        //設定cookie暫時沒用到
+        //public static HttpCookie SetCookie(string accountName, bool rememberMe)
         //{
-        //    var result = await _accountService.GetGoogleInfo(token);
+        //    HttpCookie cookie_user = new HttpCookie("user");
+        //    var cookieText = Encoding.UTF8.GetBytes(accountName);  //變位元組陣列也就是byte陣列
+        //    var encryptedValue = Convert.ToBase64String(MachineKey.Protect(cookieText, "protectedCookie"));  //轉base64
+        //    cookie_user.Values["user_accountname"] = encryptedValue;
 
-        //    if (result.IsSuccessful)
-        //    {
-        //        var googleTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(result.MessageInfo);
+        //    if (rememberMe == true) cookie_user.Expires = DateTime.Now.AddDays(7);
 
-        //        if (_accountService.IsSocialAccountRegister(googleTokenInfo.Email, "Google")) //檢查此帳戶是否存在並註冊
-        //        {
-        //            var cookie = Helpers.SetCookie(_accountService.GetUser(googleTokenInfo.Email).AccountName, false);
-        //            Response.Cookies.Add(cookie);
-        //            return Json(new { response = "第三方登入", status = 1 });
-        //        }
-        //        else
-        //        {
-        //            if (type == 0) //若不是，去判斷是進行註冊還是登入
-        //            {
-        //                var SocialInfo = new SocialInfo
-        //                {
-        //                    Email = googleTokenInfo.Email,
-        //                    SocialPlatform = "Google",
-        //                    ImgUrl = googleTokenInfo.Picture,
-        //                };
-
-        //                return Json(new { response = JsonConvert.SerializeObject(SocialInfo), status = 1 });
-        //            }
-        //            else
-        //            {
-        //                return Json(new { response = "尚未註冊", status = 0 });
-        //            }
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { response = "發生錯誤", status = 0 });
-        //    }
+        //    return cookie_user;
         //}
 
 
-
-
-        //private MemberService _memberService;
-        //public MemberController()
-        //{
-        //    _memberService = new MemberService();
-        //}
-        //// GET: Member
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-        //public ActionResult Login(string acc, string pwd)
-        //{
-        //    if (Session["Member"] == null)
-        //    {
-        //        Member m = _memberService.GetMember(acc, pwd);
-        //        Session["Member"] = m;
-        //    }
-        //    return View();
-        //}
     }
 }
