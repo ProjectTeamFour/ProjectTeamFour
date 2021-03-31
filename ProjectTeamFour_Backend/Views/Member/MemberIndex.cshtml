@@ -1,0 +1,274 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section topCSS{
+<style>
+    table.b-table[aria-busy='true'] {
+        opacity: 0.6;
+    }
+   
+</style>
+    
+}
+<img />
+<div id="member" class="col-12 m-auto">
+    <template>
+        <b-container fluid>
+            <!-- User Interface controls -->
+            <b-row>
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="分類"
+                                  label-for="sort-by-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-input-group size="sm">
+                            <b-form-select id="sort-by-select"
+                                           v-model="sortBy"
+                                           :options="sortOptions"
+                                           :aria-describedby="ariaDescribedby"
+                                           class="w-75">
+                                <template #first>
+                                    <option value="">-- none --</option>
+                                </template>
+                            </b-form-select>
+
+                            <b-form-select v-model="sortDesc"
+                                           :disabled="!sortBy"
+                                           :aria-describedby="ariaDescribedby"
+                                           size="sm"
+                                           class="w-25">
+                                <option :value="false">升序</option>
+                                <option :value="true">降序</option>
+                            </b-form-select>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="初始分類"
+                                  label-for="initial-sort-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="initial-sort-select"
+                                       v-model="sortDirection"
+                                       :options="['asc', 'desc', 'last']"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="搜尋"
+                                  label-for="filter-input"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-input-group size="sm">
+                            <b-form-input id="filter-input"
+                                          v-model="filter"
+                                          type="search"
+                                          placeholder="請輸入關鍵字"></b-form-input>
+
+                            <b-input-group-append>
+                                <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group v-model="sortDirection"
+                                  label="過濾條件"
+                                  
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group v-model="filterOn"
+                                               :aria-describedby="ariaDescribedby"
+                                               class="mt-1">
+                            <b-form-checkbox value="memberName">會員名稱</b-form-checkbox>
+                            <b-form-checkbox value="memberPhone">會員電話</b-form-checkbox>
+                            <b-form-checkbox value="memberRegEmail">會員註冊信箱</b-form-checkbox>
+                        </b-form-checkbox-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group label="每頁顯示筆數"
+                                  label-for="per-page-select"
+                                  label-cols-sm="6"
+                                  label-cols-md="4"
+                                  label-cols-lg="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="per-page-select"
+                                       v-model="perPage"
+                                       :options="pageOptions"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination v-model="currentPage"
+                                  :total-rows="totalRows"
+                                  :per-page="perPage"
+                                  align="fill"
+                                  size="sm"
+                                  class="my-0"></b-pagination>
+                </b-col>
+            </b-row>
+
+            <!-- Main table element -->
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
+
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
+                        聚焦
+                    </b-button>
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '收起' : '展開' }}
+                    </b-button>
+                </template>
+
+                <template #row-details="row">
+                    <b-card>
+                        <ul v-for="">
+                            <li>編號 : {{ row.item.memberId }}</li>
+                            <li > 會員名稱 : {{ row.item.memberName}}</li>
+                            <li>會員團隊名稱 : {{ row.item.memberTeamName }}</li>
+                            <li>會員地址 : {{ row.item.memberAddress }}</li>
+                            <li>會員電話 : {{ row.item.memberPhone }}</li>
+                            <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
+                            <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
+                            <li>會員性別 : {{ row.item.gender }}</li>
+                            <li>會員生日 : {{ row.item.memberBirth }}</li>
+                            <li>關於會員 : {{ row.item.aboutMe }}</li>
+                            <li>會員圖像連結 : {{ row.item.profileImgUrl }}</li>
+                            <li>會員網站連結 : {{ row.item.memberWebsite }}</li>
+                  
+
+                        </ul>
+                    </b-card>
+                </template>
+                <template #cell(profileImgUrl)="data">
+                    <img :src="data.item.profileImgUrl" alt="" width="50" height="50">
+                </template>
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
+
+            <!-- Info modal -->
+            <b-modal :id="infoModal.id" :title="infoModal.title"  ok-only @@hide="resetInfoModal">
+                <pre style="font-size:18px">{{ infoModal.content }}</pre>
+            </b-modal>
+        </b-container>
+    </template>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+<script>
+    const member = new Vue({
+        el: "#member",
+        data: {
+            items: [],
+            fields: [
+                { key: 'memberId', label: '編號', sortable: true, sortDirection: 'desc' },
+                { key: 'profileImgUrl', label: '會員頭像', class: 'text-center' },
+                { key: 'memberName', label: '會員名稱', class: 'text-center' },
+                { key: 'memberBirth', label: '會員生日', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                { key: 'memberPhone', label: '會員電話', class: 'text-center' },
+                { key: 'memberRegEmail', label: '會員註冊信箱', class: 'text-center' },
+                { key: 'actions', label: '詳細資料' }
+            ],
+            isError: false,
+            isBusy: true,
+            totalRows: 1,
+            currentPage: 1,
+            perPage: 20,
+            pageOptions: [5, 10, 20, { value: 100, text: "100" }],
+            sortBy: '',
+            sortDesc: false,
+            sortDirection: 'asc',
+            filter: null,
+            filterOn: [],
+            infoModal: {
+                id: 'info-modal',
+                title: '',
+                content: ''
+            }
+        },
+        created: function () {
+            axios.get("/Api/Members/GetAll")
+                .then((res) => {
+                    this.items = res.data.body.memberList;
+                    this.mounted();
+                    this.isBusy = false;
+                });
+        },
+        computed: {
+            sortOptions() {
+                // Create an options list from our fields
+                return this.fields
+                    .filter(f => f.sortable)
+                    .map(f => {
+                        return { text: f.label, value: f.key }
+                    })
+            }
+        },
+        mounted() {
+            // Set the initial number of items
+            this.totalRows = this.items.length
+        },
+        methods: {
+            info(item, index, button) {
+                this.infoModal.title = `會員編號: ${JSON.stringify(item.memberId, null, 2)}`
+                this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}\n\n關於會員:${JSON.stringify(item.aboutMe, null, 2)}\n\n會員圖像連結:${JSON.stringify(item.profileImgUrl, null, 2)}\n\n會員網站連結:${JSON.stringify(item.memberWebsite, null, 2)}`
+                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+            },
+            resetInfoModal() {
+                this.infoModal.title = ''
+                this.infoModal.content = ''
+            },
+            onFiltered(filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length
+                this.currentPage = 1
+            },
+            mounted() {
+                // Set the initial number of items
+                this.totalRows = this.items.length
+            }
+        },
+
+    })
+</script>

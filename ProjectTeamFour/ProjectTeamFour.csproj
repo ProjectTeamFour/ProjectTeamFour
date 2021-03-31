@@ -251,6 +251,18 @@
     <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
       <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.cs" />
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.Designer.cs">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300719050_CreateFBDB.cs" />
+    <Compile Include="Migrations\202103300719050_CreateFBDB.Designer.cs">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.cs" />
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
@@ -493,6 +505,7 @@
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
+    <Content Include="Assets\Javascript\LoginPage\Login.js" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
@@ -501,6 +514,7 @@
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
     <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
@@ -2509,6 +2523,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
       <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300604084_新增foreignkey_fbmodel.resx">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300719050_CreateFBDB.resx">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

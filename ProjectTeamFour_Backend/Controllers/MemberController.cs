@@ -8,7 +8,12 @@ namespace ProjectTeamFour_Backend.Controllers
 {
     public class MemberController : Controller
     {
-        public IActionResult Index()
+        public IActionResult MemberIndex()
+        {
+            return View();
+        }
+
+        public IActionResult BackendMemberIndex()
         {
             return View();
         }

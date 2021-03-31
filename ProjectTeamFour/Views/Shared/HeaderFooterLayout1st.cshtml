@@ -39,6 +39,18 @@
 </head>
 <body>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="~/Assets/Plugin/FirebaseSDK/FirebaseSDK.js"></script>
+
+    @RenderSection("FBJS", required: false)
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0&appId=842914469991750&autoLogAppEvents=1" nonce="mc3U0cQa"></script>
+
     @*Header*@
     @Html.Partial("~/Views/Shared/PartialView/_headerPartial.cshtml")
 
@@ -47,7 +59,7 @@
 
     <footer>
         @*Footer*@
-       @Html.Partial("~/Views/Shared/PartialView/_footerPartial.cshtml")
+        @Html.Partial("~/Views/Shared/PartialView/_footerPartial.cshtml")
     </footer>
 
     @*sweetalert2套件*@

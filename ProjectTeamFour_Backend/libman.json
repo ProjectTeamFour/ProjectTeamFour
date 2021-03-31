@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "echarts@5.0.2",
+      "destination": "wwwroot/lib/echarts/"
+    }
+  ,
+{
+  "library": "vue-echarts@4.1.0",
+  "destination": "wwwroot/lib/vue-echarts/"
+}
+]
+}

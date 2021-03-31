@@ -21,6 +21,20 @@
     <link href="~/css/sb-admin-2.css" rel="stylesheet">
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <!-- Add this to <head> -->
+    <!-- Load required Bootstrap and BootstrapVue CSS -->
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+    <!-- Load polyfills to support older browsers -->
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+    <!-- Load Vue followed by BootstrapVue -->
+    <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+    <!-- Load the following for BootstrapVueIcons support -->
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 
     @*這是首頁除了Header和Footer之外的CSS*@
 
@@ -144,6 +158,21 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMemberPages"
+                   aria-expanded="true" aria-controls="collapseMemberPages">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>會員管理</span>
+                </a>
+                <div id="collapseMemberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("MemberIndex","Member")">前台會員管理</a>
+                        <a class="collapse-item" style="text-align:center;"  href="@Url.ActionLink("BackendMemberIndex","Member")">後台會員管理</a>
+
+
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -159,7 +188,10 @@
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
 
+            <!-- Nav Item - Tables -->
+
         </ul>
+        
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -376,11 +408,12 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                @*RenderBody塞大家各自的頁面*@
+                @RenderBody()
             </div>
 
 
-            @*RenderBody塞大家各自的頁面*@
-            @RenderBody()
+           
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
