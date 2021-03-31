@@ -52,7 +52,25 @@ namespace ProjectTeamFour_Backend.Context
 
                 entity.Property(e => e.MemberId).ValueGeneratedNever();
 
+                entity.Property(e => e.Gender).HasMaxLength(10);
+
+                entity.Property(e => e.MemberAccount).HasMaxLength(200);
+
+                entity.Property(e => e.MemberAddress).HasMaxLength(200);
+
                 entity.Property(e => e.MemberBirth).HasColumnType("datetime");
+
+                entity.Property(e => e.MemberConEmail).HasMaxLength(200);
+
+                entity.Property(e => e.MemberMessage).HasMaxLength(200);
+
+                entity.Property(e => e.MemberName).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPassword).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPhone).HasMaxLength(100);
+
+                entity.Property(e => e.MemberRegEmail).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Comment>(entity =>
