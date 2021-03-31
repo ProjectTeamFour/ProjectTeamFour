@@ -45,7 +45,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// <summary>
             /// 後臺會員生日
             /// </summary>
-            public DateTime MemberBirth { get; set; }
+            public string MemberBirth { get; set; }
             /// <summary>
             /// 後臺會員權限:true為管理者；false為客服
             /// </summary>

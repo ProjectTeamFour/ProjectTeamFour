@@ -27,7 +27,7 @@ namespace ProjectTeamFour_Backend.Services
                     MemberName=b.MemberName,
                     MemberAccount=b.MemberAccount,
                     MemberAddress=b.MemberAddress,
-                    MemberBirth=b.MemberBirth,
+                    MemberBirth= b.MemberBirth.ToString("d"),
                     MemberConEmail=b.MemberConEmail,
                     MemberRegEmail=b.MemberRegEmail,
                     MemberPhone=b.MemberPhone,
