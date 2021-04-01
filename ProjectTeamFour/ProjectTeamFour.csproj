@@ -263,6 +263,15 @@
     <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
       <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.cs" />
+    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.Designer.cs">
+      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010329180_addAnnouncement.cs" />
+    <Compile Include="Migrations\202104010329180_addAnnouncement.Designer.cs">
+      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
@@ -2532,6 +2541,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
       <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103310557559_ChangeBackendMemberDB2.resx">
+      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010329180_addAnnouncement.resx">
+      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
