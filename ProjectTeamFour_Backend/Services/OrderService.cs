@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectTeamFour_Backend.Context;
+using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Repository;
 using ProjectTeamFour_Backend.ViewModels;
@@ -10,46 +11,44 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Services
 {
-    public class OrderService
+    public class OrderService: IOrderService
     {
-        private DbContext _dbContext;
-        private BaseRepository _repository;
-
-        //public System.Web.HttpResponse Response { get; }
-
-        public OrderService()
+        private readonly IRepository _dbRepository; //repository介面
+        public  OrderService(IRepository repository) //用dapper方便
         {
-            _dbContext = new LabContext();
-            _repository = new BaseRepository();
+            _dbRepository = repository;
         }
 
-        public OrderViewModel CatchOrderDb() //撈出資料庫order的全部資料
+        public OrderViewModel.OrderListResult GetAll()
         {
-
-            var order = new OrderViewModel()
-            {
-                MyOrder = new List<Order>()
-            };
-
-            foreach (var item in _repository.GetAll<Order>())
-            {
-
-                Order o = new Order
+            OrderViewModel.OrderListResult result = new OrderViewModel.OrderListResult();
+            result.MyOrderList = _dbRepository.GetAll<Order>().Select(
+                o => new OrderViewModel.OrderSingleResult()
                 {
-                    OrderId = item.OrderId,
-                    OrderName = item.OrderName,
-                    OrderAddress = item.OrderAddress,
-                    OrderConEmail = item.OrderConEmail,
-                    OrderPhone = item.OrderPhone,
-                    OrderTotalAccount = item.OrderTotalAccount,
-                    TradeNo = item.TradeNo,
-                    Condition = item.Condition,
-                    MemberId = item.MemberId
-                };
-                order.MyOrder.Add(o);
-            }
-            return order;
-            //return _repository.GetAll<Order>();
+
+                    OrderDetailList = _dbRepository.GetAll<OrderDetail>().Where(x => x.OrderId == o.OrderId).Select(x => new OrderDetail
+                    {
+                        PlanTitle = x.PlanTitle,
+                        OrderPrice = x.OrderPrice,
+                        OrderQuantity = x.OrderQuantity,
+                        OrderDetailId = x.OrderDetailId,
+                        Condition = x.Condition,
+                        OrderPlanImgUrl = x.OrderPlanImgUrl,
+                        PlanId = x.PlanId,
+                        OrderDetailDes = x.OrderDetailDes,
+                        ProjectId = x.ProjectId
+                    }).ToList(),
+                    OrderAddress = o.OrderAddress,
+                    OrderConEmail = o.OrderConEmail,
+                    OrderId = o.OrderId,
+                    OrderName = o.OrderName,
+                    OrderTotalAccount = o.OrderTotalAccount,
+                    OrderPhone = o.OrderPhone,
+                    Condition = o.Condition,
+                    TradeNo = o.TradeNo,
+                    MemberId = o.MemberId,                    
+                }).ToList();
+            return result;
         }
-    }
+    }     
 }

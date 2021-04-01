@@ -48,6 +48,8 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IRepository, BaseRepository>();
 
             services.AddTransient<IMemberService, MemberService>();
+
+            services.AddTransient<IOrderService, OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
