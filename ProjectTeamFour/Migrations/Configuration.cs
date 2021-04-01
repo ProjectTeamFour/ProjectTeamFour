@@ -2256,7 +2256,7 @@
             {
                 ProjectId = 17,
                 MemberId = 17,
-                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                ProjectName = "imunsen｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
                 Category = "科技設計",
                 ProjectStatus = "結束且成功",
                 StartDate = new DateTime(2021, 1, 20),
@@ -2543,7 +2543,7 @@
                 MemberId = 20,
                 MemberAccount = "NO20member",
                 MemberPassword = "NO20memberPassword",  //登入假資料用
-                MemberName = "ECOVACS",
+                MemberName = "詩生活",
                 MemberAddress = "",
                 MemberBirth = new DateTime(1990, 1, 18),
                 MemberConEmail = "NO20member@gmail.com",
@@ -2633,7 +2633,7 @@
                 MemberId = 21,
                 MemberAccount = "NO21member",
                 MemberPassword = "NO21memberPassword",  //登入假資料用
-                MemberName = "",
+                MemberName = "卡維蘭",
                 MemberAddress = "",
                 MemberBirth = new DateTime(1990, 1, 18),
                 MemberConEmail = "NO21member@gmail.com",
