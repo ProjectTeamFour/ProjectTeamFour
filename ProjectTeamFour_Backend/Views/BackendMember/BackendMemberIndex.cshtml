@@ -309,7 +309,7 @@
                 memberPhoneState: null,
 
                 memberRegEmailState: null,
-                
+
                 submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }
             },
             created: function () {
@@ -371,8 +371,8 @@
 
                     this.memberRegEmailState = valid;
 
-                    
-                        
+
+
 
                     return valid
                 },
@@ -421,7 +421,18 @@
                     })
                 }
             },
-           
+            watch: {
+                "memberRegEmail": function () {
+                    
+                    var isMail = /^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+                    if (!isMail.test(this.memberRegEmail)) {
+                        this.memberRegEmailState = false;
+                    }
+                    else {
+                        this.memberRegEmailState = null;
+                    }
+                }
+            }
 
 
         })
