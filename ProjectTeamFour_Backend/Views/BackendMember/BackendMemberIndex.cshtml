@@ -51,19 +51,29 @@
                                        :state="memberBirthState"
                                        required></b-form-datepicker>
                 </b-form-group>
-                @*<b-form-group label="會員最高權限"
-                              label-for="backendIdentity-input"
-                              invalid-feedback="Name is required"
-                              :state="backendIdentityState">
-                    <b-form-datepicker id="backendIdentity-input"
-                                       v-model="backendIdentity"
-                                       :state="backendIdentityState"
-                                       required></b-form-datepicker>
-                </b-form-group>*@
                 <b-form-radio-group label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="selected" :options="options" :state="selectedState" name="radio-validation">
                     <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
                     <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
                 </b-form-radio-group>
+                <b-form-group label="會員電話(格式範例:0935-123456)"
+                              label-for="memberPhone-input"
+                              invalid-feedback="Name is required"
+                              :state="memberPhoneState">
+                    <b-form-input id="memberPhone-input"
+                                  v-model="memberPhone"
+                                  :state="memberPhoneState"
+                                  required></b-form-input>
+                </b-form-group>
+                <b-form-group label="會員註冊信箱"
+                              label-for="memberRegEmail-input"
+                              invalid-feedback="Email格式錯誤"
+                              :state="memberRegEmailState">
+                    <b-form-input id="memberRegEmail-input"
+                                  v-model="memberRegEmail"
+                                  :state="memberRegEmailState"
+                                  
+                                  required></b-form-input>
+                </b-form-group>
             </form>
         </b-modal>
     </template>
@@ -264,7 +274,7 @@
                 options: [
                     { text: '具備最高權限', value: true },
                     { text: '無具備最高權限', value: false },
-                    
+
                 ],
                 selected: false,
                 isError: false,
@@ -296,6 +306,10 @@
                 memberPasswordState: null,
                 memberBirthState: null,
                 selectedState: null,
+                memberPhoneState: null,
+
+                memberRegEmailState: null,
+                
                 submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }
             },
             created: function () {
@@ -344,10 +358,22 @@
                 },
                 checkFormValidity() {
                     const valid = this.$refs.form.checkValidity()
+
                     this.memberNameState = valid
+
                     this.memberPasswordState = valid
+
                     this.memberBirthState = valid
-                    this.selectedState=valid
+
+                    this.memberPhoneState = valid
+
+                    this.selectedState = valid
+
+                    this.memberRegEmailState = valid;
+
+                    
+                        
+
                     return valid
                 },
                 resetModal() {
@@ -357,7 +383,10 @@
                     this.memberPasswordState = null
                     this.memberBirth=''
                     this.memberBirthState = null
-                    
+                    this.memberPhone = ''
+                    this.memberPhoneState = null
+                    this.memberRegEmail = ''
+                    this.memberRegEmailState = null
                     this.selectedState=null
                 },
                 handleOk(bvModalEvt) {
@@ -376,6 +405,8 @@
                     this.submittedMember.memberPassword = this.memberPassword
                     this.submittedMember.memberBirth = this.memberBirth
                     this.submittedMember.backendIdentity = this.selected
+                    this.submittedMember.memberPhone = this.memberPhone
+                    this.submittedMember.memberRegEmail = this.memberRegEmail
 
                     // Hide the modal manually
                     this.$nextTick(() => {
@@ -389,7 +420,8 @@
                         })
                     })
                 }
-            }
+            },
+           
 
 
         })
