@@ -131,7 +131,8 @@
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/dmoLRa1m.png",
                 PlanPrice = 11800m,
-                QuantityLimit = 100
+                QuantityLimit = 100,
+                AddCarCarPlan = true,
 
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -146,7 +147,7 @@
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/eZ84taVm.png",
                 PlanPrice = 12800m,
-                QuantityLimit = 30
+                QuantityLimit = 30,
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -160,7 +161,7 @@
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/CNLokGtm.png",
                 PlanPrice = 14800m,
-                QuantityLimit = 40
+                QuantityLimit = 40,
             });
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
@@ -174,7 +175,7 @@
                 PlanShipDate = new DateTime(2021, 3, 29),
                 PlanImgUrl = "https://i.imgur.com/donBSJIm.png",
                 PlanPrice = 20800m,
-                QuantityLimit = 50
+                QuantityLimit = 50,
             });
             //第二個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
@@ -2248,46 +2249,441 @@
                 PlanPrice = 100,
                 QuantityLimit = 99
             });
-            //第17個後台管理者會員資料
+
+
+            //第17個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 17,
+                MemberId = 17,
+                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                Category = "科技設計",
+                ProjectStatus = "結束且成功",
+                StartDate = new DateTime(2021, 1, 20),
+                EndDate = new DateTime(2021, 2, 20),
+                Fundedpeople = 400,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "imunsen Taiwan",
+                ProjectMainUrl = "https://i.imgur.com/HAp0GFDm.jpg",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 2,
+                CreatedDate = new DateTime(2021, 1, 20),
+                SubmittedDate = new DateTime(2021, 1, 20),
+                LastEditTime = new DateTime(2021, 1, 20),
+                ApprovingStatus = 2
+            });
+
+
+            //第17個會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
                 MemberId = 17,
-                MemberAccount = "admin",
-                MemberPassword = "admin",//後台管理者密碼
-                MemberName = "admin",
+                MemberAccount = "NO17member",
+                MemberPassword = "NO17memberPassword",  //登入假資料用
+                MemberName = "imunsen Taiwan",
                 MemberAddress = "",
-                MemberBirth = new DateTime(1989, 5, 1),
-                MemberConEmail = "admin@gmail.com",
-                MemberRegEmail = "admin@gmail.com",//後台管理者帳號
+                MemberBirth = new DateTime(1990, 1, 17),
+                MemberConEmail = "NO17member@gmail.com",
+                MemberRegEmail = "NO17member@gmail.com", //登入用
                 MemberMessage = "",
                 MemberPhone = "",
-                MemberTeamName = "admin",
-                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
-                AboutMe = "後台管理者",
-                Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/UILd3ZHt.jpg",
+                MemberTeamName = "imunsen Taiwan",
+                MemberWebsite = "",
+                AboutMe = "",
+                Gender = "其他",
+                ProfileImgUrl = "https://i.imgur.com/woONMm6t.png",
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
-            //第18個後台客服會員資料
+
+            //第17個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 89,
+                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                ProjectId = 17,
+                ProjectPlanId = 1,
+                PlanTitle = "imunsen 空氣清淨機白色套組",
+                PlanFundedPeople = 30,
+                PlanDescription = "imunsen 空氣清淨機白色 1 台, HEPA濾網 1 組, 擴香石 1 顆",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/d8zirNem.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 15500,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 90,
+                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                ProjectId = 17,
+                ProjectPlanId = 2,
+                PlanTitle = "imunsen 空氣清淨機黑色套組",
+                PlanFundedPeople = 30,
+                PlanDescription = "imunsen 空氣清淨機黑色 1 台, HEPA濾網 1 組, 擴香石 1 顆",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/88YZhvGm.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 16500,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            //第18個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 18,
+                MemberId = 18,
+                ProjectName = "BUTTONS AirX 無線耳機 | 黑眼豆豆will.i.am.重磅新作",
+                Category = "科技設計",
+                ProjectStatus = "結束且成功",
+                StartDate = new DateTime(2021, 1, 20),
+                EndDate = new DateTime(2021, 2, 20),
+                Fundedpeople = 400,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "BUTTONS",
+                ProjectMainUrl = "https://i.imgur.com/c4Fy5Z7m.jpg",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 2,
+                CreatedDate = new DateTime(2021, 1, 20),
+                SubmittedDate = new DateTime(2021, 1, 20),
+                LastEditTime = new DateTime(2021, 1, 20),
+                ApprovingStatus = 2
+            });
+
+
+            //第18個會員資料
             context.Members.AddOrUpdate((x) => x.MemberId, new Member
             {
-                MemberId = 17,
-                MemberAccount = "Customer",
-                MemberPassword = "Customer",//後台客服密碼
-                MemberName = "Customer",
+                MemberId = 18,
+                MemberAccount = "NO18member",
+                MemberPassword = "NO18memberPassword",  //登入假資料用
+                MemberName = "BUTTONS",
                 MemberAddress = "",
-                MemberBirth = new DateTime(1989, 5, 1),
-                MemberConEmail = "Customer@gmail.com",
-                MemberRegEmail = "Customer@gmail.com",//後台客服帳號
+                MemberBirth = new DateTime(1990, 1, 18),
+                MemberConEmail = "NO18member@gmail.com",
+                MemberRegEmail = "NO18member@gmail.com", //登入用
                 MemberMessage = "",
                 MemberPhone = "",
-                MemberTeamName = "Customer",
-                MemberWebsite = "https://www.facebook.com/RotundaTaiwan",
-                AboutMe = "後台客服",
-                Gender = "女",
-                ProfileImgUrl = "https://i.imgur.com/UILd3ZHt.jpg",
+                MemberTeamName = "BUTTONS",
+                MemberWebsite = "",
+                AboutMe = "",
+                Gender = "其他",
+                ProfileImgUrl = "https://i.imgur.com/D5Bg6mft.png",
                 //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
+
+
+            //第18個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 91,
+                ProjectName = "BUTTONS AirX 無線耳機 | 黑眼豆豆will.i.am.重磅新作",
+                ProjectId = 18,
+                ProjectPlanId = 1,
+                PlanTitle = "BUTTONS Air X 無線耳機 2 組",
+                PlanFundedPeople = 30,
+                PlanDescription = "BUTTONS Air X 無線耳機 2 組(街頭黑 / 優雅粉 / 迷幻霧藍), 每組各保固 1 年",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/z6JJJgTm.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8298,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 92,
+                ProjectName = "BUTTONS AirX 無線耳機 | 黑眼豆豆will.i.am.重磅新作",
+                ProjectId = 18,
+                ProjectPlanId = 2,
+                PlanTitle = "BUTTONS Air X 無線耳機 3 組",
+                PlanFundedPeople = 30,
+                PlanDescription = "BUTTONS Air X 無線耳機 3 組(街頭黑 / 優雅粉 / 迷幻霧藍), 每組各保固 1 年",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/lNLFfcrm.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 12297,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            //第19個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 19,
+                MemberId = 19,
+                ProjectName = "科沃斯ECOVACS N8 掃拖機器人｜你的第一台除菌掃拖機器人",
+                Category = "科技設計",
+                ProjectStatus = "結束且成功",
+                StartDate = new DateTime(2021, 1, 20),
+                EndDate = new DateTime(2021, 2, 20),
+                Fundedpeople = 400,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "ECOVACS",
+                ProjectMainUrl = "https://i.imgur.com/hQn8ACTm.jpg",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 1,
+                CreatedDate = new DateTime(2021, 1, 20),
+                SubmittedDate = new DateTime(2021, 1, 20),
+                LastEditTime = new DateTime(2021, 1, 20),
+                ApprovingStatus = 2
+            });
+
+
+            //第19個會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 19,
+                MemberAccount = "NO19member",
+                MemberPassword = "NO19memberPassword",  //登入假資料用
+                MemberName = "ECOVACS",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1990, 1, 18),
+                MemberConEmail = "NO19member@gmail.com",
+                MemberRegEmail = "NO19member@gmail.com", //登入用
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "ECOVACS",
+                MemberWebsite = "",
+                AboutMe = "",
+                Gender = "其他",
+                ProfileImgUrl = "https://i.imgur.com/pWKHMHMt.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+
+
+            //第19個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 93,
+                ProjectName = "科沃斯ECOVACS N8 掃拖機器人｜你的第一台除菌掃拖機器人",
+                ProjectId = 19,
+                ProjectPlanId = 1,
+                PlanTitle = "N8 掃拖地機器人 2 套",
+                PlanFundedPeople = 30,
+                PlanDescription = "N8 掃拖地機器人 2 套, 台灣聯強保固各18個月",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/xkLdk60m.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 19398,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            //第20個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 20,
+                MemberId = 20,
+                ProjectName = "陸穎魚首部詩集《淡水月亮》10週年台灣復刻版企劃",
+                Category = "遊戲出版",
+                ProjectStatus = "結束且成功",
+                StartDate = new DateTime(2021, 1, 20),
+                EndDate = new DateTime(2021, 2, 20),
+                Fundedpeople = 400,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "詩生活",
+                ProjectMainUrl = "https://i.imgur.com/vMlyf2rm.jpg",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 2,
+                CreatedDate = new DateTime(2021, 1, 20),
+                SubmittedDate = new DateTime(2021, 1, 20),
+                LastEditTime = new DateTime(2021, 1, 20),
+                ApprovingStatus = 2
+            });
+
+
+            //第20個會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 20,
+                MemberAccount = "NO20member",
+                MemberPassword = "NO20memberPassword",  //登入假資料用
+                MemberName = "ECOVACS",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1990, 1, 18),
+                MemberConEmail = "NO20member@gmail.com",
+                MemberRegEmail = "NO20member@gmail.com", //登入用
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "詩生活",
+                MemberWebsite = "",
+                AboutMe = "",
+                Gender = "其他",
+                ProfileImgUrl = "https://i.imgur.com/5Nonwcdt.jpg",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+
+
+            //第20個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 94,
+                ProjectName = "陸穎魚首部詩集《淡水月亮》10週年台灣復刻版企劃",
+                ProjectId = 20,
+                ProjectPlanId = 1,
+                PlanTitle = "讓月亮清洗憂愁的心",
+                PlanFundedPeople = 30,
+                PlanDescription = "< 淡水月亮 > 簽名詩集 x 1, [ 透明行李箱詩卡書籤 ] x 1",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/qrvtbaDm.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 850,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 95,
+                ProjectName = "陸穎魚首部詩集《淡水月亮》10週年台灣復刻版企劃",
+                ProjectId = 20,
+                ProjectPlanId = 2,
+                PlanTitle = "渾蛋在月亮下說晚安",
+                PlanFundedPeople = 30,
+                PlanDescription = "< 淡水月亮 > x 1, [ 透明行李箱詩卡書籤 ] x 1, [晚安晚安] x 1, < 抓住那個混蛋 > x 1",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/l7RQG5Nm.jpg",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1200,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+
+            //第21個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 21,
+                MemberId = 21,
+                ProjectName = "精釀台灣！用當季產物釀在地啤酒",
+                Category = "公共在地",
+                ProjectStatus = "結束且成功",
+                StartDate = new DateTime(2021, 1, 20),
+                EndDate = new DateTime(2021, 2, 20),
+                Fundedpeople = 400,
+                FundingAmount = 347625,
+                AmountThreshold = 300000,
+                CreatorName = "卡維蘭",
+                ProjectMainUrl = "https://i.imgur.com/ZTlwn4Lm.png",
+                //提案瀏覽頁的頁面照片 照片格式IMGURL SIZE:		320x320 連結檔案名結尾m
+                ProjectCoverUrl = "",
+                //提案詳細頁的影片覆蓋 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "",
+                //格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 2,
+                CreatedDate = new DateTime(2021, 1, 20),
+                SubmittedDate = new DateTime(2021, 1, 20),
+                LastEditTime = new DateTime(2021, 1, 20),
+                ApprovingStatus = 2
+            });
+
+
+            //第21個會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 21,
+                MemberAccount = "NO21member",
+                MemberPassword = "NO21memberPassword",  //登入假資料用
+                MemberName = "",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1990, 1, 18),
+                MemberConEmail = "NO21member@gmail.com",
+                MemberRegEmail = "NO21member@gmail.com", //登入用
+                MemberMessage = "",
+                MemberPhone = "",
+                MemberTeamName = "卡維蘭",
+                MemberWebsite = "",
+                AboutMe = "",
+                Gender = "其他",
+                ProfileImgUrl = "https://i.imgur.com/BLS5NWtt.png",
+                //照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+
+
+            //第21個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 96,
+                ProjectName = "精釀台灣！用當季產物釀在地啤酒",
+                ProjectId = 21,
+                ProjectPlanId = 1,
+                PlanTitle = "明信片一組 4 張",
+                PlanFundedPeople = 30,
+                PlanDescription = "明信片一組 4 張",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/PXbgRDOm.png",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 97,
+                ProjectName = "精釀台灣！用當季產物釀在地啤酒",
+                ProjectId = 21,
+                ProjectPlanId = 2,
+                PlanTitle = "精釀啤酒 x 2",
+                PlanFundedPeople = 30,
+                PlanDescription = "台灣風土映紅精釀啤酒 * 6, 卡維蘭水蜜桃精釀啤酒 * 6",
+                PlanShipDate = new DateTime(2021, 2, 25),
+                PlanImgUrl = "https://i.imgur.com/MDsvL4Xm.png",
+                //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1600,
+                QuantityLimit = 30,
+                AddCarCarPlan = true
+            });
+
 
             ////第22個提案
             //context.Projects.AddOrUpdate((x) => x.ProjectId, new Project

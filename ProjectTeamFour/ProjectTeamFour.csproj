@@ -275,6 +275,10 @@
     <Compile Include="Migrations\202104010532433_od新增欄位.Designer.cs">
       <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104011056109_加車車商城種子資料.cs" />
+    <Compile Include="Migrations\202104011056109_加車車商城種子資料.Designer.cs">
+      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -2554,6 +2558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104010532433_od新增欄位.resx">
       <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011056109_加車車商城種子資料.resx">
+      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
