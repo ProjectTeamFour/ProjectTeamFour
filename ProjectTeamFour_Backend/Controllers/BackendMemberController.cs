@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-    public class MemberController : Controller
+    public class BackendMemberController : Controller
     {
-        public IActionResult MemberIndex()
+        public IActionResult BackendMemberIndex()
         {
             return View();
         }
-
-       
     }
 }

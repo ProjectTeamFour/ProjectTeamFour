@@ -1,0 +1,400 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section topCSS{
+    <style>
+        table.b-table[aria-busy='true'] {
+            opacity: 0.6;
+        }
+    </style>
+
+}
+
+<div id="member" class="col-12 m-auto">
+    <template>
+        <div>
+            <b-button block variant="primary" v-b-modal.modal-prevent-closing>新增後台會員</b-button>
+        </div>
+        <b-modal id="modal-prevent-closing"
+                 ref="modal"
+                 title="新增後台會員資料"
+                 @@show="resetModal"
+                 @@hidden="resetModal"
+                 @@ok="handleOk">
+            <form ref="form" submit.stop.prevent="handleSubmit">
+                <b-form-group label="會員名稱"
+                              label-for="memberName-input"
+                              invalid-feedback="Name is required"
+                              :state="memberNameState">
+                    <b-form-input id="memberName-input"
+                                  v-model="memberName"
+                                  :state="memberNameState"
+                                  required></b-form-input>
+                </b-form-group>
+                <b-form-group label="會員密碼"
+                              label-for="memberPassword-input"
+                              invalid-feedback="Name is required"
+                              :state="memberNameState">
+                    <b-form-input id="memberPassword-input"
+                                  v-model="memberPassword"
+                                  :state="memberNameState"
+                                  required></b-form-input>
+                </b-form-group>
+                <b-form-group label="會員生日"
+                              label-for="memberBirth-input"
+                              invalid-feedback="Name is required"
+                              :state="memberBirthState">
+                    <b-form-datepicker id="memberBirth-input"
+                                       v-model="memberBirth"
+                                       :state="memberBirthState"
+                                       required></b-form-datepicker>
+                </b-form-group>
+                @*<b-form-group label="會員最高權限"
+                              label-for="backendIdentity-input"
+                              invalid-feedback="Name is required"
+                              :state="backendIdentityState">
+                    <b-form-datepicker id="backendIdentity-input"
+                                       v-model="backendIdentity"
+                                       :state="backendIdentityState"
+                                       required></b-form-datepicker>
+                </b-form-group>*@
+                <b-form-radio-group label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="selected" :options="options" :state="selectedState" name="radio-validation">
+                    <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
+                    <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
+                </b-form-radio-group>
+            </form>
+        </b-modal>
+    </template>
+
+
+    <template>
+        <b-container fluid>
+            <!-- User Interface controls -->
+            <b-row>
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="分類"
+                                  label-for="sort-by-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-input-group size="sm">
+                            <b-form-select id="sort-by-select"
+                                           v-model="sortBy"
+                                           :options="sortOptions"
+                                           :aria-describedby="ariaDescribedby"
+                                           class="w-75">
+                                <template #first>
+                                    <option value="">-- none --</option>
+                                </template>
+                            </b-form-select>
+
+                            <b-form-select v-model="sortDesc"
+                                           :disabled="!sortBy"
+                                           :aria-describedby="ariaDescribedby"
+                                           size="sm"
+                                           class="w-25">
+                                <option :value="false">升序</option>
+                                <option :value="true">降序</option>
+                            </b-form-select>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="初始分類"
+                                  label-for="initial-sort-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="initial-sort-select"
+                                       v-model="sortDirection"
+                                       :options="['asc', 'desc', 'last']"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="搜尋"
+                                  label-for="filter-input"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-input-group size="sm">
+                            <b-form-input id="filter-input"
+                                          v-model="filter"
+                                          type="search"
+                                          placeholder="請輸入關鍵字"></b-form-input>
+
+                            <b-input-group-append>
+                                <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group v-model="sortDirection"
+                                  label="過濾條件"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group v-model="filterOn"
+                                               :aria-describedby="ariaDescribedby"
+                                               class="mt-1">
+                            <b-form-checkbox value="memberName">會員名稱</b-form-checkbox>
+                            <b-form-checkbox value="memberPhone">會員電話</b-form-checkbox>
+                            <b-form-checkbox value="memberRegEmail">會員註冊信箱</b-form-checkbox>
+                            <b-form-checkbox value="backendIdentity">會員最高權限</b-form-checkbox>
+                        </b-form-checkbox-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group label="每頁顯示筆數"
+                                  label-for="per-page-select"
+                                  label-cols-sm="6"
+                                  label-cols-md="4"
+                                  label-cols-lg="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="per-page-select"
+                                       v-model="perPage"
+                                       :options="pageOptions"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination v-model="currentPage"
+                                  :total-rows="totalRows"
+                                  :per-page="perPage"
+                                  align="fill"
+                                  size="sm"
+                                  class="my-0"></b-pagination>
+                </b-col>
+            </b-row>
+
+            <!-- Main table element -->
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
+
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
+                        聚焦
+                    </b-button>
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '收起' : '展開' }}
+                    </b-button>
+                </template>
+
+                <template #row-details="row">
+                    <b-card>
+                        <ul v-for="">
+                            <li>編號 : {{ row.item.memberId }}</li>
+                            <li>最高權限 : {{ row.item.backendIdentity===true?'有':'無'}}</li>
+                            <li>會員名稱 : {{ row.item.memberName}}</li>
+                            <li>會員地址 : {{ row.item.memberAddress }}</li>
+                            <li>會員電話 : {{ row.item.memberPhone }}</li>
+                            <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
+                            <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
+                            <li>會員性別 : {{ row.item.gender }}</li>
+                            <li>會員生日 : {{ row.item.memberBirth }}</li>
+                        </ul>
+                    </b-card>
+                </template>
+                <template #cell(backendIdentity)="data">
+                    <b class="text-info">{{ data.item.backendIdentity===true?'有':'無' }}</b>
+                </template>
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
+
+            <!-- Info modal -->
+            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
+                <pre style="font-size:18px">{{ infoModal.content }}</pre>
+            </b-modal>
+        </b-container>
+    </template>
+</div>
+@section endJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script>
+        const member = new Vue({
+            el: "#member",
+            data: {
+                items: [],
+                fields: [
+                    { key: 'memberId', label: '編號', sortable: true, sortDirection: 'desc' },
+                    { key: 'backendIdentity', label: '最高權限', sortable: true, sortDirection: 'desc', class: 'text-center' },
+                    { key: 'memberName', label: '會員名稱', class: 'text-center' },
+                    { key: 'memberBirth', label: '會員生日', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'memberPhone', label: '會員電話', class: 'text-center' },
+                    { key: 'memberRegEmail', label: '會員註冊信箱', class: 'text-center' },
+                    { key: 'actions', label: '詳細資料' }
+                ],
+                options: [
+                    { text: '具備最高權限', value: true },
+                    { text: '無具備最高權限', value: false },
+                    
+                ],
+                selected: false,
+                isError: false,
+                isBusy: true,
+                totalRows: 1,
+                currentPage: 1,
+                perPage: 20,
+                pageOptions: [5, 10, 20, { value: 100, text: "100" }],
+                sortBy: '',
+                sortDesc: false,
+                sortDirection: 'asc',
+                filter: null,
+                filterOn: [],
+                infoModal: {
+                    id: 'info-modal',
+                    title: '',
+                    content: ''
+                },
+                memberName: '',
+                memberPassword: '',
+                memberAddress: '',
+                memberPhone: '',
+                memberRegEmail: '',
+                memberConEmail: '',
+                gender: '',
+                memberBirth: '',
+                memberMessage: '',
+                memberNameState: null,
+                memberPasswordState: null,
+                memberBirthState: null,
+                selectedState: null,
+                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }
+            },
+            created: function () {
+                axios.get("/Api/BackendMembers/GetAll")
+                    .then((res) => {
+                        this.items = res.data.body.backendMemberList;
+                        this.mounted();
+                        this.isBusy = false;
+                    });
+            },
+            computed: {
+                sortOptions() {
+                    // Create an options list from our fields
+                    return this.fields
+                        .filter(f => f.sortable)
+                        .map(f => {
+                            return { text: f.label, value: f.key }
+                        })
+                },
+                state() {
+                    return Boolean(this.value)
+                }
+            },
+            mounted() {
+                // Set the initial number of items
+                this.totalRows = this.items.length
+            },
+            methods: {
+                info(item, index, button) {
+                    this.infoModal.title = `會員編號: ${JSON.stringify(item.memberId, null, 2)}`
+                    this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) === true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`
+                    this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+                },
+                resetInfoModal() {
+                    this.infoModal.title = ''
+                    this.infoModal.content = ''
+                },
+                onFiltered(filteredItems) {
+                    // Trigger pagination to update the number of buttons/pages due to filtering
+                    this.totalRows = filteredItems.length
+                    this.currentPage = 1
+                },
+                mounted() {
+                    // Set the initial number of items
+                    this.totalRows = this.items.length
+                },
+                checkFormValidity() {
+                    const valid = this.$refs.form.checkValidity()
+                    this.memberNameState = valid
+                    this.memberPasswordState = valid
+                    this.memberBirthState = valid
+                    this.selectedState=valid
+                    return valid
+                },
+                resetModal() {
+                    this.memberName = ''
+                    this.memberNameState = null
+                    this.memberPassword=''
+                    this.memberPasswordState = null
+                    this.memberBirth=''
+                    this.memberBirthState = null
+                    
+                    this.selectedState=null
+                },
+                handleOk(bvModalEvt) {
+                    // Prevent modal from closing
+                    bvModalEvt.preventDefault()
+                    // Trigger submit handler
+                    this.handleSubmit()
+                },
+                handleSubmit() {
+                    // Exit when the form isn't valid
+                    if (!this.checkFormValidity()) {
+                        return
+                    }
+                    // Push the name to submitted names
+                    this.submittedMember.memberName = this.memberName
+                    this.submittedMember.memberPassword = this.memberPassword
+                    this.submittedMember.memberBirth = this.memberBirth
+                    this.submittedMember.backendIdentity = this.selected
+
+                    // Hide the modal manually
+                    this.$nextTick(() => {
+                        this.$bvModal.hide('modal-prevent-closing');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: '成功新增後台會員',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    })
+                }
+            }
+
+
+        })
+    </script>
+}
+
+
+
