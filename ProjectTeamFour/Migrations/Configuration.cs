@@ -2308,7 +2308,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 89,
-                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                ProjectName = "imunsen｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
                 ProjectId = 17,
                 ProjectPlanId = 1,
                 PlanTitle = "imunsen 空氣清淨機白色套組",
@@ -2326,7 +2326,7 @@
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
             {
                 PlanId = 90,
-                ProjectName = "imunsen 空氣清淨機｜韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
+                ProjectName = "imunsen | 韓國首台擁有檜木濾網與擴香系統的360度雙氣旋清淨機",
                 ProjectId = 17,
                 ProjectPlanId = 2,
                 PlanTitle = "imunsen 空氣清淨機黑色套組",
@@ -2587,7 +2587,7 @@
                 PlanFundedPeople = 30,
                 PlanDescription = "< 淡水月亮 > x 1, [ 透明行李箱詩卡書籤 ] x 1, [晚安晚安] x 1, < 抓住那個混蛋 > x 1",
                 PlanShipDate = new DateTime(2021, 2, 25),
-                PlanImgUrl = "https://i.imgur.com/l7RQG5Nm.jpg",
+                PlanImgUrl = "https://i.imgur.com/l7RQG5N.jpg",
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1200,
                 QuantityLimit = 30,

@@ -73,7 +73,8 @@ namespace ProjectTeamFour.Service
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
                     ProjectId = item.ProjectId,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
                 };
                 if (cv.QuantityLimit > 0)
                 {
@@ -201,7 +202,8 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
                 };
                 if (planbox.QuantityLimit > 0)
                 {
