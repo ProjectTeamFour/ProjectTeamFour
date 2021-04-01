@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
+    <PackageReference Include="EntityFramework" Version="6.1.3" />
+    <PackageReference Include="jQuery.Validation" Version="1.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
