@@ -61,7 +61,7 @@
         }
 
         .indemand-project .cardtemplate-section-item .project-name {
-            height: 3rem;
+            height: 5rem;
         }
 
     .indemand-project .title-bar {
@@ -217,7 +217,7 @@
 
 
     .indemand-project .cardtemplate .plan-title {
-        height: 5.5rem;
+        height: 3rem;
     }
 
 
@@ -271,10 +271,10 @@
     .indemand-project .cardtemplate .project-picture {
         height: 180px;
     }
-
+/*
     .indemand-project .cardtemplate .plan-title {
         height: 6rem;
-    }
+    }*/
 
         .indemand-project .cardtemplate .plan-title h3 {
             font-size: 0.85rem;

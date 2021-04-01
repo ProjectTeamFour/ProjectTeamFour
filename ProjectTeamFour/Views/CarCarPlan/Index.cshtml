@@ -116,11 +116,11 @@
             <div class="indemand-project-wrap">
                 <div class="row">
 
-                    @for (int i = 0; i < 4; i++)
+                    @foreach (var item in Model.CarCarPlanItems)
                     {
-                        
-                          @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
-                        
+
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
+
                     }
 
                 </div>
