@@ -25,7 +25,6 @@ namespace ProjectTeamFour_Backend.Services
             result.MyOrderList = _dbRepository.GetAll<Order>().Select(
                 o => new OrderViewModel.OrderSingleResult()
                 {
-
                     OrderDetailList = _dbRepository.GetAll<OrderDetail>().Where(x => x.OrderId == o.OrderId).Select(x => new OrderDetail
                     {
                         PlanTitle = x.PlanTitle,
@@ -36,7 +35,8 @@ namespace ProjectTeamFour_Backend.Services
                         OrderPlanImgUrl = x.OrderPlanImgUrl,
                         PlanId = x.PlanId,
                         OrderDetailDes = x.OrderDetailDes,
-                        ProjectId = x.ProjectId
+                        ProjectId = x.ProjectId,
+                        //PlanShipDate = x.PlanShipDate
                     }).ToList(),
                     OrderAddress = o.OrderAddress,
                     OrderConEmail = o.OrderConEmail,
