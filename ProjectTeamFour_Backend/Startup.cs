@@ -49,6 +49,8 @@ namespace ProjectTeamFour_Backend
 
             services.AddTransient<IMemberService, MemberService>();
 
+            services.AddTransient<IOrderService, OrderService>();
+
             services.AddTransient<IBackendMemberService, BackendMemberService>();
         }
 
