@@ -36,6 +36,13 @@
     <!-- Load the following for BootstrapVueIcons support -->
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 
+    <!--引入Vue.js axios-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+
+    <!--引入Echarts.js-->
+    <script src="~/lib/echarts/echarts.min.js"></script>
+    <script src="~/lib/vue-echarts/vue-echarts.min.js"></script>
+
     @*這是首頁除了Header和Footer之外的CSS*@
 
     @await RenderSectionAsync("topCSS", required: false)
@@ -191,7 +198,7 @@
             <!-- Nav Item - Tables -->
 
         </ul>
-        
+
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -413,7 +420,7 @@
             </div>
 
 
-           
+
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
