@@ -3,49 +3,47 @@
     var vm = (MemberViewModel)Session["Member"];
 }
 
-<div class="cardtemplate-section-item cardtemplate">
-    <a href="~/CarCarPlan/Detail/@Model.PlanId">
-        <div class="cardtemplate-item project-picture">
-            <img class="w-100" src=@Model.PlanImgUrl>
-        </div>
-        <div class="cardtemplate-item tag">
-            <div class="tag-item categories">
-                <p>@Model.Category</p>
+
+@if(Model.AddCarCarPlan == true)
+{
+    <div class="cardtemplate-section-item cardtemplate">
+        <a href="~/CarCarPlan/Detail/@Model.PlanId">
+            <div class="cardtemplate-item project-picture">
+                <img class="w-100" src=@Model.PlanImgUrl>
+            </div>
+            <div class="cardtemplate-item tag">
+                <div class="tag-item categories">
+                    <p>@Model.Category</p>
+                </div>
+            </div>
+            <div class="cardtemplate-item project-name">
+                <h4>@Model.ProjectName</h4>
+            </div>
+            <div class="cardtemplate-item plan-title">
+                <h3>@Model.PlanTitle</h3>
+            </div>
+            <div class="cardtemplate-item plan-description">
+                    @*<h3>@Model.PlanDescription</h3>*@
+                </div>
+            <div class="cardtemplate-item project-team">
+                <p>@Model.CreatorName</p>
+            </div>
+            <div class="cardtemplate-item project-progressbar">
+                <div class="project-progressbar-item"></div>
+            </div>
+        </a>
+        <div class="cardtemplate-item project-amount d-flex justify-content-between">
+            <div class="project-amount-item amount">
+                @StringFormat5.addComma((int)Model.PlanPrice)
+            </div>
+
+            <div class="project-amount-item add-to-cart">
+                <button class="add-to-cart d-flex" onclick="AddToMyCart('@Model.PlanId', '@Model.PlanTitle', '@Model.PlanImgUrl', '@Model.PlanPrice', '@Model.QuantityLimit', '@Model.ProjectId')">
+                    <p>上車囉</p>
+                    <i class="fas fa-shopping-cart">+</i>
+                </button>
             </div>
         </div>
-        <div class="cardtemplate-item project-name">
-            <h4>@Model.ProjectName</h4>
-        </div>
-        <div class="cardtemplate-item plan-title">
-            <h3>@Model.PlanTitle</h3>
-        </div>
-        @*<div class="cardtemplate-item plan-description">
-                <h3>@Model.PlanDescription</h3>
-            </div>*@
-        <div class="cardtemplate-item project-team">
-            <p>@Model.CreatorName</p>
-        </div>
-        <div class="cardtemplate-item project-progressbar">
-            <div class="project-progressbar-item"></div>
-        </div>
-    </a>
-    <div class="cardtemplate-item project-amount d-flex justify-content-between">
-        <div class="project-amount-item amount">
-            @StringFormat5.addComma((int)Model.PlanPrice)
-        </div>
-
-        <div class="project-amount-item add-to-cart">
-            <button class="add-to-cart d-flex" onclick="AddToMyCart('@Model.PlanId', '@Model.PlanTitle', '@Model.PlanImgUrl', '@Model.PlanPrice', '@Model.QuantityLimit', '@Model.ProjectId')">
-                <p>上車囉</p>
-                <i class="fas fa-shopping-cart">+</i>
-            </button>
-        </div>
     </div>
-</div>
 
-
-@section endJS{
-    <script>
-
-    </script>
 }

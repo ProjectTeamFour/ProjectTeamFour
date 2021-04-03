@@ -51,6 +51,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// 付款狀態
             /// </summary>
             public string Condition { get; set; }
+            
 
             public List<OrderDetail> OrderDetailList { get; set; }
         }

@@ -18,6 +18,7 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
@@ -36,14 +37,28 @@ namespace ProjectTeamFour_Backend.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=chunyu.database.windows.net;Database=Lab;User id=padaa;Password=@Aa11111;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=chunyu.database.windows.net;Database=Lab;User=padaa;Password=@Aa11111;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.Announcements)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.Announcements_dbo.Members_MemberId");
+            });
 
             modelBuilder.Entity<Backendmember>(entity =>
             {

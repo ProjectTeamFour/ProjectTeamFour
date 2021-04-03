@@ -56,7 +56,7 @@ namespace ProjectTeamFour.Service
                     PlanPrice = plan.PlanPrice,
                     PlanImgUrl = plan.PlanImgUrl,
                     PlanTitle = plan.PlanTitle,
-                    ProjectId = plan.ProjectId,                    
+                    ProjectId = plan.ProjectId,                      
                 };
                 viewmodel.CartItems.Add(CartItem);                                                                            
             }
@@ -129,7 +129,8 @@ namespace ProjectTeamFour.Service
                     OrderQuantity = i.Quantity,
                     OrderDetailDes = cartSession.Comment,
                     ProjectId = plan.ProjectId,
-                    OrderPlanImgUrl = plan.PlanImgUrl
+                    OrderPlanImgUrl = plan.PlanImgUrl,
+                    PlanShipDate = plan.PlanShipDate
                 };
                 od.Add(o);
             }
