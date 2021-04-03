@@ -65,7 +65,7 @@ namespace ProjectTeamFour_Backend.Context
                 entity.HasKey(e => e.MemberId)
                     .HasName("PK_dbo.Backendmembers");
 
-                entity.Property(e => e.MemberId).ValueGeneratedNever();
+               
 
                 entity.Property(e => e.Gender).HasMaxLength(10);
 

@@ -22,8 +22,50 @@ namespace ProjectTeamFour_Backend.WebApi
             _backendMemberService = backendMemberService;
             _logger = logger;
         }
+        /// <summary>
+        /// 從資料庫取得一筆後台會員資料
+        /// </summary>
+        /// <returns></returns>
 
+        [HttpGet("{id}")]
+        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> GetOneBackendMember(int id)
+        {
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+
+            _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "BackendMembersController GetOneBackendMember方法被呼叫");
+
+            try
+            {
+                var queryResult= _backendMemberService.GetOne(id);
+
+                if(queryResult==null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    result.Body = queryResult;
+                    return result;
+                }
+                
+                
+                
+            }
+            catch(Exception ex)
+            {
+                result.Msg = ex.Message;
+                result.IsSuccess = false;
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 從資料庫取得所有後台會員資料
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        
         public BaseModel.BaseResult<BackendMemberViewModel.BackendListResult> GetAll()
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>();
@@ -41,6 +83,39 @@ namespace ProjectTeamFour_Backend.WebApi
                 result.Msg = ex.Message;
                 result.IsSuccess = false;
 
+                return result;
+            }
+
+        }
+        /// <summary>
+        /// 在後台會員資料庫中創建一筆資料
+        /// </summary>
+        /// <param name="backendSingle"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public  ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        {
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PostBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
+
+            if (backendSingle==null)
+            {
+                return NotFound();
+            }
+
+            
+
+            try
+            {
+                 result.Body = _backendMemberService.CreateOneMember(backendSingle);
+
+                return result;
+            }
+            catch(Exception ex)
+            {
+                result.Msg = ex.Message;
+                result.IsSuccess = false;
                 return result;
             }
 

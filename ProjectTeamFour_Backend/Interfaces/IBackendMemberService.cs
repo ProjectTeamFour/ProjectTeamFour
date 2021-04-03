@@ -9,5 +9,8 @@ namespace ProjectTeamFour_Backend.Interfaces
     public interface IBackendMemberService
     {
         BackendMemberViewModel.BackendListResult GetAll();
+        BackendMemberViewModel.BackendSingleResult CreateOneMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        BackendMemberViewModel.BackendSingleResult GetOne(int id);
     }
 }

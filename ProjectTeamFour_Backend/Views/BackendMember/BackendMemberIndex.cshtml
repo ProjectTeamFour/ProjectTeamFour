@@ -26,7 +26,7 @@
             <form ref="form" submit.stop.prevent="handleSubmit">
                 <b-form-group label="會員名稱"
                               label-for="memberName-input"
-                              invalid-feedback="Name is required"
+                              invalid-feedback="此為必填選項"
                               :state="memberNameState">
                     <b-form-input id="memberName-input"
                                   v-model="memberName"
@@ -35,7 +35,7 @@
                 </b-form-group>
                 <b-form-group label="會員密碼"
                               label-for="memberPassword-input"
-                              invalid-feedback="Name is required"
+                              invalid-feedback="此為必填選項"
                               :state="memberNameState">
                     <b-form-input id="memberPassword-input"
                                   v-model="memberPassword"
@@ -44,7 +44,7 @@
                 </b-form-group>
                 <b-form-group label="會員生日"
                               label-for="memberBirth-input"
-                              invalid-feedback="Name is required"
+                              invalid-feedback="此為必填選項"
                               :state="memberBirthState">
                     <b-form-datepicker id="memberBirth-input"
                                        v-model="memberBirth"
@@ -57,7 +57,7 @@
                 </b-form-radio-group>
                 <b-form-group label="會員電話(格式範例:0935-123456)"
                               label-for="memberPhone-input"
-                              invalid-feedback="Name is required"
+                              invalid-feedback="此為必填選項"
                               :state="memberPhoneState">
                     <b-form-input id="memberPhone-input"
                                   v-model="memberPhone"
@@ -71,7 +71,24 @@
                     <b-form-input id="memberRegEmail-input"
                                   v-model="memberRegEmail"
                                   :state="memberRegEmailState"
-                                  
+                                  required></b-form-input>
+                </b-form-group>
+                <b-form-group label="會員註冊信箱"
+                              label-for="memberConEmail-input"
+                              invalid-feedback="此為必填選項"
+                              :state="memberConEmailState">
+                    <b-form-input id="memberConEmail-input"
+                                  v-model="memberConEmail"
+                                  :state="memberConEmailState"
+                                  required></b-form-input>
+                </b-form-group>
+                <b-form-group label="會員地址"
+                              label-for="memberAddress-input"
+                              invalid-feedback="此為必填選項"
+                              :state="memberAddressState">
+                    <b-form-input id="memberAddress-input"
+                                  v-model="memberAddress"
+                                  :state="memberAddressState"
                                   required></b-form-input>
                 </b-form-group>
             </form>
@@ -309,8 +326,11 @@
                 memberPhoneState: null,
 
                 memberRegEmailState: null,
+                memberConEmailState: null,
+                memberAddressState: null,
 
-                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }
+                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false}
+                /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
             },
             created: function () {
                 axios.get("/Api/BackendMembers/GetAll")
@@ -370,6 +390,8 @@
                     this.selectedState = valid
 
                     this.memberRegEmailState = valid;
+                    this.memberConEmailState = valid;
+                    this.memberAddressState = valid;
 
 
 
@@ -387,7 +409,13 @@
                     this.memberPhoneState = null
                     this.memberRegEmail = ''
                     this.memberRegEmailState = null
-                    this.selectedState=null
+                    this.memberConEmail = ''
+                    this.memberConEmailState = null
+                    this.memberAddress = ''
+                    this.memberAddressState = null
+                    this.selectedState = null
+                   
+                    
                 },
                 handleOk(bvModalEvt) {
                     // Prevent modal from closing
@@ -400,39 +428,80 @@
                     if (!this.checkFormValidity()) {
                         return
                     }
-                    // Push the name to submitted names
+                    // Push the name to submittedMember
                     this.submittedMember.memberName = this.memberName
                     this.submittedMember.memberPassword = this.memberPassword
                     this.submittedMember.memberBirth = this.memberBirth
                     this.submittedMember.backendIdentity = this.selected
                     this.submittedMember.memberPhone = this.memberPhone
                     this.submittedMember.memberRegEmail = this.memberRegEmail
+                    this.submittedMember.memberConEmail = this.memberConEmail
+                    this.submittedMember.memberAddress = this.memberAddress
+                    var self = this;
+                    $.ajax({
+                        url: "/Api/BackendMembers/PostBackendMember",
+                        method: "POST",
+                        dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
+                        contentType: "application/json;charset=UTF-8",
+                        data: JSON.stringify(this.submittedMember),
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.title == "Not Found") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '新增失敗，請再試一次',
+
+                                });
+                            }
+                            else {
+                                self.items.push(data.body);
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: '成功新增後台會員',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                            
+
+                        },
+                        error: function (jqXHR, textStatus, errorThron) {
+
+                            console.log(textStatus + ", " + jqXHR.state);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '新增失敗，請再試一次',
+                                
+                            });
+                           
+                        }
+
+                    })
+
+                   
 
                     // Hide the modal manually
                     this.$nextTick(() => {
                         this.$bvModal.hide('modal-prevent-closing');
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: '成功新增後台會員',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                        
                     })
                 }
             },
-            watch: {
-                "memberRegEmail": function () {
+            //watch: {
+            //    "memberRegEmail": function () {
                     
-                    var isMail = /^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-                    if (!isMail.test(this.memberRegEmail)) {
-                        this.memberRegEmailState = false;
-                    }
-                    else {
-                        this.memberRegEmailState = null;
-                    }
-                }
-            }
+            //        var isMail = /^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            //        if (!isMail.test(this.memberRegEmail)) {
+            //            this.memberRegEmailState = false;
+            //        }
+            //        else {
+            //            this.memberRegEmailState = null;
+            //        }
+            //    }
+            //}
 
 
         })
