@@ -137,6 +137,12 @@
             color: var(--color);
         }
 
+/*手機鈴噹*/
+.message-phone{
+    position:relative;
+    top:0.8rem;
+
+}
 
 
 
@@ -273,7 +279,7 @@
     /* position: relative; */
     position: absolute;
     right: -8px;
-    top: -2px;
+    top: 0.8px;
     /* bottom: 0px; */
     font-size: 10px;
 }
@@ -434,6 +440,7 @@
     font-weight: 400;
     color: #7f7f7f;
     cursor: pointer;
+    top:-1.3rem;
 }
 
 

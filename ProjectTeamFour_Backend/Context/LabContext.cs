@@ -18,6 +18,7 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
@@ -45,6 +46,20 @@ namespace ProjectTeamFour_Backend.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.Announcements)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.Announcements_dbo.Members_MemberId");
+            });
 
             modelBuilder.Entity<Backendmember>(entity =>
             {

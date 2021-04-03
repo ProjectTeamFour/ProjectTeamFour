@@ -30,7 +30,7 @@ namespace ProjectTeamFour
                       "~/Assets/Plugin/Slick/slick_cdn1.8.1.min.js",
                       "~/Assets/Plugin/Popper.js/popper_cdn1.16.1.min.js",
                       "~/Assets/Plugin/Bootstrap/bootstrap_cdn4.6.0.min.js",
-                      //"~/Assets/HeaderFooterLayout/headerfooter.js",
+                      "~/Assets/HeaderFooterLayout/headerfooter.js",
                       "~/Assets/Plugin/Vue/Vue_cdn2.6.12.js"                      
                       ));
                       

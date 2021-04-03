@@ -177,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CommentController.cs" />
-    <Compile Include="Api\BackRecordController.cs" />
+    <Compile Include="Api\OrderController.cs" />
     <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -270,6 +270,22 @@
     <Compile Include="Migrations\202104010329180_addAnnouncement.cs" />
     <Compile Include="Migrations\202104010329180_addAnnouncement.Designer.cs">
       <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010532433_od新增欄位.cs" />
+    <Compile Include="Migrations\202104010532433_od新增欄位.Designer.cs">
+      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104011056109_加車車商城種子資料.cs" />
+    <Compile Include="Migrations\202104011056109_加車車商城種子資料.Designer.cs">
+      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104011145167_新增車車資料.cs" />
+    <Compile Include="Migrations\202104011145167_新增車車資料.Designer.cs">
+      <DependentUpon>202104011145167_新增車車資料.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104011150336_add_carcar資料.cs" />
+    <Compile Include="Migrations\202104011150336_add_carcar資料.Designer.cs">
+      <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
@@ -412,6 +428,7 @@
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\MemberSettingService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
@@ -437,6 +454,7 @@
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -2547,6 +2565,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104010329180_addAnnouncement.resx">
       <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010532433_od新增欄位.resx">
+      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011056109_加車車商城種子資料.resx">
+      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011145167_新增車車資料.resx">
+      <DependentUpon>202104011145167_新增車車資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011150336_add_carcar資料.resx">
+      <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
