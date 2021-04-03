@@ -177,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CommentController.cs" />
-    <Compile Include="Api\BackRecordController.cs" />
+    <Compile Include="Api\OrderController.cs" />
     <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -247,9 +247,39 @@
     <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300551030_新增fbmodel.cs" />
+    <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.cs" />
+    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.Designer.cs">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300719050_CreateFBDB.cs" />
+    <Compile Include="Migrations\202103300719050_CreateFBDB.Designer.cs">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.cs" />
+    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.cs" />
+    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.Designer.cs">
+      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010329180_addAnnouncement.cs" />
+    <Compile Include="Migrations\202104010329180_addAnnouncement.Designer.cs">
+      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010532433_od新增欄位.cs" />
+    <Compile Include="Migrations\202104010532433_od新增欄位.Designer.cs">
+      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
     <Compile Include="Models\DraftProject.cs" />
+    <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
@@ -385,6 +415,7 @@
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\MemberSettingService.cs" />
     <Compile Include="Service\OperationResult.cs" />
+    <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
@@ -409,6 +440,7 @@
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -452,6 +484,7 @@
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessViewModel.cs" />
+    <Compile Include="ViewModels\ThirdPartyLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\AboutUsPage\aboutus.css" />
@@ -485,6 +518,7 @@
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
+    <Content Include="Assets\Javascript\LoginPage\Login.js" />
     <Content Include="Assets\Javascript\PaymentPage\Vue_Except.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonalInfo.js" />
     <Content Include="Assets\Javascript\PersonalInfo\PersonInfo.js" />
@@ -493,6 +527,7 @@
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
+    <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
     <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
@@ -2498,6 +2533,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
       <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
+      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300604084_新增foreignkey_fbmodel.resx">
+      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300719050_CreateFBDB.resx">
+      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
+      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103310557559_ChangeBackendMemberDB2.resx">
+      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010329180_addAnnouncement.resx">
+      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010532433_od新增欄位.resx">
+      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

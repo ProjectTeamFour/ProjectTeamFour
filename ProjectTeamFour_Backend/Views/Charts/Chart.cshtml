@@ -1,99 +1,250 @@
-﻿
-    <!-- Page Wrapper -->
-    <div id="wrapper">        
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+﻿<!-- Custom scripts for all pages-->
+<script src="~/js/sb-admin-2.min.js"></script>
 
-            <!-- Main Content -->
-            <div id="content">    
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+<!-- Page level plugins -->
+<!--<script src="~/lib/chart.js/Chart.min.js"></script>-->
+<!-- Page level custom scripts -->
+<!--<script src="~/js/demo/chart-area-demo.js"></script>
+<script src="~/js/demo/chart-pie-demo.js"></script>
+<script src="~/js/demo/chart-bar-demo.js"></script>-->
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-                    <p class="mb-4">
-                        Chart.js is a third party plugin that is used to generate the charts in this theme.
-                        The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">
-                            official Chart.js
-                            documentation
-                        </a>.
-                    </p>
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-                    <!-- Content Row -->
-                    <div class="row">
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">集資車車募資平台 分析</h1>
+                <p class="mb-4">
+                    後臺圖表測試 <a target="_blank" href="#">連結</a>
+                </p>
 
-                        <div class="col-xl-8 col-lg-7">
+                <!-- Content Row -->
+                <div class="row">
 
-                            <!-- Area Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
-                                </div>
+                    <div class="col-xl-8 col-lg-7">
+
+
+                        <!--Line Chart-->
+                        <div id="linemain" style="width: 600px;height:400px;"></div>
+                        <script type="text/javascript">
+                            // 基于准备好的dom，初始化echarts实例
+                            var myChart = echarts.init(document.getElementById('linemain'));
+
+                            // 指定图表的配置项和数据
+                            var option = {
+                                title: {
+                                    text: '會員人數統計圖'
+                                },
+                                tooltip: {},
+                                legend: {
+                                    data: ['人數']
+                                },
+                                xAxis: {
+                                    data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                },
+                                yAxis: {},
+                                series: [{
+                                    name: '人數',
+                                    type: 'line',
+                                    data: [5, 120, 36, 10, 10, 20, 5, 20, 36, 10, 10, 20]
+                                }]
+                            };
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+
+
+
+
+                        <!-- Area Chart -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
                             </div>
-
-                            <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChart"></canvas>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the bar chart can be found in the
-                                    <code>/js/demo/chart-bar-demo.js</code> file.
-                                </div>
+                                <hr>
+                                Styling for the area chart can be found in the
+                                @*<code>/js/demo/chart-area-demo.js</code> file.*@
                             </div>
-
                         </div>
 
-                        <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                        <!-- Bar Chart -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="myBarChart"></canvas>
                                 </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
+                                <hr>
+                                Styling for the bar chart can be found in the
+                                @*<code>/js/demo/chart-bar-demo.js</code> file.*@
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Donut Chart -->
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">提案分類統計圖</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-pie pt-4">
+                                    <div id="category_pie" style="width: 600px;height:400px;"></div>
                                 </div>
+                                <hr>
+                                Styling for the donut chart can be found in the
+                                @*<code>/js/demo/chart-pie-demo.js</code> file.*@
+                                <script>
+                                    var myChart = echarts.init(document.getElementById('category_pie'));
+
+                                    // 指定图表的配置项和数据
+                                    myChart.setOption({
+
+                                        series: [{
+                                            name: 'Projects',
+                                            type: 'pie',
+                                            radius: '55%',
+                                            data: [
+                                                { value: 235, name: '视频广告' },
+                                                { value: 274, name: '联盟广告' },
+                                                { value: 310, name: '邮件营销' },
+                                                { value: 335, name: '直接访问' },
+                                                { value: 400, name: '搜索引擎' }
+                                            ],
+
+                                        }]
+                                    });
+
+
+                                </script>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
+
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main" style="width: 600px;height:400px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '第一个 ECharts 实例'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data: ['销量']
+                        },
+                        xAxis: {
+                            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'bar',
+                            data: [5, 20, 36, 10, 10, 20]
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
 
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
+
         </div>
-        <!-- End of Content Wrapper -->
-
+        <!-- End of Main Content -->
     </div>
-    <!-- End of Page Wrapper -->
+    <!-- End of Content Wrapper -->
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+</div>
+<!-- End of Page Wrapper -->
+@*<script type="text/javascript">
+        const member = new Vue({
+            el:"#member",
+            data() {
+                    return {
+                        info: '測試Echart AJAX!!!'
+                    }
+            },
+            mounted() {
+                this.drawLine();
+            },
+            created() {
+                this.$http.get('./static/dat.json').then(res => {
+                    const data = res.data;
+                    this.goods = data
+                    console.log(this.goods);
+                    console.log(Array.from(this.goods.xAxis.data));
+                })
+            },
+                //created() {
+                //    axios
+                //        .get('/Api/Members/GetAll')
+                //        .then(response => (this.info = response))
+                //        .catch(function (error) {
+                //            //
+                //            console.log(error);
+                //        });
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+            methods: {
+                drawLine() {
+                    // 基于准备好的dom，初始化echarts实例
+                    let myChart = this.$echarts.init(document.getElementById('myChart'))
+                    // 绘制图表
+                    myChart.setOption({
+                        title: {},    //{text: '异步数据加载示例'},
+                        tooltip: {},
+                        xAxis: {
+                            data: []  //["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'bar',
+                            data: []  //[5, 20, 36, 10, 10, 20]
+                        }]
+                    });
+                    this.$http.get("./static/dat.json").then((res) => {
+                        const data = res.data;
+                        const list = data.series.map(good => {
+                            let list = good.data;
+                            return [...list]
+                        })
+                        console.log(list);
+                        console.log(Array.from(...list));
+                        myChart.setOption({
+                            title: data.title,
+                            xAxis: [{
+                                data: data.xAxis.data
+                            }],
+                            series: [{
+                                name: '销量',
+                                type: 'bar',
+                                data: Array.from(...list) //[5, 20, 36, 10, 10, 20]
+                            }]
+                        });
+                    })
+                }
+            }
+        });
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
+    </script>*@

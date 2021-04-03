@@ -18,10 +18,12 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
         public virtual DbSet<DraftProject> DraftProjects { get; set; }
+        public virtual DbSet<FbloginMember> FbloginMembers { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<MigrationHistory> MigrationHistories { get; set; }
@@ -44,6 +46,20 @@ namespace ProjectTeamFour_Backend.Context
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.Announcements)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.Announcements_dbo.Members_MemberId");
+            });
+
             modelBuilder.Entity<Backendmember>(entity =>
             {
                 entity.HasKey(e => e.MemberId)
@@ -51,7 +67,25 @@ namespace ProjectTeamFour_Backend.Context
 
                 entity.Property(e => e.MemberId).ValueGeneratedNever();
 
+                entity.Property(e => e.Gender).HasMaxLength(10);
+
+                entity.Property(e => e.MemberAccount).HasMaxLength(200);
+
+                entity.Property(e => e.MemberAddress).HasMaxLength(200);
+
                 entity.Property(e => e.MemberBirth).HasColumnType("datetime");
+
+                entity.Property(e => e.MemberConEmail).HasMaxLength(200);
+
+                entity.Property(e => e.MemberMessage).HasMaxLength(200);
+
+                entity.Property(e => e.MemberName).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPassword).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPhone).HasMaxLength(100);
+
+                entity.Property(e => e.MemberRegEmail).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Comment>(entity =>
@@ -146,6 +180,28 @@ namespace ProjectTeamFour_Backend.Context
                     .WithMany(p => p.DraftProjects)
                     .HasForeignKey(d => d.MemberId)
                     .HasConstraintName("FK_dbo.DraftProjects_dbo.Members_MemberId");
+            });
+
+            modelBuilder.Entity<FbloginMember>(entity =>
+            {
+                entity.HasKey(e => e.FbmemberId)
+                    .HasName("PK_dbo.FBLoginMembers");
+
+                entity.ToTable("FBLoginMembers");
+
+                entity.HasIndex(e => e.FbmemberId, "IX_FBMemberId");
+
+                entity.Property(e => e.FbmemberId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("FBMemberId");
+
+                entity.Property(e => e.GetMemberBirth).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Fbmember)
+                    .WithOne(p => p.FbloginMember)
+                    .HasForeignKey<FbloginMember>(d => d.FbmemberId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_dbo.FBLoginMembers_dbo.Members_FBMemberId");
             });
 
             modelBuilder.Entity<Log>(entity =>

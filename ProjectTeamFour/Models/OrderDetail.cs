@@ -47,7 +47,11 @@ namespace ProjectTeamFour.Models
         /// <summary>
         /// 訂單明細是否付款
         /// </summary>
-        public string condition { get; set; } 
+        public string condition { get; set; }
+        /// <summary>
+        /// 寄送時間
+        /// </summary>
+        public DateTime PlanShipDate { get; set; }
         //導覽屬性
         public virtual Order Order { get; set; }
         public virtual Plan Plan { get; set; }
