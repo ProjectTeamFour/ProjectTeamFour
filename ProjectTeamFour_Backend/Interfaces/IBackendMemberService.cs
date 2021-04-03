@@ -9,5 +9,7 @@ namespace ProjectTeamFour_Backend.Interfaces
     public interface IBackendMemberService
     {
         BackendMemberViewModel.BackendListResult GetAll();
+        BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM);
+
     }
 }

@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -19,6 +20,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ProjectTeamFour_Backend
 {
@@ -30,10 +33,26 @@ namespace ProjectTeamFour_Backend
         }
 
         public IConfiguration Configuration { get; }
+       
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             services.AddControllers();
+            services.AddCors(options => {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader()
+                               .WithExposedHeaders("*");
+
+                //builder.WithOrigins("http://example.com","http://www.contoso.com")
+                //       .WithMethods("GET", "POST", "PUT", "DELETE");
+            });
+            });
             services.AddDbContext<LabContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -44,7 +63,25 @@ namespace ProjectTeamFour_Backend
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<LabContext>();
+           
 
+            services.AddAuthentication()
+                .AddCookie(options => {
+                    options.LoginPath = "/Manager/Login/";
+                    options.AccessDeniedPath = "/Account/Forbidden/";
+                })
+          .AddJwtBearer(options =>
+              options.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuer = true,
+                  ValidateAudience = true,
+                  ValidateLifetime = true,
+                  ValidateIssuerSigningKey = true,
+                  ValidIssuer = Configuration["Jwt:Issuer"],
+                  ValidAudience = Configuration["Jwt:Issuer"],
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+              }
+          );
 
 
             services.AddControllersWithViews();
@@ -56,19 +93,8 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<IBackendMemberService, BackendMemberService>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-                options.TokenValidationParameters = new TokenValidationParameters
-           {
-               ValidateIssuer = true,
-               ValidateAudience = true,
-               ValidateLifetime = true,
-               ValidateIssuerSigningKey = true,
-               ValidIssuer = Configuration["Jwt:Issuer"],
-               ValidAudience = Configuration["Jwt:Issuer"],
-               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-           }
-       );
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,9 +113,10 @@ namespace ProjectTeamFour_Backend
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
             app.UseRouting();
             app.UseCors();
+            
             app.UseAuthentication();
             app.UseAuthorization();
 

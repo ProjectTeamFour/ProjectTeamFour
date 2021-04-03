@@ -37,5 +37,29 @@ namespace ProjectTeamFour_Backend.Services
                 }).ToList();
             return result;
         }
+
+        public BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM)
+        {
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+            var manager = _repository.GetAll<Backendmember>().Where(x => x.MemberName ==loginVM.Username&&x.MemberPassword==loginVM.Password).FirstOrDefault();
+            
+            try
+            {
+                if(manager != null)
+                {
+                    result.IsSuccess = true;
+                    result.Msg = manager.BackendIdentity.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                ex.ToString();
+            }
+
+            return result;
+        }
+
+      
     }
 }

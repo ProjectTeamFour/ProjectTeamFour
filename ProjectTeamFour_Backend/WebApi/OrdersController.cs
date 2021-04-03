@@ -12,6 +12,7 @@ using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Services;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -27,7 +28,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _orderService = orderService;
             _logger = logger;
         }
-
+        
         // GET: api/Orders
         [HttpGet]
         public BaseModel.BaseResult<OrderViewModel.OrderListResult> GetAll()

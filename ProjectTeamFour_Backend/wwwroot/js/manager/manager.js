@@ -14,17 +14,22 @@ btnLogin.addEventListener("click", function () {
         method: "POST",
         dataType: "json",
         data: JSON.stringify(user),
-        contentType: "application/json;charset=UTF-8",   
+        contentType: "application/json;charset=UTF-8",
         success: function (response) {
             console.log(response)
-            localStorage.setItem("jwtToken", response.token);
+        /*  localStorage.setItem("jwtToken", response.token);*/
+            Cookies.set("jwtToken", response.token);
+            AfterLogin();
 
-            $("#token").html("JWT Token: " + response.token);
         },
         error: function (ex) {
             console.log(ex)
         }
-    })
+    });
+
+    function AfterLogin() {
+        window.location.href = '/Home/Index';
+    }
 });
 
 
