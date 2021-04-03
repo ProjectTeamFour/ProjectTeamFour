@@ -12,5 +12,6 @@ namespace ProjectTeamFour_Backend.Interfaces
         BackendMemberViewModel.BackendSingleResult CreateOneMember(BackendMemberViewModel.BackendSingleResult singleMember);
 
         BackendMemberViewModel.BackendSingleResult GetOne(int id);
+        string EditMember(BackendMemberViewModel.BackendSingleResult singleMember);
     }
 }

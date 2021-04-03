@@ -120,5 +120,40 @@ namespace ProjectTeamFour_Backend.WebApi
             }
 
         }
+        /// <summary>
+        /// 從前端修改資料庫會員資料，回傳型式為字串。共有三種型式"查無此筆資料"、"修改成功"及例外的資訊
+        /// </summary>
+        /// <param name="backendSingle"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> PutBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PutBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
+
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+
+            var editResult=_backendMemberService.EditMember(backendSingle);
+
+            result.Msg = editResult;
+            if (result.Msg == "查無此筆資料")
+            {
+                
+                result.IsSuccess = false;
+                return result;
+            }
+            else if(result.Msg == "修改成功")
+            {
+                
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+                
+                result.IsSuccess = false;
+                return result;
+            }
+
+        }
     }
 }

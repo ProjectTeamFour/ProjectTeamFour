@@ -8,6 +8,9 @@
         table.b-table[aria-busy='true'] {
             opacity: 0.6;
         }
+        .edit-form .invalid-feedback {
+           
+        }
     </style>
 
 }
@@ -73,7 +76,7 @@
                                   :state="memberRegEmailState"
                                   required></b-form-input>
                 </b-form-group>
-                <b-form-group label="會員註冊信箱"
+                <b-form-group label="會員聯絡信箱"
                               label-for="memberConEmail-input"
                               invalid-feedback="此為必填選項"
                               :state="memberConEmailState">
@@ -230,19 +233,20 @@
                 </template>
 
                 <template #cell(actions)="row">
-                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
-                        聚焦
-                    </b-button>
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '展開' }}
                     </b-button>
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
+                        修改
+                    </b-button>
+
                 </template>
 
                 <template #row-details="row">
                     <b-card>
                         <ul v-for="">
                             <li>編號 : {{ row.item.memberId }}</li>
-                            <li>最高權限 : {{ row.item.backendIdentity===true?'有':'無'}}</li>
+                            <li>最高權限 : {{ row.item.backendIdentity==true?'無':'有'}}</li>
                             <li>會員名稱 : {{ row.item.memberName}}</li>
                             <li>會員地址 : {{ row.item.memberAddress }}</li>
                             <li>會員電話 : {{ row.item.memberPhone }}</li>
@@ -265,8 +269,65 @@
             </b-table>
 
             <!-- Info modal -->
-            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
-                <pre style="font-size:18px">{{ infoModal.content }}</pre>
+            <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk">
+                <!--<pre style="font-size:18px">-->@*{{ infoModal.content }}*@
+                    <form ref="form" submit.stop.prevent="changeSubmit" class="edit-form">
+                        <b-form-group label="會員名稱" style="height:100px"
+                                      label-for="infoModal.memberName-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="infoModalMemberNameStateState">
+                            <b-form-input id="infoModal.memberName-input"
+                                          v-model="infoModal.memberName"
+                                          value="infoModal.memberName"
+                                          :state="infoModalMemberNameStateState"
+                                          required></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="會員生日" style="height:100px"
+                                      label-for="infoModal.memberBirth-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="infoModalMemberBirthStateState">
+                            <b-form-datepicker id="memberBirth-input"
+                                               v-model="infoModal.memberBirth"
+                                               value="infoModal.memberBirth"
+                                               :state="infoModalMemberBirthStateState"
+                                               required></b-form-datepicker>
+                        </b-form-group>
+                        <b-form-radio-group style="height:100px" label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="infoModal.backendIdentity" :options="options" :state="selectedState" name="radio-validation">
+                            <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
+                            <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
+                        </b-form-radio-group>
+                        <b-form-group label="會員電話(格式範例:0935-123456)" style="height:100px"
+                                      label-for="infoModal.memberPhone-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="infoModalMemberPhoneState">
+                            <b-form-input id="infoModal.memberPhone-input"
+                                          v-model="infoModal.memberPhone"
+                                          value="infoModal.memberPhone"
+                                          :state="infoModalMemberPhoneState"
+                                          required></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="會員聯絡信箱" style="height:100px"
+                                      label-for="infoModal.memberConEmail-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="infoModalMemberConEmailState">
+                            <b-form-input id="infoModal.memberConEmail-input"
+                                          v-model="infoModal.memberConEmail"
+                                          value="infoModal.memberConEmail"
+                                          :state="infoModalMemberConEmailState"
+                                          required></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="會員地址" style="height:100px"
+                                      label-for="infoModal.memberAddress-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="infoModalMemberAddress">
+                            <b-form-input id="infoModal.memberAddress-input"
+                                          v-model="infoModal.memberAddress"
+                                          value="infoModal.memberAddress"
+                                          :state="infoModalMemberAddress"
+                                          required></b-form-input>
+                        </b-form-group>
+                    </form>
+                @*</pre>*@
             </b-modal>
         </b-container>
     </template>
@@ -274,6 +335,7 @@
 @section endJS{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script>
         const member = new Vue({
             el: "#member",
@@ -308,7 +370,13 @@
                 infoModal: {
                     id: 'info-modal',
                     title: '',
-                    content: ''
+                /*content: ''*/
+                    memberName: "",
+                    backendIdentity: false,
+                    memberBirth: "",
+                    memberPhone: "",
+                    memberConEmail: "",
+                    memberAddress: "",
                 },
                 memberName: '',
                 memberPassword: '',
@@ -329,8 +397,16 @@
                 memberConEmailState: null,
                 memberAddressState: null,
 
-                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false}
-                /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
+                infoModalMemberNameStateState: null,
+                infoModalMemberBirthStateState: null,
+                infoModalMemberPhoneState: null,
+                infoModalMemberConEmailState: null,
+                infoModalMemberAddress: null,
+
+                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false},
+                changeMember: { memberId:"",memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false},
+            /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
+
             },
             created: function () {
                 axios.get("/Api/BackendMembers/GetAll")
@@ -360,12 +436,27 @@
             methods: {
                 info(item, index, button) {
                     this.infoModal.title = `會員編號: ${JSON.stringify(item.memberId, null, 2)}`
-                    this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) === true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`
+                /*this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) == true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`*/
+                    this.infoModal.memberId = item.memberId;
+                    this.infoModal.memberName = item.memberName;
+                    this.infoModal.memberBirth = new Date (item.memberBirth);
+                    this.infoModal.memberPhone = item.memberPhone;
+                    this.infoModal.memberConEmail = item.memberConEmail;
+                    this.infoModal.memberAddress = item.memberAddress;
+                    this.infoModal.backendIdentity = item.backendIdentity;
+
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
                 resetInfoModal() {
                     this.infoModal.title = ''
-                    this.infoModal.content = ''
+                    /*this.infoModal.content = ''*/
+                    this.infoModal.memberName = '';
+                    this.infoModal.memberBirth = '';
+                    this.infoModal.memberPhone  = '';
+                    this.infoModal.memberConEmail = '';
+                    this.infoModal.memberAddress = '';
+                    this.infoModal.backendIdentity = false;
+                     
                 },
                 onFiltered(filteredItems) {
                     // Trigger pagination to update the number of buttons/pages due to filtering
@@ -398,6 +489,21 @@
 
                     return valid
                 },
+                checkChangeFormValidity() {
+                    const valid = this.$refs.form.checkValidity()
+
+                    this.infoModalMemberNameStateState = valid
+
+                    this.infoModalMemberBirthStateState = valid
+
+                    this.infoModalMemberPhoneState = valid
+
+                    this.infoModalMemberConEmailState = valid
+
+                    this.infoModalMemberAddress = valid
+                    return valid
+     
+                },
                 resetModal() {
                     this.memberName = ''
                     this.memberNameState = null
@@ -422,6 +528,12 @@
                     bvModalEvt.preventDefault()
                     // Trigger submit handler
                     this.handleSubmit()
+                },
+                handleChangeOk(bvModalEvt) {
+                    // Prevent modal from closing
+                    bvModalEvt.preventDefault()
+                    // Trigger submit handler
+                    this.changeSubmit()
                 },
                 handleSubmit() {
                     // Exit when the form isn't valid
@@ -481,13 +593,74 @@
 
                     })
 
-                   
-
                     // Hide the modal manually
                     this.$nextTick(() => {
                         this.$bvModal.hide('modal-prevent-closing');
                         
                     })
+                },
+                changeSubmit() {
+                    if (!this.checkChangeFormValidity()) {
+                        return
+                    }
+                    this.changeMember.memberName = this.infoModal.memberName 
+                    this.changeMember.memberBirth = this.infoModal.memberBirth
+                    this.changeMember.backendIdentity = this.infoModal.backendIdentity
+                    this.changeMember.memberPhone = this.infoModal.memberPhone
+                    this.changeMember.memberConEmail = this.infoModal.memberConEmail
+                    this.changeMember.memberAddress = this.infoModal.memberAddress
+                    this.changeMember.memberId = this.infoModal.memberId
+
+                    var self = this;
+                    
+                    $.ajax({
+                        url: "/Api/BackendMembers/PutBackendMember",
+                        method: "PUT",
+                        dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
+                        contentType: "application/json;charset=UTF-8",
+                        data: JSON.stringify(this.changeMember),
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.msg == "修改成功") {
+                                
+                                let editMemberIndex = self.items.findIndex(x => x.memberId == self.changeMember.memberId);
+                                self.items[editMemberIndex].backendIdentity = self.changeMember.backendIdentity;
+                                self.items[editMemberIndex].memberAddress = self.changeMember.memberAddress;
+                                self.items[editMemberIndex].memberBirth = moment(self.changeMember.memberBirth).format('YYYY/M/D');
+                                self.items[editMemberIndex].memberConEmail = self.changeMember.memberConEmail;
+                                self.items[editMemberIndex].memberName = self.changeMember.memberName;
+                                self.items[editMemberIndex].memberPhone = self.changeMember.memberPhone;
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: '修改成功',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                
+                            }
+                            else {
+                                console.log(data);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '修改失敗，請再試一次',
+
+                                });
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus + ", " + jqXHR.state);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '新增失敗，請再試一次',
+
+                            });
+                        }
+                    })
+
                 }
             },
             //watch: {
