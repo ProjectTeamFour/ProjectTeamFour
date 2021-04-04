@@ -52,6 +52,8 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<IBackendMemberService, BackendMemberService>();
+
+            services.AddTransient<IAnnouncementService, AnnouncementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

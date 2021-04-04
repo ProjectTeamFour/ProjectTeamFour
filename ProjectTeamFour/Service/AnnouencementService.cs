@@ -8,11 +8,11 @@ using System.Web;
 
 namespace ProjectTeamFour.Service
 {
-    public class AnnouencementService
+    public class AnnouncementService
     {
         private DbContext _context;
         private BaseRepository _repository;
-        public AnnouencementService ()
+        public AnnouncementService ()
         {
             _context = new ProjectContext();
             _repository = new BaseRepository(_context);

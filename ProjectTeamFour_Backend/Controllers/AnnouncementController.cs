@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-    public class AnnouencementController : Controller
+    public class AnnouncementController : Controller
     {
         public IActionResult Index()
         {
