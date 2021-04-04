@@ -106,7 +106,7 @@ namespace ProjectTeamFour_Backend.Services
             return singleMember;
         }
         /// <summary>
-        /// 將前端修改後的資料以交易方式，變更資料庫資料
+        /// 將前端修改後的資料以交易方式，變更資料庫資料。回傳為字串形式:"查無此筆資料"、"修改成功"、Exception.Message
         /// </summary>
         /// <param name="singleMember"></param>
         public string EditMember(BackendMemberViewModel.BackendSingleResult singleMember)
@@ -141,6 +141,36 @@ namespace ProjectTeamFour_Backend.Services
             }
 
             
+        }
+        /// <summary>
+        ///  將前端修改後的資料以交易方式，刪除資料庫資料。回傳為字串形式:"查無此筆資料"、"刪除成功"、Exception.Message
+        /// </summary>
+        /// <param name="singleMember"></param>
+        /// <returns></returns>
+        public string DeleteMember(BackendMemberViewModel.BackendSingleResult singleMember)
+        {
+            var querySingleResult = _repository.GetAll<Backendmember>().FirstOrDefault(B => B.MemberId == singleMember.MemberId);
+            if (querySingleResult == default)
+            {
+                return "查無此筆資料";
+            }
+
+            using (var transaction = _labContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    _repository.Delete<Backendmember>(querySingleResult);
+                    transaction.Commit();
+                    return "刪除成功";
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+
+
+                    return ex.Message;
+                }
+            }
         }
 
 

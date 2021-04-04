@@ -13,5 +13,7 @@ namespace ProjectTeamFour_Backend.Interfaces
 
         BackendMemberViewModel.BackendSingleResult GetOne(int id);
         string EditMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        string DeleteMember(BackendMemberViewModel.BackendSingleResult singleMember);
     }
 }

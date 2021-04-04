@@ -108,7 +108,9 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                 result.Body = _backendMemberService.CreateOneMember(backendSingle);
+                result.Body = _backendMemberService.CreateOneMember(backendSingle);
+
+
 
                 return result;
             }
@@ -155,5 +157,38 @@ namespace ProjectTeamFour_Backend.WebApi
             }
 
         }
+
+        [HttpDelete]
+        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> DeleteBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器DeleteBackendMember方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(backendSingle.MemberId)} " + backendSingle.MemberId);
+
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+
+            var deleteResult = _backendMemberService.DeleteMember(backendSingle);
+
+            result.Msg = deleteResult;
+            if (result.Msg == "查無此筆資料")
+            {
+
+                result.IsSuccess = false;
+                return result;
+            }
+            else if (result.Msg == "刪除成功")
+            {
+
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+
+                result.IsSuccess = false;
+                return result;
+            }
+
+
+        }
+
     }
 }

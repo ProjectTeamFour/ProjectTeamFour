@@ -244,7 +244,7 @@
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
                         修改
                     </b-button>
-                    <b-button size="sm" @@click="deleteInfo(row.item, row.index, $event.target)" class="mr-1">
+                    <b-button size="sm" @@click="deleteInfo(row.item)" class="mr-1">
                         刪除
                     </b-button>
                 </template>
@@ -466,18 +466,68 @@
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
                 /*infoModal刪除功能之資料結構*/
-                deleteInfo(item, index, button) {
-                    this.infoModal.title = `修改會員編號: ${JSON.stringify(item.memberId, null, 2)}`
-                    /*this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) == true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`*/
-                    this.infoModal.memberId = item.memberId;
-                    this.infoModal.memberName = item.memberName;
-                    this.infoModal.memberBirth = new Date(item.memberBirth);
-                    this.infoModal.memberPhone = item.memberPhone;
-                    this.infoModal.memberConEmail = item.memberConEmail;
-                    this.infoModal.memberAddress = item.memberAddress;
-                    this.infoModal.backendIdentity = item.backendIdentity;
+                deleteInfo(item) {
+                    var self = this;
+                    
+                    swal.fire({
+                        title: '您確定刪除此會員?',
+                        text: '您將無法回復該筆資料！',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '確定刪除！',
+                    }).then(function (result) {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "/Api/BackendMembers/DeleteBackendMember",
+                                method: "DELETE",
+                                dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
+                                data: JSON.stringify(item),
+                                contentType: "application/ json; charset = UTF - 8",
+                                success: function (data, textStatus, jqXHR) {
+                                    if (data.msg == "刪除成功") {
+                                        let deleteMemberIndex = self.items.findIndex(x => x.memberId == item.memberId);
+                                        self.items.splice(deleteMemberIndex, 1);
+                                        Swal.fire(
+                                            '刪除!',
+                                            '此筆會員資料已被刪除。',
+                                            'success'
+                                        );
 
-                    this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+                                    }
+                                    else {
+                                        console.log(data);
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: '刪除失敗，請再試一次',
+
+                                        });
+                                    }
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus + ", " + jqXHR.status);
+                                   
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: '刪除失敗，請再試一次',
+
+                                    });
+                                }
+                            })
+                           
+                        }
+                        
+                        
+                        
+                    })
+
+                    /*this.infoModal.memberId = item.memberId;*/
+                   
+
+                    
                 },
                 /*重置infoModal修改功能*/
                 resetInfoModal() {

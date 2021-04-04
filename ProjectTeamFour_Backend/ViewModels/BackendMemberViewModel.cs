@@ -9,6 +9,7 @@ namespace ProjectTeamFour_Backend.ViewModels
     {
        public class BackendBaseViewModel
         {
+
             public int MemberId { get; set; }
             /// <summary>
             /// 後臺會員真實姓名
