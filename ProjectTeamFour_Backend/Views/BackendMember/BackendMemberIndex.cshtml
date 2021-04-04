@@ -16,16 +16,18 @@
 }
 
 <div id="member" class="col-12 m-auto">
+    @*新增後台會員模板*@
     <template>
         <div>
-            <b-button block variant="primary" v-b-modal.modal-prevent-closing>新增後台會員</b-button>
+            <b-button block variant="primary" v-b-modal.modal-prevent-closing >新增後台會員</b-button>
         </div>
         <b-modal id="modal-prevent-closing"
                  ref="modal"
                  title="新增後台會員資料"
                  @@show="resetModal"
                  @@hidden="resetModal"
-                 @@ok="handleOk">
+                 @@ok="handleOk"
+                 ok-title="新增" cancel-title="取消">
             <form ref="form" submit.stop.prevent="handleSubmit">
                 <b-form-group label="會員名稱"
                               label-for="memberName-input"
@@ -102,7 +104,9 @@
     <template>
         <b-container fluid>
             <!-- User Interface controls -->
+
             <b-row>
+                @*分類模板*@
                 <b-col lg="6" class="my-1">
                     <b-form-group label="分類"
                                   label-for="sort-by-select"
@@ -133,7 +137,7 @@
                         </b-input-group>
                     </b-form-group>
                 </b-col>
-
+                @*初始分類模板*@
                 <b-col lg="6" class="my-1">
                     <b-form-group label="初始分類"
                                   label-for="initial-sort-select"
@@ -147,7 +151,7 @@
                                        size="sm"></b-form-select>
                     </b-form-group>
                 </b-col>
-
+                @*搜索模板*@
                 <b-col lg="6" class="my-1">
                     <b-form-group label="搜尋"
                                   label-for="filter-input"
@@ -167,7 +171,7 @@
                         </b-input-group>
                     </b-form-group>
                 </b-col>
-
+                @*過濾條件模板*@
                 <b-col lg="6" class="my-1">
                     <b-form-group v-model="sortDirection"
                                   label="過濾條件"
@@ -186,7 +190,7 @@
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
-
+                @*顯示頁數模板*@
                 <b-col sm="5" md="6" class="my-1">
                     <b-form-group label="每頁顯示筆數"
                                   label-for="per-page-select"
@@ -202,7 +206,7 @@
                                        size="sm"></b-form-select>
                     </b-form-group>
                 </b-col>
-
+                @*頁數模板*@
                 <b-col sm="7" md="6" class="my-1">
                     <b-pagination v-model="currentPage"
                                   :total-rows="totalRows"
@@ -214,6 +218,7 @@
             </b-row>
 
             <!-- Main table element -->
+            @*主要操作的資料結構*@
             <b-table :items="items"
                      :fields="fields"
                      :current-page="currentPage"
@@ -239,7 +244,9 @@
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
                         修改
                     </b-button>
-
+                    <b-button size="sm" @@click="deleteInfo(row.item, row.index, $event.target)" class="mr-1">
+                        刪除
+                    </b-button>
                 </template>
 
                 <template #row-details="row">
@@ -269,64 +276,65 @@
             </b-table>
 
             <!-- Info modal -->
-            <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk">
+            @*修改會員資料模板*@
+            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="修改" cancel-title="取消">
                 <!--<pre style="font-size:18px">-->@*{{ infoModal.content }}*@
-                    <form ref="form" submit.stop.prevent="changeSubmit" class="edit-form">
-                        <b-form-group label="會員名稱" style="height:100px"
-                                      label-for="infoModal.memberName-input"
-                                      invalid-feedback="此為必填選項"
-                                      :state="infoModalMemberNameStateState">
-                            <b-form-input id="infoModal.memberName-input"
-                                          v-model="infoModal.memberName"
-                                          value="infoModal.memberName"
-                                          :state="infoModalMemberNameStateState"
-                                          required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="會員生日" style="height:100px"
-                                      label-for="infoModal.memberBirth-input"
-                                      invalid-feedback="此為必填選項"
-                                      :state="infoModalMemberBirthStateState">
-                            <b-form-datepicker id="memberBirth-input"
-                                               v-model="infoModal.memberBirth"
-                                               value="infoModal.memberBirth"
-                                               :state="infoModalMemberBirthStateState"
-                                               required></b-form-datepicker>
-                        </b-form-group>
-                        <b-form-radio-group style="height:100px" label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="infoModal.backendIdentity" :options="options" :state="selectedState" name="radio-validation">
-                            <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
-                            <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
-                        </b-form-radio-group>
-                        <b-form-group label="會員電話(格式範例:0935-123456)" style="height:100px"
-                                      label-for="infoModal.memberPhone-input"
-                                      invalid-feedback="此為必填選項"
-                                      :state="infoModalMemberPhoneState">
-                            <b-form-input id="infoModal.memberPhone-input"
-                                          v-model="infoModal.memberPhone"
-                                          value="infoModal.memberPhone"
-                                          :state="infoModalMemberPhoneState"
-                                          required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="會員聯絡信箱" style="height:100px"
-                                      label-for="infoModal.memberConEmail-input"
-                                      invalid-feedback="此為必填選項"
-                                      :state="infoModalMemberConEmailState">
-                            <b-form-input id="infoModal.memberConEmail-input"
-                                          v-model="infoModal.memberConEmail"
-                                          value="infoModal.memberConEmail"
-                                          :state="infoModalMemberConEmailState"
-                                          required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="會員地址" style="height:100px"
-                                      label-for="infoModal.memberAddress-input"
-                                      invalid-feedback="此為必填選項"
-                                      :state="infoModalMemberAddress">
-                            <b-form-input id="infoModal.memberAddress-input"
-                                          v-model="infoModal.memberAddress"
-                                          value="infoModal.memberAddress"
-                                          :state="infoModalMemberAddress"
-                                          required></b-form-input>
-                        </b-form-group>
-                    </form>
+                <form ref="form" submit.stop.prevent="changeSubmit" class="edit-form">
+                    <b-form-group label="會員名稱" style="height:100px"
+                                  label-for="infoModal.memberName-input"
+                                  invalid-feedback="此為必填選項"
+                                  :state="infoModalMemberNameStateState">
+                        <b-form-input id="infoModal.memberName-input"
+                                      v-model="infoModal.memberName"
+                                      value="infoModal.memberName"
+                                      :state="infoModalMemberNameStateState"
+                                      required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="會員生日" style="height:100px"
+                                  label-for="infoModal.memberBirth-input"
+                                  invalid-feedback="此為必填選項"
+                                  :state="infoModalMemberBirthStateState">
+                        <b-form-datepicker id="memberBirth-input"
+                                           v-model="infoModal.memberBirth"
+                                           value="infoModal.memberBirth"
+                                           :state="infoModalMemberBirthStateState"
+                                           required></b-form-datepicker>
+                    </b-form-group>
+                    <b-form-radio-group style="height:100px" label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="infoModal.backendIdentity" :options="options" :state="selectedState" name="radio-validation">
+                        <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
+                        <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
+                    </b-form-radio-group>
+                    <b-form-group label="會員電話(格式範例:0935-123456)" style="height:100px"
+                                  label-for="infoModal.memberPhone-input"
+                                  invalid-feedback="此為必填選項"
+                                  :state="infoModalMemberPhoneState">
+                        <b-form-input id="infoModal.memberPhone-input"
+                                      v-model="infoModal.memberPhone"
+                                      value="infoModal.memberPhone"
+                                      :state="infoModalMemberPhoneState"
+                                      required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="會員聯絡信箱" style="height:100px"
+                                  label-for="infoModal.memberConEmail-input"
+                                  invalid-feedback="此為必填選項"
+                                  :state="infoModalMemberConEmailState">
+                        <b-form-input id="infoModal.memberConEmail-input"
+                                      v-model="infoModal.memberConEmail"
+                                      value="infoModal.memberConEmail"
+                                      :state="infoModalMemberConEmailState"
+                                      required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="會員地址" style="height:100px"
+                                  label-for="infoModal.memberAddress-input"
+                                  invalid-feedback="此為必填選項"
+                                  :state="infoModalMemberAddress">
+                        <b-form-input id="infoModal.memberAddress-input"
+                                      v-model="infoModal.memberAddress"
+                                      value="infoModal.memberAddress"
+                                      :state="infoModalMemberAddress"
+                                      required></b-form-input>
+                    </b-form-group>
+                </form>
                 @*</pre>*@
             </b-modal>
         </b-container>
@@ -338,9 +346,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script>
         const member = new Vue({
+            /*主要監聽對象(作用範圍)*/
             el: "#member",
             data: {
+                /*主要接收API資料的儲存欄位*/
                 items: [],
+                /*設定Bootstrap-Vue Component DataTable 的欄位以及對應物件的Key*/
                 fields: [
                     { key: 'memberId', label: '編號', sortable: true, sortDirection: 'desc' },
                     { key: 'backendIdentity', label: '最高權限', sortable: true, sortDirection: 'desc', class: 'text-center' },
@@ -350,11 +361,13 @@
                     { key: 'memberRegEmail', label: '會員註冊信箱', class: 'text-center' },
                     { key: 'actions', label: '詳細資料' }
                 ],
+                /*Bootstrap-Vue form-radio模板*/
                 options: [
                     { text: '具備最高權限', value: true },
                     { text: '無具備最高權限', value: false },
 
                 ],
+                /*Bootstrap-Vue 提供模板*/
                 selected: false,
                 isError: false,
                 isBusy: true,
@@ -367,6 +380,7 @@
                 sortDirection: 'asc',
                 filter: null,
                 filterOn: [],
+                /*儲存修改會員資料的變數*/
                 infoModal: {
                     id: 'info-modal',
                     title: '',
@@ -378,6 +392,7 @@
                     memberConEmail: "",
                     memberAddress: "",
                 },
+                /*儲存新增會員資料的變數*/
                 memberName: '',
                 memberPassword: '',
                 memberAddress: '',
@@ -387,27 +402,29 @@
                 gender: '',
                 memberBirth: '',
                 memberMessage: '',
+                /*新增會員資料輸入欄位的基本判斷*/
                 memberNameState: null,
                 memberPasswordState: null,
                 memberBirthState: null,
                 selectedState: null,
                 memberPhoneState: null,
-
                 memberRegEmailState: null,
                 memberConEmailState: null,
                 memberAddressState: null,
-
+                /*修改會員資料輸入欄位的基本判斷*/
                 infoModalMemberNameStateState: null,
                 infoModalMemberBirthStateState: null,
                 infoModalMemberPhoneState: null,
                 infoModalMemberConEmailState: null,
                 infoModalMemberAddress: null,
-
+                /*新增會員資料AJAX發送的儲存物件*/
                 submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false},
-                changeMember: { memberId:"",memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false},
+                /*修改會員資料AJAX發送的儲存物件*/
+                changeMember: { memberId: "", memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", memberBirth: "", backendIdentity: false },
             /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
 
             },
+            /*呼叫GetAll API後將資料存在items*/
             created: function () {
                 axios.get("/Api/BackendMembers/GetAll")
                     .then((res) => {
@@ -434,8 +451,9 @@
                 this.totalRows = this.items.length
             },
             methods: {
+                /*infoModal修改功能之資料結構*/
                 info(item, index, button) {
-                    this.infoModal.title = `會員編號: ${JSON.stringify(item.memberId, null, 2)}`
+                    this.infoModal.title = `修改會員編號: ${JSON.stringify(item.memberId, null, 2)}`
                 /*this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) == true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`*/
                     this.infoModal.memberId = item.memberId;
                     this.infoModal.memberName = item.memberName;
@@ -447,6 +465,21 @@
 
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
+                /*infoModal刪除功能之資料結構*/
+                deleteInfo(item, index, button) {
+                    this.infoModal.title = `修改會員編號: ${JSON.stringify(item.memberId, null, 2)}`
+                    /*this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) == true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`*/
+                    this.infoModal.memberId = item.memberId;
+                    this.infoModal.memberName = item.memberName;
+                    this.infoModal.memberBirth = new Date(item.memberBirth);
+                    this.infoModal.memberPhone = item.memberPhone;
+                    this.infoModal.memberConEmail = item.memberConEmail;
+                    this.infoModal.memberAddress = item.memberAddress;
+                    this.infoModal.backendIdentity = item.backendIdentity;
+
+                    this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+                },
+                /*重置infoModal修改功能*/
                 resetInfoModal() {
                     this.infoModal.title = ''
                     /*this.infoModal.content = ''*/
@@ -467,6 +500,7 @@
                     // Set the initial number of items
                     this.totalRows = this.items.length
                 },
+                /*監看新增輸入欄位是否符合規定*/
                 checkFormValidity() {
                     const valid = this.$refs.form.checkValidity()
 
@@ -489,6 +523,7 @@
 
                     return valid
                 },
+                /*監看修改輸入欄位是否符合規定*/
                 checkChangeFormValidity() {
                     const valid = this.$refs.form.checkValidity()
 
@@ -504,6 +539,7 @@
                     return valid
      
                 },
+                /*重置新增功能*/
                 resetModal() {
                     this.memberName = ''
                     this.memberNameState = null
@@ -535,6 +571,7 @@
                     // Trigger submit handler
                     this.changeSubmit()
                 },
+                /*符合規定之後，向後端以jqeury AJAX發送POST新增會員請求*/
                 handleSubmit() {
                     // Exit when the form isn't valid
                     if (!this.checkFormValidity()) {
@@ -599,6 +636,7 @@
                         
                     })
                 },
+                /*符合規定之後，向後端以jqeury AJAX發送PUT修改會員請求*/
                 changeSubmit() {
                     if (!this.checkChangeFormValidity()) {
                         return
