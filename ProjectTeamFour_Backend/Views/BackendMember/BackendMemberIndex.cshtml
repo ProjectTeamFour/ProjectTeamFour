@@ -219,61 +219,62 @@
 
             <!-- Main table element -->
             @*主要操作的資料結構*@
-            <b-table :items="items"
-                     :fields="fields"
-                     :current-page="currentPage"
-                     :per-page="perPage"
-                     :filter="filter"
-                     :filter-included-fields="filterOn"
-                     :sort-by.sync="sortBy"
-                     :sort-desc.sync="sortDesc"
-                     :sort-direction="sortDirection"
-                     :busy="isBusy"
-                     stacked="md"
-                     show-empty
-                     small
-                     @@filtered="onFiltered">
-                <template #cell(name)="row">
-                    {{ row.value.first }} {{ row.value.last }}
-                </template>
+        <b-table :items="items"
+                 :fields="fields"
+                 :current-page="currentPage"
+                 :per-page="perPage"
+                 :filter="filter"
+                 :filter-included-fields="filterOn"
+                 :sort-by.sync="sortBy"
+                 :sort-desc.sync="sortDesc"
+                 :sort-direction="sortDirection"
+                 :busy="isBusy"
+                 stacked="md"
+                 show-empty
+                 small
+                 @@filtered="onFiltered">
+            <template #cell(name)="row">
+                {{ row.value.first }} {{ row.value.last }}
+            </template>
 
-                <template #cell(actions)="row">
-                    <b-button size="sm" @@click="row.toggleDetails">
-                        {{ row.detailsShowing ? '收起' : '展開' }}
-                    </b-button>
-                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
-                        修改
-                    </b-button>
-                    <b-button size="sm" @@click="deleteInfo(row.item)" class="mr-1">
-                        刪除
-                    </b-button>
-                </template>
+            <template #cell(actions)="row">
+                <b-button size="sm" @@click="row.toggleDetails">
+                    {{ row.detailsShowing ? '收起' : '展開' }}
+                </b-button>
+                <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
+                    修改
+                </b-button>
+                <b-button size="sm" @@click="deleteInfo(row.item)" class="mr-1" variant="danger">
+                    刪除
+                </b-button>
+            </template>
+          
 
-                <template #row-details="row">
-                    <b-card>
-                        <ul v-for="">
-                            <li>編號 : {{ row.item.memberId }}</li>
-                            <li>最高權限 : {{ row.item.backendIdentity==true?'無':'有'}}</li>
-                            <li>會員名稱 : {{ row.item.memberName}}</li>
-                            <li>會員地址 : {{ row.item.memberAddress }}</li>
-                            <li>會員電話 : {{ row.item.memberPhone }}</li>
-                            <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
-                            <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
-                            <li>會員性別 : {{ row.item.gender }}</li>
-                            <li>會員生日 : {{ row.item.memberBirth }}</li>
-                        </ul>
-                    </b-card>
-                </template>
-                <template #cell(backendIdentity)="data">
-                    <b class="text-info">{{ data.item.backendIdentity===true?'有':'無' }}</b>
-                </template>
-                <template #table-busy>
-                    <div class="text-center text-danger my-2">
-                        <b-spinner class="align-middle"></b-spinner>
-                        <strong>Loading...</strong>
-                    </div>
-                </template>
-            </b-table>
+            <template #row-details="row">
+                <b-card>
+                    <ul v-for="">
+                        <li>編號 : {{ row.item.memberId }}</li>
+                        <li>最高權限 : {{ row.item.backendIdentity==true?'無':'有'}}</li>
+                        <li>會員名稱 : {{ row.item.memberName}}</li>
+                        <li>會員地址 : {{ row.item.memberAddress }}</li>
+                        <li>會員電話 : {{ row.item.memberPhone }}</li>
+                        <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
+                        <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
+                        <li>會員性別 : {{ row.item.gender }}</li>
+                        <li>會員生日 : {{ row.item.memberBirth }}</li>
+                    </ul>
+                </b-card>
+            </template>
+            <template #cell(backendIdentity)="data">
+                <b class="text-info">{{ data.item.backendIdentity===true?'有':'無' }}</b>
+            </template>
+            <template #table-busy>
+                <div class="text-center text-danger my-2">
+                    <b-spinner class="align-middle"></b-spinner>
+                    <strong>Loading...</strong>
+                </div>
+            </template>
+        </b-table>
 
             <!-- Info modal -->
             @*修改會員資料模板*@
@@ -359,7 +360,8 @@
                     { key: 'memberBirth', label: '會員生日', class: 'text-center', sortable: true, sortDirection: 'desc' },
                     { key: 'memberPhone', label: '會員電話', class: 'text-center' },
                     { key: 'memberRegEmail', label: '會員註冊信箱', class: 'text-center' },
-                    { key: 'actions', label: '詳細資料' }
+                    { key: 'actions', label: '管理' }
+                   
                 ],
                 /*Bootstrap-Vue form-radio模板*/
                 options: [
@@ -465,7 +467,7 @@
 
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
-                /*infoModal刪除功能之資料結構*/
+                /*刪除功能之資料結構及AJAX*/
                 deleteInfo(item) {
                     var self = this;
                     
@@ -487,6 +489,7 @@
                                 contentType: "application/ json; charset = UTF - 8",
                                 success: function (data, textStatus, jqXHR) {
                                     if (data.msg == "刪除成功") {
+                                        /*(非同步)刪除成功後，於前端將data中的該筆會員刪除*/
                                         let deleteMemberIndex = self.items.findIndex(x => x.memberId == item.memberId);
                                         self.items.splice(deleteMemberIndex, 1);
                                         Swal.fire(
@@ -653,6 +656,7 @@
                                 });
                             }
                             else {
+                                /*(非同步)新增成功後，，於前端將data中新增該筆會員 */
                                 self.items.push(data.body);
 
                                 Swal.fire({
@@ -709,7 +713,7 @@
                         data: JSON.stringify(this.changeMember),
                         success: function (data, textStatus, jqXHR) {
                             if (data.msg == "修改成功") {
-                                
+                                /*(非同步)修改成功後，於前端將data中該筆會員的資料一併修改*/ 
                                 let editMemberIndex = self.items.findIndex(x => x.memberId == self.changeMember.memberId);
                                 self.items[editMemberIndex].backendIdentity = self.changeMember.backendIdentity;
                                 self.items[editMemberIndex].memberAddress = self.changeMember.memberAddress;
@@ -743,7 +747,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: '新增失敗，請再試一次',
+                                text: '修改失敗，請再試一次',
 
                             });
                         }
