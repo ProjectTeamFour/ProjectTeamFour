@@ -29,7 +29,8 @@ namespace ProjectTeamFour_Backend.WebApi
         public BaseModel.BaseResult<MemberViewModel.MemberListResult> GetAll()
         {
             var result = new BaseModel.BaseResult<MemberViewModel.MemberListResult>();
-            _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "Product控制器GET方法被呼叫");
+
+            _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "MembersController GetAll方法被呼叫");
             try
             {
                 result.Body = _memberService.GetAll();
