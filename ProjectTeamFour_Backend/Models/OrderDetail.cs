@@ -18,6 +18,11 @@ namespace ProjectTeamFour_Backend.Models
         public string OrderPlanImgUrl { get; set; }
         public string Condition { get; set; }
 
+        /// <summary>
+        /// 寄送時間
+        /// </summary>
+        public DateTime PlanShipDate { get; set; }
+
         public virtual Order Order { get; set; }
         public virtual Plan Plan { get; set; }
     }
