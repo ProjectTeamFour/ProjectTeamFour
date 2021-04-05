@@ -521,6 +521,8 @@
     <Content Include="Assets\css\RegisterFailPage\RegisterFail.css" />
     <Content Include="Assets\css\RegisterSuccessPage\RegisterSuccess.css" />
     <Content Include="Assets\css\ShoppingCartPage\ShoppingCart.css" />
+    <Content Include="Assets\css\StartAProjectPage\savedraftfail.css" />
+    <Content Include="Assets\css\StartAProjectPage\savedraftsuccess.css" />
     <Content Include="Assets\css\StartAProjectPage\startaproject.css" />
     <Content Include="Assets\css\StartAProjectPage\submissionprocess.css" />
     <Content Include="Assets\css\StartAProjectPage\submitfail.css" />
@@ -2385,6 +2387,8 @@
     <Content Include="Views\StartAProject\SubmitSuccess.cshtml" />
     <Content Include="Views\StartAProject\SubmitFail.cshtml" />
     <Content Include="Views\UserInfo\ToNews.cshtml" />
+    <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
+    <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

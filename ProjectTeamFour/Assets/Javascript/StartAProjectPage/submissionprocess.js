@@ -18,13 +18,7 @@ Vue.component("multi-text", {
     // props: ['value'],
     data: function () {
         return {
-            ProjectQuestionAnswer: [{
-                Question: "",
-                Answer: "",
-                Count: 0,
-                QAError: "",
-                QAErrorMsg: "",
-            }],
+            ProjectQuestionAnswer: [],  //塞物件 => 物件陣列
         };
     },
     methods: {
@@ -48,15 +42,16 @@ Vue.component("multi-text", {
             this.$emit("input", this.ProjectQuestionAnswer);
         },
         addInput: function () {
-            this.ProjectQuestionAnswer
-            this.ProjectQuestionAnswer.push({
-                Question: this.ProjectQuestionAnswer.Question,
-                Answer: this.ProjectQuestionAnswer.Answer,
-                Count: this.ProjectQuestionAnswer[this.ProjectQuestionAnswer.length - 1]
-                    .Count + 1,
-            });
+
+            var QAObj = {
+                Question: "",
+                Answer: "",
+                Count: "",
+                QAError: "",
+                QAErrorMsg: "",
+            }
+            this.ProjectQuestionAnswer.push(QAObj);
             this.$emit("input", this.ProjectQuestionAnswer);
-            //console.log(this.ProjectQuestionAnswer);
         },
         checkAddVerifyQA: function () {
             for (let index in this.ProjectQuestionAnswer) {
@@ -74,14 +69,12 @@ Vue.component("multi-text", {
             deep: true,
             handler: function () {
                 this.ProjectQuestionAnswer.forEach((el, index) => {
-                    el.Count = index;
+                    el.Count = index + 1;
                 });
             }
         }
     }
 })
-
-
 
 // A = "",  A == false 成立 , A === false 不成立  
 // A = null , A 不是true 也不是 false  就是 null
@@ -89,7 +82,6 @@ Vue.component("multi-text", {
 // A = 字串 , A 不是true 也不是 false 就是 null
 // 特殊情況 A = "1" , A == true 成立, A === true 不成立
 // 特殊情況 A = "0", A == true 成立, A === true 不成立
-
 
 
 var form = new Vue({
@@ -181,26 +173,11 @@ var form = new Vue({
             PlanImgUrlErrorMsg: "",
             PlanShipDateErrorMsg: "",
         },
-        modalList: [{
-            ProjectPlanId: "",
-            ViewId: "",
-            makePlanCount: "",
-            PlanPrice: "",
-            PlanTitle: "",
-            QuantityLimit: "",
-            AddCarCarPlanSwitch: "",
-            AddCarCarPlan: "",
-            PlanDescription: "",
-            PlanImgUrl: "",
-            PlanShipDateYear: "",
-            PlanShipDateMonth: "",
-            PlanShipDate: "",
-        }],
-        ProjectQuestionAnswer: [{}],
+        modalList: [], //抓、顯示 plan資料用 塞物件 變成物件陣列
+        ProjectQuestionAnswer: [],
     },
     watch: {
         "inputData.ProjectName": {
-            // immediate: false,
             handler: function () {
                 if (this.inputData.ProjectName == "") {
                     this.inputDataCheck.ProjectNameError = true;
@@ -240,37 +217,7 @@ var form = new Vue({
                 this.checkAddVerify();
             }
         },
-        // "inputData.StartDate": { //待處理
-        //     handler: function () {
-        //         if (this.inputData.StartDate == "") {
-        //             this.inputDataCheck.StartDateError = true;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "募資時間不得為空";
-        //         } else if (this.inputData.StartDate > 1000000000) {
-        //             this.inputDataCheck.StartDateError = true;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "";
-        //         } else {
-        //             this.inputDataCheck.StartDateError = false;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "";
-        //         }
-        //         this.checkAddVerify();
-        //     }
-        // },
-        // "inputData.EndDate": { //待處理
-        //     handler: function () {
-        //         if (this.inputData.EndDate == "") {
-        //             this.inputDataCheck.EndDateError = true;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "募資時間不得為空";
-        //         } else if (this.inputData.EndDate > 1000000000) {
-        //             this.inputDataCheck.EndDateError = true;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "";
-        //         } else {
-        //             this.inputDataCheck.EndDateError = false;
-        //             this.inputDataCheck.StartDateAndEndDateErrorMsg = "";
-        //         }
-        //         this.checkAddVerify();
-        //     }
-        // },
-        "inputData.ProjectVideoUrl": { //缺一個正則
+        "inputData.ProjectVideoUrl": {
             handler: function () {
                 let videoUrlRegexp =
                     /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
@@ -389,30 +336,6 @@ var form = new Vue({
                 this.checkAddVerify();
             }
         },
-        // "ProjectQuestionAnswer.Question": {
-        //     handler: function () {
-        //         if (this.ProjectQuestionAnswer.Question == "") {
-        //             this.QuestionError = true;
-        //             this.QuestionErrorMsg = "專案網站不能為空";
-        //         } else {
-        //             this.QuestionError = false;
-        //             this.QuestionErrorMsg = "";
-        //         }
-        //         this.checkAddVerify();
-        //     }
-        // },
-        // "ProjectQuestionAnswer.Answer": {
-        //     handler: function () {
-        //         if (this.ProjectQuestionAnswer.Answer == "") {
-        //             this.AnswerError = true;
-        //             this.AnswerErrorMsg = "專案網站不能為空";
-        //         } else {
-        //             this.AnswerError = false;
-        //             this.AnswerErrorMsg = "";
-        //         }
-        //         this.checkAddVerify();
-        //     }
-        // },
         "modalData.PlanPrice": {
             immediate: true,
             handler: function () {
@@ -488,17 +411,6 @@ var form = new Vue({
                 this.checkAddVerifyModal();
             }
         },
-        // "modalList": {
-        //     immediate: false,
-        //     deep: true,
-        //     handler: function () {
-        //         this.modalList.forEach((el, index) => {
-        //             el.ProjectPlanId = index;
-        //             console.log(modalList[index]);
-        //         });
-        //     }
-        // }
-
     },
     methods: {
         getStartDateAndEndDate(e) {
@@ -508,6 +420,10 @@ var form = new Vue({
             } else {
                 console.log(this.inputData.StartDate);
                 console.log(this.inputData.EndDate);
+                console.log(this.inputData.StartDate.split("-"));
+                console.log(this.inputData.EndDate.split("-"));
+                console.log(this.inputData.StartDate.split("-").join(""));
+                console.log(this.inputData.EndDate.split("-").join(""));
                 this.inputDataCheck.StartDateAndEndDateError = false;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "";
             }
@@ -523,7 +439,6 @@ var form = new Vue({
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
 
-
                     Swal.fire({
                         title: '照片上傳中',
                         html: '請耐心稍等一下',
@@ -532,14 +447,9 @@ var form = new Vue({
                         didOpen: () => {
                             Swal.showLoading()
                         },
-                        // willClose: () => {
-                        //     clearInterval(timerInterval)
-                        // }
                     }).then((result) => {
                         if (result.dismiss === Swal.DismissReason.timer) { }
                     })
-
-
                     this.inputData.TeamPicture = reader.result;
                 }
 
@@ -547,15 +457,12 @@ var form = new Vue({
                 formData.append('image', e.target.files[0]); //required
                 imgSwitch = "ProfileImgUrl";
 
-
                 this.uploadImg(formData, imgSwitch);
-
 
                 // console.log(pmu);
                 // console.log(pcu);
                 // console.log(piu);
                 // console.log(priu);
-
 
                 this.inputDataCheck.TeamPictureError = false;
                 this.inputDataCheckErrorMsg.TeamPictureErrorMsg = "";
@@ -573,7 +480,6 @@ var form = new Vue({
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
 
-
                     Swal.fire({
                         title: '照片上傳中',
                         html: '請耐心稍等一下',
@@ -589,8 +495,6 @@ var form = new Vue({
                     // .then((result) => {
                     //     if (result.dismiss === Swal.DismissReason.timer) {}
                     // })
-
-
                     this.inputData.ProjectMainUrl = reader.result;
                 }
 
@@ -603,9 +507,6 @@ var form = new Vue({
                 // console.log(pcu);
                 // console.log(piu);
                 // console.log(priu);
-
-
-
 
                 this.inputDataCheck.ProjectMainUrlError = false;
                 this.inputDataCheckErrorMsg.ProjectMainUrlErrorMsg = "";
@@ -623,8 +524,6 @@ var form = new Vue({
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
                     //console.log(reader.result);
-
-
                     Swal.fire({
                         title: '照片上傳中',
                         html: '請耐心稍等一下',
@@ -633,9 +532,6 @@ var form = new Vue({
                         didOpen: () => {
                             Swal.showLoading()
                         },
-                        // willClose: () => {
-                        //     clearInterval(timerInterval)
-                        // }
                     }).then((result) => {
                         if (result.dismiss === Swal.DismissReason.timer) { }
                     })
@@ -649,14 +545,10 @@ var form = new Vue({
                 imgSwitch = "ProjectCoverUrl";
                 this.uploadImg(formData, imgSwitch);
 
-
                 // console.log(pmu);
                 // console.log(pcu);
                 // console.log(piu);
                 // console.log(priu);
-
-
-
 
                 this.inputDataCheck.ProjectCoverUrlError = false;
                 this.inputDataCheckErrorMsg.ProjectCoverUrlErrorMsg = "";
@@ -674,7 +566,6 @@ var form = new Vue({
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = () => {
                     //console.log(reader.result);
-
                     Swal.fire({
                         title: '照片上傳中',
                         html: '請耐心稍等一下',
@@ -682,16 +573,8 @@ var form = new Vue({
                         timerProgressBar: true,
                         didOpen: () => {
                             Swal.showLoading()
-                        },
-                        // willClose: () => {
-                        //     clearInterval(timerInterval)
-                        // }
+                        }
                     })
-                    // .then((result) => {
-                    //     if (result.dismiss === Swal.DismissReason.timer) {}
-                    // })
-
-
                     this.modalData.PlanImgUrl = reader.result;
                 }
 
@@ -700,12 +583,10 @@ var form = new Vue({
                 imgSwitch = "PlanImgUrl";
                 this.uploadImg(formData, imgSwitch);
 
-
                 // console.log(pmu);
                 // console.log(pcu);
                 // console.log(piu);
                 // console.log(priu);
-
 
                 this.modalDataCheck.PlanImgUrlError = false;
                 this.modalDataCheckErrorMsg.PlanImgUrlErrorMsg = "";
@@ -721,27 +602,13 @@ var form = new Vue({
             }
             this.AddVerify = true;
         },
-        // checkAddVerifyModal() {
-        //     for (let index in this.modalDataCheck) {
-        //         if (this.modalDataCheck[index] == true) {
-        //             this.AddVerifyModal = false;
-        //             return;
-        //         }
-        //     }
-        //     this.AddVerifyModal = true;
-        // },
         checkAddVerifyModal() {
             for (let index in this.modalDataCheck) {
                 if (this.modalDataCheck[index] != false) {
                     this.AddVerifyModal = false;
-                    // console.log(this.modalDataCheck[index]);
-                    // console.log(this.AddVerifyModal);
                     break;
                 } else {
                     this.AddVerifyModal = true;
-                    // console.log(this.AddVerifyModal);
-                    // console.log(this.modalDataCheck[index]);
-
                 }
             }
             return;
@@ -756,8 +623,6 @@ var form = new Vue({
                 this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "";
             }
             this.checkAddVerify();
-            //console.log(this.modalData.PlanShipDateYear);
-            //console.log(typeof this.modalData.PlanShipDateYear);
             this.modalData.tempYear = this.modalData.PlanShipDateYear;
         },
         onChangeMonth: function (event) {
@@ -770,12 +635,9 @@ var form = new Vue({
                 this.modalDataCheckErrorMsg.PlanShipDateErrorMsg = "";
             }
             this.checkAddVerify();
-            //console.log(this.modalData.PlanShipDateMonth);
             this.modalData.tempMonth = this.modalData.PlanShipDateMonth;
         },
         getCategory() {
-            // console.log(this.AddVerify);
-
             if (this.inputData.Category == "專案領域") {
                 this.inputDataCheck.CategoryError = true;
                 this.inputDataCheck.CategoryErrorMsg = "請選擇領域";
@@ -783,22 +645,20 @@ var form = new Vue({
                 this.inputDataCheck.CategoryError = false;
                 this.inputDataCheck.CategoryErrorMsg = "";
             }
-            // console.log(this.AddVerify);
             this.checkAddVerify();
-            // console.log(this.AddVerify);
         },
         //增加回饋方案
         addItem() {
-            // this.checkAddVerifyModal();
             if (this.AddVerifyModal === true) {
-
-                // console.log(this.AddVerifyModal);
 
                 let AddCarCarPlan;
                 let AddCarCarPlanSwitch;
                 let SetPlanId = "set-plan";
+
                 this.modalData.makePlanCount += 1;
-                //console.log(this.modalData.AddCarCarPlanSwitch);
+                SetPlanId += this.modalData.makePlanCount;
+
+                //是否加車車
                 if (this.modalData.AddCarCarPlanSwitch === true) {
                     AddCarCarPlanSwitch = "是";
                     AddCarCarPlan = true;
@@ -806,19 +666,21 @@ var form = new Vue({
                     AddCarCarPlanSwitch = "否";
                     AddCarCarPlan = false;
                 }
-                SetPlanId += this.modalData.makePlanCount;
 
+                //處理月份有沒有0
                 if (this.modalData.PlanShipDateMonth < 10) {
                     var newMonth = "0" + this.modalData.PlanShipDateMonth;
                 } else {
                     newMonth = this.modalData.PlanShipDateMonth;
                 }
 
+                //如果填0 那就是庫存999
                 if (this.modalData.QuantityLimit == 0) {
                     this.modalData.QuantityLimit == 999;
                 }
 
-                this.modalList.push({
+                //做plan物件等等塞回去陣列
+                var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
                     ViewId: SetPlanId,
                     makePlanCount: this.modalData.makePlanCount,
@@ -832,38 +694,17 @@ var form = new Vue({
                     PlanShipDateYear: this.modalData.tempYear,
                     PlanShipDateMonth: this.modalData.tempMonth,
                     PlanShipDate: this.modalData.tempYear + newMonth + "15",
-                });
-                // console.log(this.modalList);
-                this.modalData.PlanPrice = "";
-                this.modalData.PlanTitle = "";
-                this.modalData.QuantityLimit = "";
-                this.modalData.PlanDescription = "";
-                // console.log(this.$refs.planpicfileupload.value);
-                this.modalData.PlanImgUrl = "";
-                this.$refs.planpicfileupload.value = null;
-                this.modalData.AddCarCarPlanSwitch = false;
-                this.modalData.PlanShipDateYear = "year";
-                this.modalData.PlanShipDateMonth = "month";
-                this.modalData.tempYear = "";
-                this.modalData.tempMonth = "";
-                SetPlanId = "set-plan";
+                }
 
-                // console.log(this.modalList[0].ProjectPlanId);
-                // console.log(this.modalList[1].ProjectPlanId);
-                // console.log(this.modalList[0].ViewId);
-                // console.log(this.modalList[1].ViewId);
-                // console.log(this.modalList[0].makePlanCount);
-                // console.log(this.modalList[1].makePlanCount);
+                this.modalList.push(modalListObj);
 
+                //重置表單
+                this.cancelCleanModal();
                 this.hideModal();
             } else {
-
-                // console.log(this.AddVerifyModal);
-
                 Swal.fire({
                     position: 'top',
                     icon: 'warning',
-                    // type: 'warning',
                     title: '親愛的，回饋方案要填完整喔！',
                     showConfirmButton: false,
                     timer: 3000
@@ -876,7 +717,6 @@ var form = new Vue({
             this.modalData.PlanTitle = "";
             this.modalData.QuantityLimit = "";
             this.modalData.PlanDescription = "";
-            // console.log(this.$refs.planpicfileupload.value);
             this.modalData.PlanImgUrl = "";
             this.$refs.planpicfileupload.value = null;
             this.modalData.AddCarCarPlanSwitch = false;
@@ -888,17 +728,9 @@ var form = new Vue({
         },
         //最後提交
         submitProposal() {
-
-            // for (i = 1; i <= editorImgId; i++) {
-            //     document.querySelector(`#editorImgId${i}`).src = imgurArray[i - 1];
-            // }
-
-            // console.log(this.AddVerify);
-
             if (this.AddVerify == true) {
-                // console.log(this.AddVerify);
 
-
+                //都先 sweetalert 處理提示
                 const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
                         confirmButton: 'btn btn-outline-danger ml-2',
@@ -944,82 +776,23 @@ var form = new Vue({
                                 Swal.showLoading();
                             },
                         })
+                        //這邊呼叫傳到後端
                         this.saveSubmissionToServer();
-
-                    } else if (
-
-                        result.dismiss === Swal.DismissReason.cancel
-                    ) {
-                        swalWithBootstrapButtons.fire(
-                            '沒問題！繼續填寫',
-                        )
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire('沒問題！繼續填寫')
                     }
                 })
-
             } else {
-
-                // console.log(this.AddVerify);
-
                 Swal.fire({
                     icon: 'warning',
                     title: '親愛的，專案提交要填完整喔！',
                     showConfirmButton: false,
                     timer: 3000
                 });
-
             }
-
         },
-        //富文本以外的上傳
-        uploadImg(formData, imgSwitch) { //479-481行
-            // $.ajax({
-            //     url: "/api/projectsubmission/uploadfiles",
-            //     type: "post",
-            //     //contentType: "application/json; charset=utf-8",
-            //     data: formData,
-            //     method: 'post',
-            //     processData: false,
-            //     contentType: false,
-            //     success: function (response) {
-
-            //         console.log(response);
-
-            //         if (imgSwitch == "ProjectMainUrl") {
-            //             pmu = response;
-            //         } else if (imgSwitch == "ProjectCoverUrl") {
-            //             pcu = response;
-            //         } else if (imgSwitch == "PlanImgUrl") {
-            //             piu = response;
-            //         } else {
-            //             priu = response;
-            //         }
-
-            //         //成功就跳swal
-            //         Swal.fire({
-            //             position: 'top',
-            //             icon: 'success',
-            //             title: '成功',
-            //             showConfirmButton: false,
-            //             timer: 1500
-            //         });
-
-            //     },
-            //     error: function () {
-            //         console.log(imgSwitch);
-
-
-
-            //         //失敗就跳swal
-            //         Swal.fire({
-            //             position: 'top',
-            //             icon: 'error',
-            //             title: '上傳失敗',
-            //             showConfirmButton: false,
-            //             timer: 1500
-            //         });
-
-            //     }
-            // });
+        //富文本以外的上傳圖片
+        uploadImg(formData, imgSwitch) {
 
             //axios方法
             axios({
@@ -1028,14 +801,12 @@ var form = new Vue({
                 data: formData,
                 headers: {
                     Authorization: "Bearer " + token,
-
                     //放置剛剛申請的Client-ID
                 },
                 mimeType: 'multipart/form-data'
             }).then(res => {
                 console.log(res)
                 console.log(res.data.data.link);
-
                 if (imgSwitch == "ProjectMainUrl") {
                     pmu = res.data.data.link;
                 } else if (imgSwitch == "ProjectCoverUrl") {
@@ -1045,7 +816,6 @@ var form = new Vue({
                 } else {
                     priu = res.data.data.link;
                 }
-
                 //成功就跳swal
                 Swal.fire({
                     position: 'top',
@@ -1054,11 +824,7 @@ var form = new Vue({
                     showConfirmButton: false,
                     timer: 1500
                 });
-
-
             }).catch(e => {
-                console.log(e)
-
                 //失敗就跳swal
                 Swal.fire({
                     position: 'top',
@@ -1067,7 +833,6 @@ var form = new Vue({
                     showConfirmButton: false,
                     timer: 1500
                 });
-
             })
         },
         //點儲存讓 modal 消失
@@ -1076,40 +841,57 @@ var form = new Vue({
         },
         //刪除Plan重新刷index
         deletePlan(index) {
-            this.modalList.splice(index, 1);
-            this.modalList.forEach((el, index) => {
-                el.ProjectPlanId = index;
-                el.makePlanCount = index;
-                el.ViewId = "set-plan" + index;
-                // console.log(el.ProjectPlanId);
-                // console.log(el.makePlanCount);
-                // console.log(el.ViewId);
-            });
 
+            //刪掉當下那個 index 的 plan 物件 
+            this.modalList.splice(index, 1);
+
+            if (this.modalList.length < 1) {
+                //如果刪完之後modalList 長度小於一表示物件裡沒東西了 重設 makeplanCount 不走下面的id重新渲染  
+                this.modalData.makePlanCount = 0;
+            }
+            else {
+                this.modalList.forEach((el, index) => {
+                    let showCount = index + 1;
+                    //還有剩的話就是重新run index+1
+                    el.ProjectPlanId = showCount;
+                    el.makePlanCount = showCount;
+                    el.ViewId = "set-plan" + showCount;
+                    this.modalData.makePlanCount = showCount;
+                });
+            }
         },
+        //傳到後端資料處理與ajax
         saveSubmissionToServer() {
 
-            // console.log(this.AddVerify);
+            this.inputData.QuillHtml = splitJoin; //拿富文本的內容
 
-            this.inputData.QuillHtml = splitJoin;
-            // console.log(this.inputData.QuillHtml);
-
-            this.modalList.shift(); //移掉陣列第一個空的
-            this.ProjectQuestionAnswer.shift(); //也是
-
+            // 處理提案募資開始時間和結束時間
+            // split 用括號內的東西去分割當前字串，並回傳成陣列，括號內的東西不包括在陣列元素裡面
+            // join 用括號內的東西去把陣列的東西全部黏在一起，並回傳字串, 如果括號為空字串，那就是單純把陣列元素全部黏在一起
+            // Step1: input type=date =>  "2021-04-02"
+            // Step2: .split("-")  =>  ["2021", "04", "02"]
+            // Step3: .join("") => "20210402"
             // console.log(this.inputData.StartDate.split("-").join(""));
             // console.log(this.inputData.EndDate.split("-").join(""));
 
+            //開始處理 QA
+            //陣列去forEach每一個物件並用逗號串成字串 => 導致字串最前面有一個逗號
             var totalQuestion = "";
             var totalAnswer = "";
-
             this.ProjectQuestionAnswer.forEach(x => {
                 totalQuestion = totalQuestion + "," + x.Question;
                 totalAnswer = totalAnswer + "," + x.Answer;
             });
-            totalQuestion = totalQuestion.substr(1);
-            totalAnswer = totalAnswer.substr(1);
+            // 處理字串最前面的逗號用 substring
+            // substring 取字串的特定部位，並回傳此特定部位的字串
+            // const str = 'Mozilla';
+            // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
+            // str.substring(2) => "zilla" 從哪開始
+            totalQuestion = totalQuestion.substring(1);
+            totalAnswer = totalAnswer.substring(1);
 
+            //CreateDate, SubmitDate, LastEditDate, 
+            //如果今天他提交提案的過程沒有存為草稿，直接送出，則三者都是當下時間
             var date = new Date();
 
             var UpLoadData = {
@@ -1137,8 +919,8 @@ var form = new Vue({
                 "CreatedDate": date.toJSON(),
                 "SubmittedDate": date.toJSON(),
                 "LastEditTime": date.toJSON(),
-                "ApprovingStatus": 1,
-                "ProjectStatus": 0,
+                "ApprovingStatus": 1,  // 1 為審核中
+                "ProjectStatus": "審核中",
             }
             // console.log(this.ProjectQuestionAnswer);
 
@@ -1148,44 +930,178 @@ var form = new Vue({
                 //contentType: "application/json; charset=utf-8",
                 data: UpLoadData,
                 success: function (response) {
-                    //Swal.fire({
-                    //    position: 'top',
-                    //    icon: 'success',
-                    //    title: '成功',
-                    //    html: '已提交到我們的資料中心，後續會有專人與您聯絡',
-                    //    showConfirmButton: false,
-                    //    timer: 3000
-                    //});
-
-
-                    //setTimeout(() => {
-                    //    window.location.href = "/Home/Index/";
-                    //}, 6000)
-
-                    window.location.href = "/StartAProject/SubmitSuccess";
-
+                    if (response.IsSuccessful == true) {
+                        window.location.href = "/StartAProject/SubmitSuccess";
+                    }
+                    else {
+                        window.location.href = "/StartAProject/SubmitFail";
+                    }
                 },
                 error: function (response) {
-                    //Swal.fire({
-                    //    position: 'top',
-                    //    icon: 'error',
-                    //    title: '上傳失敗',
-                    //    showConfirmButton: false,
-                    //    timer: 3000
-                    //});
-
-                    //setTimeout(() => {
-                    //    window.location.href = "/Home/Index/";
-                    //}, 6000)
-
-                    window.location.href = "/StartAProject/SubmitFail";
+                        window.location.href = "/StartAProject/SubmitFail";
                 }
             });
-        }
+        },
+        //存為草稿處理
+        saveDraft() {
+            //都先 sweetalert 處理提示
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-outline-danger ml-2',
+                    cancelButton: 'btn btn-secondary mr-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: '確定存為草稿?',
+                // text: "一旦提交就不可返回",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '確定',
+                cancelButtonText: '返回',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    var SwalColors = {
+                        red: "rgba(250, 50, 50, 0.45)",
+                        green: "rgba(50, 250, 50, 0.45)",
+                        gray: "#ECF0F1",
+                        white: "rgba(255, 255, 255, 1)",
+                    }
+
+                    function SwalOverlayColor(color) {
+                        setTimeout(function () {
+                            $(".swal2-container").css({
+                                "background-color": SwalColors[color]
+                            });
+                        }, 200);
+                    }
+
+                    Swal.fire({
+                        title: '提案資料提交中',
+                        html: '資料將會匯入到我們的資料中心，請耐心稍等一下',
+                        timer: 50000,
+                        timerProgressBar: true,
+                        background: '#FDC6C8',
+                        didOpen: () => {
+                            SwalOverlayColor("gray");
+                            Swal.showLoading();
+                        },
+                    });
+
+                    this.saveDraftToServer();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire('沒問題！繼續填寫');
+                }
+            })
+        },
+        saveDraftToServer() {
+
+            this.inputData.QuillHtml = splitJoin; //拿富文本的內容
+
+            // 處理提案募資開始時間和結束時間
+            // split 用括號內的東西去分割當前字串，並回傳成陣列，括號內的東西不包括在陣列元素裡面
+            // join 用括號內的東西去把陣列的東西全部黏在一起，並回傳字串, 如果括號為空字串，那就是單純把陣列元素全部黏在一起
+            // Step1: input type=date =>  "2021-04-02"
+            // Step2: .split("-")  =>  ["2021", "04", "02"]
+            // Step3: .join("") => "20210402"
+            // console.log(this.inputData.StartDate.split("-").join(""));
+            // console.log(this.inputData.EndDate.split("-").join(""));
+
+            //開始處理 QA
+            //陣列去forEach每一個物件並用逗號串成字串 => 導致字串最前面有一個逗號
+            var totalQuestion = "";
+            var totalAnswer = "";
+            if (this.ProjectQuestionAnswer.length == 0) {
+                totalQuestion = null;
+                totalAnswer = null;
+            } else {
+                this.ProjectQuestionAnswer.forEach(x => {
+                    totalQuestion = totalQuestion + "," + x.Question;
+                    totalAnswer = totalAnswer + "," + x.Answer;
+
+                    // 處理字串最前面的逗號用 substring
+                    // substring 取字串的特定部位，並回傳此特定部位的字串
+                    // const str = 'Mozilla';
+                    // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
+                    // str.substring(2) => "zilla" 從哪開始
+                    totalQuestion = totalQuestion.substring(1);
+                    totalAnswer = totalAnswer.substring(1);
+
+                });
+            }
+
+            var draftProjectPlansCount;
+            if (this.modalList.length == 0) {
+                draftProjectPlansCount = 0;
+            } else {
+                draftProjectPlansCount = this.modalList.length;
+            }
+
+            //CreateDate, SubmitDate, LastEditDate, 
+            //如果今天他提交提案的過程沒有存為草稿，直接送出，則三者都是當下時間
+            var date = new Date();
+            if (this.inputData.StartDate == "") {
+                this.inputData.StartDate = "2021-04-03";
+            }
+
+            if (this.inputData.EndDate == "") {
+                this.inputData.EndDate = "2021-04-03";
+            }
+
+            var draftData = {
+                "ProjectName": this.inputData.ProjectName,
+                "AmountThreshold": this.inputData.AmountThreshold,
+                "Category": this.inputData.Category,
+                "StartDate": this.inputData.StartDate.split("-").join(""),
+                "EndDate": this.inputData.EndDate.split("-").join(""),
+                "ProjectVideoUrl": this.inputData.ProjectVideoUrl,
+                "ProjectMainUrl": pmu,
+                "ProjectCoverUrl": pcu,
+                "ProjectPrincipal": this.inputData.ProjectPrincipal,
+                "MemberConEmail": this.inputData.MemberConEmail,
+                "MemberPhone": this.inputData.MemberPhone,
+                "IdentityNumber": this.inputData.IdentityNumber,
+                "ProfileImgUrl": priu,
+                "CreatorName": this.inputData.MemberName,
+                "AboutMe": this.inputData.AboutMe,
+                "MemberWebsite": this.inputData.MemberWebsite,
+                "ProjectImgUrl": this.inputData.QuillHtml, //富文本
+                "PlanObject": this.modalList, //陣列包物件
+                "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
+                "Project_Question": totalQuestion,
+                "Project_Answer": totalAnswer,
+                "CreatedDate": date.toJSON(),
+                "SubmittedDate": date.toJSON(),
+                "LastEditTime": date.toJSON(),
+                "ApprovingStatus": 0,  // 0 為草稿
+                "ProjectStatus": null,
+                "DraftProjectPlansCount": draftProjectPlansCount
+            }
+            // console.log(this.ProjectQuestionAnswer);
+
+            $.ajax({
+                url: "/api/projectsubmission/savedraft",
+                type: "post",
+                //contentType: "application/json; charset=utf-8",
+                data: draftData,
+                success: function (response) {
+                    if (response.IsSuccessful == true) {
+                        window.location.href = "/StartAProject/SaveDraftSuccess";
+                    }
+                    else {
+                        window.location.href = "/StartAProject/SaveDraftFail";
+                    }
+                },
+                error: function (response) {
+                    window.location.href = "/StartAProject/SaveDraftFail";
+                }
+            });
+        },
     }
 });
-
-
 
 
 //quill 編輯器設定
@@ -1219,6 +1135,7 @@ quill.format(
     'color', 'black');
 
 quill.on('text-change', function () {
+    //splitJoin = quill.root.innerHTML.split("  ").join(" &nbsp;");
 
     var editor = document.querySelector("#editor");
 
@@ -1258,7 +1175,6 @@ quill.on('text-change', function () {
     }
 
     splitJoin = quill.root.innerHTML;
-
 });
 
 
@@ -1296,7 +1212,7 @@ function selectLocalImage() {
             Swal.fire({
                 title: '照片上傳中',
                 html: '請耐心稍等一下',
-                timer: 20000,
+                timer: 10000,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading()
@@ -1421,6 +1337,9 @@ function saveToServer(file) {
             });
         }
     })
+
+
+
 
 
     //axios方法
