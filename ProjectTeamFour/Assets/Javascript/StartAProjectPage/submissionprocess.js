@@ -1083,7 +1083,7 @@ var form = new Vue({
             // console.log(this.ProjectQuestionAnswer);
 
             $.ajax({
-                url: "/api/projectsubmission/savedraft",
+                url: "/api/projectsubmission/receivedraftdata",
                 type: "post",
                 //contentType: "application/json; charset=utf-8",
                 data: draftData,
