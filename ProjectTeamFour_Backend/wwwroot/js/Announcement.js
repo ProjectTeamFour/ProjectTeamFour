@@ -9,7 +9,7 @@
         items: [],
         fields: [
             { key: 'announcementId', label: '編號', sortable: true },
-            { key: 'title', label: '通知標題', class: 'test' },
+            { key: 'title', label: '通知標題', class: '' },
             { key: 'createTime', label: '發布時間', class: '' },
             { key: 'createUser', label: '發布人', class: '' },
             { key: 'editTime', label: '編輯時間', class: '' },
