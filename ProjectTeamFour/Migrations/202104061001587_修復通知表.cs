@@ -3,7 +3,7 @@ namespace ProjectTeamFour.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fixde : DbMigration
+    public partial class 修復通知表 : DbMigration
     {
         public override void Up()
         {
@@ -12,6 +12,7 @@ namespace ProjectTeamFour.Migrations
                 c => new
                     {
                         AnnouncementId = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
                         Content = c.String(),
                         MemberId = c.Int(nullable: false),
                         CreateTime = c.DateTime(nullable: false),
