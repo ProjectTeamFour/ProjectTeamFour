@@ -295,6 +295,10 @@
     <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.Designer.cs">
       <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104060805084_fixde.cs" />
+    <Compile Include="Migrations\202104060805084_fixde.Designer.cs">
+      <DependentUpon>202104060805084_fixde.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -2592,6 +2596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.resx">
       <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060805084_fixde.resx">
+      <DependentUpon>202104060805084_fixde.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
