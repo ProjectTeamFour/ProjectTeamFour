@@ -7,7 +7,6 @@
     </style>
 
 }
-
 <div id="project" class="col-12 m-auto">
     <template>
         <b-container fluid>
@@ -95,40 +94,23 @@
                 </template>
 
                 <template #cell(actions)="row">
-                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
-                        聚焦
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)">
+                        專案詳情
                     </b-button>
                     <b-button size="sm" @@click="row.toggleDetails">
-                        {{ row.detailsShowing ? '收起' : '展開' }}
+                        {{ row.detailsShowing ? '收起' : '方案包' }}
                     </b-button>
+                    <b-button size="sm" @@click="passHandler" class="mr-1" variant="success">
+                        通過
+                    </b-button>
+                    <b-button size="sm" @@click="rejectHandler" class="mr-1" variant="danger">
+                        拒絕
                 </template>
 
                 <template #row-details="row">
                     <b-card>
                         <ul v-for="(i, index) in row.item.planList">
-                            @*<li>提案編號 : {{ row.item.projectId }}</li>
-                                <li>提案名稱 : {{ row.item.projectName}}</li>
-                                <li>提案分類 : {{ row.item.category }}</li>
-                                <li>提案會員Id : {{ row.item.memberId }}</li>
-                                <li>提案人 : {{ row.item.creatorName }}</li>
-                                <li>提案人真實姓名 : {{ row.item.projectPrincipal }}</li>
-                                <li>提案人身分證字號 : {{ row.item.IdentityNumber }}</li>
-                                <li>募資門檻 : {{ row.item.amountThreshold }}</li>
-                                <li>募資金額 : {{ row.item.fundingAmount }}</li>
-                                <li>募資人數 : {{ row.item.fundedPeople }}</li>
-                                <li>提案狀態 : {{ row.item.projectStatus }}</li>
-                                <li>審核狀態 : {{ row.item.approvingStatus }}</li>
-                                <li>提案影片連結 : {{ row.item.projectVideoUrl }}</li>
-                                <li>提案問題 : {{ row.item.projectQuestion }}</li>
-                                <li>提案回答 : {{ row.item.projectAnswer }}</li>
-                                <li>提案方案數量 : {{ row.item.projectPlansCount }}</li>
-                                <li>提案影片封面圖片 : {{ row.item.projectCoverUrl }}</li>
-                                <li>提案故事 : {{ row.item.projectImgUrl }}</li>
-                                <li>提案開始時間 : {{ row.item.startDate }}</li>
-                                <li>提案結束時間 : {{ row.item.endDate }}</li>
-                                <li>提案初創時間 : {{ row.item.CreatedDate }}</li>
-                                <li>提案提交時間 : {{ row.item.SubmittedDate }}</li>*@
-
+                            
                             <template>
                                 <img :src="row.item.planList[index].planImgUrl" alt="#" width="50" height="50">
                             </template>
@@ -147,14 +129,14 @@
                 </template>
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
-                        <b-spinner class="align-middle"></b-spinner>
-                        <strong>Loading...</strong>
+                        <!-- <b-spinner class="align-middle"></b-spinner> -->
+                        <!-- <strong>Loading...</strong> -->
                     </div>
                 </template>
             </b-table>
             <!-- Info modal -->
             <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
-                <pre style="font-size:18px">{{ infoModal.content }}</pre>
+                <pre style="font-size:18px; text-align:left;">{{ infoModal.content }}</pre>
             </b-modal>
         </b-container>
     </template>
@@ -164,8 +146,15 @@
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous"></script>
 
+<!-- Load Vue followed by BootstrapVue -->
+<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
 <script>
-    const member = new Vue({
+    const project = new Vue({
         el: "#project",
         data: {
             items: [],
@@ -179,7 +168,6 @@
                 { key: 'fundingAmount', label: '募資金額', class: 'text-center' },
                 { key: 'projectPrincipal', label: '提案人', class: 'text-center' },
                 { key: 'actions', label: '詳細資料' },
-                { key: 'planImgUrl', label: '圖片', class: 'text-center' },
             ],
             isError: false,
             isBusy: true,
@@ -199,12 +187,7 @@
             }
         },
         created: function () {
-            axios.get("/Api/Projects/GetWaitForPass")
-                .then((res) => {
-                    this.items = res.data.body.projectList;
-                    this.mounted();
-                    this.isBusy = false;
-                });
+            this.getWaitForPassProject();
         },
         computed: {
             sortOptions() {
@@ -217,14 +200,14 @@
             }
         },
         mounted() {
-            // Set the initial number of items
             this.totalRows = this.items.length
         },
         methods: {
             info(item, index, button) {
-                this.infoModal.title = `提案編號: ${JSON.stringify(item.projectId, null, 2)}`
-                this.infoModal.content = `提案編號:${JSON.stringify(item.projectId, null, 2)}\n\n提案名稱:${JSON.stringify(item.projectName, null, 2)}\n\n提案結束日期:${JSON.stringify(item.endDate, null, 2)}\n\n提案募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n\n提案分類:${JSON.stringify(item.category, null, 2)}\n\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n\n提案人真實姓名:${JSON.stringify(item.projectPrincipal, null, 2)}\n\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}`
-                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+                this.infoModal.title = `提案編號: ${JSON.stringify(item.projectId, null, 2)}`;
+                this.infoModal.content =
+                    `提案名稱:${JSON.stringify(item.projectName, null, 2)}\n提案分類:${JSON.stringify(item.category, null, 2)}\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n提案人:${JSON.stringify(item.creatorName, null, 2)}\n提案人真實姓名:${JSON.stringify(item.projectPrincipal, null, 2)}\n提案人身分證字號:${JSON.stringify(item.identityNumber, null, 2)}\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n募資人數:${JSON.stringify(item.fundedPeople, null, 2)}\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}\n提案方案數量:${JSON.stringify(item.projectPlansCount, null, 2)}\n提案開始時間:${JSON.stringify(item.startDate, null, 2)}\n提案結束時間:${JSON.stringify(item.endDate, null, 2)}\n提案初創時間:${JSON.stringify(item.createdDate, null, 2)}\n提案提交時間:${JSON.stringify(item.submittedDate, null, 2)}`;
+                this.$root.$emit('bv::show::modal', this.infoModal.id, button);
             },
             resetInfoModal() {
                 this.infoModal.title = ''
@@ -238,7 +221,29 @@
             mounted() {
                 // Set the initial number of items
                 this.totalRows = this.items.length
-            }
+            },
+            getWaitForPassProject() {
+                axios.get("/Api/Projects/GetWaitForPass")
+                    .then((res) => {
+                        this.items = res.data.body.projectList;
+                        this.mounted();
+                        this.isBusy = false;
+                    });
+            },
+            passHandler() {
+                axios.put("/Api/Projects/EditWaitForPassProject", this.$data.fields[0].key)
+                    .then((res) => {
+                        console.log("成功");
+                        this.getWaitForPassProject();
+                    })
+                    .catch((err) => {
+                        console.log("錯誤");
+                    });
+
+            },
+            rejectHandler() {
+
+            },
         },
 
     })
