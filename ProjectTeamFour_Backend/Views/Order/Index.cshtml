@@ -133,24 +133,17 @@
                     {{ row.value.first }} {{ row.value.last }}
                 </template>
 
-                <template #cell(actions)="row">         
+                <template #cell(actions)="row">
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '關閉' : '詳細' }}
                     </b-button>
-                </template>
-
-                <template #cell(button)="row">
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
+                        修改
+                    </b-button>
                     <b-button size="sm" @@click="deleteItem(row.item)" variant="danger">
                         刪除
                     </b-button>
                 </template>
-
-                <template #cell(fixed)="row">
-                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
-                        修改
-                    </b-button>
-                </template>
-                
 
                 <template #row-details="row">
                     <b-card>
@@ -175,43 +168,49 @@
                     </div>
                 </template>
                 <!-- Info modal -->
-                <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal" @@ok="changedata" >
-                    <form ref="form" submit.stop.prevent="changeSubmit"> 
+                <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="changedata" ok-title="修改" cancel-title="取消">
+                    <form ref="form" submit.stop.prevent="updateSubmit"> 
                         <b-form-group label="輸入訂單人名稱"
-                                      label-for="input-orderName"
+                                      label-for="infoModal.input-orderName"
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                            <b-form-input id="input-orderName" v-model="infoModal.orderName" @*:state="state"*@ value="infoModal.orderName"></b-form-input>
+                                      :state="infoModalOrderNameState"
+                                      >
+                            <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入寄送地址"
-                                      label-for="input-orderAddress"
+                                      label-for="infoModal.input-orderAddress"
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                            <b-form-input id="input-orderAddress" v-model="infoModal.orderAddress"@*:state="state"*@  value="infoModal.orderAddress"></b-form-input>
+                                      :state="infoModalOrderAddressState"
+                                      >
+                            <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入連絡電話"
-                                      label-for="input-orderPhone"
+                                      label-for="infoModal.input-orderPhone"
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                            <b-form-input id="input-orderPhone" v-model="infoModal.orderPhone" @*:state="state"*@  value="infoModal.orderPhone"></b-form-input>
+                                      :state="infoModalOrderPhoneState"
+                                      >
+                            <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState"  value="infoModal.orderPhone" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入聯絡信箱"
-                                      label-for="input-orderConEmail"
+                                      label-for="infoModal.input-orderConEmail"
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                            <b-form-input id="input-orderConEmail" v-model="infoModal.orderConEmail" @*:state="state"*@  value="infoModal.orderConEmail"></b-form-input>
+                                      :state="infoModalOrderConEmailState"
+                                      >
+                            <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState"  value="infoModal.orderConEmail" required></b-form-input>
                         </b-form-group>
-                        <b-form-group label="輸入訂單總額"
-                                      label-for="input-orderTotalAccount"
+                        <!--<b-form-group label="輸入訂單總額"
+                                      label-for="infoModal.input-orderTotalAccount"-->
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                           <b-form-input id="input-orderTotalAccount" v-model="infoModal.orderTotalAccount" @*:state="state"*@  value="infoModal.orderTotalAccount"></b-form-input>
-                        </b-form-group>
+                                      <!--:state="infoModalOrderTotalAccountState"
+                                      >
+                           <b-form-input id="infoModal.input-orderTotalAccount" v-model="infoModal.orderTotalAccount" :state="infoModalOrderTotalAccountState"  value="infoModal.orderTotalAccount" required></b-form-input>
+                        </b-form-group>-->
                         <b-form-group label="輸入付款狀態"
-                                      label-for="input-condition"
+                                      label-for="infoModal.input-condition"
                                       @*:invalid-feedback="必填欄位"*@
-                                      @*:state="state"*@>
-                           <b-form-input id="input-condition" v-model="infoModal.condition" @*:state="state"*@  value="infoModal.condition"></b-form-input>
+                                      :state="infoModalConditionState"
+                                      >
+                           <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState"  value="infoModal.condition" required></b-form-input>
                         </b-form-group>
                     </form>
                 </b-modal>
@@ -220,8 +219,9 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script>
-    var order = new Vue({
+    const order = new Vue({
         el:'#ordertable',
         data: {
             items: [], //裝order資料庫資料
@@ -235,9 +235,7 @@
                 { key: 'orderTotalAccount', label: '訂單總額', sortable: true, class: 'text-center' },                    
                 { key: 'tradeNo', label: '訂單流水號', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
                 { key: 'condition', label: '付款狀態', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
-                { key: 'actions', label: '詳細' },  
-                { key: 'button', label: '刪除' },
-                { key: 'fixed', label: '修改' },
+                { key: 'actions', label: '管理' },             
             ],
             isError: false,
             isBusy:true,
@@ -250,21 +248,24 @@
             sortDirection: 'asc',
             filter: null,
             filterOn: [],
-            verificationResult: true,
             infoModal: {
                 id: 'info-modal',
                 title: '',
+                //Modal內容
                 orderName : "",
                 orderAddress : "",
                 orderPhone : "",
                 orderConEmail : "",
-                orderTotalAccount : "",
-                condition : ""
+                condition : "",
             },
             //修改驗證 有填就好(目前)
-            state: null,
+            infoModalOrderNameState: null,
+            infoModalOrderAddressState: null,
+            infoModalOrderPhoneState: null,
+            infoModalOrderConEmailState: null,
+            infoModalConditionState:null,
             //會員修改ajax物件
-            changeOrder: {orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",orderTotalAccount:"",condition:""},
+            changeOrder: {orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",condition:""},
         },
         created: function () {
             this.getall();//呼叫axios            
@@ -277,16 +278,7 @@
                     .map(f => {
                         return { text: f.label, value: f.key }
                     })
-            },
-            @*state() {
-                return this.infoModal.orderName.length >= 1
-            },
-            invalidFeedback() {
-                if (this.name.length = 0) {
-                    return '至少輸入一個字'
-                }
-                return '請輸入訂單人名稱'
-            }*@       
+            },         
         },
         mounted() {
             // Set the initial number of items
@@ -296,12 +288,11 @@
             //infoModal 預設
             info(item, index, button) {
                 this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`                
-                this.infoModal.orderName = item.orderName
-                this.infoModal.orderAddress = item.orderAddress
-                this.infoModal.orderPhone = item.orderPhone
-                this.infoModal.orderConEmail = item.orderConEmail
-                this.infoModal.orderTotalAccount = item.orderTotalAccount
-                this.infoModal.condition = item.condition
+                this.infoModal.orderName = item.orderName;
+                this.infoModal.orderAddress = item.orderAddress;
+                this.infoModal.orderPhone = item.orderPhone;
+                this.infoModal.orderConEmail = item.orderConEmail;
+                this.infoModal.condition = item.condition;
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button)
             },
             getall() {
@@ -318,7 +309,6 @@
                 this.infoModal.orderAddress = '';
                 this.infoModal.orderPhone = '';
                 this.infoModal.orderConEmail = '';
-                this.infoModal.orderTotalAccount = '';
                 this.infoModal.condition = '';
             },
             onFiltered(filteredItems) {
@@ -329,7 +319,11 @@
             //form驗證
             checkForm() {
                 const valid = this.$refs.form.checkValidity()
-                this.state = valid
+                this.infoModalOrderNameState = valid
+                this.infoModalOrderAddressState = valid
+                this.infoModalOrderPhoneState = valid
+                this.infoModalOrderConEmailState = valid
+                this.infoModalConditionState = valid
                 return valid
             }, //控制modal啟動綁定在modal上的ajax方法
             changedata(btnModal) {
@@ -344,7 +338,6 @@
                 this.changeOrder.orderAddress = this.infoModal.orderAddress
                 this.changeOrder.orderConEmail = this.infoModal.orderConEmail
                 this.changeOrder.orderPhone = this.infoModal.orderPhone
-                this.changeOrder.orderTotalAccount = this.infoModal.orderTotalAccount
                 this.changeOrder.condition = this.infoModal.condition
 
                 var updateObj = this;
@@ -357,13 +350,12 @@
                     data: JSON.stringify(this.changeOrder),
                     success: function (data, textStatus, jqXHR) {
                         if (data.msg == "更新成功") {
-                            var updateindex = updateObj.items.findIndex(x => x.orderId == item.orderId);
+                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.item.orderId);
                             updateObj.items[updateindex].orderName = updateObj.changeOrder.orderName;
                             updateObj.items[updateindex].orderPhone = updateObj.changeOrder.orderPhone;
                             updateObj.items[updateindex].orderAddress = updateObj.changeOrder.orderAddress;
                             updateObj.items[updateindex].orderConEmail = updateObj.changeOrder.orderConEmail;
                             updateObj.items[updateindex].condition = updateObj.changeOrder.condition;
-                            updateObj.items[updateindex].orderTotalAccount = updateObj.changeOrder.orderTotalAccount;
 
                             Swal.fire(
                                 "更新成功",
