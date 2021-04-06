@@ -100,17 +100,17 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '方案包' }}
                     </b-button>
-                    <b-button size="sm" @@click="passHandler" class="mr-1" variant="success">
+                    <b-button size="sm" @@click="passHandler(row.item, true)" class="mr-1" variant="success">
                         通過
                     </b-button>
-                    <b-button size="sm" @@click="rejectHandler" class="mr-1" variant="danger">
+                    <b-button size="sm" @@click="passHandler(row.item, false)" class="mr-1" variant="danger">
                         拒絕
                 </template>
 
                 <template #row-details="row">
                     <b-card>
                         <ul v-for="(i, index) in row.item.planList">
-                            
+
                             <template>
                                 <img :src="row.item.planList[index].planImgUrl" alt="#" width="50" height="50">
                             </template>
@@ -230,8 +230,21 @@
                         this.isBusy = false;
                     });
             },
-            passHandler() {
-                axios.put("/Api/Projects/EditWaitForPassProject", this.$data.fields[0].key)
+            passHandler(item, bool) {
+                if (bool == true) {
+                    item.approvingStatus = 2;
+                } else {
+                    item.approvingStatus = 3;
+                }
+                let data = item;
+                console.log(data);
+                const config = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+                axios.put("/Api/Projects/EditWaitForPassProject", data, config)
                     .then((res) => {
                         console.log("成功");
                         this.getWaitForPassProject();
@@ -242,7 +255,7 @@
 
             },
             rejectHandler() {
-
+                
             },
         },
 

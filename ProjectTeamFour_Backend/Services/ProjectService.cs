@@ -186,9 +186,15 @@ namespace ProjectTeamFour_Backend.Services
             {
                 return "查無此筆資料";
             }
-
-            querySingleResult.ProjectStatus = "集資中";
-            querySingleResult.ApprovingStatus = 2;
+            if (waitForPassProject.ApprovingStatus == 2)
+            {
+                querySingleResult.ProjectStatus = "集資中";
+                querySingleResult.ApprovingStatus = 2;
+            } else
+            {
+                querySingleResult.ProjectStatus = null;
+                querySingleResult.ApprovingStatus = 3;
+            }
 
             using (var transaction = _labContext.Database.BeginTransaction())
             {
