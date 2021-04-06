@@ -52,6 +52,8 @@ namespace ProjectTeamFour_Backend
 
             services.AddTransient<IOrderService, OrderService>();
 
+            services.AddTransient<IProjectService, ProjectService>();
+
             services.AddTransient<IBackendMemberService, BackendMemberService>();
 
             services.AddControllers().AddNewtonsoftJson();
