@@ -287,6 +287,14 @@
     <Compile Include="Migrations\202104011150336_add_carcar資料.Designer.cs">
       <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104060331590_add od columns.cs" />
+    <Compile Include="Migrations\202104060331590_add od columns.Designer.cs">
+      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.cs" />
+    <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.Designer.cs">
+      <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -428,7 +436,6 @@
     <Compile Include="Service\MemberSettingService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
-    <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
@@ -2579,6 +2586,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104011150336_add_carcar資料.resx">
       <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060331590_add od columns.resx">
+      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.resx">
+      <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

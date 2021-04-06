@@ -31,6 +31,7 @@ namespace ProjectTeamFour.Controllers
             }
 
             var homeService = new HomeService();
+            //homeService.UpdateProjectStatus();
 
             HomeViewModel homeviewmodel = new HomeViewModel()
             {
@@ -44,6 +45,8 @@ namespace ProjectTeamFour.Controllers
                     CarCarPlanItems = new List<CarCarPlanViewModel>()
                 }
             };
+
+           
 
             var GetAll = homeService.GetAllTotal();
             foreach (var item in GetAll.ProjectItem.ProjectItems)

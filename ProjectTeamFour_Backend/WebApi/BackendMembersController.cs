@@ -28,7 +28,7 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <returns></returns>
 
         [HttpGet("{id}")]
-        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> GetOneBackendMember(int id)
+        public async Task <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> GetOneBackendMember(int id)
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
@@ -36,7 +36,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                var queryResult= _backendMemberService.GetOne(id);
+                var queryResult= await _backendMemberService.GetOne(id);
 
                 if(queryResult==null)
                 {
@@ -66,7 +66,7 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <returns></returns>
         [HttpGet]
         
-        public BaseModel.BaseResult<BackendMemberViewModel.BackendListResult> GetAll()
+        public async Task <BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>> GetAll()
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>();
 
@@ -74,7 +74,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                result.Body = _backendMemberService.GetAll();
+                result.Body = await _backendMemberService.GetAll();
 
                 return result;
             }
@@ -93,7 +93,7 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <param name="backendSingle"></param>
         /// <returns></returns>
         [HttpPost]
-        public  ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        public async Task  <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
@@ -108,7 +108,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                result.Body = _backendMemberService.CreateOneMember(backendSingle);
+                result.Body = await _backendMemberService.CreateOneMember(backendSingle);
 
 
 
@@ -128,13 +128,13 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <param name="backendSingle"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> PutBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        public async Task <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PutBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
         {
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PutBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
-            var editResult=_backendMemberService.EditMember(backendSingle);
+            var editResult=await _backendMemberService.EditMember(backendSingle);
 
             result.Msg = editResult;
             if (result.Msg == "查無此筆資料")
@@ -159,13 +159,13 @@ namespace ProjectTeamFour_Backend.WebApi
         }
 
         [HttpDelete]
-        public ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>> DeleteBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        public async Task <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> DeleteBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
         {
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器DeleteBackendMember方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(backendSingle.MemberId)} " + backendSingle.MemberId);
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
-            var deleteResult = _backendMemberService.DeleteMember(backendSingle);
+            var deleteResult = await _backendMemberService.DeleteMember(backendSingle);
 
             result.Msg = deleteResult;
             if (result.Msg == "查無此筆資料")

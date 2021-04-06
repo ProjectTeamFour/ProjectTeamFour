@@ -37,9 +37,9 @@ namespace ProjectTeamFour.Service
                 }
             };
 
-            foreach (var item in _repository.GetAll<Project>())
+            foreach (var item in _repository.GetAll<Project>().ToList())
             {
-
+                //UpdateProjectStatus(item);
                 ProjectViewModel pv = new ProjectViewModel()
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -126,6 +126,52 @@ namespace ProjectTeamFour.Service
         {
             return GetSearchCardPlan(x => x.PlanDescription.Contains(searchString));
         }
+
+
+
+        //public void UpdateProjectStatus()
+        //{
+        //    var result = _repository.GetAll<Project>();
+
+        //    foreach (Project item in result)
+        //    {
+        //        //    using (var transaction = _context.Database.BeginTransaction())
+        //        //    {
+        //        //        try
+        //        //        {
+        //        DateTime today = DateTime.Now;
+        //        double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+
+        //        if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
+        //        {
+        //            item.ProjectStatus = "結束且成功";
+        //        }
+        //        else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
+        //        {
+        //            item.ProjectStatus = "結束且失敗";
+        //        }
+        //        else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
+        //        {
+        //            item.ProjectStatus = "集資成功";
+        //        }
+        //        else if (dateLine > 0 && item.FundingAmount < item.AmountThreshold)
+        //        {
+        //            item.ProjectStatus = "集資中";
+        //        }
+        //        else
+        //        {
+        //            item.ProjectStatus = "審核中";
+        //        }
+        //        _repository.Update(item);
+        //        //        }
+        //        //        catch(Exception ex)
+        //        //        {
+        //        //            transaction.Rollback();
+        //        //        }
+        //        //    }
+        //    }
+
+        //}
 
 
 

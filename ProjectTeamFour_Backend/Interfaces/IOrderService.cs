@@ -9,5 +9,8 @@ namespace ProjectTeamFour_Backend.Interfaces
     public interface IOrderService
     {
         OrderViewModel.OrderListResult GetAll();
+        string DeleteOrder(OrderViewModel.OrderSingleResult order);
+
+        string UpdateOrder(OrderViewModel.OrderSingleResult orderUpdate);
     }
 }

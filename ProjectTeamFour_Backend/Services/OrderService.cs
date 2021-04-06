@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjectTeamFour_Backend.Context;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.Models;
@@ -14,9 +15,12 @@ namespace ProjectTeamFour_Backend.Services
     public class OrderService: IOrderService
     {
         private readonly IRepository _dbRepository; //repository介面
-        public  OrderService(IRepository repository) //用dapper方便
+        private readonly LabContext _context; 
+
+        public  OrderService(IRepository repository, LabContext context) //用dapper方便
         {
             _dbRepository = repository;
+            _context = context;
         }
 
         public OrderViewModel.OrderListResult GetAll()
@@ -49,6 +53,65 @@ namespace ProjectTeamFour_Backend.Services
                     MemberId = o.MemberId,                    
                 }).ToList();
             return result;
+        }
+
+
+        //Delete單筆                         
+        public string DeleteOrder(OrderViewModel.OrderSingleResult order)
+        {
+            //從資料庫抓order資料(單筆)
+            var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == order.OrderId);
+            if(singleOrder == null)
+            {
+                return "無匹配訂單";
+            }
+            using(var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+
+                    _dbRepository.Delete(singleOrder);
+                    transaction.Commit();
+                    return "刪除成功";
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    return ex.Message;
+                }
+            }           
+        }
+        public string UpdateOrder(OrderViewModel.OrderSingleResult orderUpdate)
+        {
+            //從資料庫抓資料單筆
+            var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == orderUpdate.OrderId);
+            if(singleOrder == null)
+            {
+                return "無匹配訂單";
+            }
+            else
+            {
+                singleOrder.OrderName = orderUpdate.OrderName;
+                singleOrder.OrderPhone = orderUpdate.OrderPhone;
+                singleOrder.OrderTotalAccount = orderUpdate.OrderTotalAccount;
+                singleOrder.OrderConEmail = orderUpdate.OrderConEmail;
+                singleOrder.Condition = orderUpdate.Condition;
+                singleOrder.OrderAddress = orderUpdate.OrderAddress;
+            }
+            using(var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _dbRepository.Update(singleOrder);
+                    transaction.Commit();
+                    return "更新成功";
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    return ex.Message;
+                }
+            }
         }
     }     
 }
