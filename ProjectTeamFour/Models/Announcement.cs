@@ -10,6 +10,7 @@ namespace ProjectTeamFour.Models
     {
         [Key]
         public int AnnouncementId { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
         public int MemberId { get; set; }
         [Display(Name = "建立時間")]
