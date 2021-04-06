@@ -10,6 +10,7 @@ namespace ProjectTeamFour_Backend.Models
 
 
         public int AnnouncementId { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
         public int MemberId { get; set; }
         public DateTime CreateTime { get; set; }
