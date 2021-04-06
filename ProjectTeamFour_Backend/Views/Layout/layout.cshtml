@@ -195,6 +195,22 @@
                     <span>車車商城管理</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjectPages"
+                   aria-expanded="true" aria-controls="collapseProjectPages">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>提案管理</span>
+                </a>
+                <div id="collapseProjectPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("Index","Project")">提案管理</a>
+                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("WaitforPass","Project")">審核管理</a>
+                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("BackendMemberIndex","BackendMember")">草稿管理</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

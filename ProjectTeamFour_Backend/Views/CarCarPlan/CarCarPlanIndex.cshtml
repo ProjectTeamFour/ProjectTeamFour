@@ -15,7 +15,7 @@
 
 }
 
-<div id="member" class="col-12 m-auto">
+<div id="carCarPlan" class="col-12 m-auto">
     <template>
         <b-container fluid>
             <!-- User Interface controls -->
@@ -98,8 +98,8 @@
                         <b-form-checkbox-group v-model="filterOn"
                                                :aria-describedby="ariaDescribedby"
                                                class="mt-1">
-                            <b-form-checkbox value="memberName">會員名稱</b-form-checkbox>
-                            <b-form-checkbox value="memberPhone">會員電話</b-form-checkbox>
+                            <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
+                            <b-form-checkbox value="planTitle">方案名稱</b-form-checkbox>
                             <b-form-checkbox value="memberRegEmail">會員註冊信箱</b-form-checkbox>
                             <b-form-checkbox value="backendIdentity">會員最高權限</b-form-checkbox>
                         </b-form-checkbox-group>
@@ -157,10 +157,7 @@
                         {{ row.detailsShowing ? '收起' : '展開' }}
                     </b-button>
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
-                        修改
-                    </b-button>
-                    <b-button size="sm" @@click="deleteInfo(row.item)" class="mr-1" variant="danger">
-                        刪除
+                        審核
                     </b-button>
                 </template>
 
@@ -168,20 +165,24 @@
                 <template #row-details="row">
                     <b-card>
                         <ul v-for="">
-                            <li>編號 : {{ row.item.memberId }}</li>
-                            <li>最高權限 : {{ row.item.backendIdentity==true?'無':'有'}}</li>
-                            <li>會員名稱 : {{ row.item.memberName}}</li>
-                            <li>會員地址 : {{ row.item.memberAddress }}</li>
-                            <li>會員電話 : {{ row.item.memberPhone }}</li>
-                            <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
-                            <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
-                            <li>會員性別 : {{ row.item.gender }}</li>
-                            <li>會員生日 : {{ row.item.memberBirth }}</li>
+                            <li>編號 : {{ row.item.planId }}</li>
+                            <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'無':'有'}}</li>
+                            <li>方案名稱 : {{ row.item.planTitle}}</li>
+                            <li>方案價錢 : {{ row.item.planPrice}}</li>
+                            <li>方案贊助人數 : {{ row.item.planFundedPeople }}</li>
+                            <li>提案名稱 : {{ row.item.projectName}}</li>
+                            <li>提案編號 : {{ row.item.projectId }}</li>
+                            <li>方案於提案中的序號 : {{ row.item.projectPlanId }}</li>
+                            <li>方案詳細敘述 : {{ row.item.planDescription }}</li>
+                            <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
+                            <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
+                            <li>方案庫存 : {{ row.item.quantityLimit }}</li>
+                            <li>提案人提交的庫存變更 : {{ row.item.submitLimit==null?'無':row.item.submitLimit }}</li>
                         </ul>
                     </b-card>
                 </template>
-                <template #cell(backendIdentity)="data">
-                    <b class="text-info">{{ data.item.backendIdentity===true?'有':'無' }}</b>
+                <template #cell(planImgUrl)="data">
+                    <img :src="data.item.planImgUrl" alt="" width="50" height="50">
                 </template>
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
@@ -192,66 +193,12 @@
             </b-table>
 
             <!-- Info modal -->
-            @*修改會員資料模板*@
-            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="修改" cancel-title="取消">
-                <!--<pre style="font-size:18px">-->@*{{ infoModal.content }}*@
-                <form ref="form" submit.stop.prevent="changeSubmit" class="edit-form">
-                    <b-form-group label="會員名稱" style="height:100px"
-                                  label-for="infoModal.memberName-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="infoModalMemberNameStateState">
-                        <b-form-input id="infoModal.memberName-input"
-                                      v-model="infoModal.memberName"
-                                      value="infoModal.memberName"
-                                      :state="infoModalMemberNameStateState"
-                                      required></b-form-input>
-                    </b-form-group>
-                    <b-form-group label="會員生日" style="height:100px"
-                                  label-for="infoModal.memberBirth-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="infoModalMemberBirthStateState">
-                        <b-form-datepicker id="memberBirth-input"
-                                           v-model="infoModal.memberBirth"
-                                           value="infoModal.memberBirth"
-                                           :state="infoModalMemberBirthStateState"
-                                           required></b-form-datepicker>
-                    </b-form-group>
-                    <b-form-radio-group style="height:100px" label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="infoModal.backendIdentity" :options="options" :state="selectedState" name="radio-validation">
-                        <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
-                        <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
-                    </b-form-radio-group>
-                    <b-form-group label="會員電話(格式範例:0935-123456)" style="height:100px"
-                                  label-for="infoModal.memberPhone-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="infoModalMemberPhoneState">
-                        <b-form-input id="infoModal.memberPhone-input"
-                                      v-model="infoModal.memberPhone"
-                                      value="infoModal.memberPhone"
-                                      :state="infoModalMemberPhoneState"
-                                      required></b-form-input>
-                    </b-form-group>
-                    <b-form-group label="會員聯絡信箱" style="height:100px"
-                                  label-for="infoModal.memberConEmail-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="infoModalMemberConEmailState">
-                        <b-form-input id="infoModal.memberConEmail-input"
-                                      v-model="infoModal.memberConEmail"
-                                      value="infoModal.memberConEmail"
-                                      :state="infoModalMemberConEmailState"
-                                      required></b-form-input>
-                    </b-form-group>
-                    <b-form-group label="會員地址" style="height:100px"
-                                  label-for="infoModal.memberAddress-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="infoModalMemberAddress">
-                        <b-form-input id="infoModal.memberAddress-input"
-                                      v-model="infoModal.memberAddress"
-                                      value="infoModal.memberAddress"
-                                      :state="infoModalMemberAddress"
-                                      required></b-form-input>
-                    </b-form-group>
-                </form>
-                @*</pre>*@
+            @*審核車車商城資料模板*@
+            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
+                <pre>
+                    <b-card-text>{{infoModal.submitLimit}}</b-card-text>
+                </pre>
+
             </b-modal>
         </b-container>
     </template>
@@ -263,7 +210,7 @@
     <script>
         const member = new Vue({
             /*主要監聽對象(作用範圍)*/
-            el: "#member",
+            el: "#carCarPlan",
             data: {
                 /*主要接收API資料的儲存欄位*/
                 items: [],
@@ -301,44 +248,9 @@
                 infoModal: {
                     id: 'info-modal',
                     title: '',
-                /*content: ''*/
-                    memberName: "",
-                    backendIdentity: false,
-                    memberBirth: "",
-                    memberPhone: "",
-                    memberConEmail: "",
-                    memberAddress: "",
+                    submitLimit:''
                 },
-                /*儲存新增會員資料的變數*/
-                memberName: '',
-                memberPassword: '',
-                memberAddress: '',
-                memberPhone: '',
-                memberRegEmail: '',
-                memberConEmail: '',
-                gender: '',
-                memberBirth: '',
-                memberMessage: '',
-                /*新增會員資料輸入欄位的基本判斷*/
-                memberNameState: null,
-                memberPasswordState: null,
-                memberBirthState: null,
-                selectedState: null,
-                memberPhoneState: null,
-                memberRegEmailState: null,
-                memberConEmailState: null,
-                memberAddressState: null,
-                /*修改會員資料輸入欄位的基本判斷*/
-                infoModalMemberNameStateState: null,
-                infoModalMemberBirthStateState: null,
-                infoModalMemberPhoneState: null,
-                infoModalMemberConEmailState: null,
-                infoModalMemberAddress: null,
-                /*新增會員資料AJAX發送的儲存物件*/
-                submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "",  memberBirth: "", backendIdentity: false},
-                /*修改會員資料AJAX發送的儲存物件*/
-                changeMember: { memberId: "", memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", memberBirth: "", backendIdentity: false },
-            /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
+                           /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
 
             },
             /*呼叫GetAll API後將資料存在items*/
@@ -381,71 +293,6 @@
                     this.infoModal.backendIdentity = item.backendIdentity;
 
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-                },
-                /*刪除功能之資料結構及AJAX*/
-                deleteInfo(item) {
-                    var self = this;
-
-                    swal.fire({
-                        title: '您確定刪除此會員?',
-                        text: '您將無法回復該筆資料！',
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: '確定刪除！',
-                    }).then(function (result) {
-                        if (result.isConfirmed) {
-                            $.ajax({
-                                url: "/Api/BackendMembers/DeleteBackendMember",
-                                method: "DELETE",
-                                dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
-                                data: JSON.stringify(item),
-                                contentType: "application/ json; charset = UTF - 8",
-                                success: function (data, textStatus, jqXHR) {
-                                    if (data.msg == "刪除成功") {
-                                        /*(非同步)刪除成功後，於前端將data中的該筆會員刪除*/
-                                        let deleteMemberIndex = self.items.findIndex(x => x.memberId == item.memberId);
-                                        self.items.splice(deleteMemberIndex, 1);
-                                        Swal.fire(
-                                            '刪除!',
-                                            '此筆會員資料已被刪除。',
-                                            'success'
-                                        );
-
-                                    }
-                                    else {
-                                        console.log(data);
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: '刪除失敗，請再試一次',
-
-                                        });
-                                    }
-                                },
-                                error: function (jqXHR, textStatus, errorThrown) {
-                                    console.log(textStatus + ", " + jqXHR.status);
-
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: '刪除失敗，請再試一次',
-
-                                    });
-                                }
-                            })
-
-                        }
-
-
-
-                    })
-
-                    /*this.infoModal.memberId = item.memberId;*/
-
-
-
                 },
                 /*重置infoModal修改功能*/
                 resetInfoModal() {

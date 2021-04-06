@@ -5,11 +5,14 @@
     {
       "library": "echarts@5.0.2",
       "destination": "wwwroot/lib/echarts/"
+    },
+    {
+      "library": "vue-echarts@4.1.0",
+      "destination": "wwwroot/lib/vue-echarts/"
+    },
+    {
+      "library": "vue@3.0.11",
+      "destination": "wwwroot/lib/vue/"
     }
-  ,
-{
-  "library": "vue-echarts@4.1.0",
-  "destination": "wwwroot/lib/vue-echarts/"
-}
-]
+  ]
 }

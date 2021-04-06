@@ -67,7 +67,7 @@ namespace ProjectTeamFour_Backend.Services
                 var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == order.OrderId);
                 if (singleOrder == null)
                 {
-                    return "無匹配訂單";
+                    return "查無此匹配訂單";
                 }
                 using (var transaction = _context.Database.BeginTransaction())
                 {
