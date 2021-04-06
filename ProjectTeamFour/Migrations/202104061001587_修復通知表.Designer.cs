@@ -7,13 +7,13 @@ namespace ProjectTeamFour.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class 修改通知表 : IMigrationMetadata
+    public sealed partial class 修復通知表 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(修改通知表));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(修復通知表));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104060834079_修改通知表"; }
+            get { return "202104061001587_修復通知表"; }
         }
         
         string IMigrationMetadata.Source
