@@ -71,7 +71,7 @@
 
                 <b-col lg="6" class="my-1">
                     <b-form-group v-model="sortDirection"
-                                  label="過濾條件"               
+                                  label="過濾條件"
                                   label-cols-sm="3"
                                   label-align-sm="right"
                                   label-size="sm"
@@ -81,9 +81,9 @@
                                                :aria-describedby="ariaDescribedby"
                                                class="mt-1">
                             <b-form-checkbox value="orderName">訂單人名稱</b-form-checkbox>
-                            <b-form-checkbox value="orderTotalAccount">訂單總金額</b-form-checkbox>                           
-                            <b-form-checkbox value="tradeNo">訂單流水號</b-form-checkbox>                           
-                            <b-form-checkbox value="condition">付款狀態</b-form-checkbox>                           
+                            <b-form-checkbox value="orderTotalAccount">訂單總金額</b-form-checkbox>
+                            <b-form-checkbox value="tradeNo">訂單流水號</b-form-checkbox>
+                            <b-form-checkbox value="condition">付款狀態</b-form-checkbox>
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
@@ -144,6 +144,7 @@
                         刪除
                     </b-button>
                 </template>
+                
 
                 <template #row-details="row">
                     <b-card>
@@ -167,54 +168,46 @@
                         <strong>Loading...</strong>
                     </div>
                 </template>
-                <!-- Info modal -->
-                <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="changedata" ok-title="修改" cancel-title="取消">
-                    <form ref="form" submit.stop.prevent="updateSubmit"> 
-                        <b-form-group label="輸入訂單人名稱"
-                                      label-for="infoModal.input-orderName"
-                                      @*:invalid-feedback="必填欄位"*@
-                                      :state="infoModalOrderNameState"
-                                      >
-                            <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="輸入寄送地址"
-                                      label-for="infoModal.input-orderAddress"
-                                      @*:invalid-feedback="必填欄位"*@
-                                      :state="infoModalOrderAddressState"
-                                      >
-                            <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="輸入連絡電話"
-                                      label-for="infoModal.input-orderPhone"
-                                      @*:invalid-feedback="必填欄位"*@
-                                      :state="infoModalOrderPhoneState"
-                                      >
-                            <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState"  value="infoModal.orderPhone" required></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="輸入聯絡信箱"
-                                      label-for="infoModal.input-orderConEmail"
-                                      @*:invalid-feedback="必填欄位"*@
-                                      :state="infoModalOrderConEmailState"
-                                      >
-                            <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState"  value="infoModal.orderConEmail" required></b-form-input>
-                        </b-form-group>
-                        <!--<b-form-group label="輸入訂單總額"
-                                      label-for="infoModal.input-orderTotalAccount"-->
-                                      @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="infoModalOrderTotalAccountState"
-                                      >
-                           <b-form-input id="infoModal.input-orderTotalAccount" v-model="infoModal.orderTotalAccount" :state="infoModalOrderTotalAccountState"  value="infoModal.orderTotalAccount" required></b-form-input>
-                        </b-form-group>-->
-                        <b-form-group label="輸入付款狀態"
-                                      label-for="infoModal.input-condition"
-                                      @*:invalid-feedback="必填欄位"*@
-                                      :state="infoModalConditionState"
-                                      >
-                           <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState"  value="infoModal.condition" required></b-form-input>
-                        </b-form-group>
-                    </form>
-                </b-modal>
-            </b-container>
+            </b-table>
+
+            <!-- Info modal -->
+            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@
+            @@ok="changedata" ok-title="修改" cancel-title="取消">
+        <form ref="form" submit.stop.prevent="updateSubmit">
+            <b-form-group label="訂單人名稱"
+                          label-for="infoModal.input-orderName"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderNameState">
+                <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="寄送地址"
+                          label-for="infoModal.input-orderAddress"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderAddressState">
+                <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="連絡電話"
+                          label-for="infoModal.input-orderPhone"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderPhoneState">
+                <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState" value="infoModal.orderPhone" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="聯絡信箱"
+                          label-for="infoModal.input-orderConEmail"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderConEmailState">
+                <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState" value="infoModal.orderConEmail" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="付款狀態"
+                          label-for="infoModal.input-condition"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalConditionState">
+                <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState" value="infoModal.condition" required></b-form-input>
+            </b-form-group>
+        </form>
+    </b-modal>
+
+        </b-container>
     </template>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -236,6 +229,7 @@
                 { key: 'tradeNo', label: '訂單流水號', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
                 { key: 'condition', label: '付款狀態', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
                 { key: 'actions', label: '管理' },             
+
             ],
             isError: false,
             isBusy:true,
@@ -265,7 +259,7 @@
             infoModalOrderConEmailState: null,
             infoModalConditionState:null,
             //會員修改ajax物件
-            changeOrder: {orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",condition:""},
+            changeOrder: {orderId:"",orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",condition:""},
         },
         created: function () {
             this.getall();//呼叫axios            
@@ -286,8 +280,9 @@
         },                
         methods: {
             //infoModal 預設
-            info(item, index, button) {
-                this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`                
+            info(item, index, button) {                
+                this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`    
+                this.infoModal.orderId = item.orderId;
                 this.infoModal.orderName = item.orderName;
                 this.infoModal.orderAddress = item.orderAddress;
                 this.infoModal.orderPhone = item.orderPhone;
@@ -329,48 +324,7 @@
             changedata(btnModal) {
                 btnModal.preventDefault()
                 this.updateSubmit()
-            },            
-            updateSubmit() {
-                if (!this.checkForm()) {
-                    return
-                }
-                this.changeOrder.orderName = this.infoModal.orderName
-                this.changeOrder.orderAddress = this.infoModal.orderAddress
-                this.changeOrder.orderConEmail = this.infoModal.orderConEmail
-                this.changeOrder.orderPhone = this.infoModal.orderPhone
-                this.changeOrder.condition = this.infoModal.condition
-
-                var updateObj = this;
-
-                $.ajax({
-                    url: "/api/Orders/UpdateOrder",
-                    method: "PUT",
-                    dataType: "json",
-                    contentType: "application/json;charset=UTF-8",
-                    data: JSON.stringify(this.changeOrder),
-                    success: function (data, textStatus, jqXHR) {
-                        if (data.msg == "更新成功") {
-                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.item.orderId);
-                            updateObj.items[updateindex].orderName = updateObj.changeOrder.orderName;
-                            updateObj.items[updateindex].orderPhone = updateObj.changeOrder.orderPhone;
-                            updateObj.items[updateindex].orderAddress = updateObj.changeOrder.orderAddress;
-                            updateObj.items[updateindex].orderConEmail = updateObj.changeOrder.orderConEmail;
-                            updateObj.items[updateindex].condition = updateObj.changeOrder.condition;
-
-                            Swal.fire(
-                                "更新成功",
-                                "success"
-                            );
-                        }
-                        else {
-                            Swal.fire(
-                                "更新失敗 請再試一次",
-                                "error"
-                            )
-                        }
-                    }
-                })
-            },
+            },                        
             mounted() {
                 // Set the initial number of items
                 this.totalRows = this.items.length
@@ -399,7 +353,6 @@
                                     );
                                 }
                                 else {
-                                    console.log(data);
                                     Swal.fire(
                                         "刪除失敗 請再試一次",
                                         "error"
@@ -410,6 +363,57 @@
                     }
                     else {
                         Swal.fire("已取消");
+                    }
+                })
+            },
+            updateSubmit() {
+                if (!this.checkForm()) {
+                    return
+                }
+                this.changeOrder.orderId = this.infoModal.orderId
+                this.changeOrder.orderName = this.infoModal.orderName
+                this.changeOrder.orderAddress = this.infoModal.orderAddress
+                this.changeOrder.orderConEmail = this.infoModal.orderConEmail
+                this.changeOrder.orderPhone = this.infoModal.orderPhone
+                this.changeOrder.condition = this.infoModal.condition
+
+                var updateObj = this;
+
+                $.ajax({
+                    url: "/api/Orders/UpdateOrder",
+                    method: "PUT",
+                    dataType: "json",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(this.changeOrder),
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.msg == "更新成功") {
+                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.changeOrder.orderId);                            
+                            updateObj.items[updateindex].orderName = updateObj.changeOrder.orderName;
+                            updateObj.items[updateindex].orderPhone = updateObj.changeOrder.orderPhone;
+                            updateObj.items[updateindex].orderAddress = updateObj.changeOrder.orderAddress;
+                            updateObj.items[updateindex].orderConEmail = updateObj.changeOrder.orderConEmail;
+                            updateObj.items[updateindex].condition = updateObj.changeOrder.condition;
+
+                            Swal.fire({
+                                title: "更新成功",
+                                icon: "success",
+                                timer: 1500
+                            });
+                        }
+                        else {
+                            console.log(data);
+                            Swal.fire({
+                                title: "更新失敗 請再試一次",
+                                icon: "error"
+                            })
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus + ", " + jqXHR.state);
+                        Swal.fire({
+                            title: "更新失敗 請再試一次",
+                            icon: "error"
+                        })
                     }
                 })
             },
