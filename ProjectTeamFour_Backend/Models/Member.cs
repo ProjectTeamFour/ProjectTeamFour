@@ -9,7 +9,6 @@ namespace ProjectTeamFour_Backend.Models
     {
         public Member()
         {
-            Announcements = new HashSet<Announcement>();
             Comments = new HashSet<Comment>();
             DraftProjects = new HashSet<DraftProject>();
             Orders = new HashSet<Order>();
@@ -37,7 +36,6 @@ namespace ProjectTeamFour_Backend.Models
         public string IsThirdParty { get; set; }
 
         public virtual FbloginMember FbloginMember { get; set; }
-        public virtual ICollection<Announcement> Announcements { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<DraftProject> DraftProjects { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

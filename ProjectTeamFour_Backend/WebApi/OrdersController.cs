@@ -12,6 +12,7 @@ using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Services;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.ViewModels;
+using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -30,13 +31,13 @@ namespace ProjectTeamFour_Backend.WebApi
 
         // GET: api/Orders
         [HttpGet]
-        public BaseModel.BaseResult<OrderViewModel.OrderListResult> GetAll()
+        public async Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderListResult>>> GetAll()
         {
             var result = new BaseModel.BaseResult<OrderViewModel.OrderListResult>();
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Get方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); //確認前後參數是否一致
             try
             {
-                result.Body = _orderService.GetAll();
+                result.Body = await _orderService.GetAll();
                 return result;
             }
             catch(Exception ex)
@@ -63,35 +64,31 @@ namespace ProjectTeamFour_Backend.WebApi
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutOrder(int id, Order order)
-        //{
-        //    _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器PUT方法被呼叫-傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(order));
-        //    if (id != order.OrderId)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut]
+        public async  Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>>> UpdateOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器PUT方法被呼叫-傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(orderSingle));
 
-        //    _context.Entry(order).State = EntityState.Modified;
+            var result = new BaseModel.BaseResult<OrderViewModel.OrderSingleResult>();
+            var updateOrder = await _orderService.UpdateOrder(orderSingle);
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!OrderExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            result.Msg = updateOrder;
+            if(result.Msg == "無匹配訂單")
+            {
+                result.IsSuccess = false;
+                return result;
+            }
+            else if(result.Msg == "更新成功")
+            {
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+                result.IsSuccess = false;
+                return result;
+            }
+        }
 
         //// POST: api/Orders
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -107,25 +104,29 @@ namespace ProjectTeamFour_Backend.WebApi
         //}
 
         //// DELETE: api/Orders/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteOrder(int id)
-        //{
-        //    _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Delete方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); //確認前後端參數是否一致
-        //    var order = await _context.Orders.FindAsync(id);
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Orders.Remove(order);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
-
-        //private bool OrderExists(int id)
-        //{
-        //    return _context.Orders.Any(e => e.OrderId == id);
-        //}
+        [HttpDelete]
+        public async Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>>> DeleteOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Delete方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); //確認前後端參數是否一致
+            var result = new BaseModel.BaseResult<OrderViewModel.OrderSingleResult>(); //刪除單一筆資料
+            var deleteOrder = await _orderService.DeleteOrder(orderSingle);
+            
+            result.Msg = deleteOrder; //刪除成功 或 錯誤訊息
+            if(result.Msg == "無匹配訂單")
+            {
+                result.IsSuccess = false;
+                return result;
+            }
+            else if(result.Msg == "刪除成功")
+            {
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+                result.IsSuccess = false;
+                return result;
+            }            
+        }
     }
 }

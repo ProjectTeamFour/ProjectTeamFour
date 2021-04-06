@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Interfaces
 {
-   public interface IMemberService
+    public interface ICarCarPlanService
     {
-        Task <MemberViewModel.MemberListResult> GetAll();
+        Task<CarCarPlanViewModel.CarCarPlanListResult> GetAll();
     }
 }

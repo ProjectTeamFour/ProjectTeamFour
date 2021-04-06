@@ -16,7 +16,7 @@ namespace ProjectTeamFour.Controllers
     {
 
 
-        private MemberService _MemberService;
+        private readonly MemberService _MemberService;
 
         public StartAProjectController()
         {
