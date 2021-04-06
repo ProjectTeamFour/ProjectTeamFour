@@ -59,19 +59,36 @@
                     this.isBusy = false;
                 });
         },
-        makeToast(variant = primary) {
-            this.$bvToast.toast('最新消息已發布成功!', {
-                title: `發布成功`,
-                variant: variant,
-                solid: true
-            })
+        editAnnouncement(item, index, button,data) {
+            this.clearModel();
+            for (const key in this.Model) {
+                this.Model[key] = data[Key] ?? '';
+            }
+            this.Model.Title = data.Title;
+            this.Model.Content = data.Content;
+            this.$bvModal.show('edit-announcement');
+            console.log(this.item);
         },
-        makeToast2(variant = danger) {
-            this.$bvToast.toast('請聯絡服務人員', {
-                title: `發布失敗`,
-                variant: variant,
-                solid: true
-            })
+        saveAnnouncement() {
+
+            axios.put('/Api/Announcement/UpdateAccount',this.Model)
+                .then(res => {
+                })
+        },
+        createAnnouncement() {
+            console.log(this.Model);
+            axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
+                .then(res => {
+                    this.createSuccess('primary');
+                    this.getAnnouncement();
+                })
+                .catch(error => {
+                    this.createError('danger');
+                });
+        },
+        removeAnnouncement(item, index, button) {
+            console.log("123");
+            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
         },
         info(item, index, button) {
             this.infoModal.title = `編號: ${JSON.stringify(item.announcementId, null, 2)}`
@@ -82,13 +99,6 @@
             this.infoModal.editTime = `編輯時間:${JSON.stringify(item.editTime, null, 2)}\n\n`
             this.infoModal.editUser = `編輯人:${JSON.stringify(item.editUser, null, 2)}\n\n`
             this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-        },
-        edit(item, index, button) {
-            console.log(this.item);
-        },
-        remove(item, index, button) {
-            console.log("123");
-            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
         },
         resetInfoModal() {
             this.infoModal.title = ''
@@ -103,16 +113,23 @@
             // Set the initial number of items
             this.totalRows = this.items.length
         },
-        createAnnouncement() {
-            console.log(this.Model);
-            axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
-                .then(res => {
-                    this.makeToast('primary');
-                    this.getAnnouncement();
-                })
-                .catch(error => {
-                    this.makeToast2('danger');
-                });
+        createSuccess(variant = primary) {
+            this.$bvToast.toast('最新消息已發布成功!', {
+                title: `發布成功`,
+                variant: variant,
+                solid: true
+            })
+        },
+        createError(variant = danger) {
+            this.$bvToast.toast('請聯絡服務人員', {
+                title: `發布失敗`,
+                variant: variant,
+                solid: true
+            })
+        },
+        clearModel() {
+            this.Model.Title = '';
+            this.Model.Content = '';
         }
     },
 });

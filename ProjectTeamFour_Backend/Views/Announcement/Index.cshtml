@@ -103,10 +103,10 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '展開' }}
                     </b-button>
-                    <b-button size="sm" @@click="edit(row.item, row.index, $event.target)" class="mr-1">
+                    <b-button size="sm" @@click="editAnnouncement(row.item, row.index, $event.target)" class="mr-1">
                         編輯
                     </b-button>
-                    <b-button size="sm" @@click="remove(row.item, row.index, $event.target)" class="mr-1">
+                    <b-button size="sm" @@click="removeAnnouncement(row.item, row.index, $event.target)" class="mr-1">
                         刪除
                     </b-button>
                 </template>
