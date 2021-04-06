@@ -31,6 +31,7 @@ namespace ProjectTeamFour_Backend.Context
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Announcements> Announcements { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

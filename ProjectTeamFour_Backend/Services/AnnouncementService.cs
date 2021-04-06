@@ -26,10 +26,11 @@ namespace ProjectTeamFour_Backend.Services
         public AnnouncementViewModel.AnnouncementListResult GetAll()
         {
             AnnouncementViewModel.AnnouncementListResult result = new AnnouncementViewModel.AnnouncementListResult();
-            result.MyAnnouncementList = _dbrepository.GetAll<Announcement>().Select(
+            result.MyAnnouncementList = _dbrepository.GetAll<Announcements>().Select(
                 a => new AnnouncementViewModel.AnnouncementSingleResult()
                 {
                     AnnouncementId = a.AnnouncementId,
+                    Title = a.Title,
                     Content = a.Content,
                     CreateTime = a.CreateTime,
                     CreateUser = a.CreateUser,
@@ -43,9 +44,10 @@ namespace ProjectTeamFour_Backend.Services
         public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor)
         {
             var result = new OperationResult();
-                Announcement announcement = new Announcement
+                Announcements announcement = new Announcements
                 {
                     Content = input.Content,
+                    Title = input.Title,
                     CreateTime = DateTime.UtcNow.AddHours(8),
                     CreateUser = editor,
                     EditTime = DateTime.UtcNow.AddHours(8),

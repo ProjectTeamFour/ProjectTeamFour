@@ -11,17 +11,21 @@
             <b-button v-b-modal.new-announcement>新增最新消息</b-button>
 
             @*The modal*@
-            <b-modal id="new-announcement" class="col-4" title="新增最新消息"
-                     ok-title="發布"
-                     cancel-title="退出"
-                     @@ok="createAnnouncement">
-                <b-form-group label="消息內容" label-for="Content"
-                              >
-                    <b-form-textarea id="Content"
-                                     v-model="Model.Content">
-                    </b-form-textarea>
-                </b-form-group>
-            </b-modal>
+        <b-modal id="new-announcement" class="col-4" title="新增最新消息"
+                 ok-title="發布"
+                 cancel-title="退出"
+                 @@ok="createAnnouncement">
+            <b-form-group label="通知標題" label-for="Title">
+                <b-form-input id="Title"
+                                 v-model="Model.Title">
+                </b-form-input>
+            </b-form-group>
+            <b-form-group label="消息內容" label-for="Content">
+                <b-form-textarea id="Content"
+                                 v-model="Model.Content">
+                </b-form-textarea>
+            </b-form-group>
+        </b-modal>
             <!--主畫面-->
             <b-container fluid>
                  @*User Interface controls*@ 
@@ -102,7 +106,7 @@
                         <b-card>
                             <ul v-for="" id="mainContent">
                                 <li>編號 : {{ row.item.announcementId }}</li>
-                                <li>通知內容 : {{ row.item.content}}</li>
+                                <li>通知標題 : {{ row.item.title}}</li>
                                 <li>發布時間 : {{ row.item.createTime }}</li>
                                 <li>發布人 : {{ row.item.createUser }}</li>
                                 <li>編輯時間 : {{ row.item.editTime }}</li>

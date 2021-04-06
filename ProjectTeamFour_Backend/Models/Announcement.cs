@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
 namespace ProjectTeamFour_Backend.Models
 {
-    public partial class Announcement
+    public partial class Announcements
     {
 
-
+        
         public int AnnouncementId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }

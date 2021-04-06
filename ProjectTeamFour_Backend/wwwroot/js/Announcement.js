@@ -2,13 +2,14 @@
     el: "#announcement",
     data: {
         Model: {
+            Title:'',
             Content: '',
             MemberId:263
         },
         items: [],
         fields: [
             { key: 'announcementId', label: '編號', sortable: true },
-            { key: 'content', label: '通知內容', class: '' },
+            { key: 'title', label: '通知標題', class: '' },
             { key: 'createTime', label: '發布時間', class: '' },
             { key: 'createUser', label: '發布人', class: '' },
             { key: 'editTime', label: '編輯時間', class: '' },
@@ -74,7 +75,7 @@
         info(item, index, button) {
             this.infoModal.title = `編號: ${JSON.stringify(item.announcementId, null, 2)}`
             this.infoModal.content = `編號:${JSON.stringify(item.announcementId, null, 2)}\n\n
-                                      消息內容:${JSON.stringify(item.context, null, 2)}\n\n
+                                      通知標題:${JSON.stringify(item.title, null, 2)}\n\n
                                       發布時間:${JSON.stringify(item.createTime, null, 2)}\n\n
                                       發布人:${JSON.stringify(item.createUser, null, 2)}\n\n
                                       編輯時間:${JSON.stringify(item.editTime, null, 2)}\n\n
