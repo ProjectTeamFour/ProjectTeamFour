@@ -65,7 +65,7 @@ namespace ProjectTeamFour_Backend
                 .AddEntityFrameworkStores<LabContext>();
            
 
-            services.AddAuthentication()
+           services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
                     options.LoginPath = "/Manager/Login/";
                     options.AccessDeniedPath = "/Account/Forbidden/";

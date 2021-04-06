@@ -61,7 +61,7 @@ namespace ProjectTeamFour_Backend.WebApi
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
+            //ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
 
             var authProperties = new AuthenticationProperties()
             {

@@ -16,7 +16,7 @@ btnLogin.addEventListener("click", function () {
         data: JSON.stringify(user),
         contentType: "application/json;charset=UTF-8",
         success: function (response) {
-            console.log(response)
+           
         /*  localStorage.setItem("jwtToken", response.token);*/
             Cookies.set("jwtToken", response.token);
             AfterLogin();
