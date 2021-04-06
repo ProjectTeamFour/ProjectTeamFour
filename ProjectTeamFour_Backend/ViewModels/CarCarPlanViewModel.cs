@@ -40,7 +40,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// <summary>
             /// 方案預估寄送時間
             /// </summary>
-            public DateTime PlanShipDate { get; set; }
+            public string PlanShipDate { get; set; }
             /// <summary>
             /// 方案詳述
             /// </summary>

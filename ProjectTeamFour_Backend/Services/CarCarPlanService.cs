@@ -30,7 +30,7 @@ namespace ProjectTeamFour_Backend.Services
                     PlanId = P.PlanId,
                     PlanImgUrl = P.PlanImgUrl,
                     PlanPrice = P.PlanPrice,
-                    PlanShipDate = P.PlanShipDate,
+                    PlanShipDate = P.PlanShipDate.ToString("d"),
                     PlanTitle = P.PlanTitle,
                     ProjectId = P.ProjectId,
                     ProjectName = P.ProjectName,
