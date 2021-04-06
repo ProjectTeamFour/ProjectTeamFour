@@ -295,9 +295,9 @@
     <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.Designer.cs">
       <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104060938556_修復通知表.cs" />
-    <Compile Include="Migrations\202104060938556_修復通知表.Designer.cs">
-      <DependentUpon>202104060938556_修復通知表.cs</DependentUpon>
+    <Compile Include="Migrations\202104061001587_修復通知表.cs" />
+    <Compile Include="Migrations\202104061001587_修復通知表.Designer.cs">
+      <DependentUpon>202104061001587_修復通知表.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
@@ -2597,8 +2597,8 @@
     <EmbeddedResource Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.resx">
       <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104060938556_修復通知表.resx">
-      <DependentUpon>202104060938556_修復通知表.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104061001587_修復通知表.resx">
+      <DependentUpon>202104061001587_修復通知表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
