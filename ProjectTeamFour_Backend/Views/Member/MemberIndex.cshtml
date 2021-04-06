@@ -12,7 +12,7 @@
 </style>
     
 }
-<img />
+
 <div id="member" class="col-12 m-auto">
     <template>
         <b-container fluid>
@@ -149,10 +149,10 @@
 
                 <template #cell(actions)="row">
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
-                        聚焦
+                        關於
                     </b-button>
                     <b-button size="sm" @@click="row.toggleDetails">
-                        {{ row.detailsShowing ? '收起' : '展開' }}
+                        {{ row.detailsShowing ? '收起' : '更多' }}
                     </b-button>
                 </template>
 

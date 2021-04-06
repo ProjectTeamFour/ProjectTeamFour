@@ -12,6 +12,7 @@ using ProjectTeamFour_Backend.Data;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.Repository;
 using ProjectTeamFour_Backend.Services;
+using ProjectTeamFour_Backend.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,9 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IBackendMemberService, BackendMemberService>();
 
             services.AddTransient<IAnnouncementService, AnnouncementService>();
+
+            services.AddControllers().AddNewtonsoftJson();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

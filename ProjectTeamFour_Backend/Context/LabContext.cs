@@ -65,8 +65,6 @@ namespace ProjectTeamFour_Backend.Context
                 entity.HasKey(e => e.MemberId)
                     .HasName("PK_dbo.Backendmembers");
 
-                entity.Property(e => e.MemberId).ValueGeneratedNever();
-
                 entity.Property(e => e.Gender).HasMaxLength(10);
 
                 entity.Property(e => e.MemberAccount).HasMaxLength(200);
@@ -282,6 +280,8 @@ namespace ProjectTeamFour_Backend.Context
                 entity.Property(e => e.Condition).HasColumnName("condition");
 
                 entity.Property(e => e.OrderPrice).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.PlanShipDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)

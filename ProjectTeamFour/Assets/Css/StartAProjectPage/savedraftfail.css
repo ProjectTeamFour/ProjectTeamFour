@@ -1,0 +1,106 @@
+﻿.savedraftfail .container,
+.savedraftfail .container-sm {
+    max-width: 350px;
+}
+
+
+.savedraftfail {
+    padding-top: 2.5rem;
+    padding-bottom: 6rem;
+}
+
+    .savedraftfail h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 4rem 0 2rem 0;
+        letter-spacing: 1px;
+    }
+
+    .savedraftfail p {
+        margin-bottom: 0;
+    }
+
+    /*  */
+
+    .savedraftfail .inputbox-item a {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.1rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: .3s;
+    }
+
+        .savedraftfail .inputbox-item a:hover {
+            transform: scale(1.05);
+        }
+
+    .savedraftfail .inputbox-item a {
+        background-color: #f9414a;
+        color: #fff;
+        padding: 0.43rem 0;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+    }
+
+    .savedraftfail .welcome {
+        font-weight: 500;
+        letter-spacing: 1.5px;
+    }
+
+
+
+    .savedraftfail .email-input input {
+        padding: 0.6rem 0 0.6rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #a7a7a7;
+        outline: none;
+        letter-spacing: 0.1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    /*  */
+
+    .savedraftfail .changestatus {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        padding-bottom: 3rem;
+        align-items: center;
+        font-weight: 500;
+    }
+
+        .savedraftfail .changestatus .again {
+            background-color: transparent;
+            border: 1px solid #f9414a;
+            padding: 0.16rem 1rem;
+            color: #f9414a;
+            outline: none;
+            font-weight: 600;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+            .savedraftfail .changestatus .again:hover {
+                background-color: #f9414a;
+                color: #fff;
+            }
+
+        .savedraftfail .changestatus .normal-question {
+            background-color: rgb(212, 209, 209);
+            padding: 0.2rem 0.6rem;
+            color: #0e0d0d;
+            outline: none;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+@media (min-width: 576px) {
+
+    .savedraftfail .container,
+    .savedraftfail .container-sm {
+        max-width: 350px;
+    }
+}

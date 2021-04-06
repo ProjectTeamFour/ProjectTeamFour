@@ -8,6 +8,9 @@ namespace ProjectTeamFour_Backend.Interfaces
 {
     public interface IOrderService
     {
-        OrderViewModel.OrderListResult GetAll();
+        Task<OrderViewModel.OrderListResult> GetAll();
+        Task<string> DeleteOrder(OrderViewModel.OrderSingleResult order);
+
+        Task<string> UpdateOrder(OrderViewModel.OrderSingleResult orderUpdate);
     }
 }

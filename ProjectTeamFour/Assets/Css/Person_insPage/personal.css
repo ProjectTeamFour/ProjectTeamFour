@@ -264,26 +264,35 @@
     margin: auto;
 }
 
-#btn-fix {
-    background-color: #F8414A;
-}
+
 
 #btn-fix,
 #btn-view {
-    border: #f00;
+
+    display: block;
+    padding: 0.25rem;
+    text-decoration: none;
+    font-size:1rem;
 }
 
-#btn-view{
-    display:block;
-    padding:0.25rem 0.5rem;
-    text-decoration:none;
-    color:#f00;
-    font-size:1.5rem:
+#btn-fix {
+    color: #ffffff;
+    background-color: #F8414A;
 }
 
- #btn-view a:hover {
+    #btn-fix a:hover {
         background-color: #F8414A;
+        color:#ffffff;
     }
+
+#btn-view {
+    color: #F8414A;
+}
+
+     #btn-view a:hover {
+            background-color: #F8414A;
+            color:#ffffff;
+        }
 
 /* -------第四格-------------------------------- */
 
@@ -456,7 +465,6 @@ html {
     opacity: 0.7;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
     -o-transition: 0.5s;
 }
 
