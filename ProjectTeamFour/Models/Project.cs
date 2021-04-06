@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string Category { get; set; }
         /// <summary>
-        /// 提案狀態: 審核中 集資成功 集資失敗 集資中 結束且成功 結束且失敗
+        /// 提案狀態: 審核中 集資成功 集資中 結束且成功 結束且失敗
         /// </summary>
         public string ProjectStatus { get; set; } 
         /// <summary>
