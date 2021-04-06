@@ -3,7 +3,7 @@ namespace ProjectTeamFour.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fixde : DbMigration
+    public partial class fixDB1 : DbMigration
     {
         public override void Up()
         {

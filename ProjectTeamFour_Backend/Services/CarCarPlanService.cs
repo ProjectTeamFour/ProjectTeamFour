@@ -36,7 +36,7 @@ namespace ProjectTeamFour_Backend.Services
                     ProjectName = P.ProjectName,
                     ProjectPlanId = P.ProjectPlanId,
                     QuantityLimit = P.QuantityLimit,
-                    //SubmitLimit =
+                    SubmitLimit =P.SubmitLimit
                 }).ToList();
                 return result;
             });

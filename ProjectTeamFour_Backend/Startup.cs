@@ -54,6 +54,8 @@ namespace ProjectTeamFour_Backend
 
             services.AddTransient<IBackendMemberService, BackendMemberService>();
 
+            services.AddTransient<ICarCarPlanService, CarCarPlanService>();
+
             services.AddControllers().AddNewtonsoftJson();
             
         }

@@ -17,6 +17,7 @@ namespace ProjectTeamFour_Backend.Models
         public int ProjectId { get; set; }
         public string OrderPlanImgUrl { get; set; }
         public string Condition { get; set; }
+        public DateTime PlanShipDate { get; set; }
 
         public virtual Order Order { get; set; }
         public virtual Plan Plan { get; set; }
