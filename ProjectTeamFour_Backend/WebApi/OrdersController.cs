@@ -12,6 +12,7 @@ using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Services;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.ViewModels;
+using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -30,13 +31,13 @@ namespace ProjectTeamFour_Backend.WebApi
 
         // GET: api/Orders
         [HttpGet]
-        public BaseModel.BaseResult<OrderViewModel.OrderListResult> GetAll()
+        public async Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderListResult>>> GetAll()
         {
             var result = new BaseModel.BaseResult<OrderViewModel.OrderListResult>();
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Get方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); //確認前後參數是否一致
             try
             {
-                result.Body = _orderService.GetAll();
+                result.Body = await _orderService.GetAll();
                 return result;
             }
             catch(Exception ex)
@@ -64,12 +65,12 @@ namespace ProjectTeamFour_Backend.WebApi
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>> UpdateOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
+        public async  Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>>> UpdateOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
         {
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器PUT方法被呼叫-傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(orderSingle));
 
             var result = new BaseModel.BaseResult<OrderViewModel.OrderSingleResult>();
-            var updateOrder = _orderService.UpdateOrder(orderSingle);
+            var updateOrder = await _orderService.UpdateOrder(orderSingle);
 
             result.Msg = updateOrder;
             if(result.Msg == "無匹配訂單")
@@ -104,11 +105,11 @@ namespace ProjectTeamFour_Backend.WebApi
 
         //// DELETE: api/Orders/5
         [HttpDelete]
-        public ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>> DeleteOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
+        public async Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderSingleResult>>> DeleteOrder([FromBody] OrderViewModel.OrderSingleResult orderSingle)
         {
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Delete方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); //確認前後端參數是否一致
             var result = new BaseModel.BaseResult<OrderViewModel.OrderSingleResult>(); //刪除單一筆資料
-            var deleteOrder = _orderService.DeleteOrder(orderSingle).ToString();
+            var deleteOrder = await _orderService.DeleteOrder(orderSingle);
             
             result.Msg = deleteOrder; //刪除成功 或 錯誤訊息
             if(result.Msg == "無匹配訂單")
