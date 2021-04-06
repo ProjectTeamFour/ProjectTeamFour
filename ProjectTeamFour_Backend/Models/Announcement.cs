@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjectTeamFour_Backend.Models
 {
-    public partial class Announcements
+    public partial class Announcement
     {
 
         

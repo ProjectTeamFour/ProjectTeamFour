@@ -26,7 +26,7 @@ namespace ProjectTeamFour_Backend.Services
         public AnnouncementViewModel.AnnouncementListResult GetAll()
         {
             AnnouncementViewModel.AnnouncementListResult result = new AnnouncementViewModel.AnnouncementListResult();
-            result.MyAnnouncementList = _dbrepository.GetAll<Announcements>().Select(
+            result.MyAnnouncementList = _dbrepository.GetAll<Announcement>().Select(
                 a => new AnnouncementViewModel.AnnouncementSingleResult()
                 {
                     AnnouncementId = a.AnnouncementId,
@@ -44,7 +44,7 @@ namespace ProjectTeamFour_Backend.Services
         public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor)
         {
             var result = new OperationResult();
-                Announcements announcement = new Announcements
+                Announcement announcement = new Announcement
                 {
                     Content = input.Content,
                     Title = input.Title,
