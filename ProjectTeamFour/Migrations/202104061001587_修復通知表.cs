@@ -3,7 +3,7 @@ namespace ProjectTeamFour.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class 修改通知表 : DbMigration
+    public partial class 修復通知表 : DbMigration
     {
         public override void Up()
         {
