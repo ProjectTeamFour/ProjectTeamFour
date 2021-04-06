@@ -30,108 +30,108 @@
             </b-form-group>
         </b-modal>
             <!--主畫面-->
-            <b-container fluid>
-                 @*User Interface controls*@ 
-                <b-row>
-                    <b-col lg="6" class="my-1">
-                        <b-form-group label="搜尋"
-                                      label-for="filter-input"
-                                      label-cols-sm="3"
-                                      label-align-sm="right"
-                                      label-size="sm"
-                                      class="mb-0">
-                            <b-input-group size="sm">
-                                <b-form-input id="filter-input"
-                                              v-model="filter"
-                                              type="search"
-                                              placeholder="請輸入關鍵字"></b-form-input>
+        <b-container fluid>
+            @*User Interface controls*@
+            <b-row>
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="搜尋"
+                                  label-for="filter-input"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-input-group size="sm">
+                            <b-form-input id="filter-input"
+                                          v-model="filter"
+                                          type="search"
+                                          placeholder="請輸入關鍵字"></b-form-input>
 
-                                <b-input-group-append>
-                                    <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
-                                </b-input-group-append>
-                            </b-input-group>
-                        </b-form-group>
-                    </b-col>
-                    <b-col sm="5" md="6" class="my-1">
-                        <b-form-group label="每頁顯示筆數"
-                                      label-for="per-page-select"
-                                      label-cols-sm="6"
-                                      label-cols-md="4"
-                                      label-cols-lg="3"
-                                      label-align-sm="right"
-                                      label-size="sm"
-                                      class="mb-0">
-                            <b-form-select id="per-page-select"
-                                           v-model="perPage"
-                                           :options="pageOptions"
-                                           size="sm"></b-form-select>
-                        </b-form-group>
-                    </b-col>
-                    <b-col sm="7" md="6" class="my-1">
-                        <b-pagination v-model="currentPage"
-                                      :total-rows="totalRows"
-                                      :per-page="perPage"
-                                      align="fill"
-                                      size="sm"
-                                      class="my-0"></b-pagination>
-                    </b-col>
-                </b-row>
+                            <b-input-group-append>
+                                <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group label="每頁顯示筆數"
+                                  label-for="per-page-select"
+                                  label-cols-sm="6"
+                                  label-cols-md="4"
+                                  label-cols-lg="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="per-page-select"
+                                       v-model="perPage"
+                                       :options="pageOptions"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination v-model="currentPage"
+                                  :total-rows="totalRows"
+                                  :per-page="perPage"
+                                  align="fill"
+                                  size="sm"
+                                  class="my-0"></b-pagination>
+                </b-col>
+            </b-row>
 
-                 @*Main table element*@ 
-                <b-table :items="items"
-                         :fields="fields"
-                         :current-page="currentPage"
-                         :per-page="perPage"
-                         :filter="filter"
-                         :filter-included-fields="filterOn"
-                         :sort-by.sync="sortBy"
-                         :sort-desc.sync="sortDesc"
-                         :sort-direction="sortDirection"
-                         :busy="isBusy"
-                         stacked="md"
-                         show-empty
-                         small
-                         @@filtered="onFiltered">
-                    <template #cell(name)="row">
-                        {{ row.value.first }} {{ row.value.last }}
-                    </template>
+            @*Main table element*@
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
 
-                    <template #cell(actions)="row">
-                        <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
-                            詳細
-                        </b-button>
-                        <b-button size="sm" @@click="row.toggleDetails">
-                            {{ row.detailsShowing ? '收起' : '展開' }}
-                        </b-button>
-                        <b-button size="sm" @@click="edit(row.item, row.index, $event.target)" class="mr-1">
-                            編輯
-                        </b-button>
-                        <b-button size="sm" @@click="remove(row.item, row.index, $event.target)" class="mr-1">
-                            刪除
-                        </b-button>
-                    </template>
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
+                        詳細
+                    </b-button>
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '收起' : '展開' }}
+                    </b-button>
+                    <b-button size="sm" @@click="edit(row.item, row.index, $event.target)" class="mr-1">
+                        編輯
+                    </b-button>
+                    <b-button size="sm" @@click="remove(row.item, row.index, $event.target)" class="mr-1">
+                        刪除
+                    </b-button>
+                </template>
 
-                    <template #row-details="row">
-                        <b-card>
-                            <ul v-for="" id="mainContent">
-                                <li>編號 : {{ row.item.announcementId }}</li>
-                                <li>通知標題 : {{ row.item.title}}</li>
-                                <li>發布時間 : {{ row.item.createTime }}</li>
-                                <li>發布人 : {{ row.item.createUser }}</li>
-                                <li>編輯時間 : {{ row.item.editTime }}</li>
-                                <li>編輯人 : {{ row.item.editUser }}</li>
-                            </ul>
-                        </b-card>
-                    </template>
-                    <template #table-busy>
-                        <div class="text-center text-danger my-2">
-                            <b-spinner class="align-middle"></b-spinner>
-                            <strong>Loading...</strong>
-                        </div>
-                    </template>
-                </b-table>
+                <template #row-details="row">
+                    <b-card>
+                        <ul v-for="" id="mainContent">
+                            <li>編號 : {{ row.item.announcementId }}</li>
+                            <li>通知標題 : {{ row.item.title}}</li>
+                            <li>發布時間 : {{ row.item.createTime }}</li>
+                            <li>發布人 : {{ row.item.createUser }}</li>
+                            <li>編輯時間 : {{ row.item.editTime }}</li>
+                            <li>編輯人 : {{ row.item.editUser }}</li>
+                        </ul>
+                    </b-card>
+                </template>
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
 
-                 @*Info modal*@ 
+            @*Info modal*@
             <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
                 <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.id }}</pre>
                 <pre style="font-size:18px" class="AnnouncementModal">通知內容:</pre>
@@ -141,7 +141,25 @@
                 <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editTime }}</pre>
                 <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editUser }}</pre>
             </b-modal>
-            </b-container>
+            <b-button v-b-modal.edit-announcement>新增最新消息</b-button>
+
+            @*編輯 modal*@
+            <b-modal id="edit-announcement" class="col-4" title="編輯通知"
+                     ok-title="儲存"
+                     cancel-title="退出"
+                     @@ok="saveAnnouncement">
+                <b-form-group label="通知標題" label-for="Title">
+                    <b-form-input id="Title"
+                                  v-model="Model.Title">
+                    </b-form-input>
+                </b-form-group>
+                <b-form-group label="消息內容" label-for="Content">
+                    <b-form-textarea id="Content"
+                                     v-model="Model.Content">
+                    </b-form-textarea>
+                </b-form-group>
+            </b-modal>
+        </b-container>
         </div>
     </template>
 </div>

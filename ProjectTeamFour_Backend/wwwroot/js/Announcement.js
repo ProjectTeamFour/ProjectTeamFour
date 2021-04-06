@@ -88,7 +88,7 @@
         },
         remove(item, index, button) {
             console.log("123");
-            axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);
+            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
         },
         resetInfoModal() {
             this.infoModal.title = ''
