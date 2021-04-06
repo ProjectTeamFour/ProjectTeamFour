@@ -287,6 +287,10 @@
     <Compile Include="Migrations\202104011150336_add_carcar資料.Designer.cs">
       <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104060331590_add od columns.cs" />
+    <Compile Include="Migrations\202104060331590_add od columns.Designer.cs">
+      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -2575,6 +2579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104011150336_add_carcar資料.resx">
       <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060331590_add od columns.resx">
+      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
