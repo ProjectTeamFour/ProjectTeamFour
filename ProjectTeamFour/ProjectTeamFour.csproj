@@ -298,6 +298,7 @@
     <Compile Include="Migrations\202104060833428_fixDB1.cs" />
     <Compile Include="Migrations\202104060833428_fixDB1.Designer.cs">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
+	</Compile>	
     <Compile Include="Migrations\202104061001587_修復通知表.cs" />
     <Compile Include="Migrations\202104061001587_修復通知表.Designer.cs">
       <DependentUpon>202104061001587_修復通知表.cs</DependentUpon>
@@ -2602,6 +2603,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104061001587_修復通知表.resx">
       <DependentUpon>202104061001587_修復通知表.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104060833428_fixDB1.resx">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
     </EmbeddedResource>
