@@ -30,6 +30,7 @@ namespace ProjectTeamFour_Backend.Services
                 a => new AnnouncementViewModel.AnnouncementSingleResult()
                 {
                     AnnouncementId = a.AnnouncementId,
+                    Title = a.Title,
                     Content = a.Content,
                     CreateTime = a.CreateTime,
                     CreateUser = a.CreateUser,
@@ -46,6 +47,7 @@ namespace ProjectTeamFour_Backend.Services
                 Announcement announcement = new Announcement
                 {
                     Content = input.Content,
+                    Title = input.Title,
                     CreateTime = DateTime.UtcNow.AddHours(8),
                     CreateUser = editor,
                     EditTime = DateTime.UtcNow.AddHours(8),
