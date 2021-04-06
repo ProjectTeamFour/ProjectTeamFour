@@ -26,14 +26,14 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger = logger;
         }
         [HttpGet]
-        public BaseModel.BaseResult<MemberViewModel.MemberListResult> GetAll()
+        public async Task <BaseModel.BaseResult<MemberViewModel.MemberListResult>> GetAll()
         {
             var result = new BaseModel.BaseResult<MemberViewModel.MemberListResult>();
 
             _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "MembersController GetAll方法被呼叫");
             try
             {
-                result.Body = _memberService.GetAll();
+                result.Body = await _memberService.GetAll();
                 return result;
             }
             catch(Exception ex)

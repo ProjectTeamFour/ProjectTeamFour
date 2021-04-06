@@ -38,6 +38,12 @@ namespace ProjectTeamFour.Controllers
         public ActionResult SubmissionProcess()
         {
             int result = _MemberService.ReturnLoginnerId();
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
             ViewBag.MemberId = result;
             return View();
         }
@@ -45,6 +51,13 @@ namespace ProjectTeamFour.Controllers
         public ActionResult SubmitSuccess()
         {
             int result = _MemberService.ReturnLoginnerId();
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
+
             ViewBag.MemberId = result;
             return View();
         }
@@ -52,6 +65,40 @@ namespace ProjectTeamFour.Controllers
         public ActionResult SubmitFail()
         {
             int result = _MemberService.ReturnLoginnerId();
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
+
+            ViewBag.MemberId = result;
+            return View();
+        }
+
+        public ActionResult SaveDraftFail()
+        {
+            int result = _MemberService.ReturnLoginnerId();
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
+
+            ViewBag.MemberId = result;
+            return View();
+        }
+
+        public ActionResult SaveDraftSuccess()
+        {
+            int result = _MemberService.ReturnLoginnerId();
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
             ViewBag.MemberId = result;
             return View();
         }
