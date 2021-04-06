@@ -176,44 +176,44 @@
                 </template>
                 <!-- Info modal -->
                 <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal" @@ok="changedata" >
-                    <!--<form ref="thisform" submit.stop.prevent="changeSubmit" class="edit-form"> 
+                    <form ref="form" submit.stop.prevent="changeSubmit"> 
                         <b-form-group label="輸入訂單人名稱"
-                                      label-for="input-orderName"-->
+                                      label-for="input-orderName"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-orderName" v-model="infoModal.orderName" :state="state" value="infoModal.orderName"></b-form-input>
+                                      @*:state="state"*@>
+                            <b-form-input id="input-orderName" v-model="infoModal.orderName" @*:state="state"*@ value="infoModal.orderName"></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入寄送地址"
-                                      label-for="input-orderAddress"-->
+                                      label-for="input-orderAddress"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-orderAddress" v-model="infoModal.orderAddress" :state="state" value="infoModal.orderAddress"></b-form-input>
+                                      @*:state="state"*@>
+                            <b-form-input id="input-orderAddress" v-model="infoModal.orderAddress"@*:state="state"*@  value="infoModal.orderAddress"></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入連絡電話"
-                                      label-for="input-orderPhone"-->
+                                      label-for="input-orderPhone"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-orderPhone" v-model="infoModal.orderPhone" :state="state" value="infoModal.orderPhone"></b-form-input>
+                                      @*:state="state"*@>
+                            <b-form-input id="input-orderPhone" v-model="infoModal.orderPhone" @*:state="state"*@  value="infoModal.orderPhone"></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入聯絡信箱"
-                                      label-for="input-orderConEmail"-->
+                                      label-for="input-orderConEmail"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-orderConEmail" v-model="infoModal.orderConEmail" :state="state" value="infoModal.orderConEmail"></b-form-input>
+                                      @*:state="state"*@>
+                            <b-form-input id="input-orderConEmail" v-model="infoModal.orderConEmail" @*:state="state"*@  value="infoModal.orderConEmail"></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入訂單總額"
-                                      label-for="input-orderTotalAccount"-->
+                                      label-for="input-orderTotalAccount"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-orderTotalAccount" v-model="infoModal.orderTotalAccount" :state="state" value="infoModal.orderTotalAccount"></b-form-input>
+                                      @*:state="state"*@>
+                           <b-form-input id="input-orderTotalAccount" v-model="infoModal.orderTotalAccount" @*:state="state"*@  value="infoModal.orderTotalAccount"></b-form-input>
                         </b-form-group>
                         <b-form-group label="輸入付款狀態"
-                                      label-for="input-condition"-->
+                                      label-for="input-condition"
                                       @*:invalid-feedback="必填欄位"*@
-                                      <!--:state="state">
-                            <b-form-input id="input-condition" v-model="infoModal.condition" :state="state" value="infoModal.condition"></b-form-input>
+                                      @*:state="state"*@>
+                           <b-form-input id="input-condition" v-model="infoModal.condition" @*:state="state"*@  value="infoModal.condition"></b-form-input>
                         </b-form-group>
-                    </form>-->
+                    </form>
                 </b-modal>
             </b-container>
     </template>
