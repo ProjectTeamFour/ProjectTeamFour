@@ -180,16 +180,22 @@
                 <div id="collapseMemberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("MemberIndex","Member")">前台會員管理</a>
-                        <a class="collapse-item" style="text-align:center;"  href="@Url.ActionLink("BackendMemberIndex","BackendMember")">後台會員管理</a>
+                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("BackendMemberIndex","BackendMember")">後台會員管理</a>
 
 
                     </div>
 
                 </div>
             </li>
-            <li class="">
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
+            @*車車商城管理相關HTML*@
+            <li class="nav-item">
+                <a class="nav-link" href="~/CarCarPlan/CarCarPlanIndex">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>車車商城管理</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">
