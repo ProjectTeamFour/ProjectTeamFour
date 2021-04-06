@@ -23,95 +23,102 @@ namespace ProjectTeamFour_Backend.Services
             _context = context;
         }
 
-        public OrderViewModel.OrderListResult GetAll()
+        public Task<OrderViewModel.OrderListResult> GetAll()
         {
-            OrderViewModel.OrderListResult result = new OrderViewModel.OrderListResult();
-            result.MyOrderList = _dbRepository.GetAll<Order>().Select(
-                o => new OrderViewModel.OrderSingleResult()
-                {
-                    OrderDetailList = _dbRepository.GetAll<OrderDetail>().Where(x => x.OrderId == o.OrderId).Select(x => new OrderDetail
+            return Task.Run(() =>
+            {
+                OrderViewModel.OrderListResult result = new OrderViewModel.OrderListResult();
+                result.MyOrderList = _dbRepository.GetAll<Order>().Select(
+                    o => new OrderViewModel.OrderSingleResult()
                     {
-                        PlanTitle = x.PlanTitle,
-                        OrderPrice = x.OrderPrice,
-                        OrderQuantity = x.OrderQuantity,
-                        OrderDetailId = x.OrderDetailId,
-                        Condition = x.Condition,
-                        OrderPlanImgUrl = x.OrderPlanImgUrl,
-                        PlanId = x.PlanId,
-                        OrderDetailDes = x.OrderDetailDes,
-                        ProjectId = x.ProjectId,
-                        //PlanShipDate = x.PlanShipDate
-                    }).ToList(),
-                    OrderAddress = o.OrderAddress,
-                    OrderConEmail = o.OrderConEmail,
-                    OrderId = o.OrderId,
-                    OrderName = o.OrderName,
-                    OrderTotalAccount = o.OrderTotalAccount,
-                    OrderPhone = o.OrderPhone,
-                    Condition = o.Condition,
-                    TradeNo = o.TradeNo,
-                    MemberId = o.MemberId,                    
-                }).ToList();
-            return result;
+                        OrderDetailList = _dbRepository.GetAll<OrderDetail>().Where(x => x.OrderId == o.OrderId).Select(x => new OrderDetail
+                        {
+                            PlanTitle = x.PlanTitle,
+                            OrderPrice = x.OrderPrice,
+                            OrderQuantity = x.OrderQuantity,
+                            OrderDetailId = x.OrderDetailId,
+                            Condition = x.Condition,
+                            OrderPlanImgUrl = x.OrderPlanImgUrl,
+                            PlanId = x.PlanId,
+                            OrderDetailDes = x.OrderDetailDes,
+                            ProjectId = x.ProjectId,
+                            //PlanShipDate = x.PlanShipDate
+                        }).ToList(),
+                        OrderAddress = o.OrderAddress,
+                        OrderConEmail = o.OrderConEmail,
+                        OrderId = o.OrderId,
+                        OrderName = o.OrderName,
+                        OrderTotalAccount = o.OrderTotalAccount,
+                        OrderPhone = o.OrderPhone,
+                        Condition = o.Condition,
+                        TradeNo = o.TradeNo,
+                        MemberId = o.MemberId,
+                    }).ToList();
+                return result;
+            });
         }
 
 
         //Delete單筆                         
-        public string DeleteOrder(OrderViewModel.OrderSingleResult order)
+        public Task<string> DeleteOrder(OrderViewModel.OrderSingleResult order)
         {
-            //從資料庫抓order資料(單筆)
-            var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == order.OrderId);
-            if(singleOrder == null)
+            return Task.Run(() =>
             {
-                return "無匹配訂單";
-            }
-            using(var transaction = _context.Database.BeginTransaction())
-            {
-                try
+                var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == order.OrderId);
+                if (singleOrder == null)
                 {
+                    return "查無此匹配訂單";
+                }
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
 
-                    _dbRepository.Delete(singleOrder);
-                    transaction.Commit();
-                    return "刪除成功";
+                        _dbRepository.Delete(singleOrder);
+                        transaction.Commit();
+                        return "刪除成功";
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return ex.Message;
+                    }
                 }
-                catch(Exception ex)
-                {
-                    transaction.Rollback();
-                    return ex.Message;
-                }
-            }           
+            });                         
         }
-        public string UpdateOrder(OrderViewModel.OrderSingleResult orderUpdate)
+        public Task<string> UpdateOrder(OrderViewModel.OrderSingleResult orderUpdate)
         {
-            //從資料庫抓資料單筆
-            var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == orderUpdate.OrderId);
-            if(singleOrder == null)
+            return Task.Run(() =>
             {
-                return "無匹配訂單";
-            }
-            else
-            {
-                singleOrder.OrderName = orderUpdate.OrderName;
-                singleOrder.OrderPhone = orderUpdate.OrderPhone;
-                singleOrder.OrderTotalAccount = orderUpdate.OrderTotalAccount;
-                singleOrder.OrderConEmail = orderUpdate.OrderConEmail;
-                singleOrder.Condition = orderUpdate.Condition;
-                singleOrder.OrderAddress = orderUpdate.OrderAddress;
-            }
-            using(var transaction = _context.Database.BeginTransaction())
-            {
-                try
+                //從資料庫抓資料單筆
+                var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == orderUpdate.OrderId);
+                if (singleOrder == null)
                 {
-                    _dbRepository.Update(singleOrder);
-                    transaction.Commit();
-                    return "更新成功";
+                    return "無匹配訂單";
                 }
-                catch(Exception ex)
+                else
                 {
-                    transaction.Rollback();
-                    return ex.Message;
+                    singleOrder.OrderName = orderUpdate.OrderName;
+                    singleOrder.OrderPhone = orderUpdate.OrderPhone;
+                    singleOrder.OrderConEmail = orderUpdate.OrderConEmail;
+                    singleOrder.Condition = orderUpdate.Condition;
+                    singleOrder.OrderAddress = orderUpdate.OrderAddress;
                 }
-            }
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        _dbRepository.Update(singleOrder);
+                        transaction.Commit();
+                        return "更新成功";
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return ex.Message;
+                    }
+                }
+            });           
         }
     }     
 }

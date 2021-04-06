@@ -25,6 +25,7 @@ namespace ProjectTeamFour_Backend.Models
         public string ProjectName { get; set; }
         public decimal PlanPrice { get; set; }
         public bool AddCarCarPlan { get; set; }
+        public int? SubmitLimit { get; set; }
 
         public virtual Project Project { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

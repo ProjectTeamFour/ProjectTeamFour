@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-    public class ProjectController : Controller
+    public class CarCarPlanController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult WaitforPass()
+        public IActionResult CarCarPlanIndex()
         {
             return View();
         }

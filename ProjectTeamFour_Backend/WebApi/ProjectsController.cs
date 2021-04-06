@@ -8,33 +8,131 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProjectTeamFour_Backend.Context;
+using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.Models;
+using ProjectTeamFour_Backend.ViewModels;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
         private readonly LabContext _context;
         private readonly ILogger<ProjectsController> _logger;
+        private readonly IProjectService _projectService;
 
-        public ProjectsController(LabContext context, ILogger<ProjectsController> logger)
+        public ProjectsController(LabContext context, ILogger<ProjectsController> logger, IProjectService projectService)
         {
             _context = context;
             _logger = logger;
+            _projectService = projectService;
         }
 
         // GET: api/Projects
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetAll()
         {
-            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " Projects控制器GET方法被呼叫, by " + UriHelper.GetDisplayUrl(Request));
+            var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
 
-            return await _context.Projects.ToListAsync();
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器GET方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); 
+
+            try
+            {
+                result.Body = _projectService.GetAll();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Msg = ex.Message;
+                result.IsSuccess = false;
+                return result;
+            }
         }
 
+
+        // GET: api/Projects
+        [HttpGet]
+        public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetWaitForPass()
+        {
+            var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
+
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器GET方法被呼叫, by" + UriHelper.GetDisplayUrl(Request));
+
+            try
+            {
+                result.Body = _projectService.GetWaitForPass();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Msg = ex.Message;
+                result.IsSuccess = false;
+                return result;
+            }
+        }
+
+
+
+        /// <summary>
+        /// 從前端審核提案資料，回傳型式為字串。共有三種型式"查無此筆資料"、"修改成功"及例外的資訊
+        /// 改提案狀態
+        /// </summary>
+        /// <param name="waitForPassSingle"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult<BaseModel.BaseResult<ProjectViewModel.ProjectSingleResult>> EditWaitForPassProject([FromBody] ProjectViewModel.ProjectSingleResult waitForPassSingle)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PutBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(waitForPassSingle));
+
+            var result = new BaseModel.BaseResult<ProjectViewModel.ProjectSingleResult>();
+
+            var editResult = _projectService.EditWaitForPassProject(waitForPassSingle);
+
+            result.Msg = editResult;
+            if (result.Msg == "查無此筆資料")
+            {
+
+                result.IsSuccess = false;
+                return result;
+            }
+            else if (result.Msg == "修改成功")
+            {
+
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+                result.IsSuccess = false;
+                return result;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //// GET: api/Projects
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        //{
+        //    _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " Projects控制器GET方法被呼叫, by " + UriHelper.GetDisplayUrl(Request));
+
+        //    return await _context.Projects.ToListAsync();
+        //}
+
         // GET: api/Projects/5
+
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Project>> GetProject(int id)
         {
@@ -52,36 +150,36 @@ namespace ProjectTeamFour_Backend.WebApi
 
         // PUT: api/Projects/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProject(int id, Project project)
-        {
-            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " Projects控制器PUT方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(project));
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutProject(int id, Project project)
+        //{
+        //    _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " Projects控制器PUT方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(project));
 
-            if (id != project.ProjectId)
-            {
-                return BadRequest();
-            }
+        //    if (id != project.ProjectId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(project).State = EntityState.Modified;
+        //    _context.Entry(project).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProjectExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ProjectExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/Projects
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
