@@ -1,10 +1,14 @@
 ﻿const announcement = new Vue({
     el: "#announcement",
     data: {
+        Model: {
+            Content: '',
+            MemberId:263
+        },
         items: [],
         fields: [
             { key: 'announcementId', label: '編號', sortable: true },
-            { key: 'context', label: '通知內容', class: '' },
+            { key: 'content', label: '通知內容', class: '' },
             { key: 'createTime', label: '發布時間', class: '' },
             { key: 'createUser', label: '發布人', class: '' },
             { key: 'editTime', label: '編輯時間', class: '' },
@@ -27,13 +31,8 @@
             content: ''
         }
     },
-    created: function () {
-        axios.get("/Api/Announcements/GetAll")
-            .then((res) => {
-                this.items = res.data.body.announcementList;
-                this.mounted();
-                this.isBusy = false;
-            });
+    created: function(){
+        this.getAnnouncement();
     },
     computed: {
         sortOptions() {
@@ -50,6 +49,28 @@
         this.totalRows = this.items.length
     },
     methods: {
+        getAnnouncement() {
+            axios.get("/Api/Announcements/GetAll")
+                .then((res) => {
+                    this.items = res.data.body.myAnnouncementList;
+                    this.mounted();
+                    this.isBusy = false;
+                });
+        },
+        makeToast(variant = primary) {
+            this.$bvToast.toast('最新消息已發布成功!', {
+                title: `發布成功`,
+                variant: variant,
+                solid: true
+            })
+        },
+        makeToast2(variant = danger) {
+            this.$bvToast.toast('請聯絡服務人員', {
+                title: `發布失敗`,
+                variant: variant,
+                solid: true
+            })
+        },
         info(item, index, button) {
             this.infoModal.title = `編號: ${JSON.stringify(item.announcementId, null, 2)}`
             this.infoModal.content = `編號:${JSON.stringify(item.announcementId, null, 2)}\n\n
@@ -72,6 +93,17 @@
         mounted() {
             // Set the initial number of items
             this.totalRows = this.items.length
+        },
+        createAnnouncement() {
+            console.log(this.Model);
+            axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
+                .then(res => {
+                    this.makeToast('primary');
+                    this.getAnnouncement();
+                })
+                .catch(error => {
+                    this.makeToast2('danger');
+                });
         }
     },
 });

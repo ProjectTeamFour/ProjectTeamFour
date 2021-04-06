@@ -11,6 +11,7 @@ using ProjectTeamFour_Backend.Context;
 using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.ViewModels;
+using ProjectTeamFour_Backend.Helpers;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -47,11 +48,11 @@ namespace ProjectTeamFour_Backend.WebApi
 
         }
         [HttpPost]
-        public async Task<ActionResult<Announcement>> CreateAnnouncement(Announcement input)
+        public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input)
         {
-            _context.Announcements.Add(input);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetAll",new { id = input.AnnouncementId},input);
+            var User = "管理員";
+            var result = _announcementService.CreateAnnouncement(input, User);
+            return result;
         }
     }
 }

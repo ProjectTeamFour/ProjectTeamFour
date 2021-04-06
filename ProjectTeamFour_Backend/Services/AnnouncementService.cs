@@ -9,12 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProjectTeamFour_Backend.Helpers;
 
 namespace ProjectTeamFour_Backend.Services
 {
     public class AnnouncementService : IAnnouncementService
     {
         private readonly IRepository _dbrepository;
+
         public AnnouncementService(IRepository repository)
         {
             _dbrepository = repository;
@@ -38,5 +40,20 @@ namespace ProjectTeamFour_Backend.Services
             return result;
         }
         
+        public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor)
+        {
+            var result = new OperationResult();
+                Announcement announcement = new Announcement
+                {
+                    Content = input.Content,
+                    CreateTime = DateTime.UtcNow.AddHours(8),
+                    CreateUser = editor,
+                    EditTime = DateTime.UtcNow.AddHours(8),
+                    EditUser = editor,
+                    MemberId = input.MemberId
+                };
+                _dbrepository.Create(announcement);
+            return result;
+        }
     }
 }

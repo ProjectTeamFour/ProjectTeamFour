@@ -11,16 +11,21 @@
             <b-button v-b-modal.new-announcement>新增最新消息</b-button>
 
             @*The modal*@
-            <b-modal id="new-announcement" class="col-4" title="新增最新消息">
-                <b-form-group label="消息內容" label-for="Announcement"
+            <b-modal id="new-announcement" class="col-4" title="新增最新消息"
+                     ok-title="發布"
+                     cancel-title="退出"
+                     @@ok="createAnnouncement">
+                <b-form-group label="消息內容" label-for="Content"
                               >
-                    <b-form-textarea id="Announcement">
+                    <b-form-textarea id="Content"
+                                     v-model="Model.Content">
                     </b-form-textarea>
                 </b-form-group>
             </b-modal>
-            <!--<b-container fluid>-->
-                <!-- User Interface controls -->
-                <!--<b-row>
+            <!--主畫面-->
+            <b-container fluid>
+                 @*User Interface controls*@ 
+                <b-row>
                     <b-col lg="6" class="my-1">
                         <b-form-group label="搜尋"
                                       label-for="filter-input"
@@ -63,10 +68,10 @@
                                       size="sm"
                                       class="my-0"></b-pagination>
                     </b-col>
-                </b-row>-->
+                </b-row>
 
-                <!-- Main table element -->
-                <!--<b-table :items="items"
+                 @*Main table element*@ 
+                <b-table :items="items"
                          :fields="fields"
                          :current-page="currentPage"
                          :per-page="perPage"
@@ -95,24 +100,15 @@
 
                     <template #row-details="row">
                         <b-card>
-                            <ul v-for="">
-                                <li>編號 : {{ row.item.memberId }}</li>
-                                <li>會員名稱 : {{ row.item.memberName}}</li>
-                                <li>會員團隊名稱 : {{ row.item.memberTeamName }}</li>
-                                <li>會員地址 : {{ row.item.memberAddress }}</li>
-                                <li>會員電話 : {{ row.item.memberPhone }}</li>
-                                <li>會員註冊信箱 : {{ row.item.memberRegEmail }}</li>
-                                <li>會員聯絡信箱 : {{ row.item.memberConEmail }}</li>
-                                <li>會員性別 : {{ row.item.gender }}</li>
-                                <li>會員生日 : {{ row.item.memberBirth }}</li>
-                                <li>關於會員 : {{ row.item.aboutMe }}</li>
-                                <li>會員圖像連結 : {{ row.item.profileImgUrl }}</li>
-                                <li>會員網站連結 : {{ row.item.memberWebsite }}</li>
+                            <ul v-for="" id="mainContent">
+                                <li>編號 : {{ row.item.announcementId }}</li>
+                                <li>通知內容 : {{ row.item.content}}</li>
+                                <li>發布時間 : {{ row.item.createTime }}</li>
+                                <li>發布人 : {{ row.item.createUser }}</li>
+                                <li>編輯時間 : {{ row.item.editTime }}</li>
+                                <li>編輯人 : {{ row.item.editUser }}</li>
                             </ul>
                         </b-card>
-                    </template>
-                    <template #cell(profileImgUrl)="data">
-                        <img :src="data.item.profileImgUrl" alt="" width="50" height="50">
                     </template>
                     <template #table-busy>
                         <div class="text-center text-danger my-2">
@@ -120,16 +116,18 @@
                             <strong>Loading...</strong>
                         </div>
                     </template>
-                </b-table>-->
+                </b-table>
 
-                <!-- Info modal -->
-                <!--<b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
+                 @*Info modal*@ 
+                <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
                     <pre style="font-size:18px">{{ infoModal.content }}</pre>
                 </b-modal>
-            </b-container>-->
+            </b-container>
         </div>
     </template>
 </div>
+
+
 
 
 <script src="/js/Announcement.js"></script>

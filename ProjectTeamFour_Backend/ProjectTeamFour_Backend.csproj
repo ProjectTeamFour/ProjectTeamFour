@@ -53,7 +53,6 @@
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.compatibility.js" />
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.js" />
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.min.js" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

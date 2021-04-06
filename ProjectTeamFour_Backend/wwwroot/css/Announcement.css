@@ -1,7 +1,14 @@
 ﻿body {
 }
-#Announcement{
+#Content{
     width:100%;
     height:300px;
     overflow:auto;
 }
+td {
+    overflow:hidden;
+    width:300px;
+}
+    td div {
+        height: 23px;
+    }

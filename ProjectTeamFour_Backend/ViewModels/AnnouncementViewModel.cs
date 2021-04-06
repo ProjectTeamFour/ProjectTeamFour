@@ -8,7 +8,7 @@ namespace ProjectTeamFour_Backend.ViewModels
 {
     public class AnnouncementViewModel
     {
-        public class Announcement
+        public class AnnouncementVM
         {
             public int AnnouncementId { get; set; }
             public string Content { get; set; }
@@ -18,19 +18,16 @@ namespace ProjectTeamFour_Backend.ViewModels
             public DateTime EditTime { get; set; }
             public string EditUser { get; set; }
         }
-        
+
         public class AnnouncementListResult
         {
             public List<AnnouncementSingleResult> MyAnnouncementList { get; set; }
         }
-        public class AnnouncementSingleResult : Announcement
+        public class AnnouncementSingleResult : AnnouncementVM
         {
 
         }
 
     }
-
-    
-
     
 }
