@@ -1,6 +1,7 @@
 ﻿using Imgur.API.Authentication;
 using Imgur.API.Endpoints;
 using ProjectTeamFour.Service;
+using ProjectTeamFour.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,10 +18,14 @@ namespace ProjectTeamFour.Controllers
 
 
         private readonly MemberService _MemberService;
+        private readonly SubmissionProcessService _SubmissionProcessService;
+        private readonly ProjectDetailEntityService _pdService;
 
         public StartAProjectController()
         {
             _MemberService = new MemberService();
+            _SubmissionProcessService = new SubmissionProcessService();
+            _pdService = new ProjectDetailEntityService();
         }
         // GET: StartAProject
         public ActionResult Index()
@@ -101,6 +106,23 @@ namespace ProjectTeamFour.Controllers
 
             ViewBag.MemberId = result;
             return View();
+        }
+
+
+        public ActionResult EditDraftProject(int Id)
+        {
+            int result = _MemberService.ReturnLoginnerId();
+            //MyDraftProjectViewModel dpVM = new MyDraftProjectViewModel();
+            MyDraftProjectViewModel draftProject = _pdService.GetDraftProjectDetail(Id);
+
+            if (result == 0)
+            {
+                return RedirectToAction("Login", "Member");
+            }
+
+            ViewBag.MemberId = result;
+            ViewBag.DraftProjectId = draftProject.DraftProjectId;
+            return View(draftProject);
         }
 
 
