@@ -9,8 +9,7 @@
             opacity: 0.6;
         }
 
-        .edit-form .invalid-feedback {
-        }
+        
     </style>
 
 }
@@ -179,7 +178,7 @@
                         <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
                         <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
                         <li>方案庫存 : {{ row.item.quantityLimit }}</li>
-                        <li>提案人提交的庫存變更 : {{ row.item.submitLimit==null?'無':row.item.submitLimit }}</li>
+                        <li>提案人提交的庫存變更 : {{ row.item.submitLimit==0?'無':row.item.submitLimit }}</li>
                     </ul>
                 </b-card>
             </template>
@@ -199,9 +198,9 @@
 
             <!-- Info modal -->
             @*審核車車商城資料模板*@
-            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
-                <pre>
-                    <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==null?"無":infoModal.submitLimit}}</b-card-text>
+            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@  @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
+                <pre v-if="infoModal.submitLimit>0">
+                    <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
                 </pre>
 
             </b-modal>
@@ -227,6 +226,7 @@
                     { key: 'projectName', label: '所屬提案名稱', class: 'text-center', sortable: true, sortDirection: 'desc' },
                     { key: 'planFundedPeople', label: '贊助人數', class: 'text-center', sortable: true, sortDirection: 'desc' },
                     { key: 'planShipDate', label: '預計寄送時間', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'quantityLimit', label: '庫存', class: 'text-center', sortable: true, sortDirection: 'desc' },
                     { key: 'actions', label: '管理' }
 
                 ],
@@ -247,9 +247,10 @@
                 infoModal: {
                     id: 'info-modal',
                     title: '',
-                    submitLimit:''
+                    submitLimit: '',
+                    planId:''
                 },
-                changePlan: { planId: "", submitLimit:""}
+                changePlan: { planId: "", submitLimit: ""}
             },
             /*呼叫GetAll API後將資料存在items*/
             created: function () {
@@ -282,6 +283,7 @@
                 info(item, index, button) {
                     this.infoModal.title = `修改車車商城編號: ${JSON.stringify(item.planId, null, 2)}`
                     this.infoModal.submitLimit = item.submitLimit;
+                    this.infoModal.planId = item.planId;
 
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
@@ -315,21 +317,18 @@
                     var self = this;
 
                     $.ajax({
-                        url: "/Api/BackendMembers/PutBackendMember",
+                        url: "/Api/CarCarPlans/PutCarCarPlan",
                         method: "PUT",
                         dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
                         contentType: "application/json;charset=UTF-8",
-                        data: JSON.stringify(this.changeMember),
+                        data: JSON.stringify(this.changePlan),
                         success: function (data, textStatus, jqXHR) {
                             if (data.msg == "修改成功") {
                                 /*(非同步)修改成功後，於前端將data中該筆會員的資料一併修改*/
-                                let editMemberIndex = self.items.findIndex(x => x.memberId == self.changeMember.memberId);
-                                self.items[editMemberIndex].backendIdentity = self.changeMember.backendIdentity;
-                                self.items[editMemberIndex].memberAddress = self.changeMember.memberAddress;
-                                self.items[editMemberIndex].memberBirth = moment(self.changeMember.memberBirth).format('YYYY/M/D');
-                                self.items[editMemberIndex].memberConEmail = self.changeMember.memberConEmail;
-                                self.items[editMemberIndex].memberName = self.changeMember.memberName;
-                                self.items[editMemberIndex].memberPhone = self.changeMember.memberPhone;
+                                let editCarCarPlanIndex = self.items.findIndex(x => x.planId == self.changePlan.planId);
+                                self.items[editCarCarPlanIndex].submitLimit = 0;
+                                self.items[editCarCarPlanIndex].quantityLimit = self.changePlan.submitLimit;
+                                
 
                                 Swal.fire({
                                     position: 'top-end',
