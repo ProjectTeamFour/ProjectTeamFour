@@ -10,5 +10,6 @@ namespace ProjectTeamFour.ViewModels
     public class SelectPlanListViewModel
     {
         public List<SelectPlanViewModel> PlanCardItems { get;set; }
+        public List<SelectDraftPlanViewModel> DraftPlanCardItems { get; set; }
     }
 }

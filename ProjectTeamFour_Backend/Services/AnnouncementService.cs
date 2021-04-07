@@ -34,7 +34,7 @@ namespace ProjectTeamFour_Backend.Services
                     Content = a.Content,
                     CreateTime = a.CreateTime,
                     CreateUser = a.CreateUser,
-                    EditTime = a.CreateTime,
+                    EditTime = a.EditTime,
                     EditUser = a.EditUser,
                     MemberId = a.MemberId
                 }).ToList();
@@ -81,6 +81,23 @@ namespace ProjectTeamFour_Backend.Services
                 return result;
             }
             catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.IsSuccessful = false;
+                return result;
+            }
+        }
+
+        public OperationResult DeleteAnnouncement(AnnouncementViewModel.AnnouncementVM input)
+        {
+            var result = new OperationResult();
+            var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
+            try
+            {
+                _dbrepository.Delete(data);
+                return result;
+            }
+            catch(Exception ex)
             {
                 result.Exception = ex;
                 result.IsSuccessful = false;
