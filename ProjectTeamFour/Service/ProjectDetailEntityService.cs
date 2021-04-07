@@ -86,12 +86,6 @@ namespace ProjectTeamFour.Service
                 ProjectId = entity.ProjectId,
                 MemberId = entity.MemberId
             };
-
-            //}
-            //else
-            //{
-
-            //}
             return projectdetailVM;
         }
 
@@ -180,6 +174,72 @@ namespace ProjectTeamFour.Service
             }
             _repository.Update(item);
         }
+
+
+        public MyDraftProjectViewModel GetDraftProjectDetail(int DraftProjectId)
+        {
+            return GetDraftProjectDetailFromEntity(x => x.DraftProjectId == DraftProjectId);
+        }
+
+
+        private MyDraftProjectViewModel GetDraftProjectDetailFromEntity(Expression<Func<DraftProject, bool>> DraftProjectId)
+        {
+            var entity = _repository.GetAll<DraftProject>().FirstOrDefault(DraftProjectId);
+
+            var draftprojectdetailVM = new MyDraftProjectViewModel()
+            {
+                Category = entity.Category,
+                ProjectStatus = entity.ProjectStatus,
+                DraftProjectName = entity.DraftProjectName,
+                CreatorName = entity.CreatorName,
+                FundingAmount = entity.FundingAmount,
+                Fundedpeople = entity.Fundedpeople,
+                DraftProjectDescription = entity.DraftProjectDescription,
+                DraftProjectImgUrl = entity.DraftProjectImgUrl,
+                DraftProjectVideoUrl = entity.DraftProjectVideoUrl,
+                AmountThreshold = entity.AmountThreshold,
+                DraftProject_Question = entity.DraftProject_Question,
+                DraftProject_Answer = entity.DraftProject_Answer,
+                EndDate = entity.EndDate,
+                StartDate = entity.StartDate,
+                DraftProjectMainUrl = entity.DraftProjectMainUrl,
+                DraftProjectId = entity.DraftProjectId,
+                MemberId = entity.MemberId
+            };
+
+            return draftprojectdetailVM;
+
+        }
+
+
+        public List<SelectPlanViewModel> GetDraftPlanCards(Expression<Func<Plan, bool>> ProjectId)
+        {
+
+            List<SelectPlanViewModel> selectPlanCardItems = new List<SelectPlanViewModel>();
+
+            var planCardModelItems = _repository.GetAll<Plan>().Where(ProjectId);
+            foreach (var item in planCardModelItems)
+            {
+                var selectPlanCardViewModel = new SelectPlanViewModel()
+                {
+                    ProjectId = item.ProjectId,
+                    PlanId = item.PlanId,
+                    ProjectPlanId = item.ProjectPlanId,
+                    PlanTitle = item.PlanTitle,
+                    PlanDescription = item.PlanDescription,
+                    PlanFundedPeople = item.PlanFundedPeople,
+                    PlanShipDate = item.PlanShipDate,
+                    PlanImgUrl = item.PlanImgUrl,
+                    PlanPrice = item.PlanPrice,
+                    QuantityLimit = item.QuantityLimit
+                };
+                selectPlanCardItems.Add(selectPlanCardViewModel);
+            }
+
+            return selectPlanCardItems;
+        }
+
+
 
     }
 }

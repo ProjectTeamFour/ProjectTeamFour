@@ -508,6 +508,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="ViewModels\SelectDraftPlanViewModel.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
