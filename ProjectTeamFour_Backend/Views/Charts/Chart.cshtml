@@ -1,17 +1,7 @@
-﻿<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+﻿
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script>function getMembers() {
-        axios.get("/Api/Members/GetAll")
-            .then((res) => {
-                this.items = res.data.body.memberList;
-                //console.log(items);
-                //this.mounted();
-                this.isBusy = false;
-            })
-            .finally(
-                //console.log(items)
-            );
-    };</script>
+
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -26,411 +16,420 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">集資車車募資平台分析</h1>
                 <p class="mb-4">
-                    後臺圖表測試 <a target="_blank" href="#">連結</a>
+                   募資平台經營簡易統計概況
+                    <a target="_blank" href="#">集資車車</a>
                 </p>
 
                 <!-- Content Row -->
                 <div class="row">
-
+                    <!-- Line Chart -->
                     <div class="col-xl-8 col-lg-7">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">月營業額統計圖</h6>
-                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">月營業額統計圖</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <div id="orders_line" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    var moneyChart = echarts.init(document.getElementById('orders_line'));
+                                    var months = [];
 
-                        <div id="orders_line" style="width: 600px;height:400px;"></div>
-                        <script>
-                            var moneyChart = echarts.init(document.getElementById('orders_line'));
-                            var months = [];
+                                    var orderTotal = [];
+                                    var orderDate = [];
+                                    // 基于准备好的dom，初始化echarts实例
+                                    function getOrders() {
+                                        axios.get("/Api/Orders/GetAll")
+                                            .then((res) => {
+                                                this.items = res.data.body.myOrderList;
+                                                //console.log(items);
+                                                //this.mounted();
+                                                this.isBusy = false;
+                                                //提取每筆訂單銷售金額
+                                                //再依據月份分類統計
+                                                this.items.map((item) => {
+                                                    orderTotal.push(item.orderTotalAccount);
+                                                    orderDate.push(item.orderDate);
+                                                });
+                                                //console.log(orderTotal);
+                                                //console.log(orderDate);
+                                            }).catch(function (err) {
+                                                console.log(err);
+                                            });
 
-                            var orderTotal = [];
-                            var orderDate = [];
-                                // 基于准备好的dom，初始化echarts实例
-                            function getOrders() {
-                                axios.get("/Api/Orders/GetAll")
-                                    .then((res) => {
-                                        this.items = res.data.body.myOrderList;
-                                        console.log(items);
-                                        //this.mounted();
-                                        this.isBusy = false;
-                                        //提取每筆訂單銷售金額
-                                        //再依據月份分類統計
-                                        this.items.map((item) => {
-                                            orderTotal.push(item.orderTotalAccount);
-                                            orderDate.push(item.orderDate);
-                                        });
-                                        console.log(orderTotal);
-                                    }).catch(function (err) {
-                                        console.log(err);
-                                    });
-
-                                moneyChart.hideLoading();
-                                moneyChart.setOption({
-                                    xAxis: {
-                                        //type: 'category',                //座標軸類型（類目軸）
-                                        //data: x
-                                    },
-                                    series: {
-                                        data: orderTotal
-                                    }
-                                })       
-                            };   
-                                // 指定图表的配置项和数据
-                                var option={
-                                    title: {
-                                        text: '訂單銷售統計圖'
-                                    },
-                                    tooltip: {
-                                        trigger: 'axis'
-                                    },
-                                    //legend: {
+                                        moneyChart.hideLoading();
+                                        moneyChart.setOption({
+                                            xAxis: {
+                                                //type: 'category',                //座標軸類型（類目軸）
+                                                //data: x
+                                            },
+                                            series: {
+                                                data: orderTotal
+                                            }
+                                        })
+                                    };
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        title: {
+                                            text: '訂單銷售統計圖'
+                                        },
+                                        tooltip: {
+                                            trigger: 'axis'
+                                        },
+                                        //legend: {
                                         //data: ['金額']
-                                    //},
-                                    xAxis: {
-                                        data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                                        //data:months
-                                    },
-                                    yAxis: {
-                                        type: 'value'
-                                    },
-                                    series: [{
-                                        name: '金額',
-                                        type: 'line',
-                                        data: []
-                                    }]
-                            };
+                                        //},
+                                        xAxis: {
+                                            data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                            //data:months
+                                        },
+                                        yAxis: {
+                                            type: 'value'
+                                        },
+                                        series: [{
+                                            name: '金額',
+                                            type: 'line',
+                                            data: []
+                                        }]
+                                    };
 
-                            moneyChart.setOption(option);
-                            moneyChart.showLoading();     //顯示加載動畫
+                                    moneyChart.setOption(option);
+                                    moneyChart.showLoading();     //顯示加載動畫
 
-                            getOrders();
-                            </script>
+                                    getOrders();
+                                </script>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Bar Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">提案分類統計圖</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <div id="category_bar" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    var myChart = echarts.init(document.getElementById('category_bar'));
+                                    var categories = ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"];
+
+                                    var x = [];
+                                    var y = [];
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        title: {
+                                            text: '提案分類統計圖'
+                                        },
+                                        tooltip: {
+                                            trigger: 'axis',     //觸發類型（座標軸觸發）
+                                        },
+                                        legend: {
+                                            data: ['category']
+                                        },
+                                        xAxis: [{
+                                            type: 'category',
+                                            data: categories
+                                        }],
+                                        yAxis: {
+                                            type: 'value'
+                                        },
+                                        series: [{
+                                            name: '提案分類',
+                                            type: 'bar',
+                                            data: y
+                                            //data: data.data
+                                        }]
+                                    };
+                                    //var linNums = [];
+                                    //function getProjects() {
+                                    axios.get('/Api/Projects/GetAll')
+                                        .then(function (res) {
+                                            this.items = res.data.body.projectList;
+                                            //console.log(res.data);
+                                            //this.mounted();
+
+                                            //console.log(items);
+                                            $.each(this.items, function (key, values) {
+                                                x.push(values.category);
+                                                y.push(values.count);
+                                            });
+                                            //console.log(x);
+                                            //console.log(y);
+                                        }).catch(function (err) {
+                                            console.log(err);
+                                        });
+
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">平台專案募資狀態統計圖</h6>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-pie pt-4">
+                                    <div id="projectStatus_pie" style="width: 800px;height:300px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    var myChart = echarts.init(document.getElementById('projectStatus_pie'));
+
+                                    var x = [];
+                                    var y = [];
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        title: {
+                                            text: '專案募資狀態統計'
+                                        },
+                                        tooltip: {
+                                            trigger: 'item'
+                                        },
+                                        legend: {
+                                            top: '5%',
+                                            left: 'center'
+                                        },
+                                        series: [{
+                                            name: '募資狀態',
+                                            type: 'pie',
+                                            radius: ['40%', '70%'],
+                                            avoidLabelOverlap: false,
+                                            label: {
+                                                show: false,
+                                                position: 'center'
+                                            },
+                                            labelLine: {
+                                                show: false
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true,
+                                                    fontSize: '40',
+                                                    fontWeight: 'bold'
+                                                }
+                                            },
+                                            data: [
+                                                //{ value: 235, name: '募資成功' },
+                                                //{ value: 274, name: '募資失敗' },
+                                                //{ value: 310, name: '審核中' },
+                                                //{ value: 335, name: '進行中' }
+                                                y
+                                            ],
+
+                                        }]
+                                    };
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--var dec bar chart-->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">銷售排行榜</h6>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-bar pt-4">
+                                    <div id="main" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('main'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        title: {
+                                            text: '銷售排行榜測試'
+                                        },
+                                        tooltip: {},
+                                        legend: {
+                                            data: ['销量']
+                                        },
+                                        transform: {
+                                            type: 'sort',
+                                            config: { dimension: 'OrderTotal', order: 'desc' }
+                                        },
+                                        xAxis: {
+                                            data: ["1", "2", "3", "4", "5", "6"]
+                                        },
+                                        yAxis: {},
+                                        series: [{
+                                            name: '销量',
+                                            type: 'bar',
+                                            data: [55, 40, 36, 30, 28, 20]
+                                        }]
+                                    };
+                                    function getProjects() {
+                                            axios.get('/Api/Projects/GetAll')
+                                                .then((res) => {
+                                                    this.items = res.data.body.projectList;
+                                                    console.log(items.data);
+                                                    this.mounted();
+                                                    this.isBusy = false;
+
+                                                    //console.log(items);
+                                                    $.each(this.items, function (key, values) {
+                                                        x.push(values.category);
+                                                        y.push(values.count);
+                                                    });
+                                            //console.log(x);
+                                            //console.log(y);
+                                                })
+                                                .catch(function (err) {
+                                                    console.log(err);
+                                                });
+                                    };
+                                    // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--測試echarts-vue數據-->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- test test -->
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">測試echarts-vue數據</h6>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-area pt-4">
+                                    <div id="test" style="width: 800px;height:400px;"></div>
+                                    <script>
+                                        var myChart = echarts.init(document.getElementById('test'));
+                                        // 显示标题，图例和空的坐标轴
+                                        var option = {
+
+                                            mounted() {
+                                                this.drawBarChart();
+                                            },
+                                            created() {
+                                                this.$axios.get('/api/Orders/GetAll').then(res => {
+                                                    const data = res.data.body.myOrderList;
+                                                    this.orderTotalAccount = data
+                                                    console.log(this.orderTotalAccount);
+                                                    console.log(Array.from(this.orderTotalAccount.xAxis.data));
+                                                })
+                                            },
+
+                                            //this.$http.get('./static/dat.json').then(res => {
+                                            //    const data = res.data;
+                                            //    this.goods = data
+                                            //    console.log(this.goods);
+                                            //    console.log(Array.from(this.goods.xAxis.data));
+                                            //})
+                                            methods: {
+                                                drawBarChart() {
+                                                    // 基於準備好的dom，初始化echarts例項
+                                                    var myChart = this.echarts.init(document.getElementById('test'))
+                                                    // 繪製圖表
+                                                    myChart.setOption({
+                                                        title: { text: '异步数据加载示例' },
+                                                        tooltip: {},
+                                                        xAxis: {
+                                                            data: [] //["襯衫","羊毛衫","雪紡衫","褲子","高跟鞋","襪子"]
+                                                        },
+                                                        yAxis: {},
+                                                        series: [{
+                                                            name: '銷量',
+                                                            type: 'bar',
+                                                            data: [] //[5, 20, 36, 10, 10, 20]
+                                                        }]
+                                                    });
+                                                    methods: {
+
+                                                        function drawLine() {
+                                                            //methods: {
+                                                            //    getall() {
+                                                            //        $.get('data.json').done(function (data) {
+                                                            //            // 填入数据
+                                                            //            myChart.setOption({
+                                                            //                xAxis: {
+                                                            //                    data: data.categories
+                                                            //                },
+                                                            //                series: [{
+                                                            //                    // 根据名字对应到相应的系列
+                                                            //                    name: '销量',
+                                                            //                    data: data.data
+                                                            //                }]
+                                                            //            });
+                                                            //        });
+
+                                                            //    };
+                                                            //}
+
+                                                        };
+                                                        // 异步加载数据
+                                                        this.$axios.get("/api/Orders/GetAll").then((res) => {
+                                                            const data = res.data.body.myOrderList;
+                                                            const list = data.series.map(order => {
+                                                                let list = order.data;
+                                                                return [...list]
+                                                            })
+                                                            console.log(list);
+                                                            console.log(Array.from(...list));
+                                                            myChart.setOption({
+                                                                title: data.title,
+                                                                xAxis: [{
+                                                                    data: data.xAxis.data
+                                                                }],
+                                                                series: [{
+                                                                    name: '銷量',
+                                                                    type: 'bar',
+                                                                    data: Array.from(...list) //[5, 20, 36, 10, 10, 20]
+                                                                }]
+                                                            });
+                                                        })
+                                                    }
+                                                }
+                                            },
+                                        };
+                                        const member = new Vue({
+                                            el: "#member",
+                                            data: {
+                                                items: [],
+                                            },
+                                            created() { }
+                                        });
+
+                                       
+                                        myChart.setOption(option);
+                                    </script>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+                <!--end of Charts-->
             </div>
+            <!--End Page Content-->
         </div>
+        <!--End Main Content-->
     </div>
+    <!--End Content Wrapper-->
 </div>
-
-<!-- Bar Chart -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">提案分類統計圖</h6>
-    </div>
-    <div class="card-body">
-        <div class="chart-bar">
-            <div id="category_bar" style="width: 600px;height:400px;"></div>
-        </div>
-        <hr>
-        <script>
-            var myChart = echarts.init(document.getElementById('category_bar'));
-            var categories = ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"];
-
-            var x = [];
-            var y = [];
-            // 指定图表的配置项和数据
-            var option = {
-                title: {
-                    text: '提案分類統計圖'
-                },
-                tooltip: {
-                    trigger: 'axis',     //觸發類型（座標軸觸發）
-                },
-                legend: {
-                    data: ['category']
-                },
-                xAxis: [{
-                    type: 'category',
-                    data: categories
-                }],
-                yAxis: {
-                    type: 'value'
-                },
-                series: [{
-                    name: '提案分類',
-                    type: 'bar',
-                    data: y
-                    //data: data.data
-                }]
-            };
-            //function getProjects() {
-            axios.get('/Api/Projects/GetAll')
-                .then(function (res) {       
-                    this.items = res.data.body.projectList;
-                    console.log(res.data);
-                    //this.mounted();
-                }).catch(function (err) {
-                    console.log(err);
-                });
-
-            var linNums = [];
-            $.each(result, function (key, values) {
-                x.push(values.category);
-                y.push(values.count);
-            });
-            
-
-            myChart.setOption(option);
-        </script>
-
-
-<!-- Donut Chart -->
-<div class="col-xl-8 col-lg-7">
-    <div class="card shadow mb-4">
-
-<!-- Card Header - Dropdown -->
-<div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">平台專案募資狀態統計圖</h6>
-</div>
-
-<!-- Card Body -->
-<div class="card-body">
-                <div class="chart-pie pt-4">
-                    <div id="projectStatus_pie" style="width: 800px;height:300px;"></div>
-                </div>
-                <hr>
-                <script>
-                    var myChart = echarts.init(document.getElementById('projectStatus_pie'));
-                    // 指定图表的配置项和数据
-                    var option = {
-                        title: {
-                            text: '專案募資狀態統計'
-                        },
-                        tooltip: {
-                            trigger: 'item'
-                        },
-                        legend: {
-                            top: '5%',
-                            left: 'center'
-                        },
-                        series: [{
-                            name: '募資狀態',
-                            type: 'pie',
-                            radius: ['40%', '70%'],
-                            avoidLabelOverlap: false,
-                            label: {
-                                show: false,
-                                position: 'center'
-                            },
-                            labelLine: {
-                                show: false
-                            },
-                            emphasis: {
-                                label: {
-                                    show: true,
-                                    fontSize: '40',
-                                    fontWeight: 'bold'
-                                }
-                            },
-                            data: [
-                                { value: 235, name: '募資成功' },
-                                { value: 274, name: '募資失敗' },
-                                { value: 310, name: '審核中' },
-                                { value: 335, name: '進行中' }
-                            ],
-
-                        }]
-                    };
-                    myChart.setOption(option);
-                </script>
-            </div>
-        </div>
-    </div>
-
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 600px;height:400px;"></div>
-        <script type="text/javascript">
-            // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('main'));
-
-            // 指定图表的配置项和数据
-            var option = {
-                title: {
-                    text: '銷售排行榜測試'
-                },
-                tooltip: {},
-                legend: {
-                    data: ['销量']
-                },
-                transform: {
-                    type: 'sort',
-                    config: { dimension: 'OrderTotal', order: 'desc' }
-                },
-                xAxis: {
-                    data: ["1", "2", "3", "4", "5", "6"]
-                },
-                yAxis: {},
-                series: [{
-                    name: '销量',
-                    type: 'bar',
-                    data: [55, 40, 36, 30, 28, 20]
-                }]
-            };
-
-            // 使用刚指定的配置项和数据显示图表。
-            myChart.setOption(option);
-        </script>
-    </div>
-</div>
-
-@*<script type="text/javascript">
-    const member = new Vue({
-        el: "#member",
-        data: {
-            items: [],
-        },
-            info: '測試Echart AJAX!!!',
-            isBusy: true,
-            filter: null,
-            filterOn: [],
-        },
-    //    mounted(){
-    //    drawLine()
-    //},
-        created(){
-            axios.get('/Api/Members/GetAll')
-                .then(res => {
-                    //console.log(res);
-                    this.items = res.data.body.memberList;
-                    this.isBusy = false;
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-
-            //this.$http.get('./static/dat.json').then(res => {
-            //    const data = res.data;
-            //    this.goods = data
-            //    console.log(this.goods);
-            //    console.log(Array.from(this.goods.xAxis.data));
-            //})
-        },
-
-        methods: {
-            drawLine() {
-                // 基於準備好的dom，初始化echarts例項
-                let myChart = this.$echarts.init(document.getElementById('member'))
-                // 指定圖表的配置項和資料
-                myChart.setOption({
-                    title: {
-                        text: 'AXIOS test'
-                    },
-                    tooltip: {},
-                    legend: {
-                        data: ['銷量']
-                    },
-                    xAxis: {
-                        data: [] //["襯衫","羊毛衫","雪紡衫","褲子","高跟鞋","襪子"]
-                    },
-                    yAxis: {},
-                    series: [{
-                        name: '销量',
-                        type: 'bar',
-                        data: [] //[5, 20, 36, 10, 10, 20]
-                    }]
-                });
-                //// 异步加载数据
-                //$.get('data.json').done(function (data) {
-                //    // 填入数据
-                //    myChart.setOption({
-                //        xAxis: {
-                //            data: data.categories
-                //        },
-                //        series: [{
-                //            // 根据名字对应到相应的系列
-                //            name: '销量',
-                //            data: data.data
-                //        }]
-                //    });
-                //});
-
-            }
-        }
-    });
-
-    const order = new Vue({
-        el: '',
-        data: {
-            items: [],
-            
-        },
-        methods: {
-            getall() {
-                axios.get("/api/Orders/GetAll")
-                    .then((res) => {
-                        this.items = res.data.body.myOrderList;
-                        this.isBusy = false;
-                    });
-            }
-        }
-    })
-</script>*@
-
-
-<div id="test" style="width: 800px;height:400px;"></div>
-<script>
-    var myChart = echarts.init(document.getElementById('test'));
-    // 显示标题，图例和空的坐标轴
-    var option={
-
-        data() {
-            return {
-                msg: 'msg异步数据加载示例',
-                goods: {}
-            }
-        },
-        mounted() {
-            this.drawBarChart();
-        },
-        created() {
-            this.$axios.get('./static/dat.json').then(res => {
-                const data = res.data;
-                this.goods = data
-                console.log(this.goods);
-                console.log(Array.from(this.goods.xAxis.data));
-            })
-        },
-        methods: {
-            drawBarChart() {
-                // 基於準備好的dom，初始化echarts例項
-                let myChart = this.$echarts.init(document.getElementById('test'))
-                // 繪製圖表
-                myChart.setOption({
-                    title: { text: '异步数据加载示例' },
-                    tooltip: {},
-                    xAxis: {
-                        data: [] //["襯衫","羊毛衫","雪紡衫","褲子","高跟鞋","襪子"]
-                    },
-                    yAxis: {},
-                    series: [{
-                        name: '銷量',
-                        type: 'bar',
-                        data: [] //[5, 20, 36, 10, 10, 20]
-                    }]
-                });
-                this.$axios.get("./static/dat.json").then((res) => {
-                    const data = res.data;
-                    const list = data.series.map(good => {
-                        let list = good.data;
-                        return [...list]
-                    })
-                    console.log(list);
-                    console.log(Array.from(...list));
-                    myChart.setOption({
-                        title: data.title,
-                        xAxis: [{
-                            data: data.xAxis.data
-                        }],
-                        series: [{
-                            name: '銷量',
-                            type: 'bar',
-                            data: Array.from(...list) //[5, 20, 36, 10, 10, 20]
-                        }]
-                    });
-                })
-            }
-        }
-    };
-
-    myChart.setOption(option);
-
-</script>
+<!--End Page Wrapper-->

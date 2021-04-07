@@ -50,6 +50,7 @@ namespace ProjectTeamFour_Backend.Services
                         OrderName = o.OrderName,
                         OrderTotalAccount = o.OrderTotalAccount,
                         OrderPhone = o.OrderPhone,
+                        OrderDate=o.OrderDate,
                         Condition = o.Condition,
                         TradeNo = o.TradeNo,
                         MemberId = o.MemberId,
