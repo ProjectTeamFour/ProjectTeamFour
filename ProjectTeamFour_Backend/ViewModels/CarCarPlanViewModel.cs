@@ -67,7 +67,7 @@ namespace ProjectTeamFour_Backend.ViewModels
         /// </summary>
         public class CarCarPlanListResult
         {
-            public List<CarCarPlanSingleResult> MemberList { get; set; }
+            public List<CarCarPlanSingleResult> CarCarPlanList { get; set; }
         }
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace ProjectTeamFour_Backend.Services
             return Task.Run(() =>
             {
                 CarCarPlanViewModel.CarCarPlanListResult result = new CarCarPlanViewModel.CarCarPlanListResult();
-                result.MemberList = _dbRepository.GetAll<Plan>().Where(p => p.AddCarCarPlan == true).Select(P => new CarCarPlanViewModel.CarCarPlanSingleResult()
+                result.CarCarPlanList = _dbRepository.GetAll<Plan>().Where(p => p.AddCarCarPlan == true).Select(P => new CarCarPlanViewModel.CarCarPlanSingleResult()
                 {
                     AddCarCarPlan = P.AddCarCarPlan,
                     PlanDescription = P.PlanDescription,
