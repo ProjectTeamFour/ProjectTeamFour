@@ -56,7 +56,8 @@ namespace ProjectTeamFour.Models
         /// 方案庫存
         /// </summary>
         public int QuantityLimit { get; set; }
-		public int? SubmitLimit { get; set; }
+		public int SubmitLimit { get; set; }
+        
 		//導覽屬性
 		public virtual Project Project { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

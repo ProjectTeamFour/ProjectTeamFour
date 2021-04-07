@@ -39,30 +39,35 @@ namespace ProjectTeamFour.ViewModels
         public decimal FundingAmount { get; set; }      //price
         public int Fundedpeople { get; set; }    //people
 
+        
+        public int SubmitLimit { get; set; }
+        public List<CarCarPlanViewModel>MyPlan{ get; set; }
+
+        //public List<CarCarPlanViewModel> plan { get; set; }
 
         //public TimeSpan DateLine { get; set; }
 
-//        public DateTime Today
-//        {
-//            get
-//            {
-//                return _today;
-//            }
-//            set
-//            {
-//                _today = DateTime.Now();
-//            }
-//        }
+        //        public DateTime Today
+        //        {
+        //            get
+        //            {
+        //                return _today;
+        //            }
+        //            set
+        //            {
+        //                _today = DateTime.Now();
+        //            }
+        //        }
 
-//        public int DateLine{
-//            get{
-//                return _dateline;
-//                }
-//    set{
-//_dateline= new TimeSpan(EndDate.Ticks - Today.Ticks).TotalDays;
-//            }
-//                    }
-       
+        //        public int DateLine{
+        //            get{
+        //                return _dateline;
+        //                }
+        //    set{
+        //_dateline= new TimeSpan(EndDate.Ticks - Today.Ticks).TotalDays;
+        //            }
+        //                    }
+
     }
 
 }

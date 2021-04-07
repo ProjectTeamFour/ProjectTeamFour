@@ -278,6 +278,7 @@ $('.product-item-qty button').on('click', function () {
         method: 'post',
         data: data,
         success: function (response) {
+            console.log(data);
             if (response.IsSuccessful) {
                 alert('提交成功');
             }

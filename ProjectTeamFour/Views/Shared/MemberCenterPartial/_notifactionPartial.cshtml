@@ -2,30 +2,33 @@
 @{
     var vm = (MemberViewModel)Session["Member"];
     @*只挑選已付款的訂單*@
-    var orderList = Model.Records.MyOrderDetailList.Where(o => o.condition == "已付款" && o.Plan.AddCarCarPlan == true);
-}
+var plan = vm.PlanRecords.Where(x => x.AddCarCarPlan == true).Select(x =>x).ToList();
+//找出登入的人發起過得專案 => vm memberid 登入的人的id => 
+//var planList = Model.MyProjects.Where(x => x.ProjectId = vm.MyProjects.Select(x => x.ProjectId).ToList());
+}  
 
 <div class="container">
     <div class="case-title">
-        <h2>購買過的專案</h2>
+        <h2>發起過的提案</h2>
     </div>
     <div class="row mt-4">
-        @if (Model.Records != null)
+        @if (Model.PlanRecords != null)
         {
-            foreach (var item in orderList)
+            foreach(var item in plan)
             {
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="product-item">
                         <a class="product-item-pic" href="~/CarCarPlan/Detail/@item.PlanId">
-                            <img src="@item.OrderPlanImgUrl" alt="方案圖片" class="pic">
+                            <img src="@item.PlanImgUrl" alt="方案圖片" class="pic">
                         </a>
                         <div class="product-item-text">
                             <h3>@item.PlanTitle</h3>
-                            <div><span>@(item.OrderQuantity.ToString())件:</span><span>共@(item.OrderPrice* item.OrderQuantity) NTD</span></div>
+                            <div>單價@(item.PlanPrice)</div>
+                            @*<div><span>@(item.OrderQuantity.ToString())件:</span><span>共@(item.OrderPrice* item.OrderQuantity) NTD</span></div>*@
                         </div>
                         <div class="product-item-qty">
                             <span>庫存:</span>
-                            <input type="text" data-planid="@item.PlanId" value="@item.Plan.SubmitLimit" />
+                            <input type="text" data-planid="@item.PlanId" value="@item.QuantityLimit" />
                             <button type="button" class="btn btn-primary">提交</button>
                         </div>
                     </div>
@@ -34,7 +37,7 @@
         }
         else
         {
-            <p>目前無購買方案</p>
+            <p>目前無提交方案</p>
         }
     </div>
 </div>
