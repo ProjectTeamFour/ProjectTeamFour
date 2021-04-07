@@ -2320,7 +2320,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 15500,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 135
             });
 
 
@@ -2338,7 +2339,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 16500,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 145
             });
 
 
@@ -2411,7 +2413,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 8298,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 130
             });
 
 
@@ -2429,7 +2432,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 12297,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 190
             });
 
 
@@ -2502,7 +2506,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 19398,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 100
             });
 
 
@@ -2575,7 +2580,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 850,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 110
             });
 
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -2592,7 +2598,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1200,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 120
             });
 
 
@@ -2665,7 +2672,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 200,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit = 150
             });
 
             context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
@@ -2682,7 +2690,8 @@
                 //照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1600,
                 QuantityLimit = 30,
-                AddCarCarPlan = true
+                AddCarCarPlan = true,
+                SubmitLimit=50
             });
 
 
