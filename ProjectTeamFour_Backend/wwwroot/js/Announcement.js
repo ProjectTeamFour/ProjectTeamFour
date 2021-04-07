@@ -4,7 +4,7 @@
         Model: {
             Title:'',
             Content: '',
-            MemberId:263
+            MemberId:235
         },
         items: [],
         fields: [
@@ -51,45 +51,7 @@
         this.totalRows = this.items.length
     },
     methods: {
-        getAnnouncement() {
-            axios.get("/Api/Announcements/GetAll")
-                .then((res) => {
-                    this.items = res.data.body.myAnnouncementList;
-                    this.mounted();
-                    this.isBusy = false;
-                });
-        },
-        editAnnouncement(item, index, button,data) {
-            this.clearModel();
-            for (const key in this.Model) {
-                this.Model[key] = data[Key] ?? '';
-            }
-            this.Model.Title = data.Title;
-            this.Model.Content = data.Content;
-            this.$bvModal.show('edit-announcement');
-            console.log(this.item);
-        },
-        saveAnnouncement() {
-
-            axios.put('/Api/Announcement/UpdateAccount',this.Model)
-                .then(res => {
-                })
-        },
-        createAnnouncement() {
-            console.log(this.Model);
-            axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
-                .then(res => {
-                    this.createSuccess('primary');
-                    this.getAnnouncement();
-                })
-                .catch(error => {
-                    this.createError('danger');
-                });
-        },
-        removeAnnouncement(item, index, button) {
-            console.log("123");
-            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
-        },
+        
         info(item, index, button) {
             this.infoModal.title = `編號: ${JSON.stringify(item.announcementId, null, 2)}`
             this.infoModal.id = `編號:${JSON.stringify(item.announcementId, null, 2)}\n\n`
@@ -127,9 +89,65 @@
                 solid: true
             })
         },
+        saveSuccess(variant = primary) {
+            this.$bvToast.toast('修改成功!已儲存'), {
+                title: `修改成功` ,
+                variant: variant,
+                solid: true
+            }
+        },
+        saveError(variant = danger) {
+            this.$bvToast.toast('修改失敗!請聯絡客服人員'), {
+                title: `修改失敗`,
+                variant: variant,
+                soild: true
+            }
+        },
         clearModel() {
             this.Model.Title = '';
             this.Model.Content = '';
-        }
+        }, getAnnouncement() {
+            axios.get("/Api/Announcements/GetAll")
+                .then((res) => {
+                    this.items = res.data.body.myAnnouncementList;
+                    this.mounted();
+                    this.isBusy = false;
+                });
+        },
+        editAnnouncement(data, index, button) {
+            console.log(data.title);
+            this.Model.announcementId = data.announcementId;
+            this.Model.Title = data.title;
+            this.Model.Content = data.content;
+            this.$bvModal.show('edit-announcement');
+        },
+        saveAnnouncement() {
+            axios.put("/Api/Announcements/SaveAnnouncement", this.Model)
+                .then(res => {
+                    console.log(res);
+                    saveSuccess('primary');
+                    this.getAnnouncement();
+                    this.clearModel();
+                })
+                .catch(error => {
+                    saveError('danger');
+                })
+        },
+        createAnnouncement() {
+            axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
+                .then(res => {
+                    console.log(res);
+                    this.createSuccess('primary');
+                    this.getAnnouncement();
+                    this.clearModel();
+                })
+                .catch(error => {
+                    this.createError('danger');
+                });
+        },
+        removeAnnouncement(data, index, button) {
+            console.log("123");
+            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
+        },
     },
 });
