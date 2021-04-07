@@ -164,6 +164,7 @@ namespace ProjectTeamFour.Service
 
                 try
                 {
+
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
