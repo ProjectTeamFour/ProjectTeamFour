@@ -13,7 +13,7 @@ namespace ProjectTeamFour.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202104061332080_修復通知表"; }
+            get { return "202104070645145_修復通知表"; }
         }
         
         string IMigrationMetadata.Source

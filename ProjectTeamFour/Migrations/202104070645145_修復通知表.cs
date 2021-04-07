@@ -25,14 +25,12 @@ namespace ProjectTeamFour.Migrations
                 .Index(t => t.MemberId);
             
             AddColumn("dbo.OrderDetails", "PlanShipDate", c => c.DateTime(nullable: false));
-            AddColumn("dbo.Plans", "SubmitLimit", c => c.Int());
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Announcements", "MemberId", "dbo.Members");
             DropIndex("dbo.Announcements", new[] { "MemberId" });
-            DropColumn("dbo.Plans", "SubmitLimit");
             DropColumn("dbo.OrderDetails", "PlanShipDate");
             DropTable("dbo.Announcements");
         }
