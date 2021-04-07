@@ -38,8 +38,7 @@ namespace ProjectTeamFour.ViewModels
         public string CreatorName { get; set; }
         public decimal FundingAmount { get; set; }      //price
         public int Fundedpeople { get; set; }    //people
-
-
+        
         //public TimeSpan DateLine { get; set; }
 
 //        public DateTime Today
