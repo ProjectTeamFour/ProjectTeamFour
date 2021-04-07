@@ -98,5 +98,7 @@ namespace ProjectTeamFour.ViewModels
         /// 提案人身分證號碼:True為管理者；False為客服
         /// </summary>
         public string IdentityNumber { get; set; }
+
+        public List<DraftProjectFAQViewModel> DraftProjectFAQList { get; set; }
     }
 }

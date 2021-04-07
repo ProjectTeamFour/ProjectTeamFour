@@ -307,6 +307,10 @@
     <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.cs" />
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.Designer.cs">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -463,6 +467,7 @@
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\CheckoutQuantityViewModel.cs" />
     <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
+    <Compile Include="ViewModels\DraftProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\EditMemberViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
@@ -514,6 +519,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="ViewModels\SelectDraftPlanViewModel.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
@@ -561,6 +567,7 @@
     <Content Include="Assets\Javascript\PersonalInfo\record.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\EditDraftProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
@@ -2414,6 +2421,9 @@
     <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_myDraftProjectPartial.cshtml" />
+    <Content Include="Views\ProjectDetail\DraftProjectDetailPagePreview.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
+    <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2619,6 +2629,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104071320186_關閉自動偵測變更.resx">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
