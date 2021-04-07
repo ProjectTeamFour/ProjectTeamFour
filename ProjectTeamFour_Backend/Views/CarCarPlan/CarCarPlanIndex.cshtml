@@ -9,8 +9,7 @@
             opacity: 0.6;
         }
 
-        .edit-form .invalid-feedback {
-        }
+        
     </style>
 
 }
@@ -100,8 +99,10 @@
                                                class="mt-1">
                             <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
                             <b-form-checkbox value="planTitle">方案名稱</b-form-checkbox>
-                            <b-form-checkbox value="memberRegEmail">會員註冊信箱</b-form-checkbox>
-                            <b-form-checkbox value="backendIdentity">會員最高權限</b-form-checkbox>
+                            <b-form-checkbox value="planDescription">方案內容</b-form-checkbox>
+                            <b-form-checkbox value="planShipDate">預計寄送時間</b-form-checkbox>
+                            <b-form-checkbox value="projectId">提案編號</b-form-checkbox>
+
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
@@ -156,8 +157,11 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '展開' }}
                     </b-button>
-                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
-                        審核
+                    <b-button size="sm" v-if="row.item.submitLimit==0 || row.item.submitLimit==null" disable disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        無須審核
+                    </b-button>
+                    <b-button size="sm" v-else  @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        待審核
                     </b-button>
                 </template>
 
@@ -166,7 +170,7 @@
                     <b-card>
                         <ul v-for="">
                             <li>編號 : {{ row.item.planId }}</li>
-                            <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'無':'有'}}</li>
+                            <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'是':'否'}}</li>
                             <li>方案名稱 : {{ row.item.planTitle}}</li>
                             <li>方案價錢 : {{ row.item.planPrice}}</li>
                             <li>方案贊助人數 : {{ row.item.planFundedPeople }}</li>
@@ -177,13 +181,14 @@
                             <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
                             <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
                             <li>方案庫存 : {{ row.item.quantityLimit }}</li>
-                            <li>提案人提交的庫存變更 : {{ row.item.submitLimit==null?'無':row.item.submitLimit }}</li>
+                            <li>提案人提交的庫存變更 : {{ row.item.submitLimit==0?'無':row.item.submitLimit }}</li>
                         </ul>
                     </b-card>
                 </template>
-                <template #cell(planImgUrl)="data">
-                    <img :src="data.item.planImgUrl" alt="" width="50" height="50">
+                <template #cell(addCarCarPlan)="data">
+                    <b class="text-info">{{ data.item.addCarCarPlan==true?'是':'否' }}</b>
                 </template>
+                
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -194,9 +199,9 @@
 
             <!-- Info modal -->
             @*審核車車商城資料模板*@
-            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
+            <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
                 <pre>
-                    <b-card-text>{{infoModal.submitLimit}}</b-card-text>
+                <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
                 </pre>
 
             </b-modal>
@@ -216,19 +221,15 @@
                 items: [],
                 /*設定Bootstrap-Vue Component DataTable 的欄位以及對應物件的Key*/
                 fields: [
-                    { key: 'memberId', label: '編號', sortable: true, sortDirection: 'desc' },
-                    { key: 'backendIdentity', label: '最高權限', sortable: true, sortDirection: 'desc', class: 'text-center' },
-                    { key: 'memberName', label: '會員名稱', class: 'text-center' },
-                    { key: 'memberBirth', label: '會員生日', class: 'text-center', sortable: true, sortDirection: 'desc' },
-                    { key: 'memberPhone', label: '會員電話', class: 'text-center' },
-                    { key: 'memberRegEmail', label: '會員註冊信箱', class: 'text-center' },
+                    { key: 'planId', label: '編號', sortable: true, sortDirection: 'desc' },
+                    
+                    { key: 'addCarCarPlan', label: '是否進入車車商城', sortable: true, sortDirection: 'desc', class: 'text-center' },
+                    { key: 'planTitle', label: '方案名稱', class: 'text-center' },
+                    { key: 'projectName', label: '所屬提案名稱', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'planFundedPeople', label: '贊助人數', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'planShipDate', label: '預計寄送時間', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'quantityLimit', label: '庫存', class: 'text-center', sortable: true, sortDirection: 'desc' },
                     { key: 'actions', label: '管理' }
-
-                ],
-                /*Bootstrap-Vue form-radio模板*/
-                options: [
-                    { text: '具備最高權限', value: true },
-                    { text: '無具備最高權限', value: false },
 
                 ],
                 /*Bootstrap-Vue 提供模板*/
@@ -248,16 +249,16 @@
                 infoModal: {
                     id: 'info-modal',
                     title: '',
-                    submitLimit:''
+                    submitLimit: '',
+                    planId:''
                 },
-                           /*submittedMember: { memberName: "", memberPassword: "", memberAddress: "", memberPhone: "", memberRegEmail: "", memberConEmail: "", gender: "", memberBirth: "", backendIdentity: false, memberMessage:"" }*/
-
+                changePlan: { planId: "", submitLimit: ""}
             },
             /*呼叫GetAll API後將資料存在items*/
             created: function () {
-                axios.get("/Api/BackendMembers/GetAll")
+                axios.get("/Api/CarCarPlans/GetAll")
                     .then((res) => {
-                        this.items = res.data.body.backendMemberList;
+                        this.items = res.data.body.carCarPlanList;
                         this.mounted();
                         this.isBusy = false;
                     });
@@ -282,15 +283,9 @@
             methods: {
                 /*infoModal修改功能之資料結構*/
                 info(item, index, button) {
-                    this.infoModal.title = `修改會員編號: ${JSON.stringify(item.memberId, null, 2)}`
-                /*this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n最高權限:${JSON.stringify(item.backendIdentity, null, 2) == true ? "有" : "無"}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}`*/
-                    this.infoModal.memberId = item.memberId;
-                    this.infoModal.memberName = item.memberName;
-                    this.infoModal.memberBirth = new Date (item.memberBirth);
-                    this.infoModal.memberPhone = item.memberPhone;
-                    this.infoModal.memberConEmail = item.memberConEmail;
-                    this.infoModal.memberAddress = item.memberAddress;
-                    this.infoModal.backendIdentity = item.backendIdentity;
+                    this.infoModal.title = `修改車車商城編號: ${JSON.stringify(item.planId, null, 2)}`
+                    this.infoModal.submitLimit = item.submitLimit;
+                    this.infoModal.planId = item.planId;
 
                     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
                 },
@@ -298,12 +293,7 @@
                 resetInfoModal() {
                     this.infoModal.title = ''
                     /*this.infoModal.content = ''*/
-                    this.infoModal.memberName = '';
-                    this.infoModal.memberBirth = '';
-                    this.infoModal.memberPhone  = '';
-                    this.infoModal.memberConEmail = '';
-                    this.infoModal.memberAddress = '';
-                    this.infoModal.backendIdentity = false;
+                    this.infoModal.submitLimit=''
 
                 },
                 onFiltered(filteredItems) {
@@ -315,174 +305,33 @@
                     // Set the initial number of items
                     this.totalRows = this.items.length
                 },
-                /*監看新增輸入欄位是否符合規定*/
-                checkFormValidity() {
-                    const valid = this.$refs.form.checkValidity()
-
-                    this.memberNameState = valid
-
-                    this.memberPasswordState = valid
-
-                    this.memberBirthState = valid
-
-                    this.memberPhoneState = valid
-
-                    this.selectedState = valid
-
-                    this.memberRegEmailState = valid;
-                    this.memberConEmailState = valid;
-                    this.memberAddressState = valid;
-
-
-
-
-                    return valid
-                },
-                /*監看修改輸入欄位是否符合規定*/
-                checkChangeFormValidity() {
-                    const valid = this.$refs.form.checkValidity()
-
-                    this.infoModalMemberNameStateState = valid
-
-                    this.infoModalMemberBirthStateState = valid
-
-                    this.infoModalMemberPhoneState = valid
-
-                    this.infoModalMemberConEmailState = valid
-
-                    this.infoModalMemberAddress = valid
-                    return valid
-
-                },
-                /*重置新增功能*/
-                resetModal() {
-                    this.memberName = ''
-                    this.memberNameState = null
-                    this.memberPassword=''
-                    this.memberPasswordState = null
-                    this.memberBirth=''
-                    this.memberBirthState = null
-                    this.memberPhone = ''
-                    this.memberPhoneState = null
-                    this.memberRegEmail = ''
-                    this.memberRegEmailState = null
-                    this.memberConEmail = ''
-                    this.memberConEmailState = null
-                    this.memberAddress = ''
-                    this.memberAddressState = null
-                    this.selectedState = null
-
-
-                },
-                handleOk(bvModalEvt) {
-                    // Prevent modal from closing
-                    bvModalEvt.preventDefault()
-                    // Trigger submit handler
-                    this.handleSubmit()
-                },
                 handleChangeOk(bvModalEvt) {
                     // Prevent modal from closing
+                    console.dir(bvModalEvt)
                     bvModalEvt.preventDefault()
                     // Trigger submit handler
                     this.changeSubmit()
                 },
-                /*符合規定之後，向後端以jqeury AJAX發送POST新增會員請求*/
-                handleSubmit() {
-                    // Exit when the form isn't valid
-                    if (!this.checkFormValidity()) {
-                        return
-                    }
-                    // Push the name to submittedMember
-                    this.submittedMember.memberName = this.memberName
-                    this.submittedMember.memberPassword = this.memberPassword
-                    this.submittedMember.memberBirth = this.memberBirth
-                    this.submittedMember.backendIdentity = this.selected
-                    this.submittedMember.memberPhone = this.memberPhone
-                    this.submittedMember.memberRegEmail = this.memberRegEmail
-                    this.submittedMember.memberConEmail = this.memberConEmail
-                    this.submittedMember.memberAddress = this.memberAddress
-                    var self = this;
-                    $.ajax({
-                        url: "/Api/BackendMembers/PostBackendMember",
-                        method: "POST",
-                        dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
-                        contentType: "application/json;charset=UTF-8",
-                        data: JSON.stringify(this.submittedMember),
-                        success: function (data, textStatus, jqXHR) {
-                            if (data.title == "Not Found") {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '新增失敗，請再試一次',
-
-                                });
-                            }
-                            else {
-                                /*(非同步)新增成功後，，於前端將data中新增該筆會員 */
-                                self.items.push(data.body);
-
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: '成功新增後台會員',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
-
-
-                        },
-                        error: function (jqXHR, textStatus, errorThron) {
-
-                            console.log(textStatus + ", " + jqXHR.state);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '新增失敗，請再試一次',
-
-                            });
-
-                        }
-
-                    })
-
-                    // Hide the modal manually
-                    this.$nextTick(() => {
-                        this.$bvModal.hide('modal-prevent-closing');
-
-                    })
-                },
-                /*符合規定之後，向後端以jqeury AJAX發送PUT修改會員請求*/
+                /*符合規定之後，向後端以jqeury AJAX發送PUT修改車車商城方案請求*/
                 changeSubmit() {
-                    if (!this.checkChangeFormValidity()) {
-                        return
-                    }
-                    this.changeMember.memberName = this.infoModal.memberName
-                    this.changeMember.memberBirth = this.infoModal.memberBirth
-                    this.changeMember.backendIdentity = this.infoModal.backendIdentity
-                    this.changeMember.memberPhone = this.infoModal.memberPhone
-                    this.changeMember.memberConEmail = this.infoModal.memberConEmail
-                    this.changeMember.memberAddress = this.infoModal.memberAddress
-                    this.changeMember.memberId = this.infoModal.memberId
+                    this.changePlan.planId = this.infoModal.planId
+                    this.changePlan.submitLimit = this.infoModal.submitLimit
 
                     var self = this;
 
                     $.ajax({
-                        url: "/Api/BackendMembers/PutBackendMember",
+                        url: "/Api/CarCarPlans/PutCarCarPlan",
                         method: "PUT",
                         dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
                         contentType: "application/json;charset=UTF-8",
-                        data: JSON.stringify(this.changeMember),
+                        data: JSON.stringify(this.changePlan),
                         success: function (data, textStatus, jqXHR) {
                             if (data.msg == "修改成功") {
                                 /*(非同步)修改成功後，於前端將data中該筆會員的資料一併修改*/
-                                let editMemberIndex = self.items.findIndex(x => x.memberId == self.changeMember.memberId);
-                                self.items[editMemberIndex].backendIdentity = self.changeMember.backendIdentity;
-                                self.items[editMemberIndex].memberAddress = self.changeMember.memberAddress;
-                                self.items[editMemberIndex].memberBirth = moment(self.changeMember.memberBirth).format('YYYY/M/D');
-                                self.items[editMemberIndex].memberConEmail = self.changeMember.memberConEmail;
-                                self.items[editMemberIndex].memberName = self.changeMember.memberName;
-                                self.items[editMemberIndex].memberPhone = self.changeMember.memberPhone;
+                                let editCarCarPlanIndex = self.items.findIndex(x => x.planId == self.changePlan.planId);
+                                self.items[editCarCarPlanIndex].submitLimit = 0;
+                                self.items[editCarCarPlanIndex].quantityLimit = self.changePlan.submitLimit;
+                                
 
                                 Swal.fire({
                                     position: 'top-end',

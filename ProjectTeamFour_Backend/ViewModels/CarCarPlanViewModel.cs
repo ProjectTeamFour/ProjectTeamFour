@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
 namespace ProjectTeamFour_Backend.ViewModels
 {
     public class CarCarPlanViewModel
@@ -12,6 +12,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// <summary>
             /// 方案唯一識別碼
             /// </summary>
+            [Required]
             public int PlanId { get; set; }
             /// <summary>
             /// 方案於提案內的序列
@@ -67,7 +68,7 @@ namespace ProjectTeamFour_Backend.ViewModels
         /// </summary>
         public class CarCarPlanListResult
         {
-            public List<CarCarPlanSingleResult> MemberList { get; set; }
+            public List<CarCarPlanSingleResult> CarCarPlanList { get; set; }
         }
 
         /// <summary>
