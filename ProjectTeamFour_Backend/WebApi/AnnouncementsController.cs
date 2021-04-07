@@ -19,14 +19,13 @@ namespace ProjectTeamFour_Backend.WebApi
     [ApiController]
     public class AnnouncementsController : ControllerBase
     {
-        private readonly LabContext _context;
         private readonly IAnnouncementService _announcementService;
         private readonly ILogger<AnnouncementsController> _logger;
+        
         public AnnouncementsController(IAnnouncementService announcementService,ILogger<AnnouncementsController> logger,LabContext context)
         {
             _announcementService = announcementService;
             _logger = logger;
-            _context = context;
         }
         [HttpGet]
         public BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult> GetAll()
