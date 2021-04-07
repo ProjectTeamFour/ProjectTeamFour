@@ -3,9 +3,7 @@
 @using System.Text.Json.Serialization
 @using System.Web.Script.Serialization
 @{
-    ViewBag.Title = "PayPage";
-    var jsonString = new JavaScriptSerializer();
-    var jsonStringResult = jsonString.Serialize(Model);    
+    ViewBag.Title = "PayPage";  
 }
 
 
@@ -15,20 +13,15 @@
 }
 @section endJS{
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
-    <script>
-
-        let getjson = document.getElementById('transJSON');
-        let obj = JSON.parse(getjson.value);
-        console.log(obj);
-
+    <script>           
         var form = new Vue({
             el: "#app",
             data:{
                 inputData: {
-                    Name: obj.MemberName,
-                    Address: obj.MemberAddress,
-                    Tel: obj.MemberPhone,
-                    Email: obj.MemberConEmail,
+                    Name: $('#orderName').val(),
+                    Address: $('#orderAddress').val(),
+                    Tel: $('#orderPhone').val(),
+                    Email: $('#orderEmail').val(),
                 },
                 inputDataCheck: {
                     NameError: false,
@@ -89,7 +82,7 @@
                         }
                         else {
                             this.inputDataCheck.TelError = false;
-                            this.inputDataCheck.TelErrorMsg = '';
+                            this.inputDataCheck.TelErrorMsg = '';           
                         }
                     },
                 },
@@ -108,32 +101,47 @@
                     }
                 },
             },
-            computed: {
-                isButtonDisabled() {
-                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
-
-                        Swal.fire(
-                            '請填寫符合資料'
-                        );
-                        return this.isdisabled = true
-                    }
-                    else {
-                        return this.isdisabled = false
-                    }
-                }
-            },
             methods: {
                 checkAddVerify:function(e) {                   
-                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {                            
+                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
                         Swal.fire(
                             '請填寫符合資料'
                         );
+
                         e.preventDefault(); //防止跳轉                     
-                    }                       
+                    }
+                    else {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'Auto close alert!',
+                            html: 'I will close in <b></b> milliseconds.',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                timerInterval = setInterval(() => {
+                                    const content = Swal.getContent()
+                                    if (content) {
+                                        const b = content.querySelector('b')
+                                        if (b) {
+                                            b.textContent = Swal.getTimerLeft()
+                                        }
+                                    }
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log('I was closed by the timer')
+                            }
+                        })
+                    }
                 }
             }
         })
-
 
     function Save2Server() {
         $.ajax({
@@ -143,10 +151,10 @@
             dataType: "json",
             headers: {
                 'Content-type': 'application/json'
-            }, //注意 Content-type
-            success: function (response) {
 
-                    @*alert('儲存成功');*@
+            }, //注意 Content-type
+            success: function (response) {   
+                console.log(data);
             },
             error: function (err) {
                 console.log(err);
@@ -155,7 +163,6 @@
         } 
     </script>
 }
-<input type="text" value="@jsonStringResult" id="transJSON" />
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -240,22 +247,22 @@
                     <div class="content-deliver">
                         <div  class="inside content-deliver-detail">
                             <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name" @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
+                            <input type="text" v-model="inputData.Name"   v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
                             <div class="text-danger">
                                 {{inputDataCheck.NameErrorMsg}}
                             </div>
                             <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address"  @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="<@Model.MemberAddress>" id="orderAddress">
+                            <input type="text" v-model="inputData.Address"   v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="@Model.MemberAddress" id="orderAddress">
                             <div class="text-danger">
                                 {{inputDataCheck.AddressErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel" @*v-validate="'required'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
+                            <input type="text" v-model="inputData.Tel"   v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
                             <div class="text-danger">
                                 {{inputDataCheck.TelErrorMsg}}
                             </div>
                             <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email" @*v-validate="'required|email'"*@  v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
+                            <input type="text" v-model="inputData.Email"   v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
                             <div class="text-danger ">
                                 {{inputDataCheck.EmailErrorMsg}}
                             </div>

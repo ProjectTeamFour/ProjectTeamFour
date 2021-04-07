@@ -23,12 +23,13 @@ namespace ProjectTeamFour.Api
     {
         private SubmissionProcessService _submissionservice;
         private LogService _logservice;
+        private ProjectDetailEntityService _projectdetailentityservice;
 
         public ProjectSubmissionController()
         {
             _submissionservice = new SubmissionProcessService();
             _logservice = new LogService();
-
+            _projectdetailentityservice = new ProjectDetailEntityService();
         }
 
         public OperationResult ReceiveData([FromBody] SubmissionProcessViewModel input)
@@ -141,7 +142,7 @@ namespace ProjectTeamFour.Api
                 return "成功" + imageUpload.Link;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "失敗" + ex.ToString();
             }
@@ -179,5 +180,6 @@ namespace ProjectTeamFour.Api
             ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
             return uploadResult.SecureUri.AbsoluteUri;
         }
+       
     }
 }

@@ -46,6 +46,8 @@ namespace ProjectTeamFour.ViewModels
 
         public int DraftProjectPlansCount { get; set; }
 
+        public int DraftProjectId { get; set; }
+
 
         public List<SubmissionProcessPlanViewModel> PlanObject { get; set; }
 

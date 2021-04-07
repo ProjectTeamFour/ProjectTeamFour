@@ -108,8 +108,8 @@ namespace ProjectTeamFour.Service
                 OrderAddress = orderMem.OrderAddress,
                 OrderPhone = orderMem.OrderPhone,
                 OrderConEmail = orderMem.OrderConEmail,
-                OrderTotalAccount = cartSession.TotalAccount,    
-
+                OrderTotalAccount = cartSession.TotalAccount,
+                OrderDate = DateTime.Now,
                 condition = "未付款",
             };
             _repository.Create(order);
@@ -164,6 +164,7 @@ namespace ProjectTeamFour.Service
 
                 try
                 {
+                    result.OrderDate = DateTime.Now;
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;

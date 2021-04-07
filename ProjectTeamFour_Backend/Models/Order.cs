@@ -23,6 +23,7 @@ namespace ProjectTeamFour_Backend.Models
         public string TradeNo { get; set; }
         public int RtnCode { get; set; }
         public string Condition { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public virtual Member Member { get; set; }
         public virtual Plan PlanPlan { get; set; }

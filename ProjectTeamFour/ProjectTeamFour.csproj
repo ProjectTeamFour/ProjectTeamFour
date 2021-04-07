@@ -299,9 +299,13 @@
     <Compile Include="Migrations\202104060833428_fixDB1.Designer.cs">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104061332080_修復通知表.cs" />
-    <Compile Include="Migrations\202104061332080_修復通知表.Designer.cs">
-      <DependentUpon>202104061332080_修復通知表.cs</DependentUpon>
+    <Compile Include="Migrations\202104070645145_修復通知表.cs" />
+    <Compile Include="Migrations\202104070645145_修復通知表.Designer.cs">
+      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070838212_新增訂單創立時間.cs" />
+    <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
+      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
@@ -309,6 +313,7 @@
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
+    <Compile Include="Service\AnnouencementService.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
@@ -449,6 +454,7 @@
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
+    <Compile Include="ViewModels\AnnouencementViewModel.cs" />
     <Compile Include="ViewModels\CommentForMemberViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
@@ -457,6 +463,7 @@
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\CheckoutQuantityViewModel.cs" />
     <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
+    <Compile Include="ViewModels\DraftProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\EditMemberViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
@@ -466,6 +473,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\MyDraftProjectViewModel.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
@@ -507,6 +515,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="ViewModels\SelectDraftPlanViewModel.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
@@ -554,9 +563,12 @@
     <Content Include="Assets\Javascript\PersonalInfo\record.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\EditDraftProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
@@ -2404,6 +2416,10 @@
     <Content Include="Views\UserInfo\ToNews.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_myDraftProjectPartial.cshtml" />
+    <Content Include="Views\ProjectDetail\DraftProjectDetailPagePreview.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
+    <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2604,8 +2620,11 @@
     <EmbeddedResource Include="Migrations\202104060833428_fixDB1.resx">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104061332080_修復通知表.resx">
-      <DependentUpon>202104061332080_修復通知表.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104070645145_修復通知表.resx">
+      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
+      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

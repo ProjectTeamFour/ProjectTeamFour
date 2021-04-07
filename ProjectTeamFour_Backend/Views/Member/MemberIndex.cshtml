@@ -231,7 +231,7 @@
             axios.get("/Api/Members/GetAll")
                 .then((res) => {
                     this.items = res.data.body.memberList;
-                    this.mounted();
+                    
                     this.isBusy = false;
                 });
         },

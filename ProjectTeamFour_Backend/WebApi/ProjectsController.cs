@@ -29,6 +29,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _projectService = projectService;
         }
 
+        //拿全部
         // GET: api/Projects
         [HttpGet]
         public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetAll()
@@ -50,7 +51,7 @@ namespace ProjectTeamFour_Backend.WebApi
             }
         }
 
-
+        //拿待審提案
         // GET: api/Projects
         [HttpGet]
         public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetWaitForPass()
@@ -109,14 +110,6 @@ namespace ProjectTeamFour_Backend.WebApi
             }
 
         }
-
-
-
-
-
-
-
-
 
 
 

@@ -41,5 +41,48 @@ namespace ProjectTeamFour_Backend.WebApi
                 return result;
             }
         }
+        [HttpPut]
+        /// <summary>
+        /// 從前端修改資料庫會員資料，回傳型式為字串。共有三種型式"查無此筆資料"、"修改成功"及例外的資訊
+        /// </summary>
+        /// <param name="backendSingle"></param>
+        /// <returns></returns>
+        public async Task<ActionResult<BaseModel.BaseResult<CarCarPlanViewModel.CarCarPlanSingleResult>>> PutCarCarPlan(CarCarPlanViewModel.CarCarPlanSingleResult carCarPlanVM)
+        {
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " CarCarPlans控制器PutCarCarPlan方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(carCarPlanVM.PlanId)} " + carCarPlanVM.PlanId);
+
+            var result = new BaseModel.BaseResult<CarCarPlanViewModel.CarCarPlanSingleResult>();
+            if (!ModelState.IsValid)
+            {
+                result.Msg = "查無此筆資料";
+                result.IsSuccess = false;
+
+                return result;
+            }
+
+            var editResult = await _carCarPlanService.EditCarCarPlan(carCarPlanVM);
+
+            result.Msg = editResult;
+
+            if (result.Msg == "查無此筆資料")
+            {
+
+                result.IsSuccess = false;
+                return result;
+            }
+            else if (result.Msg == "修改成功")
+            {
+
+                result.IsSuccess = true;
+                return result;
+            }
+            else
+            {
+
+                result.IsSuccess = false;
+                return result;
+            }
+
+        }
     }
 }
