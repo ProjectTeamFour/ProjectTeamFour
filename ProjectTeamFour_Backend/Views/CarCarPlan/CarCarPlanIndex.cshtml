@@ -102,7 +102,7 @@
                             <b-form-checkbox value="planDescription">方案內容</b-form-checkbox>
                             <b-form-checkbox value="planShipDate">預計寄送時間</b-form-checkbox>
                             <b-form-checkbox value="projectId">提案編號</b-form-checkbox>
-                            
+
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
@@ -135,72 +135,73 @@
 
             <!-- Main table element -->
             @*主要操作的資料結構*@
-        <b-table :items="items"
-                 :fields="fields"
-                 :current-page="currentPage"
-                 :per-page="perPage"
-                 :filter="filter"
-                 :filter-included-fields="filterOn"
-                 :sort-by.sync="sortBy"
-                 :sort-desc.sync="sortDesc"
-                 :sort-direction="sortDirection"
-                 :busy="isBusy"
-                 stacked="md"
-                 show-empty
-                 small
-                 @@filtered="onFiltered">
-            <template #cell(name)="row">
-                {{ row.value.first }} {{ row.value.last }}
-            </template>
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
 
-            <template #cell(actions)="row">
-                <b-button size="sm" @@click="row.toggleDetails">
-                    {{ row.detailsShowing ? '收起' : '展開' }}
-                </b-button>
-                <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
-                    審核
-                </b-button>
-            </template>
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '收起' : '展開' }}
+                    </b-button>
+                    <b-button size="sm" v-if="row.item.submitLimit==0 || row.item.submitLimit==null" disable disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        無須審核
+                    </b-button>
+                    <b-button size="sm" v-else  @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        待審核
+                    </b-button>
+                </template>
 
 
-            <template #row-details="row">
-                <b-card>
-                    <ul v-for="">
-                        <li>編號 : {{ row.item.planId }}</li>
-                        <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'是':'否'}}</li>
-                        <li>方案名稱 : {{ row.item.planTitle}}</li>
-                        <li>方案價錢 : {{ row.item.planPrice}}</li>
-                        <li>方案贊助人數 : {{ row.item.planFundedPeople }}</li>
-                        <li>提案名稱 : {{ row.item.projectName}}</li>
-                        <li>提案編號 : {{ row.item.projectId }}</li>
-                        <li>方案於提案中的序號 : {{ row.item.projectPlanId }}</li>
-                        <li>方案詳細敘述 : {{ row.item.planDescription }}</li>
-                        <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
-                        <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
-                        <li>方案庫存 : {{ row.item.quantityLimit }}</li>
-                        <li>提案人提交的庫存變更 : {{ row.item.submitLimit==0?'無':row.item.submitLimit }}</li>
-                    </ul>
-                </b-card>
-            </template>
-            <template #cell(addCarCarPlan)="data">
-                <b class="text-info">{{ data.item.addCarCarPlan==true?'是':'否' }}</b>
-            </template>
-            <template #cell(planImgUrl)="data">
-                <img :src="data.item.planImgUrl" alt="" width="50" height="50">
-            </template>
-            <template #table-busy>
-                <div class="text-center text-danger my-2">
-                    <b-spinner class="align-middle"></b-spinner>
-                    <strong>Loading...</strong>
-                </div>
-            </template>
-        </b-table>
+                <template #row-details="row">
+                    <b-card>
+                        <ul v-for="">
+                            <li>編號 : {{ row.item.planId }}</li>
+                            <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'是':'否'}}</li>
+                            <li>方案名稱 : {{ row.item.planTitle}}</li>
+                            <li>方案價錢 : {{ row.item.planPrice}}</li>
+                            <li>方案贊助人數 : {{ row.item.planFundedPeople }}</li>
+                            <li>提案名稱 : {{ row.item.projectName}}</li>
+                            <li>提案編號 : {{ row.item.projectId }}</li>
+                            <li>方案於提案中的序號 : {{ row.item.projectPlanId }}</li>
+                            <li>方案詳細敘述 : {{ row.item.planDescription }}</li>
+                            <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
+                            <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
+                            <li>方案庫存 : {{ row.item.quantityLimit }}</li>
+                            <li>提案人提交的庫存變更 : {{ row.item.submitLimit==0?'無':row.item.submitLimit }}</li>
+                        </ul>
+                    </b-card>
+                </template>
+                <template #cell(addCarCarPlan)="data">
+                    <b class="text-info">{{ data.item.addCarCarPlan==true?'是':'否' }}</b>
+                </template>
+                
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
 
             <!-- Info modal -->
             @*審核車車商城資料模板*@
-            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@  @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
-                <pre v-if="infoModal.submitLimit>0">
-                    <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
+            <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
+                <pre>
+                <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
                 </pre>
 
             </b-modal>
@@ -221,6 +222,7 @@
                 /*設定Bootstrap-Vue Component DataTable 的欄位以及對應物件的Key*/
                 fields: [
                     { key: 'planId', label: '編號', sortable: true, sortDirection: 'desc' },
+                    
                     { key: 'addCarCarPlan', label: '是否進入車車商城', sortable: true, sortDirection: 'desc', class: 'text-center' },
                     { key: 'planTitle', label: '方案名稱', class: 'text-center' },
                     { key: 'projectName', label: '所屬提案名稱', class: 'text-center', sortable: true, sortDirection: 'desc' },
@@ -305,7 +307,8 @@
                 },
                 handleChangeOk(bvModalEvt) {
                     // Prevent modal from closing
-                   /* bvModalEvt.preventDefault()*/
+                    console.dir(bvModalEvt)
+                    bvModalEvt.preventDefault()
                     // Trigger submit handler
                     this.changeSubmit()
                 },
