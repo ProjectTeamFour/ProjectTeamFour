@@ -40,8 +40,6 @@ namespace ProjectTeamFour.Controllers
                     }
                 };
 
-                
-
                 var projectDetail = projectDetailService.GetProjectDetail(id);
                 projectTotalVM.ProjectDetailItem = projectDetail;
 
@@ -65,6 +63,50 @@ namespace ProjectTeamFour.Controllers
             }
 
         }
+
+        public ActionResult DraftProjectDetailPagePreview(int id)
+        {
+            var draftprojectDetailService = new ProjectDetailEntityService();
+
+            if (id.ToString() != null)
+            {
+                ProjectTotalViewModel draftprojectTotalVM = new ProjectTotalViewModel()
+                {
+                    //ProjectDetailItem = new ProjectDetailViewModel(),
+                    DraftProjectDetailItem = new MyDraftProjectViewModel(),
+
+                    CreatorInfo = new MemberViewModel(),
+                    SelectPlanCards = new SelectPlanListViewModel()
+                    {
+                        //PlanCardItems = new List<SelectPlanViewModel>(),
+                        DraftPlanCardItems = new List<SelectDraftPlanViewModel>()
+                    }
+                };
+
+                var draftprojectDetail = draftprojectDetailService.GetDraftProjectDetail(id);
+                draftprojectTotalVM.DraftProjectDetailItem = draftprojectDetail;
+
+                var creatorInfo = draftprojectDetailService.GetCreatorInfo(p => p.MemberId == draftprojectTotalVM.DraftProjectDetailItem.MemberId);
+                draftprojectTotalVM.CreatorInfo = creatorInfo;
+
+                var draftplancards = draftprojectDetailService.GetDraftPlanCards(x => x.DraftProjectId == id);
+                foreach (var item in draftplancards)
+                {
+                    draftprojectTotalVM.SelectPlanCards.DraftPlanCardItems.Add(item);
+                }
+
+                return View(draftprojectTotalVM);
+
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
+        }
+
+
+
 
 
     }
