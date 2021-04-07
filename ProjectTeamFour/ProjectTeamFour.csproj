@@ -309,6 +309,7 @@
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
+    <Compile Include="Service\AnnouencementService.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
     <Compile Include="Service\MyProjectsService.cs" />
@@ -449,6 +450,7 @@
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
+    <Compile Include="ViewModels\AnnouencementViewModel.cs" />
     <Compile Include="ViewModels\CommentForMemberViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\BackingRecordsViewModel.cs" />
@@ -558,6 +560,8 @@
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Template\mailtemplate.html" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Assets\Plugin\JQuery\jquery_1.10.24datatable.css" />
