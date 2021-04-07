@@ -46,7 +46,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public int RtnCode { get; set; }
         /// <summary>
-        /// 是否付款
+        /// 是否付款:已付款、未付款
         /// </summary>
         public string condition { get; set; } 
 
