@@ -125,7 +125,10 @@
 
                     @foreach(var item in Model.CarCarPlanItems)
                     {
-                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
+                       
+                        
+                          @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
+                        
 
                         //可能還要再下條件判斷 一頁給幾個，多出來的用 butoon 長，或是到第二頁
                     }

@@ -244,6 +244,8 @@ namespace ProjectTeamFour.Service
         const int SaltSize = 16, HashSize = 20, HashIter = 100000;
         byte[] _salt, _hash;
 
+        public object Session { get; private set; }
+
 
         //做 salt
         public byte[] MakeSalt()
@@ -323,6 +325,89 @@ namespace ProjectTeamFour.Service
             return true;
         }
 
-      
+
+
+        public async Task<OperationResult> GetFacebookInfo(string token)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var or = new OperationResult();
+                try
+                {
+                    var getUserInfoUrl = "https://graph.facebook.com/me?access_token=";
+                    getUserInfoUrl += token;
+
+                    HttpResponseMessage userInforesponse = await client.GetAsync(getUserInfoUrl);
+                    userInforesponse.EnsureSuccessStatusCode();
+
+                    var userInfoResponseBody = await userInforesponse.Content.ReadAsStringAsync();
+
+                    or.IsSuccessful = true;
+                    or.MessageInfo = userInfoResponseBody;
+                }
+                catch (Exception ex)
+                {
+                    or.IsSuccessful = false;
+                    or.Exception = ex;
+                    or.DateTime = new DateTime();
+                    or.MessageInfo = "錯誤發生";
+                }
+                return or;
+            }
+        }
+
+
+
+
+
+        public OperationResult SocialAccountRegisterCreate(string name, string email, string socialPlatform, string imgUrl)
+        {
+
+            var result = new OperationResult();
+            try
+            {
+                Member entity = new Member
+                {
+                    MemberId = 25,
+                    MemberName = name,
+                    MemberRegEmail = email,
+                    MemberBirth = DateTime.ParseExact("19970101", "yyyyMMdd", null),
+                    Permission = 1,
+                    IsThirdParty = socialPlatform,
+                    ProfileImgUrl = imgUrl,
+                };
+                _repository.Create(entity);
+                result.IsSuccessful = true;
+                result.MessageInfo = entity.MemberRegEmail;
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = false;
+                result.MessageInfo = "拿email失敗";
+            }
+            return result;
+        }
+
+
+
+
+        public bool IsSocialAccountRegister(string email, string socailPlatform)
+        {
+            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberRegEmail == email && x.IsThirdParty == socailPlatform);
+
+            if (member != null)
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+         }
+
+
     }
 }

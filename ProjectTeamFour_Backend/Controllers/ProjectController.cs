@@ -12,5 +12,10 @@ namespace ProjectTeamFour_Backend.Controllers
         {
             return View();
         }
+
+        public IActionResult WaitforPass()
+        {
+            return View();
+        }
     }
 }

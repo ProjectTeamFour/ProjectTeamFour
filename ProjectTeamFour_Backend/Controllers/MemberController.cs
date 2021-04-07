@@ -13,9 +13,6 @@ namespace ProjectTeamFour_Backend.Controllers
             return View();
         }
 
-        public IActionResult BackendMemberIndex()
-        {
-            return View();
-        }
+       
     }
 }

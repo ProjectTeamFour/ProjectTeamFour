@@ -45,18 +45,6 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public DateTime MemberBirth { get; set; }
         /// <summary>
-        /// 後臺會員關於我
-        /// </summary>
-        public string AboutMe { get; set; }
-        /// <summary>
-        /// 後臺會員關於我照片
-        /// </summary>
-        public string ProfileImgUrl { get; set; }
-        /// <summary>
-        /// 後臺會員網站連結
-        /// </summary>
-        public string MemberWebsite { get; set; }
-        /// <summary>
         /// 後臺會員權限:true為管理者；false為客服
         /// </summary>
         public bool BackendIdentity { get; set; }

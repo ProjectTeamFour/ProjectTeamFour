@@ -26,12 +26,23 @@
             <li class="sidebar-item search">
                 <i class="fas fa-search"></i>
             </li>
-            <a class="sidebar-item bullhorn" href="#">
-                <i class="fas fa-bullhorn"></i>
-                <p class="message-count">0</p>    <!-- 通知這裡先放 0 -->
-            </a>
-        </div>
-
+            @if (vm == null)
+            {
+                <a href="/Member/Login" class="nav-item message message-phone" id="message-phone">
+                    <i class="fas fa-bullhorn">
+                        <p class="message-count">0</p> <!-- 通知這裡先放 0 -->
+                    </i>
+                </a>
+            }
+            else
+            {
+                <a href="/UserInfo/ToNews/@vm.MemberId" class="nav-item message message-phone" id="message-phone">
+                    <i class="fas fa-bullhorn">
+                        <p class="message-count">0</p>
+                    </i>
+                </a>
+            }
+        </div>       
 
         <div class="search-input">
             <input type="text" class="phone-input-search" id="phone-searchString">
@@ -166,7 +177,6 @@
                         </i>
                     </a>
                 }
-                <div class="fakebox"></div>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

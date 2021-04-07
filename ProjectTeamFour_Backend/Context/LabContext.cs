@@ -18,6 +18,7 @@ namespace ProjectTeamFour_Backend.Context
         {
         }
 
+        public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Backendmember> Backendmembers { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DraftPlan> DraftPlans { get; set; }
@@ -45,14 +46,44 @@ namespace ProjectTeamFour_Backend.Context
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.HasIndex(e => e.MemberId, "IX_MemberId");
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.Announcements)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_dbo.Announcements_dbo.Members_MemberId");
+            });
+
             modelBuilder.Entity<Backendmember>(entity =>
             {
                 entity.HasKey(e => e.MemberId)
                     .HasName("PK_dbo.Backendmembers");
 
-                entity.Property(e => e.MemberId).ValueGeneratedNever();
+                entity.Property(e => e.Gender).HasMaxLength(10);
+
+                entity.Property(e => e.MemberAccount).HasMaxLength(200);
+
+                entity.Property(e => e.MemberAddress).HasMaxLength(200);
 
                 entity.Property(e => e.MemberBirth).HasColumnType("datetime");
+
+                entity.Property(e => e.MemberConEmail).HasMaxLength(200);
+
+                entity.Property(e => e.MemberMessage).HasMaxLength(200);
+
+                entity.Property(e => e.MemberName).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPassword).HasMaxLength(200);
+
+                entity.Property(e => e.MemberPhone).HasMaxLength(100);
+
+                entity.Property(e => e.MemberRegEmail).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Comment>(entity =>
@@ -249,6 +280,8 @@ namespace ProjectTeamFour_Backend.Context
                 entity.Property(e => e.Condition).HasColumnName("condition");
 
                 entity.Property(e => e.OrderPrice).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.PlanShipDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)

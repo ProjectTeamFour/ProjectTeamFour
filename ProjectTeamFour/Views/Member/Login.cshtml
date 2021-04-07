@@ -1,4 +1,5 @@
 ﻿@model MemberLoginViewModel
+@using System.Web.Configuration
 
 @section topCSS{
     <link href="~/Assets/Css/MemberLoginPage/memberlogin.css" rel="stylesheet" />
@@ -41,10 +42,14 @@
         </div>
         <div class="login-page-item other-login">
             <div class="other-login-item">
-                <a href="#" class="d-flex justify-content-center facebook">
+                <a href="javascript:FbLogin()" class="d-flex justify-content-center facebook">
                     <i class="fab fa-facebook-f"></i>
                     <p>使用 Facebook 帳號登入</p>
                 </a>
+                @*<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>*@
+                    <div id="status"></div>
+                    @*<button onclick="FbLogin()">fb登入</button>*@
+                    @*<button onclick="Fblogout()">fb登出</button>*@
                 <a href="#" class="d-flex justify-content-center google">
                     <i class="fab fa-google"></i>
                     <p>使用 Google 帳號登入</p>
@@ -65,16 +70,191 @@
 
 
 
-@section endJS{
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+@*@section endJS{
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
-    firebase.initializeApp({
-    apiKey: "AIzaSyBJHjdM414fXNidWafX2CWIIsFONC4sUpc",
-    authDomain: "raisebubu.firebaseapp.com",
-    databaseURL: "https://raisebubu.firebaseio.com/"
-    });
+        firebase.initializeApp({
+        apiKey: "AIzaSyBJHjdM414fXNidWafX2CWIIsFONC4sUpc",
+        authDomain: "raisebubu.firebaseapp.com",
+        databaseURL: "https://raisebubu.firebaseio.com/"
+        });
 
-    const database = firebase.database();
+        const database = firebase.database();
 
+    }*@
+
+
+
+@section FBJS{
+    <script>
+
+
+        //fb初始化 必加  //使用firebase所以不需要
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '842914469991750',
+                cookie: true,
+                xfbml: true,
+                version: 'v10.0',
+                status: true,
+            });
+
+            FB.AppEvents.logPageView();
+
+            //檢查當前狀態 getLoginStatus 是內建定義跑狀態的func，很重要可以測狀態，也是登出前需要呼叫的func
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);       //判斷狀態然後做對應處理
+            });
+
+        };
+
+
+        //sdk 必加  //使用firebase所以不需要
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+        // 先印一下狀態，然後判斷 status
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);     //印一下authresponse
+            if (response.status === 'connected') {
+                console.log(response);
+                return "成功";
+            } else {
+                console.log("討token失敗");
+                @*document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this webpage.';*@
+            }
+        }
+
+
+        //測試可不可以抓回auth的物件也包含accesstoken
+        @*function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        }*@
+
+
+
+        //登出測試  //實際登出寫在 headerfooter.js
+        @*function Fblogout() {
+            FB.logout(function (response) {
+                // this part just clears the $_SESSION var
+                // replace with your own code
+                $.post("/logout").done(function () {
+                    $('#status').html('<p>Logged out.</p>');
+                });
+            });
+        }*@
+
+
+
+        //跳出popup登入框 確認同意 然後呼叫傳get給fb 的function 拿資訊
+        function FbLogin() {
+
+            //一樣先確認一下當前狀態 已經做出來了先註解掉
+            @*FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });*@
+
+            FB.login(function (response) {
+                if (response.status === 'connected') {
+
+                    //確認authrespond整包狀態ok
+                    FB.getLoginStatus(function (response) {
+                        statusChangeCallback(response);
+                    });
+
+                    getProfile();  //順利所以要做 get request 向 fb資料server拿用戶資料
+                } else {
+                    console.log("失敗");
+                    console.log(response);
+                    // The person is not logged into your webpage or we are unable to tell.
+                }
+            },
+                {scope: "email"}
+            );
+        }
+
+
+        //拿使用者資訊 然後傳到後端
+        function getProfile() {
+            FB.api('/me', "GET", { fields: 'name, email, id, picture'}, function (response) {
+
+                //debug
+                console.log('Successful login for: ' + response.name);
+                console.log(response.email);
+                console.log(response.id);
+                @*console.log(response.picture.data.url);*@
+
+                //測試用
+                @*document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';*@
+
+                var result;
+                FB.getLoginStatus(function (response) {
+                    result = statusChangeCallback(response);
+                });
+                if (result == "成功") {
+                    console.log(result);
+                    fetchData(response);  //傳給後端做存資料建立用戶等等處理
+                }
+
+            })
+        }
+
+
+        //傳到後端判斷是不是使用者
+        function fetchData(response) {
+            let url = "/Member/FacebookLogin";
+            let data = {
+                imgUrl: response.picture.data.url,
+                name: response.name,
+                email: response.email,
+                socialPlatform: "Facebook",
+
+                @*type: target.dataset.type*@
+            }
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                })
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.status == 1 && result.response == "第三方登入") {
+                        setTimeout(() => {
+                            window.location.replace(`${window.location.origin}/Home/Index`);  //新語法長知識
+                        }, 1000)
+                    } else if (result.response == "註冊成功") {
+                        setTimeout(() => {
+                            window.location.replace(`${window.location.origin}/Home/Index`);  //新語法長知識
+                        }, 1000)
+                        console.log("註冊成功");
+                    } else {
+                        console.log("尚未註冊");
+                    }
+                })
+                .catch(err => console.log("錯誤" + err))
+        }
+    </script>
 }
+
+
 

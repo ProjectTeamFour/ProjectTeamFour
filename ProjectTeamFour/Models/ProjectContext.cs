@@ -20,5 +20,6 @@ namespace ProjectTeamFour.Models
         public DbSet<Project> Projects { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Permission> Permissions { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
     }
 }

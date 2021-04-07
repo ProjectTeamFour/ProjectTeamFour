@@ -1,0 +1,422 @@
+﻿
+<div id="ordertable" class="col-12 m-auto">
+    <template>
+        <b-container fluid>
+            <!-- User Interface controls -->
+            <b-row>
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="分類"
+                                  label-for="sort-by-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-input-group size="sm">
+                            <b-form-select id="sort-by-select"
+                                           v-model="sortBy"
+                                           :options="sortOptions"
+                                           :aria-describedby="ariaDescribedby"
+                                           class="w-75">
+                                <template #first>
+                                    <option value="">-- none --</option>
+                                </template>
+                            </b-form-select>
+
+                            <b-form-select v-model="sortDesc"
+                                           :disabled="!sortBy"
+                                           :aria-describedby="ariaDescribedby"
+                                           size="sm"
+                                           class="w-25">
+                                <option :value="false">升序</option>
+                                <option :value="true">降序</option>
+                            </b-form-select>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="初始分類"
+                                  label-for="initial-sort-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="initial-sort-select"
+                                       v-model="sortDirection"
+                                       :options="['asc', 'desc', 'last']"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="搜尋"
+                                  label-for="filter-input"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-input-group size="sm">
+                            <b-form-input id="filter-input"
+                                          v-model="filter"
+                                          type="search"
+                                          placeholder="請輸入關鍵字"></b-form-input>
+
+                            <b-input-group-append>
+                                <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col lg="6" class="my-1">
+                    <b-form-group v-model="sortDirection"
+                                  label="過濾條件"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group v-model="filterOn"
+                                               :aria-describedby="ariaDescribedby"
+                                               class="mt-1">
+                            <b-form-checkbox value="orderName">訂單人名稱</b-form-checkbox>
+                            <b-form-checkbox value="orderTotalAccount">訂單總金額</b-form-checkbox>
+                            <b-form-checkbox value="tradeNo">訂單流水號</b-form-checkbox>
+                            <b-form-checkbox value="condition">付款狀態</b-form-checkbox>
+                        </b-form-checkbox-group>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group label="每頁顯示筆數"
+                                  label-for="per-page-select"
+                                  label-cols-sm="6"
+                                  label-cols-md="4"
+                                  label-cols-lg="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="per-page-select"
+                                       v-model="perPage"
+                                       :options="pageOptions"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination v-model="currentPage"
+                                  :total-rows="totalRows"
+                                  :per-page="perPage"
+                                  align="fill"
+                                  size="sm"
+                                  class="my-0"></b-pagination>
+                </b-col>
+            </b-row>
+
+            <!-- Main table element -->
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
+
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '關閉' : '詳細' }}
+                    </b-button>
+                    <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
+                        修改
+                    </b-button>
+                    <b-button size="sm" @@click="deleteItem(row.item)" variant="danger">
+                        刪除
+                    </b-button>
+                </template>
+                
+
+                <template #row-details="row">
+                    <b-card>
+                        @*詳細訂單資料*@
+                        <ul v-for="(i,index) in row.item.orderDetailList">
+                            <li>{{index+1}}</li>
+                            <li>提案編號:{{row.item.orderDetailList[index].orderDetailId}}</li>
+                            <li>方案編號:{{row.item.orderDetailList[index].planId}}</li>
+                            <li>方案名稱:{{row.item.orderDetailList[index].planTitle}}</li>
+                            <li>方案價格:{{row.item.orderDetailList[index].orderPrice}}</li>
+                            <li>方案數量:{{row.item.orderDetailList[index].orderQuantity}}</li>
+                            <li>方案狀態:{{row.item.orderDetailList[index].condition}}</li>
+                            <li>方案備註:{{row.item.orderDetailList[index].orderDetailDes}}</li>
+                            <li>寄送時間:{{row.item.orderDetailList[index].planShipDate}}</li>
+                        </ul>
+                    </b-card>
+                </template>
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
+
+            <!-- Info modal -->
+            <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@
+            @@ok="changedata" ok-title="修改" cancel-title="取消">
+        <form ref="form" submit.stop.prevent="updateSubmit">
+            <b-form-group label="訂單人名稱"
+                          label-for="infoModal.input-orderName"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderNameState">
+                <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="寄送地址"
+                          label-for="infoModal.input-orderAddress"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderAddressState">
+                <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="連絡電話"
+                          label-for="infoModal.input-orderPhone"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderPhoneState">
+                <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState" value="infoModal.orderPhone" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="聯絡信箱"
+                          label-for="infoModal.input-orderConEmail"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalOrderConEmailState">
+                <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState" value="infoModal.orderConEmail" required></b-form-input>
+            </b-form-group>
+            <b-form-group label="付款狀態"
+                          label-for="infoModal.input-condition"
+                          invalid-feedback="必填欄位"
+                          :state="infoModalConditionState">
+                <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState" value="infoModal.condition" required></b-form-input>
+            </b-form-group>
+        </form>
+    </b-modal>
+
+        </b-container>
+    </template>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script>
+    const order = new Vue({
+        el:'#ordertable',
+        data: {
+            items: [], //裝order資料庫資料
+            fields: [
+                { key: 'orderId', label: '訂單編號', sortable: true, sortDirection: 'desc' },
+                { key: 'memberId', label: '會員編號', sortable: true, class: 'text-center' ,sortDirection: 'desc' },                    
+                { key: 'orderName', label: '訂單人名稱', class: 'text-center' },                    
+                { key: 'orderAddress', label: '寄送地點', class: 'text-center' },                    
+                { key: 'orderPhone', label: '連絡電話', class: 'text-center' },                    
+                { key: 'orderConEmail', label: '聯絡信箱', class: 'text-center' },                    
+                { key: 'orderTotalAccount', label: '訂單總額', sortable: true, class: 'text-center' },                    
+                { key: 'tradeNo', label: '訂單流水號', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
+                { key: 'condition', label: '付款狀態', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
+                { key: 'actions', label: '管理' },             
+
+            ],
+            isError: false,
+            isBusy:true,
+            totalRows: 1, //狀態預設範圍
+            currentPage: 1,
+            perPage: 20,
+            pageOptions: [5, 10, 15, { value: 100, text: "100" }],
+            sortBy: '',
+            sortDesc: false,
+            sortDirection: 'asc',
+            filter: null,
+            filterOn: [],
+            infoModal: {
+                id: 'info-modal',
+                title: '',
+                //Modal內容
+                orderName : "",
+                orderAddress : "",
+                orderPhone : "",
+                orderConEmail : "",
+                condition : "",
+            },
+            //修改驗證 有填就好(目前)
+            infoModalOrderNameState: null,
+            infoModalOrderAddressState: null,
+            infoModalOrderPhoneState: null,
+            infoModalOrderConEmailState: null,
+            infoModalConditionState:null,
+            //會員修改ajax物件
+            changeOrder: {orderId:"",orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",condition:""},
+        },
+        created: function () {
+            this.getall();//呼叫axios            
+        },
+        computed: {
+            sortOptions() {
+                // Create an options list from our fields
+                return this.fields
+                    .filter(f => f.sortable)
+                    .map(f => {
+                        return { text: f.label, value: f.key }
+                    })
+            },         
+        },
+        mounted() {
+            // Set the initial number of items
+            this.totalRows = this.items.length
+        },                
+        methods: {
+            //infoModal 預設
+            info(item, index, button) {                
+                this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`    
+                this.infoModal.orderId = item.orderId;
+                this.infoModal.orderName = item.orderName;
+                this.infoModal.orderAddress = item.orderAddress;
+                this.infoModal.orderPhone = item.orderPhone;
+                this.infoModal.orderConEmail = item.orderConEmail;
+                this.infoModal.condition = item.condition;
+                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+            },
+            getall() {
+                axios.get("/api/Orders/GetAll")
+                    .then((res) => {
+                        this.items = res.data.body.myOrderList;
+                        this.mounted();
+                        this.isBusy = false;
+                    });
+            },            
+            resetInfoModal() {
+                this.infoModal.title = '';
+                this.infoModal.orderName = '';
+                this.infoModal.orderAddress = '';
+                this.infoModal.orderPhone = '';
+                this.infoModal.orderConEmail = '';
+                this.infoModal.condition = '';
+            },
+            onFiltered(filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length
+                this.currentPage = 1
+            },
+            //form驗證
+            checkForm() {
+                const valid = this.$refs.form.checkValidity()
+                this.infoModalOrderNameState = valid
+                this.infoModalOrderAddressState = valid
+                this.infoModalOrderPhoneState = valid
+                this.infoModalOrderConEmailState = valid
+                this.infoModalConditionState = valid
+                return valid
+            }, //控制modal啟動綁定在modal上的ajax方法
+            changedata(btnModal) {
+                btnModal.preventDefault()
+                this.updateSubmit()
+            },                        
+            mounted() {
+                // Set the initial number of items
+                this.totalRows = this.items.length
+            },
+            deleteItem(item) {
+                var objDel = this;
+                Swal.fire({
+                    title: "確定要刪除嗎",
+                    text: "請點選你想按的按鈕",
+                    showCancelButton: true
+                }).then(function (result) {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "/api/Orders/DeleteOrder",
+                            method: "DELETE",
+                            dataType: "json",
+                            data: JSON.stringify(item),
+                            contentType: "application/ json; charset = UTF - 8",
+                            success: function (data, textStatus, jqXHR) {
+                                if (data.msg == "刪除成功") {
+                                    var deleteorderindex = objDel.items.findIndex(x => x.orderId == item.orderId);
+                                    objDel.items.splice(deleteorderindex, 1);
+                                    Swal.fire(
+                                        "刪除成功",
+                                        "success"
+                                    );
+                                }
+                                else {
+                                    Swal.fire(
+                                        "刪除失敗 請再試一次",
+                                        "error"
+                                    );
+                                }
+                            }
+                        })
+                    }
+                    else {
+                        Swal.fire("已取消");
+                    }
+                })
+            },
+            updateSubmit() {
+                if (!this.checkForm()) {
+                    return
+                }
+                this.changeOrder.orderId = this.infoModal.orderId
+                this.changeOrder.orderName = this.infoModal.orderName
+                this.changeOrder.orderAddress = this.infoModal.orderAddress
+                this.changeOrder.orderConEmail = this.infoModal.orderConEmail
+                this.changeOrder.orderPhone = this.infoModal.orderPhone
+                this.changeOrder.condition = this.infoModal.condition
+
+                var updateObj = this;
+
+                $.ajax({
+                    url: "/api/Orders/UpdateOrder",
+                    method: "PUT",
+                    dataType: "json",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(this.changeOrder),
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.msg == "更新成功") {
+                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.changeOrder.orderId);                            
+                            updateObj.items[updateindex].orderName = updateObj.changeOrder.orderName;
+                            updateObj.items[updateindex].orderPhone = updateObj.changeOrder.orderPhone;
+                            updateObj.items[updateindex].orderAddress = updateObj.changeOrder.orderAddress;
+                            updateObj.items[updateindex].orderConEmail = updateObj.changeOrder.orderConEmail;
+                            updateObj.items[updateindex].condition = updateObj.changeOrder.condition;
+
+                            Swal.fire({
+                                title: "更新成功",
+                                icon: "success",
+                                timer: 1500
+                            });
+                        }
+                        else {
+                            console.log(data);
+                            Swal.fire({
+                                title: "更新失敗 請再試一次",
+                                icon: "error"
+                            })
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus + ", " + jqXHR.state);
+                        Swal.fire({
+                            title: "更新失敗 請再試一次",
+                            icon: "error"
+                        })
+                    }
+                })
+            },
+        },
+    })
+</script>

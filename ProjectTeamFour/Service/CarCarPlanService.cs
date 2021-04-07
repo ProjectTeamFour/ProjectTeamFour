@@ -54,7 +54,8 @@ namespace ProjectTeamFour.Service
                     PlanDescription = planCard.PlanDescription,
                     PlanPrice = (int)planCard.PlanPrice,
                     CreatorName = planCard.Project.CreatorName,
-                    QuantityLimit = planCard.QuantityLimit
+                    QuantityLimit = planCard.QuantityLimit,
+                    AddCarCarPlan = planCard.AddCarCarPlan
                 };
             
             return cv;
@@ -80,7 +81,8 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
                     
                 };
                 CarCarPlanItems.Add(cv);
@@ -117,7 +119,8 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
 
                 };
                 lccpvm.Add(cv);
