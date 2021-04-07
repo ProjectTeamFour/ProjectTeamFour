@@ -43,6 +43,8 @@
     <script src="~/lib/echarts/echarts.min.js"></script>
     <script src="~/lib/vue-echarts/vue-echarts.min.js"></script>
 
+    <!--引入JQuery.js-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @*這是首頁除了Header和Footer之外的CSS*@
 
     @await RenderSectionAsync("topCSS", required: false)
@@ -153,7 +155,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="~/Charts/Chart">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
+                    <span>平台分析圖表</span>
                 </a>
             </li>
 
