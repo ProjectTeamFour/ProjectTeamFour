@@ -307,6 +307,10 @@
     <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.cs" />
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.Designer.cs">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -2625,6 +2629,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104071320186_關閉自動偵測變更.resx">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
