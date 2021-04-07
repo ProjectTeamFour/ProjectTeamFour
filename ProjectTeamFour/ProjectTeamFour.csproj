@@ -299,9 +299,9 @@
     <Compile Include="Migrations\202104060833428_fixDB1.Designer.cs">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104061332080_修復通知表.cs" />
-    <Compile Include="Migrations\202104061332080_修復通知表.Designer.cs">
-      <DependentUpon>202104061332080_修復通知表.cs</DependentUpon>
+    <Compile Include="Migrations\202104070645145_修復通知表.cs" />
+    <Compile Include="Migrations\202104070645145_修復通知表.Designer.cs">
+      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
@@ -2610,8 +2610,8 @@
     <EmbeddedResource Include="Migrations\202104060833428_fixDB1.resx">
       <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104061332080_修復通知表.resx">
-      <DependentUpon>202104061332080_修復通知表.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104070645145_修復通知表.resx">
+      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
