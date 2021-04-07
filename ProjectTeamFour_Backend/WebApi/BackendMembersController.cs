@@ -93,18 +93,15 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <param name="backendSingle"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task  <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        public async Task<ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PostBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
 
-            if (backendSingle==null)
-            {
-                return NotFound();
-            }
-
             
+
+
 
             try
             {
@@ -133,6 +130,13 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PutBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+            if (!ModelState.IsValid)
+            {
+                result.Msg = "查無此筆資料";
+                result.IsSuccess = false;
+
+                return result;
+            }
 
             var editResult=await _backendMemberService.EditMember(backendSingle);
 
@@ -164,6 +168,13 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器DeleteBackendMember方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(backendSingle.MemberId)} " + backendSingle.MemberId);
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+            if (!ModelState.IsValid)
+            {
+                result.Msg = "查無此筆資料";
+                result.IsSuccess = false;
+
+                return result;
+            }
 
             var deleteResult = await _backendMemberService.DeleteMember(backendSingle);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace ProjectTeamFour_Backend.ViewModels
        public class BackendBaseViewModel
         {
 
+            [Required]
             public int MemberId { get; set; }
             /// <summary>
             /// 後臺會員真實姓名

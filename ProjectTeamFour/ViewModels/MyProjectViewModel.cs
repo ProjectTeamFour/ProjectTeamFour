@@ -61,6 +61,9 @@ namespace ProjectTeamFour.ViewModels
 //_dateline= new TimeSpan(EndDate.Ticks - Today.Ticks).TotalDays;
 //            }
 //                    }
+
+
+
        
     }
 
