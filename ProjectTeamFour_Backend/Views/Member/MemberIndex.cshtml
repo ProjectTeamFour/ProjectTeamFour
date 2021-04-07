@@ -86,7 +86,6 @@
                 <b-col lg="6" class="my-1">
                     <b-form-group v-model="sortDirection"
                                   label="過濾條件"
-                                  
                                   label-cols-sm="3"
                                   label-align-sm="right"
                                   label-size="sm"
@@ -154,6 +153,9 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '更多' }}
                     </b-button>
+                    <b-button size="sm" @@click="sendEmailInfo(row.item, row.index, $event.target)" class="mr-1">
+                        寄信
+                    </b-button>
                 </template>
 
                 <template #row-details="row">
@@ -171,7 +173,7 @@
                             <li>關於會員 : {{ row.item.aboutMe }}</li>
                             <li>會員圖像連結 : {{ row.item.profileImgUrl }}</li>
                             <li>會員網站連結 : {{ row.item.memberWebsite }}</li>
-                  
+
 
                         </ul>
                     </b-card>
@@ -188,8 +190,20 @@
             </b-table>
 
             <!-- Info modal -->
-            <b-modal :id="infoModal.id" :title="infoModal.title"  ok-only @@hide="resetInfoModal">
+            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal" >
                 <pre style="font-size:18px">{{ infoModal.content }}</pre>
+            </b-modal>
+
+            <b-modal :id="emailInfoModal.id" :title="emailInfoModal.title" ok-title="寄信" @@ok="handleEmailOk" cancel-title="取消" @@hide="resetEmailInfoModal">
+                <b-card-text>收件信箱:{{emailInfoModal.emailReceiver}}</b-card-text>
+                <form ref="form" submit.stop.prevent="emailSubmit" class="edit-form">
+                    <b-form-input v-model="emailInfoModal.emailTitle" placeholder="請輸入標題"></b-form-input>
+                    <b-form-textarea id="textarea"
+                                     v-model="emailInfoModal.emailBody"
+                                     placeholder="請輸入內容"
+                                     rows="3"
+                                     max-rows="6"></b-form-textarea>
+                </form>
             </b-modal>
         </b-container>
     </template>
@@ -225,7 +239,19 @@
                 id: 'info-modal',
                 title: '',
                 content: ''
-            }
+            },
+            emailInfoModal: {
+                id: 'emailInfo-modal',
+                title: '',
+                memberId: '',
+                emailReceiver:'',
+                emailTitle: '',
+                emailBody:'',
+            },
+            
+            emailInfoModalemailTitleState: null,
+            emailInfoModalemailBodyState: null,
+            sendEmail: { memberId: "", memberConEmail: "", mailTitle: "", mailBody:""}
         },
         created: function () {
             axios.get("/Api/Members/GetAll")
@@ -255,9 +281,104 @@
                 this.infoModal.content = `會員編號:${JSON.stringify(item.memberId, null, 2)}\n\n會員姓名:${JSON.stringify(item.memberName, null, 2)}\n\n會員地址:${JSON.stringify(item.memberAddress, null, 2)}\n\n會員手機:${JSON.stringify(item.memberPhone, null, 2)}\n\n會員註冊信箱:${JSON.stringify(item.memberRegEmail, null, 2)}\n\n會員聯絡信箱:${JSON.stringify(item.memberConEmail, null, 2)}\n\n會員性別:${JSON.stringify(item.gender, null, 2)}\n\n會員生日:${JSON.stringify(item.memberBirth, null, 2)}\n\n關於會員:${JSON.stringify(item.aboutMe, null, 2)}\n\n會員圖像連結:${JSON.stringify(item.profileImgUrl, null, 2)}\n\n會員網站連結:${JSON.stringify(item.memberWebsite, null, 2)}`
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button)
             },
+            sendEmailInfo(item, index, button) {
+                this.emailInfoModal.title = `寄信給會員編號: ${JSON.stringify(item.memberId, null, 2)}`
+                this.emailInfoModal.emailReceiver = item.memberConEmail
+                this.emailInfoModal.memberId = item.memberId
+                
+
+
+                this.$root.$emit('bv::show::modal', this.emailInfoModal.id, button)
+            },
+            handleEmailOk(bvModalEvt) {
+                // Prevent modal from closing
+                bvModalEvt.preventDefault()
+                // Trigger submit handler
+                this.emailSubmit()
+            },
+            checkFormValidity() {
+                const valid = this.$refs.form.checkValidity()
+
+                this.emailInfoModalemailTitleState = valid
+
+               
+
+                this.emailInfoModalemailBodyState = valid
+
+                return valid
+            },
+        /*符合規定之後，向後端以jqeury AJAX發送POST發送信件請求*/
+            emailSubmit() {
+            // Exit when the form isn't valid
+                if (!this.checkFormValidity()) {
+                    return
+                }
+                // Push the name to submittedMember
+                this.sendEmail.memberId = this.emailInfoModal.memberId
+                this.sendEmail.memberConEmail = this.emailInfoModal.emailReceiver
+                this.sendEmail.mailTitle = this.emailInfoModal.emailTitle
+                this.sendEmail.mailBody = this.emailInfoModal.mailBody
+                var self = this;
+                $.ajax({
+                    url: "/Api/Mails/SendMail",
+                    method: "POST",
+                    dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(this.sendEmail),
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.title == "查無此Eamil") {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '寄信失敗，請再試一次',
+
+                            });
+                        }
+                        else {
+                           
+                           
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: '寄信成功',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+
+
+                    },
+                    error: function (jqXHR, textStatus, errorThron) {
+
+                        console.log(textStatus + ", " + jqXHR.state);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: '新增失敗，請再試一次',
+
+                        });
+
+                    }
+
+                })
+
+                // Hide the modal manually
+                this.$nextTick(() => {
+                    this.$bvModal.hide('modal-prevent-closing');
+
+                })
+            },
             resetInfoModal() {
                 this.infoModal.title = ''
                 this.infoModal.content = ''
+            },
+            resetEmailInfoModal() {
+                this.emailInfoModal.title = ''
+               
+                this.emailInfoModal.emailReceiver = ''
+                this.emailInfoModal.emailTitle = ''
+                this.emailInfoModal.emailBody = ''
             },
             onFiltered(filteredItems) {
                 // Trigger pagination to update the number of buttons/pages due to filtering
