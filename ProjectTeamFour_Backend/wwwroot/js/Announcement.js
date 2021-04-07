@@ -90,18 +90,18 @@
             })
         },
         saveSuccess(variant = primary) {
-            this.$bvToast.toast('修改成功!已儲存'), {
+            this.$bvToast.toast('修改成功!已儲存', {
                 title: `修改成功` ,
                 variant: variant,
                 solid: true
-            }
+            })
         },
         saveError(variant = danger) {
-            this.$bvToast.toast('修改失敗!請聯絡客服人員'), {
+            this.$bvToast.toast('修改失敗!請聯絡客服人員', {
                 title: `修改失敗`,
                 variant: variant,
                 soild: true
-            }
+            })
         },
         clearModel() {
             this.Model.Title = '';
@@ -125,12 +125,12 @@
             axios.put("/Api/Announcements/SaveAnnouncement", this.Model)
                 .then(res => {
                     console.log(res);
-                    saveSuccess('primary');
+                    this.saveSuccess('primary');
                     this.getAnnouncement();
                     this.clearModel();
                 })
                 .catch(error => {
-                    saveError('danger');
+                    this.saveError('danger');
                 })
         },
         createAnnouncement() {
