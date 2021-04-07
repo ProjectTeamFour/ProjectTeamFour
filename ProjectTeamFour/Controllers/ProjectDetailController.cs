@@ -40,8 +40,6 @@ namespace ProjectTeamFour.Controllers
                     }
                 };
 
-                
-
                 var projectDetail = projectDetailService.GetProjectDetail(id);
                 projectTotalVM.ProjectDetailItem = projectDetail;
 
@@ -66,44 +64,38 @@ namespace ProjectTeamFour.Controllers
 
         }
 
-
-
         public ActionResult DraftProjectDetailPagePreview(int id)
         {
-            var projectDetailService = new ProjectDetailEntityService();
+            var draftprojectDetailService = new ProjectDetailEntityService();
 
             if (id.ToString() != null)
             {
-
-
-                ProjectTotalViewModel projectTotalVM = new ProjectTotalViewModel()
+                ProjectTotalViewModel draftprojectTotalVM = new ProjectTotalViewModel()
                 {
-                    ProjectDetailItem = new ProjectDetailViewModel(),
+                    //ProjectDetailItem = new ProjectDetailViewModel(),
+                    DraftProjectDetailItem = new MyDraftProjectViewModel(),
 
                     CreatorInfo = new MemberViewModel(),
                     SelectPlanCards = new SelectPlanListViewModel()
                     {
-                        PlanCardItems = new List<SelectPlanViewModel>()
+                        //PlanCardItems = new List<SelectPlanViewModel>(),
+                        DraftPlanCardItems = new List<SelectDraftPlanViewModel>()
                     }
                 };
 
+                var draftprojectDetail = draftprojectDetailService.GetDraftProjectDetail(id);
+                draftprojectTotalVM.DraftProjectDetailItem = draftprojectDetail;
 
+                var creatorInfo = draftprojectDetailService.GetCreatorInfo(p => p.MemberId == draftprojectTotalVM.DraftProjectDetailItem.MemberId);
+                draftprojectTotalVM.CreatorInfo = creatorInfo;
 
-                var projectDetail = projectDetailService.GetProjectDetail(id);
-                projectTotalVM.ProjectDetailItem = projectDetail;
-
-
-                // var creatorInfo = projectDetailService.GetCreatorInfo(x => x.MemberId == MemberService.membMemberId);
-                var creatorInfo = projectDetailService.GetCreatorInfo(p => p.MemberId == projectTotalVM.ProjectDetailItem.MemberId);
-                projectTotalVM.CreatorInfo = creatorInfo;
-
-                var plancards = projectDetailService.GetPlanCards(x => x.ProjectId == id);
-                foreach (var item in plancards)
+                var draftplancards = draftprojectDetailService.GetDraftPlanCards(x => x.DraftProjectId == id);
+                foreach (var item in draftplancards)
                 {
-                    projectTotalVM.SelectPlanCards.PlanCardItems.Add(item);
+                    draftprojectTotalVM.SelectPlanCards.DraftPlanCardItems.Add(item);
                 }
 
-                return View(projectTotalVM);
+                return View(draftprojectTotalVM);
 
             }
             else

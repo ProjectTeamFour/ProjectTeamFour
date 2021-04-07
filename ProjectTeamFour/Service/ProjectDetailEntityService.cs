@@ -198,8 +198,9 @@ namespace ProjectTeamFour.Service
                 DraftProjectImgUrl = entity.DraftProjectImgUrl,
                 DraftProjectVideoUrl = entity.DraftProjectVideoUrl,
                 AmountThreshold = entity.AmountThreshold,
-                DraftProject_Question = entity.DraftProject_Question,
-                DraftProject_Answer = entity.DraftProject_Answer,
+                //DraftProject_Question = entity.DraftProject_Question,
+                //DraftProject_Answer = entity.DraftProject_Answer,
+                DraftProjectFAQList = ConvertDraftProjectFAQList(entity.DraftProject_Question, entity.DraftProject_Answer),
                 EndDate = entity.EndDate,
                 StartDate = entity.StartDate,
                 DraftProjectMainUrl = entity.DraftProjectMainUrl,
@@ -212,33 +213,57 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public List<SelectPlanViewModel> GetDraftPlanCards(Expression<Func<Plan, bool>> ProjectId)
+        public List<SelectDraftPlanViewModel> GetDraftPlanCards(Expression<Func<DraftPlan, bool>> DraftProjectId)
         {
+            List<SelectDraftPlanViewModel> selectDraftPlanCardItems = new List<SelectDraftPlanViewModel>();
 
-            List<SelectPlanViewModel> selectPlanCardItems = new List<SelectPlanViewModel>();
-
-            var planCardModelItems = _repository.GetAll<Plan>().Where(ProjectId);
-            foreach (var item in planCardModelItems)
+            var draftPlanCardModelItems = _repository.GetAll<DraftPlan>().Where(DraftProjectId);
+            foreach (var item in draftPlanCardModelItems)
             {
-                var selectPlanCardViewModel = new SelectPlanViewModel()
+                var selectDraftPlanCardViewModel = new SelectDraftPlanViewModel()
                 {
-                    ProjectId = item.ProjectId,
-                    PlanId = item.PlanId,
-                    ProjectPlanId = item.ProjectPlanId,
-                    PlanTitle = item.PlanTitle,
-                    PlanDescription = item.PlanDescription,
-                    PlanFundedPeople = item.PlanFundedPeople,
-                    PlanShipDate = item.PlanShipDate,
-                    PlanImgUrl = item.PlanImgUrl,
-                    PlanPrice = item.PlanPrice,
-                    QuantityLimit = item.QuantityLimit
+                    DraftProjectId = item.DraftProjectId,
+                    DraftPlanId = item.DraftPlanId,
+                    DraftProjectPlanId = item.DraftProjectPlanId,
+                    DraftPlanTitle = item.DraftPlanTitle,
+                    DraftPlanDescription = item.DraftPlanDescription,
+                    DraftPlanFundedPeople = item.DraftPlanFundedPeople,
+                    DraftPlanShipDate = item.DraftPlanShipDate,
+                    DraftPlanImgUrl = item.DraftPlanImgUrl,
+                    DraftPlanPrice = item.DraftPlanPrice,
+                    DraftQuantityLimit = item.DraftQuantityLimit
                 };
-                selectPlanCardItems.Add(selectPlanCardViewModel);
+                selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
             }
 
-            return selectPlanCardItems;
+            return selectDraftPlanCardItems;
         }
 
+
+
+        public List<DraftProjectFAQViewModel> ConvertDraftProjectFAQList(string strQuestion, string strAnswer)
+        {
+            List<DraftProjectFAQViewModel> DraftProjectFAQ = new List<DraftProjectFAQViewModel>();
+
+            if (strQuestion != null && strAnswer != null)
+            {
+                string[] questionsArray = strQuestion.Split(',');
+                string[] answerArray = strAnswer.Split(',');
+                int len_of_faq = questionsArray.Length;
+
+                for (int i = 0; i < len_of_faq; i++)
+                {
+                    DraftProjectFAQ.Add(
+                        new DraftProjectFAQViewModel()
+                        {
+                            DraftQuestion = questionsArray[i],
+                            DraftAnswer = answerArray[i]
+                        }
+                    );
+                }
+            }
+            return DraftProjectFAQ;
+        }
 
 
     }

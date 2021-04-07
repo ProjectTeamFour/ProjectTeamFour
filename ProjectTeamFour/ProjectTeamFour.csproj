@@ -459,6 +459,7 @@
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\CheckoutQuantityViewModel.cs" />
     <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
+    <Compile Include="ViewModels\DraftProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\EditMemberViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
@@ -2411,6 +2412,8 @@
     <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_myDraftProjectPartial.cshtml" />
+    <Content Include="Views\ProjectDetail\DraftProjectDetailPagePreview.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
