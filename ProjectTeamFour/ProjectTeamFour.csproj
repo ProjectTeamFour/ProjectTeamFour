@@ -466,6 +466,7 @@
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberRegisterViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\MyDraftProjectViewModel.cs" />
     <Compile Include="ViewModels\MyProjectViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
@@ -2404,6 +2405,7 @@
     <Content Include="Views\UserInfo\ToNews.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
+    <Content Include="Views\Shared\MemberCenterPartial\_myDraftProjectPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

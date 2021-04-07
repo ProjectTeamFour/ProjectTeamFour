@@ -38,6 +38,8 @@ namespace ProjectTeamFour.Controllers
 
 				//根據專案的提交與審核狀態進行分類
 				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
+
+                model.MyDraftProjects = _myProjectsService.GetDraftProjectsbyMemberId(model.MemberId);
 				
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
