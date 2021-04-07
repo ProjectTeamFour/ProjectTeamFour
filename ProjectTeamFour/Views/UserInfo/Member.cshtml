@@ -13,12 +13,12 @@
             break;
         case ("其他"):
             break;
-        //default:
+            //default:
 
     }
-            }
+}
 
-            @section topCSS{
+@section topCSS{
     <link href="~/Assets/Css/Person_insPage/personal.css" rel="stylesheet" />
     <link href="~/Assets/Css/Person_insPage/rwd-personal.css" rel="stylesheet" />
     <link href="~/Assets/Plugin/JQuery/jquery_1.10.24datatable.css" rel="stylesheet" />
@@ -40,8 +40,8 @@
                 <a class="nav-links" id="pills-message-tab" data-toggle="pill" href="#pills-message" role="tab" aria-controls="pills-message" aria-selected="false">聯絡訊息</a>
             </li>
             <li class="nav-item-tag" role="presentation">
-                    <a class="nav-links" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">最新通知</a>
-                </li>
+                <a class="nav-links" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">最新通知</a>
+            </li>
             <li class="nav-item-tag " role="presentation">
                 <a class="nav-links" id="pills-edit-tab" data-toggle="pill" href="#pills-edit" role="tab" aria-controls="pills-edit" aria-selected="true">帳號管理</a>
             </li>
@@ -67,12 +67,12 @@
                 <section class="record">
                     <div class="wrap-inside">
                         @if (Model.Records != null)
-            {
+                        {
 
-                @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
-        else
-        {
-<div>您目前沒有任何贊助歷史!</div>}
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
+                        else
+                        {
+                            <div>您目前沒有任何贊助歷史!</div>}
                     </div>
                 </section>
             </div>
@@ -85,62 +85,157 @@
                             <p>您可以在此查閱所有發起過的專案，專案提交後 7 個工作天內將有專人協助您進行下一步。</p>
                             <hr />
                         </div>
-                        @{ if (Model.MyProjects == null)
+                        @{ if (Model.MyProjects == null && Model.MyDraftProjects == null)
                             {
                                 <p>目前還沒有任何提案!歡迎隨時發起提案</p>
-    }
-                            else
-    {
-        foreach (var item in Model.MyProjects)
-        {
-                                        <div class="case-doing-creating">
-                                            <h3>審核中專案</h3>
+                            }
+                            else if (Model.MyProjects != null && Model.MyDraftProjects != null)
+                            {
+                                foreach (var item in Model.MyProjects)
+                                {
+                                    <div class="case-doing">
+                                        <div class="case-doing-funding">
+                                            <h3>募資中專案</h3>
                                             <hr />
                                             <div class="case-doing-creating-content">
-                                                @if (item.ApprovingStatus==0)
+                                                @if ((item.EndDate.Ticks - today.Ticks) > 0)
                                                 {
-        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
                                                 }
                                                 else
-    {
-                                                    <p>目前您沒有創建中專案</p>
+                                                {
+                                                    <p>目前您沒有募資中專案</p>
                                                 }
                                             </div>
                                         </div>
-                                        <div class="case-doing">
-                                            <div class="case-doing-funding">
-                                                <h3>募資中專案</h3>
-                                                <hr />
-                                                <div class="case-doing-creating-content">
-                                                    @if ((item.EndDate.Ticks-today.Ticks) > 0)
-                                                    {
-        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                    }
-                                                    else
-    {
-                                                        <p>目前您沒有募資中專案</p>
+                                    </div>
 
-                                                    }
-                                                </div>
-                                            </div>
+                                    <div class="case-doing-creating">
+                                        <h3>審核中專案</h3>
+                                        <hr />
+                                        <div class="case-doing-creating-content">
+                                            @if (item.ApprovingStatus == 1)
+                                            {
+                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                            }
+                                            else
+                                            {
+                                                <p>您目前沒有審核中的專案</p>
+                                            }
                                         </div>
+                                    </div>
+
+
+                                    <div class="case-doing-funding">
                                         <div class="case-doing-funding">
-                                            <div class="case-doing-funding">
-                                                <h3>已結束專案</h3>
-                                                <hr />
-                                                <div class="case-doing-creating-content">
-                                                    @if ((item.EndDate.Ticks - today.Ticks) < 0)
-                                                    {
-        @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                    }
-                                                    else
-    {
-                                                        <p>目前您沒有已結束專案</p>
-
-                                                    }
-                                                </div>
+                                            <h3>已結束專案</h3>
+                                            <hr />
+                                            <div class="case-doing-creating-content">
+                                                @if ((item.EndDate.Ticks - today.Ticks) < 0)
+                                                {
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                }
+                                                else
+                                                {
+                                                    <p>目前您沒有已結束專案</p>
+                                                }
                                             </div>
                                         </div>
+                                    </div>
+                                }
+
+                                foreach (var item in Model.MyDraftProjects)
+                                {
+
+                                    <div class="case-doing-creating">
+                                        <h3>草稿專案</h3>
+                                        <hr />
+                                        <div class="case-doing-creating-content">
+                                            @if (item.ApprovingStatus == 0)
+                                            {
+                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                            }
+                                            else
+                                            {
+                                                <p>目前您沒有創建中專案</p>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else if (Model.MyProjects != null)
+                            {
+                                foreach (var item in Model.MyProjects)
+                                {
+                                    <div class="case-doing">
+                                        <div class="case-doing-funding">
+                                            <h3>募資中專案</h3>
+                                            <hr />
+                                            <div class="case-doing-creating-content">
+                                                @if ((item.EndDate.Ticks - today.Ticks) > 0)
+                                                {
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                }
+                                                else
+                                                {
+                                                    <p>目前您沒有募資中專案</p>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="case-doing-creating">
+                                        <h3>審核中專案</h3>
+                                        <hr />
+                                        <div class="case-doing-creating-content">
+                                            @if (item.ApprovingStatus == 1)
+                                            {
+                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                            }
+                                            else
+                                            {
+                                                <p>您目前沒有審核中的專案</p>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div class="case-doing-funding">
+                                        <div class="case-doing-funding">
+                                            <h3>已結束專案</h3>
+                                            <hr />
+                                            <div class="case-doing-creating-content">
+                                                @if ((item.EndDate.Ticks - today.Ticks) < 0)
+                                                {
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                }
+                                                else
+                                                {
+                                                    <p>目前您沒有已結束專案</p>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else 
+                            {
+                                foreach (var item in Model.MyDraftProjects)
+                                {
+                                    <div class="case-doing-creating">
+                                        <h3>草稿專案</h3>
+                                        <hr />
+                                        <div class="case-doing-creating-content">
+                                            @if (item.ApprovingStatus == 0)
+                                            {
+                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                            }
+                                            else
+                                            {
+                                                <p>目前您沒有創建中專案</p>
+                                            }
+                                        </div>
+                                    </div>
                                 }
                             }
                         }
@@ -176,15 +271,15 @@
 
                         @if (Model.Comments.Count == 0)
                         {
-            <div class="row nomessage" style="text-align: center;justify-content: center;">
-                <h3>您尚未有任何留言</h3>
-            </div> }
-        else
-    {
-        foreach (var comment in Model.Comments)
-        {
-            @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)}
-    }
+                            <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                <h3>您尚未有任何留言</h3>
+                            </div> }
+                        else
+                        {
+                            foreach (var comment in Model.Comments)
+                            {
+                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_messagePartial.cshtml", comment)}
+                        }
 
 
 
@@ -194,8 +289,8 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
-            帳戶活動與通知
-            <div class="news">
+                帳戶活動與通知
+                <div class="news">
                     <div class="wrap-inside">
                         @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml")
                     </div>
@@ -206,97 +301,97 @@
                 <div class="edit">
                     <div class="wrap-inside">
                         @{ var vm = (MemberViewModel)Session["Member"]; }
-                                @if (vm == null)
-                                                    {
-                                    Html.ActionLink("登入", "Login", "Member");
-                                }
-                                                    else if (vm != null)
-                                {
-                                                        //<form method="post" action="" accept-charset="UTF-8">
-                                        <div id="user-profile" class="container">
-                                            <div class="form-group row">
-                                                <!-- 左欄 -->
-                                                <div class="left col-12 col-md-6">
-                                                    <div id="upload-img">
-                                                        <!-- 這裡是複製的 -->
-                                                        <div class="flyingUpload">
-                                                            @*<svg width="93" height="93" class="transpCircle">
-                                                                <mask id="mask">
-                                                                    <rect fill="white" width="100%" height="100%" />
-                                                                    <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
-                                                                </mask>
-                                                                <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
-                                                            </svg>*@
-                                                            <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
-                                                                 class="avatar" style="width: 93px;height:93px; border-radius:50%;" id="imgshow">
-                                                            <div class="">
-                                                                <span class="image-hinter" style="">
-                                                                    <strong>上傳圖片</strong><br>
-                                                                    <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
-                                                                    <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file" style="opacity: 0.1;">
-                                                                    <span id="imgurl" hidden="hidden"></span>
-                                                                </span>
+                        @if (vm == null)
+                        {
+                            Html.ActionLink("登入", "Login", "Member");
+                        }
+                        else if (vm != null)
+                        {
+                            //<form method="post" action="" accept-charset="UTF-8">
+                            <div id="user-profile" class="container">
+                                <div class="form-group row">
+                                    <!-- 左欄 -->
+                                    <div class="left col-12 col-md-6">
+                                        <div id="upload-img">
+                                            <!-- 這裡是複製的 -->
+                                            <div class="flyingUpload">
+                                                @*<svg width="93" height="93" class="transpCircle">
+                                                        <mask id="mask">
+                                                            <rect fill="white" width="100%" height="100%" />
+                                                            <circle cx="46.5" cy="46.5" r="45.5" stroke="black" stroke-width="2" />
+                                                        </mask>
+                                                        <rect mask="url(#mask)" fill="rgba(0, 0, 0, 0.5)" width="100%" height="100%" />
+                                                    </svg>*@
+                                                <img src="@vm.ProfileImgUrl" alt="@vm.MemberName"
+                                                     class="avatar" style="width: 93px;height:93px; border-radius:50%;" id="imgshow">
+                                                <div class="">
+                                                    <span class="image-hinter" style="">
+                                                        <strong>上傳圖片</strong><br>
+                                                        <span class="grey">2MB 以內的 JPEG, PNG, GIF 或 BMP</span>
+                                                        <input class="upload" id="uploadimg" accept="image/*" name="avatar" type="file" style="opacity: 0.1;">
+                                                        <span id="imgurl" hidden="hidden"></span>
+                                                    </span>
 
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="memberid" hidden="hidden">@vm.MemberId</div>
-
-                                                    <div id="register-email" class="form-group">
-                                                        <label for="inputEmail">註冊信箱</label>
-                                                        <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
-                                                        <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
-                                                    </div>
-                                                    <div id="contact-email" class="form-group">
-                                                        <label for="inputEmail">聯絡信箱</label>
-                                                        <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
-                                                    </div>
-
-                                                    <div id="gender" class="form-group">
-                                                        <label for="gender">性別</label>
-                                                        <p id="get-gender" hidden>@vm.Gender</p>
-                                                        <input type="text" class="form-control" id="gender1" value="@vm.Gender" name="Gender" disabled>
-                                                        @*<select class="form-control" id="gender1" name="Gender">
-                                        <option value="請選擇性別">請選擇性別</option>
-                                        <option value="男性">男性</option>
-                                        <option value="女性">女性</option>
-                                        <option value="其他">其他</option>
-                                    </select>*@
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="birthday">生日</label>
-                                                        <input type="date" class="form-control" id="birthday1" value="@birthday" name="MemberBirth">
-                                                    </div>
-
-
-                                                </div>
-                                                <!-- 右欄 -->
-                                                <div class="right col-12 col-md-6">
-                                                    <div id="about-me" class="form-group">
-                                                        <label for="about" class="colored-label">關於我</label>
-                                                        <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
-                                                    </div>
-                                                    <div id="name" class="form-group">
-                                                        <label for="name">顯示名稱</label>
-                                                        <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
-                                                    </div>
-                                                    <div id="personal-site" class="form-group">
-                                                        <label for="personal-site">個人網站</label>
-                                                        <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
-                                                    </div>
 
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div id="memberid" hidden="hidden">@vm.MemberId</div>
 
-                                            <hr />
-                                            @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
-                                            <button id="btnSub" class="btn btn-primary">儲存</button>
-                                            <a id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</a>
-                                            @*Html.ActionLink("會員資料", $"Member/{@vm.MemberId}", "UserInfo")*@
-                                        </div> //</form>
-                                    } @*表單提交區域!!!*@
+                                        <div id="register-email" class="form-group">
+                                            <label for="inputEmail">註冊信箱</label>
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="@vm.MemberRegEmail" readonly>
+                                            <p class="small-hint">此為您的 flyingV 系統登入帳號。</p>
+                                        </div>
+                                        <div id="contact-email" class="form-group">
+                                            <label for="inputEmail">聯絡信箱</label>
+                                            <input type="email" class="form-control" required id="contactEmail" value="@vm.MemberConEmail" name="MemberConEmail">
+                                        </div>
+
+                                        <div id="gender" class="form-group">
+                                            <label for="gender">性別</label>
+                                            <p id="get-gender" hidden>@vm.Gender</p>
+                                            <input type="text" class="form-control" id="gender1" value="@vm.Gender" name="Gender" disabled>
+                                            @*<select class="form-control" id="gender1" name="Gender">
+                                                    <option value="請選擇性別">請選擇性別</option>
+                                                    <option value="男性">男性</option>
+                                                    <option value="女性">女性</option>
+                                                    <option value="其他">其他</option>
+                                                </select>*@
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="birthday">生日</label>
+                                            <input type="date" class="form-control" id="birthday1" value="@birthday" name="MemberBirth">
+                                        </div>
+
+
+                                    </div>
+                                    <!-- 右欄 -->
+                                    <div class="right col-12 col-md-6">
+                                        <div id="about-me" class="form-group">
+                                            <label for="about" class="colored-label">關於我</label>
+                                            <textarea class="form-control" id="about" rows="5" cols="50" placeholder="300字以內簡介" name="AboutMe">@vm.AboutMe</textarea>
+                                        </div>
+                                        <div id="name" class="form-group">
+                                            <label for="name">顯示名稱</label>
+                                            <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
+                                        </div>
+                                        <div id="personal-site" class="form-group">
+                                            <label for="personal-site">個人網站</label>
+                                            <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <hr />
+                                @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
+                                <button id="btnSub" class="btn btn-primary">儲存</button>
+                                <a id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</a>
+                                @*Html.ActionLink("會員資料", $"Member/{@vm.MemberId}", "UserInfo")*@
+                            </div> //</form>
+                        } @*表單提交區域!!!*@
                     </div>
 
                 </div>
@@ -338,7 +433,7 @@
     <script>
 
 
-        
+
 
 
 
@@ -347,8 +442,7 @@
 
 
 
-        function changeTextareaValue(event)
-        {
+        function changeTextareaValue(event) {
 
             LanchCommentAnswer = event.target.value;
             /*LanchCommentAnswer = e;*/
@@ -360,7 +454,7 @@
 
             if (LanchCommentAnswer == "") {
                 Swal.fire({
-                icon: 'error',
+                    icon: 'error',
                     title: 'Oops...',
                     text: '請留言!',
 
@@ -370,7 +464,7 @@
                 $.ajax({
                     url: "/api/Comment/ReplyComment",
                     type: "POST",
-                    data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer},
+                    data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer },
                     success: function (data, textStatus, jqXHR) {
                         if (data == "fail") {
                             Swal.fire({
@@ -409,58 +503,58 @@
 
     @*<script>
 
-        let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
+            let LanchCommentAnswer = document.querySelector(".LanchCommentAnswer");
 
-        ///回覆按鈕觸發事件
-        function LanchCommentAnswerAjax(CommentId) {
+            ///回覆按鈕觸發事件
+            function LanchCommentAnswerAjax(CommentId) {
 
-            if (LanchCommentAnswer.value == "") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '請留言!',
+                if (LanchCommentAnswer.value == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '請留言!',
 
-                });
-            }
-            else {
-                $.ajax({
-                    url: "/api/Comment/ReplyComment",
-                    type: "POST",
-                    data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer.value },
-                    success: function (data, textStatus, jqXHR) {
-                        if (data == "fail") {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '發生錯誤，請再試一次!',
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: "/api/Comment/ReplyComment",
+                        type: "POST",
+                        data: { CommentId: CommentId, Comment_Answer: LanchCommentAnswer.value },
+                        success: function (data, textStatus, jqXHR) {
+                            if (data == "fail") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '發生錯誤，請再試一次!',
 
-                            });
+                                });
+                            }
+                            else {
+                                Swal.fire({
+                                    position: 'top-center',
+                                    icon: 'success',
+                                    title: '已成功回覆！',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                window.setTimeout(reloading, 1000);
+
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(textStatus);
                         }
-                        else {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: '已成功回覆！',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            window.setTimeout(reloading, 1000);
+                    })
 
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                    }
-                })
-
+                }
             }
-        }
-        function reloading() {
-            window.location.assign(window.location.href);
-        }
-    </script>*@
+            function reloading() {
+                window.location.assign(window.location.href);
+            }
+        </script>*@
 
     <script>
         let messageSelect = document.querySelector(".message-input");
@@ -509,33 +603,33 @@
             }
         })
 
-                    //messageSelect.addEventListener("change", function () {
-                    //    if (messageSelect.value == "2") {
+                        //messageSelect.addEventListener("change", function () {
+                        //    if (messageSelect.value == "2") {
 
-                    //        var hasReply = document.querySelectorAll(".has-reply");
-                    //        hasReply.forEach(node => myComments.removeChild(node.offsetParent));
-                    //        Init();
+                        //        var hasReply = document.querySelectorAll(".has-reply");
+                        //        hasReply.forEach(node => myComments.removeChild(node.offsetParent));
+                        //        Init();
 
-                    //    }
-                    //    else if (messageSelect.value == "3") {
+                        //    }
+                        //    else if (messageSelect.value == "3") {
 
-                    //        var noReply = document.querySelectorAll(".no-reply");
-                    //        noReply.forEach(node =>myComments.removeChild(node.offsetParent));
-                    //        Init();
+                        //        var noReply = document.querySelectorAll(".no-reply");
+                        //        noReply.forEach(node =>myComments.removeChild(node.offsetParent));
+                        //        Init();
 
-                    //    }
-                    //    else {
+                        //    }
+                        //    else {
 
-                    //    }
-                    //});
+                        //    }
+                        //});
 
-                    //function Init()
-                    //{
-                    //            allComments.removeChild(myComments);
+                        //function Init()
+                        //{
+                        //            allComments.removeChild(myComments);
 
-                    //            allComments.appendChild(cloneMyComments);
-                    //}
-            
+                        //            allComments.appendChild(cloneMyComments);
+                        //}
+
 
 
 

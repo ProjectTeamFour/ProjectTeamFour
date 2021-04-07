@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Layout\Index.cshtml" />
+    <Content Remove="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,7 +54,6 @@
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.compatibility.js" />
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.js" />
     <None Include="wwwroot\lib\jquery-easing\jquery.easing.min.js" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

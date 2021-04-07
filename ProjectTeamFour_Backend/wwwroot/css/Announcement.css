@@ -1,0 +1,16 @@
+﻿body {
+}
+#Content{
+    width:100%;
+    height:300px;
+    overflow:auto;
+}
+.AnnouncementModal{
+    margin:auto;
+}
+.AnnouncementModal-content {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    word-wrap: break-word;
+}

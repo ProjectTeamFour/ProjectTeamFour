@@ -52,11 +52,13 @@ namespace ProjectTeamFour.ViewModels
         public string Salt { get; set; }
         public string Hash { get; set; }
         public string OldPassword { get; set; }
+        public string IsThirdParty { get; set; }
 
         public BackingRecordsViewModel Records { get; set; }
         public List<SubmissionProcessViewModel> ProjectRecords { get; set; }
         public List<SubmissionProcessPlanViewModel> PlanRecords { get; set; }
         public List<MyProjectViewModel> MyProjects { get; set; }
         public List<CommentForMemberViewModel> Comments { get; set; }
+        public List<MyDraftProjectViewModel> MyDraftProjects { get; set; }
     }
 }

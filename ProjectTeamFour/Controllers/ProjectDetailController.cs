@@ -40,7 +40,6 @@ namespace ProjectTeamFour.Controllers
                     }
                 };
 
-
                 
 
                 var projectDetail = projectDetailService.GetProjectDetail(id);
