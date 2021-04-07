@@ -1138,17 +1138,18 @@ var form = new Vue({
             //    })
 
             $.ajax({
-                url: "/api/projectsubmission/getdraftprojectdata",
-                type: "get",
+                url: "/startaproject/getdraftprojectdata",
+                type: "post",
                 //contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(data),
+                data: data,
                 success: function (response) {
-                    if (response.IsSuccessful == true) {
-                        console.log(response);
-                    }
-                    else {
-                        console.log('失敗');
-                    }
+                    //if (response.IsSuccessful == true) {
+                    //    console.log(response);
+                    //}
+                    //else {
+                    //    console.log('失敗');
+                    //}
+                    console.log(response);
                 },
                 error: function (response) {
                     console.log('失敗');

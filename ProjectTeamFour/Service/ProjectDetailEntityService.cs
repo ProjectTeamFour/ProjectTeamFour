@@ -218,22 +218,26 @@ namespace ProjectTeamFour.Service
             List<SelectDraftPlanViewModel> selectDraftPlanCardItems = new List<SelectDraftPlanViewModel>();
 
             var draftPlanCardModelItems = _repository.GetAll<DraftPlan>().Where(DraftProjectId);
-            foreach (var item in draftPlanCardModelItems)
+
+            if (draftPlanCardModelItems.Count() > 0)
             {
-                var selectDraftPlanCardViewModel = new SelectDraftPlanViewModel()
+                foreach (var item in draftPlanCardModelItems)
                 {
-                    DraftProjectId = item.DraftProjectId,
-                    DraftPlanId = item.DraftPlanId,
-                    DraftProjectPlanId = item.DraftProjectPlanId,
-                    DraftPlanTitle = item.DraftPlanTitle,
-                    DraftPlanDescription = item.DraftPlanDescription,
-                    DraftPlanFundedPeople = item.DraftPlanFundedPeople,
-                    DraftPlanShipDate = item.DraftPlanShipDate,
-                    DraftPlanImgUrl = item.DraftPlanImgUrl,
-                    DraftPlanPrice = item.DraftPlanPrice,
-                    DraftQuantityLimit = item.DraftQuantityLimit
-                };
-                selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
+                    var selectDraftPlanCardViewModel = new SelectDraftPlanViewModel()
+                    {
+                        DraftProjectId = item.DraftProjectId,
+                        DraftPlanId = item.DraftPlanId,
+                        DraftProjectPlanId = item.DraftProjectPlanId,
+                        DraftPlanTitle = item.DraftPlanTitle,
+                        DraftPlanDescription = item.DraftPlanDescription,
+                        DraftPlanFundedPeople = item.DraftPlanFundedPeople,
+                        DraftPlanShipDate = item.DraftPlanShipDate,
+                        DraftPlanImgUrl = item.DraftPlanImgUrl,
+                        DraftPlanPrice = item.DraftPlanPrice,
+                        DraftQuantityLimit = item.DraftQuantityLimit
+                    };
+                    selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
+                }
             }
 
             return selectDraftPlanCardItems;

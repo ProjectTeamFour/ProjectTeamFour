@@ -180,62 +180,6 @@ namespace ProjectTeamFour.Api
             ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
             return uploadResult.SecureUri.AbsoluteUri;
         }
-
-
-        //[System.Web.Mvc.HttpPost]
-        public OperationResult GetDraftProjectData([FromBody] MyDraftProjectViewModel input)
-        {
-            var draftprojectDetailService = new ProjectDetailEntityService();
-            OperationResult or = new OperationResult();
-
-            if (input.DraftProjectId.ToString() != null)
-            {
-                ProjectTotalViewModel draftprojectTotalVM = new ProjectTotalViewModel()
-                {
-                    //ProjectDetailItem = new ProjectDetailViewModel(),
-                    DraftProjectDetailItem = new MyDraftProjectViewModel(),
-
-                    CreatorInfo = new MemberViewModel(),
-                    SelectPlanCards = new SelectPlanListViewModel()
-                    {
-                        //PlanCardItems = new List<SelectPlanViewModel>(),
-                        DraftPlanCardItems = new List<SelectDraftPlanViewModel>()
-                    }
-                };
-
-                var draftprojectDetail = draftprojectDetailService.GetDraftProjectDetail(input.DraftProjectId);
-                draftprojectTotalVM.DraftProjectDetailItem = draftprojectDetail;
-
-                var creatorInfo = draftprojectDetailService.GetCreatorInfo(p => p.MemberId == draftprojectTotalVM.DraftProjectDetailItem.MemberId);
-                draftprojectTotalVM.CreatorInfo = creatorInfo;
-
-                var draftplancards = draftprojectDetailService.GetDraftPlanCards(x => x.DraftProjectId == input.DraftProjectId);
-
-                if (draftplancards != null)
-                {
-                    foreach (var item in draftplancards)
-                    {
-                        draftprojectTotalVM.SelectPlanCards.DraftPlanCardItems.Add(item);
-                    }
-                }
-
-                if (draftprojectTotalVM == null)
-                {
-                    or.IsSuccessful = false;
-                    return or;
-                }
-
-                or.IsSuccessful = true;
-                or.VMobj = draftprojectTotalVM;
-
-                return or;
-
-            }
-            else
-            {
-                or.IsSuccessful = false;
-                return or;
-            }
-        }
+       
     }
 }
