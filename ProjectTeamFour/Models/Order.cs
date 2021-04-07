@@ -48,8 +48,12 @@ namespace ProjectTeamFour.Models
         /// <summary>
         /// 是否付款:已付款、未付款
         /// </summary>
-        public string condition { get; set; } 
+        public string condition { get; set; }
 
+        /// <summary>
+        /// 訂單成立時間
+        /// </summary>
+        public DateTime OrderDate { get; set; }
         //導覽屬性
         [ForeignKey("MemberId")]
         public virtual Member Member { get; set; }

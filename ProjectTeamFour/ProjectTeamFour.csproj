@@ -303,6 +303,10 @@
     <Compile Include="Migrations\202104070645145_修復通知表.Designer.cs">
       <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104070838212_新增訂單創立時間.cs" />
+    <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
+      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -2618,6 +2622,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104070645145_修復通知表.resx">
       <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
+      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

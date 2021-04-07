@@ -256,6 +256,8 @@ namespace ProjectTeamFour_Backend.Context
 
                 entity.Property(e => e.Condition).HasColumnName("condition");
 
+                entity.Property(e => e.OrderDate).HasColumnType("datetime");
+
                 entity.Property(e => e.OrderTotalAccount).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.PlanPlanId).HasColumnName("Plan_PlanId");
