@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
+
 namespace ProjectTeamFour_Backend
 {
     public class Startup
@@ -63,9 +64,13 @@ namespace ProjectTeamFour_Backend
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<LabContext>();
-           
+            //============
+            //
+            //加入Jwt之DI設定
+            //
+            //===============//
 
-           services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
                     options.LoginPath = "/Manager/Login/";
                     options.AccessDeniedPath = "/Account/Forbidden/";

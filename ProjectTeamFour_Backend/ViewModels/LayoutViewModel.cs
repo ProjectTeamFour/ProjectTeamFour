@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.ViewModels
 {
-    public class LoginViewModel
+    public abstract class LayoutViewModel
     {
         public string MemberRegEmail { get; set; }
-        public string Password { get; set; }
     }
+
+    
 }

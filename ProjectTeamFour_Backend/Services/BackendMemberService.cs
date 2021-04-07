@@ -41,14 +41,24 @@ namespace ProjectTeamFour_Backend.Services
         public BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM)
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
-            var manager = _repository.GetAll<Backendmember>().Where(x => x.MemberName ==loginVM.Username&&x.MemberPassword==loginVM.Password).FirstOrDefault();
+            var manager = _repository.GetAll<Backendmember>().Where(x => x.MemberRegEmail ==loginVM.MemberRegEmail&& x.MemberPassword==loginVM.Password).FirstOrDefault();
             
             try
             {
                 if(manager != null)
                 {
-                    result.IsSuccess = true;
-                    result.Msg = manager.BackendIdentity.ToString();
+                    if (manager.MemberName == "admin")
+                    {
+                        result.IsSuccess = true;
+                        result.Msg = manager.BackendIdentity.ToString();
+                    }
+                    else if(manager.MemberName=="service")
+                    {
+                        result.IsSuccess = true;
+                        result.Msg = manager.BackendIdentity.ToString();
+                    }
+
+                   
                 }
             }
             catch (Exception ex)

@@ -4,10 +4,10 @@ let btnLogin = document.querySelector(".btn-login");
 let jwtAuthUrl = "https://localhost:44344/api/Manager/Login";
 
 btnLogin.addEventListener("click", function () {
-    let name = document.getElementById("username").value;
+    let mail = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let user = {
-        Username: name, Password: password
+        MemberRegEmail: mail, Password: password
     }
     $.ajax({
         url: jwtAuthUrl,
@@ -16,7 +16,7 @@ btnLogin.addEventListener("click", function () {
         data: JSON.stringify(user),
         contentType: "application/json;charset=UTF-8",
         success: function (response) {
-           
+            console.log(response);
         /*  localStorage.setItem("jwtToken", response.token);*/
             Cookies.set("jwtToken", response.token);
             AfterLogin();

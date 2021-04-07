@@ -16,6 +16,7 @@ namespace ProjectTeamFour_Backend.Controllers
         [AllowAnonymous]
         public IActionResult Login(LoginViewModel loginVM)
         {
+           
             return View();
         }
 
