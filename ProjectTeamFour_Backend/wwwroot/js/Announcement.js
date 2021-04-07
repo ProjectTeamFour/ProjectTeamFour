@@ -103,6 +103,20 @@
                 soild: true
             })
         },
+        removeSuccess(variant = primary) {
+            this.$bvToast.toast('刪除成功!', {
+                title: `刪除成功`,
+                variant: variant,
+                solid: true
+            })
+        },
+        removeError(variant = danger) {
+            this.$bvToast.toast('刪除失敗!請聯絡客服人員', {
+                title: `刪除失敗`,
+                variant: variant,
+                solid: true
+            })
+        },
         clearModel() {
             this.Model.Title = '';
             this.Model.Content = '';
@@ -146,8 +160,21 @@
                 });
         },
         removeAnnouncement(data, index, button) {
-            console.log("123");
-            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
+            this.Model.announcementId = data.announcementId;
+            axios.delete("/Api/Announcements/DeleteAnnouncement", {
+                data: {
+                    'AnnouncementId': data.announcementId
+                }
+            })
+                .then(res => {
+                    console.table(res);
+                    this.removeSuccess('primary');
+                    this.getAnnouncement();
+                })
+                .catch(error => {
+                    this.removeError('danger');
+                    console.table(error);
+                })
         },
     },
 });
