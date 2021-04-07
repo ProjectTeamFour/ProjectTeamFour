@@ -54,5 +54,12 @@ namespace ProjectTeamFour_Backend.WebApi
             var result = _announcementService.CreateAnnouncement(input, User);
             return result;
         }
+        [HttpPut]
+        public OperationResult SaveAnnouncement(AnnouncementViewModel.AnnouncementVM input)
+        {
+            var User = "管理員";
+            var result = _announcementService.SaveAnnouncement(input, User);
+            return result;
+        }
     }
 }
