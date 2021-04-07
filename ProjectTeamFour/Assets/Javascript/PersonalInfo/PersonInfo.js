@@ -262,3 +262,31 @@ function ToNews() {
     //console.log(news);
 
 }
+
+$('.product-item-qty button').on('click', function () {
+    var $input = $(this).siblings('input');
+    if (isNaN($input.val())) {
+        alert('請輸入有效數字');
+        return;
+    }
+    var data = {
+        PlanId: $input.data('planid'),
+        SubmitLimit: $input.val()
+    }
+    $.ajax({
+        url: '/api/memberapi/UpdatePlan',
+        method: 'post',
+        data: data,
+        success: function (response) {
+            if (response.IsSuccessful) {
+                alert('提交成功');
+            }
+            else {
+                alert('提交失敗');
+			}
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+});

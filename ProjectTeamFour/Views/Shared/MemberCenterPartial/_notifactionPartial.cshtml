@@ -1,135 +1,40 @@
-﻿@{
+﻿@model MemberViewModel
+@{
     var vm = (MemberViewModel)Session["Member"];
+    @*只挑選已付款的訂單*@
+    var orderList = Model.Records.MyOrderDetailList.Where(o => o.condition == "已付款" && o.Plan.AddCarCarPlan == true);
 }
 
-<div id="notifaction-setting" class="container">
-
-    <div class="form-group row">
-        <div class="col-12 col-md-4">
-            <blockquote class="colored-label">
-                <p>動態通知</p>
-            </blockquote>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][project_success]" type="checkbox" value="1">
-                    專案達標
-                </label>
-                <div class="hint small grey"> 跟您分享專案達標的喜悅</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][project_update]" type="checkbox" value="1">
-                    專案內容更新
-                </label>
-
-                <div class="hint small grey"> 及時掌握提案團隊更新的內容</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][project_countdown]" type="checkbox" value="1">
-                    專案結束倒數
-                </label>
-
-                <div class="hint small grey"> 專案結束前的溫情提醒</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][follower_donate]" type="checkbox" value="1">
-                    社群贊助通知
-                </label>
-
-                <div class="hint small grey"> 社群好友贊助專案時發送的通知</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][project_reply]" type="checkbox" value="1">
-                    提案者回覆留言
-                </label>
-
-                <div class="hint small grey"> 秒讀提案團隊回應內容</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][system_event]" type="checkbox" value="1">
-                    平台重大活動通知
-                </label>
-
-                <div class="hint small grey"> 所有我們想邀請您一起參與的美好事物</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[notifications][system_statement]" type="checkbox" value="1">
-                    平台全站聲明
-                </label>
-
-                <div class="hint small grey"> 您最重要的用戶權益</div>
-                <hr>
-            </div>
-        </div>
-        <div class=" col-12 col-md-4">
-            <blockquote class="colored-label">
-                <p>平台系統通知信</p>
-            </blockquote>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[emails][project_post]" type="checkbox" value="1">
-                    專案進度更新
-                </label>
-
-                <div class="hint small grey"> 已贊助專案發送進度報告的通知信件</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[emails][follower_donate]" type="checkbox" value="1">
-                    社群贊助通知
-                </label>
-
-                <div class="hint small grey"> 社群好友贊助專案時發送的通知信件</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[emails][weekly]" type="checkbox" value="1">
-                    每週精選專案
-                </label>
-
-                <div class="hint small grey"> flyingV 為您精心挑選的好案介紹</div>
-                <hr>
-            </div>
-
-        </div>
-        <div class=" col-12 col-md-4">
-            <blockquote class="colored-label">
-                <p>提案者系統通知信</p>
-            </blockquote>
-
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[creator][backers]" type="checkbox" value="1">
-                    專案新贊助通知
-                </label>
-
-                <div class="hint small grey"> 有新贊助者便會寄信給您</div>
-                <hr>
-            </div>
-            <div class="checkbox notiLine">
-                <label>
-                    <input checked="checked" name="setting[creator][comments]" type="checkbox" value="1">
-                    專案新留言通知
-                </label>
-
-                <div class="hint small grey"> 專案有新的留言便會寄信給您</div>
-                <hr>
-            </div>
-
-        </div>
+<div class="container">
+    <div class="case-title">
+        <h2>購買過的專案</h2>
     </div>
-    <button id="delete-account" class="btn btn-primary">儲存設定</button>
+    <div class="row mt-4">
+        @if (Model.Records != null)
+        {
+            foreach (var item in orderList)
+            {
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="product-item">
+                        <a class="product-item-pic" href="~/CarCarPlan/Detail/@item.PlanId">
+                            <img src="@item.OrderPlanImgUrl" alt="方案圖片" class="pic">
+                        </a>
+                        <div class="product-item-text">
+                            <h3>@item.PlanTitle</h3>
+                            <div><span>@(item.OrderQuantity.ToString())件:</span><span>共@(item.OrderPrice* item.OrderQuantity) NTD</span></div>
+                        </div>
+                        <div class="product-item-qty">
+                            <span>庫存:</span>
+                            <input type="text" data-planid="@item.PlanId" value="@item.Plan.SubmitLimit" />
+                            <button type="button" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>目前無購買方案</p>
+        }
+    </div>
 </div>
