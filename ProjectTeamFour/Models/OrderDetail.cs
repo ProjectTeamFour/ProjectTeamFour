@@ -45,7 +45,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string OrderPlanImgUrl { get; set; }
         /// <summary>
-        /// 訂單明細是否付款
+        /// 訂單明細是否付款，共有三種:未付款、已付款、須退款
         /// </summary>
         public string condition { get; set; }
         /// <summary>

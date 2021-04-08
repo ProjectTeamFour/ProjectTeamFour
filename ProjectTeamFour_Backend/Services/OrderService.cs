@@ -50,6 +50,7 @@ namespace ProjectTeamFour_Backend.Services
                         OrderName = o.OrderName,
                         OrderTotalAccount = o.OrderTotalAccount,
                         OrderPhone = o.OrderPhone,
+                        OrderDate=o.OrderDate,
                         Condition = o.Condition,
                         TradeNo = o.TradeNo,
                         MemberId = o.MemberId,
@@ -67,7 +68,7 @@ namespace ProjectTeamFour_Backend.Services
                 var singleOrder = _dbRepository.GetAll<Order>().FirstOrDefault(x => x.OrderId == order.OrderId);
                 if (singleOrder == null)
                 {
-                    return "無匹配訂單";
+                    return "查無此匹配訂單";
                 }
                 using (var transaction = _context.Database.BeginTransaction())
                 {

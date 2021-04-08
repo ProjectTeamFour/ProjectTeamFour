@@ -6,7 +6,7 @@ using ProjectTeamFour.Models;
 using ProjectTeamFour.Service;
 using System.IO;
 using System.Web.Mvc;
-
+using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.Service
 {
@@ -17,6 +17,7 @@ namespace ProjectTeamFour.Service
         public Exception Exception { get; set; }
         public string MessageInfo { get; set; }
         public int Status { get; set; }
+        public ProjectTotalViewModel VMobj { get; set; }
 
     }
 

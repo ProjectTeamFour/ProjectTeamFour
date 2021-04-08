@@ -1,0 +1,43 @@
+﻿@model SelectDraftPlanViewModel
+
+
+@*<h4>選擇方案</h4>*@
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <h3 id="amount">$ @Model.DraftPlanPrice.ToString("###,###")</h3>
+            <div class="img-wrap">
+                <img class="card-img-top" src="@Model.DraftPlanImgUrl" alt="Card image cap">
+            </div>
+            <h4 class="card-title">
+                @Model.DraftPlanTitle
+            </h4>
+            <p class="card-text">
+                <div id="perk-info-down" class="wrapper">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6">
+                            <h6 class="text-secondary text-normal text-small">贊助人數</h6>
+                            <h4 class="text-large">@Model.DraftPlanFundedPeople</h4>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6">
+                            <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
+                            <h4 class="text-large">@Model.DraftPlanShipDate</h4>
+                        </div>
+
+                        <div class="col-12 col-sm-12">
+                            <h6 class="text-secondary text-normal text-small">寄送地點</h6>
+                            <h4 class="text-large">寄送至特定地點</h4>
+                        </div>
+                    </div>
+                </div>
+            </p>
+            @*<button id="donate-btn" onclick="AddToMyCart('@Model.DraftPlanId', '@Model.DraftPlanTitle', '@Model.DraftPlanImgUrl', '@Model.DraftPlanPrice','@Model.DraftQuantityLimit','@Model.DraftProjectId')">贊助此回饋方案</button>*@
+            <button id="donate-btn">贊助此回饋方案</button>
+        </div>
+    </div>
+</div>
+
+@section topCSS{
+    <link href="~/Assets/Css/ProductDetailPage/campaignDetail.css" rel="stylesheet" />
+}

@@ -12,7 +12,7 @@ using ProjectTeamFour_Backend.Models;
 using ProjectTeamFour_Backend.Services;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.ViewModels;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -28,7 +28,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _orderService = orderService;
             _logger = logger;
         }
-
+        
         // GET: api/Orders
         [HttpGet]
         public async Task<ActionResult<BaseModel.BaseResult<OrderViewModel.OrderListResult>>> GetAll()
@@ -70,10 +70,10 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器PUT方法被呼叫-傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(orderSingle));
 
             var result = new BaseModel.BaseResult<OrderViewModel.OrderSingleResult>();
-            var updateOrder = await _orderService.UpdateOrder(orderSingle);
+            var updateOrder =await _orderService.UpdateOrder(orderSingle);
 
             result.Msg = updateOrder;
-            if(result.Msg == "無匹配訂單")
+            if(result.Msg == "查無此筆訂單")
             {
                 result.IsSuccess = false;
                 return result;
@@ -89,19 +89,6 @@ namespace ProjectTeamFour_Backend.WebApi
                 return result;
             }
         }
-
-        //// POST: api/Orders
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<Order>> PostOrder([FromBody]Order order)
-        //{
-        //    _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器Post方法被呼叫-傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(order));
-
-        //    _context.Orders.Add(order);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
-        //}
 
         //// DELETE: api/Orders/5
         [HttpDelete]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Interfaces
 {
-    interface IProjectService
+    public interface IProjectService
     {
         /// <summary>
         /// 取得所有提案
@@ -29,5 +29,13 @@ namespace ProjectTeamFour_Backend.Interfaces
         ProjectViewModel.ProjectSingleResult GetById(ProjectViewModel.GetByIdRequest request);
 
         ProjectViewModel.ProjectListResult GetTotalSale();
+
+
+        ProjectViewModel.ProjectListResult GetWaitForPass();
+
+
+        String EditWaitForPassProject(ProjectViewModel.ProjectSingleResult request);
+
+
     }
 }
