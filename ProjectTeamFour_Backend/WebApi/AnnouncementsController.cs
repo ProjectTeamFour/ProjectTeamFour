@@ -50,6 +50,7 @@ namespace ProjectTeamFour_Backend.WebApi
         [HttpPost]
         public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input)
         {
+            
             var User = "管理員";
             var result = _announcementService.CreateAnnouncement(input, User);
             return result;

@@ -109,7 +109,7 @@ namespace ProjectTeamFour.Service
                 OrderPhone = orderMem.OrderPhone,
                 OrderConEmail = orderMem.OrderConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,
-                OrderDate = DateTime.Now,
+                OrderDate = DateTime.UtcNow.AddHours(8),
                 condition = "未付款",
             };
             _repository.Create(order);
@@ -163,8 +163,8 @@ namespace ProjectTeamFour.Service
                 
 
                 try
-                {
-                    result.OrderDate = DateTime.Now;
+                {                    
+                    result.OrderDate = DateTime.UtcNow.AddHours(8);
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
@@ -173,6 +173,7 @@ namespace ProjectTeamFour.Service
                         item.condition = result.condition;
                         var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
                         var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
+                        ///判斷結完帳之後的募資進度
                         foreach(var pj in projectview)
                         {
 

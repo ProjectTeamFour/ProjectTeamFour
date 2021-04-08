@@ -68,6 +68,9 @@ namespace ProjectTeamFour_Backend.WebApi
         
         public async Task <BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>> GetAll()
         {
+            //var result = Members.Join(Projects, m => m.MemberId, p => p.MemberId, (m, p) => new { m.MemberId, m.MemberRegEmail, m.MemberBirth, p.ProjectId, p.ProjectName, p.FundingAmount, p.AmountThreshold, p.StartDate, p.EndDate, p.ProjectStatus })
+            //.Join(Plans, p => p.ProjectId, pl => pl.ProjectId, (p, pl) => new { p.MemberId, p.MemberRegEmail, p.ProjectId, p.ProjectName, pl.PlanId, pl.PlanTitle, pl.AddCarCarPlan });
+
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>();
 
             _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "BackendMembersController GetAll方法被呼叫");
@@ -168,7 +171,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器DeleteBackendMember方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(backendSingle.MemberId)} " + backendSingle.MemberId);
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid||backendSingle.MemberId==2)
             {
                 result.Msg = "查無此筆資料";
                 result.IsSuccess = false;

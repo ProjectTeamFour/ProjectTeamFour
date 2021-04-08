@@ -33,7 +33,7 @@ namespace ProjectTeamFour.Service
             {
                 var viewModel = new MemberViewModel
                 {
-                    MemberId=entity.MemberId,
+                    MemberId = entity.MemberId,
                     MemberName = entity.MemberName,
                     MemberTeamName = entity.MemberTeamName,
                     MemberAccount = entity.MemberAccount,
