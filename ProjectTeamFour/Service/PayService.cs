@@ -109,7 +109,7 @@ namespace ProjectTeamFour.Service
                 OrderPhone = orderMem.OrderPhone,
                 OrderConEmail = orderMem.OrderConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,
-                OrderDate = DateTime.UtcNow,
+                OrderDate = DateTime.UtcNow.AddHours(8),
                 condition = "未付款",
             };
             _repository.Create(order);
@@ -164,7 +164,7 @@ namespace ProjectTeamFour.Service
 
                 try
                 {                    
-                    result.OrderDate = DateTime.UtcNow;
+                    result.OrderDate = DateTime.UtcNow.AddHours(8);
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
