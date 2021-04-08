@@ -1,4 +1,4 @@
-﻿////var loginApp = new Vue({
+﻿
 
 let btnLogin = document.querySelector(".btn-login");
 let jwtAuthUrl = "https://localhost:44344/api/Manager/Login";

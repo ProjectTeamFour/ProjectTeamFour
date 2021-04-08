@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectTeamFour_Backend.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    public class MemberController : Controller
+    public class MemberController : BaseController
     {
         [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult MemberIndex()

@@ -171,42 +171,53 @@
                     <span>Charts</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="~/Order/Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Order</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+
             @if (manager == "admin")
             {
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Order/Index">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMemberPages"
+                       aria-expanded="true" aria-controls="collapseMemberPages">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Order</span>
+                        <span>會員管理</span>
                     </a>
+                    <div id="collapseMemberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("MemberIndex","Member")">前台會員管理</a>
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("BackendMemberIndex","Member")">後台會員管理</a>
+
+
+                        </div>
+                    </div>
                 </li>
             }
             else
             {
-                <li class="nav-item" style="display:none">
-                    <a class="nav-link" href="~/Order/Index">
+                <li class="nav-item" style="display:none;">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMemberPages"
+                       aria-expanded="true" aria-controls="collapseMemberPages">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Order</span>
+                        <span>會員管理</span>
                     </a>
+                    <div id="collapseMemberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("MemberIndex","Member")">前台會員管理</a>
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("BackendMemberIndex","Member")">後台會員管理</a>
+
+
+                        </div>
+                    </div>
                 </li>
             }
-            <!-- Nav Item - Tables -->
 
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMemberPages"
-                   aria-expanded="true" aria-controls="collapseMemberPages">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>會員管理</span>
-                </a>
-                <div id="collapseMemberPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("MemberIndex","Member")">前台會員管理</a>
-                        <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("BackendMemberIndex","Member")">後台會員管理</a>
-
-
-                    </div>
-                </div>
-            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
