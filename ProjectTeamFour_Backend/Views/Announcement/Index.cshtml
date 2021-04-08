@@ -29,9 +29,9 @@
                 </b-form-textarea>
             </b-form-group>
             <b-form-group label="發送給誰" label-for="MemberId">
-                <b-form-textarea id="MemberId"
+                <b-form-input id="MemberId"
                                  v-model="Model.MemberId">
-                </b-form-textarea>
+                </b-form-input>
             </b-form-group>
         </b-modal>
             <!--主畫面-->
@@ -151,21 +151,26 @@
            
 
             @*編輯 modal*@
-            <b-modal id="edit-announcement" class="col-4" title="編輯通知"
-                     ok-title="儲存"
-                     cancel-title="退出"
-                     @@ok="saveAnnouncement">
-                <b-form-group label="通知標題" label-for="Title">
-                    <b-form-input id="Title"
-                                  v-model="Model.Title">
-                    </b-form-input>
-                </b-form-group>
-                <b-form-group label="消息內容" label-for="Content">
-                    <b-form-textarea id="Content"
-                                     v-model="Model.Content">
-                    </b-form-textarea>
-                </b-form-group>
-            </b-modal>
+        <b-modal id="edit-announcement" class="col-4" title="編輯通知"
+                 ok-title="儲存"
+                 cancel-title="退出"
+                 @@ok="saveAnnouncement">
+            <b-form-group label="通知標題" label-for="Title">
+                <b-form-input id="Title"
+                              v-model="Model.Title">
+                </b-form-input>
+            </b-form-group>
+            <b-form-group label="消息內容" label-for="Content">
+                <b-form-textarea id="Content"
+                                 v-model="Model.Content">
+                </b-form-textarea>
+            </b-form-group>
+            <b-form-group label="發送給誰" label-for="MemberId">
+                <b-form-input id="MemberId"
+                                 v-model="Model.MemberId">
+                </b-form-input>
+            </b-form-group>
+        </b-modal>
         </b-container>
         </div>
     </template>
