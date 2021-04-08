@@ -168,7 +168,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器DeleteBackendMember方法被呼叫 ,傳入的資料為:" + $"Product controller Get called ,Parameter is {nameof(backendSingle.MemberId)} " + backendSingle.MemberId);
 
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid||backendSingle.MemberId==2)
             {
                 result.Msg = "查無此筆資料";
                 result.IsSuccess = false;

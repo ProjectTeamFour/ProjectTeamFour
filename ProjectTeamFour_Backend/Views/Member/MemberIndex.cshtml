@@ -151,10 +151,10 @@
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
                         關於
                     </b-button>
-                    <b-button size="sm" @@click="row.toggleDetails">
+                    <b-button size="sm" @@click="row.toggleDetails" variant="info">
                         {{ row.detailsShowing ? '收起' : '更多' }}
                     </b-button>
-                    <b-button size="sm" @@click="sendEmailInfo(row.item, row.index, $event.target)" class="mr-1">
+                    <b-button size="sm" @@click="sendEmailInfo(row.item, row.index, $event.target)" class="mr-1" variant="success">
                         寄信
                     </b-button>
                 </template>
@@ -282,7 +282,7 @@
                 axios.get("/Api/Members/GetAll")
                     .then((res) => {
                         this.items = res.data.body.memberList;
-
+                        this.mounted();
                         this.isBusy = false;
                     });
             },

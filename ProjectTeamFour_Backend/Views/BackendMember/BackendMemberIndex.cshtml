@@ -208,13 +208,13 @@
                 </b-col>
                 @*頁數模板*@
                 <b-col sm="7" md="6" class="my-1">
-                    <b-pagination v-model="currentPage"
-                                  :total-rows="totalRows"
-                                  :per-page="perPage"
-                                  align="fill"
-                                  size="sm"
-                                  class="my-0"></b-pagination>
-                </b-col>
+                <b-pagination v-model="currentPage"
+                              :total-rows="totalRows"
+                              :per-page="perPage"
+                              align="fill"
+                              size="sm"
+                              class="my-0"></b-pagination>
+            </b-col>
             </b-row>
 
             <!-- Main table element -->
@@ -244,7 +244,10 @@
                 <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
                     修改
                 </b-button>
-                <b-button size="sm" @@click="deleteInfo(row.item)" class="mr-1" variant="danger">
+                <b-button size="sm" @@click="deleteInfo(row.item)" v-if="row.item.memberName=='admin'" disabled class="mr-1" variant="danger">
+                    無法刪除
+                </b-button>
+                <b-button size="sm" @@click="deleteInfo(row.item)" v-else  class="mr-1" variant="danger">
                     刪除
                 </b-button>
             </template>
