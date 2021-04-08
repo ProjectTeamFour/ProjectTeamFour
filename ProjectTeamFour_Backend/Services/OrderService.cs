@@ -49,7 +49,7 @@ namespace ProjectTeamFour_Backend.Services
                         OrderName = o.OrderName,
                         OrderTotalAccount = o.OrderTotalAccount,
                         OrderPhone = o.OrderPhone,
-                        OrderDate = o.OrderDate.ToString("d"),
+                        OrderDate = o.OrderDate.Date.ToString("d"),
                         Condition = o.Condition,
                         TradeNo = o.TradeNo,
                         MemberId = o.MemberId,
