@@ -39,7 +39,7 @@ namespace ProjectTeamFour_Backend.Filters
         {
 
             var manager = context.HttpContext.Request.Cookies.TryGetValue("R", out string Role);
-            if (Role != "true")
+            if (Role != "True")
             {
                 context.HttpContext.Response.Redirect("/Home/Index");
             }
