@@ -96,10 +96,12 @@
                      stacked="md"
                      show-empty
                      small
+                     
                      @@filtered="onFiltered">
-                <template #cell(name)="row">
-                    {{ row.value.first }} {{ row.value.last }}
+                <template #cell(memberId)="row">
+                    {{ row.value == '235' ?'所有人':row.value }}
                 </template>
+                
 
                 <template #cell(actions)="row">
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1">
