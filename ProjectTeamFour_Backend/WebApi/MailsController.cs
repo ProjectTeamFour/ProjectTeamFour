@@ -31,7 +31,7 @@ namespace ProjectTeamFour_Backend.WebApi
             _configuration = configuration;
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<BaseModel.BaseResult<MailViewModel.MailBaseSingleViewModel>>> SendMail([FromBody] MailViewModel.MailBaseSingleViewModel mailBaseSingleVM)
         {
             return await Task.Run(() =>
@@ -49,7 +49,7 @@ namespace ProjectTeamFour_Backend.WebApi
                     return result;
                 }
 
-                var queryResult = _repository.GetAll<Member>().FirstOrDefault(M => M.MemberConEmail == mailBaseSingleVM.MemberConEmail);
+                var queryResult = _repository.GetAll<Member>().FirstOrDefault(M => M.MemberRegEmail == mailBaseSingleVM.MemberRegEmail);
 
                 if (queryResult == default)
                 {
@@ -68,7 +68,7 @@ namespace ProjectTeamFour_Backend.WebApi
                 string finalReturnData = setReplacedEmailData(returnData, mailBaseSingleVM.MailBody, queryResult.MemberName);
 
                 var msg = new MailMessage("raisebubu@gmail.com",
-                  queryResult.MemberRegEmail, "集資車車 - 管理員通知"+ mailBaseSingleVM.MailTitle,
+                  queryResult.MemberRegEmail, "集資車車 - 管理員通知："+ mailBaseSingleVM.MailTitle,
                   finalReturnData);
 
                 msg.IsBodyHtml = true;

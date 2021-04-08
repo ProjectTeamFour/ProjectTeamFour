@@ -24,6 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Template\mailtemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Template\mailtemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="jQuery.Validation" Version="1.17.0" />
