@@ -16,15 +16,19 @@ namespace ProjectTeamFour.Controllers
 		private readonly MyProjectsService _myProjectsService;
 		private readonly CommentService _commentService;
 		private readonly BackingService _backingService;
+        private readonly AnnouncementService _announcementService;
+		private readonly PlanRecordsService _planRecordsService;
 
 		public UserInfoController()
-			{
+		{
 			    _logService = new LogService();
 				_memberService = new MemberService();
 				_myProjectsService = new MyProjectsService();
 				_commentService = new CommentService();
 			    _backingService = new BackingService();
-			}
+                _planRecordsService = new PlanRecordsService();
+                _announcementService = new AnnouncementService();
+        }
 
         // GET: PersonInfo
         //[CustomAuthorize(flagNum = 1)]
@@ -40,17 +44,23 @@ namespace ProjectTeamFour.Controllers
 				model.MyProjects  = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
 
                 model.MyDraftProjects = _myProjectsService.GetDraftProjectsbyMemberId(model.MemberId);
+                //根據會員id抓取通知紀錄
+                model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
 				
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
+
 				if(model.MyProjects.Count==0)
                 {
 					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+                    ///如果model.PlanRecords = null須防止例外跳出
+                    model.PlanRecords = null;
 				}
 				else
                 {
 					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
-				}
+                    model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
+                }
 				//該會員為提案者沒有留過言，卻要回覆留言
 				
 
@@ -186,6 +196,8 @@ namespace ProjectTeamFour.Controllers
 
                 //根據會員id抓取會員購買紀錄
                 model.Records = _backingService.QueryOrder(model.MemberId);
+                //根據會員id抓取通知
+                model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
                 if (model.MyProjects.Count == 0)
                 {
                     model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);

@@ -157,7 +157,7 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '展開' }}
                     </b-button>
-                    <b-button size="sm" v-if="row.item.submitLimit==0 || row.item.submitLimit==null" disable disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                    <b-button size="sm" v-if="row.item.submitLimit==0 || row.item.submitLimit==null"  disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
                         無須審核
                     </b-button>
                     <b-button size="sm" v-else  @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">

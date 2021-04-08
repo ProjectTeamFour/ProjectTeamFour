@@ -4,11 +4,12 @@
         Model: {
             Title:'',
             Content: '',
-            MemberId:235
+            MemberId:'235',
         },
         items: [],
         fields: [
             { key: 'announcementId', label: '編號', sortable: true },
+            { key: 'memberId', label: '會員編號', sortable: true },
             { key: 'title', label: '通知標題', class: '' },
             { key: 'createTime', label: '發布時間', class: '' },
             { key: 'createUser', label: '發布人', class: '' },
@@ -53,8 +54,9 @@
     methods: {
         
         info(item, index, button) {
-            this.infoModal.title = `編號: ${JSON.stringify(item.announcementId, null, 2)}`
+            this.infoModal.title = `標題: ${JSON.stringify(item.title, null, 2)}`
             this.infoModal.id = `編號:${JSON.stringify(item.announcementId, null, 2)}\n\n`
+            this.infoModal.MemberId = `會員編號:${JSON.stringify(item.memberId,null,2)}\n\n`
             this.infoModal.content = `\n${JSON.stringify(item.content, null, 0)}\n\n`
             this.infoModal.createTime = `\n發布時間:${JSON.stringify(item.createTime, null, 2)}\n\n`
             this.infoModal.createUser = `發布人:${JSON.stringify(item.createUser, null, 2)}\n\n`
@@ -103,6 +105,20 @@
                 soild: true
             })
         },
+        removeSuccess(variant = primary) {
+            this.$bvToast.toast('刪除成功!', {
+                title: `刪除成功`,
+                variant: variant,
+                solid: true
+            })
+        },
+        removeError(variant = danger) {
+            this.$bvToast.toast('刪除失敗!請聯絡客服人員', {
+                title: `刪除失敗`,
+                variant: variant,
+                solid: true
+            })
+        },
         clearModel() {
             this.Model.Title = '';
             this.Model.Content = '';
@@ -146,8 +162,21 @@
                 });
         },
         removeAnnouncement(data, index, button) {
-            console.log("123");
-            /*axios.delete(`/Api/Announcements/DeleteAnnouncement?announcementId=${this.index}`);*/
+            this.Model.announcementId = data.announcementId;
+            axios.delete("/Api/Announcements/DeleteAnnouncement", {
+                data: {
+                    'AnnouncementId': data.announcementId
+                }
+            })
+                .then(res => {
+                    console.table(res);
+                    this.removeSuccess('primary');
+                    this.getAnnouncement();
+                })
+                .catch(error => {
+                    this.removeError('danger');
+                    console.table(error);
+                })
         },
     },
 });

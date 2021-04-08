@@ -1,4 +1,15 @@
 ﻿
+
+@section topCSS{
+    <style>
+       .back{
+           color:red;
+           border:red solid 1px;
+       }
+    </style>
+
+}
+
 <div id="ordertable" class="col-12 m-auto">
     <template>
         <b-container fluid>
@@ -125,6 +136,7 @@
                      :sort-desc.sync="sortDesc"
                      :sort-direction="sortDirection"
                      :busy="isBusy"
+                     @*v-bind:class="{'back':items.condition == '需退款'}"*@
                      stacked="md"
                      show-empty
                      small
@@ -144,7 +156,7 @@
                         刪除
                     </b-button>
                 </template>
-                
+
 
                 <template #row-details="row">
                     <b-card>
@@ -172,40 +184,40 @@
 
             <!-- Info modal -->
             <b-modal :id="infoModal.id" :title="infoModal.title" @*@@hide="resetInfoModal"*@
-            @@ok="changedata" ok-title="修改" cancel-title="取消">
-        <form ref="form" submit.stop.prevent="updateSubmit">
-            <b-form-group label="訂單人名稱"
-                          label-for="infoModal.input-orderName"
-                          invalid-feedback="必填欄位"
-                          :state="infoModalOrderNameState">
-                <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
-            </b-form-group>
-            <b-form-group label="寄送地址"
-                          label-for="infoModal.input-orderAddress"
-                          invalid-feedback="必填欄位"
-                          :state="infoModalOrderAddressState">
-                <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
-            </b-form-group>
-            <b-form-group label="連絡電話"
-                          label-for="infoModal.input-orderPhone"
-                          invalid-feedback="必填欄位"
-                          :state="infoModalOrderPhoneState">
-                <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState" value="infoModal.orderPhone" required></b-form-input>
-            </b-form-group>
-            <b-form-group label="聯絡信箱"
-                          label-for="infoModal.input-orderConEmail"
-                          invalid-feedback="必填欄位"
-                          :state="infoModalOrderConEmailState">
-                <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState" value="infoModal.orderConEmail" required></b-form-input>
-            </b-form-group>
-            <b-form-group label="付款狀態"
-                          label-for="infoModal.input-condition"
-                          invalid-feedback="必填欄位"
-                          :state="infoModalConditionState">
-                <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState" value="infoModal.condition" required></b-form-input>
-            </b-form-group>
-        </form>
-    </b-modal>
+                     @@ok="changedata" ok-title="修改" cancel-title="取消">
+                <form ref="form" submit.stop.prevent="updateSubmit">
+                    <b-form-group label="訂單人名稱"
+                                  label-for="infoModal.input-orderName"
+                                  invalid-feedback="必填欄位"
+                                  :state="infoModalOrderNameState">
+                        <b-form-input id="infoModal.input-orderName" v-model="infoModal.orderName" :state="infoModalOrderNameState" value="infoModal.orderName" required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="寄送地址"
+                                  label-for="infoModal.input-orderAddress"
+                                  invalid-feedback="必填欄位"
+                                  :state="infoModalOrderAddressState">
+                        <b-form-input id="infoModal.input-orderAddress" v-model="infoModal.orderAddress" :state="infoModalOrderAddressState" value="infoModal.orderAddress" required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="連絡電話"
+                                  label-for="infoModal.input-orderPhone"
+                                  invalid-feedback="必填欄位"
+                                  :state="infoModalOrderPhoneState">
+                        <b-form-input id="infoModal.input-orderPhone" v-model="infoModal.orderPhone" :state="infoModalOrderPhoneState" value="infoModal.orderPhone" required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="聯絡信箱"
+                                  label-for="infoModal.input-orderConEmail"
+                                  invalid-feedback="必填欄位"
+                                  :state="infoModalOrderConEmailState">
+                        <b-form-input id="infoModal.input-orderConEmail" v-model="infoModal.orderConEmail" :state="infoModalOrderConEmailState" value="infoModal.orderConEmail" required></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="付款狀態"
+                                  label-for="infoModal.input-condition"
+                                  invalid-feedback="必填欄位"
+                                  :state="infoModalConditionState">
+                        <b-form-input id="infoModal.input-condition" v-model="infoModal.condition" :state="infoModalConditionState" value="infoModal.condition" required></b-form-input>
+                    </b-form-group>
+                </form>
+            </b-modal>
 
         </b-container>
     </template>
@@ -215,24 +227,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script>
     const order = new Vue({
-        el:'#ordertable',
+        el: '#ordertable',
         data: {
             items: [], //裝order資料庫資料
             fields: [
                 { key: 'orderId', label: '訂單編號', sortable: true, sortDirection: 'desc' },
-                { key: 'memberId', label: '會員編號', sortable: true, class: 'text-center' ,sortDirection: 'desc' },                    
-                { key: 'orderName', label: '訂單人名稱', class: 'text-center' },                    
-                { key: 'orderAddress', label: '寄送地點', class: 'text-center' },                    
-                { key: 'orderPhone', label: '連絡電話', class: 'text-center' },                    
-                { key: 'orderConEmail', label: '聯絡信箱', class: 'text-center' },                    
-                { key: 'orderTotalAccount', label: '訂單總額', sortable: true, class: 'text-center' },                    
-                { key: 'tradeNo', label: '訂單流水號', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
-                { key: 'condition', label: '付款狀態', class: 'text-center', sortable: true, sortDirection: 'desc' }, 
-                { key: 'actions', label: '管理' },             
-
+                { key: 'memberId', label: '會員編號', sortable: true, class: 'text-center', sortDirection: 'desc' },
+                { key: 'orderName', label: '訂單人名稱', class: 'text-center' },
+                { key: 'orderAddress', label: '寄送地點', class: 'text-center' },
+                { key: 'orderPhone', label: '連絡電話', class: 'text-center' },
+                { key: 'orderConEmail', label: '聯絡信箱', class: 'text-center' },
+                { key: 'orderTotalAccount', label: '訂單總額', sortable: true, class: 'text-center' },
+                { key: 'tradeNo', label: '訂單流水號', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                { key: 'condition', label: '付款狀態', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                { key: 'orderDate',label:'成立時間',class:'text-center', sortable:true, sortDirection:'desc'},
+                { key: 'actions', label: '管理' },
             ],
             isError: false,
-            isBusy:true,
+            isBusy: true,
             totalRows: 1, //狀態預設範圍
             currentPage: 1,
             perPage: 20,
@@ -246,23 +258,23 @@
                 id: 'info-modal',
                 title: '',
                 //Modal內容
-                orderName : "",
-                orderAddress : "",
-                orderPhone : "",
-                orderConEmail : "",
-                condition : "",
+                orderName: "",
+                orderAddress: "",
+                orderPhone: "",
+                orderConEmail: "",
+                condition: "",
             },
             //修改驗證 有填就好(目前)
             infoModalOrderNameState: null,
             infoModalOrderAddressState: null,
             infoModalOrderPhoneState: null,
             infoModalOrderConEmailState: null,
-            infoModalConditionState:null,
+            infoModalConditionState: null,
             //會員修改ajax物件
-            changeOrder: {orderId:"",orderName:"", orderAddress:"",orderPhone:"",orderConEmail:"",condition:""},
+            changeOrder: { orderId: "", orderName: "", orderAddress: "", orderPhone: "", orderConEmail: "", condition: "" },
         },
         created: function () {
-            this.getall();//呼叫axios            
+            this.getall();//呼叫axios
         },
         computed: {
             sortOptions() {
@@ -272,16 +284,16 @@
                     .map(f => {
                         return { text: f.label, value: f.key }
                     })
-            },         
+            },
         },
         mounted() {
             // Set the initial number of items
             this.totalRows = this.items.length
-        },                
+        },
         methods: {
             //infoModal 預設
-            info(item, index, button) {                
-                this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`    
+            info(item, index, button) {
+                this.infoModal.title = `修改訂單資料: ${JSON.stringify(item.orderId, null, 2)}`
                 this.infoModal.orderId = item.orderId;
                 this.infoModal.orderName = item.orderName;
                 this.infoModal.orderAddress = item.orderAddress;
@@ -297,7 +309,7 @@
                         this.mounted();
                         this.isBusy = false;
                     });
-            },            
+            },
             resetInfoModal() {
                 this.infoModal.title = '';
                 this.infoModal.orderName = '';
@@ -324,7 +336,7 @@
             changedata(btnModal) {
                 btnModal.preventDefault()
                 this.updateSubmit()
-            },                        
+            },
             mounted() {
                 // Set the initial number of items
                 this.totalRows = this.items.length
@@ -387,13 +399,13 @@
                     data: JSON.stringify(this.changeOrder),
                     success: function (data, textStatus, jqXHR) {
                         if (data.msg == "更新成功") {
-                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.changeOrder.orderId);                            
+                            let updateindex = updateObj.items.findIndex(x => x.orderId == updateObj.changeOrder.orderId);
                             updateObj.items[updateindex].orderName = updateObj.changeOrder.orderName;
                             updateObj.items[updateindex].orderPhone = updateObj.changeOrder.orderPhone;
                             updateObj.items[updateindex].orderAddress = updateObj.changeOrder.orderAddress;
                             updateObj.items[updateindex].orderConEmail = updateObj.changeOrder.orderConEmail;
                             updateObj.items[updateindex].condition = updateObj.changeOrder.condition;
-
+                            console.log(data);
                             Swal.fire({
                                 title: "更新成功",
                                 icon: "success",

@@ -20,13 +20,18 @@
                  @@ok="createAnnouncement">
             <b-form-group label="通知標題" label-for="Title">
                 <b-form-input id="Title"
-                                 v-model="Model.Title">
+                              v-model="Model.Title">
                 </b-form-input>
             </b-form-group>
             <b-form-group label="消息內容" label-for="Content">
                 <b-form-textarea id="Content"
                                  v-model="Model.Content">
                 </b-form-textarea>
+            </b-form-group>
+            <b-form-group label="發送給誰" label-for="MemberId">
+                <b-form-input id="MemberId"
+                                 v-model="Model.MemberId">
+                </b-form-input>
             </b-form-group>
         </b-modal>
             <!--主畫面-->
@@ -115,6 +120,7 @@
                     <b-card>
                         <ul v-for="" id="mainContent">
                             <li>編號 : {{ row.item.announcementId }}</li>
+                            <li>會員編號:{{row.item.memberId}}</li>
                             <li>通知標題 : {{ row.item.title}}</li>
                             <li>發布時間 : {{ row.item.createTime }}</li>
                             <li>發布人 : {{ row.item.createUser }}</li>
@@ -132,33 +138,39 @@
             </b-table>
 
             @*Info modal*@
-            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
-                <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.id }}</pre>
-                <pre style="font-size:18px" class="AnnouncementModal">通知內容:</pre>
-                <div style="font-size:18px" class="AnnouncementModal-content">{{ infoModal.content }}</div>
-                <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.createTime }}</pre>
-                <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.createUser }}</pre>
-                <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editTime }}</pre>
-                <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editUser }}</pre>
-            </b-modal>
-            <b-button v-b-modal.edit-announcement>新增最新消息</b-button>
+        <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @@hide="resetInfoModal">
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.Id }}</pre>
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.memberId }}</pre>
+            <pre style="font-size:18px" class="AnnouncementModal">通知內容:</pre>
+            <div style="font-size:18px" class="AnnouncementModal-content">{{ infoModal.content }}</div>
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.createTime }}</pre>
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.createUser }}</pre>
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editTime }}</pre>
+            <pre style="font-size:18px" class="AnnouncementModal">{{ infoModal.editUser }}</pre>
+        </b-modal>
+           
 
             @*編輯 modal*@
-            <b-modal id="edit-announcement" class="col-4" title="編輯通知"
-                     ok-title="儲存"
-                     cancel-title="退出"
-                     @@ok="saveAnnouncement">
-                <b-form-group label="通知標題" label-for="Title">
-                    <b-form-input id="Title"
-                                  v-model="Model.Title">
-                    </b-form-input>
-                </b-form-group>
-                <b-form-group label="消息內容" label-for="Content">
-                    <b-form-textarea id="Content"
-                                     v-model="Model.Content">
-                    </b-form-textarea>
-                </b-form-group>
-            </b-modal>
+        <b-modal id="edit-announcement" class="col-4" title="編輯通知"
+                 ok-title="儲存"
+                 cancel-title="退出"
+                 @@ok="saveAnnouncement">
+            <b-form-group label="通知標題" label-for="Title">
+                <b-form-input id="Title"
+                              v-model="Model.Title">
+                </b-form-input>
+            </b-form-group>
+            <b-form-group label="消息內容" label-for="Content">
+                <b-form-textarea id="Content"
+                                 v-model="Model.Content">
+                </b-form-textarea>
+            </b-form-group>
+            <b-form-group label="發送給誰" label-for="MemberId">
+                <b-form-input id="MemberId"
+                                 v-model="Model.MemberId">
+                </b-form-input>
+            </b-form-group>
+        </b-modal>
         </b-container>
         </div>
     </template>

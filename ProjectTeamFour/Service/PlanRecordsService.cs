@@ -1,5 +1,10 @@
-﻿using System;
+﻿using ProjectTeamFour.Models;
+using ProjectTeamFour.Repositories;
+using ProjectTeamFour.ViewModels;
+using ProjectTeamFour.ViewModels.ForMemberView;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using ProjectTeamFour.Repositories;
@@ -9,7 +14,7 @@ using ProjectTeamFour.ViewModels;
 
 namespace ProjectTeamFour.Service
 {
-    public class PermissionService
+    public class PlanRecordsService
     {
         private readonly DbContext _context;
         private readonly BaseRepository _repository;
@@ -34,41 +39,42 @@ namespace ProjectTeamFour.Service
                 PermissionId = permissionId,
                 Checked = false,
                 PermissionValue = mem_per
-               
-            };
-            if (per_value<=mem_per&&mem_perString[mem_perString.Length-per_valueString.Length] == '1')
-            {
+
+        public List<SubmissionProcessPlanViewModel> QueryResult(List<MyProjectViewModel> myProjectsVM)
+        {
                 cv.Checked = true;
             }
-            
-            return cv;
-        }
-        public string SetPermission(int memberId, int permissionId, bool check)
-        {
-            using (DbContextTransaction transaction = _context.Database.BeginTransaction())
+
+            List<SubmissionProcessPlanViewModel> submissionProcessPlanVM = new List<SubmissionProcessPlanViewModel>();
+            var queryResults = new List<Plan>();
+            foreach (var myProject in myProjectsVM)
             {
-                try
+                queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId).Select(x => x).ToList();
+                foreach (var queryResult in queryResults)
                 {
-                    int permissionValue = _repository.GetAll<Permission>().FirstOrDefault(p => p.PermissionId == permissionId).PermissionValue;
-                    Member entity = _repository.GetAll<Member>().FirstOrDefault(p => p.MemberId == memberId);
-                    if (check)
+                    SubmissionProcessPlanViewModel singleVM = new SubmissionProcessPlanViewModel
                     {
-                        entity.Permission = entity.Permission + permissionValue;
-                    }
-                    else
-                    {
-                        entity.Permission = entity.Permission - permissionValue;
-                    }
-                    _repository.Update(entity);
-                    transaction.Commit();
-                    return entity.Permission.ToString();
-                }
-                catch(Exception ex)
-                {
-                    transaction.Rollback();
-                    return ($"修改失敗:{ex.Message}");
+                        PlanDescription = queryResult.PlanDescription,
+                        AddCarCarPlan = queryResult.AddCarCarPlan,
+                        QuantityLimit = queryResult.QuantityLimit,
+                        SubmitLimit = (int)queryResult.SubmitLimit,
+                        PlanFundedPeople = queryResult.PlanFundedPeople,
+                        PlanId = queryResult.PlanId,
+                        PlanImgUrl = queryResult.PlanImgUrl,
+                        PlanPrice = queryResult.PlanPrice,
+                        PlanShipDate = queryResult.PlanShipDate.ToString("d"),
+                        PlanTitle = queryResult.PlanTitle,
+                        ProjectId = queryResult.ProjectId,
+                        ProjectName = queryResult.ProjectName,
+                        ProjectPlanId = queryResult.ProjectPlanId
+                    };
+                    submissionProcessPlanVM.Add(singleVM);
                 }
             }
+
+            return submissionProcessPlanVM;
+
+
         }
     }
 }

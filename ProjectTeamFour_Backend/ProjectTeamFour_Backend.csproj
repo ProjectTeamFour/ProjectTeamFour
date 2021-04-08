@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\LabContext.cs" />
     <Compile Remove="Services\MemberViewMdel.cs" />
   </ItemGroup>
 
@@ -24,9 +25,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Template\mailtemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Template\mailtemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="jQuery.Validation" Version="1.17.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
@@ -48,6 +58,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Shared\Partial\" />
+    <Folder Include="wwwroot\js\home\" />
   </ItemGroup>
 
   <ItemGroup>

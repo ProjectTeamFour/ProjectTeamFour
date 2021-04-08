@@ -34,7 +34,7 @@ namespace ProjectTeamFour_Backend.Services
                     Content = a.Content,
                     CreateTime = a.CreateTime,
                     CreateUser = a.CreateUser,
-                    EditTime = a.CreateTime,
+                    EditTime = a.EditTime,
                     EditUser = a.EditUser,
                     MemberId = a.MemberId
                 }).ToList();
@@ -73,6 +73,7 @@ namespace ProjectTeamFour_Backend.Services
             var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
             try
             {
+                data.MemberId = input.MemberId;
                 data.Content = input.Content;
                 data.Title = input.Title;
                 data.EditTime = DateTime.UtcNow.AddHours(8);
@@ -81,6 +82,23 @@ namespace ProjectTeamFour_Backend.Services
                 return result;
             }
             catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.IsSuccessful = false;
+                return result;
+            }
+        }
+
+        public OperationResult DeleteAnnouncement(AnnouncementViewModel.AnnouncementVM input)
+        {
+            var result = new OperationResult();
+            var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
+            try
+            {
+                _dbrepository.Delete(data);
+                return result;
+            }
+            catch(Exception ex)
             {
                 result.Exception = ex;
                 result.IsSuccessful = false;
