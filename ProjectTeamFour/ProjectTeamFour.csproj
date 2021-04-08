@@ -456,6 +456,7 @@
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PayService.cs" />
     <Compile Include="Service\PermissionService.cs" />
+    <Compile Include="Service\PlanRecordsService.cs" />
     <Compile Include="Service\ProjectDetailEntityService.cs" />
     <Compile Include="Service\ProjectsService.cs" />
     <Compile Include="Service\SubmissionProcessService.cs" />
