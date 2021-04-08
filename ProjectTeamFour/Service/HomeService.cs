@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Web;
 
 namespace ProjectTeamFour.Service
@@ -37,9 +38,9 @@ namespace ProjectTeamFour.Service
                 }
             };
 
-            foreach (var item in _repository.GetAll<Project>())
+            foreach (var item in _repository.GetAll<Project>().ToList())
             {
-
+                //UpdateProjectStatus(item);
                 ProjectViewModel pv = new ProjectViewModel()
                 {
                     ProjectMainUrl = item.ProjectMainUrl,
@@ -73,7 +74,8 @@ namespace ProjectTeamFour.Service
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
                     ProjectId = item.ProjectId,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
                 };
                 if (cv.QuantityLimit > 0)
                 {
@@ -125,6 +127,60 @@ namespace ProjectTeamFour.Service
         {
             return GetSearchCardPlan(x => x.PlanDescription.Contains(searchString));
         }
+
+
+        //設定時鐘
+        //public void setTaskAtFixedTime()
+        //{
+        //    DateTime now = DateTime.Now;
+        //    DateTime oneOClock = DateTime.Today.AddHours(1.0); //凌晨1：00
+        //    if (now > oneOClock)
+        //    {
+        //        oneOClock = oneOClock.AddDays(1.0);
+        //    }
+        //    int msUntilOne = (int)(oneOClock - now).TotalMilliseconds;
+
+        //    var t = new Timer(UpdateProjectStatus); //這裡呼
+        //    t.Change(msUntilOne, Timeout.Infinite);
+        //}
+
+        //回呼要做的事情
+
+        //public void UpdateProjectStatus(object state)
+        public void UpdateProjectStatus()
+        {
+            var result = _repository.GetAll<Project>().ToList();
+            foreach (Project item in result)
+            {
+                DateTime today = DateTime.Now;
+                double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+
+                if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
+                {
+                    item.ProjectStatus = "結束且成功";
+                }
+                else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
+                {
+                    item.ProjectStatus = "結束且失敗";
+                }
+                else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
+                {
+                    item.ProjectStatus = "集資成功";
+                }
+                else if (dateLine > 0 && item.FundingAmount < item.AmountThreshold)
+                {
+                    item.ProjectStatus = "集資中";
+                }
+                else
+                {
+                    item.ProjectStatus = "審核中";
+                }
+                _repository.Update(item);
+            }
+            //重新設定
+            //setTaskAtFixedTime();
+        }
+
 
 
 
@@ -201,7 +257,8 @@ namespace ProjectTeamFour.Service
                     PlanPrice = (int)item.PlanPrice,
                     PlanId = item.PlanId,
                     PlanDescription = item.PlanDescription,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan
                 };
                 if (planbox.QuantityLimit > 0)
                 {

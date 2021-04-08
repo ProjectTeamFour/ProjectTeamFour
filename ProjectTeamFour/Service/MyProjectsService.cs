@@ -33,6 +33,8 @@ namespace ProjectTeamFour.Service
 
             var ProjectItems = _repository.GetAll<Project>().Where(m => m.MemberId == memberId);
 
+            var DraftProjectItems = _repository.GetAll<DraftProject>().Where(dp => dp.MemberId == memberId);
+
             foreach (Project entity in ProjectItems)
             {
                 var myProjectVM = new MyProjectViewModel
@@ -58,6 +60,36 @@ namespace ProjectTeamFour.Service
         //{
         //    return (List<MyProjectViewModel>)_repository.GetAll<MyProjectViewModel>().Where(x => x.ApprovingStatus == approvingStatus);
         //}
+
+
+        public List<MyDraftProjectViewModel> GetDraftProjectsbyMemberId(int memberId)
+        {
+            var myDraftProjectsListVM = new List<MyDraftProjectViewModel>();
+
+            var DraftProjectItems = _repository.GetAll<DraftProject>().Where(dp => dp.MemberId == memberId);
+
+            foreach (DraftProject entity in DraftProjectItems)
+            {
+                var myDraftProjectVM = new MyDraftProjectViewModel
+                {
+                    DraftProjectId = entity.DraftProjectId,
+                    DraftProjectName = entity.DraftProjectName,
+                    DraftProjectCoverUrl = entity.DraftProjectCoverUrl,
+                    AmountThreshold = entity.AmountThreshold,
+                    DraftCreatedDate = entity.DraftCreatedDate,
+                    DraftLastEditTime = entity.DraftLastEditTime,
+                    DraftSubmittedDate = entity.DraftSubmittedDate,
+                    ApprovingStatus = entity.ApprovingStatus,
+                    ProjectStatus = entity.ProjectStatus,
+                    EndDate = entity.EndDate,
+                    StartDate = entity.StartDate,
+                };
+                myDraftProjectsListVM.Add(myDraftProjectVM);
+            }
+            return myDraftProjectsListVM;
+        }
+
+
 
 
     }

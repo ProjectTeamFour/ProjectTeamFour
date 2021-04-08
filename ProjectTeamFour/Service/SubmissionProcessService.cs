@@ -25,10 +25,11 @@ namespace ProjectTeamFour.Service
 
         public OperationResult ReceiveSubmissionData(SubmissionProcessViewModel input, int Id)
         {
-            var result = new OperationResult();
+            OperationResult result = new OperationResult();
 
             var member = _repository.GetAll<Member>().Where((x) => x.MemberId == Id).FirstOrDefault();
 
+            result.Status = member.MemberId;
 
             //using (var transaction = _context.Database.BeginTransaction())
             //{
@@ -83,6 +84,8 @@ namespace ProjectTeamFour.Service
 
                     //
 
+                
+
                     List<SubmissionProcessPlanViewModel> planObj = input.PlanObject;
 
                     foreach (var item in planObj)
@@ -129,6 +132,121 @@ namespace ProjectTeamFour.Service
             return result;
 
         }
+
+
+        public OperationResult ReceiveDraftData(SubmissionProcessViewModel input, int Id)
+        {
+            OperationResult result = new OperationResult();
+
+            var member = _repository.GetAll<Member>().Where((x) => x.MemberId == Id).FirstOrDefault();
+
+
+            result.Status = member.MemberId;
+
+
+            //using (var transaction = _context.Database.BeginTransaction())
+            //{
+            try
+            {
+                member.MemberConEmail = input.MemberConEmail;
+                member.MemberPhone = input.MemberPhone;
+                member.ProfileImgUrl = input.ProfileImgUrl;
+                member.AboutMe = input.AboutMe;
+                member.MemberWebsite = input.MemberWebsite;
+                member.MemberName = input.CreatorName;   //可以同步更動改會員名
+
+                _repository.Update(member);
+                result.IsSuccessful = true;
+
+                //
+                
+                DraftProject pr_entity = new DraftProject
+                {
+                    MemberId = member.MemberId, //foreign
+                    DraftProjectName = input.ProjectName,
+                    AmountThreshold = input.AmountThreshold,
+                    Category = input.Category,
+                    StartDate = DateTime.ParseExact(input.StartDate, "yyyyMMdd", null),
+                    EndDate = DateTime.ParseExact(input.EndDate, "yyyyMMdd", null),
+                    DraftProjectVideoUrl = input.ProjectVideoUrl,
+                    DraftProjectMainUrl = input.ProjectMainUrl,
+                    DraftProjectCoverUrl = input.ProjectCoverUrl,
+                    DraftProjectPrincipal = input.ProjectPrincipal,
+                    IdentityNumber = input.IdentityNumber,
+                    CreatorName = input.CreatorName,
+                    DraftProjectImgUrl = input.ProjectImgUrl,
+                    DraftProject_Question = input.Project_Question,
+                    DraftProject_Answer = input.Project_Answer,
+                    DraftProjectPlansCount = input.DraftProjectPlansCount,
+                    ProjectStatus = "審核中",
+                    DraftCreatedDate = input.CreatedDate,
+                    DraftSubmittedDate = input.SubmittedDate,
+                    DraftLastEditTime = input.LastEditTime,
+                    FundingAmount = 0,
+                    Fundedpeople = 0,
+                    ApprovingStatus = 0,
+
+                };
+                _repository.Create(pr_entity);
+                result.IsSuccessful = true;
+
+
+                //
+
+
+                if (input.PlanObject != null)
+                {
+
+                    List<SubmissionProcessPlanViewModel> planObj = input.PlanObject;
+
+                    foreach (var item in planObj)
+                    {
+                        DraftPlan pl_entity = new DraftPlan
+                        {
+                            DraftProjectId = pr_entity.DraftProjectId,  //foreign
+                            DraftProjectName = pr_entity.DraftProjectName,  //同步寫入
+                            DraftProjectPlanId = item.ProjectPlanId,
+                            DraftPlanPrice = item.PlanPrice,
+                            DraftPlanTitle = item.PlanTitle,
+                            DraftQuantityLimit = item.QuantityLimit,
+                            DraftPlanDescription = item.PlanDescription,
+                            DraftPlanImgUrl = item.PlanImgUrl,
+                            DraftPlanShipDate = DateTime.ParseExact(item.PlanShipDate, "yyyyMMdd", null),
+                            DraftAddCarCarPlan = item.AddCarCarPlan,
+
+                        };
+
+                        _repository.Create(pl_entity);
+                        result.IsSuccessful = true;
+
+                    }
+                }
+
+
+                ////這裡以下還沒測
+                //var project = _repository.GetAll<Project>().LastOrDefault((x) => x.MemberId == Id);
+                //var planCount = _repository.GetAll<Plan>().Where((x) => x.ProjectId == project.ProjectId).Count();
+
+                //project.ProjectPlansCount = planCount;  //寫入幾個plans
+
+                //_repository.Update(project);
+                //result.IsSuccessful = true;
+                //transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.DateTime = DateTime.Now;
+                result.IsSuccessful = false;
+                //transaction.Rollback();
+            }
+            //}
+            return result;
+
+        }
+
+
+
 
         public int ReturnLoginnerId()
         {

@@ -1,0 +1,41 @@
+﻿
+
+@section topCSS{
+    <link href="~/Assets/Css/StartAProjectPage/savedraftfail.css" rel="stylesheet" />
+}
+
+@{
+    int MemberId = ViewBag.MemberId;
+}
+
+<div class="finishedsendemail" id="finishedsendemail">
+    <section class="savedraftfail">
+
+        <div class="container d-flex flex-column">
+            <div class="savedraftfail-item text-center">
+                <h3>儲存草稿失敗..</h3>
+            </div>
+
+            <div class="inputbox-item pb-3">
+                <p class="d-flex justify-content-center welcome text-center">目前提案系統維修中<br>有任何問題可以聯絡集資車車客服</p>
+            </div>
+
+            <div class="savedraftfail-item inputbox">
+                <div class="inputbox-item">
+                    <a href="/UserInfo/Member/@MemberId" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 返回個人頁面 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="savedraftfail-item d-flex justify-content-between changestatus">
+                <a href="/Home/Index" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>返回首頁</p>
+                </a>
+                <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:56661",
-      "sslPort": 44344
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -32,6 +32,10 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
       "useSSL": true
+    },
+    "WSL 2": {
+      "commandName": "WSL2",
+      "distributionName": ""
     }
   }
 }

@@ -1,0 +1,42 @@
+﻿
+
+
+@section topCSS{
+    <link href="~/Assets/Css/StartAProjectPage/savedraftsuccess.css" rel="stylesheet" />
+}
+
+@{
+    int MemberId = ViewBag.MemberId;
+}
+
+<div class="finishedsendemail" id="finishedsendemail">
+    <section class="savedraftsuccess">
+
+        <div class="container d-flex flex-column">
+            <div class="savedraftsuccess-item text-center">
+                <h3>儲存草稿成功！</h3>
+            </div>
+
+            <div class="inputbox-item pb-3">
+                <p class="d-flex justify-content-center welcome text-center">在個人頁面可以修改您的提案草稿</p>
+            </div>
+
+            <div class="savedraftsuccess-item inputbox">
+                <div class="inputbox-item">
+                    <a href="/UserInfo/Member/@MemberId" class="d-flex justify-content-center send-email" v-on:click="sendToApi">
+                        <p>- 返回個人頁面 -</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            <div class="savedraftsuccess-item d-flex justify-content-between changestatus">
+                <a href="/Home/Index" class="d-flex again">
+                    <i class="fas fa-angle-double-right pt-1 pr-2"></i>
+                    <p>返回首頁</p>
+                </a>
+                <a href="/OrdinaryQA/Index" class="normal-question">常見問題</a>
+            </div>
+        </div>
+    </section>
+
+</div>

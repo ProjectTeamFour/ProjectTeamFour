@@ -23,22 +23,23 @@ namespace ProjectTeamFour.Api
     {
         private SubmissionProcessService _submissionservice;
         private LogService _logservice;
+        private ProjectDetailEntityService _projectdetailentityservice;
 
         public ProjectSubmissionController()
         {
             _submissionservice = new SubmissionProcessService();
             _logservice = new LogService();
-
+            _projectdetailentityservice = new ProjectDetailEntityService();
         }
 
-        public string ReceiveData([FromBody] SubmissionProcessViewModel input)
+        public OperationResult ReceiveData([FromBody] SubmissionProcessViewModel input)
         {
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
 
-            var result = new OperationResult();
-            int Id = _submissionservice.ReturnLoginnerId();
+            OperationResult result = new OperationResult();
+            result.Status = _submissionservice.ReturnLoginnerId();
 
             sw.Stop();
             //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
@@ -49,7 +50,7 @@ namespace ProjectTeamFour.Api
 
             sw.Restart();
 
-            result = _submissionservice.ReceiveSubmissionData(input, Id);
+            result = _submissionservice.ReceiveSubmissionData(input, result.Status);
 
             sw.Stop();
             //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
@@ -60,7 +61,7 @@ namespace ProjectTeamFour.Api
             // if(ModelState.IsValid) 前端做
             if (result.IsSuccessful)
             {
-                return "成功";
+                return result;
             }
             else
             {
@@ -70,7 +71,51 @@ namespace ProjectTeamFour.Api
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
-                return "失敗";
+                return result;
+            }
+        }
+
+
+        public OperationResult ReceiveDraftData([FromBody] SubmissionProcessViewModel input)
+        {
+            Stopwatch sw = new Stopwatch();
+
+            sw.Start();
+
+            OperationResult result = new OperationResult();
+            result.Status = _submissionservice.ReturnLoginnerId();
+
+            sw.Stop();
+            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
+
+            var first = sw.ElapsedMilliseconds;
+
+
+
+            sw.Restart();
+
+            result = _submissionservice.ReceiveDraftData(input, result.Status);
+
+            sw.Stop();
+            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
+
+            var second = sw.ElapsedMilliseconds;
+
+
+            // if(ModelState.IsValid) 前端做
+            if (result.IsSuccessful)
+            {
+                return result;
+            }
+            else
+            {
+                Log entity = new Log()
+                {
+                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
+                    DateTime = result.DateTime
+                };
+                _logservice.Create(entity);
+                return result;
             }
         }
 
@@ -97,7 +142,7 @@ namespace ProjectTeamFour.Api
                 return "成功" + imageUpload.Link;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "失敗" + ex.ToString();
             }
@@ -135,5 +180,6 @@ namespace ProjectTeamFour.Api
             ImageUploadResult uploadResult = _cloudinary.Upload(uploadParams);
             return uploadResult.SecureUri.AbsoluteUri;
         }
+       
     }
 }

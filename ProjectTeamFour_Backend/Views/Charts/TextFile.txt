@@ -1,0 +1,56 @@
+﻿<!-- index.vue -->
+<template>
+  <div><div id="echartContainer" style="width:500px; height:500px"></div></div>
+</template>
+ 
+<script>
+//从option.js中引入option
+import { option } from '@/views/option';
+export default {
+  name: 'bar-chart',
+  data() {
+    return {
+    };
+  },
+  methods: {
+    drawBarChart() {
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = this.$echarts.init(document.getElementById('echartContainer'), 'infographic');
+      // 绘制基本图表
+      myChart.setOption(option);
+      //加载动画
+      myChart.showLoading();
+      //axios异步获取数据
+      this.$axios
+        .get('static/data/asyncBarChart.json')
+        .then(res => {
+          setTimeout(() => {
+            // 获取到数据后隐藏加载动画
+            myChart.hideLoading();
+            // console.log(res.data);
+            myChart.setOption({
+              xAxis: [
+                {
+                  data: res.data.cp //将异步请求获取到的数据进行装载
+                }
+              ],
+              series: [
+                {
+                  data: res.data.product
+                }
+              ]
+            });
+          }, 500); //加载动画时长为0.5秒
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    //调用drawBarChart()
+    this.drawBarChart();
+  }
+};
+</script>
+<style></style>

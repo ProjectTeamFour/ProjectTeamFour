@@ -8,8 +8,20 @@ namespace ProjectTeamFour_Backend.Interfaces
 {
     public interface IBackendMemberService
     {
-        BackendMemberViewModel.BackendListResult GetAll();
-        BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM);
+        //BackendMemberViewModel.BackendListResult GetAll();
+        //BackendMemberViewModel.BackendSingleResult CreateOneMember(BackendMemberViewModel.BackendSingleResult singleMember);
 
+        //BackendMemberViewModel.BackendSingleResult GetOne(int id);
+        //string EditMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        //string DeleteMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        Task<BackendMemberViewModel.BackendListResult> GetAll();
+        Task<BackendMemberViewModel.BackendSingleResult> CreateOneMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        Task<BackendMemberViewModel.BackendSingleResult> GetOne(int id);
+        Task<string>  EditMember(BackendMemberViewModel.BackendSingleResult singleMember);
+
+        Task<string> DeleteMember(BackendMemberViewModel.BackendSingleResult singleMember);
     }
 }

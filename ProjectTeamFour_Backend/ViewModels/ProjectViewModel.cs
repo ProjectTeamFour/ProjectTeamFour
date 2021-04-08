@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTeamFour_Backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +40,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             public DateTime SubmittedDate { get; set; }
             public DateTime LastEditTime { get; set; }
             public int ApprovingStatus { get; set; }
+            public List<Plan> PlanList { get; set; }
+            public List<Comment> CommentList { get; set; }
  
         }
 

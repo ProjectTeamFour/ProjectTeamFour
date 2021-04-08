@@ -1,0 +1,388 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section topCSS{
+    <style>
+        table.b-table[aria-busy='true'] {
+            opacity: 0.6;
+        }
+
+        
+    </style>
+
+}
+
+<div id="carCarPlan" class="col-12 m-auto">
+    <template>
+        <b-container fluid>
+            <!-- User Interface controls -->
+
+            <b-row>
+                @*分類模板*@
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="分類"
+                                  label-for="sort-by-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-input-group size="sm">
+                            <b-form-select id="sort-by-select"
+                                           v-model="sortBy"
+                                           :options="sortOptions"
+                                           :aria-describedby="ariaDescribedby"
+                                           class="w-75">
+                                <template #first>
+                                    <option value="">-- none --</option>
+                                </template>
+                            </b-form-select>
+
+                            <b-form-select v-model="sortDesc"
+                                           :disabled="!sortBy"
+                                           :aria-describedby="ariaDescribedby"
+                                           size="sm"
+                                           class="w-25">
+                                <option :value="false">升序</option>
+                                <option :value="true">降序</option>
+                            </b-form-select>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+                @*初始分類模板*@
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="初始分類"
+                                  label-for="initial-sort-select"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="initial-sort-select"
+                                       v-model="sortDirection"
+                                       :options="['asc', 'desc', 'last']"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+                @*搜索模板*@
+                <b-col lg="6" class="my-1">
+                    <b-form-group label="搜尋"
+                                  label-for="filter-input"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-input-group size="sm">
+                            <b-form-input id="filter-input"
+                                          v-model="filter"
+                                          type="search"
+                                          placeholder="請輸入關鍵字"></b-form-input>
+
+                            <b-input-group-append>
+                                <b-button :disabled="!filter" @@click="filter = ''">清空</b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+                @*過濾條件模板*@
+                <b-col lg="6" class="my-1">
+                    <b-form-group v-model="sortDirection"
+                                  label="過濾條件"
+                                  label-cols-sm="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0"
+                                  v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group v-model="filterOn"
+                                               :aria-describedby="ariaDescribedby"
+                                               class="mt-1">
+                            <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
+                            <b-form-checkbox value="planTitle">方案名稱</b-form-checkbox>
+                            <b-form-checkbox value="planDescription">方案內容</b-form-checkbox>
+                            <b-form-checkbox value="planShipDate">預計寄送時間</b-form-checkbox>
+                            <b-form-checkbox value="projectId">提案編號</b-form-checkbox>
+
+                        </b-form-checkbox-group>
+                    </b-form-group>
+                </b-col>
+                @*顯示頁數模板*@
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group label="每頁顯示筆數"
+                                  label-for="per-page-select"
+                                  label-cols-sm="6"
+                                  label-cols-md="4"
+                                  label-cols-lg="3"
+                                  label-align-sm="right"
+                                  label-size="sm"
+                                  class="mb-0">
+                        <b-form-select id="per-page-select"
+                                       v-model="perPage"
+                                       :options="pageOptions"
+                                       size="sm"></b-form-select>
+                    </b-form-group>
+                </b-col>
+                @*頁數模板*@
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination v-model="currentPage"
+                                  :total-rows="totalRows"
+                                  :per-page="perPage"
+                                  align="fill"
+                                  size="sm"
+                                  class="my-0"></b-pagination>
+                </b-col>
+            </b-row>
+
+            <!-- Main table element -->
+            @*主要操作的資料結構*@
+            <b-table :items="items"
+                     :fields="fields"
+                     :current-page="currentPage"
+                     :per-page="perPage"
+                     :filter="filter"
+                     :filter-included-fields="filterOn"
+                     :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"
+                     :sort-direction="sortDirection"
+                     :busy="isBusy"
+                     stacked="md"
+                     show-empty
+                     small
+                     @@filtered="onFiltered">
+                <template #cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
+
+                <template #cell(actions)="row">
+                    <b-button size="sm" @@click="row.toggleDetails">
+                        {{ row.detailsShowing ? '收起' : '展開' }}
+                    </b-button>
+                    <b-button size="sm" v-if="row.item.submitLimit==0 || row.item.submitLimit==null" disable disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        無須審核
+                    </b-button>
+                    <b-button size="sm" v-else  @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="danger">
+                        待審核
+                    </b-button>
+                </template>
+
+
+                <template #row-details="row">
+                    <b-card>
+                        <ul v-for="">
+                            <li>編號 : {{ row.item.planId }}</li>
+                            <li>是否進入車車商城 : {{ row.item.addCarCarPlan==true?'是':'否'}}</li>
+                            <li>方案名稱 : {{ row.item.planTitle}}</li>
+                            <li>方案價錢 : {{ row.item.planPrice}}</li>
+                            <li>方案贊助人數 : {{ row.item.planFundedPeople }}</li>
+                            <li>提案名稱 : {{ row.item.projectName}}</li>
+                            <li>提案編號 : {{ row.item.projectId }}</li>
+                            <li>方案於提案中的序號 : {{ row.item.projectPlanId }}</li>
+                            <li>方案詳細敘述 : {{ row.item.planDescription }}</li>
+                            <li>方案圖片連結 : {{ row.item.planImgUrl }}</li>
+                            <li>預計寄送時間 : {{ row.item.planShipDate }}</li>
+                            <li>方案庫存 : {{ row.item.quantityLimit }}</li>
+                            <li>提案人提交的庫存變更 : {{ row.item.submitLimit==0?'無':row.item.submitLimit }}</li>
+                        </ul>
+                    </b-card>
+                </template>
+                <template #cell(addCarCarPlan)="data">
+                    <b class="text-info">{{ data.item.addCarCarPlan==true?'是':'否' }}</b>
+                </template>
+                
+                <template #table-busy>
+                    <div class="text-center text-danger my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
+
+            <!-- Info modal -->
+            @*審核車車商城資料模板*@
+            <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
+                <pre>
+                <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
+                </pre>
+
+            </b-modal>
+        </b-container>
+    </template>
+</div>
+@section endJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script>
+        const member = new Vue({
+            /*主要監聽對象(作用範圍)*/
+            el: "#carCarPlan",
+            data: {
+                /*主要接收API資料的儲存欄位*/
+                items: [],
+                /*設定Bootstrap-Vue Component DataTable 的欄位以及對應物件的Key*/
+                fields: [
+                    { key: 'planId', label: '編號', sortable: true, sortDirection: 'desc' },
+                    
+                    { key: 'addCarCarPlan', label: '是否進入車車商城', sortable: true, sortDirection: 'desc', class: 'text-center' },
+                    { key: 'planTitle', label: '方案名稱', class: 'text-center' },
+                    { key: 'projectName', label: '所屬提案名稱', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'planFundedPeople', label: '贊助人數', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'planShipDate', label: '預計寄送時間', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'quantityLimit', label: '庫存', class: 'text-center', sortable: true, sortDirection: 'desc' },
+                    { key: 'actions', label: '管理' }
+
+                ],
+                /*Bootstrap-Vue 提供模板*/
+                selected: false,
+                isError: false,
+                isBusy: true,
+                totalRows: 1,
+                currentPage: 1,
+                perPage: 20,
+                pageOptions: [5, 10, 20, { value: 100, text: "100" }],
+                sortBy: '',
+                sortDesc: false,
+                sortDirection: 'asc',
+                filter: null,
+                filterOn: [],
+                /*儲存修改會員資料的變數*/
+                infoModal: {
+                    id: 'info-modal',
+                    title: '',
+                    submitLimit: '',
+                    planId:''
+                },
+                changePlan: { planId: "", submitLimit: ""}
+            },
+            /*呼叫GetAll API後將資料存在items*/
+            created: function () {
+                axios.get("/Api/CarCarPlans/GetAll")
+                    .then((res) => {
+                        this.items = res.data.body.carCarPlanList;
+                        this.mounted();
+                        this.isBusy = false;
+                    });
+            },
+            computed: {
+                sortOptions() {
+                    // Create an options list from our fields
+                    return this.fields
+                        .filter(f => f.sortable)
+                        .map(f => {
+                            return { text: f.label, value: f.key }
+                        })
+                },
+                state() {
+                    return Boolean(this.value)
+                }
+            },
+            mounted() {
+                // Set the initial number of items
+                this.totalRows = this.items.length
+            },
+            methods: {
+                /*infoModal修改功能之資料結構*/
+                info(item, index, button) {
+                    this.infoModal.title = `修改車車商城編號: ${JSON.stringify(item.planId, null, 2)}`
+                    this.infoModal.submitLimit = item.submitLimit;
+                    this.infoModal.planId = item.planId;
+
+                    this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+                },
+                /*重置infoModal修改功能*/
+                resetInfoModal() {
+                    this.infoModal.title = ''
+                    /*this.infoModal.content = ''*/
+                    this.infoModal.submitLimit=''
+
+                },
+                onFiltered(filteredItems) {
+                    // Trigger pagination to update the number of buttons/pages due to filtering
+                    this.totalRows = filteredItems.length
+                    this.currentPage = 1
+                },
+                mounted() {
+                    // Set the initial number of items
+                    this.totalRows = this.items.length
+                },
+                handleChangeOk(bvModalEvt) {
+                    // Prevent modal from closing
+                    console.dir(bvModalEvt)
+                    bvModalEvt.preventDefault()
+                    // Trigger submit handler
+                    this.changeSubmit()
+                },
+                /*符合規定之後，向後端以jqeury AJAX發送PUT修改車車商城方案請求*/
+                changeSubmit() {
+                    this.changePlan.planId = this.infoModal.planId
+                    this.changePlan.submitLimit = this.infoModal.submitLimit
+
+                    var self = this;
+
+                    $.ajax({
+                        url: "/Api/CarCarPlans/PutCarCarPlan",
+                        method: "PUT",
+                        dataType: "json",//如果json回傳資料，則須加上此行，若無勿加此行，會引起parse error
+                        contentType: "application/json;charset=UTF-8",
+                        data: JSON.stringify(this.changePlan),
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.msg == "修改成功") {
+                                /*(非同步)修改成功後，於前端將data中該筆會員的資料一併修改*/
+                                let editCarCarPlanIndex = self.items.findIndex(x => x.planId == self.changePlan.planId);
+                                self.items[editCarCarPlanIndex].submitLimit = 0;
+                                self.items[editCarCarPlanIndex].quantityLimit = self.changePlan.submitLimit;
+                                
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: '修改成功',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+
+                            }
+                            else {
+                                console.log(data);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '修改失敗，請再試一次',
+
+                                });
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus + ", " + jqXHR.state);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '修改失敗，請再試一次',
+
+                            });
+                        }
+                    })
+
+                }
+            },
+            //watch: {
+            //    "memberRegEmail": function () {
+
+            //        var isMail = /^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            //        if (!isMail.test(this.memberRegEmail)) {
+            //            this.memberRegEmailState = false;
+            //        }
+            //        else {
+            //            this.memberRegEmailState = null;
+            //        }
+            //    }
+            //}
+
+
+        })
+    </script>
+}
+
+
+

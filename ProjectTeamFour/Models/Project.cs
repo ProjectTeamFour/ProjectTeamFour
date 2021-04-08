@@ -25,7 +25,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public string Category { get; set; }
         /// <summary>
-        /// 提案狀態:已結束、集資中、集資成功、集資失敗、審核中、審核不通過
+        /// 提案狀態: 審核中 集資成功 集資中 結束且成功 結束且失敗
         /// </summary>
         public string ProjectStatus { get; set; } 
         /// <summary>
@@ -113,7 +113,7 @@ namespace ProjectTeamFour.Models
         /// </summary>
         public DateTime LastEditTime { get; set; }
         /// <summary>
-        /// 後臺使用 未審核:0;審核中:1;審核通過:2；審核不通過:3
+        /// 後臺使用 草稿:0;審核中:1；審核成功:2 審核失敗:3
         /// </summary>
         public int ApprovingStatus { get; set; }
         

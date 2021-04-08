@@ -646,7 +646,8 @@
                             </div>
                         </div>
                         <div class="submit-group d-flex justify-content-center pb-5">
-                            <input class="preview-button mx-2" type="button" value="存為草稿">
+                            <input class="preview-button mx-2" type="button" value="存為草稿" v-on:click="saveDraft"
+                                    v-on:click.prevent="">
                             <input class="submit-button mx-2" id="submit-button" type="button" value="提交專案"
                                    v-bind:disable="AddVerify == false" v-on:click="submitProposal"
                                    v-on:click.prevent="">

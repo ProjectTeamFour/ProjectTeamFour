@@ -8,6 +8,6 @@ namespace ProjectTeamFour_Backend.Interfaces
 {
    public interface IMemberService
     {
-        MemberViewModel.MemberListResult GetAll();
+        Task <MemberViewModel.MemberListResult> GetAll();
     }
 }

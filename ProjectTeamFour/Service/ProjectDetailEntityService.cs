@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace ProjectTeamFour.Service
 {
-    public class ProjectDetailEntityService: IProjectDetailService
+    public class ProjectDetailEntityService : IProjectDetailService
     {
         public DbContext _context;
         private BaseRepository _repository;
@@ -24,7 +24,7 @@ namespace ProjectTeamFour.Service
         {
             ProjectTotalViewModel projectTotalVM = new ProjectTotalViewModel
             {
-                CreatorInfo =new MemberViewModel(), 
+                CreatorInfo = new MemberViewModel(),
 
                 ProjectDetailItem = new ProjectDetailViewModel(),
 
@@ -62,35 +62,30 @@ namespace ProjectTeamFour.Service
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
         {
             var entity = _repository.GetAll<Project>().FirstOrDefault(ProjectId);
+            UpdateProjectStatus(entity);
             //if (entity != default(Models.Project))
             //{
-                var projectdetailVM = new ProjectDetailViewModel()
-                {
-                    Category = entity.Category,
-                    ProjectStatus = entity.ProjectStatus,
-                    ProjectName = entity.ProjectName,
-                    CreatorName = entity.CreatorName,
-                    FundingAmount = entity.FundingAmount,
-                    Fundedpeople = entity.Fundedpeople,
-                    ProjectDescription = entity.ProjectDescription,
-                    ProjectImgUrl = entity.ProjectImgUrl,
-                    ProjectVideoUrl = entity.ProjectVideoUrl,
-                    AmountThreshold = entity.AmountThreshold,
-                    ProjectFAQList = ConvertProjectFAQList(entity.Project_Question, entity.Project_Answer),
-                    //Project_Question = entity.Project_Question,
-                    //Project_Answer = entity.Project_Answer​,
-                    EndDate = entity.EndDate,
-                    StartDate = entity.StartDate,
-                    ProjectMainUrl = entity.ProjectMainUrl,
-                    ProjectId = entity.ProjectId,
-                    MemberId=entity.MemberId
-                };
-                
-            //}
-            //else
-            //{
-
-            //}
+            var projectdetailVM = new ProjectDetailViewModel()
+            {
+                Category = entity.Category,
+                ProjectStatus = entity.ProjectStatus,
+                ProjectName = entity.ProjectName,
+                CreatorName = entity.CreatorName,
+                FundingAmount = entity.FundingAmount,
+                Fundedpeople = entity.Fundedpeople,
+                ProjectDescription = entity.ProjectDescription,
+                ProjectImgUrl = entity.ProjectImgUrl,
+                ProjectVideoUrl = entity.ProjectVideoUrl,
+                AmountThreshold = entity.AmountThreshold,
+                ProjectFAQList = ConvertProjectFAQList(entity.Project_Question, entity.Project_Answer),
+                //Project_Question = entity.Project_Question,
+                //Project_Answer = entity.Project_Answer​,
+                EndDate = entity.EndDate,
+                StartDate = entity.StartDate,
+                ProjectMainUrl = entity.ProjectMainUrl,
+                ProjectId = entity.ProjectId,
+                MemberId = entity.MemberId
+            };
             return projectdetailVM;
         }
 
@@ -102,7 +97,7 @@ namespace ProjectTeamFour.Service
         }
 
 
-        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion , string strAnswer)
+        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion, string strAnswer)
         {
             List<ProjectFAQViewModel> ProjectFAQ = new List<ProjectFAQViewModel>();
 
@@ -110,7 +105,7 @@ namespace ProjectTeamFour.Service
             string[] answerArray = strAnswer.Split(',');
             int len_of_faq = questionsArray.Length;
 
-            for (int i = 0; i < len_of_faq ; i++)
+            for (int i = 0; i < len_of_faq; i++)
             {
                 ProjectFAQ.Add(
                     new ProjectFAQViewModel()
@@ -120,12 +115,12 @@ namespace ProjectTeamFour.Service
                     }
                 );
             }
-            return ProjectFAQ; 
+            return ProjectFAQ;
         }
-        
+
 
         public List<SelectPlanViewModel> GetPlanCards(Expression<Func<Plan, bool>> ProjectId)
-        {         
+        {
 
             List<SelectPlanViewModel> selectPlanCardItems = new List<SelectPlanViewModel>();
 
@@ -145,11 +140,135 @@ namespace ProjectTeamFour.Service
                     PlanPrice = item.PlanPrice,
                     QuantityLimit = item.QuantityLimit
                 };
-                selectPlanCardItems.Add(selectPlanCardViewModel); 
+                selectPlanCardItems.Add(selectPlanCardViewModel);
             }
 
-            return selectPlanCardItems; 
+            return selectPlanCardItems;
         }
+
+        public void UpdateProjectStatus(Project item)
+        {
+
+            DateTime today = DateTime.Now;
+            double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+
+            if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
+            {
+                item.ProjectStatus = "結束且成功";
+            }
+            else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
+            {
+                item.ProjectStatus = "結束且失敗";
+            }
+            else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
+            {
+                item.ProjectStatus = "集資成功";
+            }
+            else if (dateLine > 0 && item.FundingAmount < item.AmountThreshold)
+            {
+                item.ProjectStatus = "集資中";
+            }
+            else
+            {
+                item.ProjectStatus = "審核中";
+            }
+            _repository.Update(item);
+        }
+
+
+        public MyDraftProjectViewModel GetDraftProjectDetail(int DraftProjectId)
+        {
+            return GetDraftProjectDetailFromEntity(x => x.DraftProjectId == DraftProjectId);
+        }
+
+
+        private MyDraftProjectViewModel GetDraftProjectDetailFromEntity(Expression<Func<DraftProject, bool>> DraftProjectId)
+        {
+            var entity = _repository.GetAll<DraftProject>().FirstOrDefault(DraftProjectId);
+
+            var draftprojectdetailVM = new MyDraftProjectViewModel()
+            {
+                Category = entity.Category,
+                ProjectStatus = entity.ProjectStatus,
+                DraftProjectName = entity.DraftProjectName,
+                CreatorName = entity.CreatorName,
+                FundingAmount = entity.FundingAmount,
+                Fundedpeople = entity.Fundedpeople,
+                DraftProjectDescription = entity.DraftProjectDescription,
+                DraftProjectImgUrl = entity.DraftProjectImgUrl,
+                DraftProjectVideoUrl = entity.DraftProjectVideoUrl,
+                AmountThreshold = entity.AmountThreshold,
+                //DraftProject_Question = entity.DraftProject_Question,
+                //DraftProject_Answer = entity.DraftProject_Answer,
+                DraftProjectFAQList = ConvertDraftProjectFAQList(entity.DraftProject_Question, entity.DraftProject_Answer),
+                EndDate = entity.EndDate,
+                StartDate = entity.StartDate,
+                DraftProjectMainUrl = entity.DraftProjectMainUrl,
+                DraftProjectId = entity.DraftProjectId,
+                MemberId = entity.MemberId
+            };
+
+            return draftprojectdetailVM;
+
+        }
+
+
+        public List<SelectDraftPlanViewModel> GetDraftPlanCards(Expression<Func<DraftPlan, bool>> DraftProjectId)
+        {
+            List<SelectDraftPlanViewModel> selectDraftPlanCardItems = new List<SelectDraftPlanViewModel>();
+
+            var draftPlanCardModelItems = _repository.GetAll<DraftPlan>().Where(DraftProjectId);
+
+            if (draftPlanCardModelItems.Count() > 0)
+            {
+                foreach (var item in draftPlanCardModelItems)
+                {
+                    var selectDraftPlanCardViewModel = new SelectDraftPlanViewModel()
+                    {
+                        DraftProjectId = item.DraftProjectId,
+                        DraftPlanId = item.DraftPlanId,
+                        DraftProjectPlanId = item.DraftProjectPlanId,
+                        DraftPlanTitle = item.DraftPlanTitle,
+                        DraftPlanDescription = item.DraftPlanDescription,
+                        DraftPlanFundedPeople = item.DraftPlanFundedPeople,
+                        DraftPlanShipDate = item.DraftPlanShipDate,
+                        DraftPlanImgUrl = item.DraftPlanImgUrl,
+                        DraftPlanPrice = item.DraftPlanPrice,
+                        DraftQuantityLimit = item.DraftQuantityLimit
+                    };
+                    selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
+                }
+            }
+
+            return selectDraftPlanCardItems;
+        }
+
+
+
+        public List<DraftProjectFAQViewModel> ConvertDraftProjectFAQList(string strQuestion, string strAnswer)
+        {
+            List<DraftProjectFAQViewModel> DraftProjectFAQ = new List<DraftProjectFAQViewModel>();
+
+            if (strQuestion != null && strAnswer != null)
+            {
+                string[] questionsArray = strQuestion.Split(',');
+                string[] answerArray = strAnswer.Split(',');
+                int len_of_faq = questionsArray.Length;
+
+                for (int i = 0; i < len_of_faq; i++)
+                {
+                    DraftProjectFAQ.Add(
+                        new DraftProjectFAQViewModel()
+                        {
+                            DraftQuestion = questionsArray[i],
+                            DraftAnswer = answerArray[i]
+                        }
+                    );
+                }
+            }
+            return DraftProjectFAQ;
+        }
+
 
     }
 }
