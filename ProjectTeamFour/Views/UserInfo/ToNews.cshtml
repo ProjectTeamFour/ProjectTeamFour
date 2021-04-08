@@ -198,7 +198,10 @@
                 帳戶活動與通知
                 <div class="news">
                     <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml")
+                        @foreach(var announcement in Model.Announcements)
+                        {
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml",announcement)
+                        }
                     </div>
                 </div>
             </div>

@@ -54,7 +54,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// <summary>
             /// 訂單成立時間
             /// </summary>
-            public DateTime OrderDate { get; set; }
+            public string OrderDate { get; set; }
             public List<OrderDetail> OrderDetailList { get; set; }
         }
         public class OrderListResult
