@@ -31,7 +31,7 @@ namespace ProjectTeamFour.Controllers
             }
 
             var homeService = new HomeService();
-            //homeService.UpdateProjectStatus();
+            homeService.UpdateProjectStatus();
             HomeViewModel homeviewmodel = new HomeViewModel()
             {
                 ProjectItem = new ProjectListViewModel()

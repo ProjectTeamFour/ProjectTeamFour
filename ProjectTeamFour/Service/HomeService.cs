@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -16,11 +17,13 @@ namespace ProjectTeamFour.Service
     {
         private DbContext _context;
         private BaseRepository _repository;
+        private ProjectContext _prContext;
 
         public HomeService()
         {
             _context = new ProjectContext();
             _repository = new BaseRepository(_context);
+            _prContext = new ProjectContext();
         }
 
         public HomeViewModel GetAllTotal()
@@ -149,13 +152,21 @@ namespace ProjectTeamFour.Service
         //public void UpdateProjectStatus(object state)
         public void UpdateProjectStatus()
         {
-            var result = _repository.GetAll<Project>().ToList();
-            foreach (Project item in result)
+            //var result = _repository.GetAll<Project>().ToList();
+            var result = _prContext.Projects.ToList();
+            
+            //using (SqlConnection oConn = CreateMARSConnection())
+            //{
+            foreach (var item in result)
             {
                 DateTime today = DateTime.Now;
                 double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
 
-                if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
+                if (item.ApprovingStatus == 1)
+                {
+                    item.ProjectStatus = "審核中";
+                }
+                else if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
                 {
                     item.ProjectStatus = "結束且成功";
                 }
@@ -171,12 +182,11 @@ namespace ProjectTeamFour.Service
                 {
                     item.ProjectStatus = "集資中";
                 }
-                else
-                {
-                    item.ProjectStatus = "審核中";
-                }
-                _repository.Update(item);
+                
             }
+
+            _prContext.SaveChanges();
+
             //重新設定
             //setTaskAtFixedTime();
         }

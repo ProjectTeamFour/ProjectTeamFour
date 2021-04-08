@@ -37,26 +37,17 @@ namespace ProjectTeamFour.Api
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
-
             OperationResult result = new OperationResult();
             result.Status = _submissionservice.ReturnLoginnerId();
-
             sw.Stop();
             //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
-
             var first = sw.ElapsedMilliseconds;
 
-
-
             sw.Restart();
-
             result = _submissionservice.ReceiveSubmissionData(input, result.Status);
-
             sw.Stop();
             //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
-
             var second = sw.ElapsedMilliseconds;
-
 
             // if(ModelState.IsValid) 前端做
             if (result.IsSuccessful)
@@ -67,7 +58,6 @@ namespace ProjectTeamFour.Api
             {
                 Log entity = new Log()
                 {
-                    //Path = result.WriteLog(HostingEnvironment.MapPath("~/Assets/Log/")),
                     DateTime = result.DateTime
                 };
                 _logservice.Create(entity);
@@ -81,28 +71,23 @@ namespace ProjectTeamFour.Api
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
-
             OperationResult result = new OperationResult();
             result.Status = _submissionservice.ReturnLoginnerId();
-
             sw.Stop();
-            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
-
             var first = sw.ElapsedMilliseconds;
 
+            if (input.DraftProjectId != 0)
+            {
+                result = _submissionservice.UpDateDraftData(input, result.Status);  //update既有草稿
+            } 
+            else
+            {
+                sw.Restart();
+                result = _submissionservice.ReceiveDraftData(input, result.Status);  //新增一個草稿
+                sw.Stop();
+                var second = sw.ElapsedMilliseconds;
+            }
 
-
-            sw.Restart();
-
-            result = _submissionservice.ReceiveDraftData(input, result.Status);
-
-            sw.Stop();
-            //Console.WriteLine($"{sw.ElapsedMilliseconds}ms");
-
-            var second = sw.ElapsedMilliseconds;
-
-
-            // if(ModelState.IsValid) 前端做
             if (result.IsSuccessful)
             {
                 return result;

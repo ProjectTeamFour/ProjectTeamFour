@@ -225,11 +225,11 @@
                                         <input class="w-50 pl-3 form-control" type="date"
                                                v-model="inputData.StartDate"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.StartDateError}"
-                                               v-on:change="getStartDateAndEndDate">
+                                               v-on:change="getStartDateAndEndDate" id="StartDate">
                                         <input class="w-50 pl-3 form-control" type="date"
                                                v-model="inputData.EndDate"
                                                v-bind:class="{ 'is-invalid': inputDataCheck.EndDateError}"
-                                               v-on:change="getStartDateAndEndDate">
+                                               v-on:change="getStartDateAndEndDate" id="EndDate">
                                     </div>
                                     <div class="text-danger small mt-1">
                                         {{ inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg }}
@@ -401,8 +401,7 @@
 
                                 <div class="card-result-box" id="card-result-box">
                                     <!-- <div v-if="isShow">請新增您的回饋方案！</div> -->
-                                    <div class="project-rewardcard-preview" v-for="(item, index) in modalList"
-                                         v-if="index >= 1">
+                                    <div class="project-rewardcard-preview" v-for="(item, index) in modalList">
                                         <div v-bind:id="item.ViewId" name="set-plan">
                                             <hr>
                                             <div class="row">
@@ -652,7 +651,7 @@
                             </div>
                         </div>
                         <div class="submit-group d-flex justify-content-center pb-5">
-                            <input class="preview-button mx-2" type="button" value="存為草稿" v-on:click="saveDraft"
+                            <input class="preview-button mx-2" type="button" value="儲存草稿" v-on:click="saveDraft"
                                    v-on:click.prevent="">
                             <input class="submit-button mx-2" id="submit-button" type="button" value="提交專案"
                                    v-bind:disable="AddVerify == false" v-on:click="submitProposal"
@@ -851,15 +850,15 @@
 
 <template type="text/x-template" id="multi-text-template">
     <div class="multi-text">
-        <div v-for="(item, index) in ProjectQuestionAnswer" v-if="index >= 1">
+        <div v-for="(item, index) in ProjectQuestionAnswer">
             <div class="d-flex justify-content-between py-2">
                 <p>第{{ item.Count }}個常見問答</p>
                 <a href="#" v-on:click="deleteValue(index)" v-on:click.prevent="" class="text-danger small">移除</a>
             </div>
             <input type="text" v-model="item.Question" v-on:input="updateValue()" class="form-control"
-                   placeholder="Q:" />
+                   placeholder="Q:"/>
             <input type="text" v-model="item.Answer" v-on:input="updateValue()" class="form-control"
-                   placeholder="A:" />
+                   placeholder="A:"/>
             <div class="text-danger small mt-1">
                 {{ item.QAErrorMsg }}
             </div>
