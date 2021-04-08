@@ -30,12 +30,8 @@ namespace ProjectTeamFour_Backend.WebApi
             _repository = repository;
             _configuration = configuration;
         }
-        /// <summary>
-        /// 傳入前端POST請求的內容mailBaseSingleVM，之後在資料庫內對比mailBaseSingleVM.MemberRegEmail，如無誤，則寄出信件
-        /// </summary>
-        /// <param name="mailBaseSingleVM"></param>
-        /// <returns></returns>
         [HttpPost]
+        
         public async Task<ActionResult<BaseModel.BaseResult<MailViewModel.MailBaseSingleViewModel>>> SendMail([FromBody] MailViewModel.MailBaseSingleViewModel mailBaseSingleVM)
         {
             return await Task.Run(() =>
@@ -96,10 +92,7 @@ namespace ProjectTeamFour_Backend.WebApi
             
 
         }
-        /// <summary>
-        /// 取得ProjectTeamFour\ProjectTeamFour_Backend\bin\Debug\net5.0\Template\mailtemplate.html檔案路徑。該檔案為信件樣板
-        /// </summary>
-        /// <returns></returns>
+
         public string getEmailData()
         {
             string returnData = "";
@@ -114,13 +107,7 @@ namespace ProjectTeamFour_Backend.WebApi
             return returnData;
         }
 
-        /// <summary>
-        /// 在信件樣板檔案mailtemplate.html中插入標題及內容
-        /// </summary>
-        /// <param name="returnData"></param>
-        /// <param name="context"></param>
-        /// <param name="memberName"></param>
-        /// <returns></returns>
+
         public string setReplacedEmailData(string returnData, string context, string memberName)
         {
 
