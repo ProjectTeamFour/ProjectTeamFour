@@ -193,28 +193,30 @@
                 <pre style="font-size:18px">{{ infoModal.content }}</pre>
             </b-modal>
 
-            <b-modal :id="emailInfoModal.id" :title="emailInfoModal.title" ok-title="寄信" @@ok="handleEmailOk" cancel-title="取消" @@hide="resetEmailInfoModal" >
-                <form ref="form" submit.stop.prevent="emailSubmit" class="edit-form">
+            <b-modal :id="emailInfoModal.id" :title="emailInfoModal.title" ok-title="寄信" @@ok="handleEmailOk" cancel-title="取消" @@show="resetEmailInfoModal" @@hide="resetEmailInfoModal" >
+                
                     <b-card-text>收件信箱:{{emailInfoModal.emailReceiver}}</b-card-text>
-
-                    <b-form-group label="信件標題" style="height:100px"
-                                  label-for="emailInfoModal.emailTitle-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="emailInfoModalemailTitleState">
-                        <b-form-input id="emailInfoModal.emailTitle-input" :state="emailInfoModalemailTitleState" v-model="emailInfoModal.emailTitle" placeholder="請輸入標題" required></b-form-input>
-                    </b-form-group>
-                    <b-form-group label="信件內容" style="height:100px"
-                                  label-for="emailInfoModal.emailBody-input"
-                                  invalid-feedback="此為必填選項"
-                                  :state="emailInfoModalemailBodyState">
-                        <b-form-textarea id="emailInfoModal.emailBody-input"
-                                         v-model="emailInfoModal.emailBody"
-                                         placeholder="請輸入內容"
-                                         rows="3"
-                                         :state="emailInfoModalemailBodyState"
-                                         max-rows="6" required></b-form-textarea>
-                    </b-form-group>
-                </form>
+                    <form ref="form" submit.stop.prevent="emailSubmit" class="edit-form">
+                        <b-form-group label="信件標題" 
+                                      label-for="emailInfoModal.emailTitle-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="emailInfoModalemailTitleState">
+                            <b-form-input id="emailInfoModal.emailTitle-input" 
+                                          :state="emailInfoModalemailTitleState" 
+                                          v-model="emailInfoModal.emailTitle" placeholder="請輸入標題" required></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="信件內容" 
+                                      label-for="emailInfoModal.emailBody-input"
+                                      invalid-feedback="此為必填選項"
+                                      :state="emailInfoModalemailBodyState">
+                            <b-form-textarea id="emailInfoModal.emailBody-input"
+                                             v-model="emailInfoModal.emailBody"
+                                             placeholder="請輸入內容"
+                                             rows="3"
+                                             :state="emailInfoModalemailBodyState"
+                                             max-rows="6" required></b-form-textarea>
+                        </b-form-group>
+                    </form>
             </b-modal>
         </b-container>
     </template>
@@ -297,9 +299,6 @@
                     this.emailInfoModal.title = `寄信給會員編號: ${JSON.stringify(item.memberId, null, 2)}`
                     this.emailInfoModal.emailReceiver = item.memberRegEmail
                     this.emailInfoModal.memberId = item.memberId
-
-
-
                     this.$root.$emit('bv::show::modal', this.emailInfoModal.id, button)
                 },
                 handleEmailOk(bvModalEvt) {
