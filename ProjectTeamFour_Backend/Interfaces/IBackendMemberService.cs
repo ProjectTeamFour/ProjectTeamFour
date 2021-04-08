@@ -15,7 +15,7 @@ namespace ProjectTeamFour_Backend.Interfaces
         //string EditMember(BackendMemberViewModel.BackendSingleResult singleMember);
 
         //string DeleteMember(BackendMemberViewModel.BackendSingleResult singleMember);
-
+        BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM);
         Task<BackendMemberViewModel.BackendListResult> GetAll();
         Task<BackendMemberViewModel.BackendSingleResult> CreateOneMember(BackendMemberViewModel.BackendSingleResult singleMember);
 
