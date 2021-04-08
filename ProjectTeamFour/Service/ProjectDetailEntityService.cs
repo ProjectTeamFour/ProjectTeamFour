@@ -86,12 +86,6 @@ namespace ProjectTeamFour.Service
                 ProjectId = entity.ProjectId,
                 MemberId = entity.MemberId
             };
-
-            //}
-            //else
-            //{
-
-            //}
             return projectdetailVM;
         }
 
@@ -180,6 +174,101 @@ namespace ProjectTeamFour.Service
             }
             _repository.Update(item);
         }
+
+
+        public MyDraftProjectViewModel GetDraftProjectDetail(int DraftProjectId)
+        {
+            return GetDraftProjectDetailFromEntity(x => x.DraftProjectId == DraftProjectId);
+        }
+
+
+        private MyDraftProjectViewModel GetDraftProjectDetailFromEntity(Expression<Func<DraftProject, bool>> DraftProjectId)
+        {
+            var entity = _repository.GetAll<DraftProject>().FirstOrDefault(DraftProjectId);
+
+            var draftprojectdetailVM = new MyDraftProjectViewModel()
+            {
+                Category = entity.Category,
+                ProjectStatus = entity.ProjectStatus,
+                DraftProjectName = entity.DraftProjectName,
+                CreatorName = entity.CreatorName,
+                FundingAmount = entity.FundingAmount,
+                Fundedpeople = entity.Fundedpeople,
+                DraftProjectDescription = entity.DraftProjectDescription,
+                DraftProjectImgUrl = entity.DraftProjectImgUrl,
+                DraftProjectVideoUrl = entity.DraftProjectVideoUrl,
+                AmountThreshold = entity.AmountThreshold,
+                //DraftProject_Question = entity.DraftProject_Question,
+                //DraftProject_Answer = entity.DraftProject_Answer,
+                DraftProjectFAQList = ConvertDraftProjectFAQList(entity.DraftProject_Question, entity.DraftProject_Answer),
+                EndDate = entity.EndDate,
+                StartDate = entity.StartDate,
+                DraftProjectMainUrl = entity.DraftProjectMainUrl,
+                DraftProjectId = entity.DraftProjectId,
+                MemberId = entity.MemberId
+            };
+
+            return draftprojectdetailVM;
+
+        }
+
+
+        public List<SelectDraftPlanViewModel> GetDraftPlanCards(Expression<Func<DraftPlan, bool>> DraftProjectId)
+        {
+            List<SelectDraftPlanViewModel> selectDraftPlanCardItems = new List<SelectDraftPlanViewModel>();
+
+            var draftPlanCardModelItems = _repository.GetAll<DraftPlan>().Where(DraftProjectId);
+
+            if (draftPlanCardModelItems.Count() > 0)
+            {
+                foreach (var item in draftPlanCardModelItems)
+                {
+                    var selectDraftPlanCardViewModel = new SelectDraftPlanViewModel()
+                    {
+                        DraftProjectId = item.DraftProjectId,
+                        DraftPlanId = item.DraftPlanId,
+                        DraftProjectPlanId = item.DraftProjectPlanId,
+                        DraftPlanTitle = item.DraftPlanTitle,
+                        DraftPlanDescription = item.DraftPlanDescription,
+                        DraftPlanFundedPeople = item.DraftPlanFundedPeople,
+                        DraftPlanShipDate = item.DraftPlanShipDate,
+                        DraftPlanImgUrl = item.DraftPlanImgUrl,
+                        DraftPlanPrice = item.DraftPlanPrice,
+                        DraftQuantityLimit = item.DraftQuantityLimit
+                    };
+                    selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
+                }
+            }
+
+            return selectDraftPlanCardItems;
+        }
+
+
+
+        public List<DraftProjectFAQViewModel> ConvertDraftProjectFAQList(string strQuestion, string strAnswer)
+        {
+            List<DraftProjectFAQViewModel> DraftProjectFAQ = new List<DraftProjectFAQViewModel>();
+
+            if (strQuestion != null && strAnswer != null)
+            {
+                string[] questionsArray = strQuestion.Split(',');
+                string[] answerArray = strAnswer.Split(',');
+                int len_of_faq = questionsArray.Length;
+
+                for (int i = 0; i < len_of_faq; i++)
+                {
+                    DraftProjectFAQ.Add(
+                        new DraftProjectFAQViewModel()
+                        {
+                            DraftQuestion = questionsArray[i],
+                            DraftAnswer = answerArray[i]
+                        }
+                    );
+                }
+            }
+            return DraftProjectFAQ;
+        }
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -52,10 +53,10 @@
       <HintPath>Assets\Plugin\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Imgur.API, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Imgur.API.5.0.0\lib\netstandard2.0\Imgur.API.dll</HintPath>
@@ -307,6 +308,10 @@
     <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.cs" />
+    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.Designer.cs">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
     <Compile Include="Models\DraftPlan.cs" />
@@ -463,6 +468,7 @@
     <Compile Include="ViewModels\CartItemListViewModel.cs" />
     <Compile Include="ViewModels\CheckoutQuantityViewModel.cs" />
     <Compile Include="ViewModels\CheckPermissionViewModel.cs" />
+    <Compile Include="ViewModels\DraftProjectFAQViewModel.cs" />
     <Compile Include="ViewModels\EditMemberViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogListViewModel.cs" />
@@ -514,6 +520,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="ViewModels\SelectDraftPlanViewModel.cs" />
     <Compile Include="ViewModels\SelectPlanListViewModel .cs" />
     <Compile Include="ViewModels\SelectPlanViewModel.cs" />
     <Compile Include="ViewModels\ForMemberView\SubmissionProcessPlanViewModel.cs" />
@@ -561,6 +568,7 @@
     <Content Include="Assets\Javascript\PersonalInfo\record.js" />
     <Content Include="Assets\Javascript\Products_Page\Main_products.js" />
     <Content Include="Assets\Javascript\ProjectDetailPage\ProjectDetail.js" />
+    <Content Include="Assets\Javascript\StartAProjectPage\EditDraftProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\StartAProject.js" />
     <Content Include="Assets\Javascript\StartAProjectPage\submissionprocess.js" />
     <Content Include="Assets\Plugin\FirebaseSDK\FirebaseSDK.js" />
@@ -2414,6 +2422,9 @@
     <Content Include="Views\StartAProject\SaveDraftFail.cshtml" />
     <Content Include="Views\StartAProject\SaveDraftSuccess.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_myDraftProjectPartial.cshtml" />
+    <Content Include="Views\ProjectDetail\DraftProjectDetailPagePreview.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
+    <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2620,6 +2631,9 @@
     <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
       <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104071320186_關閉自動偵測變更.resx">
+      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -2663,7 +2677,10 @@
       <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

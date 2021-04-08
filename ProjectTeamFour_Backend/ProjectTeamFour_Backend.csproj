@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\LabContext.cs" />
     <Compile Remove="Services\MemberViewMdel.cs" />
   </ItemGroup>
 

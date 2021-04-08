@@ -12,5 +12,7 @@ namespace ProjectTeamFour_Backend.Interfaces
     {
         AnnouncementViewModel.AnnouncementListResult GetAll();
         OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor);
+        OperationResult SaveAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor);
+        OperationResult DeleteAnnouncement(AnnouncementViewModel.AnnouncementVM input);
     }
 }

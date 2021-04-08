@@ -17,9 +17,9 @@ namespace ProjectTeamFour_Backend.Services
     {
         private readonly IRepository _dbrepository;
 
-        public AnnouncementService(IRepository repository)
+        public AnnouncementService(IRepository dbrepository)
         {
-            _dbrepository = repository;
+            _dbrepository = dbrepository;
         }
 
 
@@ -34,7 +34,7 @@ namespace ProjectTeamFour_Backend.Services
                     Content = a.Content,
                     CreateTime = a.CreateTime,
                     CreateUser = a.CreateUser,
-                    EditTime = a.CreateTime,
+                    EditTime = a.EditTime,
                     EditUser = a.EditUser,
                     MemberId = a.MemberId
                 }).ToList();
@@ -44,6 +44,8 @@ namespace ProjectTeamFour_Backend.Services
         public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input, string editor)
         {
             var result = new OperationResult();
+            try
+            {
                 Announcement announcement = new Announcement
                 {
                     Content = input.Content,
@@ -55,7 +57,52 @@ namespace ProjectTeamFour_Backend.Services
                     MemberId = input.MemberId
                 };
                 _dbrepository.Create(announcement);
+                result.IsSuccessful = true;
+            }
+            catch(Exception ex)
+            {
+                result.Exception = ex;
+                result.IsSuccessful = false;
+                return result;
+            }
             return result;
+        }
+        public OperationResult SaveAnnouncement(AnnouncementViewModel.AnnouncementVM input,string editor)
+        {
+            var result = new OperationResult();
+            var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
+            try
+            {
+                data.Content = input.Content;
+                data.Title = input.Title;
+                data.EditTime = DateTime.UtcNow.AddHours(8);
+                data.EditUser = editor;
+                _dbrepository.Update(data);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+                result.IsSuccessful = false;
+                return result;
+            }
+        }
+
+        public OperationResult DeleteAnnouncement(AnnouncementViewModel.AnnouncementVM input)
+        {
+            var result = new OperationResult();
+            var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
+            try
+            {
+                _dbrepository.Delete(data);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                result.Exception = ex;
+                result.IsSuccessful = false;
+                return result;
+            }
         }
     }
 }
