@@ -19,7 +19,7 @@ namespace ProjectTeamFour.ViewModels.ForMemberView
         public string PlanImgUrl { get; set; }
         public decimal PlanPrice { get; set; }
         public int QuantityLimit { get; set; }
-        public int? SubmitLimit { get; set; }
-
+        public int SubmitLimit { get; set; }
+       
     }
 }

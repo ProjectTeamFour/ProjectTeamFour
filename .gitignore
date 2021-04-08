@@ -341,3 +341,4 @@ healthchecksdb
 /ProjectTeamFour/Controllers/PartialViewController.cs
 /ProjectTeamFour/Views/MemberSettings/Info.cshtml
 /slidetest.html
+/ProjectTeamFour_Backend/Models/LabContext.cs
