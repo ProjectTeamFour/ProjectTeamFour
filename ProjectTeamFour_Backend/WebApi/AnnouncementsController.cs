@@ -61,5 +61,11 @@ namespace ProjectTeamFour_Backend.WebApi
             var result = _announcementService.SaveAnnouncement(input, User);
             return result;
         }
+        [HttpDelete]
+        public OperationResult DeleteAnnouncement(AnnouncementViewModel.AnnouncementVM input)
+        {
+            var result = _announcementService.DeleteAnnouncement(input);
+            return result;
+        }
     }
 }

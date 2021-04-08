@@ -15,12 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\LabContext.cs" />
     <Compile Remove="Services\MemberViewMdel.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Views\Layout\Index.cshtml" />
     <Content Remove="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Template\mailtemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Template\mailtemplate.html" />
   </ItemGroup>
 
   <ItemGroup>
