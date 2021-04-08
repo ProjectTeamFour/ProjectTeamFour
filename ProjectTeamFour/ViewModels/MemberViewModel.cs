@@ -60,5 +60,6 @@ namespace ProjectTeamFour.ViewModels
         public List<MyProjectViewModel> MyProjects { get; set; }
         public List<CommentForMemberViewModel> Comments { get; set; }
         public List<MyDraftProjectViewModel> MyDraftProjects { get; set; }
+        public List<AnnouncementViewModel> Announcements { get; set; }
     }
 }
