@@ -10,7 +10,7 @@ namespace ProjectTeamFour_Backend.Controllers
 {
 
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()

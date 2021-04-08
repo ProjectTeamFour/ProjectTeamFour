@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectTeamFour_Backend.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    public class ComponentsController : Controller
+    public class ComponentsController : BaseController
     {
         public IActionResult Buttons()
         {

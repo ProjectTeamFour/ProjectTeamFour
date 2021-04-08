@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace ProjectTeamFour_Backend.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()
