@@ -130,22 +130,23 @@ namespace ProjectTeamFour_Backend.Services
             {
                 BackendMemberViewModel.BackendListResult result = new BackendMemberViewModel.BackendListResult();
 
-            result.BackendMemberList = _repository.GetAll<Backendmember>().Select(
-                b => new BackendMemberViewModel.BackendSingleResult()
-                {
-                    MemberId=b.MemberId,
-                    MemberName=b.MemberName,
-                    MemberAccount=b.MemberAccount,
-                    MemberAddress=b.MemberAddress,
-                    MemberBirth=b.MemberBirth,
-                    MemberConEmail=b.MemberConEmail,
-                    MemberRegEmail=b.MemberRegEmail,
-                    MemberPhone=b.MemberPhone,
-                    BackendIdentity=b.BackendIdentity,
-                    Gender=b.Gender,
-                    MemberMessage=b.MemberMessage,
-                }).ToList();
-            return result;
+                result.BackendMemberList = _repository.GetAll<Backendmember>().Select(
+                    b => new BackendMemberViewModel.BackendSingleResult()
+                    {
+                        MemberId = b.MemberId,
+                        MemberName = b.MemberName,
+                        MemberAccount = b.MemberAccount,
+                        MemberAddress = b.MemberAddress,
+                        MemberBirth = b.MemberBirth.ToString("d"),
+                        MemberConEmail = b.MemberConEmail,
+                        MemberRegEmail = b.MemberRegEmail,
+                        MemberPhone = b.MemberPhone,
+                        BackendIdentity = b.BackendIdentity,
+                        Gender = b.Gender,
+                        MemberMessage = b.MemberMessage,
+                    }).ToList();
+                return result;
+            });
         }
 
         public BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM)
@@ -180,25 +181,6 @@ namespace ProjectTeamFour_Backend.Services
             return result;
         }
 
-      
-                result.BackendMemberList = _repository.GetAll<Backendmember>().Select(
-                    b => new BackendMemberViewModel.BackendSingleResult()
-                    {
-                        MemberId = b.MemberId,
-                        MemberName = b.MemberName,
-                        MemberAccount = b.MemberAccount,
-                        MemberAddress = b.MemberAddress,
-                        MemberBirth = b.MemberBirth.ToString("d"),
-                        MemberConEmail = b.MemberConEmail,
-                        MemberRegEmail = b.MemberRegEmail,
-                        MemberPhone = b.MemberPhone,
-                        BackendIdentity = b.BackendIdentity,
-                        Gender = b.Gender,
-                        MemberMessage = b.MemberMessage,
-                    }).ToList();
-                return result;
-            });
-        }
         /// <summary>
         /// (非同步)從資料庫取得一筆後台會員資料
         /// </summary>

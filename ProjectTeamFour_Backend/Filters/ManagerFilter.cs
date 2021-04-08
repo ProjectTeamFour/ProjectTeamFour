@@ -21,7 +21,7 @@ namespace ProjectTeamFour_Backend.Filters
         {
             public override void OnActionExecuting(ActionExecutingContext context)
             {
-                var manager = context.HttpContext.Request.Cookies.TryGetValue("R", out string Role);
+                var manager = context.HttpContext.Request.Cookies.TryGetValue("adm", out string Role);
                 if (Role != "True")
                 {
                     context.HttpContext.Response.Redirect("/Home/Index");

@@ -50,7 +50,7 @@ namespace ProjectTeamFour_Backend.WebApi
             {
                 var tokenString = GenerateJsonWebToken(loginVM);
                 response = Ok(new {token=tokenString});
-                Response.Cookies.Append("R", user.Msg);
+                Response.Cookies.Append("adm", user.Msg);
             }
 
 
@@ -58,7 +58,6 @@ namespace ProjectTeamFour_Backend.WebApi
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, loginVM.MemberRegEmail),
-                    new Claim("FullName","test"),
                     new Claim(ClaimTypes.Role, "manager"),
                 };
 

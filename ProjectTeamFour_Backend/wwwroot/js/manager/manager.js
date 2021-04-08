@@ -1,7 +1,7 @@
 ﻿
 
 let btnLogin = document.querySelector(".btn-login");
-let jwtAuthUrl = "https://localhost:44344/api/Manager/Login";
+let jwtAuthUrl = "/api/Manager/Login";
 
 btnLogin.addEventListener("click", function () {
     let mail = document.getElementById("email").value;
