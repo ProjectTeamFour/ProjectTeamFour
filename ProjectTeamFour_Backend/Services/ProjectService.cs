@@ -270,5 +270,25 @@ namespace ProjectTeamFour_Backend.Services
         {
             return null;
         }
+
+        //取得Charts會用到的資料
+        public ProjectViewModel.ProjectListforChart GetAllForCharts()
+        {
+            ProjectViewModel.ProjectListforChart result = new ProjectViewModel.ProjectListforChart();
+            result.ProjectChartdta = _dbRepository
+                .GetAll<Project>()
+                .Select(p => new ProjectViewModel.ProjectforChart()
+                {
+                    ProjectId = p.ProjectId,
+                    ProjectName = p.ProjectName,
+                    FundingAmount = p.FundingAmount,
+                    Category = p.Category,
+                    ProjectStatus = p.ProjectStatus
+                }).ToList();
+
+            return result;
+        }
+
+
     }
 }

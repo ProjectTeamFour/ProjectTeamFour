@@ -72,5 +72,32 @@ namespace ProjectTeamFour_Backend.ViewModels
             public int ProjectId { get; set; }
         }
 
+        /// <summary>
+        /// Dashboard會用到的有關Project的Model for Api
+        /// </summary>
+        public class GetProjectChart
+        {
+            public int ProjectId { get; set; }
+            public string ProjectName { get; set; }
+            public decimal FundingAmount { get; set; }
+            public string Category { get; set; }
+            public string ProjectStatus { get; set; }
+
+        }
+        /// <summary>
+        /// 取得多個提案VM
+        /// </summary>
+        public class ProjectListforChart
+        {
+            public List<ProjectforChart> ProjectChartdta { get; set; }
+        }
+
+        /// <summary>
+        /// 取得單一提案VM
+        /// </summary>
+        public class ProjectforChart : GetProjectChart
+        {
+
+        }
     }
 }
