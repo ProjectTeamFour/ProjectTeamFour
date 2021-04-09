@@ -12,30 +12,30 @@ namespace ProjectTeamFour_Backend.Interfaces
         /// 取得所有提案
         /// </summary>
         /// <returns></returns>
-        ProjectViewModel.ProjectListResult GetAll();
+        Task<ProjectViewModel.ProjectListResult> GetAll();
 
         /// <summary>
         /// 依類別查詢提案
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        ProjectViewModel.ProjectListResult GetByCategory(ProjectViewModel.GetByCategoryRequest request);
+        Task<ProjectViewModel.ProjectListResult> GetByCategory(ProjectViewModel.GetByCategoryRequest request);
 
         /// <summary>
         /// 依Id查詢商品
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        ProjectViewModel.ProjectSingleResult GetById(ProjectViewModel.GetByIdRequest request);
+        Task<ProjectViewModel.ProjectSingleResult> GetById(ProjectViewModel.GetByIdRequest request);
 
-        ProjectViewModel.ProjectListResult GetTotalSale();
-
-
-        ProjectViewModel.ProjectListResult GetWaitForPass();
+        Task<ProjectViewModel.ProjectListResult> GetTotalSale();
 
 
-        String EditWaitForPassProject(ProjectViewModel.ProjectSingleResult request);
+        Task<ProjectViewModel.ProjectListResult> GetWaitForPass();
 
-        ProjectViewModel.ProjectListforChart GetAllForCharts();
+
+        public Task<string> EditWaitForPassProject(ProjectViewModel.ProjectSingleResult waitForPassProject);
+
+        Task<ProjectViewModel.ProjectListforChart> GetAllForCharts();
     }
 }

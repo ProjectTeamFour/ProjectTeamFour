@@ -58,14 +58,10 @@
                     <b-form-group v-model="sortDirection" label="過濾條件" label-cols-sm="3" label-align-sm="right"
                                   label-size="sm" class="mb-0" v-slot="{ ariaDescribedby }">
                         <b-form-checkbox-group v-model="filterOn" :aria-describedby="ariaDescribedby" class="mt-1">
-                            <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
-                            <b-form-checkbox value="審核中">審核中</b-form-checkbox>
-                            <b-form-checkbox value="募資中">募資中</b-form-checkbox>
-                            <b-form-checkbox value="募資成功">募資成功</b-form-checkbox>
-                            <b-form-checkbox value="結束且成功">結束且成功</b-form-checkbox>
-                            <b-form-checkbox value="結束且失敗">結束且失敗</b-form-checkbox>
-                            <b-form-checkbox value="timeSpan">距離募資結束時間</b-form-checkbox>
-                            <b-form-checkbox value="fundingAmount">募資資金</b-form-checkbox>
+                            <b-form-checkbox value="projectName">名稱</b-form-checkbox>
+                            <b-form-checkbox value="projectStatus">提案狀態</b-form-checkbox>
+                            <b-form-checkbox value="creatorName">提案人</b-form-checkbox>
+                            <b-form-checkbox value="approvingStatus">審核狀態</b-form-checkbox>
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
@@ -206,7 +202,7 @@
             info(item, index, button) {
                 this.infoModal.title = `提案編號: ${JSON.stringify(item.projectId, null, 2)}`;
                 this.infoModal.content =
-                    `提案名稱:${JSON.stringify(item.projectName, null, 2)}\n提案分類:${JSON.stringify(item.category, null, 2)}\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n提案人:${JSON.stringify(item.creatorName, null, 2)}\n提案人真實姓名:${JSON.stringify(item.projectPrincipal, null, 2)}\n提案人身分證字號:${JSON.stringify(item.identityNumber, null, 2)}\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n募資人數:${JSON.stringify(item.fundedPeople, null, 2)}\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}\n提案方案數量:${JSON.stringify(item.projectPlansCount, null, 2)}\n提案開始時間:${JSON.stringify(item.startDate, null, 2)}\n提案結束時間:${JSON.stringify(item.endDate, null, 2)}\n提案初創時間:${JSON.stringify(item.createdDate, null, 2)}\n提案提交時間:${JSON.stringify(item.submittedDate, null, 2)}`;
+                    `提案名稱:${JSON.stringify(item.projectName, null, 2)}\n提案分類:${JSON.stringify(item.category, null, 2)}\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n提案人:${JSON.stringify(item.creatorName, null, 2)}\n提案人真實姓名:${JSON.stringify(item.projectPrincipal, null, 2)}\n提案人身分證字號:${JSON.stringify(item.identityNumber, null, 2)}\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n募資人數:${JSON.stringify(item.fundedpeople, null, 2)}\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}\n提案方案數量:${JSON.stringify(item.projectPlansCount, null, 2)}\n提案開始時間:${JSON.stringify(item.startDate, null, 2)}\n提案結束時間:${JSON.stringify(item.endDate, null, 2)}\n提案初創時間:${JSON.stringify(item.createdDate, null, 2)}\n提案提交時間:${JSON.stringify(item.submittedDate, null, 2)}`;
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button);
             },
             resetInfoModal() {
@@ -225,6 +221,7 @@
             getWaitForPassProject() {
                 axios.get("/Api/Projects/GetWaitForPass")
                     .then((res) => {
+                        changeStatus(res.data.body.projectList);
                         this.items = res.data.body.projectList;
                         this.mounted();
                         this.isBusy = false;
@@ -260,4 +257,23 @@
         },
 
     })
+
+    function changeStatus(dataItems) {
+        dataItems.forEach(item => {
+            if (item.approvingStatus == 0) {
+                item.approvingStatus = "草稿";
+            }
+            else if (item.approvingStatus == 1) {
+                item.approvingStatus = "審核中";
+            }
+            else if (item.approvingStatus == 3) {
+                item.approvingStatus = "審核失敗";
+            }
+            else {
+                item.approvingStatus = "審核成功";
+            }
+
+
+        })
+    }
 </script>

@@ -33,7 +33,7 @@ namespace ProjectTeamFour_Backend.WebApi
         //拿全部
         // GET: api/Projects
         [HttpGet]
-        public BaseModel.BaseResult<ProjectViewModel.ProjectListforChart> GetProjects()
+        public async Task< BaseModel.BaseResult<ProjectViewModel.ProjectListforChart>> GetProjects()
         {
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListforChart>();
 
@@ -41,7 +41,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                result.Body = _projectService.GetAllForCharts();
+                result.Body = await _projectService.GetAllForCharts();
                 return result;
             }
             catch (Exception ex)

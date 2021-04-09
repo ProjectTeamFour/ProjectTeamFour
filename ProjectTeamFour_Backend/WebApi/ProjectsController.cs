@@ -32,7 +32,7 @@ namespace ProjectTeamFour_Backend.WebApi
         //拿全部
         // GET: api/Projects
         [HttpGet]
-        public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetAll()
+        public async Task <BaseModel.BaseResult<ProjectViewModel.ProjectListResult>> GetAll()
         {
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
 
@@ -40,7 +40,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                result.Body = _projectService.GetAll();
+                result.Body = await _projectService.GetAll();
                 return result;
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace ProjectTeamFour_Backend.WebApi
         //拿待審提案
         // GET: api/Projects
         [HttpGet]
-        public BaseModel.BaseResult<ProjectViewModel.ProjectListResult> GetWaitForPass()
+        public async Task<BaseModel.BaseResult<ProjectViewModel.ProjectListResult>> GetWaitForPass()
         {
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
 
@@ -62,7 +62,7 @@ namespace ProjectTeamFour_Backend.WebApi
 
             try
             {
-                result.Body = _projectService.GetWaitForPass();
+                result.Body = await _projectService.GetWaitForPass();
                 return result;
             }
             catch (Exception ex)
@@ -82,13 +82,13 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <param name="waitForPassSingle"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult<BaseModel.BaseResult<ProjectViewModel.ProjectSingleResult>> EditWaitForPassProject([FromBody] ProjectViewModel.ProjectSingleResult waitForPassSingle)
+        public async Task<ActionResult<BaseModel.BaseResult<ProjectViewModel.ProjectSingleResult>>> EditWaitForPassProject([FromBody] ProjectViewModel.ProjectSingleResult waitForPassSingle)
         {
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PutBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(waitForPassSingle));
 
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectSingleResult>();
 
-            var editResult = _projectService.EditWaitForPassProject(waitForPassSingle);
+            var editResult = await _projectService.EditWaitForPassProject(waitForPassSingle);
 
             result.Msg = editResult;
             if (result.Msg == "查無此筆資料")
