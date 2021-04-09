@@ -152,20 +152,27 @@ namespace ProjectTeamFour.Service
         {
 
            
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.UtcNow.AddHours(8);
             double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
             var o = _repository.GetAll<Order>().Where(x => x.MemberId == item.MemberId).Select(x => x).ToList();
-
+            
             if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
             {
                 item.ProjectStatus = "結束且成功";
             }
             else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
-            {
+            {                         
                 item.ProjectStatus = "結束且失敗";
+                var od = _repository.GetAll<OrderDetail>().Where(x => x.ProjectId == item.ProjectId).Select(x => x).ToList();
                 foreach(var i in o)
-                {
-                    i.condition = "需退款";
+                {                    
+                    i.condition = "已付款(退款)";
+                    foreach(var oditem in od)
+                    {
+                        oditem.condition = "已付款(退款)";
+                        _repository.Update(oditem);
+                    }
+                    _repository.Update(i);
                 }
             }
             else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
@@ -180,7 +187,7 @@ namespace ProjectTeamFour.Service
             {
                 item.ProjectStatus = "審核中";
             }
-            _repository.Update(item);
+            _repository.Update(item);            
         }
 
 
