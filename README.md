@@ -2343,7 +2343,9 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
             //    PlanPrice = 900,
             //    QuantityLimit = 50
             //});
+            
             ////Lesley
+
                         //第22個提案
             context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             {
@@ -2358,7 +2360,7 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 FundingAmount = 4680m,
                 AmountThreshold = 5000m,
                 CreatorName = "都市計劃學系110級畢業成果展",
-                ProjectMainUrl = "https://i.imgur.com/EtuLoDmm.png",
+                ProjectMainUrl = "https://i.imgur.com/IXiwVEcm.png",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 ProjectCoverUrl = "https://i.imgur.com/EtuLoDmm.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
@@ -2472,7 +2474,7 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 FundingAmount = 47100m,
                 AmountThreshold = 50000m,
                 CreatorName = "提案者FRC7497 MARAHO",
-                ProjectMainUrl = "https://i.imgur.com/7I6JNmdl.png",
+                ProjectMainUrl = "https://i.imgur.com/41xsiTem.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 ProjectCoverUrl = "https://i.imgur.com/7I6JNmdl.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
@@ -2600,7 +2602,7 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 FundingAmount = 122000m,
                 AmountThreshold = 200000m,
                 CreatorName = "FRC8585 BombaxLeopard",
-                ProjectMainUrl = "https://i.imgur.com/M1XVdeVm.png",
+                ProjectMainUrl = "https://i.imgur.com/H5Xgvikm.png",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 ProjectCoverUrl = "https://i.imgur.com/M1XVdeVm.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
@@ -2743,7 +2745,7 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 FundingAmount = 43280m,
                 AmountThreshold = 300000m,
                 CreatorName = "三好MOONPANT",
-                ProjectMainUrl = "https://i.imgur.com/IyjShaRm.png",
+                ProjectMainUrl = "https://i.imgur.com/GITEjAcm.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 ProjectCoverUrl = "https://i.imgur.com/IyjShaRl.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
@@ -2828,5 +2830,4 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 QuantityLimit = 50
             });
 
-            
         }
