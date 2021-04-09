@@ -33,8 +33,8 @@ namespace ProjectTeamFour_Backend.Services
                     FundingAmount = p.FundingAmount,
                     Category = p.Category,
                     ProjectStatus = p.ProjectStatus,
-                    StartDate = p.StartDate,
-                    EndDate = p.EndDate,
+                    StartDate = p.StartDate.ToString("d"),
+                    EndDate = p.EndDate.ToString("d"),
                     MemberId = p.MemberId,
                     Fundedpeople = p.Fundedpeople,
                     ProjectDescription = p.ProjectDescription,
@@ -49,10 +49,13 @@ namespace ProjectTeamFour_Backend.Services
                     ProjectMainUrl = p.ProjectMainUrl,
                     ProjectPrincipal = p.ProjectPrincipal,
                     IdentityNumber = p.IdentityNumber,
-                    CreatedDate = p.CreatedDate,
-                    SubmittedDate = p.SubmittedDate,
-                    LastEditTime = p.LastEditTime,
+                    CreatedDate = p.CreatedDate.ToString("d"),
+                    SubmittedDate = p.SubmittedDate.ToString("d"),
+                    LastEditTime = p.LastEditTime.ToString("d"),
                     ApprovingStatus = p.ApprovingStatus,
+                    ProjectPercent = (p.FundingAmount / p.AmountThreshold) * 100,
+                    RestDay = p.EndDate.Subtract(p.StartDate).Days,
+
 
                     PlanList = _dbRepository
                     .GetAll<Plan>()
@@ -96,6 +99,16 @@ namespace ProjectTeamFour_Backend.Services
             return result;
         }
 
+        public ProjectViewModel.ProjectListForPercent GetPercent()
+        {
+            var result = new ProjectViewModel.ProjectListForPercent();
+            result.getProjectPercentsList = _dbRepository.GetAll<Project>().Select(x => new ProjectViewModel.GetProjectPercent
+            {
+                ProjectPercent = (x.FundingAmount/x.AmountThreshold)*100
+            }).ToList();
+
+            return result;
+        }
 
         //取得審核中
 
@@ -112,8 +125,8 @@ namespace ProjectTeamFour_Backend.Services
                     FundingAmount = p.FundingAmount,
                     Category = p.Category,
                     ProjectStatus = p.ProjectStatus,
-                    StartDate = p.StartDate,
-                    EndDate = p.EndDate,
+                    StartDate = p.StartDate.ToString("d"),
+                    EndDate = p.EndDate.ToString("d"),
                     MemberId = p.MemberId,
                     Fundedpeople = p.Fundedpeople,
                     ProjectDescription = p.ProjectDescription,
@@ -128,9 +141,9 @@ namespace ProjectTeamFour_Backend.Services
                     ProjectMainUrl = p.ProjectMainUrl,
                     ProjectPrincipal = p.ProjectPrincipal,
                     IdentityNumber = p.IdentityNumber,
-                    CreatedDate = p.CreatedDate,
-                    SubmittedDate = p.SubmittedDate,
-                    LastEditTime = p.LastEditTime,
+                    CreatedDate = p.CreatedDate.ToString("d"),
+                    SubmittedDate = p.SubmittedDate.ToString("d"),
+                    LastEditTime = p.LastEditTime.ToString("d"),
                     ApprovingStatus = p.ApprovingStatus,
 
                     PlanList = _dbRepository
@@ -235,8 +248,8 @@ namespace ProjectTeamFour_Backend.Services
                     CreatorName = x.CreatorName,
                     FundingAmount = x.FundingAmount,
                     AmountThreshold = x.AmountThreshold,
-                    EndDate = x.EndDate,
-                    StartDate = x.StartDate,
+                    EndDate = x.EndDate.ToString("d"),
+                    StartDate = x.StartDate.ToString("d"),
                     Fundedpeople = x.Fundedpeople,
                 }).ToList();
 
@@ -258,8 +271,8 @@ namespace ProjectTeamFour_Backend.Services
                 CreatorName = data.CreatorName,
                 FundingAmount = data.FundingAmount,
                 AmountThreshold = data.AmountThreshold,
-                EndDate = data.EndDate,
-                StartDate = data.StartDate,
+                EndDate = data.EndDate.ToString("d"),
+                StartDate = data.StartDate.ToString("d"),
                 Fundedpeople = data.Fundedpeople,
             };
 
@@ -270,5 +283,25 @@ namespace ProjectTeamFour_Backend.Services
         {
             return null;
         }
+
+        //取得Charts會用到的資料
+        public ProjectViewModel.ProjectListforChart GetAllForCharts()
+        {
+            ProjectViewModel.ProjectListforChart result = new ProjectViewModel.ProjectListforChart();
+            result.ProjectChartdta = _dbRepository
+                .GetAll<Project>()
+                .Select(p => new ProjectViewModel.ProjectforChart()
+                {
+                    ProjectId = p.ProjectId,
+                    ProjectName = p.ProjectName,
+                    FundingAmount = p.FundingAmount,
+                    Category = p.Category,
+                    ProjectStatus = p.ProjectStatus
+                }).ToList();
+
+            return result;
+        }
+
+
     }
 }

@@ -26,11 +26,11 @@ namespace ProjectTeamFour_Backend.Services
         public Task<OrderViewModel.OrderListResult> GetAll()
         {
             return Task.Run(() =>
-            {
-                OrderViewModel.OrderListResult result = new OrderViewModel.OrderListResult();
+            {                
+                OrderViewModel.OrderListResult result = new OrderViewModel.OrderListResult();                
                 result.MyOrderList = _dbRepository.GetAll<Order>().Select(
                     o => new OrderViewModel.OrderSingleResult()
-                    {
+                    {//plan的planId==orderdetail 的 planId  滿足這個條件後的planDate 要等於 orderdetail的planshipDate 
                         OrderDetailList = _dbRepository.GetAll<OrderDetail>().Where(x => x.OrderId == o.OrderId).Select(x => new OrderDetail
                         {
                             PlanTitle = x.PlanTitle,
@@ -41,8 +41,7 @@ namespace ProjectTeamFour_Backend.Services
                             OrderPlanImgUrl = x.OrderPlanImgUrl,
                             PlanId = x.PlanId,
                             OrderDetailDes = x.OrderDetailDes,
-                            ProjectId = x.ProjectId,
-                            //PlanShipDate = x.PlanShipDate
+                            ProjectId = x.ProjectId,                     
                         }).ToList(),
                         OrderAddress = o.OrderAddress,
                         OrderConEmail = o.OrderConEmail,
@@ -50,6 +49,7 @@ namespace ProjectTeamFour_Backend.Services
                         OrderName = o.OrderName,
                         OrderTotalAccount = o.OrderTotalAccount,
                         OrderPhone = o.OrderPhone,
+                        OrderDate = o.OrderDate.Date.ToString("d"),
                         Condition = o.Condition,
                         TradeNo = o.TradeNo,
                         MemberId = o.MemberId,
