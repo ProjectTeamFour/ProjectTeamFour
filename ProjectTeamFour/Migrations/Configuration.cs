@@ -2840,7 +2840,7 @@
                 MemberMessage = "",
                 MemberPhone = "0935-666449",
                 MemberTeamName = "都市計劃學系110級畢業成果展",
-                MemberWebsite = "https://lohas.acsite.org/",
+                MemberWebsite = "https://up.ncku.edu.tw/110-%E7%B4%9A%E7%95%A2%E6%A5%AD%E5%B1%95/",
                 AboutMe = "都市相談室 | 紡織廠再生-策略規劃與再開發公展,國立成功大學都市計劃學系110級 畢業成果展,NCKU Urban Planning Dept.Graduation Exhibition",
                 Gender = "男",
                 ProfileImgUrl = "https://i.imgur.com/0loe78pt.png",

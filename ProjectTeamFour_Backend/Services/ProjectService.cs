@@ -53,7 +53,7 @@ namespace ProjectTeamFour_Backend.Services
                     SubmittedDate = p.SubmittedDate.ToString("d"),
                     LastEditTime = p.LastEditTime.ToString("d"),
                     ApprovingStatus = p.ApprovingStatus,
-                    RestDay = p.EndDate.Subtract(p.StartDate),
+                    RestDay = p.EndDate.Subtract(p.StartDate).Days,
                     PlanList = _dbRepository
                     .GetAll<Plan>()
                     .Where(pl => pl.ProjectId == p.ProjectId)

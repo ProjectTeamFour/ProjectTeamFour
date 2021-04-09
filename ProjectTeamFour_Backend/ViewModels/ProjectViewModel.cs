@@ -40,7 +40,7 @@ namespace ProjectTeamFour_Backend.ViewModels
             public string SubmittedDate { get; set; }
             public string LastEditTime { get; set; }
             public int ApprovingStatus { get; set; }
-            public TimeSpan RestDay { get; set; }
+            public int RestDay { get; set; }
             public List<Plan> PlanList { get; set; }
             public List<Comment> CommentList { get; set; }
  
