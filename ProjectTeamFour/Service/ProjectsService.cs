@@ -38,20 +38,23 @@ namespace ProjectTeamFour.Service
             
             foreach (var item in result)
             {
-                var projectbox = new ProjectViewModel
+                if (item.ProjectStatus == "集資中" || item.ProjectStatus == "集資成功")
                 {
-                    ProjectMainUrl = item.ProjectMainUrl,
-                    Category = item.Category,
-                    ProjectStatus = item.ProjectStatus,
-                    ProjectName = item.ProjectName,
-                    CreatorName = item.CreatorName,
-                    FundingAmount = item.FundingAmount,
-                    AmountThreshold = item.AmountThreshold,
-                    EndDate = item.EndDate,
-                    StartDate = item.StartDate,
-                    ProjectId = item.ProjectId
-                };
-                project.ProjectItems.Add(projectbox); //在list加入這筆資料
+                    var projectbox = new ProjectViewModel
+                    {
+                        ProjectMainUrl = item.ProjectMainUrl,
+                        Category = item.Category,
+                        ProjectStatus = item.ProjectStatus,
+                        ProjectName = item.ProjectName,
+                        CreatorName = item.CreatorName,
+                        FundingAmount = item.FundingAmount,
+                        AmountThreshold = item.AmountThreshold,
+                        EndDate = item.EndDate,
+                        StartDate = item.StartDate,
+                        ProjectId = item.ProjectId
+                    };
+                    project.ProjectItems.Add(projectbox); //在list加入這筆資料
+                }                    
             }
             return project;
         }
@@ -128,21 +131,25 @@ namespace ProjectTeamFour.Service
 
             foreach (var item in _reposity.GetAll<Project>())
             {
-
-                ProjectViewModel pv = new ProjectViewModel
+                if(item.ProjectStatus =="集資中" || item.ProjectStatus == "集資成功")
                 {
-                    ProjectMainUrl = item.ProjectMainUrl,
-                    Category = item.Category,
-                    ProjectStatus = item.ProjectStatus,
-                    ProjectName = item.ProjectName,
-                    CreatorName = item.CreatorName,
-                    FundingAmount = (int)item.FundingAmount,
-                    AmountThreshold = item.AmountThreshold,
-                    EndDate = item.EndDate,
-                    StartDate = item.StartDate,
-                    ProjectId = item.ProjectId
-                };
-                project.ProjectItems.Add(pv);
+                    ProjectViewModel pv = new ProjectViewModel
+                    {
+                        ProjectMainUrl = item.ProjectMainUrl,
+                        Category = item.Category,
+                        ProjectStatus = item.ProjectStatus,
+                        ProjectName = item.ProjectName,
+                        CreatorName = item.CreatorName,
+                        FundingAmount = (int)item.FundingAmount,
+                        AmountThreshold = item.AmountThreshold,
+                        EndDate = item.EndDate,
+                        StartDate = item.StartDate,
+                        ProjectId = item.ProjectId,
+                        ApprovingStatus = item.ApprovingStatus
+                    };
+                    project.ProjectItems.Add(pv);
+                }
+               
             }
             return project;
         }
@@ -191,7 +198,8 @@ namespace ProjectTeamFour.Service
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
-                    ProjectId = item.ProjectId
+                    ProjectId = item.ProjectId,
+                    ApprovingStatus =item.ApprovingStatus
                 };
                 project.ProjectItems.Add(pv);
             }

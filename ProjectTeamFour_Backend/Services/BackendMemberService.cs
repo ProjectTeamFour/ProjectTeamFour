@@ -148,6 +148,41 @@ namespace ProjectTeamFour_Backend.Services
                 return result;
             });
         }
+
+        public BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult> GetBackendAuthentication(LoginViewModel loginVM)
+        {
+            var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
+            var manager = _repository.GetAll<Backendmember>().Where(x => x.MemberRegEmail ==loginVM.MemberRegEmail&& x.MemberPassword==loginVM.Password).FirstOrDefault();
+            
+            try
+            {
+                if(manager != null)
+                {
+                    if (manager.BackendIdentity==true)
+                    {
+                        result.IsSuccess = true;
+                        result.Msg = manager.BackendIdentity.ToString();
+                      
+                    }
+                    else
+                    {
+                        result.IsSuccess = true;
+                        result.Msg = manager.BackendIdentity.ToString();
+                        
+                    }
+
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                ex.ToString();
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// (非同步)從資料庫取得一筆後台會員資料
         /// </summary>

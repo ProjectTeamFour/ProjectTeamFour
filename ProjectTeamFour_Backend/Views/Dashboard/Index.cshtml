@@ -363,10 +363,51 @@
     <script src="~/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="~/vendor/chart.js/Chart.min.js"></script>
+    <!--<script src="~/vendor/chart.js/Chart.min.js"></script>-->
 
     <!-- Page level custom scripts -->
     <script src="~/js/demo/chart-area-demo.js"></script>
     <script src="~/js/demo/chart-pie-demo.js"></script>
+
+    <script>
+        const getOption = async () => {
+            const getdata = async () => {
+                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
+                let tmpArray = [];
+                items.map((v, i) => tmpArray.push(i));
+                let account = [];
+                items.map((v, i) => account.push(parseInt(v.orderTotalAccount)));
+                return { x: tmpArray, y: account }
+            }
+            let tmp = await getdata();
+            var option = {
+                title: {
+                    text: '訂單銷售統計圖'
+                },
+                //legend: {
+                //data: ['金額']
+                //},
+                xAxis: {
+                    data: tmp.x
+                    //data:months
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    name: '金額',
+                    type: 'line',
+                    data: tmp.y
+                }]
+            };
+            return option;
+        }
+
+        getOption().then(option => {
+            console.log(option);
+            var moneyChart = echarts.init(document.getElementById('orders_line'));
+            moneyChart.setOption(option);
+        })
+    </script>
 
 </body>

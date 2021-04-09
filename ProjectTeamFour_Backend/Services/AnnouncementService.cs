@@ -73,6 +73,7 @@ namespace ProjectTeamFour_Backend.Services
             var data = _dbrepository.GetAll<Announcement>().Where(x => x.AnnouncementId == input.AnnouncementId).FirstOrDefault();
             try
             {
+                data.MemberId = input.MemberId;
                 data.Content = input.Content;
                 data.Title = input.Title;
                 data.EditTime = DateTime.UtcNow.AddHours(8);
