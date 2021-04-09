@@ -36,7 +36,7 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
 
-            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器GET方法被呼叫, by" + UriHelper.GetDisplayUrl(Request)); 
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Projects控制器GetAll方法被呼叫, by " + UriHelper.GetDisplayUrl(Request)); 
 
             try
             {
@@ -58,7 +58,7 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             var result = new BaseModel.BaseResult<ProjectViewModel.ProjectListResult>();
 
-            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Products控制器GET方法被呼叫, by" + UriHelper.GetDisplayUrl(Request));
+            _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + "Projects控制器GET方法被呼叫, by" + UriHelper.GetDisplayUrl(Request));
 
             try
             {

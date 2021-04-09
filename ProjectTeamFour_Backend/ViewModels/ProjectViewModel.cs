@@ -20,8 +20,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             public decimal FundingAmount { get; set; }
             public string Category { get; set; }
             public string ProjectStatus { get; set; }
-            public DateTime StartDate { get; set; }
-            public DateTime EndDate { get; set; }
+            public string StartDate { get; set; }
+            public string EndDate { get; set; }
             public int MemberId { get; set; }
             public int Fundedpeople { get; set; }
             public string ProjectDescription { get; set; }
@@ -36,10 +36,11 @@ namespace ProjectTeamFour_Backend.ViewModels
             public string ProjectMainUrl { get; set; }
             public string ProjectPrincipal { get; set; }
             public string IdentityNumber { get; set; }
-            public DateTime CreatedDate { get; set; }
-            public DateTime SubmittedDate { get; set; }
-            public DateTime LastEditTime { get; set; }
+            public string CreatedDate { get; set; }
+            public string SubmittedDate { get; set; }
+            public string LastEditTime { get; set; }
             public int ApprovingStatus { get; set; }
+            public TimeSpan RestDay { get; set; }
             public List<Plan> PlanList { get; set; }
             public List<Comment> CommentList { get; set; }
  

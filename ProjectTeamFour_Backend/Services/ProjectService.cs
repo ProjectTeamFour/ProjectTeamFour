@@ -33,8 +33,8 @@ namespace ProjectTeamFour_Backend.Services
                     FundingAmount = p.FundingAmount,
                     Category = p.Category,
                     ProjectStatus = p.ProjectStatus,
-                    StartDate = p.StartDate,
-                    EndDate = p.EndDate,
+                    StartDate = p.StartDate.ToString("d"),
+                    EndDate = p.EndDate.ToString("d"),
                     MemberId = p.MemberId,
                     Fundedpeople = p.Fundedpeople,
                     ProjectDescription = p.ProjectDescription,
@@ -49,11 +49,11 @@ namespace ProjectTeamFour_Backend.Services
                     ProjectMainUrl = p.ProjectMainUrl,
                     ProjectPrincipal = p.ProjectPrincipal,
                     IdentityNumber = p.IdentityNumber,
-                    CreatedDate = p.CreatedDate,
-                    SubmittedDate = p.SubmittedDate,
-                    LastEditTime = p.LastEditTime,
+                    CreatedDate = p.CreatedDate.ToString("d"),
+                    SubmittedDate = p.SubmittedDate.ToString("d"),
+                    LastEditTime = p.LastEditTime.ToString("d"),
                     ApprovingStatus = p.ApprovingStatus,
-
+                    RestDay = p.EndDate.Subtract(p.StartDate),
                     PlanList = _dbRepository
                     .GetAll<Plan>()
                     .Where(pl => pl.ProjectId == p.ProjectId)
@@ -112,8 +112,8 @@ namespace ProjectTeamFour_Backend.Services
                     FundingAmount = p.FundingAmount,
                     Category = p.Category,
                     ProjectStatus = p.ProjectStatus,
-                    StartDate = p.StartDate,
-                    EndDate = p.EndDate,
+                    StartDate = p.StartDate.ToString("d"),
+                    EndDate = p.EndDate.ToString("d"),
                     MemberId = p.MemberId,
                     Fundedpeople = p.Fundedpeople,
                     ProjectDescription = p.ProjectDescription,
@@ -128,9 +128,9 @@ namespace ProjectTeamFour_Backend.Services
                     ProjectMainUrl = p.ProjectMainUrl,
                     ProjectPrincipal = p.ProjectPrincipal,
                     IdentityNumber = p.IdentityNumber,
-                    CreatedDate = p.CreatedDate,
-                    SubmittedDate = p.SubmittedDate,
-                    LastEditTime = p.LastEditTime,
+                    CreatedDate = p.CreatedDate.ToString("d"),
+                    SubmittedDate = p.SubmittedDate.ToString("d"),
+                    LastEditTime = p.LastEditTime.ToString("d"),
                     ApprovingStatus = p.ApprovingStatus,
 
                     PlanList = _dbRepository
@@ -235,8 +235,8 @@ namespace ProjectTeamFour_Backend.Services
                     CreatorName = x.CreatorName,
                     FundingAmount = x.FundingAmount,
                     AmountThreshold = x.AmountThreshold,
-                    EndDate = x.EndDate,
-                    StartDate = x.StartDate,
+                    EndDate = x.EndDate.ToString("d"),
+                    StartDate = x.StartDate.ToString("d"),
                     Fundedpeople = x.Fundedpeople,
                 }).ToList();
 
@@ -258,8 +258,8 @@ namespace ProjectTeamFour_Backend.Services
                 CreatorName = data.CreatorName,
                 FundingAmount = data.FundingAmount,
                 AmountThreshold = data.AmountThreshold,
-                EndDate = data.EndDate,
-                StartDate = data.StartDate,
+                EndDate = data.EndDate.ToString("d"),
+                StartDate = data.StartDate.ToString("d"),
                 Fundedpeople = data.Fundedpeople,
             };
 
