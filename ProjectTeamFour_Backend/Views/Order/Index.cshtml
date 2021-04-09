@@ -5,6 +5,7 @@
        .back{
            color:red;
            border:red solid 1px;
+           font-weight:bold;
        }
     </style>
 
@@ -135,14 +136,15 @@
                      :sort-by.sync="sortBy"
                      :sort-desc.sync="sortDesc"
                      :sort-direction="sortDirection"
-                     :busy="isBusy"
-                     @*v-bind:class="{'back':items.condition == '需退款'}"*@
+                     :busy="isBusy"                     
                      stacked="md"
                      show-empty
                      small
                      @@filtered="onFiltered">
-                <template #cell(name)="row">
-                    {{ row.value.first }} {{ row.value.last }}
+                <template #cell(condition)="row">
+                    <span v-bind:class="{ 'back':row.value== '需退款'}">
+                    {{ row.value}}
+                    </span>
                 </template>
 
                 <template #cell(actions)="row">
