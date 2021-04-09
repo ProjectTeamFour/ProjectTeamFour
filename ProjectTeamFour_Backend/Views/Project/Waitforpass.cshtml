@@ -96,11 +96,15 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '收起' : '方案包' }}
                     </b-button>
+                    <b-button size="sm" @@click="projectDetailPagePreview(row.item)" class="mr-1" variant="info">
+                        專案預覽
+                    </b-button>
                     <b-button size="sm" @@click="passHandler(row.item, true)" class="mr-1" variant="success">
                         通過
                     </b-button>
                     <b-button size="sm" @@click="passHandler(row.item, false)" class="mr-1" variant="danger">
                         拒絕
+                    </b-button>
                 </template>
 
                 <template #row-details="row">
@@ -218,23 +222,30 @@
                 // Set the initial number of items
                 this.totalRows = this.items.length
             },
+            //資料 binding
             getWaitForPassProject() {
                 axios.get("/Api/Projects/GetWaitForPass")
                     .then((res) => {
-                        changeStatus(res.data.body.projectList);
-                        this.items = res.data.body.projectList;
+                        this.changeStatus(res.data.body.projectList);  //approvingstatus 數字換中文
+                        this.items = res.data.body.projectList;  //bind
                         this.mounted();
                         this.isBusy = false;
                     });
             },
+            //按鈕事件 通過與不通過判定並呼叫 sweetAlert
             passHandler(item, bool) {
                 if (bool == true) {
                     item.approvingStatus = 2;
+                    this.passSweetAlertHandler(item);  //都先 sweetalert 處理提示
                 } else {
                     item.approvingStatus = 3;
+                    this.denySweetAlertHandler(item);   //都先 sweetalert 處理提示
                 }
+            },
+            //更新提案狀態
+            axiosHandler(item) {
                 let data = item;
-                console.log(data);
+                @*console.log(data);*@
                 const config = {
                     headers: {
                         'Accept': 'application/json',
@@ -244,36 +255,85 @@
                 axios.put("/Api/Projects/EditWaitForPassProject", data, config)
                     .then((res) => {
                         console.log("成功");
-                        this.getWaitForPassProject();
+                        this.getWaitForPassProject(); //資料塞回去
                     })
                     .catch((err) => {
                         console.log("錯誤");
                     });
-
             },
-            rejectHandler() {
+            //跳提醒確認的話就呼叫 axiosHandler
+            passSweetAlertHandler(item) {
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-outline-danger ml-2',
+                        cancelButton: 'btn btn-secondary mr-2'
+                    },
+                    buttonsStyling: false
+                });
+
+                swalWithBootstrapButtons.fire({
+                    title: '確定通過?',
+                    text: "通過後專案即開始上線募資",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '確定',
+                    cancelButtonText: '返回',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        //這邊呼叫傳到後端更改資料
+                        this.axiosHandler(item);
+                    }
+                });
+            },
+            denySweetAlertHandler(item) {
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-outline-danger ml-2',
+                        cancelButton: 'btn btn-secondary mr-2'
+                    },
+                    buttonsStyling: false
+                });
+
+                swalWithBootstrapButtons.fire({
+                    title: '確定否決?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '確定',
+                    cancelButtonText: '返回',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        //這邊呼叫傳到後端更改資料
+                        this.axiosHandler(item);
+                    }
+                });
+            },
+            changeStatus(dataItems) {
+                dataItems.forEach(item => {
+                    if (item.approvingStatus == 0) {
+                        item.approvingStatus = "草稿";
+                    }
+                    else if (item.approvingStatus == 1) {
+                        item.approvingStatus = "審核中";
+                    }
+                    else if (item.approvingStatus == 3) {
+                        item.approvingStatus = "審核失敗";
+                    }
+                    else {
+                        item.approvingStatus = "審核成功";
+                    }
+                });
+            },
+            projectDetailPagePreview(projectItem) {
+                @*window.location.href = "/Project/ProjectDetail/" + projectItem.projectId;*@
                 
+                window.open(
+                    'ProjectDetail/' + projectItem.projectId,
+                    '_blank' // <- This is what makes it open in a new window.
+                );
             },
         },
+    });
 
-    })
-
-    function changeStatus(dataItems) {
-        dataItems.forEach(item => {
-            if (item.approvingStatus == 0) {
-                item.approvingStatus = "草稿";
-            }
-            else if (item.approvingStatus == 1) {
-                item.approvingStatus = "審核中";
-            }
-            else if (item.approvingStatus == 3) {
-                item.approvingStatus = "審核失敗";
-            }
-            else {
-                item.approvingStatus = "審核成功";
-            }
-
-
-        })
-    }
 </script>
