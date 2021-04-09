@@ -148,11 +148,10 @@ namespace ProjectTeamFour.Service
             return selectPlanCardItems;
         }
 
-        //public void UpdateProjectStatus(Project item)
-        //{
+        public void UpdateProjectStatus(Project item)
+        {
 
-        //    DateTime today = DateTime.Now;
-        //    double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+           
             DateTime today = DateTime.Now;
             double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
             var o = _repository.GetAll<Order>().Where(x => x.MemberId == item.MemberId).Select(x => x).ToList();
