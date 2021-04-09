@@ -48,7 +48,9 @@ namespace ProjectTeamFour.Service
                 MemberName = entity.MemberName,
                 AboutMe = entity.AboutMe,
                 MemberWebsite = entity.MemberWebsite,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                MemberConEmail = entity.MemberConEmail,
+                MemberPhone = entity.MemberPhone,
             };
 
             return memberVM;
@@ -62,7 +64,7 @@ namespace ProjectTeamFour.Service
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
         {
             var entity = _repository.GetAll<Project>().FirstOrDefault(ProjectId);
-            UpdateProjectStatus(entity);
+            //UpdateProjectStatus(entity);
             //if (entity != default(Models.Project))
             //{
             var projectdetailVM = new ProjectDetailViewModel()
@@ -146,11 +148,14 @@ namespace ProjectTeamFour.Service
             return selectPlanCardItems;
         }
 
-        public void UpdateProjectStatus(Project item)
-        {
+        //public void UpdateProjectStatus(Project item)
+        //{
 
+        //    DateTime today = DateTime.Now;
+        //    double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
             DateTime today = DateTime.Now;
             double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+            var o = _repository.GetAll<Order>().Where(x => x.MemberId == item.MemberId).Select(x => x).ToList();
 
             if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
             {
@@ -159,6 +164,10 @@ namespace ProjectTeamFour.Service
             else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
             {
                 item.ProjectStatus = "結束且失敗";
+                foreach(var i in o)
+                {
+                    i.condition = "需退款";
+                }
             }
             else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
             {
@@ -201,11 +210,16 @@ namespace ProjectTeamFour.Service
                 //DraftProject_Question = entity.DraftProject_Question,
                 //DraftProject_Answer = entity.DraftProject_Answer,
                 DraftProjectFAQList = ConvertDraftProjectFAQList(entity.DraftProject_Question, entity.DraftProject_Answer),
+                StringEndDate = entity.EndDate.ToString("u"),
+                StringStartDate = entity.StartDate.ToString("u"),
                 EndDate = entity.EndDate,
                 StartDate = entity.StartDate,
                 DraftProjectMainUrl = entity.DraftProjectMainUrl,
+                DraftProjectCoverUrl = entity.DraftProjectCoverUrl,
                 DraftProjectId = entity.DraftProjectId,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                DraftProjectPrincipal = entity.DraftProjectPrincipal,
+                IdentityNumber = entity.IdentityNumber,
             };
 
             return draftprojectdetailVM;
@@ -232,6 +246,7 @@ namespace ProjectTeamFour.Service
                         DraftPlanDescription = item.DraftPlanDescription,
                         DraftPlanFundedPeople = item.DraftPlanFundedPeople,
                         DraftPlanShipDate = item.DraftPlanShipDate,
+                        StringDraftPlanShipDate = item.DraftPlanShipDate.ToString("u"),
                         DraftPlanImgUrl = item.DraftPlanImgUrl,
                         DraftPlanPrice = item.DraftPlanPrice,
                         DraftQuantityLimit = item.DraftQuantityLimit

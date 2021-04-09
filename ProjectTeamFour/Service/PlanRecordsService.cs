@@ -28,30 +28,39 @@ namespace ProjectTeamFour.Service
             var queryResults = new List<Plan>();
             foreach (var myProject in myProjectsVM)
             {
-                queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId).Select(x => x).ToList();
-                foreach (var queryResult in queryResults)
+                queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId&&p.AddCarCarPlan==true).Select(x => x).ToList();
+                if (queryResults != null)
                 {
-                    SubmissionProcessPlanViewModel singleVM = new SubmissionProcessPlanViewModel
+                    foreach (var queryResult in queryResults)
                     {
-                        PlanDescription = queryResult.PlanDescription,
-                        AddCarCarPlan = queryResult.AddCarCarPlan,
-                        QuantityLimit = queryResult.QuantityLimit,
-                        SubmitLimit = (int)queryResult.SubmitLimit,
-                        PlanFundedPeople = queryResult.PlanFundedPeople,
-                        PlanId = queryResult.PlanId,
-                        PlanImgUrl = queryResult.PlanImgUrl,
-                        PlanPrice = queryResult.PlanPrice,
-                        PlanShipDate = queryResult.PlanShipDate.ToString("d"),
-                        PlanTitle = queryResult.PlanTitle,
-                        ProjectId = queryResult.ProjectId,
-                        ProjectName = queryResult.ProjectName,
-                        ProjectPlanId = queryResult.ProjectPlanId
-                    };
-                    submissionProcessPlanVM.Add(singleVM);
+                        SubmissionProcessPlanViewModel singleVM = new SubmissionProcessPlanViewModel
+                        {
+                            PlanDescription = queryResult.PlanDescription,
+                            AddCarCarPlan = queryResult.AddCarCarPlan,
+                            QuantityLimit = queryResult.QuantityLimit,
+                            SubmitLimit = queryResult.SubmitLimit.HasValue? queryResult.SubmitLimit.Value:0,
+                            PlanFundedPeople = queryResult.PlanFundedPeople,
+                            PlanId = queryResult.PlanId,
+                            PlanImgUrl = queryResult.PlanImgUrl,
+                            PlanPrice = queryResult.PlanPrice,
+                            PlanShipDate = queryResult.PlanShipDate.ToString("d"),
+                            PlanTitle = queryResult.PlanTitle,
+                            ProjectId = queryResult.ProjectId,
+                            ProjectName = queryResult.ProjectName,
+                            ProjectPlanId = queryResult.ProjectPlanId
+                        };
+                        submissionProcessPlanVM.Add(singleVM);
+                    }
+                    
                 }
+                
+               
             }
 
             return submissionProcessPlanVM;
+
+
+
 
 
         }
