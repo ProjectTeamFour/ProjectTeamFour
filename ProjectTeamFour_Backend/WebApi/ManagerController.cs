@@ -51,6 +51,7 @@ namespace ProjectTeamFour_Backend.WebApi
                 var tokenString = GenerateJsonWebToken(loginVM);
                 response = Ok(new {token=tokenString});
                 Response.Cookies.Append("adm", user.Msg);
+                Response.Cookies.Append("UserEmail",loginVM.MemberRegEmail);
             }
 
 
