@@ -2343,4 +2343,490 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
             //    PlanPrice = 900,
             //    QuantityLimit = 50
             //});
+            ////Lesley
+                        //第22個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 22,
+                MemberId = 22,
+                ProjectName = "都市相談室｜成功大學都市計劃學系110級畢業成果展",
+                Category = "公共在地",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 35,
+                FundingAmount = 4680m,
+                AmountThreshold = 5000m,
+                CreatorName = "都市計劃學系110級畢業成果展",
+                ProjectMainUrl = "https://i.imgur.com/EtuLoDmm.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/EtuLoDmm.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/C0q1J9Yl.png,https://i.imgur.com/UPYdA2ll.png,https://i.imgur.com/clic4Z2l.png,https://i.imgur.com/F6GEuaTl.png,https://i.imgur.com/ZKYawKQl.png,https://i.imgur.com/ZOdXKIll.png,https://i.imgur.com/f2HpwVul.png,https://i.imgur.com/hLsnbKNl.png,https://i.imgur.com/jHlIr8sl.png,https://i.imgur.com/22KSEkgl.png,https://i.imgur.com/o1LkEDtl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/KDok4sdv1fA",
+                Project_Question = "《都市相談室》的展期及地點為何？,回饋商品何時會收到？",
+                Project_Answer = "我們的展期在2021/6/10(四) - 2021/6/14(一) 早上11:00至晚上22:00，展覽地點位於南紡購物中心一館一樓 時尚廣場(臺南市東區中華東路一段366號)。,回饋商品皆於展期間於展覽現場領取，若未領取，則將於展期結束後寄送。",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第22個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 22,
+                MemberAccount = "N22member",
+                MemberPassword = "N22memberPassword",
+                MemberName = "都市計劃學系110級畢業成果展",
+                MemberAddress = "700 臺南市大學路1號",
+                MemberBirth = new DateTime(1994, 12, 3),
+                MemberConEmail = "cityplan123@gmail.com",
+                MemberRegEmail = "cityplan123@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-666449",
+                MemberTeamName = "都市計劃學系110級畢業成果展",
+                MemberWebsite = "https://lohas.acsite.org/",
+                AboutMe = "都市相談室 | 紡織廠再生-策略規劃與再開發公展,國立成功大學都市計劃學系110級 畢業成果展,NCKU Urban Planning Dept.Graduation Exhibition",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/0loe78pt.png",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第22個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 98,
+                ProjectId = 22,
+                ProjectName = "都市相談室｜成功大學都市計劃學系110級畢業成果展",
+                ProjectPlanId = 1,
+                PlanTitle = "【都市拼貼｜都市拓印】",
+                PlanFundedPeople = 3,
+                PlanDescription = "[ 都市拼貼｜都市拓印 ] 募資限定價$100,✧心之所向✧ 明信片4款＋貼紙3款 你心中有嚮往的城市嗎？,來都市相談室，和我一起拓出屬於我們的城市",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/bPyqZagm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 99,
+                ProjectId = 22,
+                ProjectName = "都市相談室｜成功大學都市計劃學系110級畢業成果展",
+                ProjectPlanId = 2,
+                PlanTitle = "【海綿城市】",
+                PlanFundedPeople = 13,
+                PlanDescription = "✧海納百川✧ 珪藻土杯墊,做規劃覺得累了嗎？,讓我像海綿城市一樣吸納你的淚水與汗水吧,,//現場販售價格 $120//",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/fCVKsJwm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 100,
+                ProjectId = 22,
+                ProjectName = "都市相談室｜成功大學都市計劃學系110級畢業成果展",
+                ProjectPlanId = 3,
+                PlanTitle = "【都市容受力】",
+                PlanFundedPeople = 14,
+                PlanDescription = "[ 都市容受力 ] 募資限定價$120,✧回憶滿載✧ A4帆布袋,突然發現自己記憶力變差了嗎？,都市容受力讓你擁有裝下你我點點滴滴的超能力,,//現場販售價格 $150//",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/hWWlAfUm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 120m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 101,
+                ProjectId = 22,
+                ProjectName = "都市相談室｜成功大學都市計劃學系110級畢業成果展",
+                ProjectPlanId = 4,
+                PlanTitle = "【四種願望一次滿足】",
+                PlanFundedPeople = 5,
+                PlanDescription = "[ 四種願望一次滿足 ] 募資限定價$280,✧錯過不再✧ 明信片＋貼紙＋帆布袋＋杯墊,你還在猶豫嗎？,小孩子才做選擇，我全都要！,,//現場販售價格 $330//",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/DDybSo6m.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 280m,
+                QuantityLimit = 70
+            });
+
+            //第23個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 23,
+                MemberId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                Category = "科技設計",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 33,
+                FundingAmount = 47100m,
+                AmountThreshold = 50000m,
+                CreatorName = "提案者FRC7497 MARAHO",
+                ProjectMainUrl = "https://i.imgur.com/7I6JNmdl.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/7I6JNmdl.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/ASDjEj4l.jpg,https://i.imgur.com/4TeQ3bXl.jpg,https://i.imgur.com/7hEkqnJl.jpg,https://i.imgur.com/Ypo3evSl.jpg,https://i.imgur.com/WNXndFpl.jpg,https://i.imgur.com/w6blQuql.jpg,https://i.imgur.com/c3MJF06l.jpg,https://i.imgur.com/JkiChGKl.jpg,https://i.imgur.com/5fMvpfll.jpg,https://i.imgur.com/b0n8OB9l.jpg,https://i.imgur.com/A2bAjenl.jpg,https://i.imgur.com/dfliRPSl.jpg,https://i.imgur.com/7EWwyVPl.jpg,https://i.imgur.com/Gq7xFaNl.jpg,https://i.imgur.com/yMZvZMkl.jpg,https://i.imgur.com/C5M65BWl.jpg,https://i.imgur.com/ef2k4BWl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/Lbn6N6zDIDY",
+                Project_Question = "為何我們需要您的贊助?",
+                Project_Answer = "frc需要大量的經費及精力，您的支持都是我們前進的動力!",
+                ProjectPlansCount = 5,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第23個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 23,
+                MemberAccount = "N23member",
+                MemberPassword = "N23memberPassword",
+                MemberName = "提案者FRC7497 MARAHO",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "frc7497@gmail.com",
+                MemberRegEmail = "frc7497@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0938-616949",
+                MemberTeamName = "成功高中 FRC 7497 團隊",
+                MemberWebsite = "https://www.flyingv.cc/projects/28002",
+                AboutMe = "成功高中 FRC 7497 團隊",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/luE1c85t.png",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第23個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 102,
+                ProjectId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                ProjectPlanId = 1,
+                PlanTitle = "單純力挺，不須回饋",
+                PlanFundedPeople = 3,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/qWbpDyUm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 103,
+                ProjectId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                ProjectPlanId = 2,
+                PlanTitle = "手寫明信片送上滿滿的感謝!",
+                PlanFundedPeople = 3,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/1fgL0v5m.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 500m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 104,
+                ProjectId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                ProjectPlanId = 3,
+                PlanTitle = "7497專屬徽章,特製3D列印鑰匙圈,手寫明信片",
+                PlanFundedPeople = 20,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/T5xGfcJm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 105,
+                ProjectId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                ProjectPlanId = 4,
+                PlanTitle = "MARAHO 限定杯墊,7497專屬徽章,特製3D列印鑰匙圈,手寫明信片",
+                PlanFundedPeople = 5,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/9qDR455m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 106,
+                ProjectId = 23,
+                ProjectName = "成為MARAHO的翅膀吧:為新賽季做準備|FRC7497",
+                ProjectPlanId = 5,
+                PlanTitle = "MARAHO 限定馬克杯,MARAHO 限定杯墊,7497專屬徽章,特製3D列印鑰匙圈,手寫明信片",
+                PlanFundedPeople = 2,
+                PlanDescription = "",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/nOQpf1Fm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            //第24個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 24,
+                MemberId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                Category = "科技設計",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 9,
+                FundingAmount = 122000m,
+                AmountThreshold = 200000m,
+                CreatorName = "FRC8585 BombaxLeopard",
+                ProjectMainUrl = "https://i.imgur.com/M1XVdeVm.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/M1XVdeVm.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/qB2CiWZl.png,https://i.imgur.com/HQ3UncBl.jpg,https://i.imgur.com/UCeUHYil.png,https://i.imgur.com/Lva4TvQl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/M3R0e-NzECc",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 6,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第24個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 24,
+                MemberAccount = "N24member",
+                MemberPassword = "N24memberPassword",
+                MemberName = "簡良宸",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1997, 2, 3),
+                MemberConEmail = "frc8585bl@gmail.com",
+                MemberRegEmail = "frc8585bl@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-568849",
+                MemberTeamName = "FRC8585 BombaxLeopard",
+                MemberWebsite = "https://lohas.acsite.org/",
+                AboutMe = "我們來自大安高工AI自主研究社(機器人研究社) 以Bombax Leopard 山虎棉登記FRC國際隊號#8585 是一支想要改造台灣教育的團隊 儘管我們只是一群高中生 但是我們的執行力和夢想 是遠遠超出其他人的！！",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/4GBsE0Mt.png",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第24個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 107,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 1,
+                PlanTitle = "感謝您支持我們！",
+                PlanFundedPeople = 2,
+                PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 團隊特製感謝函*1,列名於FRC 8585社網",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/cABOytMm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 500m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 108,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 2,
+                PlanTitle = "感謝您支持我們！",
+                PlanFundedPeople = 0,
+                PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊特製感謝函*1,列名於FRC 8585社網",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/TmRXLBKm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 109,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 3,
+                PlanTitle = "感謝您支持我們！",
+                PlanFundedPeople = 3,
+                PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/KDYiyctm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 110,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 4,
+                PlanTitle = "感謝您支持我們！",
+                PlanFundedPeople = 3,
+                PlanDescription = "FRC 8585 紀念T-shirt*1,FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/GYhcBJ0m.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 111,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 5,
+                PlanTitle = "感謝您支持我們！",
+                PlanFundedPeople = 0,
+                PlanDescription = "非常感謝您支持我們！,受邀參觀FRC 8585、感恩餐會等,特製裱框感謝狀*1,,FRC 8585 紀念T-shirt*1,FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/EZxVDCtm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 10000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 112,
+                ProjectId = 24,
+                ProjectName = "2021 共創台灣教育新世代 | FRC 8585",
+                ProjectPlanId = 6,
+                PlanTitle = "非常感謝您支持我們的理想！",
+                PlanFundedPeople = 1,
+                PlanDescription = "非常感謝您支持我們的理想！,受邀參觀FRC 8585、感恩餐會等,可將姓名、公司商標等置於機器人上，讓全世界看見！,,贈送FRC8585全套產品",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/Kdrt83Um.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100000m,
+                QuantityLimit = 50
+            });
+            //第25個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 25,
+                MemberId = 25,
+                ProjectName = "MOONPANT 輕微量接漏尿機能性內褲｜瞬吸快乾妳的尷尬",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 36,
+                FundingAmount = 43280m,
+                AmountThreshold = 300000m,
+                CreatorName = "三好MOONPANT",
+                ProjectMainUrl = "https://i.imgur.com/IyjShaRm.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/IyjShaRl.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/IyjShaRl.png,https://i.imgur.com/ZdGiP4Hl.png,https://i.imgur.com/Cyjrl8il.jpg,https://i.imgur.com/SJaFXvCl.jpg,https://i.imgur.com/2vEFXdwl.jpg,https://i.imgur.com/FHj6ueBl.jpg,https://i.imgur.com/9cHsv2yl.png,https://i.imgur.com/ACT5Khrl.jpg,https://i.imgur.com/OhtyUFZl.png,https://i.imgur.com/v2VVO15l.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/iHwEEXPVol8",
+                Project_Question = "1. 如何洗滌天絲棉内褲延長使用期限呢?,2. 洗內褲的時候為何會有棉絮？",
+                Project_Answer = "最佳的洗滌的方式是【手洗】，天絲棉面料細緻，手洗時別用力搓揉。更別為了省力而用刷子刷，搭配常溫清水在40度以下沖洗，請摺疊擠乾水份，於通風處自然平放晾乾就好；請勿使用漂白水或柔軟精一同清洗，也不要烘乾、熨。特別是第一次下水手洗前，請不要長時間浸泡內褲，容易讓天絲棉因吸附太多水分子而導致膨脹再加上摩擦搓揉而容易起毛絨。,天絲棉是木漿纖維，是由植物纖維提煉出來的天然短纖維，在製造過程中一堆布疊在一起，整批進行裁切時最前面和最後面的布料因為摩擦比較多，導致洗滌的時候帶出棉絮。棉絮洗出來後便不會再有這樣的問題，千萬不要因為有棉絮產生，而誤以為是商品品質不佳。",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第25個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 25,
+                MemberAccount = "N25member",
+                MemberPassword = "N25memberPassword",
+                MemberName = "三好MOONPANT",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "moonpant@gmail.com",
+                MemberRegEmail = "moonpant@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-356949",
+                MemberTeamName = "月光下的秘蜜",
+                MemberWebsite = "http://www.moonpant.com/",
+                AboutMe = "自然純淨 守護您的每一天,MOONPANT沒有華麗的包裝，她希望用自然純淨的面貌和您見面，,MOONPANT不追隨時尚潮流，她希望您就是品牌，,MOONPANT希望女人們都要過美好的生活，,現在開始，MOONPANT",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/mLbA3Urt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第25個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 113,
+                ProjectId = 25,
+                ProjectName = "MOONPANT 輕微量接漏尿機能性內褲｜瞬吸快乾妳的尷尬",
+                ProjectPlanId = 1,
+                PlanTitle = "MOONPANT 清爽自在系列單件組",
+                PlanFundedPeople = 0,
+                PlanDescription = "1.商品數量：1件,2.商品顏色：紫月光、北極灰、珊瑚粉 (請選擇顏色)。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/ZdGiP4Hm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 400m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 114,
+                ProjectId = 25,
+                ProjectName = "MOONPANT 輕微量接漏尿機能性內褲｜瞬吸快乾妳的尷尬",
+                ProjectPlanId = 2,
+                PlanTitle = "MOONPANT 清爽自在系列3件組",
+                PlanFundedPeople = 23,
+                PlanDescription = "1.商品數量：3件,2.商品顏色：紫月光、北極灰、珊瑚粉(請選擇組別）。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/zdOnabEm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 900m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 115,
+                ProjectId = 25,
+                ProjectName = "MOONPANT 輕微量接漏尿機能性內褲｜瞬吸快乾妳的尷尬",
+                ProjectPlanId = 3,
+                PlanTitle = "MOONPANT 清爽自在系列5件組",
+                PlanFundedPeople = 13,
+                PlanDescription = "1.商品數量：5件,2.商品顏色：紫月光、北極灰、珊瑚粉(請選擇組別）。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/kda3xFPm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1500m,
+                QuantityLimit = 50
+            });
+
+            
         }
