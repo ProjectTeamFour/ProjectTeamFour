@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +7,6 @@ namespace ProjectTeamFour.Models
 {
     public class Backendmember
     {
-        
         public int MemberId { get; set; }
         /// <summary>
         /// 後臺會員真實姓名
