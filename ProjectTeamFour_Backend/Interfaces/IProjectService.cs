@@ -36,6 +36,6 @@ namespace ProjectTeamFour_Backend.Interfaces
 
         String EditWaitForPassProject(ProjectViewModel.ProjectSingleResult request);
 
-
+        ProjectViewModel.ProjectListforChart GetAllForCharts();
     }
 }
