@@ -158,7 +158,9 @@ namespace ProjectTeamFour.Service
             //using (SqlConnection oConn = CreateMARSConnection())
             //{
             foreach (var item in result)
-            {
+            {   
+                var o = _repository.GetAll<Order>().Where(x => x.MemberId == item.MemberId).Select(x => x).ToList();      
+                
                 DateTime today = DateTime.Now;
                 double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
 
@@ -173,6 +175,14 @@ namespace ProjectTeamFour.Service
                 else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
                 {
                     item.ProjectStatus = "結束且失敗";
+                    var od = _repository.GetAll<OrderDetail>().Where(x => x.ProjectId == item.ProjectId).Select(x => x).ToList();
+                    foreach (var i in od)
+                    {
+                        i.condition = "已付款(退款)";                         
+                        _repository.Update(i);
+                    }
+                    //_repository.Update()
+
                 }
                 else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
                 {

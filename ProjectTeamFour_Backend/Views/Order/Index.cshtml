@@ -142,7 +142,7 @@
                      small
                      @@filtered="onFiltered">
                 <template #cell(condition)="row">
-                    <span v-bind:class="{ 'back':row.value== '已付款(需退款)'}">
+                    <span v-bind:class="{ 'back':row.value== '已付款(退款)'}">
                     {{ row.value}}
                     </span>
                 </template>
@@ -151,16 +151,16 @@
                     <b-button size="sm" @@click="row.toggleDetails">
                         {{ row.detailsShowing ? '關閉' : '詳細' }}
                     </b-button>
-                    @*<b-button size="sm" v-if="row.item.condition=='已付款' || row.item.condition=='已付款(需退款)'" disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
-                        無法修改
-                    </b-button>*@
-                    <b-button size="sm" v-if="row.item.condition=='未付款'" class="mr-1" variant="success">
+                    <b-button size="sm" v-if="row.item.condition=='已付款' || row.item.condition=='已付款(退款)'" disabled @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
                         修改
                     </b-button>
-                    @*<b-button size="sm" v-if="row.item.condition=='已付款' || row.item.condition=='已付款(需退款)' " disabled @@click="deleteItem(row.item)" variant="danger">
-                        無法刪除
-                    </b-button>*@
-                    <b-button size="sm"  v-if="row.item.condition=='未付款'" @@click="deleteItem(row.item)" variant="danger">
+                    <b-button size="sm" v-else @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
+                        修改
+                    </b-button>
+                    <b-button size="sm" v-if="row.item.condition=='已付款' || row.item.condition=='已付款(退款)' " disabled @@click="deleteItem(row.item)" variant="danger">
+                        刪除
+                    </b-button>
+                    <b-button size="sm"  v-else @@click="deleteItem(row.item)" variant="danger">
                         刪除
                     </b-button>
                 </template>
