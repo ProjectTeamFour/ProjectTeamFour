@@ -23,5 +23,6 @@ namespace ProjectTeamFour.Models
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<DraftProject> DraftProjects { get; set; }
         public DbSet<DraftPlan> DraftPlans { get; set; }
+        
     }
 }

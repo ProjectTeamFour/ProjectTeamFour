@@ -2424,6 +2424,7 @@
     <Content Include="Views\ProjectDetail\DraftProjectDetailPagePreview.cshtml" />
     <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
     <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
+    <Content Include="Views\Shared\PartialView\_navBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,14 +51,14 @@ namespace ProjectTeamFour_Backend.WebApi
         public OperationResult CreateAnnouncement(AnnouncementViewModel.AnnouncementVM input)
         {
             
-            var User = "管理員";
+            var User = Request.Cookies["UserEmail"].ToString();
             var result = _announcementService.CreateAnnouncement(input, User);
             return result;
         }
         [HttpPut]
         public OperationResult SaveAnnouncement(AnnouncementViewModel.AnnouncementVM input)
         {
-            var User = "管理員";
+            var User = Request.Cookies["UserEmail"].ToString();
             var result = _announcementService.SaveAnnouncement(input, User);
             return result;
         }

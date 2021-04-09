@@ -51,6 +51,7 @@ namespace ProjectTeamFour_Backend.WebApi
                 var tokenString = GenerateJsonWebToken(loginVM);
                 response = Ok(new {token=tokenString});
                 Response.Cookies.Append("adm", user.Msg);
+                Response.Cookies.Append("UserEmail",loginVM.MemberRegEmail);
             }
 
 
@@ -68,7 +69,7 @@ namespace ProjectTeamFour_Backend.WebApi
             // Cookie 是否為持續性
             var authProperties = new AuthenticationProperties()
             {
-                IsPersistent = false, 
+                IsPersistent = true, 
 
             };
             // 建立加密的 cookie ，並將它新增至目前的回應

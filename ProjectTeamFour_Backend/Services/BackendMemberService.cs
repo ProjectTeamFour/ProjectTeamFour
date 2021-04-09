@@ -158,15 +158,17 @@ namespace ProjectTeamFour_Backend.Services
             {
                 if(manager != null)
                 {
-                    if (manager.MemberName == "admin")
+                    if (manager.BackendIdentity==true)
                     {
                         result.IsSuccess = true;
                         result.Msg = manager.BackendIdentity.ToString();
+                      
                     }
-                    else if(manager.MemberName=="service")
+                    else
                     {
                         result.IsSuccess = true;
                         result.Msg = manager.BackendIdentity.ToString();
+                        
                     }
 
                    
