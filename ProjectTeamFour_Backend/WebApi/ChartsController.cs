@@ -16,12 +16,12 @@ namespace ProjectTeamFour_Backend.WebApi
     [ApiController]
     public class ChartsController : ControllerBase
     {
-        private readonly LabContext _context;
+        private readonly CarCarPlanContext _context;
         private readonly ILogger<ChartsController> _logger;
         private readonly IProjectService _projectService;
         private readonly IOrderService _orderService;
 
-        public ChartsController(LabContext context, ILogger<ChartsController> logger, IProjectService projectService,IOrderService orderService)
+        public ChartsController(CarCarPlanContext context, ILogger<ChartsController> logger, IProjectService projectService,IOrderService orderService)
         {
             _context = context;
             _logger = logger;

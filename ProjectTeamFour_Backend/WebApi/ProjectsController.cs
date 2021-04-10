@@ -18,11 +18,11 @@ namespace ProjectTeamFour_Backend.WebApi
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly LabContext _context;
+        private readonly CarCarPlanContext _context;
         private readonly ILogger<ProjectsController> _logger;
         private readonly IProjectService _projectService;
 
-        public ProjectsController(LabContext context, ILogger<ProjectsController> logger, IProjectService projectService)
+        public ProjectsController(CarCarPlanContext context, ILogger<ProjectsController> logger, IProjectService projectService)
         {
             _context = context;
             _logger = logger;

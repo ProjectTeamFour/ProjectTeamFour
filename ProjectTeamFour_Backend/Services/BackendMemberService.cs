@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using ProjectTeamFour_Backend.Context;
@@ -12,8 +13,8 @@ namespace ProjectTeamFour_Backend.Services
     public class BackendMemberService : IBackendMemberService
     {
         private readonly IRepository _repository;
-        private readonly LabContext _labContext;
-        public BackendMemberService(IRepository repository,LabContext labContext)
+        private readonly CarCarPlanContext _labContext;
+        public BackendMemberService(IRepository repository,CarCarPlanContext labContext)
         {
             _repository = repository;
             _labContext = labContext;
@@ -29,7 +30,7 @@ namespace ProjectTeamFour_Backend.Services
             {
                 Backendmember newBackendmember = new Backendmember
                 {
-
+                    LoginTime = DateTime.UtcNow.AddHours(08),
                     MemberName = singleMember.MemberName,
                     MemberAccount = singleMember.MemberAccount,
                     MemberAddress = singleMember.MemberAddress,
