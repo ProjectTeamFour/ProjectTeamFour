@@ -108,7 +108,7 @@ namespace ProjectTeamFour_Backend
 
             services.AddControllers().AddNewtonsoftJson();
 
-            services.AddControllers().AddControllersAsServices();
+            //services.AddControllers().AddControllersAsServices();  - Phil µù¸Ñªº
 
         }
 
