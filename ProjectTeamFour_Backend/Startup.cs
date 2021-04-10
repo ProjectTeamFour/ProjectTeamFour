@@ -24,7 +24,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-
 namespace ProjectTeamFour_Backend
 {
     public class Startup
@@ -72,22 +71,23 @@ namespace ProjectTeamFour_Backend
             //===============//
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => {
-                    options.LoginPath = "/Manager/Login/";
-                    options.AccessDeniedPath = "/Account/Forbidden/";
-                })
-          .AddJwtBearer(options =>
-              options.TokenValidationParameters = new TokenValidationParameters
-              {
-                  ValidateIssuer = true,
-                  ValidateAudience = true,
-                  ValidateLifetime = true,
-                  ValidateIssuerSigningKey = true,
-                  ValidIssuer = Configuration["Jwt:Issuer"],
-                  ValidAudience = Configuration["Jwt:Issuer"],
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-              }
-          );
+                    .AddCookie(options => 
+                    {
+                        options.LoginPath = "/Manager/Login/";
+                        options.AccessDeniedPath = "/Account/Forbidden/";
+                    })
+                    .AddJwtBearer(options =>
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    })
+                ;
 
 
             services.AddControllersWithViews();
@@ -107,7 +107,9 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IAnnouncementService, AnnouncementService>();
 
             services.AddControllers().AddNewtonsoftJson();
-            
+
+            services.AddControllers().AddControllersAsServices();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -114,8 +114,9 @@ namespace ProjectTeamFour_Backend.WebApi
             return new JwtSecurityTokenHandler().WriteToken(token);
 
 
+        }
 
-
+            // - phil註解
             //var token2 = new JwtSecurityToken(
 
             //    new JwtHeader(
@@ -129,11 +130,6 @@ namespace ProjectTeamFour_Backend.WebApi
             //                    notBefore: DateTime.UtcNow,
             //                    expires: DateTime.UtcNow.AddMinutes(30))
             //    );
-        }
-
-
-
-
 
     }
 }
