@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     int draftProjectId = ViewBag.DraftProjectId;
 }
 
@@ -325,7 +325,7 @@
                                         <h3>常見問答(Project_Question & Project_Answer)(ok)</h3>
                                     </div>
                                     <div class="QAinput d-flex flex-column" id="QAinput">
-                                        <multi-text v-model="ProjectQuestionAnswer">
+                                        <multi-text v-bind:value="ProjectQuestionAnswer">
                                             <multi-text />
                                     </div>
                                 </div>
@@ -850,18 +850,18 @@
 
 <template type="text/x-template" id="multi-text-template">
     <div class="multi-text">
-        <div v-for="(item, index) in ProjectQuestionAnswer">
-            <div class="d-flex justify-content-between py-2">
-                <p>第{{ item.Count }}個常見問答</p>
-                <a href="#" v-on:click="deleteValue(index)" v-on:click.prevent="" class="text-danger small">移除</a>
-            </div>
-            <input type="text" v-model="item.Question" v-on:input="updateValue()" class="form-control"
-                   placeholder="Q:"/>
-            <input type="text" v-model="item.Answer" v-on:input="updateValue()" class="form-control"
-                   placeholder="A:"/>
-            <div class="text-danger small mt-1">
-                {{ item.QAErrorMsg }}
-            </div>
+        <div v-for="(item, index) in value">
+        <div class="d-flex justify-content-between py-2">
+            <p>第{{ item.Count }}個常見問答</p>
+            <a href="#" v-on:click="deleteValue(index)" v-on:click.prevent="" class="text-danger small">移除</a>
+        </div>
+        <input type="text" v-model="item.Question" v-on:input="updateValue()" class="form-control"
+               placeholder="Q:" />
+        <input type="text" v-model="item.Answer" v-on:input="updateValue()" class="form-control"
+               placeholder="A:" />
+        <div class="text-danger small mt-1">
+            {{ item.QAErrorMsg }}
+        </div>
         </div>
         <div class="project-qanda-item pb-5">
             <button v-on:click="addInput()" v-on:click.prevent="" class="w-100 addQAbutton mt-2 py-2"

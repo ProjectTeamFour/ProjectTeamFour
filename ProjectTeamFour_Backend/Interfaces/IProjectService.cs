@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static ProjectTeamFour_Backend.ViewModels.CarCarPlanViewModel;
 
 namespace ProjectTeamFour_Backend.Interfaces
 {
@@ -27,6 +28,12 @@ namespace ProjectTeamFour_Backend.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         Task<ProjectViewModel.ProjectSingleResult> GetById(ProjectViewModel.GetByIdRequest request);
+
+        ProjectViewModel.ProjectSingleResult GetProjectById(int ProjectId);
+        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion, string strAnswer);
+        public MemberViewModel.MemberSingleResult GetCreatorInfo(int MemberId);
+
+        public List<SelectPlanViewModel> GetPlanCards(int ProjectId);
 
         Task<ProjectViewModel.ProjectListResult> GetTotalSale();
 

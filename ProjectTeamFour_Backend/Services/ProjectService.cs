@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static ProjectTeamFour_Backend.ViewModels.CarCarPlanViewModel;
 
 namespace ProjectTeamFour_Backend.Services
 {
@@ -316,6 +317,103 @@ namespace ProjectTeamFour_Backend.Services
                 return result;
             });
            
+        }
+
+
+        public ProjectViewModel.ProjectSingleResult GetProjectById(int ProjectId)
+        {
+                var entity = _dbRepository.GetAll<Project>().FirstOrDefault(x => x.ProjectId == ProjectId);
+                var result = new ProjectViewModel.ProjectSingleResult
+                {
+                    Category = entity.Category,
+                    ProjectStatus = entity.ProjectStatus,
+                    ProjectName = entity.ProjectName,
+                    CreatorName = entity.CreatorName,
+                    FundingAmount = entity.FundingAmount,
+                    Fundedpeople = entity.Fundedpeople,
+                    ProjectDescription = entity.ProjectDescription,
+                    ProjectImgUrl = entity.ProjectImgUrl,
+                    ProjectVideoUrl = entity.ProjectVideoUrl,
+                    AmountThreshold = entity.AmountThreshold,
+                    ProjectFAQList = ConvertProjectFAQList(entity.ProjectQuestion, entity.ProjectAnswer),
+                    //Project_Question = entity.Project_Question,
+                    //Project_Answer = entity.Project_Answer​,
+                    DateTimeEndDate = entity.EndDate,
+                    DateTimeStartDate = entity.StartDate,
+                    ProjectMainUrl = entity.ProjectMainUrl,
+                    ProjectId = entity.ProjectId,
+                    MemberId = entity.MemberId
+                };
+                return result;
+        }
+
+        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion, string strAnswer)
+        {
+            List<ProjectFAQViewModel> ProjectFAQ = new List<ProjectFAQViewModel>();
+
+            string[] questionsArray = strQuestion.Split(',');
+            string[] answerArray = strAnswer.Split(',');
+            int len_of_faq = questionsArray.Length;
+
+            for (int i = 0; i < len_of_faq; i++)
+            {
+                ProjectFAQ.Add(
+                    new ProjectFAQViewModel()
+                    {
+                        ProjectQuestion = questionsArray[i],
+                        ProjectAnswer = answerArray[i]
+                    }
+                );
+            }
+            return ProjectFAQ;
+        }
+
+
+        public MemberViewModel.MemberSingleResult GetCreatorInfo(int MemberId)
+        {
+
+            var entity = _dbRepository.GetAll<Member>().Where(x => x.MemberId == MemberId).FirstOrDefault();
+            var memberVM = new MemberViewModel.MemberSingleResult()
+            {
+                ProfileImgUrl = entity.ProfileImgUrl,
+                MemberTeamName = entity.MemberTeamName,
+                MemberName = entity.MemberName,
+                AboutMe = entity.AboutMe,
+                MemberWebsite = entity.MemberWebsite,
+                MemberId = entity.MemberId,
+                MemberConEmail = entity.MemberConEmail,
+                MemberPhone = entity.MemberPhone,
+            };
+
+            return memberVM;
+        }
+
+
+        public List<SelectPlanViewModel> GetPlanCards(int ProjectId)
+        {
+
+            List<SelectPlanViewModel> selectPlanCardItems = new List<SelectPlanViewModel>();
+
+            var planCardModelItems = _dbRepository.GetAll<Plan>().Where(x => x.ProjectId == ProjectId);
+            foreach (var item in planCardModelItems)
+            {
+                var selectPlanCardViewModel = new SelectPlanViewModel()
+                {
+                    ProjectId = item.ProjectId,
+                    PlanId = item.PlanId,
+                    ProjectPlanId = item.ProjectPlanId,
+                    PlanTitle = item.PlanTitle,
+                    PlanDescription = item.PlanDescription,
+                    PlanFundedPeople = item.PlanFundedPeople,
+                    PlanShipDate = item.PlanShipDate,
+                    PlanImgUrl = item.PlanImgUrl,
+                    PlanPrice = item.PlanPrice,
+                    QuantityLimit = item.QuantityLimit
+                };
+                selectPlanCardItems.Add(selectPlanCardViewModel);
+            }
+
+            return selectPlanCardItems;
         }
 
 
