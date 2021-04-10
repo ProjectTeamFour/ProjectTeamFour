@@ -54,7 +54,7 @@ namespace ProjectTeamFour_Backend
                 //       .WithMethods("GET", "POST", "PUT", "DELETE");
             });
             });
-            services.AddDbContext<LabContext>(options =>
+            services.AddDbContext<CarCarPlanContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
@@ -63,7 +63,7 @@ namespace ProjectTeamFour_Backend
             services.AddRazorPages();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<LabContext>();
+                .AddEntityFrameworkStores<CarCarPlanContext>();
             //============
             //
             //加入Jwt之DI設定

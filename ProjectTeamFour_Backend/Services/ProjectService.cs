@@ -13,9 +13,9 @@ namespace ProjectTeamFour_Backend.Services
     public class ProjectService : IProjectService
     {
         private readonly IRepository _dbRepository;
-        private readonly LabContext _labContext;
+        private readonly CarCarPlanContext _labContext;
 
-        public ProjectService(IRepository repository, LabContext labcontext)
+        public ProjectService(IRepository repository, CarCarPlanContext labcontext)
         {
             _dbRepository = repository;
             _labContext = labcontext;
