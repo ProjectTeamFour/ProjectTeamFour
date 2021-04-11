@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static ProjectTeamFour_Backend.ViewModels.CarCarPlanViewModel;
 
 namespace ProjectTeamFour_Backend.Interfaces
 {
@@ -12,30 +13,36 @@ namespace ProjectTeamFour_Backend.Interfaces
         /// 取得所有提案
         /// </summary>
         /// <returns></returns>
-        ProjectViewModel.ProjectListResult GetAll();
+        Task<ProjectViewModel.ProjectListResult> GetAll();
 
         /// <summary>
         /// 依類別查詢提案
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        ProjectViewModel.ProjectListResult GetByCategory(ProjectViewModel.GetByCategoryRequest request);
+        Task<ProjectViewModel.ProjectListResult> GetByCategory(ProjectViewModel.GetByCategoryRequest request);
 
         /// <summary>
         /// 依Id查詢商品
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        ProjectViewModel.ProjectSingleResult GetById(ProjectViewModel.GetByIdRequest request);
+        Task<ProjectViewModel.ProjectSingleResult> GetById(ProjectViewModel.GetByIdRequest request);
 
-        ProjectViewModel.ProjectListResult GetTotalSale();
+        ProjectViewModel.ProjectSingleResult GetProjectById(int ProjectId);
+        public List<ProjectFAQViewModel> ConvertProjectFAQList(string strQuestion, string strAnswer);
+        public MemberViewModel.MemberSingleResult GetCreatorInfo(int MemberId);
+
+        public List<SelectPlanViewModel> GetPlanCards(int ProjectId);
+
+        Task<ProjectViewModel.ProjectListResult> GetTotalSale();
 
 
-        ProjectViewModel.ProjectListResult GetWaitForPass();
+        Task<ProjectViewModel.ProjectListResult> GetWaitForPass();
 
 
-        String EditWaitForPassProject(ProjectViewModel.ProjectSingleResult request);
+        public Task<string> EditWaitForPassProject(ProjectViewModel.ProjectSingleResult waitForPassProject);
 
-        ProjectViewModel.ProjectListforChart GetAllForCharts();
+        Task<ProjectViewModel.ProjectListforChart> GetAllForCharts();
     }
 }

@@ -1,0 +1,436 @@
+﻿html {
+    font-size: 14px;
+    max-width: 1680px;
+    margin: auto;
+    color: #212121;
+}
+
+@media screen and (max-width: 767.98px) {
+    #main-body {
+        width: 100%;
+    }
+
+    #campaign-info-item {
+        background-color: #f6f6f6;
+        padding: 1rem;
+    }
+
+    /* #leftside-main-col {
+    width: 33.5rem;
+  } */
+    #select-perk .card-deck {
+        width: 100%;
+    }
+
+    .number-row {
+        display: flex;
+    }
+
+        .number-row .block {
+            display: block;
+        }
+
+    #goal-wrap .wrapper {
+        flex-wrap: nowrap;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .display-sm {
+        display: none;
+    }
+
+    #campaign-summary p {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 1220px;
+    }
+
+    .display-sm {
+        display: none;
+    }
+}
+
+.main-body {
+    margin-top: 2rem;
+}
+
+#project-title h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#intro-video-wrap {
+    width: 100%;
+    background-color: #aaa;
+    position: relative;
+}
+
+    #intro-video-wrap iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    #intro-video-wrap:after {
+        content: "";
+        width: 100%;
+        height: 0;
+        display: block;
+        padding-bottom: 56.25%;
+    }
+
+.item-wrap {
+    margin: 2rem 1.5rem;
+}
+
+.bio-img {
+    margin-right: 1rem;
+}
+
+#creator-info .item-logo img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+#creator-info .item-text span {
+    margin-right: 1rem;
+}
+
+#creator-info .item-text {
+    display: inline-block;
+}
+
+#follow-icon {
+    display: inline-block;
+    margin-left: 3rem;
+}
+
+    #follow-icon .row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #follow-icon a {
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+    }
+
+#creator-info #follow-icon i {
+    color: #212121;
+}
+
+.progress-bar {
+    background-color: #f9414a;
+}
+
+#backing-section a, button {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+#backing-section #backit-btn {
+    background-color: #f9414a;
+    color: #ffffff;
+    border: none;
+}
+
+#ask-btn {
+    background-color: #f9414a;
+    color: #ffffff;
+    border: none;
+}
+
+#backing-section #ask-btn:hover {
+    background-color: #ffffff;
+    color: #f9414a;
+    border: 1px solid #f9414a;
+}
+/* #ask-btn .comment {
+  display: inline-block;
+  color: #f9414a;
+}
+.comment i {
+  color: #f9414a;
+} */
+#backing-section #share-btn {
+    background-color: #ffffff;
+    color: #212121;
+    border: 1px solid #d7d7d7;
+}
+
+/* 不太會用tab的客製化樣式 */
+
+#info-tabs {
+    background-color: #f6f6f6;
+    margin: 1rem 0;
+}
+
+    #info-tabs a {
+        text-decoration: none;
+        color: #212121;
+        background-color: #f6f6f6;
+        padding: 1rem 0;
+        margin: auto;
+        justify-self: baseline;
+    }
+
+        #info-tabs a:active {
+            border-block-end-color: #212121;
+        }
+
+/* 共用區域 */
+
+#campaign-status-label .text-wrap::before {
+    /*  display: block;
+  position: relative;
+  left: -1rem;
+  top: 2.5rem;
+  width: 0.25rem;
+  height: 2.5rem;
+  background-color: #9b9b9b;
+  content: " ";
+  border-radius: 1.5rem;*/
+}
+
+.text-wrap {
+    padding-left: 1rem;
+    font-size: 0.8rem;
+    border-left: 0.25rem solid #9b9b9b;
+    vertical-align: text-top;
+}
+
+#campaign-abount #campaign-info-item h1 {
+    font-size: 2rem;
+}
+
+#campaign-progress {
+    margin: 1rem 0;
+}
+
+#goal-wrap {
+    background-color: #f6f6f6;
+    margin: 1rem 0;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+    #goal-wrap h3,
+    h4 {
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    #goal-wrap .goal-detail {
+        display: inline-block;
+        margin-right: 2.5rem;
+    }
+
+    #goal-wrap .post-label {
+        color: #f9414a;
+    }
+
+    #goal-wrap .post-title {
+        color: #2a2a2a;
+    }
+
+#story .info {
+    background-color: #f6f6f6;
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+}
+
+    #story .info p {
+        margin: 0;
+        font-weight: 700;
+    }
+
+#campaign-abount #campaign-info-item h2 {
+    font-size: 2.57rem;
+}
+
+.card-deck .card {
+    margin: 1rem;
+}
+
+    .card-deck .card:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-deck .card #amount {
+        font-size: 2.5rem;
+        left: 0.5rem;
+        color: #f9414a;
+    }
+
+    .card-deck .card img {
+        padding: 1.2rem -0.8rem;
+    }
+
+    .card-deck .card .card-title {
+        font-size: 1rem;
+    }
+
+    .card-deck .card #donate-btn {
+        background-color: #ffffff;
+        color: #f9414a;
+        width: 100%;
+        margin: auto;
+        padding: 0.5rem;
+        border: 0.05rem solid #f9414a;
+        font-size: 1rem;
+    }
+
+    .card-deck .card .img-wrap {
+        display: block;
+        overflow: hidden;
+        margin: 0.5rem;
+    }
+
+    .card-deck .card:hover #donate-btn {
+        background-color: #f9414a;
+        color: #ffffff;
+    }
+
+    .card-deck .card:hover img {
+        overflow: hidden;
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+    }
+
+    .card-deck .card h4 {
+        font-size: 1rem;
+    }
+
+#comment-hint p {
+    margin: 0;
+    display: block;
+    font-weight: 700;
+}
+
+#comment-hint {
+    border: 1px solid #d7d7d7;
+    padding: 1rem;
+    margin: 3rem 0;
+}
+
+.contact-btn {
+    color: #f9414a;
+    text-decoration: none;
+}
+
+.label-grey {
+    display: inline-block;
+    color: #737373;
+}
+
+.badge {
+    background-color: #f6f6f6;
+    color: #212121;
+    padding: 3px 9px;
+}
+
+    .badge p {
+        margin: 3px 9px;
+    }
+
+#creator-info .item-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.btn-link {
+    color: #212121;
+    text-decoration: none;
+}
+
+    .btn-link:hover {
+        color: #f9414a;
+        text-decoration: none;
+    }
+
+
+
+
+/*很麻煩的那個nav-bar*/
+#campaign-details-all .stickyProjectNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin: 0;
+}
+
+
+/*FAQ的三角形樣式*/
+
+#accordionExample .question button {
+    transform: rotate(0deg)
+}
+
+#accordionExample .question svg:enabled {
+    transform: rotate(180deg)
+}
+
+/*聯絡提案人modal樣式*/
+
+.modal-backdrop {
+    position: relative;
+}
+
+.bio-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.bio-title h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.bio-title p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.btn-more {
+    color: #f8414a;
+    font-weight: 700;
+}
+
+    .btn-more:hover {
+        color: #212121;
+        font-weight: 700;
+    }
+
+#send-msg {
+    display: inline-block;
+    font-size: 16px;
+    padding: 1rem 2rem;
+    color: #f8414a;
+    background-color: #f6f6f6;
+    border: 1px solid #f8414a;
+}
+
+    #send-msg:hover {
+        transition: .2s all ease;
+        color: #ffffff;
+        background-color: #f8414a;
+        border: none;
+    }

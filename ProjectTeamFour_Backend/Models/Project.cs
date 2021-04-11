@@ -23,12 +23,12 @@ namespace ProjectTeamFour_Backend.Models
         public int MemberId { get; set; }
         public int Fundedpeople { get; set; }
         public string ProjectDescription { get; set; }
+        public string ProjectImgUrl { get; set; }
         public string ProjectVideoUrl { get; set; }
         public string ProjectQuestion { get; set; }
         public string ProjectAnswer { get; set; }
         public int ProjectPlansCount { get; set; }
         public string ProjectCoverUrl { get; set; }
-        public string ProjectImgUrl { get; set; }
         public decimal AmountThreshold { get; set; }
         public string CreatorName { get; set; }
         public string ProjectMainUrl { get; set; }
