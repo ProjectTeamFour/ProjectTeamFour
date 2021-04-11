@@ -2425,6 +2425,7 @@
     <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
     <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
     <Content Include="Views\Shared\PartialView\_navBar.cshtml" />
+    <Content Include="Views\pay\ReShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
