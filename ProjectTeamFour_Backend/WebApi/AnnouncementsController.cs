@@ -26,7 +26,6 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             _announcementService = announcementService;
             _logger = logger;
-            _context = context;
         }
         [HttpGet]
         public BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult> GetAll()
