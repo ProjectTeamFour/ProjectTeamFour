@@ -17,6 +17,7 @@ namespace ProjectTeamFour_Backend.Models
         public string MemberConEmail { get; set; }
         public string Gender { get; set; }
         public DateTime MemberBirth { get; set; }
+        public DateTime LoginTime { get; set; }
         public bool BackendIdentity { get; set; }
         public string MemberMessage { get; set; }
         public int? Permission { get; set; }

@@ -16,15 +16,24 @@ namespace ProjectTeamFour.Service
 {
     public class MemberService
     {
+        //SaltSize 鹽長 HashSize Hash長 HashIter 迭代
+        private const int SaltSize = 16, HashSize = 20, HashIter = 100000;
+
         //private PasswordService _passwordservice;
         private DbContext _context;
+
         private BaseRepository _repository;
+        private byte[] _salt, _hash;
+
         public MemberService()
         {
             //_passwordservice = new PasswordService();
             _context = new ProjectContext();
             _repository = new BaseRepository(_context);
         }
+
+        public object Session { get; private set; }
+
         //byLambda搜尋
         public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
@@ -56,6 +65,7 @@ namespace ProjectTeamFour.Service
             }
             return null;
         }
+
         //全部
         public MemberListViewModel GetMembers()
         {
@@ -90,6 +100,7 @@ namespace ProjectTeamFour.Service
             }
             return listViewmodel;
         }
+
         //新增
         public OperationResult Create(MemberViewModel input)
         {
@@ -99,7 +110,6 @@ namespace ProjectTeamFour.Service
             byte[] _totalHashByte = TotalHashByte(_hash, _salt);
             string savedPasswordHash = HashBytesToString(_totalHashByte);
             string savedSaltString = SaltToString(_salt);
-
 
             var result = new OperationResult();
             try
@@ -128,7 +138,7 @@ namespace ProjectTeamFour.Service
                 _repository.Create(entity);
                 result.IsSuccessful = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.Exception = ex;
                 result.DateTime = DateTime.Now;
@@ -136,7 +146,8 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
-        //修改    
+
+        //修改
         public OperationResult Update(EditMemberViewModel input)
         {
             var result = new OperationResult();
@@ -166,6 +177,7 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
+
         public OperationResult Delete(int MemberId)
         {
             var result = new OperationResult();
@@ -173,7 +185,8 @@ namespace ProjectTeamFour.Service
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == MemberId);
                 _repository.Delete(entity);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 result.DateTime = DateTime.Now;
                 result.Exception = ex;
@@ -181,6 +194,7 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
+
         public int ReturnLoginnerId()
         {
             var session = HttpContext.Current.Session;
@@ -190,12 +204,14 @@ namespace ProjectTeamFour.Service
             }
             return ((MemberViewModel)session["Member"]).MemberId;
         }
+
         public void Relogin()
         {
             var session = HttpContext.Current.Session;
-            int id= ((MemberViewModel)session["Member"]).MemberId;
-             session["Member"] = GetMember(p=>p.MemberId==id);
+            int id = ((MemberViewModel)session["Member"]).MemberId;
+            session["Member"] = GetMember(p => p.MemberId == id);
         }
+
         public void Reloging(int id)
         {
             var session = HttpContext.Current.Session;
@@ -203,25 +219,22 @@ namespace ProjectTeamFour.Service
             session["Member"] = GetMember(p => p.MemberId == id);
         }
 
-
         public OperationResult ResetPassWord(MemberViewModel input)
         {
             var result = new OperationResult();
             try
             {
                 Member entity = _repository.GetAll<Member>().FirstOrDefault(m => m.MemberId == input.MemberId);
-                
-                    //做hash
-                    byte[] _salt = MakeSalt();
-                    byte[] _hash = MakeHash(input.MemberPassword, _salt);
-                    byte[] _totalHashByte = TotalHashByte(_hash, _salt);
-                    string savedPasswordHash = HashBytesToString(_totalHashByte);
-                    string savedSaltString = SaltToString(_salt);
-                    entity.Hash = savedPasswordHash;
-                    entity.Salt = savedSaltString;
-              
-                    
-                
+
+                //做hash
+                byte[] _salt = MakeSalt();
+                byte[] _hash = MakeHash(input.MemberPassword, _salt);
+                byte[] _totalHashByte = TotalHashByte(_hash, _salt);
+                string savedPasswordHash = HashBytesToString(_totalHashByte);
+                string savedSaltString = SaltToString(_salt);
+                entity.Hash = savedPasswordHash;
+                entity.Salt = savedSaltString;
+
                 _repository.Update(entity);
                 result.IsSuccessful = true;
             }
@@ -234,18 +247,6 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
-
-
-
-
-
-
-        //SaltSize 鹽長 HashSize Hash長 HashIter 迭代
-        const int SaltSize = 16, HashSize = 20, HashIter = 100000;
-        byte[] _salt, _hash;
-
-        public object Session { get; private set; }
-
 
         //做 salt
         public byte[] MakeSalt()
@@ -299,7 +300,6 @@ namespace ProjectTeamFour.Service
             //轉成 byte[]  這個是原本資料庫裡的 hash
             byte[] originalHashBytes = Convert.FromBase64String(savedPasswordwithHash);
 
-
             byte[] originalSalt = Convert.FromBase64String(memberInfo.Salt);
 
             ////先宣告 salt
@@ -324,8 +324,6 @@ namespace ProjectTeamFour.Service
             }
             return true;
         }
-
-
 
         public async Task<OperationResult> GetFacebookInfo(string token)
         {
@@ -356,13 +354,35 @@ namespace ProjectTeamFour.Service
             }
         }
 
+        public async Task<OperationResult> GetGoogleInfo(string token)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var or = new OperationResult();
+                try
+                {
+                    var url = $"https://oauth2.googleapis.com/tokeninfo?id_token={token}";
+                    client.Timeout = TimeSpan.FromSeconds(30);
+                    HttpResponseMessage response = await client.GetAsync(url); //發送Get 請求
+                    response.EnsureSuccessStatusCode();
 
+                    var responsebody = await response.Content.ReadAsStringAsync();
 
-
+                    or.IsSuccessful = true;
+                    or.MessageInfo = responsebody;
+                }
+                catch (Exception ex)
+                {
+                    or.IsSuccessful = false;
+                    or.Exception = ex;
+                    or.MessageInfo = "發生錯誤";
+                }
+                return or;
+            }
+        }
 
         public OperationResult SocialAccountRegisterCreate(string name, string email, string socialPlatform, string imgUrl)
         {
-
             var result = new OperationResult();
             try
             {
@@ -390,24 +410,23 @@ namespace ProjectTeamFour.Service
             return result;
         }
 
-
-
-
         public bool IsSocialAccountRegister(string email, string socailPlatform)
         {
             var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberRegEmail == email && x.IsThirdParty == socailPlatform);
 
             if (member != null)
             {
-
                 return true;
             }
             else
             {
                 return false;
             }
-         }
+        }
 
-
+        public Member GetUser(string email, string socailPlatform)
+        {
+            return _repository.GetAll<Member>().FirstOrDefault(x => x.MemberRegEmail == email && x.IsThirdParty == socailPlatform);
+        }
     }
 }

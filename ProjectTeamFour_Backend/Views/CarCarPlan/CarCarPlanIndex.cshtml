@@ -200,7 +200,7 @@
             <!-- Info modal -->
             @*審核車車商城資料模板*@
             <b-modal :id="infoModal.id" :title="infoModal.title"  @*@@hide="resetInfoModal"*@ @@ok="handleChangeOk" ok-title="通過" cancel-title="不通過">
-                <pre>
+                <pre style="font-size: 18px;">
                 <b-card-text>提案人提交的庫存數量:{{infoModal.submitLimit==0?"無":infoModal.submitLimit}}</b-card-text>
                 </pre>
 

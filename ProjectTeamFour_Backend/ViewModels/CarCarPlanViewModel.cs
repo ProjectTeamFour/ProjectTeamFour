@@ -42,6 +42,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// 方案預估寄送時間
             /// </summary>
             public string PlanShipDate { get; set; }
+
+            public DateTime DateTimePlanShipDate {get;set;}
             /// <summary>
             /// 方案詳述
             /// </summary>
@@ -62,6 +64,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             /// 提案者發起修改庫存
             /// </summary>
             public int? SubmitLimit { get; set; }
+
+
         }
         /// <summary>
         /// 取得多種車車商城方案模型
@@ -77,6 +81,30 @@ namespace ProjectTeamFour_Backend.ViewModels
         public class CarCarPlanSingleResult : CarCarPlanBaseViewModel
         {
 
+        }
+
+
+
+        public class SelectPlanViewModel
+        {
+            public int PlanId { get; set; }
+            public int ProjectPlanId { get; set; }
+
+            public int ProjectId { get; set; }
+            public string PlanTitle { get; set; }
+            public int PlanFundedPeople { get; set; }
+            public DateTime PlanShipDate { get; set; }
+            public string PlanDescription { get; set; }
+            public string PlanImgUrl { get; set; }
+            [DataType(DataType.Currency)]
+            public decimal PlanPrice { get; set; }
+            public int QuantityLimit { get; set; }
+
+        }
+
+        public class PlanListResult
+        {
+            public List<SelectPlanViewModel> CarCarPlanList { get; set; }
         }
     }
 }

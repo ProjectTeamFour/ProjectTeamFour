@@ -1,6 +1,6 @@
-﻿@{ 
+﻿@{
     int count = 0;
-    MemberViewModel vm = Session["member"]==null ? null : (MemberViewModel)Session["Member"];
+    MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
     CartItemListViewModel cartList = (CartItemListViewModel)Session["Cart"];
     if (cartList != null)
     {
@@ -18,6 +18,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="280886641343-jspsotb774imktmafvrualk4d4nekn7l.apps.googleusercontent.com">
     <title>Funding BuBu - 集資車車</title>
 
     @*<link rel="icon" href="~/favicon.ico">*@
@@ -30,18 +32,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
 
-
     @*這是首頁除了Header和Footer之外的CSS*@
 
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
-
 </head>
 <body>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>   <!--這個先-->
-
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>   <!--第二個-->
@@ -50,6 +49,8 @@
     @RenderSection("FBJS", required: false)
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0&appId=842914469991750&autoLogAppEvents=1" nonce="mc3U0cQa"></script>
+
+    <script src="https://apis.google.com/js/platform.js?onload=googleSigninInit" async defer></script>
 
     @*Header*@
     @Html.Partial("~/Views/Shared/PartialView/_headerPartial.cshtml")
@@ -70,6 +71,5 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
-
 </body>
 </html>

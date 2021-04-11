@@ -59,14 +59,10 @@
                     <b-form-group v-model="sortDirection" label="過濾條件" label-cols-sm="3" label-align-sm="right"
                                   label-size="sm" class="mb-0" v-slot="{ ariaDescribedby }">
                         <b-form-checkbox-group v-model="filterOn" :aria-describedby="ariaDescribedby" class="mt-1">
-                            <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
-                            <b-form-checkbox value="審核中">審核中</b-form-checkbox>
-                            <b-form-checkbox value="募資中">募資中</b-form-checkbox>
-                            <b-form-checkbox value="募資成功">募資成功</b-form-checkbox>
-                            <b-form-checkbox value="結束且成功">結束且成功</b-form-checkbox>
-                            <b-form-checkbox value="結束且失敗">結束且失敗</b-form-checkbox>
-                            <b-form-checkbox value="timeSpan">距離募資結束時間</b-form-checkbox>
-                            <b-form-checkbox value="fundingAmount">募資資金</b-form-checkbox>
+                            <b-form-checkbox value="projectName">名稱</b-form-checkbox>
+                            <b-form-checkbox value="projectStatus">提案狀態</b-form-checkbox>
+                            <b-form-checkbox value="creatorName">提案人</b-form-checkbox>
+                            <b-form-checkbox value="approvingStatus">審核狀態</b-form-checkbox>
                         </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
@@ -93,7 +89,6 @@
                 <template #cell(name)="row">
                     {{ row.value.first }} {{ row.value.last }}
                 </template>
-
                 <template #cell(actions)="row">
                     <b-button size="sm" @@click="info(row.item, row.index, $event.target)">
                         專案詳情
@@ -145,6 +140,9 @@
                 <template #cell(projectMainUrl)="data">
                     <img :src="data.item.projectMainUrl" alt="" width="50" height="50">
                 </template>
+                @*<template #cell(Status)="data" >
+                        <p>{{data.item.approvingStatus==2?"審核成功":"審核中"}}</p>
+                    </template>*@
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -163,8 +161,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous"></script>
+@section endJS{
+    <script src="~/js/moment.js"></script>
 
-<script>
+    <script>
     const member = new Vue({
         el: "#project",
         data: {
@@ -173,11 +173,12 @@
                 { key: 'projectId', label: '編號', sortable: true, sortDirection: 'desc' },
                 { key: 'projectMainUrl', label: '圖片', class: 'text-center' },
                 { key: 'projectName', label: '名稱', class: 'text-center' },
+                { key: 'restDay', label: '剩餘天數', class: 'text-center', sortable: true, sortDirection: 'desc'  },
                 { key: 'projectStatus', label: '提案狀態', class: 'text-center', sortable: true, sortDirection: 'desc' },
                 { key: 'approvingStatus', label: '審核狀態', class: 'text-center', sortable: true, sortDirection: 'desc' },
                 { key: 'category', label: '分類', class: 'text-center' },
-                { key: 'fundingAmount', label: '募資金額', class: 'text-center' },
-                { key: 'projectPrincipal', label: '提案人', class: 'text-center' },
+                { key: 'fundingAmount', label: '募資金額', class: 'text-center', sortable: true, sortDirection: 'desc'},
+                { key: 'creatorName', label: '提案人', class: 'text-center' },
                 { key: 'actions', label: '詳細資料' },
             ],
             isError: false,
@@ -200,6 +201,7 @@
         created: function () {
             axios.get("/Api/Projects/GetAll")
                 .then((res) => {
+                    this.changeStatus(res.data.body.projectList);
                     this.items = res.data.body.projectList;
                     this.mounted();
                     this.isBusy = false;
@@ -217,14 +219,16 @@
         },
         mounted() {
             // Set the initial number of items
-            this.totalRows = this.items.length
+            this.totalRows = this.items.length;
+
+
         },
         methods: {
             info(item, index, button) {
                 this.infoModal.title = `提案編號: ${JSON.stringify(item.projectId, null, 2)}`;
                 this.infoModal.content =
                     @*`提案編號:${JSON.stringify(item.projectId, null, 2)}*@
-                    `提案名稱:${JSON.stringify(item.projectName, null, 2)}\n提案分類:${JSON.stringify(item.category, null, 2)}\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n提案人:${JSON.stringify(item.creatorName, null, 2)}\n提案人真實姓名:${JSON.stringify(item.projectPrincipal, null, 2)}\n提案人身分證字號:${JSON.stringify(item.identityNumber, null, 2)}\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n募資人數:${JSON.stringify(item.fundedPeople, null, 2)}\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}\n提案方案數量:${JSON.stringify(item.projectPlansCount, null, 2)}\n提案開始時間:${JSON.stringify(item.startDate, null, 2)}\n提案結束時間:${JSON.stringify(item.endDate, null, 2)}\n提案初創時間:${JSON.stringify(item.createdDate, null, 2)}\n提案提交時間:${JSON.stringify(item.submittedDate, null, 2)}`;
+                    `提案名稱:${JSON.stringify(item.projectName, null, 2)}\n提案分類:${JSON.stringify(item.category, null, 2)}\n提案會員Id:${JSON.stringify(item.memberId, null, 2)}\n提案人:${JSON.stringify(item.creatorName, null, 2)}\n提案人真實姓名:${item.projectPrincipal == null ? "未提供" : item.projectPrincipal}\n提案人身分證字號:${item.identityNumber == null ? "未提供" : item.identityNumber}\n募資門檻:${JSON.stringify(item.amountThreshold, null, 2)}\n募資金額:${JSON.stringify(item.fundingAmount, null, 2)}\n募資人數:${JSON.stringify(item.fundedpeople, null, 2)}\n提案狀態:${JSON.stringify(item.projectStatus, null, 2)}\n審核狀態:${JSON.stringify(item.approvingStatus, null, 2)}\n提案影片連結:${JSON.stringify(item.projectVideoUrl, null, 2)}\n提案方案數量:${JSON.stringify(item.projectPlansCount, null, 2)}\n提案開始時間:${JSON.stringify(item.startDate, null, 2)}\n提案結束時間:${JSON.stringify(item.endDate, null, 2)}\n提案初創時間:${JSON.stringify(item.createdDate, null, 2)}\n提案提交時間:${JSON.stringify(item.submittedDate, null, 2)}`;
                     @*提案問題:${JSON.stringify(item.projectQuestion, null, 2)}*@
                     @*提案回答:${JSON.stringify(item.projectAnswer, null, 2)}*@
                     @*提案故事:${JSON.stringify(item.projectImgUrl, null, 2)}*@
@@ -242,8 +246,24 @@
             mounted() {
                 // Set the initial number of items
                 this.totalRows = this.items.length
-            }
+            },
+            changeStatus(dataItems) {
+                dataItems.forEach(item => {
+                    if (item.approvingStatus == 0) {
+                        item.approvingStatus = "草稿";
+                    }
+                    else if (item.approvingStatus == 1) {
+                        item.approvingStatus = "審核中";
+                    }
+                    else if (item.approvingStatus == 3) {
+                        item.approvingStatus = "審核失敗";
+                    }
+                    else {
+                        item.approvingStatus = "審核成功";
+                    }
+                });
+            },
         },
-
     })
-</script>
+    </script>
+}

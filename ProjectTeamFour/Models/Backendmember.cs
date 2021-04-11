@@ -44,6 +44,7 @@ namespace ProjectTeamFour.Models
         /// 後臺會員生日
         /// </summary>
         public DateTime MemberBirth { get; set; }
+        public DateTime LoginTime { get; set; }
         /// <summary>
         /// 後臺會員權限:true為管理者；false為客服
         /// </summary>

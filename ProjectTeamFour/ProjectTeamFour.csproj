@@ -188,129 +188,17 @@
     <Compile Include="Controllers\MemberSettingsController.cs" />
     <Compile Include="Controllers\MyProjectController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
-    <Compile Include="Migrations\202103120658088_edit_Projects_and_Commets_col.cs" />
-    <Compile Include="Migrations\202103120658088_edit_Projects_and_Commets_col.Designer.cs">
-      <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
+    <Compile Include="Migrations\202104100406000_MoveDB.cs" />
+    <Compile Include="Migrations\202104100406000_MoveDB.designer.cs">
+      <DependentUpon>202104100406000_MoveDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103211514418_addmemberproperties.cs" />
-    <Compile Include="Migrations\202103211514418_addmemberproperties.Designer.cs">
-      <DependentUpon>202103211514418_addmemberproperties.cs</DependentUpon>
+    <Compile Include="Migrations\202104100451013_Fixdb.cs" />
+    <Compile Include="Migrations\202104100451013_Fixdb.designer.cs">
+      <DependentUpon>202104100451013_Fixdb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103211525577_新增projectid22.cs" />
-    <Compile Include="Migrations\202103211525577_新增projectid22.Designer.cs">
-      <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103220631443_addmemberproperties1.cs" />
-    <Compile Include="Migrations\202103220631443_addmemberproperties1.Designer.cs">
-      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.cs" />
-    <Compile Include="Migrations\202103230913559_AddAskedMemberIdToComment.Designer.cs">
-      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103231639258_新增orderdetail欄位.cs" />
-    <Compile Include="Migrations\202103231639258_新增orderdetail欄位.Designer.cs">
-      <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103240838174_集資失敗改已結束.cs" />
-    <Compile Include="Migrations\202103240838174_集資失敗改已結束.Designer.cs">
-      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103240940169_新增一筆假資料.cs" />
-    <Compile Include="Migrations\202103240940169_新增一筆假資料.Designer.cs">
-      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103241154597_fixed.cs" />
-    <Compile Include="Migrations\202103241154597_fixed.Designer.cs">
-      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103241058025_新增od欄位.cs" />
-    <Compile Include="Migrations\202103241058025_新增od欄位.Designer.cs">
-      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103260810062_CreateDraftDB.cs" />
-    <Compile Include="Migrations\202103260810062_CreateDraftDB.Designer.cs">
-      <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103270951471_CreateBackendMember.cs" />
-    <Compile Include="Migrations\202103270951471_CreateBackendMember.Designer.cs">
-      <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103271011124_conflictFix.cs" />
-    <Compile Include="Migrations\202103271011124_conflictFix.Designer.cs">
-      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103271053140_recoverplanmodel.cs" />
-    <Compile Include="Migrations\202103271053140_recoverplanmodel.Designer.cs">
-      <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103271315347_FixDraftPlan.cs" />
-    <Compile Include="Migrations\202103271315347_FixDraftPlan.Designer.cs">
-      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300551030_新增fbmodel.cs" />
-    <Compile Include="Migrations\202103300551030_新增fbmodel.Designer.cs">
-      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.cs" />
-    <Compile Include="Migrations\202103300604084_新增foreignkey_fbmodel.Designer.cs">
-      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300719050_CreateFBDB.cs" />
-    <Compile Include="Migrations\202103300719050_CreateFBDB.Designer.cs">
-      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.cs" />
-    <Compile Include="Migrations\202103300818337_addmembermodel_isthirdparty.Designer.cs">
-      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.cs" />
-    <Compile Include="Migrations\202103310557559_ChangeBackendMemberDB2.Designer.cs">
-      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104010329180_addAnnouncement.cs" />
-    <Compile Include="Migrations\202104010329180_addAnnouncement.Designer.cs">
-      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104010532433_od新增欄位.cs" />
-    <Compile Include="Migrations\202104010532433_od新增欄位.Designer.cs">
-      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104011056109_加車車商城種子資料.cs" />
-    <Compile Include="Migrations\202104011056109_加車車商城種子資料.Designer.cs">
-      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104011145167_新增車車資料.cs" />
-    <Compile Include="Migrations\202104011145167_新增車車資料.Designer.cs">
-      <DependentUpon>202104011145167_新增車車資料.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104011150336_add_carcar資料.cs" />
-    <Compile Include="Migrations\202104011150336_add_carcar資料.Designer.cs">
-      <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104060331590_add od columns.cs" />
-    <Compile Include="Migrations\202104060331590_add od columns.Designer.cs">
-      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.cs" />
-    <Compile Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.Designer.cs">
-      <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104060833428_fixDB1.cs" />
-    <Compile Include="Migrations\202104060833428_fixDB1.Designer.cs">
-      <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104070645145_修復通知表.cs" />
-    <Compile Include="Migrations\202104070645145_修復通知表.Designer.cs">
-      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104070838212_新增訂單創立時間.cs" />
-    <Compile Include="Migrations\202104070838212_新增訂單創立時間.Designer.cs">
-      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.cs" />
-    <Compile Include="Migrations\202104071320186_關閉自動偵測變更.Designer.cs">
-      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
+    <Compile Include="Migrations\202104100601259_CreateBackendDB.cs" />
+    <Compile Include="Migrations\202104100601259_CreateBackendDB.designer.cs">
+      <DependentUpon>202104100601259_CreateBackendDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Backendmember.cs" />
@@ -324,118 +212,6 @@
     <Compile Include="Service\MyProjectsService.cs" />
     <Compile Include="Controllers\SelectPlanController.cs" />
     <Compile Include="Helpers\CustomAuthorize.cs" />
-    <Compile Include="Migrations\202102091059315_m5.cs" />
-    <Compile Include="Migrations\202102091059315_m5.Designer.cs">
-      <DependentUpon>202102091059315_m5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131600221_正式-2-13.cs" />
-    <Compile Include="Migrations\202102131600221_正式-2-13.Designer.cs">
-      <DependentUpon>202102131600221_正式-2-13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131703572_修改Member資料表.cs" />
-    <Compile Include="Migrations\202102131703572_修改Member資料表.Designer.cs">
-      <DependentUpon>202102131703572_修改Member資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102140308430_mergeProjectAndProjectCategory.cs" />
-    <Compile Include="Migrations\202102140308430_mergeProjectAndProjectCategory.Designer.cs">
-      <DependentUpon>202102140308430_mergeProjectAndProjectCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102140342230_optimizationDB.cs" />
-    <Compile Include="Migrations\202102140342230_optimizationDB.Designer.cs">
-      <DependentUpon>202102140342230_optimizationDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102141716445_移除資料表.cs" />
-    <Compile Include="Migrations\202102141716445_移除資料表.Designer.cs">
-      <DependentUpon>202102141716445_移除資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102141720529_將guid改成int.cs" />
-    <Compile Include="Migrations\202102141720529_將guid改成int.Designer.cs">
-      <DependentUpon>202102141720529_將guid改成int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102150212489_將member改為int.cs" />
-    <Compile Include="Migrations\202102150212489_將member改為int.Designer.cs">
-      <DependentUpon>202102150212489_將member改為int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102150227109_將member改為int1.cs" />
-    <Compile Include="Migrations\202102150227109_將member改為int1.Designer.cs">
-      <DependentUpon>202102150227109_將member改為int1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102150228469_將member改為int2.cs" />
-    <Compile Include="Migrations\202102150228469_將member改為int2.Designer.cs">
-      <DependentUpon>202102150228469_將member改為int2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102150449461_AddQuantityLimitCol.cs" />
-    <Compile Include="Migrations\202102150449461_AddQuantityLimitCol.Designer.cs">
-      <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102151353405_新增Log表單.cs" />
-    <Compile Include="Migrations\202102151353405_新增Log表單.Designer.cs">
-      <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160740004_修改Log表單.cs" />
-    <Compile Include="Migrations\202102160740004_修改Log表單.Designer.cs">
-      <DependentUpon>202102160740004_修改Log表單.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160748308_移除Log資料表.cs" />
-    <Compile Include="Migrations\202102160748308_移除Log資料表.Designer.cs">
-      <DependentUpon>202102160748308_移除Log資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160749157_重新加入Log資料表.cs" />
-    <Compile Include="Migrations\202102160749157_重新加入Log資料表.Designer.cs">
-      <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102170432173_修改LogTable.cs" />
-    <Compile Include="Migrations\202102170432173_修改LogTable.Designer.cs">
-      <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102170934392_新增projectname.cs" />
-    <Compile Include="Migrations\202102170934392_新增projectname.Designer.cs">
-      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102171018175_在Plan新增ProjectName資料.cs" />
-    <Compile Include="Migrations\202102171018175_在Plan新增ProjectName資料.Designer.cs">
-      <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102200345199_doingNothing.cs" />
-    <Compile Include="Migrations\202102200345199_doingNothing.Designer.cs">
-      <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102211551023_Member加入Permission欄位.cs" />
-    <Compile Include="Migrations\202102211551023_Member加入Permission欄位.Designer.cs">
-      <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102231030539_Create_Permissiontable.cs" />
-    <Compile Include="Migrations\202102231030539_Create_Permissiontable.Designer.cs">
-      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103050540252_EditOrder.cs" />
-    <Compile Include="Migrations\202103050540252_EditOrder.Designer.cs">
-      <DependentUpon>202103050540252_EditOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103050606010_EditOrder2nd.cs" />
-    <Compile Include="Migrations\202103050606010_EditOrder2nd.Designer.cs">
-      <DependentUpon>202103050606010_EditOrder2nd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103050617138_EditOrderDetail.cs" />
-    <Compile Include="Migrations\202103050617138_EditOrderDetail.Designer.cs">
-      <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103081120140_order新增condition.cs" />
-    <Compile Include="Migrations\202103081120140_order新增condition.Designer.cs">
-      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090608377_add.cs" />
-    <Compile Include="Migrations\202103090608377_add.Designer.cs">
-      <DependentUpon>202103090608377_add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103091305440_addplandatamodel.cs" />
-    <Compile Include="Migrations\202103091305440_addplandatamodel.Designer.cs">
-      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.cs" />
-    <Compile Include="Migrations\202103101142409_AddProjectIdForOD.Designer.cs">
-      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
@@ -504,18 +280,6 @@
     <Compile Include="Controllers\StartAProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102031140006_M123.cs" />
-    <Compile Include="Migrations\202102031140006_M123.designer.cs">
-      <DependentUpon>202102031140006_M123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102031204078_m12.cs" />
-    <Compile Include="Migrations\202102031204078_m12.designer.cs">
-      <DependentUpon>202102031204078_m12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102051620505_m4.cs" />
-    <Compile Include="Migrations\202102051620505_m4.Designer.cs">
-      <DependentUpon>202102051620505_m4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2449,195 +2213,18 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102031140006_M123.resx">
-      <DependentUpon>202102031140006_M123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102031204078_m12.resx">
-      <DependentUpon>202102031204078_m12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102051620505_m4.resx">
-      <DependentUpon>202102051620505_m4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102091059315_m5.resx">
-      <DependentUpon>202102091059315_m5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102131600221_正式-2-13.resx">
-      <DependentUpon>202102131600221_正式-2-13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102131703572_修改Member資料表.resx">
-      <DependentUpon>202102131703572_修改Member資料表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102140308430_mergeProjectAndProjectCategory.resx">
-      <DependentUpon>202102140308430_mergeProjectAndProjectCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102140342230_optimizationDB.resx">
-      <DependentUpon>202102140342230_optimizationDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102141716445_移除資料表.resx">
-      <DependentUpon>202102141716445_移除資料表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102141720529_將guid改成int.resx">
-      <DependentUpon>202102141720529_將guid改成int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102150212489_將member改為int.resx">
-      <DependentUpon>202102150212489_將member改為int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102150227109_將member改為int1.resx">
-      <DependentUpon>202102150227109_將member改為int1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102150228469_將member改為int2.resx">
-      <DependentUpon>202102150228469_將member改為int2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102150449461_AddQuantityLimitCol.resx">
-      <DependentUpon>202102150449461_AddQuantityLimitCol.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102151353405_新增Log表單.resx">
-      <DependentUpon>202102151353405_新增Log表單.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160740004_修改Log表單.resx">
-      <DependentUpon>202102160740004_修改Log表單.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160748308_移除Log資料表.resx">
-      <DependentUpon>202102160748308_移除Log資料表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160749157_重新加入Log資料表.resx">
-      <DependentUpon>202102160749157_重新加入Log資料表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102170432173_修改LogTable.resx">
-      <DependentUpon>202102170432173_修改LogTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102170934392_新增projectname.resx">
-      <DependentUpon>202102170934392_新增projectname.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102171018175_在Plan新增ProjectName資料.resx">
-      <DependentUpon>202102171018175_在Plan新增ProjectName資料.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102200345199_doingNothing.resx">
-      <DependentUpon>202102200345199_doingNothing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102211551023_Member加入Permission欄位.resx">
-      <DependentUpon>202102211551023_Member加入Permission欄位.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102231030539_Create_Permissiontable.resx">
-      <DependentUpon>202102231030539_Create_Permissiontable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103050540252_EditOrder.resx">
-      <DependentUpon>202103050540252_EditOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103050606010_EditOrder2nd.resx">
-      <DependentUpon>202103050606010_EditOrder2nd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103050617138_EditOrderDetail.resx">
-      <DependentUpon>202103050617138_EditOrderDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103081120140_order新增condition.resx">
-      <DependentUpon>202103081120140_order新增condition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090608377_add.resx">
-      <DependentUpon>202103090608377_add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103091305440_addplandatamodel.resx">
-      <DependentUpon>202103091305440_addplandatamodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103101142409_AddProjectIdForOD.resx">
-      <DependentUpon>202103101142409_AddProjectIdForOD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103120658088_edit_Projects_and_Commets_col.resx">
-      <DependentUpon>202103120658088_edit_Projects_and_Commets_col.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103211514418_addmemberproperties.resx">
-      <DependentUpon>202103211514418_addmemberproperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103211525577_新增projectid22.resx">
-      <DependentUpon>202103211525577_新增projectid22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103220631443_addmemberproperties1.resx">
-      <DependentUpon>202103220631443_addmemberproperties1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103230913559_AddAskedMemberIdToComment.resx">
-      <DependentUpon>202103230913559_AddAskedMemberIdToComment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103231639258_新增orderdetail欄位.resx">
-      <DependentUpon>202103231639258_新增orderdetail欄位.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103240838174_集資失敗改已結束.resx">
-      <DependentUpon>202103240838174_集資失敗改已結束.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103240940169_新增一筆假資料.resx">
-      <DependentUpon>202103240940169_新增一筆假資料.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103241154597_fixed.resx">
-      <DependentUpon>202103241154597_fixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103241058025_新增od欄位.resx">
-      <DependentUpon>202103241058025_新增od欄位.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103260810062_CreateDraftDB.resx">
-      <DependentUpon>202103260810062_CreateDraftDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103270951471_CreateBackendMember.resx">
-      <DependentUpon>202103270951471_CreateBackendMember.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103271011124_conflictFix.resx">
-      <DependentUpon>202103271011124_conflictFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103271053140_recoverplanmodel.resx">
-      <DependentUpon>202103271053140_recoverplanmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103271315347_FixDraftPlan.resx">
-      <DependentUpon>202103271315347_FixDraftPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300551030_新增fbmodel.resx">
-      <DependentUpon>202103300551030_新增fbmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300604084_新增foreignkey_fbmodel.resx">
-      <DependentUpon>202103300604084_新增foreignkey_fbmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300719050_CreateFBDB.resx">
-      <DependentUpon>202103300719050_CreateFBDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300818337_addmembermodel_isthirdparty.resx">
-      <DependentUpon>202103300818337_addmembermodel_isthirdparty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103310557559_ChangeBackendMemberDB2.resx">
-      <DependentUpon>202103310557559_ChangeBackendMemberDB2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104010329180_addAnnouncement.resx">
-      <DependentUpon>202104010329180_addAnnouncement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104010532433_od新增欄位.resx">
-      <DependentUpon>202104010532433_od新增欄位.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104011056109_加車車商城種子資料.resx">
-      <DependentUpon>202104011056109_加車車商城種子資料.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104011145167_新增車車資料.resx">
-      <DependentUpon>202104011145167_新增車車資料.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104011150336_add_carcar資料.resx">
-      <DependentUpon>202104011150336_add_carcar資料.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104060331590_add od columns.resx">
-      <DependentUpon>202104060331590_add od columns.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104060525001_AddPlanDB_SubmitLimit_Col.resx">
-      <DependentUpon>202104060525001_AddPlanDB_SubmitLimit_Col.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104060833428_fixDB1.resx">
-      <DependentUpon>202104060833428_fixDB1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104070645145_修復通知表.resx">
-      <DependentUpon>202104070645145_修復通知表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104070838212_新增訂單創立時間.resx">
-      <DependentUpon>202104070838212_新增訂單創立時間.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104071320186_關閉自動偵測變更.resx">
-      <DependentUpon>202104071320186_關閉自動偵測變更.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\202104100406000_MoveDB.resx">
+      <DependentUpon>202104100406000_MoveDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104100451013_Fixdb.resx">
+      <DependentUpon>202104100451013_Fixdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104100601259_CreateBackendDB.resx">
+      <DependentUpon>202104100601259_CreateBackendDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
