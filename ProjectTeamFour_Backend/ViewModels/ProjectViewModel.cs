@@ -20,6 +20,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             public decimal FundingAmount { get; set; }
             public string Category { get; set; }
             public string ProjectStatus { get; set; }
+            public DateTime DateTimeStartDate { get; set; }
+            public DateTime DateTimeEndDate { get; set; }
             public string StartDate { get; set; }
             public string EndDate { get; set; }
             public int MemberId { get; set; }
@@ -44,7 +46,8 @@ namespace ProjectTeamFour_Backend.ViewModels
             public decimal ProjectPercent { get; set; }
             public List<Plan> PlanList { get; set; }
             public List<Comment> CommentList { get; set; }
- 
+            public List<ProjectFAQViewModel> ProjectFAQList { get; set; }
+
         }
 
 

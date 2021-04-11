@@ -59,7 +59,7 @@
                     <b-form-group v-model="sortDirection" label="過濾條件" label-cols-sm="3" label-align-sm="right"
                                   label-size="sm" class="mb-0" v-slot="{ ariaDescribedby }">
                         <b-form-checkbox-group v-model="filterOn" :aria-describedby="ariaDescribedby" class="mt-1">
-                            <b-form-checkbox value="projectName">提案名稱</b-form-checkbox>
+                            <b-form-checkbox value="projectName">名稱</b-form-checkbox>
                             <b-form-checkbox value="projectStatus">提案狀態</b-form-checkbox>
                             <b-form-checkbox value="creatorName">提案人</b-form-checkbox>
                             <b-form-checkbox value="approvingStatus">審核狀態</b-form-checkbox>
@@ -102,27 +102,27 @@
                     <b-card>
                         <ul v-for="(i, index) in row.item.planList">
                             @*<li>提案編號 : {{ row.item.projectId }}</li>
-                    <li>提案名稱 : {{ row.item.projectName}}</li>
-                    <li>提案分類 : {{ row.item.category }}</li>
-                    <li>提案會員Id : {{ row.item.memberId }}</li>
-                    <li>提案人 : {{ row.item.creatorName }}</li>
-                    <li>提案人真實姓名 : {{ row.item.projectPrincipal }}</li>
-                    <li>提案人身分證字號 : {{ row.item.IdentityNumber }}</li>
-                    <li>募資門檻 : {{ row.item.amountThreshold }}</li>
-                    <li>募資金額 : {{ row.item.fundingAmount }}</li>
-                    <li>募資人數 : {{ row.item.fundedPeople }}</li>
-                    <li>提案狀態 : {{ row.item.projectStatus }}</li>
-                    <li>審核狀態 : {{ row.item.approvingStatus }}</li>
-                    <li>提案影片連結 : {{ row.item.projectVideoUrl }}</li>
-                    <li>提案問題 : {{ row.item.projectQuestion }}</li>
-                    <li>提案回答 : {{ row.item.projectAnswer }}</li>
-                    <li>提案方案數量 : {{ row.item.projectPlansCount }}</li>
-                    <li>提案影片封面圖片 : {{ row.item.projectCoverUrl }}</li>
-                    <li>提案故事 : {{ row.item.projectImgUrl }}</li>
-                    <li>提案開始時間 : {{ row.item.startDate }}</li>
-                    <li>提案結束時間 : {{ row.item.endDate }}</li>
-                    <li>提案初創時間 : {{ row.item.CreatedDate }}</li>
-                    <li>提案提交時間 : {{ row.item.SubmittedDate }}</li>*@
+                                <li>提案名稱 : {{ row.item.projectName}}</li>
+                                <li>提案分類 : {{ row.item.category }}</li>
+                                <li>提案會員Id : {{ row.item.memberId }}</li>
+                                <li>提案人 : {{ row.item.creatorName }}</li>
+                                <li>提案人真實姓名 : {{ row.item.projectPrincipal }}</li>
+                                <li>提案人身分證字號 : {{ row.item.IdentityNumber }}</li>
+                                <li>募資門檻 : {{ row.item.amountThreshold }}</li>
+                                <li>募資金額 : {{ row.item.fundingAmount }}</li>
+                                <li>募資人數 : {{ row.item.fundedPeople }}</li>
+                                <li>提案狀態 : {{ row.item.projectStatus }}</li>
+                                <li>審核狀態 : {{ row.item.approvingStatus }}</li>
+                                <li>提案影片連結 : {{ row.item.projectVideoUrl }}</li>
+                                <li>提案問題 : {{ row.item.projectQuestion }}</li>
+                                <li>提案回答 : {{ row.item.projectAnswer }}</li>
+                                <li>提案方案數量 : {{ row.item.projectPlansCount }}</li>
+                                <li>提案影片封面圖片 : {{ row.item.projectCoverUrl }}</li>
+                                <li>提案故事 : {{ row.item.projectImgUrl }}</li>
+                                <li>提案開始時間 : {{ row.item.startDate }}</li>
+                                <li>提案結束時間 : {{ row.item.endDate }}</li>
+                                <li>提案初創時間 : {{ row.item.CreatedDate }}</li>
+                                <li>提案提交時間 : {{ row.item.SubmittedDate }}</li>*@
 
                             <template>
                                 <img :src="row.item.planList[index].planImgUrl" alt="#" width="50" height="50">
@@ -141,8 +141,8 @@
                     <img :src="data.item.projectMainUrl" alt="" width="50" height="50">
                 </template>
                 @*<template #cell(Status)="data" >
-                    <p>{{data.item.approvingStatus==2?"審核成功":"審核中"}}</p>
-                </template>*@
+                        <p>{{data.item.approvingStatus==2?"審核成功":"審核中"}}</p>
+                    </template>*@
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -163,6 +163,7 @@
         crossorigin="anonymous"></script>
 @section endJS{
     <script src="~/js/moment.js"></script>
+
     <script>
     const member = new Vue({
         el: "#project",
@@ -200,9 +201,7 @@
         created: function () {
             axios.get("/Api/Projects/GetAll")
                 .then((res) => {
-
-                    changeStatus(res.data.body.projectList)
-                    
+                    this.changeStatus(res.data.body.projectList);
                     this.items = res.data.body.projectList;
                     this.mounted();
                     this.isBusy = false;
@@ -222,7 +221,7 @@
             // Set the initial number of items
             this.totalRows = this.items.length;
 
-            
+
         },
         methods: {
             info(item, index, button) {
@@ -247,14 +246,8 @@
             mounted() {
                 // Set the initial number of items
                 this.totalRows = this.items.length
-            }
-
-            
-        },
-
-    })
-
-            function changeStatus(dataItems) {
+            },
+            changeStatus(dataItems) {
                 dataItems.forEach(item => {
                     if (item.approvingStatus == 0) {
                         item.approvingStatus = "草稿";
@@ -268,10 +261,9 @@
                     else {
                         item.approvingStatus = "審核成功";
                     }
-                    
-
-                })
-            }
+                });
+            },
+        },
+    })
     </script>
-
 }

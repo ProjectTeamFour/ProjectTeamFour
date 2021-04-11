@@ -1,4 +1,24 @@
 ﻿
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    const projects = (axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+    var countSuccessProjects = () => {
+        let count = 0;
+        //if (v.projectStatus == "集資成功" | v.projectStatus == "結束且成功")
+        if (v.projectStatus == "集資中")
+        {
+            projects.map((v, i) => count++)
+            return count;
+        }
+        document.getElementById("#pending_projects_count").innerHTML(count);
+    }
+
+
+</script>
+
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -6,7 +26,7 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content">               
+            <div id="content">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -14,7 +34,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+                            <i class="fas fa-download fa-sm text-white-50"></i> 集資車車平台統計
                         </a>
                     </div>
 
@@ -28,7 +48,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)
+                                                營收概況(月營收)
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                         </div>
@@ -47,7 +67,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)
+                                                總營收(創建至今)
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                         </div>
@@ -66,11 +86,16 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Tasks
+                                                專案募資成功比率
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        50%
+
+                                                        @* 這裡做統計喔 *@
+
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -96,9 +121,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests
+                                                募資中專案數量
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div id="pending_projects_count" class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                @* 計算總共有幾個募資專案 *@
+
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -113,88 +142,246 @@
 
                     <div class="row">
 
-                        <!-- Area Chart -->
+                        <!-- 訂單銷售統計圖 -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">訂單銷售統計圖</h6>
+           
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <div id="orders_line" style="width: 600px;height:400px;"></div>
                                     </div>
+                                    <script>
+
+                                        const getOption = async () => {
+                                            const getdata = async () => {
+                                                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
+                                                console.log(items);
+                                                //let tmpArray = [];
+                                                //items.map((v, i) => tmpArray.push(i));
+                                                //let account = [];
+                                                //items.map((v, i) => account.push(parseInt(v.orderTotalAccount)));
+                                                let OrderDate = [];
+                                                let OrderAccount = [];
+                                                function ChangeDatetoNum(e) {
+                                                    return e.split('/').reduce((pre, now) => {
+                                                        return now.length < 2 ? pre + '0' + now : pre + now
+                                                    }, "")
+                                                }
+
+                                                const compare = (a, b) => {
+                                                    if (ChangeDatetoNum(a.orderDate) > ChangeDatetoNum(b.orderDate))
+                                                        return 1;
+                                                    else 
+                                                        return -1;
+                                                }
+                                                items.sort(compare);
+                                                items.forEach(e => OrderDate.push(e.orderDate));
+                                                items.forEach(e => OrderAccount.push(e.orderTotalAccount));
+                                                return { x: OrderDate, y: OrderAccount }
+                                            }
+                                            let tmp = await getdata();
+                                            var option = {
+                                                title: {
+                                                    text: '訂單銷售統計圖'
+                                                },
+                                                //legend: {
+                                                //data: ['金額']
+                                                //},
+                                                xAxis: {
+                                                    data: tmp.x
+                                                    //data:months
+                                                },
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [{
+                                                    name: '金額',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    data: tmp.y,
+                                                    //realtimeSort: true,
+                                                }]
+                                            };
+                                            return option;
+                                        }
+
+                                        getOption().then(option => {
+                                            console.log(option);
+                                            var moneyChart = echarts.init(document.getElementById('orders_line'));
+                                            moneyChart.setOption(option);
+                                        })
+
+                                    </script>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Pie Chart -->
+                        <!-- 平台專案募資狀態圓餅圖 -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">專案募資狀態統計</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                    <div class="chart-pie">
+                                        <div id="projectStatus_pie" style="width: 400px;height:300px;"></div>
                                     </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div>
+                                    
+                                    <script>
+                                        const getOption_pie1 = async () => {
+                                            const getdata = async () => {
+                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                                                let count = [0, 0, 0, 0, 0, 0];
+                                                const json = {
+                                                    "集資中": 0,
+                                                    "集資成功": 1,
+                                                    "集資失敗": 2,
+                                                    "審核中": 3,
+                                                    "結束且成功": 4,
+                                                    "結束且失敗": 5
+                                                }
+                                                items.map((v, i) => count[json[v.projectStatus]]++);
+                                                return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
+                                            }
+                                            let tmp = await getdata();
+
+                                            var option = {
+                                                title: {
+                                                    text: '募資狀態統計圖',
+                                                    show: false
+                                                },
+                                                tooltip: {
+                                                    trigger: 'item',     //觸發類型（座標軸觸發）
+                                                },
+                                                legend: {
+                                                    top: '5%',
+                                                    left: 'center',                                               
+                                                },
+
+                                                series: [{
+                                                    name: '募資狀態',
+                                                    radius: ['40%', '70%'],
+                                                    avoidLabelOverlap: false,
+                                                    type: 'pie',
+                                                    data: tmp.y,
+                                                    label: {
+                                                        show: false,
+                                                        position: 'center'
+                                                    },
+                                                    labelLine: {
+                                                        show: false
+                                                    },
+                                                    emphasis: {
+                                                        label: {
+                                                            show: true,
+                                                            fontSize: '40',
+                                                            fontWeight: 'bold'
+                                                        }
+                                                    },
+                                                }]
+                                            };
+                                            return option;
+                                        }
+                                        getOption_pie1().then(option => {
+                                            console.log(option);
+                                            var myChart = echarts.init(document.getElementById('projectStatus_pie'));
+                                            myChart.setOption(option);
+                                        })
+
+                                    </script>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Content Row -->
+                    <!--提案分類統計柱狀圖-->
                     <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Project Card Example -->
+                        <div class="col-lg-6 col-mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                    <h6 class="font-weight-bold text-primary">提案分類統計圖</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <div id="category_bar" style="width: 550px;height:350px;"></div>
+                                    </div>
+                                    
+                                    <script>
+                                        const getOption_bar1 = async () => {
+                                            const getdata = async () => {
+                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                                                let account = [0, 0, 0, 0, 0, 0];
+                                                const json = {
+                                                    "科技設計": 0,
+                                                    "藝術影視": 1,
+                                                    "音樂": 2,
+                                                    "生活": 3,
+                                                    "公共在地": 4,
+                                                    "遊戲出版": 5
+                                                }
+                                                items.map((v, i) => account[json[v.category]]++);
+                                                return { x: ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"], y: account }
+                                            }
+                                            let tmp = await getdata();
+
+                                            var option = {
+                                                title: {
+                                                    text: '提案分類統計圖'
+                                                },
+                                                tooltip: {
+                                                    trigger: 'axis',     //觸發類型（座標軸觸發）
+                                                },
+                                                legend: {
+                                                    data: ['category']
+                                                },
+                                                xAxis: [{
+                                                    data: tmp.x
+                                                }],
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [{
+                                                    name: '提案分類',
+                                                    type: 'bar',
+                                                    data: tmp.y
+
+                                                }]
+                                            };
+                                            return option;
+                                        }
+
+                                        getOption_bar1().then(option => {
+                                            console.log(option);
+                                            var myChart = echarts.init(document.getElementById('category_bar'));
+                                            myChart.setOption(option);
+                                        })
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+                    @*</div>*@
+
+                    <!-- Content Row -->
+                    <!--<div class="row">-->
+
+                        <!-- Content Column -->
+                        <!--<div class="col-lg-6 mb-4">-->
+
+                            <!-- Project Card Example -->
+                            <!--<div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">各分類專案統計</h6>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="small font-weight-bold">
@@ -233,119 +420,32 @@
                                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Color System -->
-                            <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-primary text-white shadow">
-                                        <div class="card-body">
-                                            Primary
-                                            <div class="text-white-50 small">#4e73df</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-success text-white shadow">
-                                        <div class="card-body">
-                                            Success
-                                            <div class="text-white-50 small">#1cc88a</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-info text-white shadow">
-                                        <div class="card-body">
-                                            Info
-                                            <div class="text-white-50 small">#36b9cc</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-warning text-white shadow">
-                                        <div class="card-body">
-                                            Warning
-                                            <div class="text-white-50 small">#f6c23e</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-danger text-white shadow">
-                                        <div class="card-body">
-                                            Danger
-                                            <div class="text-white-50 small">#e74a3b</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-secondary text-white shadow">
-                                        <div class="card-body">
-                                            Secondary
-                                            <div class="text-white-50 small">#858796</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-light text-black shadow">
-                                        <div class="card-body">
-                                            Light
-                                            <div class="text-black-50 small">#f8f9fc</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-dark text-white shadow">
-                                        <div class="card-body">
-                                            Dark
-                                            <div class="text-white-50 small">#5a5c69</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                            </div>-->
+                        @*</div>*@
 
                         <div class="col-lg-6 mb-4">
 
-                            <!-- Illustrations -->
+                            <!-- 熱門募資排行榜柱狀圖 -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">熱門募資排行榜</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                             src="~/img/undraw_posting_photo.svg" alt="">
+                                    <div class="chart-bar">
+                                        <div id="orders_popular" style="width: 600px;height:400px;"></div>
                                     </div>
-                                    <p>
-                                        Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!
-                                    </p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">
-                                        Browse Illustrations on
-                                        unDraw &rarr;
-                                    </a>
                                 </div>
                             </div>
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
+                            <!--<div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">.......</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p>
-                                        SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.
-                                    </p>
-                                    <p class="mb-0">
-                                        Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.
-                                    </p>
+
                                 </div>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -358,55 +458,70 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <!--<script src="~/vendor/chart.js/Chart.min.js"></script>-->
-
-    <!-- Page level custom scripts -->
-    <script src="~/js/demo/chart-area-demo.js"></script>
-    <script src="~/js/demo/chart-pie-demo.js"></script>
-
     <script>
-        const getOption = async () => {
+        const getOption_MostPopular = async () => {
             const getdata = async () => {
-                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
-                let tmpArray = [];
-                items.map((v, i) => tmpArray.push(i));
-                let account = [];
-                items.map((v, i) => account.push(parseInt(v.orderTotalAccount)));
-                return { x: tmpArray, y: account }
+                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                let ProjectName = [];
+                let ProjectFundingAmount = [];
+
+                const compare = (a, b) => {
+                    if (a.fundingAmount > b.fundingAmount)
+                        return -1;
+                    else if (a.fundingAmount < b.fundingAmount)
+                        return 1;
+                    return 0;
+                }
+                items.sort(compare);
+
+                items.forEach(e => ProjectName.push(e.projectName));
+                items.forEach(e => ProjectFundingAmount.push(e.fundingAmount));
+                return { x: ProjectName, y: ProjectFundingAmount }
             }
             let tmp = await getdata();
             var option = {
                 title: {
                     text: '訂單銷售統計圖'
                 },
-                //legend: {
-                //data: ['金額']
-                //},
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line'     //指示器類型（直線指示器）
+                    }
+                },
+                legend: {
+                data: '銷售金額'
+                },
+                transform: {
+                    type: 'sort',
+                    config: { dimension: 'ProjectFundingAmount', order: 'desc' }
+                },
                 xAxis: {
-                    data: tmp.x
+                    data: tmp.x,
                     //data:months
+                    max:5
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    //max:5
                 },
                 series: [{
                     name: '金額',
-                    type: 'line',
+                    type: 'bar',
                     data: tmp.y
                 }]
             };
             return option;
         }
 
-        getOption().then(option => {
+        getOption_MostPopular().then(option => {
             console.log(option);
-            var moneyChart = echarts.init(document.getElementById('orders_line'));
-            moneyChart.setOption(option);
+            var myChart = echarts.init(document.getElementById('orders_popular'));
+            myChart.setOption(option);
         })
     </script>
 

@@ -50,6 +50,7 @@ namespace ProjectTeamFour.Service
                     ProjectStatus = entity.ProjectStatus,
                     EndDate = entity.EndDate,
                     StartDate = entity.StartDate,
+                    ProjectMainUrl = entity.ProjectMainUrl,
                 };
                 myProjectsListVM.Add(myProjectVM);
             }
@@ -83,6 +84,7 @@ namespace ProjectTeamFour.Service
                     ProjectStatus = entity.ProjectStatus,
                     EndDate = entity.EndDate,
                     StartDate = entity.StartDate,
+                    DraftProjectMainUrl = entity.DraftProjectMainUrl,
                 };
                 myDraftProjectsListVM.Add(myDraftProjectVM);
             }

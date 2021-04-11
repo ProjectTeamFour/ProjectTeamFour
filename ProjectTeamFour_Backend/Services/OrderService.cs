@@ -15,9 +15,9 @@ namespace ProjectTeamFour_Backend.Services
     public class OrderService: IOrderService
     {
         private readonly IRepository _dbRepository; //repository介面
-        private readonly LabContext _context; 
+        private readonly CarCarPlanContext _context; 
 
-        public  OrderService(IRepository repository, LabContext context) //用dapper方便
+        public  OrderService(IRepository repository, CarCarPlanContext context) //用dapper方便
         {
             _dbRepository = repository;
             _context = context;
