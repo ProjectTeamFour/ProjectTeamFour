@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using ProjectTeamFour.Service;
 
 
 namespace ProjectTeamFour.ViewModels

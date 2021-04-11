@@ -45,14 +45,11 @@ namespace ProjectTeamFour.Service
 
         public List<SubmissionProcessPlanViewModel> QueryResult(List<MyProjectViewModel> myProjectsVM)
         {
-               
-            
-
             List<SubmissionProcessPlanViewModel> submissionProcessPlanVM = new List<SubmissionProcessPlanViewModel>();
             var queryResults = new List<Plan>();
             foreach (var myProject in myProjectsVM)
             {
-                queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId&&p.AddCarCarPlan==true).Select(x => x).ToList();
+                queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId && p.AddCarCarPlan==true).Select(x => x).ToList();
                 foreach (var queryResult in queryResults)
                 {
                     SubmissionProcessPlanViewModel singleVM = new SubmissionProcessPlanViewModel
@@ -60,7 +57,7 @@ namespace ProjectTeamFour.Service
                         PlanDescription = queryResult.PlanDescription,
                         AddCarCarPlan = queryResult.AddCarCarPlan,
                         QuantityLimit = queryResult.QuantityLimit,
-                        SubmitLimit = (int)queryResult.SubmitLimit,
+                        SubmitLimit = queryResult.SubmitLimit.HasValue? queryResult.SubmitLimit.Value:0,
                         PlanFundedPeople = queryResult.PlanFundedPeople,
                         PlanId = queryResult.PlanId,
                         PlanImgUrl = queryResult.PlanImgUrl,
@@ -74,10 +71,7 @@ namespace ProjectTeamFour.Service
                     submissionProcessPlanVM.Add(singleVM);
                 }
             }
-
             return submissionProcessPlanVM;
-
-
         }
     }
 }

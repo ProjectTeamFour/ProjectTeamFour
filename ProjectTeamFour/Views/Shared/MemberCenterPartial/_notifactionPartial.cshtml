@@ -1,9 +1,10 @@
 ﻿
-@model SubmissionProcessPlanViewModel
+@Model SubmissionProcessPlanViewModel      
 @{
 
 }
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script>
@@ -34,7 +35,7 @@
                         this.inputDataCheck.SubmitLimitErrorMsg = '只能輸入數字';
                     }
                     else if (!SubmitLimitRegexp.test(this.inputData.submitLimit)) {
-                        this.inputDataCheck.SubmitLimitError = false;
+                        this.inputDataCheck.SubmitLimitError = true;
                         this.inputDataCheck.SubmitLimitErrorMsg = '開頭不得為09';
                     }
                     else {
@@ -45,12 +46,13 @@
             }
         },
         methods: {
-            inputDataCheck: function () {
+            submitData: function () {
                 if (this.inputDataCheck.SubmitLimitError == true) {
                     alert('Something wrong');
                 }
                 else {
                     console.log('update plan')
+                    SaveServer();
                 }
             }
         }
@@ -63,16 +65,16 @@
     //        alert('請輸入有效數字');
     //        return;
     //    }
-        //var data = {
-        //    PlanId: $input.data('planid'),
-        //    SubmitLimit: $input.val()
-        //}
+    //var data = {
+    //    PlanId: $input.data('planid'),
+    //    SubmitLimit: $input.val()
+    //}
 
     function SaveServer() {
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/api/memberapi/UpdatePlan',
-            dataType:"json",
+            dataType: "json",
             data: JSON.stringify({ planNumber: form.$data.inputData.SubmitLimit }), //注意是放JSON  字串
             dataType: "json",
             headers: {
@@ -112,7 +114,7 @@
         <div class="product-item-qty" style="justify-content: center;">
             <input type="text" v-model="inputData.SubmitLimit" v-bind:class="{ 'is-invalid': inputDataCheck.Error}" value="@Model.PlanId" id="planNumber" />
             @*{{inputDataCheck.SubmitLimitErrorMsg}}*@
-            <button type="button" class="btn btn-primary" v-on:click="inputData">提交</button>
+            <button type="button" class="btn btn-primary" v-on:click="submitData">提交</button>
         </div>
     </div>
 </div>
