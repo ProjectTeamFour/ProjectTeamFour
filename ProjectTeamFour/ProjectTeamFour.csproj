@@ -178,7 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CommentController.cs" />
-    <Compile Include="Api\OrderController.cs" />
     <Compile Include="Api\ProjectSubmissionController.cs" />
     <Compile Include="Controllers\CarCarPlanController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -324,6 +323,7 @@
     <Content Include="Assets\css\StartAProjectPage\submitsuccess.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
+    <Content Include="Assets\Img\AboutUs\team.jpg" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
@@ -2190,6 +2190,7 @@
     <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
     <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
     <Content Include="Views\Shared\PartialView\_navBar.cshtml" />
+    <Content Include="Views\pay\ReShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

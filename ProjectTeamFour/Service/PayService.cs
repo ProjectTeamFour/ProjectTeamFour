@@ -203,6 +203,43 @@ namespace ProjectTeamFour.Service
             }
         }
 
+        //重新購買 pay頁面
+        public PayViewModel Reshop(PayViewModel cart) //撈資料庫資料 用backingRecordviewmodel的planId找到資料庫的planId 
+        {
+            
+            var session = HttpContext.Current.Session;
+            var memberSession = ((MemberViewModel)session["Member"]);
+            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
+
+            var viewmodel = new PayViewModel
+            {
+                MemberName = member.MemberName,
+                MemberAddress = member.MemberAddress,
+                MemberPhone = member.MemberPhone,
+                MemberConEmail = member.MemberRegEmail,
+                MemberId = member.MemberId,
+                CartItems = new List<CarCarPlanViewModel>() //先給他一個空的集合 讓viewmodel知道我需要這筆資料
+            };
+            var myOrder = _repository.GetAll<Order>().FirstOrDefault(x => x.OrderId == cart.OrderId);
+            var myOrderDetail = _repository.GetAll<OrderDetail>().Where(x => x.OrderId == myOrder.OrderId).Select(x=>x).ToList();
+            foreach (var item in myOrderDetail) 
+            {
+                var CartItem = new CarCarPlanViewModel
+                {
+                    PlanId = item.PlanId,
+                    Quantity = item.OrderQuantity,
+                    PlanPrice = item.OrderPrice,
+                    PlanImgUrl = item.OrderPlanImgUrl,
+                    PlanTitle = item.PlanTitle,
+                    ProjectId = item.ProjectId,
+                };
+                viewmodel.CartItems.Add(CartItem);
+            }
+            return viewmodel;
+        }
+
+        
+        
         public string ConnectECPay(int orderId, MemberViewModel member)
         {
             var session = HttpContext.Current.Session;

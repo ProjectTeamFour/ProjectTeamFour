@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
 using System.Web.Http;
+using System.Collections.Generic;
 using System.Web;
 
 namespace ProjectTeamFour.Controllers
@@ -60,6 +61,7 @@ namespace ProjectTeamFour.Controllers
 				else
                 {
 					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+                    model.Records = _backingService.QueryOrder(model.MemberId);
                     model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
                     
                 }
@@ -225,6 +227,14 @@ namespace ProjectTeamFour.Controllers
             {
                 return RedirectToAction("Login", "Member");
             }
+        }
+
+        [System.Web.Http.HttpPost]
+        public ActionResult FindOrder(Order oVM)
+        {   
+
+            var order = _backingService.FindOrder(oVM);
+            return View(order);         
         }
     }
 }
