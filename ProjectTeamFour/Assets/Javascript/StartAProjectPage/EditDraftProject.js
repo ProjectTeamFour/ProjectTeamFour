@@ -1208,18 +1208,16 @@ var form = new Vue({
             this.inputData.MemberPhone = response.data.CreatorInfo.MemberPhone;
             this.inputData.IdentityNumber = response.data.DraftProjectDetailItem.IdentityNumber;
 
-            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl;
-            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
-            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; 
+            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl; -
+            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl; -
+            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; -這個沒了
 
             quill.root.innerHTML = response.data.DraftProjectDetailItem.DraftProjectImgUrl;  //塞回富文本
-
-
+            console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            console.log(response.data.CreatorInfo.ProfileImgUrl);
+            this.returnUrlToPic(response);
             this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
-            //console.log(response.data.DraftProjectDetailItem.DraftProjectFAQList);
-
             this.returnDataToPlan(response.data.SelectPlanCards.DraftPlanCardItems);
-
 
             // "PlanObject": this.modalList, //陣列包物件
             // "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
@@ -1301,6 +1299,22 @@ var form = new Vue({
                 }
                 this.modalList.push(modalListObj);
             })
+        },
+        returnUrlToPic(response) {
+            console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            console.log(response.data.CreatorInfo.ProfileImgUrl);
+            if (response.data.CreatorInfo.ProfileImgUrl != null)
+            {
+                console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+                console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl;
+            }
+            if (response.data.DraftProjectDetailItem.DraftProjectMainUrl != null)
+            {
+                console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+                console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+            }
         }
     }
 });

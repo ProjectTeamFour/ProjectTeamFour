@@ -31,7 +31,6 @@ namespace ProjectTeamFour_Backend.WebApi
         public BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult> GetAll()
         {
             var result = new BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult>();
-            _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "Product控制器GET方法被呼叫");
             try
             {
                 result.Body = _announcementService.GetAll();

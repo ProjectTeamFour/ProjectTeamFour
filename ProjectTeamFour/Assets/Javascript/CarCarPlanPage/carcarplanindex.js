@@ -49,3 +49,4 @@ document.querySelector("#button-input").addEventListener("click", function (e) {
         window.location.href = url + searchString;
     //}
 });
+
