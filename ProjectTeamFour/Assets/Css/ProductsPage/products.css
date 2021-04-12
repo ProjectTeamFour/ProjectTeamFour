@@ -274,6 +274,9 @@ button[type="button"] {
     background-color:#f9414a;
     border:none;
 }
+.page-link:focus{
+    box-shadow:none
+}
 
 
 @media screen and (min-width: 768px) {
