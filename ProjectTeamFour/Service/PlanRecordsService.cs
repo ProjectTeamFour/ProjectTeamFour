@@ -47,7 +47,7 @@ namespace ProjectTeamFour.Service
         {
             List<SubmissionProcessPlanViewModel> submissionProcessPlanVM = new List<SubmissionProcessPlanViewModel>();
             var queryResults = new List<Plan>();
-            foreach (var myProject in myProjectsVM)
+            foreach (var myProject in myProjectsVM.Where(p=>p.ProjectStatus== "結束且成功").Select(x=>x).ToList())
             {
                 queryResults = _repository.GetAll<Plan>().Where(p => p.ProjectId == myProject.ProjectId&&p.AddCarCarPlan==true).Select(x => x).ToList();
                 if (queryResults != null)
