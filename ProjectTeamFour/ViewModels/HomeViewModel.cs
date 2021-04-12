@@ -9,5 +9,6 @@ namespace ProjectTeamFour.ViewModels
     {
         public ProjectListViewModel ProjectItem { get; set; }
         public CarCarPlanListViewModel CarCarPlanItem { get; set; }
+        public List<AnnouncementViewModel> Announcements { get; set; }
     }
 }
