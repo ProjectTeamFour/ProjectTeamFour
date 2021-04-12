@@ -14,13 +14,16 @@ namespace ProjectTeamFour.Controllers
     {
 
         private HomeService _homeService;
+        private AnnouncementService _announcementService;
         public HomeController()
         {
             _homeService = new HomeService();
+            _announcementService = new AnnouncementService();
         }
         public ActionResult Index()
         {
-            if(!TempData.ContainsKey("RtnCode"))
+           
+            if (!TempData.ContainsKey("RtnCode"))
             {
                 
             }
@@ -57,7 +60,7 @@ namespace ProjectTeamFour.Controllers
             {
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
             }
-
+            homeviewmodel.Announcements = _announcementService.GetAnnouncement(28);
             return View(homeviewmodel);
         }
 

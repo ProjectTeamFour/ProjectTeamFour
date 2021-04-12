@@ -34,7 +34,12 @@
 }
 
 
-
+<div  hidden>
+    @foreach (var announcement in Model.Announcements)
+    {
+        @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml", announcement)
+    }
+</div>
 <!-- 1st carousel -->
 <section class="first-carousel">
     <div class="autoplay">

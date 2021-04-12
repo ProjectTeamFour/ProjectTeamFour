@@ -35,7 +35,7 @@
             {
                 <a href="/Member/Login" class="nav-item message message-phone" id="message-phone">
                     <i class="fas fa-bullhorn">
-                        <p class="message-count">0</p> <!-- 通知這裡先放 0 -->
+                        <p class="message-count">N</p>
                     </i>
                 </a>
             }
@@ -43,7 +43,7 @@
             {
                 <a href="/UserInfo/ToNews/@vm.MemberId" class="nav-item message message-phone" id="message-phone">
                     <i class="fas fa-bullhorn">
-                        <p class="message-count">0</p>
+                        <p class="message-count">@vm.UnreadCount</p>
                     </i>
                 </a>
             }
@@ -170,17 +170,18 @@
                 {
                     <a href="/Member/Login" class="nav-item message" id="message">
                         <i class="fas fa-bullhorn">
-                            <p class="message-count">0</p> <!-- 通知這裡先放 0 -->
+                            <p class="message-count">N</p>
                         </i>
                     </a>
                 }
                 else
-                {                    
+                {
                     <a href="/UserInfo/ToNews/@vm.MemberId#pills-news" class="nav-item message" id="message">
                         <i class="fas fa-bullhorn">
-                            <p class="message-count">0</p>  
+                            <p class="message-count">@vm.UnreadCount</p>
                         </i>
                     </a>
+                    
                 }
 
                 <li class="nav-item dropdown">
