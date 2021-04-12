@@ -7,6 +7,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Linq.Expressions;
+using System.Net;
+using System.Web.Mvc;
+
+
 
 namespace ProjectTeamFour.Service
 {
@@ -291,6 +295,19 @@ namespace ProjectTeamFour.Service
                 }
             }
             return DraftProjectFAQ;
+        }
+
+
+
+
+        public bool ConfirmCurrentUser(int id)
+        {
+            //var member = HttpContext.Current.Session["Member"];
+            //MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
+            //var project = _repository.GetAll<DraftProject>().Where(x => x.MemberId == member.)
+
+
+            return true;
         }
 
 

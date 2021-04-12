@@ -264,7 +264,7 @@
                                     <div id="comment-hint" class="wrapper">
                                         <p>
                                             您還不是本案的贊助者，若有問題可直接
-                                            <a class="contact-btn btn" id="ask-btn" data-toggle="modal" data-target="#messageModal">
+                                            <a class="contact-btn btn" id="ask-btn">
                                                 <i class="bi bi-envelope"></i> 聯絡提案人！
                                             </a>
                                         </p>
@@ -291,8 +291,17 @@
         </section>
     </div>
 </section>
+
+
 <!-- Modal -->
-<div class="modal fade" id="messageModal">
+
+<div class="modal-header">
+    <h5 class="modal-title" hidden>聯絡提案人</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border-radius:50%; display:inline-block;width:45px; left:-5rem;">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@*<div class="modal fade" id="messageModal">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content container">
             <div class="modal-header">
@@ -301,147 +310,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12 container">
-                        <div class="row">
-                            <div class="bio-img">
-                                <img src="@Model.CreatorInfo.ProfileImgUrl" />
-                            </div>
-                            <div class="bio-title">
-                                <h4>@Model.CreatorInfo.MemberTeamName</h4>
-                                <p>提案負責人：@Model.CreatorInfo.MemberName</p>
-                                @*<i class="fab fa-facebook-square"></i>
-                                    <a href="@Model.CreatorInfo.MemberWebsite"></a>*@
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-12 ">
-                        <p>
-                            @Model.CreatorInfo.AboutMe
-                        </p>
-
-                        <a class="btn-more" href="@Model.CreatorInfo.MemberWebsite">瀏覽全部</a>
-                    </div>
-                </div>
-                <hr>
-
-                <label for="comment-area" class="form-label">
-                    傳訊息給 @Model.DraftProjectDetailItem.CreatorName
-                </label>
-                <form action="">
-                    <textarea class="form-control" rows="10" id="msg-content"
-                              placeholder="傳送訊息..."></textarea>
-                    <br />
-
-                    @*<a href="javascript:void(0)" class="btn btn-block btn-primary" id="send-msg" onclick="LanchCommentAjax(@Model.DraftProjectDetailItem.DraftProjectId,@Model.CreatorInfo.MemberId)">傳送訊息</a>*@
-
-                    <a href="javascript:void(0)" class="btn btn-block btn-primary" id="send-msg">傳送訊息</a>
-
-                </form>
-            </div>
         </div>
     </div>
-</div>
+</div>*@
 @section topCSS{
     <link href="~/Assets/Css/ProductDetailPage/campaignDetail.css" rel="stylesheet" />
 }
 
 @section endJS{
-    <script href="~/Assets/Javascript/ProductDetailPage/ProjectDetail.js"></script>
-
-    <script>
-
-        $('#share-btn').popover({
-            trigger: 'click',
-            placement: 'bottom',
-            container: 'body',
-            html: true,
-            template: `<div class="popover" role="tooltip">
-                                                    <div id="popover-content">
-                                                    <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
-                                                    <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
-                                                    </div>
-                                            </div >`,
-        });
-
-        //$('#line-share').append(function () {
-        //    var url = "";
-        //    window.open()
-        //    window.open(& apos; https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'
-        //});
-
-    </script>
-    <script>
-        function LanchCommentAjax(ProjectId, AskedMemberId) {
-            let clientComment = document.querySelector(".form-control");
-            if (clientComment.value == null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '請留言!',
-
-                });
-            }
-            else {
-                $.ajax({
-                    url: "/api/Comment/UpdateComment",
-                    type: "POST",
-                    /*dataType: "json",*/
-                    data: { ProjectId: ProjectId, Comment_Question: clientComment.value, AskedMemberId: AskedMemberId },
-                    success: function (data, textStatus, jqXHR) {
-
-                        if (data == "login") {
-                            Swal.fire(
-                                '尚未登入?',
-                                '請先登入！',
-                                'question'
-                            ).then(result => {
-                                reloading();
-                            })
-
-                        }
-                        else if (data == "try") {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '請留言!',
-
-                            })
-                        }
-                        else if (data == "fail") {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '發生錯誤，請再試一次!',
-
-                            })
-                        }
-                        else {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: '已成功留言！',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(textStatus);
-
-                    }
-                })
-            }
-
-
-        }
-
-        function reloading() {
-            window.location.href = "/Member/Login";
-
-        }
-    </script>
+    <script src="~/Assets/Javascript/ProductDetailPage/ProjectDetail.js"></script>
 }
