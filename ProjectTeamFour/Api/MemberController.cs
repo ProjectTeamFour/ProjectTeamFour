@@ -212,11 +212,13 @@ namespace ProjectTeamFour.Api
         //    }
         //}
 
-        public OperationResult UpdatePlan(Plan plan)
+        public OperationResult UpdatePlan(planview plan)
         {
             var result = new OperationResult();
             result = _planService.UpdatePlan(plan);
             return result;
         }
+
+
     }
 }

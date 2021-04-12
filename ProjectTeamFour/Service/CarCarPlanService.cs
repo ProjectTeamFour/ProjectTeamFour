@@ -150,7 +150,7 @@ namespace ProjectTeamFour.Service
             return GetOtherPlan(x => x.Project.Category.Contains(searchString));
         }
 
-        public OperationResult UpdatePlan(Plan plan)
+        public OperationResult UpdatePlan(planview plan)
 		{
             var result = new OperationResult();
             try
@@ -171,5 +171,11 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
+    }
+
+    public class planview
+    {
+        public int PlanId { get; set; }
+        public int SubmitLimit { get; set; }
     }
 }

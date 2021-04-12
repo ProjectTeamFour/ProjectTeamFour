@@ -1,96 +1,5 @@
-﻿
-@Model SubmissionProcessPlanViewModel      
-@{
-
-}
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<script>
-    var form = new Vue({
-        el: "#app",
-        data: {
-            inputData: {
-                SubmitLimit: $('#planNumber').val(),    /* $('#planNumber').val()*/
-            },
-            inputDataCheck: {
-                SubmitLimitError: false,
-                SubmitLimitErrorMsg: '',
-            }
-            /* disableInputBool: false,*/
-        },
-        watch: {
-            'inputData.SubmitLimit': {
-                immediate: true,        //點開即驗證
-                handler: function () {
-                    let SubmitLimitRegexpNum = /^[0-9]*$/;//輸入非數字時提示
-                    let SubmitLimitRegexp = /^09/; //開頭為09
-                    if (this.inputData.SubmitLimit == "") {
-                        this.inputDataCheck.SubmitLimitError = true;
-                        this.inputDataCheck.SubmitLimitErrorMsg = '數字不得為空';
-                    }
-                    else if (!SubmitLimitRegexpNum.test(this.inputData.submitLimit)) {
-                        this.inputDataCheck.SubmitLimitError = true;
-                        this.inputDataCheck.SubmitLimitErrorMsg = '只能輸入數字';
-                    }
-                    else if (!SubmitLimitRegexp.test(this.inputData.submitLimit)) {
-                        this.inputDataCheck.SubmitLimitError = true;
-                        this.inputDataCheck.SubmitLimitErrorMsg = '開頭不得為09';
-                    }
-                    else {
-                        this.inputDataCheck.SubmitLimitError = false;
-                        this.inputDataCheck.SubmitLimitErrorMsg = '';
-                    }
-                }
-            }
-        },
-        methods: {
-            submitData: function () {
-                if (this.inputDataCheck.SubmitLimitError == true) {
-                    alert('Something wrong');
-                }
-                else {
-                    console.log('update plan')
-                    SaveServer();
-                }
-            }
-        }
-    })
-
-
-    //$('.product-item-qty button').on('click', function () {
-    //    var $input = $(this).siblings('input');
-    //    if (isNaN($input.val())) {
-    //        alert('請輸入有效數字');
-    //        return;
-    //    }
-    //var data = {
-    //    PlanId: $input.data('planid'),
-    //    SubmitLimit: $input.val()
-    //}
-
-    function SaveServer() {
-        $.ajax({
-            type: "POST",
-            url: '/api/memberapi/UpdatePlan',
-            dataType: "json",
-            data: JSON.stringify({ planNumber: form.$data.inputData.SubmitLimit }), //注意是放JSON  字串
-            dataType: "json",
-            headers: {
-                'Content-type': 'application/json'
-            }, //注意 Content-type
-            success: function (response) {
-                console.log(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }
-</script>
-
-
+﻿@model ProjectTeamFour.ViewModels.ForMemberView.SubmissionProcessPlanViewModel    
+  
 <div class="col-12 col-sm-6 col-lg-4 mb-4" id="app">
     <div class="product-item">
         <a class="product-item-pic" href="~/CarCarPlan/Detail/@Model.PlanId">
@@ -99,22 +8,22 @@
         <div class="product-item-text" style="text-align:center;font-size:20px">
             <h3>@Model.PlanTitle</h3>
         </div>
-        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" ;>
+        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" >
             <h3>贊助人數:@(Model.PlanFundedPeople.ToString())</h3>
         </div>
-        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" ;>
+        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" >
             <h3>預估寄送時間:@Model.PlanShipDate </h3>
         </div>
-        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" ;>
+        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px">
             <h3>庫存:@(Model.QuantityLimit.ToString())件</h3>
         </div>
-        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px" ;>
+        <div class="product-item-text" style="padding:5px;text-align:center;font-size:20px">
             <h3>贊助金額:@StringFormat5.addComma((int)(Model.PlanPrice))</h3>
         </div>
         <div class="product-item-qty" style="justify-content: center;">
-            <input type="text" v-model="inputData.SubmitLimit" v-bind:class="{ 'is-invalid': inputDataCheck.Error}" value="@Model.PlanId" id="planNumber" />
-            @*{{inputDataCheck.SubmitLimitErrorMsg}}*@
-            <button type="button" class="btn btn-primary" v-on:click="submitData">提交</button>
+            <input type="number" value="0" id="@(Model.PlanId)planNumber" />
+            @*<span id="@(Model.PlanId)SubmitLimitErrorMsg"></span>*@
+            <button type="button" class="btn btn-primary" v-on:click="submitData(@Model.PlanId)">提交</button>
         </div>
     </div>
 </div>

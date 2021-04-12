@@ -59,7 +59,7 @@ namespace ProjectTeamFour.Controllers
 				else
                 {
 					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
-                    model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
+                    model.Records = _backingService.QueryOrder(model.MemberId);
                     model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
                 }
 				//該會員為提案者沒有留過言，卻要回覆留言
