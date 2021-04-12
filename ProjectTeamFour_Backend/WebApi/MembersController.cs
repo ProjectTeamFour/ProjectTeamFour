@@ -28,6 +28,7 @@ namespace ProjectTeamFour_Backend.WebApi
         [HttpGet]
         public async Task <BaseModel.BaseResult<MemberViewModel.MemberListResult>> GetAll()
         {
+
             var result = new BaseModel.BaseResult<MemberViewModel.MemberListResult>();
 
             _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "MembersController GetAll方法被呼叫");

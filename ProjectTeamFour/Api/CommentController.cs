@@ -42,7 +42,7 @@ namespace ProjectTeamFour.Api
             else
             {
                 commentVM.MemberId = member.MemberId;
-                commentVM.Comment_Time = DateTime.Now;
+                commentVM.Comment_Time = DateTime.UtcNow.AddHours(8);
                 var result = _commentService.CreateANewComment(commentVM);
                 if(result== "success")
                 {
