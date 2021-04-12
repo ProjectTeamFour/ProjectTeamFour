@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>                    
                 </div>
             </div>
         </div>
@@ -84,38 +84,17 @@
 
 </div>
 @*//-----------------------------------------------------------------------------------*@
-
-@section endJS{    
-    @*@if (Model != null)
-    {*@
-        @*<script>
-            let getjson = document.getElementById('transJSON');
-            var obj = JSON.parse(getjson.value);
-            console.log(obj);
-            var jsonObj = {
-                "items": obj
-            };
-            var jsondata = JSON.stringify(jsonObj);
-
-            function Binding() {
-                new Vue({
-                    el: "#record",
-                    data: jsonObj
-                });
-            };
-
-            $(document).ready(function () {
-                Binding();
-                $("mytable").DataTable({
-                    "info": false,
-                    "bLengthChange": false,
-                    "pageLength": 5
-                })
-            });
-        </script>*@
-    @*}
-    else
-    {
-        <p>您目前沒有任何一筆購買紀錄</p>
+<script>
+    @*function getOrder(OrderId) {
+        $.ajax({
+            type: "POST",
+            url: "/Userinfo/FindOrder",//得到orderId的方法
+            data: { OrderId: },
+            success: function (response) {
+                console.log(data);
+                alert("123");
+            }
+        })
     }*@
-}
+
+</script>

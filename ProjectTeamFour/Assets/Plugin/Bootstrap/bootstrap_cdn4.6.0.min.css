@@ -1854,11 +1854,11 @@ pre {
 }
 
     .table-primary tbody + tbody, .table-primary td, .table-primary th, .table-primary thead th {
-        border-color: #7abaff
+        border-color: #7abafff55
     }
 
 .table-hover .table-primary:hover {
-    background-color: #9fcdff
+    background-color: #9fcdffs
 }
 
     .table-hover .table-primary:hover > td, .table-hover .table-primary:hover > th {
@@ -4225,7 +4225,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     }
 
         .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-            border-color: #e9ecef #e9ecef #dee2e6
+            border-color:none
         }
 
         .nav-tabs .nav-link.disabled {
@@ -4237,7 +4237,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
         .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
             color: #495057;
             background-color: #fff;
-            border-color: #dee2e6 #dee2e6 #fff
+            border-color: none
         }
 
     .nav-tabs .dropdown-menu {

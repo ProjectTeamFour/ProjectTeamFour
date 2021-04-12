@@ -54,6 +54,7 @@ namespace ProjectTeamFour.ViewModels
         public string Hash { get; set; }
         public string OldPassword { get; set; }
         public string IsThirdParty { get; set; }
+        public int UnreadCount { get; set; }
 
         public BackingRecordsViewModel Records { get; set; }
         public List<SubmissionProcessViewModel> ProjectRecords { get; set; }

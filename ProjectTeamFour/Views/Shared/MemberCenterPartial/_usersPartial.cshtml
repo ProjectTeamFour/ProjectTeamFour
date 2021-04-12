@@ -18,7 +18,14 @@
             <div class="col-sm-12 col-md-12">
                 <div class="person-data">
                     <div class="person-data-pic">
-                        <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
+                        @if (Model.ProfileImgUrl == null)
+                        {
+                            <img src="~/Assets/Img/member.png" alt="註冊" />
+                        }
+                        else
+                        {
+                            <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
+                        }
                     </div>
                     <div class="person-data-info">
                         <p>@Model.AboutMe</p>

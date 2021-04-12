@@ -4,7 +4,7 @@
         Model: {
             Title:'',
             Content: '',
-            MemberId:'235',
+            MemberId:'28',
         },
         items: [],
         fields: [
