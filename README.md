@@ -2927,5 +2927,440 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 PlanPrice = 1680m,
                 QuantityLimit = 50
             });
+            //第27個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 27,
+                MemberId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 103,
+                FundingAmount = 100050m,
+                AmountThreshold = 100000m,
+                CreatorName = "Sandbox樂團",
+                ProjectMainUrl = "https://i.imgur.com/T9jp7bTm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/UTtHqLGl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "大家好，我們是Sandbox ！,Sandbox沙盒樂團成軍於2011年，是以電吉他、鍵盤、貝斯與鼓組成的四人前衛演奏型獨立樂團，曲風結合前衛搖滾、實驗、後搖與電影音樂，四年以來歷經大小革新，從無數次的深省淬鍊出現今的樣貌。邁入新的里程碑的我們，即將帶來富有畫面感與想像空間的全新創作EP，期待與更多人分享我們在樂曲中欲訴說的故事。,,,夢中恍惚的美好，無可捕捉卻又總是流連；如果你也一樣，那麼，一起來到我們的音樂中吧，相信你能找回那種深刻。這些樂曲沒有文字，聲響的對話、想像的空間裡面，你看見了什麼？邀請你一同將我們的想像實體化，使更多人在樂曲中遇見我們，也遇見流浪已久的自我。,,,《流浪者 The Vagabond》EP,流浪之人在沙漠中漫行，時間似沙一般一點一滴流逝，他行至一個沙丘，雖看來無異於他處，但他選擇在這裡稍停，拿起望遠鏡，多看幾眼指引他方向的滿天星斗，希望除了能看出除了東南西北外，還能在星芒的明滅之間，得到造物主些許的默示。 但，他不知道的是，腳下走過的沙漠，雖然時間一點一滴的流逝，但在另一個時空裡，流逝的沙卻變成了一點一滴充滿色彩的水滴，聚流成河地蔓延，原來在冥冥之中，一個可安歇的境地已悄然誕生．．．",
+                ProjectImgUrl = "https://i.imgur.com/UTtHqLGl.jpg,https://i.imgur.com/fW3SCdwl.jpg,https://i.imgur.com/fWxTTsWl.jpg,https://i.imgur.com/Aa70IuKl.jpg,https://i.imgur.com/FwAwzTEl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/WFCJuhczBkY",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第27個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 27,
+                MemberAccount = "N27member",
+                MemberPassword = "N27memberPassword",
+                MemberName = "Sandbox樂團",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1992, 5, 3),
+                MemberConEmail = "sandbox666@gmail.com",
+                MemberRegEmail = "sandbox666@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0938-310899",
+                MemberTeamName = "Sandbox樂團",
+                MemberWebsite = "https://www.facebook.com/SandboxTW/",
+                AboutMe = "Sandbox來自台灣，四件式前衛演奏搖滾樂團，以吉他和鍵盤敘事；鼓和貝斯應答，每首曲子自成一個世界，述說著一個個故事。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/dsSDxaZt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第27個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 119,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 1,
+                PlanTitle = "【流浪者EP1張＋1217發片場門票1張】",
+                PlanFundedPeople = 42,
+                PlanDescription = "行旅天涯，我們走過旱地，唱和著，期待著雙眼被綠洲滋潤的那天。為回報您的支持，我們以十分划算的組合準備了EP專輯1張、以及12月17日 The Wall發片場門票1張套裝組合400元整（原市值共550元），專輯將在發片場當天發放給您，衷心歡迎您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/fW3SCdwm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 400m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 120,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 2,
+                PlanTitle = "【流浪者EP2張＋1217發片場門票2張】",
+                PlanFundedPeople = 11,
+                PlanDescription = "行旅天涯，我們走過旱地，唱和著，期待著雙眼被綠洲滋潤的那天。為回報您的支持，我們以十分划算的組合準備了EP專輯2張、以及12月17日 The Wall發片場門票2張套裝組合750元整（原市值共1100元），專輯將在發片場當天發放給您，衷心歡迎您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/fWxTTsWm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 750m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 121,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 3,
+                PlanTitle = "【流浪者EP5張＋Sandbox Logo貼紙10張】",
+                PlanFundedPeople = 20,
+                PlanDescription = "行經曠野，雁群有序的掠過穹蒼，它們的羽翼在歸巢的路上，那，我們呢？十人限定組合佳評如潮，上架不到一天銷售一空！為回應向隅的朋友們，我們提供優惠的五人限定組合，5張EP、10張貼紙的組合，只有8組，給喜愛Sandbox但昨日慢了一步的朋友們參考！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/Aa70IuKm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1050m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 122,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 4,
+                PlanTitle = "【流浪者EP10張＋Sandbox Logo貼紙20張】",
+                PlanFundedPeople = 30,
+                PlanDescription = "行走於無盡的道路上，難免疲憊不堪，同伴們的支持與鼓勵，總是支撐著彼此向前的動力。快揪您的朋友一起共襄盛舉這場音樂饗宴！10人破盤優惠：10張EP、20張貼紙，只要1800！含寄送費用（原市值2900），呼朋引伴！只有三組！把握機會！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/FwAwzTEm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1800m,
+                QuantityLimit = 50
+            });
+            //第28個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 28,
+                MemberId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 100,
+                FundingAmount = 2810000m,
+                AmountThreshold = 3000000m,
+                CreatorName = "傻子與白痴",
+                ProjectMainUrl = "https://i.imgur.com/z6Dcgyjm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/P38EDQCl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/x8uY43Fl.jpg,https://i.imgur.com/4uolqTzl.png,https://i.imgur.com/Y3QtVfvl.jpg,https://i.imgur.com/cM4g8TVl.jpg,https://i.imgur.com/kXvO2uWl.jpg,https://i.imgur.com/175xAF9l.jpg,https://i.imgur.com/IIqdEnRl.jpg,https://i.imgur.com/LN4ridNl.jpg,https://i.imgur.com/cK2tFyhl.jpg,https://i.imgur.com/tZa7MC7l.png,https://i.imgur.com/R3WSWXrl.png,https://i.imgur.com/AowNGxwl.jpg,https://i.imgur.com/NsZpLOHl.jpg,https://i.imgur.com/c1xhqNDl.jpg,https://i.imgur.com/k9rBd6tl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/1fgTKtpFaTM",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第28個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 28,
+                MemberAccount = "N28member",
+                MemberPassword = "N28memberPassword",
+                MemberName = "徐維均",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1990, 5, 3),
+                MemberConEmail = "foolandidiot@gmail.com",
+                MemberRegEmail = "foolandidiot@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0960-395249",
+                MemberTeamName = "傻子與白痴",
+                MemberWebsite = "https://www.streetvoice.com/FoolAndIdiotBand/",
+                AboutMe = "人生只要專心做好一件事就好了。2015年，我們18歲，傻子與白痴在炎熱的琴房裡誕生。傻子代表的是內心裡最不社會化的那個我，白痴是被眾人與潮流影響的自己。一個很傻，一個很白痴。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/M6Gpd47t.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第28個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 123,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 1,
+                PlanTitle = "【傻子與白癡 第一輯】",
+                PlanFundedPeople = 20,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + zippo x 傻白 foollighter打火機 一個 + 傻白全團員手寫信 + 傻白未來演出3場通行",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/M6Gpd47m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 124,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 2,
+                PlanTitle = "【傻子與白癡 第二輯】",
+                PlanFundedPeople = 30,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白演出門票通行一年份",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/LN4ridNm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 15000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 125,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 3,
+                PlanTitle = "【傻子與白癡 第三輯】",
+                PlanFundedPeople = 40,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白演出門票通行一年份 + 傻白為你專屬製作一首你愛的單曲cover",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/IIqdEnRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 30000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 126,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 4,
+                PlanTitle = "【傻子與白癡 第四輯】",
+                PlanFundedPeople = 10,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白為你專屬製作一首你愛的單曲cover +終生免費傻白演出通行",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/cM4g8TVm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100000m,
+                QuantityLimit = 50
+            });
+            //第29個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 29,
+                MemberId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 76,
+                FundingAmount = 450500m,
+                AmountThreshold = 400000m,
+                CreatorName = "山冶計畫",
+                ProjectMainUrl = "https://i.imgur.com/6WrzXdQm.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/zV7df3Ul.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "1966 年生於日本岐阜縣的池田亮司，影響力早已超出日本，融合多重領域的表現，被國際藝術界視為前衛聲音藝術的領軍人物。1980 年代萌生的後工業音樂／噪音／實驗聲響系譜，因為池田亮司的出現，奠定了一個明確階段。從此，聲音藝術有了嶄新且多元的傳承與開展。過去20年來，池田亮司奮力不懈地探索現場演出、裝置和錄音等各種創作形式，日本前衛多媒體媒體實驗組合 Dumb Type 、編舞家威廉．佛塞（William Forsythe）、建築師伊東豊雄都曾為他的合作對象清單，池田亮司跨越的領域廣闊，我們可從中略知一二。藝術界對他的推崇和肯定，更可自諸多國際重要獎項得知：電子藝術大獎金尼卡獎、德國卡爾斯魯 ZKM 媒體藝術中心 Giga-Hertz 獎、歐洲核子研究組織的 Prix Ars Electronica Collide @ CERN 2014……無一不表現全球藝術界對他的推崇和肯定。,,我們期待，不只有全新的展覽創作，更能夠順勢邀請池田亮司來台表演，因而開啟了此募資計畫，期望集眾人之力讓重量級國際大師池田亮司，首度．親臨．台灣現場表演！,,倘若募資成功，池田亮司將額外帶來表演計畫supercodex，這場巡演始於美國紐約大都會博物館、經英國Attenborough藝術中心、中國北京—上海FUTURE X電子音樂節，12月止於休士頓日以繼夜藝術節。",
+                ProjectImgUrl = "https://i.imgur.com/8QJQsafl.jpg,https://i.imgur.com/bsSmTXxl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/J9kHDuGNcLI",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第29個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 29,
+                MemberAccount = "N29member",
+                MemberPassword = "N29memberPassword",
+                MemberName = "山冶計畫",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1991, 5, 3),
+                MemberConEmail = "mountainplan@gmail.com",
+                MemberRegEmail = "mountainplan@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0940-166798",
+                MemberTeamName = "山冶計畫",
+                MemberWebsite = "https://mtproject.land/",
+                AboutMe = "立基於當代藝術試問現象的動機，從展演策畫到教育活動，視各種與群眾對話的形式為思考實踐的變體。穿越白盒子與未知的野地，交知著自然與人文；交流始於協同合作，讓在地發生轉化和延續．期待以每一次的藝術計畫，碰撞出更開闊的想像世界。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/3dcXHxXt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第29個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 127,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 1,
+                PlanTitle = "【先鋒電子震波組】",
+                PlanFundedPeople = 40,
+                PlanDescription = "**新增【先鋒電子震波組】優先入場（搖滾區）2000元",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/xYmrJNIm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 128,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 2,
+                PlanTitle = "【近距震波組】",
+                PlanFundedPeople = 30,
+                PlanDescription = "【近距震波組】,◐ 優先入場（搖滾區）,◐ 限量明信片一組,◐ 限量提袋,◐ 池田亮司簽名CD,◐ 映像節放映活動保留席,,✶映像節放映活動參與場次可自選，完整節目單將於10月底公佈",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/YttSbyZm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3500m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 129,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 3,
+                PlanTitle = "【超限序列特製組】",
+                PlanFundedPeople = 6,
+                PlanDescription = "【超限序列特製組】除了一定額的禮物回饋之外，我們將量身訂做回饋與超限的您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/sT9QvESm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 60000m,
+                QuantityLimit = 50
+            });
+            //第30個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 30,
+                MemberId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 116,
+                FundingAmount = 402000m,
+                AmountThreshold = 400000m,
+                CreatorName = "行者",
+                ProjectMainUrl = "https://i.imgur.com/wfpmKNGm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/NOSyWvTl.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "《行者》片中部份採用台灣少見的 Dance Film 拍攝，拍攝團隊費盡心思上天下海，尋找出台灣符合無垢舞蹈劇場作品精神的美麗祕境之地，讓舞作中的角色，如神靈顯現般出現在這些秘境中，如神話、如寓言。,,而這樣的拍攝方式，也讓舞蹈作品的呈現，跳脫出劇場的黑盒子，在自然景緻裡活了過來。透過這影像史詩，生命的動能從土地與文化中竄出，在舞者的身體中流轉傳遞，將文字無法言述的畫面意象，透過手足身心，獨立顯影於凝結的時空中。,《行者》完成推出後，相繼獲得台北電影節、台灣國際紀錄片影展、與金馬獎的入圍肯定，更是影展售票中的秒殺片。,,在導演陳芯宜傾十年之力拍完本片後，卻在發行之際面臨資金缺口，電影製作團隊以不計成本的方式拍攝、剪接、後製之後，在已苦無經費的情況下，尚需自掏腰包代墊近百萬的資金缺口。,,為了能讓更多觀眾可以欣賞《行者》，透過電影更深入認識無垢這個美麗而堅毅的故事，同時，看見臺灣舞蹈藝術與土地的能量，我們需要你們的一臂之力。,,,,《行者》即將在 4/10 上映與觀眾見面，請讓我們一起進場支持，也藉由本片對臺灣舞蹈藝術家們獻上最深的敬意！",
+                ProjectImgUrl = "https://i.imgur.com/FZBbnTjl.jpg,https://i.imgur.com/DUM6apLl.jpg,https://i.imgur.com/IcJOuEEl.jpg,https://i.imgur.com/stnDVv3l.png,https://i.imgur.com/Sag2x3Pl.jpg,https://i.imgur.com/MPfmB8fl.png,https://i.imgur.com/n50TfEXl.png,https://i.imgur.com/HUQl3TBl.jpg,https://i.imgur.com/UR5dr0al.png,https://i.imgur.com/9psjJuwl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/uCM1QgwKqII",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+            });
+            //第30個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 30,
+                MemberAccount = "N30member",
+                MemberPassword = "N30memberPassword",
+                MemberName = "行者",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1988, 7, 13),
+                MemberConEmail = "passenger666@gmail.com",
+                MemberRegEmail = "passenger666@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0945-515849",
+                MemberTeamName = "行者",
+                MemberWebsite = "https://www.facebook.com/thewalkerslegendlindancetheatre/",
+                AboutMe = "《行者》團隊自 2004 年起，貼身捕捉舞蹈家林麗珍動人身影，透過她的日常生活，探索舞蹈創作的原點與精神，而這長達十年的紀錄過程，也呼應了林麗珍十年一大作的創作特色。,,十年來，不僅拍攝了無垢於台北、香港、北京、法國、西班牙等各大藝術節演出的珍貴畫面，同時也真實紀錄一個精湛舞作背後，所經過的各種辛苦：無論是舞者的挑選與訓練、對服裝道具的感情與累積、舞者心靈與身體所展現的一致性等等，都深刻展現了臺灣舞蹈發展脈絡與本土藝術家生命映照之間的高度與深度。",
+                Gender = "女",
+                ProfileImgUrl = "https://i.imgur.com/wfpmKNGt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第30個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 130,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 1,
+                PlanTitle = "【行者組合一】",
+                PlanFundedPeople = 800,
+                PlanDescription = "募資限定紀念電影票二張＋《行者》海報一張＋明信片一組＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/lOxl7C3m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 45m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 131,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 2,
+                PlanTitle = "【行者組合二】",
+                PlanFundedPeople = 22,
+                PlanDescription = "募資限定紀念電影票一張＋無垢肢體開發體驗課程單堂一張＋無垢作品絕版海報一張＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5Lc4JT6m.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 132,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 3,
+                PlanTitle = "【行者組合三】",
+                PlanFundedPeople = 38,
+                PlanDescription = "募資限定紀念電影票一張＋《行者》簽名版DVD一組＋《觀》精裝攝影專書一本＋《行者》簽名版海報一張＋明信片一組＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/QCdTAaum.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 133,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 4,
+                PlanTitle = "【行者組合四】",
+                PlanFundedPeople = 11,
+                PlanDescription = "募資限定紀念電影票一張＋秘境小旅行半日遊＋《行者》簽名版海報一張＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/xa4c1Yem.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 10000m,
+                QuantityLimit = 50
+            });
 
         }
