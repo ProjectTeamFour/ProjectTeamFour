@@ -27,6 +27,7 @@
                     detailUrl: "/ProjectDetail/Index/"
                 },
                 methods: {
+                    //刪除按鈕觸發事件
                     RemoveFromCart: function (PlanId) {
                         LanchRemoveAlert(PlanId);
                     }
@@ -48,7 +49,7 @@
                 }
 
             });
-
+            ///消費者輸入數量之認證規則
             function formatMoney(value, type) {
                 if (/[^0-9\.]/.test(value))
                     return "0";
@@ -74,20 +75,20 @@
     }
     
 <script>
-
-
-
-
-
         let remove = document.querySelector("#remove");
+        ///消費者留言輸入欄位之父層
         let forseller = document.querySelector(".for-seller");
+        ///消費者結帳按鈕
         let cartout = document.querySelector(".cart-out");
         let noresult = document.querySelector(".no-result");
         let shopitems = document.querySelector(".shop-items");
+        ///每個商品數量的DOM節點，型式為NodeList
         let qtyArray = document.querySelectorAll(".qty");
+        ///結帳前紀錄商品的每個數量
         let valuesArray = [];
+        ///消費者留言輸入欄位
         let cartSpecialInstructions = document.querySelector("#cartSpecialInstructions");
-
+        ///若購物車內無任何商品，則前端頁面顯示"購物車無任何商品"，並將結帳按鈕鎖住
         if (shopitems.innerText == "" )
         {
             NewDiv = document.createElement("div");
@@ -100,6 +101,7 @@
             forseller.setAttribute("style", "display:none");
             cartout.setAttribute("style", "display:none");
         }
+        
         else if (noresult!=null&&noresult.innerText == "購物車無任何商品")
         {
             forseller.setAttribute("style", "display:none");
@@ -116,7 +118,7 @@
         //    LanchRemoveAlert(PlanId);
 
         //}
-
+        ///專為移除商品按鈕觸發的Alert。觸發刪除之後，發送刪除的AJAX，傳出欲刪除的商品Id
         function LanchRemoveAlert(PlanId) {
             Swal.fire({
                 title: '您確定刪除此項商品?',
@@ -138,7 +140,7 @@
                 }
             })
         }
-
+        ///發送刪除的AJAX，傳入欲刪除的商品Id，成功之後刷新頁面
         function LanchRemoveAjax(PlanId) {
              $.ajax({
                             type: "POST",
@@ -151,13 +153,13 @@
                             }
                                 });
         }
-
+        ///刷新頁面
         function reloading() {
             window.location.assign(window.location.href);
         }
 
 
-
+        ///專為清空購物車按鈕觸發的Alert。觸發刪除之後，發送清空購物車的AJAX，無傳出參數
         function ClearCart() {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -197,7 +199,7 @@
                 }
             })
         }
-
+        ///發送清空購物車的AJAX，成功之後刷新頁面
         function ClearAjax() {
              $.ajax({
                 type: "POST",
@@ -210,16 +212,19 @@
             });
         }
 
-
+        ///結帳前的前置作業，紀錄消費者的商品數量valuesArray及留言內容cartSpecialInstructions.value
         function PrepareToCheckout() {
-
+            ///呼叫NodeListPushToArra方法將qtyArray內所有的數量記錄在valuesArray
             valuesArray = NodeListPushToArray(qtyArray, valuesArray);
+            ///將valuesArray及消費者留言以AJAX POST方式傳出
             LanchArrayAjax(valuesArray, cartSpecialInstructions.value);
+            ///初始化紀錄數量的陣列
             valuesArray.length = 0;
         }
-
+        ///參數NodeList為紀錄消費者的商品數量；ValueArray則為留言內容
         function NodeListPushToArray(NodeList, ValueArray) {
             NodeList.forEach(element => {
+                ///若為空字串，則判斷為1
                 if (element.value == "") {
                     element.value = "1";
                     ValueArray.push(element.value);
@@ -232,9 +237,9 @@
             return ValueArray;
         }
 
-
+        ///將數量陣列及消費者留言內容傳出
         function LanchArrayAjax(ValueArray, clientComment) {
-            console.log(clientComment);
+           
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("GetCheckoutQuantity", "ShoppingCart")',

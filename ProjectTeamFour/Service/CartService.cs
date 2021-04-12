@@ -51,13 +51,19 @@ namespace ProjectTeamFour.Service
 
             return plan;
         }
-        //查看購物車內是否有重複方案:若有，則方案數量+1;若無，購物車新增一筆方案
+        
+        /// <summary>
+        /// 查看購物車內是否有重複方案:若有，則方案數量+1;若無，購物車新增一筆方案
+        /// </summary>
+        /// <param name="cartItems"></param>
+        /// <param name="carcarPlanVM"></param>
+        /// <returns></returns>
         public CartItemListViewModel CheckId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
         {
             
 
             var result = cartItems.CartItems.Where(x => x.PlanId == carcarPlanVM.PlanId).Select(x => x).FirstOrDefault();
-
+            ///若沒有找到相同項目，則新增一個項目
             if(result == default(CarCarPlanViewModel))
             {
                 var cart = new CarCarPlanViewModel
@@ -75,13 +81,18 @@ namespace ProjectTeamFour.Service
                 cartItems.CartItems.Add(cart);
                 return cartItems;
             }
+            //若有找到相同項目，則該項目數量+1
             else
             {
                result.Quantity += 1;
-                return cartItems;
+               return cartItems;
             }
         }
-        //購物車新增一筆方案
+        /// <summary>
+        /// 購物車新增一筆方案
+        /// </summary>
+        /// <param name="CarCarPlanVM"></param>
+        /// <returns></returns>
         public CarCarPlanViewModel CreateANewCart(CarCarPlanViewModel CarCarPlanVM)
         {
            
@@ -101,7 +112,13 @@ namespace ProjectTeamFour.Service
             return cart;
         }
 
-        //購物車刪除一筆方案
+
+        /// <summary>
+        /// 此方法為刪除購物車內某一商品:cartItems為目前購物車內容，carcarPlanVM則為欲刪除項目
+        /// </summary>
+        /// <param name="cartItems"></param>
+        /// <param name="carcarPlanVM"></param>
+        /// <returns></returns>
         public CartItemListViewModel DeleteId(CartItemListViewModel cartItems, CarCarPlanViewModel carcarPlanVM)
         {
 
@@ -119,14 +136,23 @@ namespace ProjectTeamFour.Service
             }
             return cartItems;
         }
-        //清空購物車
+        /// <summary>
+        /// 清空購物車功能
+        /// </summary>
+        /// <param name="cartItems"></param>
+        /// <returns></returns>
         public CartItemListViewModel ClearCart(CartItemListViewModel cartItems)
         {
             cartItems.CartItems.Clear();
             
             return cartItems;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cartItems"></param>
+        /// <param name="QuantityArray"></param>
+        /// <returns></returns>
         public CartItemListViewModel ChangeCartQuantity(CartItemListViewModel cartItems, CheckoutQuantityViewModel QuantityArray)
         {
             if(QuantityArray==null)

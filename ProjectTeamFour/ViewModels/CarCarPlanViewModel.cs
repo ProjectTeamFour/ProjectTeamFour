@@ -5,6 +5,9 @@ using System.Web;
 
 namespace ProjectTeamFour.ViewModels
 {
+    /// <summary>
+    /// 前端首頁車車商城畫面所呈現的每張Modal
+    /// </summary>
     public class CarCarPlanViewModel
     {
         public int PlanId { get; set; }
@@ -16,8 +19,14 @@ namespace ProjectTeamFour.ViewModels
         public string PlanDescription { get; set; }
         public string CreatorName { get; set; }
         public decimal PlanPrice { get; set; }
-        public int QuantityLimit { get; set; } // 方案限量個數
-        public int Quantity { get; set; } // 購物車未付款品項數量
+        /// <summary>
+        /// 方案庫存
+        /// </summary>
+        public int QuantityLimit { get; set; } 
+        /// <summary>
+        /// 購物車未付款品項數量
+        /// </summary>
+        public int Quantity { get; set; } 
         public int CartId { get; set; }
         public decimal Account { get { return this.PlanPrice * Quantity; } }
         public bool AddCarCarPlan { get; set; }
