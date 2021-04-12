@@ -46,7 +46,8 @@ namespace ProjectTeamFour.Service
                     OrderQuantity = i.OrderQuantity,
                     OrderDetailDes = i.OrderDetailDes,
                     OrderPlanImgUrl = i.OrderPlanImgUrl,
-                    condition = i.condition
+                    condition = i.condition,
+                    Plan = i.Plan
                 };
                 odlist.Add(order);
             };

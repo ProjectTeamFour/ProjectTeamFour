@@ -25,11 +25,13 @@ namespace ProjectTeamFour.Api
         private MemberService _memberService;
         private LogService _logservice;
         private PermissionService _permissionService;
+        private CarCarPlanService _planService;
         public MemberApiController()
         {
             _memberService = new MemberService();
             _logservice = new LogService();
             _permissionService = new PermissionService();
+            _planService = new CarCarPlanService();
         }
         public MemberViewModel GetMember(Expression<Func<Member, bool>> KeySelector)
         {
@@ -209,5 +211,14 @@ namespace ProjectTeamFour.Api
         //        }
         //    }
         //}
+
+        public OperationResult UpdatePlan(planview plan)
+        {
+            var result = new OperationResult();
+            result = _planService.UpdatePlan(plan);
+            return result;
+        }
+
+
     }
 }

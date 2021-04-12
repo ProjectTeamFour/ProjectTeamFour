@@ -59,6 +59,7 @@ namespace ProjectTeamFour.Controllers
 				else
                 {
 					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
+                    model.Records = _backingService.QueryOrder(model.MemberId);
                     model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
                     
                 }

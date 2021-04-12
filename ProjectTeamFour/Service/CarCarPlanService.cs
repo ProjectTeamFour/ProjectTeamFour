@@ -203,5 +203,32 @@ namespace ProjectTeamFour.Service
             return GetOtherPlan(x => x.Project.Category.Contains(searchString));
         }
 
+        public OperationResult UpdatePlan(planview plan)
+		{
+            var result = new OperationResult();
+            try
+            {
+                var planInDB = _repository.GetAll<Plan>().FirstOrDefault(x => x.PlanId == plan.PlanId);
+                if(planInDB != null)
+				{
+                    planInDB.SubmitLimit = plan.SubmitLimit;
+                    _repository.Update<Plan>(planInDB);
+                    result.IsSuccessful = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.DateTime = DateTime.Now;
+                result.Exception = ex;
+                result.IsSuccessful = false;
+            }
+            return result;
+        }
+    }
+
+    public class planview
+    {
+        public int PlanId { get; set; }
+        public int SubmitLimit { get; set; }
     }
 }

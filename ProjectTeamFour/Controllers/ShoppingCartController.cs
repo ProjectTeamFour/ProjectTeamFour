@@ -102,7 +102,7 @@ namespace ProjectTeamFour.Controllers
             return View("ListShoppingCart");
         }
         /// <summary>
-        /// 
+        /// 傳入前端的數量陣列及留言，以CheckoutQuantityViewModel來接收
         /// </summary>
         /// <param name="QuantityArray"></param>
         /// <returns></returns>
@@ -110,14 +110,17 @@ namespace ProjectTeamFour.Controllers
         public ActionResult GetCheckoutQuantity(CheckoutQuantityViewModel QuantityArray)
         {
             var carList = (CartItemListViewModel)Session["Cart"];
-
+            ///此carList為更改數量後的狀態
             carList = _CartService.ChangeCartQuantity(carList, QuantityArray);
 
             Session["Cart"] = carList;
 
             return View("ListShoppingCart");
         }
-
+        /// <summary>
+        /// 確認使用者是否為登入狀態
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PrepareToCheckout()
         {
             int result = _MemberService.ReturnLoginnerId();
