@@ -215,6 +215,22 @@ namespace ProjectTeamFour.Service
 
 
 
+        //public void pushPlanToCarCarPlan()
+        //{
+        //    var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功");
+
+        //    foreach (var item in result)
+        //    {
+        //        DateTime today = DateTime.Now;
+        //        double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+
+        //        var projectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true);
+        //    }
+        //}
+
+
+
+
         //搜尋 project
 
         public HomeViewModel GetSearchCardProject(Expression<Func<Project, bool>> Keyselector)
