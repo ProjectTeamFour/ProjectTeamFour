@@ -658,7 +658,7 @@
             el: "#notifactionApp",
             methods: {
                 vaildation: function (id) {
-                    let SubmitLimit = $('#' + id + 'planNumber').val()
+                    let SubmitLimit = $('#' + id + 'planNumber').val() //提交庫存數
 
                     let SubmitLimitRegexpNum = /^[0-9]*$/;//輸入非數字時提示
                     let SubmitLimitRegexp = /^09/; //開頭為09
@@ -725,23 +725,23 @@
         //    SubmitLimit: $input.val()
         //}
 
-        function SaveServer() {
-            $.ajax({
-                type: "POST",
-                url: '/api/memberapi/UpdatePlan',
-                dataType: "json",
-                data: JSON.stringify({ planNumber: form.$data.inputData.SubmitLimit }), //注意是放JSON  字串
-                dataType: "json",
-                headers: {
-                    'Content-type': 'application/json'
-                }, //注意 Content-type
-                success: function (response) {
-                    console.log(data);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
-        }
+        //function SaveServer() {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: '/api/memberapi/UpdatePlan',
+        //        dataType: "json",
+        //        data: JSON.stringify({ planNumber: form.$data.inputData.SubmitLimit }), //注意是放JSON  字串
+        //        dataType: "json",
+        //        headers: {
+        //            'Content-type': 'application/json'
+        //        }, //注意 Content-type
+        //        success: function (response) {
+        //            console.log(data);
+        //        },
+        //        error: function (err) {
+        //            console.log(err);
+        //        }
+        //    });
+        //}
     </script>
 }
