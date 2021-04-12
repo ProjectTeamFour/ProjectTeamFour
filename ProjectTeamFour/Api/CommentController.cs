@@ -42,6 +42,12 @@ namespace ProjectTeamFour.Api
             else
             {
                 commentVM.MemberId = member.MemberId;
+                string queryProjectMemberId = _commentService.CheckProjectMemberId(commentVM);
+                if(queryProjectMemberId== "Same")
+                {
+                    return "Same";
+                }
+                
                 commentVM.Comment_Time = DateTime.UtcNow.AddHours(8);
                 var result = _commentService.CreateANewComment(commentVM);
                 if(result== "success")

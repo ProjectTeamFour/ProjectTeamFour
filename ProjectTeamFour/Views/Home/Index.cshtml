@@ -9,7 +9,7 @@
     <script src="~/Assets/Javascript/HomePage/homepage.js">
     </script>
 
-
+    @*///如果綠界結帳後回傳值為"1"時,則提示付款成功*@
     @if (TempData["RtnCode"] != null && (TempData["RtnCode"]).ToString() == "1")
     {
 
@@ -230,17 +230,17 @@
             <div class="indemand-project-wrap">
 
                 @*@for (int i = 0; i < 20; i++)
-        {
-            @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
-        }*@
+                    {
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", Model.CarCarPlanItem.CarCarPlanItems[i]);
+                    }*@
 
 
                 @foreach (var item in Model.CarCarPlanItem.CarCarPlanItems)
                 {
-                    
-                       
-                            @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", item);
-                        
+
+
+                    @Html.Partial("~/Views/Shared/PartialView/_carcarPlanCardsPartial.cshtml", item);
+
 
                 }
 

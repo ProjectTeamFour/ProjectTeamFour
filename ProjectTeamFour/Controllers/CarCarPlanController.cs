@@ -120,7 +120,7 @@ namespace ProjectTeamFour.Controllers
             CarCarPlanListVM.SelectCarCarPlanItem = planDetail;
 
             
-            var getPlans = _carcarplanservice.GetAllTotal();
+            var getPlans = _carcarplanservice.GetPlanWithProjectStatusForCarCarPlan();
 
             foreach (var item in getPlans)
             {

@@ -5,7 +5,12 @@
 
 @section topCSS{
     <link href="~/Assets/Css/HomePage/homepagesearch.css" rel="stylesheet" />
-    }
+}
+
+@{
+    DateTime today = DateTime.UtcNow.AddHours(8);
+    bool show = false;
+}
 
 <!-- 熱門專案 -->
 <section class="popular-project">
@@ -23,21 +28,35 @@
         <div class="popular-project-item cardtemplate-section">
             <div class="row">
 
-                @if(!Model.Any())
+                @if (!Model.Any())
                 {
                     <p>親愛的，目前無您查詢的對應專案 !</p>
                 }
-
-
-                @*@for (int i = 0; i < 6; i++)
-        {
-            @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", Model.ProjectItem.ProjectItems[i]);
-        }*@
-
-                @foreach (var item in Model)
+                else
                 {
-                    @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                    foreach (var item in Model)
+                    {
+                        double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+                        if (item.ApprovingStatus == 2 && dateLine > 0)
+                        {
+                            show = true;
+                            break;
+                        }
+                    }
+
+                    if (show == true)
+                    {
+                        foreach (var item in Model)
+                        {
+                            @Html.Partial("~/Views/Shared/PartialView/_ProjectCardPartial.cshtml", item);
+                        }
+                    }
+                    else
+                    {
+                        <p>親愛的，目前無您查詢的對應專案 !</p>
+                    }
                 }
+
 
             </div>
         </div>
