@@ -91,8 +91,6 @@ namespace ProjectTeamFour.Service
         }
 
 
-
-
         //之後依照選取類別去推薦車車卡片，待處理 -phil
         public List<CarCarPlanViewModel> GetOtherPlan(string Category)
         {

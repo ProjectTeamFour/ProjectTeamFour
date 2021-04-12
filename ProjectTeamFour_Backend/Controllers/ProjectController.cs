@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjectTeamFour_Backend.Interfaces;
 using ProjectTeamFour_Backend.Services;
 using ProjectTeamFour_Backend.ViewModels;
@@ -9,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
+
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
@@ -16,6 +20,8 @@ namespace ProjectTeamFour_Backend.Controllers
         {
             _projectService = projectService;
         }
+
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()
         {
             return View();

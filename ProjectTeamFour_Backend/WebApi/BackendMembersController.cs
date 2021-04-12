@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ProjectTeamFour_Backend.Interfaces;
 using Microsoft.Extensions.Logging;
 using ProjectTeamFour_Backend.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectTeamFour_Backend.WebApi
 {
@@ -65,7 +66,7 @@ namespace ProjectTeamFour_Backend.WebApi
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [Authorize]
         public async Task <BaseModel.BaseResult<BackendMemberViewModel.BackendListResult>> GetAll()
         {
             //var result = Members.Join(Projects, m => m.MemberId, p => p.MemberId, (m, p) => new { m.MemberId, m.MemberRegEmail, m.MemberBirth, p.ProjectId, p.ProjectName, p.FundingAmount, p.AmountThreshold, p.StartDate, p.EndDate, p.ProjectStatus })

@@ -306,8 +306,9 @@
                                      aria-labelledby="userDropdown">
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="~/Manager/Login">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        登出
+                                        <span>  @Html.ActionLink("登出權限", "LogOut", "Manager", new { style = "text-decoration:none;" }) <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></span>
+                                       
+                                      
                                     </a>
                                 </div>
                             </li>
@@ -587,8 +588,7 @@
                                      aria-labelledby="userDropdown">
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="~/Manager/Login">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        登出
+                                        <span>  @Html.ActionLink("登出權限", "LogOut", "Manager",new { style = "text-decoration:none;" }) <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></span>
                                     </a>
                                 </div>
                             </li>

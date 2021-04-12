@@ -431,7 +431,7 @@
             },
             /*呼叫GetAll API後將資料存在items*/
             created: function () {
-                axios.get("/Api/BackendMembers/GetAll")
+                axios.get("/Api/BackendMembers/GetAll", { headers: { "Authorization": `Bearer + Cookies.get("jwtToken")` } })
                     .then((res) => {
                         this.items = res.data.body.backendMemberList;
                         this.mounted();

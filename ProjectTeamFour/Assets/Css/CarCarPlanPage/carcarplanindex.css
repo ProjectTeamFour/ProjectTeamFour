@@ -235,7 +235,11 @@
     }
 
 
-
+.indemand-project-wrap .searchRouterErr {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f9414a;
+}
 
 @media screen and (min-width: 768px) {
     .indemand-project .see-more a {
