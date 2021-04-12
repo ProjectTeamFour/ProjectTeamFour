@@ -31,7 +31,7 @@
                 <a class="nav-links" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">個人頁面</a>
             </li>
             <li class="nav-item-tag" role="presentation">
-                <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="#pills-backings" role="tab" aria-controls="pills-backings" aria-selected="false">歷史紀錄</a>
+                <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="#pills-backings" role="tab" aria-controls="pills-backings" aria-selected="false">購買紀錄</a>
             </li>
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-myprojects-tab" data-toggle="pill" href="#pills-myprojects" role="tab" aria-controls="pills-myprojects" aria-selected="false">提案紀錄</a>
@@ -382,7 +382,7 @@
                                 <hr />
                                 @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
                                 <button id="btnSub" class="btn btn-primary">儲存</button>
-                                <a id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</a>
+                                <button  id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</button>
                                 @*Html.ActionLink("會員資料", $"Member/{@vm.MemberId}", "UserInfo")*@
                             </div> //</form>
                         } @*表單提交區域!!!*@
@@ -401,7 +401,7 @@
             <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
                 <div class="setting">
                     <div class="wrap-inside">
-                        @if (Model.PlanRecords == null)
+                        @if (Model.PlanRecords.Count==0)
                         {
                             <div class="row nomessage" style="text-align: center;justify-content: center;">
                                 <h3>您目前於車車商城上沒有任何上架方案</h3>
@@ -650,9 +650,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    // 引用Vue和jQuery
 
-    //車車商城引用Vue
     <script>
         var form = new Vue({
             el: "#notifactionApp",

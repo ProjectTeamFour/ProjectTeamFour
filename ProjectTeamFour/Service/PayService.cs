@@ -202,7 +202,12 @@ namespace ProjectTeamFour.Service
                 }
             }
         }
-
+        /// <summary>
+        /// 連接到綠界結帳頁面，並於客製化欄位放入orderId及memberId
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="member"></param>
+        /// <returns></returns>
         public string ConnectECPay(int orderId, MemberViewModel member)
         {
             var session = HttpContext.Current.Session;
@@ -339,7 +344,9 @@ namespace ProjectTeamFour.Service
             return html;
 
         }
-
+        /// <summary>
+        /// 綠界結帳後的檢查碼
+        /// </summary>
         public void CheckECPayFeedBack()
         {
             List<string> enErrors = new List<string>();

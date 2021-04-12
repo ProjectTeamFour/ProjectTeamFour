@@ -187,7 +187,7 @@
                                     <div class="info wrapper">
                                         <p>已達成 募資目標!</p>
                                     </div>}
-                                                @{ if (Model.ProjectDetailItem.ProjectId < 17)
+                                                @{ if (Model.ProjectDetailItem.ProjectId < 26)
                                                     {
                                                         string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
                                                         foreach (var item in description_str)
@@ -423,6 +423,15 @@
 
                                 })
                             }
+                            else if (data == "Same")
+                            {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: '請勿於自己的提案留言',
+
+                                })
+                            }
                             else {
                                 Swal.fire({
                                     position: 'top-center',
@@ -430,7 +439,8 @@
                                     title: '已成功留言！',
                                     showConfirmButton: false,
                                     timer: 1500
-                                })
+                                });
+                                clientComment.value =""
                             }
 
                         },
