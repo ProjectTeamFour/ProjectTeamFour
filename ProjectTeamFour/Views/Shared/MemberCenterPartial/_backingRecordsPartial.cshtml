@@ -77,8 +77,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <a href="/Pay/Reshop">
-                        <button type="button" class="btn btn-secondary" onclick="getOrder()">重新購買</button>
+                    <a href="/Pay/Index">
+                        <input type="submit" class="btn btn-secondary" onclick="getOrder(@Model.OrderId)" value="重新購買">
                     </a>                    
                 </div>
             </div>
@@ -88,16 +88,16 @@
 </div>
 @*//-----------------------------------------------------------------------------------*@
 <script>
-    function getOrder(OrderId) {
+    @*function getOrder(OrderId) {
         $.ajax({
             type: "POST",
             url: "/Userinfo/FindOrder",//得到orderId的方法
-            data: { OrderId:orderid },
+            data: { OrderId: },
             success: function (response) {
                 console.log(data);
                 alert("123");
             }
         })
-    }
+    }*@
 
 </script>

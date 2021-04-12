@@ -110,6 +110,12 @@
 
     .sidebar-header #message-phone{
         color:#000;
+        position:relative;
+        right:-1rem;
+    }
+
+    .sidebar-header #message-phone:hover{
+        color:#F9414A;
     }
 
 
@@ -247,6 +253,7 @@
     .pcmode-navbar {
         display: block;
     }
+
 }
 
 
@@ -312,8 +319,7 @@
     }
 
 #message{
-    position:absolute;
-    right:18rem;
+    position:absolute;    
     top:1.1rem;
 }
 
