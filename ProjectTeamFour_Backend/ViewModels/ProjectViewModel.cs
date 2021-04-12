@@ -20,8 +20,10 @@ namespace ProjectTeamFour_Backend.ViewModels
             public decimal FundingAmount { get; set; }
             public string Category { get; set; }
             public string ProjectStatus { get; set; }
-            public DateTime StartDate { get; set; }
-            public DateTime EndDate { get; set; }
+            public DateTime DateTimeStartDate { get; set; }
+            public DateTime DateTimeEndDate { get; set; }
+            public string StartDate { get; set; }
+            public string EndDate { get; set; }
             public int MemberId { get; set; }
             public int Fundedpeople { get; set; }
             public string ProjectDescription { get; set; }
@@ -36,13 +38,16 @@ namespace ProjectTeamFour_Backend.ViewModels
             public string ProjectMainUrl { get; set; }
             public string ProjectPrincipal { get; set; }
             public string IdentityNumber { get; set; }
-            public DateTime CreatedDate { get; set; }
-            public DateTime SubmittedDate { get; set; }
-            public DateTime LastEditTime { get; set; }
+            public string CreatedDate { get; set; }
+            public string SubmittedDate { get; set; }
+            public string LastEditTime { get; set; }
             public int ApprovingStatus { get; set; }
+            public int RestDay { get; set; }
+            public decimal ProjectPercent { get; set; }
             public List<Plan> PlanList { get; set; }
             public List<Comment> CommentList { get; set; }
- 
+            public List<ProjectFAQViewModel> ProjectFAQList { get; set; }
+
         }
 
 
@@ -59,7 +64,7 @@ namespace ProjectTeamFour_Backend.ViewModels
         /// </summary>
         public class ProjectSingleResult : ProjectBaseModel
         {
-
+            
         }
         public class GetByCategoryRequest
         {
@@ -71,5 +76,46 @@ namespace ProjectTeamFour_Backend.ViewModels
             public int ProjectId { get; set; }
         }
 
+        /// <summary>
+        /// Dashboard會用到的有關Project的Model for Api
+        /// </summary>
+        public class GetProjectChart
+        {
+            public int ProjectId { get; set; }
+            public string ProjectName { get; set; }
+            public decimal FundingAmount { get; set; }
+            public string Category { get; set; }
+            public string ProjectStatus { get; set; }
+
+        }
+        /// <summary>
+        /// 取得多個提案VM
+        /// </summary>
+        public class ProjectListforChart
+        {
+            public List<ProjectforChart> ProjectChartdta { get; set; }
+        }
+
+        /// <summary>
+        /// 取得單一提案VM
+        /// </summary>
+        public class ProjectforChart : GetProjectChart
+        {
+
+        }
+        /// <summary>
+        /// 取得專案達成度
+        /// </summary>
+        public class GetProjectPercent
+        {
+            public decimal ProjectPercent { get; set; }
+        }
+        /// <summary>
+        /// 取得專案達成度清單
+        /// </summary>
+        public class ProjectListForPercent
+        {
+            public List<GetProjectPercent> getProjectPercentsList { get; set; }
+        }
     }
 }

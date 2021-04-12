@@ -980,8 +980,8 @@ var form = new Vue({
                     }
 
                     Swal.fire({
-                        title: '提案資料提交中',
-                        html: '資料將會匯入到我們的資料中心，請耐心稍等一下',
+                        title: '草稿資料提交中',
+                        html: '之後可以到您的會員中心繼續編輯，請耐心稍等一下',
                         timer: 50000,
                         timerProgressBar: true,
                         background: '#FDC6C8',

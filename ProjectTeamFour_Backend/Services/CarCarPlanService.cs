@@ -12,12 +12,12 @@ namespace ProjectTeamFour_Backend.Services
     public class CarCarPlanService:ICarCarPlanService
     {
         private readonly IRepository _dbRepository;
-        private readonly LabContext _labContext;
+        private readonly CarCarPlanContext _carcarplanContext;
 
-        public CarCarPlanService(IRepository dbRepository,LabContext labContext)
+        public CarCarPlanService(IRepository dbRepository,CarCarPlanContext carcarplanContext)
         {
             _dbRepository = dbRepository;
-            _labContext = labContext;
+            _carcarplanContext = carcarplanContext;
         }
 
         public Task<CarCarPlanViewModel.CarCarPlanListResult> GetAll()
@@ -62,7 +62,7 @@ namespace ProjectTeamFour_Backend.Services
                 queryResult.QuantityLimit = (int)singleCarCarPlan.SubmitLimit;
 
                 queryResult.SubmitLimit = 0;
-                using (var transaction = _labContext.Database.BeginTransaction())
+                using (var transaction = _carcarplanContext.Database.BeginTransaction())
                 {
                     try
                     {

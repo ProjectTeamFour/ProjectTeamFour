@@ -16,73 +16,68 @@ var draftDataFromServer;
 
 Vue.component("multi-text", {
     template: "#multi-text-template",
-    props: {
-        ProjectQA: [],
-    },
-    data: function () {
-        return {
-            ProjectQuestionAnswer: [],  //塞物件 => 物件陣列
-            ProjectQAObj: {
-                Question: "",
-                Answer: "",
-                Count: "",
-                QAError: "",
-                QAErrorMsg: "",
-            }
-        };
+    props: ['value'],
+    computed: {
+        getCount: function () {
+            return this.value.length + 1;
+        }
     },
     methods: {
         updateValue: function () {
             console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
-            this.ProjectQuestionAnswer.forEach(function (item) {
-                if (item.Question == "" || item.Answer == "") {
-                    item.QAError = true;
-                    item.QAErrorMsg = "常見問答請填完善";
-                } else {
-                    item.QAError = false;
-                    item.QAErrorMsg = "";
-                }
-            });
-            this.checkAddVerifyQA();
+            //this.QA.forEach(function (item) {
+            //    if (item.Question == "" || item.Answer == "") {
+            //        item.QAError = true;
+            //        item.QAErrorMsg = "常見問答請填完善";
+            //    } else {
+            //        item.QAError = false;
+            //        item.QAErrorMsg = "";
+            //    }
+            //});
+            //this.checkAddVerifyQA();
         },
         deleteValue: function (index) {
-            this.ProjectQuestionAnswer.splice(index, 1);
+            this.value.splice(index, 1);
+            this.value.forEach((x, index) => {
+                x.Count = index + 1;
+                //this.value.push(ProjectQAObj);
+            });
             console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
         },
         addInput: function () {
-
-            var QAObj = {
+            
+            var ProjectQAObj = {
                 Question: "",
                 Answer: "",
-                Count: "",
+                Count: this.getCount,
                 QAError: "",
                 QAErrorMsg: "",
             }
-            this.ProjectQuestionAnswer.push(QAObj);
+            this.value.push(ProjectQAObj);
             this.$emit("input", this.ProjectQuestionAnswer);
         },
-        checkAddVerifyQA: function () {
-            for (let index in this.ProjectQuestionAnswer) {
-                if (this.ProjectQuestionAnswer[index] == true) {
-                    this.AddVerify = false;
-                    return;
-                }
-            }
-            this.AddVerify = true;
-        },
+        //checkAddVerifyQA: function () {
+        //    for (let index in this.QA) {
+        //        if (this.QA[index] == true) {
+        //            this.AddVerify = false;
+        //            return;
+        //        }
+        //    }
+        //    this.AddVerify = true;
+        //},
     },
     watch: {
-        "ProjectQuestionAnswer": {
-            immediate: false,
-            deep: true,
-            handler: function () {
-                this.ProjectQuestionAnswer.forEach((el, index) => {
-                    el.Count = index + 1;
-                });
-            }
-        }
+        //"QA": {
+        //    immediate: false,
+        //    deep: true,
+        //    handler: function () {
+        //        this.QA.forEach((el, index) => {
+        //            el.Count = index + 1;
+        //        });
+        //    }
+        //}
     }
 })
 
@@ -185,13 +180,13 @@ var form = new Vue({
         },
         modalList: [], //抓、顯示 plan資料用 塞物件 變成物件陣列
         ProjectQuestionAnswer: [],
-        ProjectQAObj: {
-            Question: "",
-            Answer: "",
-            Count: "",
-            QAError: "",
-            QAErrorMsg: "",
-        }
+        //ProjectQAObj: {
+        //    Question: "",
+        //    Answer: "",
+        //    Count: "",
+        //    QAError: "",
+        //    QAErrorMsg: "",
+        //}
     },
     watch: {
         "inputData.ProjectName": {
@@ -1049,16 +1044,16 @@ var form = new Vue({
                 this.ProjectQuestionAnswer.forEach(x => {
                     totalQuestion = totalQuestion + "," + x.Question;
                     totalAnswer = totalAnswer + "," + x.Answer;
-
-                    // 處理字串最前面的逗號用 substring
-                    // substring 取字串的特定部位，並回傳此特定部位的字串
-                    // const str = 'Mozilla';
-                    // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
-                    // str.substring(2) => "zilla" 從哪開始
-                    totalQuestion = totalQuestion.substring(1);
-                    totalAnswer = totalAnswer.substring(1);
-
                 });
+                // 處理字串最前面的逗號用 substring
+                // substring 取字串的特定部位，並回傳此特定部位的字串
+                // const str = 'Mozilla';
+                // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
+                // str.substring(2) => "zilla" 從哪開始
+                totalQuestion = totalQuestion.substring(1);
+                totalAnswer = totalAnswer.substring(1);
+                console.log(totalQuestion);
+                console.log(totalAnswer);
             }
 
             var draftProjectPlansCount;
@@ -1083,6 +1078,10 @@ var form = new Vue({
             if (document.getElementById("myApp").dataset.id != null) {
                 draftProjectId = document.getElementById("myApp").dataset.id;
             }
+
+            console.log(totalQuestion);
+            console.log(totalAnswer);
+     
 
             var draftData = {
                 "DraftProjectId": draftProjectId,
@@ -1216,7 +1215,7 @@ var form = new Vue({
             quill.root.innerHTML = response.data.DraftProjectDetailItem.DraftProjectImgUrl;  //塞回富文本
 
 
-            //this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
+            this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
             //console.log(response.data.DraftProjectDetailItem.DraftProjectFAQList);
 
             this.returnDataToPlan(response.data.SelectPlanCards.DraftPlanCardItems);
@@ -1231,30 +1230,40 @@ var form = new Vue({
             // "SubmittedDate": date.toJSON(),
             // "LastEditTime": date.toJSON(),
         },
-        //returnDataToQA(qaArray) {     //FAQ 待處理
-        //    console.log(this.ProjectQAObj.Question);
-        //    console.log(this.ProjectQAObj.Answer);
+        returnDataToQA(qaArray) {     //FAQ 待處理
+            //console.log(this.ProjectQAObj.Question);
+            //console.log(this.ProjectQAObj.Answer);
 
-        //    qaArray.forEach((item, index) => {
-        //        //this.ProjectQAObj.Question = item.DraftQuestion;
-        //        //this.ProjectQAObj.Answer = item.DraftAnswer;
-        //        //console.log(this.ProjectQAObj.Question);
-        //        //console.log(this.ProjectQAObj.Answer);
-        //        //this.ProjectQAObj.Count = index + 1;
-        //        var ProjectQAObj = {
-        //            Question: item.DraftQuestion,
-        //            Answer: item.DraftAnswer,
-        //            Count: index + 1,
-        //            QAError: "",
-        //            QAErrorMsg: "",
-        //        }
-        //        this.ProjectQuestionAnswer.push(ProjectQAObj);
-        //        this.$emit("input", this.ProjectQuestionAnswer);
-
-        //    });
-        //    //this.ProjectQuestionAnswer.push(QAObj);
-        //    //this.$emit("input", this.ProjectQuestionAnswer);
-        //},
+            //console.log()
+            //var ProjectQAObj = {
+            //    Question: "",
+            //    Answer: "",
+            //    Count: "",
+            //    QAError: "",
+            //    QAErrorMsg: "",
+            //}
+            qaArray.forEach((item, index) => {
+                //this.ProjectQAObj.Question = item.DraftQuestion;
+                //this.ProjectQAObj.Answer = item.DraftAnswer;
+                //console.log(this.ProjectQAObj.Question);
+                //console.log(this.ProjectQAObj.Answer);
+                //this.ProjectQAObj.Count = index + 1;
+                console.log(item.DraftQuestion);
+                console.log(item.DraftAnswer);
+                var ProjectQAObj = {
+                    Question: item.DraftQuestion,
+                    Answer: item.DraftAnswer,
+                    Count: index + 1,
+                    QAError: "",
+                    QAErrorMsg: "",
+                }
+                this.ProjectQuestionAnswer.push(ProjectQAObj);
+                console.log(this.ProjectQuestionAnswer[index]);
+                //this.$emit("input", this.ProjectQuestionAnswer);
+            });
+            //this.ProjectQuestionAnswer.push(QAObj);
+            //this.$emit("input", this.ProjectQuestionAnswer);
+        },
         returnDataToPlan(planArray) {
             planArray.forEach((item, index) => {
                 var AddCarCarPlanSwitch = "";

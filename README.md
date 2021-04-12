@@ -2829,5 +2829,103 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 PlanPrice = 1500m,
                 QuantityLimit = 50
             });
+            //第26個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 26,
+                MemberId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 447,
+                FundingAmount = 750960m,
+                AmountThreshold = 500000m,
+                CreatorName = "拍謝少年",
+                ProjectMainUrl = "https://i.imgur.com/qgMOs7Sm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/HFxY2JHl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/o7FQGANl.jpg,https://i.imgur.com/Sl48bgOl.jpg,https://i.imgur.com/LHJK391l.jpg,https://i.imgur.com/vee18bvl.jpg,https://i.imgur.com/NJIMyWFl.jpg,https://i.imgur.com/sUSLjTql.jpg,https://i.imgur.com/lNrBfMCl.jpg,https://i.imgur.com/42x65QMl.jpg,https://i.imgur.com/Jg3DZVNl.jpg,https://i.imgur.com/j46OoGHl.jpg,https://i.imgur.com/xR96mUKl.jpg,https://i.imgur.com/Lllepybl.jpg,https://i.imgur.com/NX0AgyTl.jpg,https://i.imgur.com/FMSEs2Jl.png,https://i.imgur.com/rk5Vk9Ul.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/tDKrqhuLZbg",
+                Project_Question = "若遇疫情暖身演出會取消嗎？,募資的回饋演出是什麼時間？,回饋商品什麼時候會到貨？,我要怎麼收到回饋商品？海外也可以贊助嗎？,回饋品的寄送需另付運費嗎？贊助好幾個方案會分開寄嗎？,我可以同個贊助方案訂購兩份嗎？,已經贊助成功，但想要更改贊助時留下的基本資料/修改收件人要怎麼辦？,專案進行中，可以取消贊助嗎？,贊助暖身演出方案可以將門票（入場資格）轉讓嗎？,暖身方案要怎麼入場呢？會事先寄票嗎？飲料跟餐點兌換券也會寄嗎？,回饋品的製造產地？",
+                Project_Answer = "如遇中央流行疫情指揮中心公佈相關群聚規範影響活動舉辦，回饋演出將順延並另行通知舉辦日期。,三個場次都是16:00開演，預計15:30入場，活動前會再發信給活動參加者提醒唷！,．《歹勢好勢》專輯預計在2021年5月發行，贊助5/8、5/15發行暖身搶聽場的朋友，專輯預計於活動當日領取；贊助5/22發行暖身搶聽場的朋友，專輯將會於活動前郵寄。,回饋品一律採郵局掛號寄出，請參與募資的朋友務必提供正確完整之姓名、電話、地址，以利寄送。由於寄送問題，暫不開放饋品寄送海外，還請見諒。,不用唷！為感謝大家支持，本次募資寄送商品運費將由拍謝少年全數買單！,要麻煩您填兩次單，我們看到相同地址的訂單將會合併寄送。若您兩份商品要寄到不同地方，請填寫不同的寄送地址。,登入平台後，點選右上方個人頭像選取“贊助紀錄”，即可以編輯訂單資料。,可以。請來信至 flyingfive@ontoo.cc 告知＂退款原因＂，同時附上您贊助的「專案名稱、金流單號、贊助金額」，我們將儘速為您處理退款程序。,贊助成功後若想轉讓票券，於專案募資期間請點選右上方個人頭像選取“贊助紀錄”，即可以編輯收件人資料，入場將依「收件人姓名電話」為準。,本次演出皆不會事先寄票也不需取票，活動當天於現場出示可證明身份之相關證件（e.g.身份證、健保卡、學生證），以及flyingV寄出之贊助確認信，核對無誤即可入場。,回饋品皆為台灣生產製造。",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第26個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 26,
+                MemberAccount = "N26member",
+                MemberPassword = "N26memberPassword",
+                MemberName = "拍謝少年",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "sorryyouth@gmail.com",
+                MemberRegEmail = "sorryyouth@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0938-989849",
+                MemberTeamName = "拍謝少年",
+                MemberWebsite = "https://www.facebook.com/sorryyouthtw",
+                AboutMe = "拍謝少年 (Sorry Youth)，一尾台灣土產搖滾樂隊。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/xhb9qrit.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第26個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 116,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 1,
+                PlanTitle = "｜酒豪傳說｜2021.5.8.台北臺虎精釀Lab限定募資回饋場",
+                PlanFundedPeople = 216,
+                PlanDescription = "在酒廠旁喝現拉生啤，聽拍謝少年唱歌！,內容物,- 歹勢好勢專輯 x1,- 限定回饋場門票 x1,- 拍謝少年最喜歡的飲料 兌換券 x1,- 臺虎Lab飲料兌換券 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/pIehvo1m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 117,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 2,
+                PlanTitle = "｜魚人返鄉｜2021.5.15.林聰明沙鍋魚頭限定募資回饋場",
+                PlanFundedPeople = 120,
+                PlanDescription = "魚頭拼魚頭搖滾大對決，吃飽喝足新歌聽滿滿。,內容物,- 歹勢好勢專輯 x1,- 限定回饋場門票 x1,- 拍謝少年最喜歡的飲料 兌換券 x1,- 林聰明限定特餐 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/CgkKiI8m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 118,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 3,
+                PlanTitle = "｜重回台十七｜2021.5.22.高雄蚵寮返鄉限定募資回饋場",
+                PlanFundedPeople = 111,
+                PlanDescription = "港邊就是唱歌喝酒的好所在，掀海風聽歌爽！,內容物,-歹勢好勢專輯 x1,-限定回饋場門票 x1,-拍謝少年最喜歡的飲料 兌換券 x1,-意滿漁限定特餐 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/BB86is9m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
 
         }

@@ -14,7 +14,7 @@ namespace ProjectTeamFour_Backend.Repository
         private readonly DbContext _dbContext;
         public BaseRepository()
         {
-            _dbContext = new LabContext();
+            _dbContext = new CarCarPlanContext();
         }
 
         public void Create<T>(T entity) where T : class
