@@ -148,7 +148,7 @@ namespace ProjectTeamFour.Service
             return cartItems;
         }
         /// <summary>
-        /// 
+        /// cartItems為購物車內容，QuantityArray則為前端傳入的數量陣列及留言內容
         /// </summary>
         /// <param name="cartItems"></param>
         /// <param name="QuantityArray"></param>
@@ -164,9 +164,10 @@ namespace ProjectTeamFour.Service
                 
                 for(int i=0;i<QuantityArray.Quantity.Count;i++)
                 {
+                    ///第一項商品的購買數量等於數量陣列的第一項
                     cartItems.CartItems[i].Quantity = QuantityArray.Quantity[i];
-                    
-                     if (cartItems.CartItems[i].Quantity> cartItems.CartItems[i].QuantityLimit)
+                    ///如果商品購買數量大於庫存，則購買數量等於庫存
+                    if (cartItems.CartItems[i].Quantity> cartItems.CartItems[i].QuantityLimit)
                     {
                         cartItems.CartItems[i].Quantity = cartItems.CartItems[i].QuantityLimit;
                     }
@@ -174,6 +175,7 @@ namespace ProjectTeamFour.Service
                     
                 }
                 cartItems.Comment = QuantityArray.Comment;
+                ///初始化記錄數量的陣列
                 QuantityArray.Quantity.Clear();
                 return cartItems;
             }

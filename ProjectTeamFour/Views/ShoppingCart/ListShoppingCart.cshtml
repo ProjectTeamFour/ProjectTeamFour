@@ -19,6 +19,7 @@
 
 
         <script>
+            ///以Vue的方式呈現此頁面
             var app = new Vue({
                 el: "#app",
                 data: {
@@ -33,14 +34,17 @@
                     }
                 },
                 computed: {
+                    ///在前端以非同步的方式顯示總金額
                     TotalPrice: function () {
                         var result = 0;
+                        ///每一個商品數量*商品價格
                         this.Models.forEach((x) => { result += parseInt(x.PlanPrice) * parseInt(x.Quantity) });
                         formatResult=formatMoney(result, 0);
                         return formatResult;
                     }
                 },
                 watch: {
+                    ///監視商品數量是否不超過庫存，若超過則直接等於庫存
                     watchInput: function (newValue, oldValue) {
                         if (newValue.Quantity > newValue.QuantityLimit) {
                             newValue.Quantity = newValue.QuantityLimit;
