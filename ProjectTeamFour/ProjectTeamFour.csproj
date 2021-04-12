@@ -205,6 +205,7 @@
     <Compile Include="Models\DraftProject.cs" />
     <Compile Include="Models\FBLoginMember.cs" />
     <Compile Include="Models\requiredAttribute.cs" />
+    <Compile Include="Models\SystemAnnouncement.cs" />
     <Compile Include="Service\AnnouencementService.cs" />
     <Compile Include="Service\BackingService.cs" />
     <Compile Include="Service\MailService.cs" />
