@@ -2,7 +2,7 @@
 
 
 @{
-    DateTime today = DateTime.Now;
+    DateTime today = DateTime.UtcNow.AddHours(8);
     decimal num = (Model.FundingAmount / Model.AmountThreshold) * 100;
     int Progress = (int)num;
     string ProgressStr = Progress.ToString() + "%";
@@ -11,7 +11,7 @@
 
 
 
-@if (dateLine > 0)
+@if (dateLine > 0 && Model.ApprovingStatus == 2)
 {
 
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">

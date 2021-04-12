@@ -12,4 +12,13 @@ namespace ProjectTeamFour.ViewModels
         public DateTime DateTime { get; set; }
         public string Content { get; set; }
     }
+
+    public class GoogleApiTokenInfo
+    {
+        public string Email { get; set; }
+        public string Locale { get; set; }
+        public string Name { get; set; }
+        public string Sub { get; set; }
+        public string Picture { get; set; }
+    }
 }

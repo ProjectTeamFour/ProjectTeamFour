@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Text;
 using ProjectTeamFour.Models;
+using ProjectTeamFour.Helpers;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -20,17 +21,21 @@ namespace ProjectTeamFour.Controllers
     {
         //private PasswordService _passwordservice;
         private MemberService _memberservice;
+
         private MemberApiController _api;
+
         public MemberController()
         {
             //_passwordservice = new PasswordService();
             _api = new MemberApiController();
             _memberservice = new MemberService();
         }
+
         public ActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register(MemberRegisterViewModel input)
         {
@@ -48,7 +53,7 @@ namespace ProjectTeamFour.Controllers
                     MemberPassword = input.Password,
                     MemberBirth = StringtoDate(input.BirthDay),
                     Gender = input.gender,
-                    Permission = 1 
+                    Permission = 1
                 };
                 string registerResult = _api.CreateMember(vm);
                 if (registerResult == "成功")
@@ -62,19 +67,12 @@ namespace ProjectTeamFour.Controllers
             }
             return RedirectToAction("RegisterFail", "Member");
         }
-        private DateTime StringtoDate(string input)
-        {
-            int[] result = input.Split('-').Select(p =>
-            {
-                return int.Parse(p);
-            }).ToArray();
-            DateTime dt = new DateTime(result[0], result[1], result[2]);
-            return dt;
-        }
+
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(MemberViewModel input)
         {
@@ -108,14 +106,14 @@ namespace ProjectTeamFour.Controllers
                 Session["Member"] = memberinfo;
             }
             //1.Create FormsAuthenticationTicket
-           var ticket = new FormsAuthenticationTicket(
-           version: 1,
-           name: "", //可以放使用者Id
-           issueDate: DateTime.UtcNow,//現在UTC時間
-           expiration: DateTime.UtcNow.AddMinutes(30),//Cookie有效時間=現在時間往後+30分鐘
-           isPersistent: false,// 是否要記住我 true or false
-           userData: "", //可以放使用者角色名稱
-           cookiePath: FormsAuthentication.FormsCookiePath);
+            var ticket = new FormsAuthenticationTicket(
+            version: 1,
+            name: "", //可以放使用者Id
+            issueDate: DateTime.UtcNow,//現在UTC時間
+            expiration: DateTime.UtcNow.AddMinutes(30),//Cookie有效時間=現在時間往後+30分鐘
+            isPersistent: false,// 是否要記住我 true or false
+            userData: "", //可以放使用者角色名稱
+            cookiePath: FormsAuthentication.FormsCookiePath);
 
             //2.Encrypt the Ticket
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
@@ -140,8 +138,6 @@ namespace ProjectTeamFour.Controllers
             return RedirectToAction("Login", "Member");
         }
 
-
-
         public ActionResult RegisterSuccess()
         {
             return View();
@@ -163,11 +159,9 @@ namespace ProjectTeamFour.Controllers
             return null;
         }
 
-
         [HttpPost]
         public ActionResult FacebookLogin(string name, string email, string socialPlatform, string imgUrl)
         {
-            
             if (_memberservice.IsSocialAccountRegister(email, socialPlatform))   //尋找是不是早已出現在member這張表
             {
                 MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == email && x.IsThirdParty == socialPlatform);
@@ -199,6 +193,58 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ActionResult> GoogleLogin(string token, int type)
+        {
+            var result = await _memberservice.GetGoogleInfo(token);
+
+            if (result.IsSuccessful)
+            {
+                var googleTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(result.MessageInfo);
+
+                if (_memberservice.IsSocialAccountRegister(googleTokenInfo.Email, "Google")) //檢查此帳戶是否存在並註冊
+                {
+                    MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == googleTokenInfo.Email && x.IsThirdParty == "Google");
+
+                    Session["Permission"] = member.Permission;  //存session
+                    Session["Member"] = member; //存session
+
+                    return Json(new { response = "第三方登入", status = 1 });
+                }
+                else
+                {
+                    if (type == 0) //若不是，去判斷是進行註冊還是登入
+                    {
+                        var SocialInfo = new SocialInfo
+                        {
+                            Email = googleTokenInfo.Email,
+                            SocialPlatform = "Google",
+                            ImgUrl = googleTokenInfo.Picture,
+                        };
+
+                        return Json(new { response = JsonConvert.SerializeObject(SocialInfo), status = 1 });
+                    }
+                    else
+                    {
+                        return Json(new { response = "尚未註冊", status = 0 });
+                    }
+                }
+            }
+            else
+            {
+                return Json(new { response = "發生錯誤", status = 0 });
+            }
+        }
+
+        private DateTime StringtoDate(string input)
+        {
+            int[] result = input.Split('-').Select(p =>
+            {
+                return int.Parse(p);
+            }).ToArray();
+            DateTime dt = new DateTime(result[0], result[1], result[2]);
+            return dt;
+        }
 
         //設定cookie暫時沒用到
         //public static HttpCookie SetCookie(string accountName, bool rememberMe)
@@ -212,7 +258,5 @@ namespace ProjectTeamFour.Controllers
 
         //    return cookie_user;
         //}
-
-
     }
 }

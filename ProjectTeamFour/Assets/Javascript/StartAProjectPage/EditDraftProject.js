@@ -10,69 +10,74 @@ const id = 'ae6d69a08006f9d'; // 填入 App 的 Client ID
 const token = 'da270109cacdb90f4dd7f0539f983217e184c45a'; // 填入 token
 const album = 'J1vm7F3'; // 若要指定傳到某個相簿，就填入相簿的 ID
 var url;
+var draftDataFromServer;
 
 
 
 Vue.component("multi-text", {
     template: "#multi-text-template",
-    // props: ['value'],
-    data: function () {
-        return {
-            ProjectQuestionAnswer: [],  //塞物件 => 物件陣列
-        };
+    props: ['value'],
+    computed: {
+        getCount: function () {
+            return this.value.length + 1;
+        }
     },
     methods: {
         updateValue: function () {
             console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
-            this.ProjectQuestionAnswer.forEach(function (item) {
-                if (item.Question == "" || item.Answer == "") {
-                    item.QAError = true;
-                    item.QAErrorMsg = "常見問答請填完善";
-                } else {
-                    item.QAError = false;
-                    item.QAErrorMsg = "";
-                }
-            });
-            this.checkAddVerifyQA();
+            //this.QA.forEach(function (item) {
+            //    if (item.Question == "" || item.Answer == "") {
+            //        item.QAError = true;
+            //        item.QAErrorMsg = "常見問答請填完善";
+            //    } else {
+            //        item.QAError = false;
+            //        item.QAErrorMsg = "";
+            //    }
+            //});
+            //this.checkAddVerifyQA();
         },
         deleteValue: function (index) {
-            this.ProjectQuestionAnswer.splice(index, 1);
+            this.value.splice(index, 1);
+            this.value.forEach((x, index) => {
+                x.Count = index + 1;
+                //this.value.push(ProjectQAObj);
+            });
             console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
         },
         addInput: function () {
-
-            var QAObj = {
+            
+            var ProjectQAObj = {
                 Question: "",
                 Answer: "",
-                Count: "",
+                Count: this.getCount,
                 QAError: "",
                 QAErrorMsg: "",
             }
-            this.ProjectQuestionAnswer.push(QAObj);
+            this.value.push(ProjectQAObj);
             this.$emit("input", this.ProjectQuestionAnswer);
         },
-        checkAddVerifyQA: function () {
-            for (let index in this.ProjectQuestionAnswer) {
-                if (this.ProjectQuestionAnswer[index] == true) {
-                    this.AddVerify = false;
-                    return;
-                }
-            }
-            this.AddVerify = true;
-        },
+        //checkAddVerifyQA: function () {
+        //    for (let index in this.QA) {
+        //        if (this.QA[index] == true) {
+        //            this.AddVerify = false;
+        //            return;
+        //        }
+        //    }
+        //    this.AddVerify = true;
+        //},
     },
     watch: {
-        "ProjectQuestionAnswer": {
-            immediate: false,
-            deep: true,
-            handler: function () {
-                this.ProjectQuestionAnswer.forEach((el, index) => {
-                    el.Count = index + 1;
-                });
-            }
-        }
+        //"QA": {
+        //    immediate: false,
+        //    deep: true,
+        //    handler: function () {
+        //        this.QA.forEach((el, index) => {
+        //            el.Count = index + 1;
+        //        });
+        //    }
+        //}
     }
 })
 
@@ -175,6 +180,13 @@ var form = new Vue({
         },
         modalList: [], //抓、顯示 plan資料用 塞物件 變成物件陣列
         ProjectQuestionAnswer: [],
+        //ProjectQAObj: {
+        //    Question: "",
+        //    Answer: "",
+        //    Count: "",
+        //    QAError: "",
+        //    QAErrorMsg: "",
+        //}
     },
     watch: {
         "inputData.ProjectName": {
@@ -417,6 +429,7 @@ var form = new Vue({
     },
     methods: {
         getStartDateAndEndDate(e) {
+            //immediate: true;
             if (this.inputData.StartDate == "" || this.inputData.EndDate == "") {
                 this.inputDataCheck.StartDateAndEndDateError = true;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "募資時間必須填妥";
@@ -641,6 +654,7 @@ var form = new Vue({
             this.modalData.tempMonth = this.modalData.PlanShipDateMonth;
         },
         getCategory() {
+            //immediate: true;
             if (this.inputData.Category == "專案領域") {
                 this.inputDataCheck.CategoryError = true;
                 this.inputDataCheck.CategoryErrorMsg = "請選擇領域";
@@ -897,7 +911,13 @@ var form = new Vue({
             //如果今天他提交提案的過程沒有存為草稿，直接送出，則三者都是當下時間
             var date = new Date();
 
+            var draftProjectId = 0;
+            if (document.getElementById("myApp").dataset.id != null) {
+                draftProjectId = document.getElementById("myApp").dataset.id;
+            }
+
             var UpLoadData = {
+                "DraftProjectId": draftProjectId,
                 "ProjectName": this.inputData.ProjectName,
                 "AmountThreshold": this.inputData.AmountThreshold,
                 "Category": this.inputData.Category,
@@ -983,8 +1003,8 @@ var form = new Vue({
                     }
 
                     Swal.fire({
-                        title: '提案資料提交中',
-                        html: '資料將會匯入到我們的資料中心，請耐心稍等一下',
+                        title: '儲存草稿中',
+                        html: '之後可以繼續撰寫，請耐心稍等一下',
                         timer: 50000,
                         timerProgressBar: true,
                         background: '#FDC6C8',
@@ -1024,16 +1044,16 @@ var form = new Vue({
                 this.ProjectQuestionAnswer.forEach(x => {
                     totalQuestion = totalQuestion + "," + x.Question;
                     totalAnswer = totalAnswer + "," + x.Answer;
-
-                    // 處理字串最前面的逗號用 substring
-                    // substring 取字串的特定部位，並回傳此特定部位的字串
-                    // const str = 'Mozilla';
-                    // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
-                    // str.substring(2) => "zilla" 從哪開始
-                    totalQuestion = totalQuestion.substring(1);
-                    totalAnswer = totalAnswer.substring(1);
-
                 });
+                // 處理字串最前面的逗號用 substring
+                // substring 取字串的特定部位，並回傳此特定部位的字串
+                // const str = 'Mozilla';
+                // str.substring(1, 3); => "oz"  從哪開始 到哪一個的前一個
+                // str.substring(2) => "zilla" 從哪開始
+                totalQuestion = totalQuestion.substring(1);
+                totalAnswer = totalAnswer.substring(1);
+                console.log(totalQuestion);
+                console.log(totalAnswer);
             }
 
             var draftProjectPlansCount;
@@ -1054,7 +1074,17 @@ var form = new Vue({
                 this.inputData.EndDate = "2021-04-03";
             }
 
+            var draftProjectId = 0;
+            if (document.getElementById("myApp").dataset.id != null) {
+                draftProjectId = document.getElementById("myApp").dataset.id;
+            }
+
+            console.log(totalQuestion);
+            console.log(totalAnswer);
+     
+
             var draftData = {
+                "DraftProjectId": draftProjectId,
                 "ProjectName": this.inputData.ProjectName,
                 "AmountThreshold": this.inputData.AmountThreshold,
                 "Category": this.inputData.Category,
@@ -1120,7 +1150,7 @@ var form = new Vue({
             var data = {
                 "DraftProjectId": id
             }
-            
+
 
             //const config = {
             //    headers: {
@@ -1129,33 +1159,148 @@ var form = new Vue({
             //    }
             //}
 
-            //axios.post("/Api/ProjectSubmission/GetDraftProjectData", data)
-            //    .then((res) => {
-            //        console.log(res);
-            //    })
-            //    .catch((err) => {
-            //        console.log(err);
-            //    })
+            axios.post("/startaproject/getdraftprojectdata", data)
+                .then((res) => {
+                    console.log(res);
+                    this.putBackDataFromServer(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
 
-            $.ajax({
-                url: "/startaproject/getdraftprojectdata",
-                type: "post",
-                //contentType: "application/json; charset=utf-8",
-                data: data,
-                success: function (response) {
-                    //if (response.IsSuccessful == true) {
-                    //    console.log(response);
-                    //}
-                    //else {
-                    //    console.log('失敗');
-                    //}
-                    console.log(response);
-                },
-                error: function (response) {
-                    console.log('失敗');
+            //$.ajax({
+            //    url: "/startaproject/getdraftprojectdata",
+            //    type: "post",
+            //    //contentType: "application/json; charset=utf-8",
+            //    data: data,
+            //    success: function (response) {
+            //        //if (response.IsSuccessful == true) {
+            //        //    console.log(response);
+            //        //}
+            //        //else {
+            //        //    console.log('失敗');
+            //        //}
+            //        console.log(response);
+            //        //console.log(JSON.parse(response));
+            //        //this.putBackDataFromServer(response);
+            //        draftDataFromServer = response;
+            //        this.putBackDataFromServer(draftDataFromServer);
+            //    },
+            //    error: function (response) {
+            //        console.log('失敗');
+            //    }
+            //});
+        },
+        putBackDataFromServer(response) {
+            this.inputData.ProjectName = response.data.DraftProjectDetailItem.DraftProjectName;
+            this.inputData.AmountThreshold = response.data.DraftProjectDetailItem.AmountThreshold;
+            this.inputData.Category = response.data.DraftProjectDetailItem.Category;
+            this.getCategory();
+            this.inputData.StartDate = response.data.DraftProjectDetailItem.StringStartDate.split("00")[0].trim();
+            this.inputData.EndDate = response.data.DraftProjectDetailItem.StringEndDate.split("00")[0].trim();
+            this.getStartDateAndEndDate();
+            this.inputData.ProjectVideoUrl = response.data.DraftProjectDetailItem.DraftProjectVideoUrl;
+            this.inputData.MemberName = response.data.CreatorInfo.MemberName;
+            this.inputData.AboutMe = response.data.CreatorInfo.AboutMe;
+            this.inputData.MemberWebsite = response.data.CreatorInfo.MemberWebsite;
+            this.inputData.ProjectPrincipal = response.data.DraftProjectDetailItem.DraftProjectPrincipal;
+            this.inputData.MemberConEmail = response.data.CreatorInfo.MemberConEmail;
+            this.inputData.MemberPhone = response.data.CreatorInfo.MemberPhone;
+            this.inputData.IdentityNumber = response.data.DraftProjectDetailItem.IdentityNumber;
+
+            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl;
+            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; 
+
+            quill.root.innerHTML = response.data.DraftProjectDetailItem.DraftProjectImgUrl;  //塞回富文本
+
+
+            this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
+            //console.log(response.data.DraftProjectDetailItem.DraftProjectFAQList);
+
+            this.returnDataToPlan(response.data.SelectPlanCards.DraftPlanCardItems);
+
+
+            // "PlanObject": this.modalList, //陣列包物件
+            // "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
+            // "Project_Question": totalQuestion,
+            // "Project_Answer": totalAnswer,
+
+            // "CreatedDate": date.toJSON(),
+            // "SubmittedDate": date.toJSON(),
+            // "LastEditTime": date.toJSON(),
+        },
+        returnDataToQA(qaArray) {     //FAQ 待處理
+            //console.log(this.ProjectQAObj.Question);
+            //console.log(this.ProjectQAObj.Answer);
+
+            //console.log()
+            //var ProjectQAObj = {
+            //    Question: "",
+            //    Answer: "",
+            //    Count: "",
+            //    QAError: "",
+            //    QAErrorMsg: "",
+            //}
+            qaArray.forEach((item, index) => {
+                //this.ProjectQAObj.Question = item.DraftQuestion;
+                //this.ProjectQAObj.Answer = item.DraftAnswer;
+                //console.log(this.ProjectQAObj.Question);
+                //console.log(this.ProjectQAObj.Answer);
+                //this.ProjectQAObj.Count = index + 1;
+                console.log(item.DraftQuestion);
+                console.log(item.DraftAnswer);
+                var ProjectQAObj = {
+                    Question: item.DraftQuestion,
+                    Answer: item.DraftAnswer,
+                    Count: index + 1,
+                    QAError: "",
+                    QAErrorMsg: "",
                 }
+                this.ProjectQuestionAnswer.push(ProjectQAObj);
+                console.log(this.ProjectQuestionAnswer[index]);
+                //this.$emit("input", this.ProjectQuestionAnswer);
             });
+            //this.ProjectQuestionAnswer.push(QAObj);
+            //this.$emit("input", this.ProjectQuestionAnswer);
+        },
+        returnDataToPlan(planArray) {
+            planArray.forEach((item, index) => {
+                var AddCarCarPlanSwitch = "";
+                //var planCount = index + 1;
+                this.modalData.makePlanCount = index + 1;
 
+                if (item.DraftAddCarCarPlan == true) {
+                    AddCarCarPlanSwitch = "是";
+                } else {
+                    AddCarCarPlanSwitch = "否";
+                }
+
+
+                var planDateString = item.StringDraftPlanShipDate.split("00")[0].trim();
+                console.log(planDateString.split("-")[0].trim());
+                console.log(planDateString.split("-")[1].trim());
+                console.log(Number(planDateString.split("-")[1].trim()));
+
+                console.log(planDateString.split("-").join(""));
+
+                var modalListObj = {
+                    ProjectPlanId: this.modalData.makePlanCount,
+                    ViewId: "set-plan" + this.modalData.makePlanCount,
+                    makePlanCount: this.modalData.makePlanCount,
+                    PlanPrice: item.DraftPlanPrice,
+                    PlanTitle: item.DraftPlanTitle,
+                    QuantityLimit: item.DraftQuantityLimit,
+                    AddCarCarPlanSwitch: AddCarCarPlanSwitch,
+                    AddCarCarPlan: item.DraftAddCarCarPlan,
+                    PlanDescription: item.DraftPlanDescription,
+                    PlanImgUrl: item.DraftPlanImgUrl,
+                    PlanShipDateYear: planDateString.split("-")[0].trim(),
+                    PlanShipDateMonth: Number(planDateString.split("-")[1].trim()).toString(),
+                    PlanShipDate: planDateString.split("-").join(""),
+                }
+                this.modalList.push(modalListObj);
+            })
         }
     }
 });

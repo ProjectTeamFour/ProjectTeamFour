@@ -13,6 +13,8 @@ namespace ProjectTeamFour.ViewModels
         //private double _dateline;
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
+
+        public string ProjectMainUrl { get; set; }
         public string ProjectCoverUrl { get; set; }
         public decimal GoalMoney { get; set; }  //AmountThreshold
         [DataType(DataType.Date)]

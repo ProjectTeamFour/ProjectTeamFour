@@ -22,7 +22,7 @@ namespace ProjectTeamFour_Backend
             using (var scope = host.Services.CreateScope())
             {
                 var service = scope.ServiceProvider;
-                var _context = service.GetRequiredService<LabContext>();
+                var _context = service.GetRequiredService<CarCarPlanContext>();
                 var _logger = service.GetRequiredService<ILogger<Program>>();
 
                 try

@@ -109,7 +109,7 @@ namespace ProjectTeamFour.Service
                 OrderPhone = orderMem.OrderPhone,
                 OrderConEmail = orderMem.OrderConEmail,
                 OrderTotalAccount = cartSession.TotalAccount,
-                OrderDate = DateTime.Now,
+                OrderDate = DateTime.UtcNow.AddHours(8),
                 condition = "未付款",
             };
             _repository.Create(order);
@@ -149,7 +149,7 @@ namespace ProjectTeamFour.Service
         //回傳訂單資料給資料庫
         public void CreateOrderToDB(string RtnCode , string MerchantTradeNo ,string orderId) //把購物車的資料&member回傳給資料庫
         {
-            
+            decimal projectProgress = 0.0m;
             var orderint = Convert.ToInt32(orderId);
             var rtnCode = Convert.ToInt32(RtnCode);             
             
@@ -164,7 +164,7 @@ namespace ProjectTeamFour.Service
 
                 try
                 {                    
-                    result.OrderDate = DateTime.Now;
+                    result.OrderDate = DateTime.UtcNow.AddHours(8);
                     result.condition = "已付款";
                     result.RtnCode = rtnCode;
                     result.TradeNo = MerchantTradeNo;
@@ -179,8 +179,13 @@ namespace ProjectTeamFour.Service
 
                             pj.Fundedpeople = pj.Fundedpeople + 1;
                             pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
+                            ///結完帳之後的募資進度
+                            projectProgress = (pj.FundingAmount / pj.AmountThreshold)*100;
+                            ///接著於下根據募資進度來發送通知
+
+
                         }
-                        foreach(var p in planview)
+                        foreach (var p in planview)
                         {
                             p.QuantityLimit = p.QuantityLimit - 1;
                             p.PlanFundedPeople = p.PlanFundedPeople + 1;

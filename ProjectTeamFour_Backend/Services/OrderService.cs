@@ -15,9 +15,9 @@ namespace ProjectTeamFour_Backend.Services
     public class OrderService: IOrderService
     {
         private readonly IRepository _dbRepository; //repository介面
-        private readonly LabContext _context; 
+        private readonly CarCarPlanContext _context; 
 
-        public  OrderService(IRepository repository, LabContext context) //用dapper方便
+        public  OrderService(IRepository repository, CarCarPlanContext context) //用dapper方便
         {
             _dbRepository = repository;
             _context = context;
@@ -49,7 +49,7 @@ namespace ProjectTeamFour_Backend.Services
                         OrderName = o.OrderName,
                         OrderTotalAccount = o.OrderTotalAccount,
                         OrderPhone = o.OrderPhone,
-                        OrderDate = o.OrderDate.ToString("d"),
+                        OrderDate = o.OrderDate.Date.ToString("d"),
                         Condition = o.Condition,
                         TradeNo = o.TradeNo,
                         MemberId = o.MemberId,
