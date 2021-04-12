@@ -21,6 +21,8 @@ namespace ProjectTeamFour.ViewModels
         [DataType(DataType.Currency)]
         public decimal PlanPrice { get; set; }
         public int QuantityLimit { get; set; }
+
+        public bool AddCarCarPlan { get; set; }
         ////導覽屬性
         //public virtual Project Project { get; set; }
         //public virtual ICollection<Order> Orders { get; set; }

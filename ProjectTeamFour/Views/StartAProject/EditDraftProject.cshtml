@@ -407,7 +407,7 @@
                                             <div class="row">
                                                 <div class="col-6 col-sm-6 col-md-6 d-flex flex-column justify-content-center w-100">
                                                     <a href="#" v-on:click="deletePlan(index)" v-on:click.prevent=""
-                                                       class="text-danger small pb-5">x</a>
+                                                       class="text-danger small pb-5">移除此回饋方案</a>
                                                     <div class="set-plan-description w-100">
                                                         <p>回饋方案內容</p>
                                                         <!-- <div class="w-100"> -->
@@ -432,7 +432,7 @@
                                                     </div>
                                                     <div class="left-block-item card px-2 mr-2">
                                                         <div class="card-item discount-amount pb-1 pt-2">
-                                                            <p>{{ item.PlanPrice }}</p>
+                                                            <p>${{ numberWithCommas(item.PlanPrice) }}</p>
                                                         </div>
                                                         <div class="card-item picture">
                                                             <img class="w-100" :src="item.PlanImgUrl">
