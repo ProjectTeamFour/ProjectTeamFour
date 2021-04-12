@@ -101,6 +101,16 @@ namespace ProjectTeamFour_Backend.Services
            
         }
 
+        public ProjectViewModel.ProjectListForPercent GetPercent()
+        {
+            var result = new ProjectViewModel.ProjectListForPercent();
+            result.getProjectPercentsList = _dbRepository.GetAll<Project>().Select(x => new ProjectViewModel.GetProjectPercent
+            {
+                ProjectPercent = (x.FundingAmount/x.AmountThreshold)*100
+            }).ToList();
+
+            return result;
+        }
 
         //取得審核中
 
