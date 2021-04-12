@@ -1082,9 +1082,10 @@
         transform: scale(1.02);
     }
 
-
+.project-proposal #card-result-box a{
+    width: fit-content;
+}
 /* QA */
-
 .project-proposal .addQAbutton {
     letter-spacing: 1px;
     transition: .3s;

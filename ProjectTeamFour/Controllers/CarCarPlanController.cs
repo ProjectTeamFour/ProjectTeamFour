@@ -27,7 +27,7 @@ namespace ProjectTeamFour.Controllers
                 SelectCarCarPlanItem = new CarCarPlanViewModel()
             };
 
-            var getPlans = _carcarplanservice.GetAllTotal();
+            var getPlans = _carcarplanservice.GetPlanWithProjectStatusForCarCarPlan();
 
             foreach (var item in getPlans)
             {
@@ -166,7 +166,7 @@ namespace ProjectTeamFour.Controllers
             CarCarPlanListVM.SelectCarCarPlanItem = planDetail;
 
             
-            var getPlans = _carcarplanservice.GetAllTotal();
+            var getPlans = _carcarplanservice.GetPlanWithProjectStatusForCarCarPlan();
 
             foreach (var item in getPlans)
             {

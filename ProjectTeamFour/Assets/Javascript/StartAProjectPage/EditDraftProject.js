@@ -696,12 +696,17 @@ var form = new Vue({
                     this.modalData.QuantityLimit == 999;
                 }
 
+
+                //var planPriceWithComma = this.numberWithCommas(this.modalData.planPrice);
+
+               
+
                 //做plan物件等等塞回去陣列
                 var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
                     ViewId: SetPlanId,
                     makePlanCount: this.modalData.makePlanCount,
-                    PlanPrice: this.modalData.PlanPrice,
+                    PlanPrice: this.modalData.planPrice,
                     PlanTitle: this.modalData.PlanTitle,
                     QuantityLimit: this.modalData.QuantityLimit,
                     AddCarCarPlanSwitch: AddCarCarPlanSwitch,
@@ -1208,18 +1213,16 @@ var form = new Vue({
             this.inputData.MemberPhone = response.data.CreatorInfo.MemberPhone;
             this.inputData.IdentityNumber = response.data.DraftProjectDetailItem.IdentityNumber;
 
-            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl;
-            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
-            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; 
+            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl; -
+            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl; -
+            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; -這個沒了
 
             quill.root.innerHTML = response.data.DraftProjectDetailItem.DraftProjectImgUrl;  //塞回富文本
-
-
+            console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            console.log(response.data.CreatorInfo.ProfileImgUrl);
+            this.returnUrlToPic(response);
             this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
-            //console.log(response.data.DraftProjectDetailItem.DraftProjectFAQList);
-
             this.returnDataToPlan(response.data.SelectPlanCards.DraftPlanCardItems);
-
 
             // "PlanObject": this.modalList, //陣列包物件
             // "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
@@ -1265,8 +1268,9 @@ var form = new Vue({
             //this.$emit("input", this.ProjectQuestionAnswer);
         },
         returnDataToPlan(planArray) {
+            var AddCarCarPlanSwitch = "";
             planArray.forEach((item, index) => {
-                var AddCarCarPlanSwitch = "";
+                
                 //var planCount = index + 1;
                 this.modalData.makePlanCount = index + 1;
 
@@ -1282,7 +1286,7 @@ var form = new Vue({
                 console.log(planDateString.split("-")[1].trim());
                 console.log(Number(planDateString.split("-")[1].trim()));
 
-                console.log(planDateString.split("-").join(""));
+                //console.log(planDateString.split("-").join(""));
 
                 var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
@@ -1301,6 +1305,34 @@ var form = new Vue({
                 }
                 this.modalList.push(modalListObj);
             })
+        },
+        returnUrlToPic(response) {
+            console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            console.log(response.data.CreatorInfo.ProfileImgUrl);
+            if (response.data.CreatorInfo.ProfileImgUrl != null)
+            {
+                console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+                console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.TeamPicture = response.data.CreatorInfo.ProfileImgUrl;
+                this.inputDataCheck.TeamPictureError = false;
+            }
+            if (response.data.DraftProjectDetailItem.DraftProjectMainUrl != null)
+            {
+                console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+                console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+                this.inputDataCheck.ProjectMainUrlError = false;
+            }
+            if (response.data.DraftProjectDetailItem.DraftProjectCoverUrl != null) {
+                console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+                console.log(response.data.CreatorInfo.ProfileImgUrl);
+                console.log(response.data.DraftProjectDetailItem.DraftProjectCoverUrl);
+                this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl;
+                this.inputDataCheck.ProjectCoverUrlError = false;
+            }
+        },
+        numberWithCommas(planPrice) {
+            return planPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
 });

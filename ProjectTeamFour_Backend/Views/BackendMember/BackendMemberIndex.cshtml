@@ -44,6 +44,7 @@
                               :state="memberNameState">
                     <b-form-input id="memberPassword-input"
                                   v-model="memberPassword"
+                                  type="password"
                                   :state="memberNameState"
                                   required></b-form-input>
                 </b-form-group>
@@ -56,12 +57,13 @@
                                        :state="memberBirthState"
                                        required></b-form-datepicker>
                 </b-form-group>
-                <b-form-radio-group label="會員最高權限" label-for="selected-input" invalid-feedback="Name is required" v-model="selected" :options="options" :state="selectedState" name="radio-validation">
-                    <b-form-invalid-feedback id="selected-input" :state="state">Please select one</b-form-invalid-feedback>
+                <b-form-radio-group label="會員最高權限" label-for="selected-input" v-model="selected" :options="options" :state="selectedState" name="radio-validation">
+                    <b-form-invalid-feedback id="selected-input" :state="state">請擇一</b-form-invalid-feedback>
                     <b-form-valid-feedback id="selected-input" :state="state">Thank you</b-form-valid-feedback>
                 </b-form-radio-group>
                 <b-form-group label="會員電話(格式範例:0935-123456)"
                               label-for="memberPhone-input"
+                              tupe="tel"
                               invalid-feedback="此為必填選項"
                               :state="memberPhoneState">
                     <b-form-input id="memberPhone-input"
@@ -70,6 +72,7 @@
                                   required></b-form-input>
                 </b-form-group>
                 <b-form-group label="會員註冊信箱"
+                              type="email"
                               label-for="memberRegEmail-input"
                               invalid-feedback="Email格式錯誤"
                               :state="memberRegEmailState">
@@ -79,8 +82,9 @@
                                   required></b-form-input>
                 </b-form-group>
                 <b-form-group label="會員聯絡信箱"
+                              type="email"
                               label-for="memberConEmail-input"
-                              invalid-feedback="此為必填選項"
+                              invalid-feedback="Email格式錯誤"
                               :state="memberConEmailState">
                     <b-form-input id="memberConEmail-input"
                                   v-model="memberConEmail"
@@ -241,13 +245,16 @@
                 <b-button size="sm" @@click="row.toggleDetails">
                     {{ row.detailsShowing ? '收起' : '展開' }}
                 </b-button>
-                <b-button size="sm" @@click="info(row.item, row.index, $event.target)" class="mr-1" variant="success">
+                <b-button size="sm" @@click="info(row.item, row.index, $event.target)" v-if="row.item.memberName=='admin'" disabled class="mr-1" variant="success">
+                    無法修改
+                </b-button>
+                <b-button size="sm" @@click="info(row.item, row.index, $event.target)" v-else class="mr-1" variant="success">
                     修改
                 </b-button>
                 <b-button size="sm" @@click="deleteInfo(row.item)" v-if="row.item.memberName=='admin'" disabled class="mr-1" variant="danger">
                     無法刪除
                 </b-button>
-                <b-button size="sm" @@click="deleteInfo(row.item)" v-else  class="mr-1" variant="danger">
+                <b-button size="sm" @@click="deleteInfo(row.item)" v-else class="mr-1" variant="danger">
                     刪除
                 </b-button>
             </template>

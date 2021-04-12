@@ -194,7 +194,10 @@ namespace ProjectTeamFour.Service
             }
             return result;
         }
-
+        /// <summary>
+        /// 從session["Member"]確認使用者是否為登入狀態
+        /// </summary>
+        /// <returns></returns>
         public int ReturnLoginnerId()
         {
             var session = HttpContext.Current.Session;

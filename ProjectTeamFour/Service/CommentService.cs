@@ -230,5 +230,17 @@ namespace ProjectTeamFour.Service
                 return result;
             }
         }
+
+        public string CheckProjectMemberId(CommentViewModel commentVM)
+        {
+            if(commentVM.AskedMemberId==commentVM.MemberId)
+            {
+                return "Same";
+            }
+            else
+            {
+                return "Ok";
+            }
+        }
     }
 }

@@ -679,12 +679,14 @@ var form = new Vue({
                     this.modalData.QuantityLimit == 999;
                 }
 
+                //var planPriceWithComma = this.numberWithCommas(this.modalData.planPrice);
+
                 //做plan物件等等塞回去陣列
                 var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
                     ViewId: SetPlanId,
                     makePlanCount: this.modalData.makePlanCount,
-                    PlanPrice: this.modalData.PlanPrice,
+                    PlanPrice: this.modalData.planPrice,
                     PlanTitle: this.modalData.PlanTitle,
                     QuantityLimit: this.modalData.QuantityLimit,
                     AddCarCarPlanSwitch: AddCarCarPlanSwitch,
@@ -825,6 +827,7 @@ var form = new Vue({
                     timer: 1500
                 });
             }).catch(e => {
+
                 //失敗就跳swal
                 Swal.fire({
                     position: 'top',
@@ -1100,6 +1103,9 @@ var form = new Vue({
                 }
             });
         },
+        numberWithCommas(planPrice) {
+            return planPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     }
 });
 

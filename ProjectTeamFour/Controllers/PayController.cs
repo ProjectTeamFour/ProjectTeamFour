@@ -41,6 +41,16 @@ namespace ProjectTeamFour.Controllers
             return View(cartt);
         }
 
+        //Get : 重新購買(從購買紀錄)
+        //public ActionResult ReShop()
+        //{
+        //    var cart = ;
+        //    var reshop = _PayService.Reshop(cart);
+
+
+        //    return RedirectToAction("Index", reshop);
+        //}
+
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
             var order = Convert.ToInt32(TempData["orderId"]);

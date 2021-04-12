@@ -34,7 +34,7 @@ faSearch.addEventListener("click", function () {
     inputSearch.focus();
 });
 
-//購物車功能
+//購物車功能(加入購物車):使用ajax呼叫以POST的方法呼叫ShoppingCart控制器的AddtoCart Action。
 function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit,ProjectId) {
     $.ajax({
         type: "POST",
@@ -43,17 +43,17 @@ function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit,Pro
         dataType: "text",
         success: function (response) {
 
-            $(".MyCart").text(`${response}`);
-        }
-    }).then(function TriggerAlert() {
+                $(".MyCart").text(`${response}`);
+            }
+            }).then(function TriggerAlert() {
 
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '已成功加入購物車',
-            showConfirmButton: false,
-            timer: 1500
-        });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '已成功加入購物車',
+                showConfirmButton: false,
+                timer: 1500
+            });
 
     })
 }
