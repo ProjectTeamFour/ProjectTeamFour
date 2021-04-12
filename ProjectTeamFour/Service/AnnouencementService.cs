@@ -34,28 +34,5 @@ namespace ProjectTeamFour.Service
             }
             return myAnnouncementList;
         }
-        public OperationResult CreateAnnouncement(AnnouncementViewModel input, int memberId)
-        {
-            var result = new OperationResult();
-            try
-            {
-                Announcement announcement = new Announcement
-                {
-                    MemberId = memberId,
-                    CreateTime = DateTime.UtcNow.AddHours(8),
-                    CreateUser = "系統"
-                };
-                _repository.Create(announcement);
-                result.IsSuccessful = true;
-                return result;
-            }
-            catch(Exception ex)
-            {
-                result.Exception = ex;
-                result.IsSuccessful = false;
-                return result;
-            }
-        }
-        
     }
 }

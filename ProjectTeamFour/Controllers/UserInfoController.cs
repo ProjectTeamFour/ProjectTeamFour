@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
 using System.Web.Http;
+using System.Collections.Generic;
+using System.Web;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -191,8 +193,9 @@ namespace ProjectTeamFour.Controllers
             var model = (MemberViewModel)Session["Member"];
             if (model != null)
             {
+                var LastAnnouncementCount = Request.Cookies["AnnouncementListCount"] == null ? "" : Request.Cookies["AnnouncementListCount"].Value.ToString();
                 var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
-
+                
 
                 //根據專案的提交與審核狀態進行分類
                 model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
@@ -201,6 +204,13 @@ namespace ProjectTeamFour.Controllers
                 model.Records = _backingService.QueryOrder(model.MemberId);
                 //根據會員id抓取通知
                 model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
+                //存取此次通知數量
+                var AnnouncementCount = model.Announcements.Count;
+                HttpCookie cookie = new HttpCookie("AnnouncementListCount");
+                cookie.Value = AnnouncementCount.ToString();
+                Response.AppendCookie(cookie);
+                var unread = AnnouncementCount - int.Parse(LastAnnouncementCount);
+                model.UnreadCount = unread;
                 if (model.MyProjects.Count == 0)
                 {
                     model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
@@ -218,6 +228,14 @@ namespace ProjectTeamFour.Controllers
             {
                 return RedirectToAction("Login", "Member");
             }
+        }
+
+        [System.Web.Http.HttpPost]
+        public ActionResult FindOrder(Order oVM)
+        {   
+
+            var order = _backingService.FindOrder(oVM);
+            return View(order);         
         }
     }
 }

@@ -140,7 +140,9 @@ namespace ProjectTeamFour.Service
                     PlanShipDate = item.PlanShipDate,
                     PlanImgUrl = item.PlanImgUrl,
                     PlanPrice = item.PlanPrice,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan,
+                    
                 };
                 selectPlanCardItems.Add(selectPlanCardViewModel);
             }
@@ -255,7 +257,8 @@ namespace ProjectTeamFour.Service
                         StringDraftPlanShipDate = item.DraftPlanShipDate.ToString("u"),
                         DraftPlanImgUrl = item.DraftPlanImgUrl,
                         DraftPlanPrice = item.DraftPlanPrice,
-                        DraftQuantityLimit = item.DraftQuantityLimit
+                        DraftQuantityLimit = item.DraftQuantityLimit,
+                        DraftAddCarCarPlan = item.DraftAddCarCarPlan,
                     };
                     selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
                 }

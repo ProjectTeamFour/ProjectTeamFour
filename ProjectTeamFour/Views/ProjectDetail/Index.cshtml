@@ -24,7 +24,7 @@
                     <!-- 影片/圖片部分 -->
                     <div id="intro-video-wrap" class="items">
                         <iframe scrolling="no" src="@Model.ProjectDetailItem.ProjectVideoUrl" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media;" allowfullscreen>
+                                allow="accelerometer; autoplay; encrypted-media;" allowfullscreen style="width:100%;height:100%;background-image:url(@Model.ProjectDetailItem.ProjectCoverUrl)">
                             主要介紹影片
                         </iframe>
                     </div>
@@ -159,7 +159,7 @@
             <section id="campaign-details-all">
                 <div class="container">
                     <nav id="info-tabs">
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist" >
                             <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
                                aria-controls="nav-story" aria-selected="true">專案內容</a>
                             <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
@@ -187,7 +187,7 @@
                                     <div class="info wrapper">
                                         <p>已達成 募資目標!</p>
                                     </div>}
-                                                @{ if (Model.ProjectDetailItem.ProjectId < 26)
+                                                @{ if (Model.ProjectDetailItem.ProjectId < 27)
                                                     {
                                                         string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
                                                         foreach (var item in description_str)

@@ -69,10 +69,12 @@
                         @if (Model.Records != null)
                         {
 
-                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) 
+                        }
                         else
                         {
-                            <div>您目前沒有任何贊助歷史!</div>}
+                            <div>您目前沒有任何贊助歷史!</div>
+                        }
                     </div>
                 </section>
             </div>
