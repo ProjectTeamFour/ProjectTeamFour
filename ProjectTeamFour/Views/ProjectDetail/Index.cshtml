@@ -8,9 +8,9 @@
        
  }
 @* 判斷專案募資進度 *@
-@{ 
+@*@{ 
     switch(Model.ProjectDetailItem.ProjectStatus)
-}
+}*@
 
 <!--FB分享API初始化-->
 <div ifb-root"></div>
@@ -59,13 +59,18 @@
                                     <div class="wrapper">
                                         <div class="item-text">
                                             <h5>
-                                                <span class="label-grey">提案總數</span>@Model.ProjectDetailItem.ProjectPlansCount
-                                            </h5>
+            <span class="label-grey">提案者連結</span><i class="bi bi-link-45deg" style="color:black;"><a href="@Model.CreatorInfo.MemberWebsite">點選</a></i>
+        </h5>
+                                            @*<h5>
+            <span class="label-grey">提案總數</span>@Model.CreatorInfo.Records
+        </h5>*@
                                         </div>
-                                        <div id="follow-icon" hidden>
-                                            <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                            <a href="#"><i class="fab fa-instagram"></i></a>
-                                            <a href="#"><i class="fab fa-youtube-square"></i></a>
+                                        <div id="follow-icon">
+                                            
+                                            <a href="#" hidden><i class="fab fa-facebook-square"></i></a>
+                                            <a href="#" hidden><i class="fab fa-instagram"></i></a>
+                                            <a href="#" hidden><i class="fab fa-youtube-square"></i></a>
+                                            <a href="@Model.CreatorInfo.ProfileImgUrl"><i class="fab fa-link"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -264,7 +264,19 @@ h4 {
 .card-deck .card:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
+.isoffline:hover {
+    /*                position: absolute;
+                */
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color:#f8414a;
+    /*background-color: rgba(248,65,74,0.7);*/
+    opacity: 70%;
+    justify-content: center;
+    align-items: center;
 
+}
 .card-deck .card #amount {
   font-size: 2.5rem;
   left: 0.5rem;
@@ -303,14 +315,14 @@ h4 {
 .card-deck .card:hover img {
   overflow: hidden;
   transform: scale(1.2);
-  -webkit-transform: scale(1.2);
+/*  -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
+  -o-transform: scale(1.2);*/
   transition: 0.5s;
-  -webkit-transition: 0.5s;
+/*  -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
-  -o-transition: 0.5s;
+  -o-transition: 0.5s;*/
 }
 
 .card-deck .card h4 {

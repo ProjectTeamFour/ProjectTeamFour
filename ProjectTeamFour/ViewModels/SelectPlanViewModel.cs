@@ -23,8 +23,10 @@ namespace ProjectTeamFour.ViewModels
         public int QuantityLimit { get; set; }
 
         public bool AddCarCarPlan { get; set; }
-        ////導覽屬性
-        //public virtual Project Project { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
+
+        // ---------------------------
+        public string ProjectName { get; set; }
+
+        public int? SubmitLimit { get; set; }
     }
 }
