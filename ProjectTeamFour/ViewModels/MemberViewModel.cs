@@ -44,7 +44,7 @@ namespace ProjectTeamFour.ViewModels
         [Display(Name = "大頭照")]
         public string ProfileImgUrl { get; set; }
         [Display(Name = "個人網站")]
-        [DataType(DataType.Url)]
+
         public string MemberWebsite { get; set; }
         [Display(Name = "聯絡訊息")]
         public string MemberMessage { get; set; }

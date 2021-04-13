@@ -1,10 +1,16 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
-@{ decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+@{  decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     int progressNum = (int)progressDec;
     string progressBar = progressNum.ToString() + "%";
     DateTime today = DateTime.Now;
-    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays); }
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays); 
+       
+ }
+@* 判斷專案募資進度 *@
+@{ 
+    switch(Model.ProjectDetailItem.ProjectStatus)
+}
 
 <!--FB分享API初始化-->
 <div ifb-root"></div>
@@ -109,22 +115,26 @@
                             <div id="campaign-status-label">
                                 @{ if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
                                     {
-                        <div class="text-wrap">
-                            專案募資成功！
-                            在 @Model.ProjectDetailItem.EndDate
-                            募資結束前，您都可以持續贊助此計畫。
-                        </div> }
-                    else if (Model.ProjectDetailItem.ProjectStatus == "集資失敗")
-                    {
-        <div class="text-wrap">
-            此計劃於 @Model.ProjectDetailItem.StartDate - @Model.ProjectDetailItem.EndDate 募資結束，很遺憾並未達成目標。
-        </div> }
-    else
-    {
-<div class="text-wrap">
-    在 @Model.ProjectDetailItem.EndDate
-    募資結束前，您都可以持續贊助此計畫。
-</div> } }
+                                        <div class="text-wrap">
+                                            專案募資成功！
+                                            在 @Model.ProjectDetailItem.EndDate
+                                            募資結束前，您都可以持續贊助此計畫。
+                                        </div> 
+                                        }
+                                    else if (Model.ProjectDetailItem.ProjectStatus == "集資失敗")
+                                    {
+                                        <div class="text-wrap">
+                                            此計劃於 @Model.ProjectDetailItem.StartDate - @Model.ProjectDetailItem.EndDate 募資結束，很遺憾並未達成目標。
+                                        </div> 
+                                        }
+                                    else
+                                    {
+                                        <div class="text-wrap">
+                                            在 @Model.ProjectDetailItem.EndDate
+                                            募資結束前，您都可以持續贊助此計畫。
+                                        </div> 
+                                        } 
+                                  }
                             </div>
                             <!-- 手機的按鈕會變成fixed在body的bottom -->
                             <div id="backing-section" class="wrapper">
@@ -152,6 +162,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
         <section id="nav">
         </section>
@@ -197,14 +208,14 @@
                                         <div margin:1rem;">
                                             <img src="@item" style="width:100%;" />
                                         </div> }
-                                    else
-                                    {
+                                                            else
+                                                            {
                 <p>@item</p> }
-        }
-    }
-    else
-    {
-        string msg = Model.ProjectDetailItem.ProjectImgUrl;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        string msg = Model.ProjectDetailItem.ProjectImgUrl;
 @Html.Raw(msg);
 } }
                                             </div>
@@ -237,36 +248,45 @@
                                             </div>
                                         </div>
                                     </div> index++;
-                                } }
+                                                } }
 
                                         </div>
                                     </div>
 
                                     @* 專案進度更新 *@
-                                    <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
-                                        @*下面放專案更新進度貼文的card*@
+                                <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
+                                    @*下面放專案更新進度貼文的card*@
 
-                                        <div id="goal-wrap" class="container">
-                                            @*<span class="post-date label-grey">2021/01/05</span>*@
-                                            <h4 class="post-label">已達成 募資目標!</h4>
-                                            <h4 class="post-title">解鎖事項：募資成功</h4>
-                                            <div class="wrapper">
+                                    @{
+                                        while (progressNum >= 100)
+                                        {
+                                            <div id="goal-wrap" class="container success">
+                                                @*<span class="post-date label-grey">2021/01/05</span>*@
+                                                <h4 class="post-label">已達成 募資目標!</h4>
+                                                <h4 class="post-title">解鎖事項：募資成功</h4>
+                                                <div class="wrapper">
 
-                                                <div class="goal-detail ">
-                                                    <label class="label-grey">贊助金額</label>
-                                                    <h3 class="number">$ @Model.ProjectDetailItem.FundingAmount</h3>
-                                                </div>
-                                                <div class="goal-detail ">
-                                                    <label class="label-grey">支持者</label>
-                                                    <h3>@Model.ProjectDetailItem.Fundedpeople 人</h3>
-                                                </div>
-                                                <div class="goal-detail ">
-                                                    <label class="label-grey">贊助比例</label>
-                                                    <h3>@progressBar</h3>
+                                                    <div class="goal-detail ">
+                                                        <label class="label-grey">贊助金額</label>
+                                                        <h3 class="number">$ @Model.ProjectDetailItem.FundingAmount</h3>
+                                                    </div>
+                                                    <div class="goal-detail ">
+                                                        <label class="label-grey">支持者</label>
+                                                        <h3>@Model.ProjectDetailItem.Fundedpeople 人</h3>
+                                                    </div>
+                                                    <div class="goal-detail ">
+                                                        <label class="label-grey">贊助比例</label>
+                                                        <h3>@progressBar</h3>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            break;
+                                        }
+
+
+                                    }
+
+                                </div>
 
                                     @* 專案留言區 *@
                                     <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
