@@ -94,7 +94,12 @@ function Logout(isThirdParty) {
                 window.location.href = "/Member/Logout"; //讓session 清空
             });
         });
-    } else {
+    } else if (isThirdParty == "Google") {
+        window.location.href = "/Member/Logout"; //讓session 清空
+        location.href = 'https://accounts.google.com/Logout?&continue=https://localhost:44300/Member/Login/';
+        window.location.href = "/Member/Logout"; //讓session 清空
+    }
+    else {
         window.location.href = "/Member/Logout"; //讓session 清空
     }
 }
