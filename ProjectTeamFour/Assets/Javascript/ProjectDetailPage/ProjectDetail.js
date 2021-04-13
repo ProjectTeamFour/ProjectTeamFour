@@ -1,5 +1,4 @@
-﻿
-function LanchCommentAjax(ProjectId, AskedMemberId) {
+﻿function LanchCommentAjax(ProjectId, AskedMemberId) {
     let clientComment = document.querySelector(".form-control");
     if (clientComment.value == null) {
         Swal.fire({

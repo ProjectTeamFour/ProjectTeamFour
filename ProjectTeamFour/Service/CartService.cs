@@ -37,7 +37,6 @@ namespace ProjectTeamFour.Service
                 PlanTitle = plan.PlanTitle,
                 PlanPrice = plan.PlanPrice,
                 PlanImgUrl = plan.PlanImgUrl,
-
                 Quantity = 1
 
             };

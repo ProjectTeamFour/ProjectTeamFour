@@ -112,7 +112,7 @@ namespace ProjectTeamFour.Service
         public List<CarCarPlanViewModel> GetPlanWithProjectStatusForCarCarPlan()
         {
             List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
-            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功");
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
 
             foreach (var item in result)
             {
@@ -133,7 +133,7 @@ namespace ProjectTeamFour.Service
                             PlanId = trueItem.PlanId,
                             PlanDescription = trueItem.PlanDescription,
                             QuantityLimit = trueItem.QuantityLimit,
-                            AddCarCarPlan = trueItem.AddCarCarPlan
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
 
                         };
                         CarCarPlanItems.Add(cv);
@@ -156,6 +156,37 @@ namespace ProjectTeamFour.Service
         //條件
         public List<CarCarPlanViewModel> GetOtherPlan(Expression<Func<Plan, bool>> Category)
         {
+
+            //List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            //var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
+
+            //foreach (var item in result)
+            //{
+            //    var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true).ToList();
+
+            //    if (trueprojectPlan != null)
+            //    {
+            //        foreach (var trueItem in trueprojectPlan)
+            //        {
+            //            CarCarPlanViewModel cv = new CarCarPlanViewModel()
+            //            {
+            //                PlanImgUrl = trueItem.PlanImgUrl,
+            //                ProjectName = trueItem.ProjectName,
+            //                Category = trueItem.Project.Category,
+            //                PlanTitle = trueItem.PlanTitle,
+            //                CreatorName = trueItem.Project.CreatorName,
+            //                PlanPrice = (int)trueItem.PlanPrice,
+            //                PlanId = trueItem.PlanId,
+            //                PlanDescription = trueItem.PlanDescription,
+            //                QuantityLimit = trueItem.QuantityLimit,
+            //                AddCarCarPlan = trueItem.AddCarCarPlan,
+
+            //            };
+            //            CarCarPlanItems.Add(cv);
+            //        }
+            //    }
+            //}
+            //return CarCarPlanItems;
 
             List<CarCarPlanViewModel> lccpvm = new List<CarCarPlanViewModel>();
 
@@ -185,22 +216,138 @@ namespace ProjectTeamFour.Service
 
         public List<CarCarPlanViewModel> SearchPlanTitle(string searchString)
         {
-            return GetOtherPlan(x => x.PlanTitle.Contains(searchString));
+            List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
+
+            foreach (var item in result)
+            {
+                var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true && x.PlanTitle.Contains(searchString)).ToList();
+
+                if (trueprojectPlan != null)
+                {
+                    foreach (var trueItem in trueprojectPlan)
+                    {
+                        CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                        {
+                            PlanImgUrl = trueItem.PlanImgUrl,
+                            ProjectName = trueItem.ProjectName,
+                            Category = trueItem.Project.Category,
+                            PlanTitle = trueItem.PlanTitle,
+                            CreatorName = trueItem.Project.CreatorName,
+                            PlanPrice = (int)trueItem.PlanPrice,
+                            PlanId = trueItem.PlanId,
+                            PlanDescription = trueItem.PlanDescription,
+                            QuantityLimit = trueItem.QuantityLimit,
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
+
+                        };
+                        CarCarPlanItems.Add(cv);
+                    }
+                }
+            }
+            return CarCarPlanItems;
         }
 
         public List<CarCarPlanViewModel> SearchPlanDescription(string searchString)
         {
-            return GetOtherPlan(x => x.PlanDescription.Contains(searchString));
+            List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
+
+            foreach (var item in result)
+            {
+                var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true && x.PlanDescription.Contains(searchString)).ToList();
+
+                if (trueprojectPlan != null)
+                {
+                    foreach (var trueItem in trueprojectPlan)
+                    {
+                        CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                        {
+                            PlanImgUrl = trueItem.PlanImgUrl,
+                            ProjectName = trueItem.ProjectName,
+                            Category = trueItem.Project.Category,
+                            PlanTitle = trueItem.PlanTitle,
+                            CreatorName = trueItem.Project.CreatorName,
+                            PlanPrice = (int)trueItem.PlanPrice,
+                            PlanId = trueItem.PlanId,
+                            PlanDescription = trueItem.PlanDescription,
+                            QuantityLimit = trueItem.QuantityLimit,
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
+
+                        };
+                        CarCarPlanItems.Add(cv);
+                    }
+                }
+            }
+            return CarCarPlanItems;
         }
 
         public List<CarCarPlanViewModel> SearchProjectName(string searchString)
         {
-            return GetOtherPlan(x => x.ProjectName.Contains(searchString));
+            List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
+
+            foreach (var item in result)
+            {
+                var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true && x.ProjectName.Contains(searchString)).ToList();
+
+                if (trueprojectPlan != null)
+                {
+                    foreach (var trueItem in trueprojectPlan)
+                    {
+                        CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                        {
+                            PlanImgUrl = trueItem.PlanImgUrl,
+                            ProjectName = trueItem.ProjectName,
+                            Category = trueItem.Project.Category,
+                            PlanTitle = trueItem.PlanTitle,
+                            CreatorName = trueItem.Project.CreatorName,
+                            PlanPrice = (int)trueItem.PlanPrice,
+                            PlanId = trueItem.PlanId,
+                            PlanDescription = trueItem.PlanDescription,
+                            QuantityLimit = trueItem.QuantityLimit,
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
+
+                        };
+                        CarCarPlanItems.Add(cv);
+                    }
+                }
+            }
+            return CarCarPlanItems;
         }
 
         public List<CarCarPlanViewModel> SearchCategory(string searchString)
         {
-            return GetOtherPlan(x => x.Project.Category.Contains(searchString));
+            List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
+
+            foreach (var item in result)
+            {
+                var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true && x.Project.Category.Contains(searchString)).ToList();
+
+                if (trueprojectPlan != null)
+                {
+                    foreach (var trueItem in trueprojectPlan)
+                    {
+                        CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                        {
+                            PlanImgUrl = trueItem.PlanImgUrl,
+                            ProjectName = trueItem.ProjectName,
+                            Category = trueItem.Project.Category,
+                            PlanTitle = trueItem.PlanTitle,
+                            CreatorName = trueItem.Project.CreatorName,
+                            PlanPrice = (int)trueItem.PlanPrice,
+                            PlanId = trueItem.PlanId,
+                            PlanDescription = trueItem.PlanDescription,
+                            QuantityLimit = trueItem.QuantityLimit,
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
+
+                        };
+                        CarCarPlanItems.Add(cv);
+                    }
+                }
+            }
+            return CarCarPlanItems;
         }
 
         public OperationResult UpdatePlan(planview plan)

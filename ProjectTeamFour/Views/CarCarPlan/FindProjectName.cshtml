@@ -1,4 +1,5 @@
-﻿@model ProjectTeamFour.ViewModels.CarCarPlanListViewModel
+﻿
+@model ProjectTeamFour.ViewModels.CarCarPlanListViewModel
 
 @section topCSS{
     <link href="~/Assets/Css/CarCarPlanPage/carcarplanindex.css" rel="stylesheet" />
@@ -102,7 +103,7 @@
 
         <div class="indemand-project-item title-bar d-flex justify-content-between mt-2 pt-5">
             <div class="title-bar-item title">
-                <h2>車車商城</h2>
+                <h2>搜尋結果:</h2>
             </div>
             <div class="title-bar-item carcar-search d-flex">
                 <input type="text" class="w-70 text-input" id="text-input" placeholder="商城搜索">
@@ -114,14 +115,17 @@
 
         <div class="indemand-project-item cardtemplate-section">
             <div class="indemand-project-wrap">
-                <span class="searchRouterErr"> @ViewBag.ErrMsg</span>
                 <div class="row">
 
+                    @if (!Model.CarCarPlanItems.Any())
+                    {
+                        <p>親愛的，目前車車商城無您查詢的商品 !</p>
+                    }
 
                     @*@for (int i = 0; i < 12; i++)
-            {
-                @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
-            }*@
+                        {
+                            @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
+                        }*@
 
 
                     @foreach (var item in Model.CarCarPlanItems)
@@ -140,6 +144,8 @@
 
     </div>
 </section>
+
+
 
 
 

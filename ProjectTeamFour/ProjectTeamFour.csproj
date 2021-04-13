@@ -2191,6 +2191,11 @@
     <Content Include="Views\Shared\PartialView\_selectDraftPlanCardsPartial.cshtml" />
     <Content Include="Views\StartAProject\EditDraftProject.cshtml" />
     <Content Include="Views\Shared\PartialView\_navBar.cshtml" />
+    <Content Include="Views\pay\ReShop.cshtml" />
+    <Content Include="Views\ProjectDetail\NormalProjectPreview.cshtml" />
+    <Content Include="Views\Shared\PartialView\_selectPlanForPreview.cshtml" />
+    <Content Include="Views\CarCarPlan\FindProjectName.cshtml" />
+    <Content Include="Views\Projects\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -227,8 +227,13 @@
 @section endJS{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+
+    
+
     <script>
+
         const member = new Vue({
+
             /*主要監聽對象(作用範圍)*/
             el: "#member",
             data: {
@@ -262,6 +267,7 @@
                     title: '',
                     content: ''
                 },
+
                 /*儲存寄件資料的變數*/
                 emailInfoModal: {
                     id: 'emailInfo-modal',
@@ -279,14 +285,19 @@
             },
             /*呼叫GetAll API後將資料存在items*/
             created: function () {
+              
+
                 axios.get("/Api/Members/GetAll")
+
                     .then((res) => {
+
                         this.items = res.data.body.memberList;
                         this.mounted();
                         this.isBusy = false;
                     });
             },
             computed: {
+               
                 sortOptions() {
                     // Create an options list from our fields
                     return this.fields
@@ -399,11 +410,11 @@
                 resetInfoModal() {
                     this.infoModal.title = ''
                     this.infoModal.content = ''
-                    
+
                 },
                 /*重置寄信功能*/
                 resetEmailInfoModal() {
-                   
+
                     this.emailInfoModal.emailTitle = ''
                     this.emailInfoModal.emailBody = ''
                     this.emailInfoModalemailTitleState = null

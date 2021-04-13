@@ -91,6 +91,7 @@ namespace ProjectTeamFour.Controllers
             var resultCardProjectAnswer = _homeService.GetSearchProjectAnswer(id);
             var resultCardPlanTitle = _homeService.GetSearchPlanTitle(id);
             var resultCardPlanDescription = _homeService.GetSearchPlanDescription(id);
+            var resultCardPlanPrice = _homeService.GetSearchPlanPrice(id);
 
 
             foreach (var item in resultCardProjectName.ProjectItem.ProjectItems)
@@ -123,10 +124,10 @@ namespace ProjectTeamFour.Controllers
                 homeviewmodel.ProjectItem.ProjectItems.Add(item);
             }
 
-            //foreach (var item in resultCardPlanTitle.CarCarPlanItem.CarCarPlanItems)
-            //{
-            //    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
-            //}
+            foreach (var item in resultCardPlanPrice.ProjectItem.ProjectItems)
+            {
+                homeviewmodel.ProjectItem.ProjectItems.Add(item);
+            }
 
             //foreach (var item in resultCardPlanDescription.CarCarPlanItem.CarCarPlanItems)
             //{

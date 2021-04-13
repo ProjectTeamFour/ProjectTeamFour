@@ -7,9 +7,9 @@ using static ProjectTeamFour_Backend.Filters.ManagerFilter;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-    public class BackendMemberController : Controller
+    public class BackendMemberController : BaseController
     {
-        // -用filter的話這裡可能要設 [ManagerAuthroity]  Phil
+        
         public IActionResult BackendMemberIndex()
         {
             return View();
