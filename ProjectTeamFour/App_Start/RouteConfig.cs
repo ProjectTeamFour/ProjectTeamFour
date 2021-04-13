@@ -28,12 +28,10 @@ namespace ProjectTeamFour
                    url: "Projects/Category/{type}/{projectStatus}/{id}",
                    defaults: new { controller = "Projects", action = "Category", type = UrlParameter.Optional, projectStatus= UrlParameter.Optional, id= UrlParameter.Optional }
                );
-
-
             routes.MapRoute(
                name: "Default",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "CarCarPlan", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
            );
 
            
