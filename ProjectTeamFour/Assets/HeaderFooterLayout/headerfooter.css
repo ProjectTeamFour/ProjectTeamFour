@@ -122,7 +122,22 @@
 
 #sidebar .social-media{
     padding-bottom: 5rem;
+    padding-left: 2rem;
 }
+
+#sidebar .social-media-item {
+    color: #000;
+    font-size: 1.5rem;
+    transition: .3s;
+}
+
+#sidebar .social-media-item i{
+    color: #000;
+}
+
+    #sidebar .social-media-item:hover i{
+        color: #F9414A;
+    }
 /*手機input*/
 #sidebar .search-input input {
     display: none;
