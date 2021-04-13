@@ -4,12 +4,13 @@
     int progressNum = (int)progressDec;
     string progressBar = progressNum.ToString() + "%";
     DateTime today = DateTime.Now;
-    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays); 
-       
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+
  }
 @* 判斷專案募資進度 *@
+
 @{ 
-    switch(Model.ProjectDetailItem.ProjectStatus)
+    switch (Model.ProjectDetailItem.ProjectStatus)
 }
 
 <!--FB分享API初始化-->
