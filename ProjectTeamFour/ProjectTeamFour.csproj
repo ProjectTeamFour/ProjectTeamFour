@@ -326,6 +326,9 @@
     <Content Include="Assets\Img\AboutUs\team.jpg" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Img\member.png" />
+    <Content Include="Assets\Img\SiteLogo\raisebubupic-removebg.png" />
+    <Content Include="Assets\Img\SiteLogo\raisebubupic.png" />
+    <Content Include="Assets\Img\SiteLogo\raisebubupic2.png" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\CheckMemberUrl.js" />
     <Content Include="Assets\Javascript\ForgotPasswordPage\SendMail.js" />
     <Content Include="Assets\Javascript\LoginPage\Login.js" />

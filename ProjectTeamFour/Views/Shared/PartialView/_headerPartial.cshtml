@@ -26,7 +26,9 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h2>
-                @Html.ActionLink("集資車車", "Index", "Home")
+                <a href="/Home/Index"><img src="~/Assets/Img/SiteLogo/raisebubupic-removebg.png" alt="Site Logo" width="80" height="80"/></a>
+                @*<img src="~/Assets/Img/SiteLogo/raisebubupic.png" alt="Site Logo" />*@
+                @*@Html.ActionLink("集資車車", "Index", "Home")*@
             </h2>
             <li class="sidebar-item search">
                 <i class="fas fa-search" id="phone-search"></i>
@@ -53,7 +55,7 @@
             <input type="text" class="phone-input-search" id="phone-searchString">
         </div>
 
-        <ul class="list-unstyled list">
+        <ul class="list-unstyled list mt-2">
             <li class="active list-item">
                 @*htmllink*@
                 <a href="/AboutUs/Index">關於</a>
@@ -66,34 +68,38 @@
                 @*htmllink*@
                 <a href="/Projects/GetAll/id">探索</a>
             </li>
+            <li class="list-item">
+                @*htmllink*@
+                <a href="/CarCarPlan/Index">車車專區</a>
+            </li>
         </ul>
 
 
-         <div class="col-12 col-sm-12 col-md-1 mb-md-5 mt-5">
+         @*<div class="col-12 col-sm-12 col-md-1 mb-md-5 mt-5">*@
                 <div class="footer-item social-media d-flex justify-content-center mt-5">
                     <div class="row">
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                             <div class="social-media-item facebook mr-3">
                                 <a href="javascript:void(0)">
                                     <i class="fab fa-facebook-square"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                             <div class="social-media-item instagram mr-3">
                                 <a href="javascript:void(0)">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="social-media-item flickr mr-3 mt-md-3">
                                 <a href="javascript:void(0)">
                                     <i class="fab fa-flickr"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="social-media-item linkedin mt-md-3">
                                 <a href="javascript:void(0)">
                                     <i class="fab fa-linkedin"></i>
@@ -102,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            @*</div>*@
     </nav>
 
     <div class="overlay"></div>
@@ -118,8 +124,9 @@
 
         <div class="title">
             <h1>
-                <a href="/Home/Index">集資車車</a>
-                @*@Html.ActionLink("集資車車", "Index", "Home")*@
+                <a href="/Home/Index" class="nav-item">
+                    <img src="~/Assets/Img/SiteLogo/raisebubupic2.png" alt="Alternate Text" width="120" height="120" />
+                </a>
             </h1>
         </div>
 
@@ -185,6 +192,11 @@
                     <a class="nav-link guide" href="/Projects/GetAll/id">探索</a>
                 </li>
 
+                <li class="nav-item explore">
+                    @*htmllink*@
+                    <a class="nav-link guide" href="/CarCarPlan/Index">車車</a>
+                </li>
+
                 <li class="nav-item search">
                     <i class="fas fa-search pc-fa-search"></i>
                     @*<form action="/Home/Search" method="post" id="search-form">*@
@@ -194,8 +206,11 @@
 
                 <li class="title">
                     <h1>
-                        <a href="/Home/Index" class="nav-item">集資車車</a>
-                        @*@Html.ActionLink("集資車車", "Index", "Home", new { @class = "nav-item" })*@
+
+                        <a href="/Home/Index" class="nav-item">
+                            <img src="~/Assets/Img/SiteLogo/raisebubupic2.png" alt="Alternate Text" width="200" height="200"/>
+                        </a>
+                        
                     </h1>
                 </li>
                 <a class="nav-item cart" href="/ShoppingCart/ListShoppingCart">
@@ -217,7 +232,7 @@
                             <p class="message-count">@vm.UnreadCount</p>
                         </i>
                     </a>
-                    
+
                 }
 
                 <li class="nav-item dropdown">
