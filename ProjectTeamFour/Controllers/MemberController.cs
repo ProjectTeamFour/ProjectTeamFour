@@ -194,7 +194,7 @@ namespace ProjectTeamFour.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> GoogleLogin(string token, int type)
+        public async Task<ActionResult> GoogleLogin2(string token, int type)
         {
             var result = await _memberservice.GetGoogleInfo(token);
 
@@ -245,6 +245,52 @@ namespace ProjectTeamFour.Controllers
             DateTime dt = new DateTime(result[0], result[1], result[2]);
             return dt;
         }
+
+
+
+        [HttpPost]
+        public ActionResult GoogleLogin(string name, string email, string socialPlatform, string imgUrl)
+        {
+            //var result = await _memberservice.GetGoogleInfo(token);
+
+            //if (result.IsSuccessful)
+            //{
+            //var googleTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(result.MessageInfo);
+
+            if (_memberservice.IsSocialAccountRegister(email, socialPlatform)) //檢查此帳戶是否存在並註冊
+            {
+                MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == email && x.IsThirdParty == socialPlatform);
+
+                Session["Permission"] = member.Permission;  //存session
+                Session["Member"] = member; //存session
+
+                return Json(new { response = "第三方登入", status = 1 }, JsonRequestBehavior.AllowGet);  //吐json物件回去
+            }
+            else
+            {
+                OperationResult result = _memberservice.SocialAccountRegisterCreate(name, email, socialPlatform, imgUrl);    //幫使用者註冊一個通過第三方登入的會員
+                if (result.IsSuccessful == true)
+                {
+                    MemberViewModel member = _api.GetMember(x => x.MemberRegEmail == email && x.IsThirdParty == socialPlatform);
+
+                    Session["Permission"] = member.Permission; //存session
+                    Session["Member"] = member; //存session
+
+                    return Json(new { response = "註冊成功", status = 1 }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { response = "目前系統維修中暫時不能申請會員", status = 0 }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            //}
+            //else
+            //{
+            //    return Json(new { response = "發生錯誤", status = 0 });
+            //}
+        }
+
+
 
         //設定cookie暫時沒用到
         //public static HttpCookie SetCookie(string accountName, bool rememberMe)
