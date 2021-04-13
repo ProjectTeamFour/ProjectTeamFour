@@ -6,10 +6,10 @@
     string id = (string)ViewData["Id"];
 
 
-    @{
+    
         DateTime today = DateTime.UtcNow.AddHours(8);
         double dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - today.Ticks).TotalDays);
-    }
+    
 
 }
 

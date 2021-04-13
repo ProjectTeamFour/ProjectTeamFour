@@ -2157,7 +2157,6 @@
     <Content Include="Views\CarCarPlan\Type.cshtml" />
     <Content Include="Views\CarCarPlan\Search.cshtml" />
     <Content Include="Views\Shared\PersonInfo.cshtml" />
-    <Content Include="Assets\Html\_personInfoNavPartial.html" />
     <Content Include="Views\Shared\PartialView\_headerPartial.cshtml" />
     <Content Include="Views\Shared\PartialView\_footerPartial.cshtml" />
     <Content Include="Views\Shared\MemberCenterPartial\_notifactionPartial.cshtml" />
@@ -2199,11 +2198,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Html\" />
     <Folder Include="Assets\Javascript\AboutUsPage\" />
     <Folder Include="Assets\Log\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Log\" />
-    <Folder Include="Views\Mail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

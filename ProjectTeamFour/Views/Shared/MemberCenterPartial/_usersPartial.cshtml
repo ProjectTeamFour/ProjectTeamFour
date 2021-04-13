@@ -36,7 +36,7 @@
                             購買過
                             <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span> 
                             <br />發起過
-                            @if (@Model.MyProjects.Count == null)
+                            @if (Model.MyProjects.Count == null)
                             {
                                 <span>0件專案</span>
                             }
