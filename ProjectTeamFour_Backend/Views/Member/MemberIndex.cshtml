@@ -181,6 +181,7 @@
                 </template>
                 <template #cell(profileImgUrl)="data">
                     <img :src="data.item.profileImgUrl" alt="" width="50" height="50">
+                    
                 </template>
                 <template #table-busy>
                     <div class="text-center text-danger my-2">
@@ -290,7 +291,7 @@
                 axios.get("/Api/Members/GetAll")
 
                     .then((res) => {
-
+                        this.checkImg(res.data.body.memberList);
                         this.items = res.data.body.memberList;
                         this.mounted();
                         this.isBusy = false;
@@ -428,6 +429,14 @@
                 mounted() {
                     // Set the initial number of items
                     this.totalRows = this.items.length
+                },
+                checkImg(dataItems) {
+                    dataItems.forEach((item) => {
+                        if (item.profileImgUrl == null) {
+                            item.profileImgUrl = "/img/member.png";
+                        }
+                        
+                    });
                 }
             },
 
