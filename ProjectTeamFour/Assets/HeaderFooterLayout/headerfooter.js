@@ -105,6 +105,12 @@ function Logout(isThirdParty) {
 }
 
 
+document.getElementById("phone-search").addEventListener("click", function () {
+    document.getElementById("phone-searchString").style.display = "block";
+    document.getElementById("phone-searchString").focus();
+});
+
+
 
 
 

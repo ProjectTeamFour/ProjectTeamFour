@@ -189,18 +189,23 @@
     }
 
 
-
+/*
 .google-button {
     background-color: transparent;
     color: rgb(104, 103, 103);
     padding: 0.5rem 0;
     cursor: pointer;
     font-weight: 700;
-}
+}*/
 
 .login-page .other-login-item .facebook:hover {
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
 }
+
+.abcRioButtonSvg{
+    margin-left: 3rem;
+}
+
 
 
 @media (min-width: 576px) {
