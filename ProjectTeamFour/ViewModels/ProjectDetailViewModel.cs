@@ -36,5 +36,7 @@ namespace ProjectTeamFour.ViewModels
         //public virtual ICollection<Comment> Comments { get; set; }
         public string ProjectMainUrl { get; set; }
 
+        public int ApprovingStatus { get; set; }
+
     }
 }
