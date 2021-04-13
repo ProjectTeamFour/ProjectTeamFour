@@ -324,6 +324,12 @@
     <Content Include="Assets\HeaderFooterLayout\headerfooter.css" />
     <Content Include="Assets\HeaderFooterLayout\headerfooter.js" />
     <Content Include="Assets\Img\AboutUs\team.jpg" />
+    <Content Include="Assets\Img\favicon\android-chrome-192x192.png" />
+    <Content Include="Assets\Img\favicon\android-chrome-512x512.png" />
+    <Content Include="Assets\Img\favicon\apple-touch-icon.png" />
+    <Content Include="Assets\Img\favicon\favicon-16x16.png" />
+    <Content Include="Assets\Img\favicon\favicon-32x32.png" />
+    <Content Include="Assets\Img\favicon\favicon.ico" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Img\member.png" />
     <Content Include="Assets\Img\SiteLogo\raisebubupic-removebg.png" />
@@ -2090,6 +2096,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\scss\_variables.scss" />
     <Content Include="App_Code\StringFormat5.cshtml" />
     <Content Include="Assets\Plugin\Vue\Vue_cdn2.6.12.js" />
+    <None Include="Assets\Img\favicon\site.webmanifest" />
     <None Include="Properties\PublishProfiles\MyCarPlanWebsite - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\projecteteam4 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ProjectTeamFour20210310122749 - Web Deploy.pubxml" />
