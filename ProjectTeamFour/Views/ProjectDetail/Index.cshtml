@@ -8,7 +8,7 @@
 
 }
 @* 判斷專案募資進度 *@
-@{      
+@{
     switch (Model.ProjectDetailItem.ProjectStatus) { };
 }
 
@@ -376,8 +376,9 @@
     }
 
     @section endJS{
-        <script src="~/Assets/Javascript/ProductDetailPage/ProjectDetail.js"></script>
+       
 
+        <script src="~/Assets/Javascript/ProjectDetailPage/ProjectDetail.js"></script>
         <script>
 
             $('#share-btn').popover({
@@ -386,11 +387,11 @@
                 container: 'body',
                 html: true,
                 template: `<div class="popover" role="tooltip">
-                                            <div id="popover-content">
-                                            <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
-                                            <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
-                                            </div>
-                                    </div >`,
+                                                    <div id="popover-content">
+                                                    <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
+                                                    <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
+                                                    </div>
+                                            </div >`,
             });
 
             //$('#line-share').append(function () {
