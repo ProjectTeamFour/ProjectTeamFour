@@ -100,7 +100,7 @@
                                         <hr />
                                         @foreach (var item in Model.MyProjects)
                                         {
-                                            if (item.ProjectStatus == "集資中")
+                                            if (item.ProjectStatus == "集資中" || item.ProjectStatus == "集資成功")
                                             {
                                                 <div class="case-doing-creating-content">
                                                     @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
@@ -176,7 +176,7 @@
                                         <hr />
                                         @foreach (var item in Model.MyProjects)
                                         {
-                                            if (item.ProjectStatus == "集資中")
+                                            if (item.ProjectStatus == "集資中" || item.ProjectStatus == "集資成功")
                                             {
                                                 <div class="case-doing-creating-content">
                                                     @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
