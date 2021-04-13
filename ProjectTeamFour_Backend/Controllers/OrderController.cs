@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
+    [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class OrderController : BaseController
     {
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()
         {
             return View();

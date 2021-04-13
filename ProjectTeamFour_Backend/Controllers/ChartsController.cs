@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-
+    [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class ChartsController : Controller
     {
@@ -16,7 +16,6 @@ namespace ProjectTeamFour_Backend.Controllers
         {
             return View();
         }
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Chart()
         {
             return View();

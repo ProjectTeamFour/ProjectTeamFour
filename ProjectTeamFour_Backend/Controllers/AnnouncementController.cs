@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
+    [ResponseCache(NoStore =true)]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class AnnouncementController : BaseController
     {
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()
         {
             return View();

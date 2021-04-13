@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
+    [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class MemberController:Controller
     {
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult MemberIndex()
         {
             return View();
         }
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+      
         public IActionResult BackendMemberIndex()
         {
             return View();

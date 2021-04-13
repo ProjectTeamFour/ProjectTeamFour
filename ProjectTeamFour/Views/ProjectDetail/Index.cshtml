@@ -1,12 +1,12 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
-@{  decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+@{ decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     int progressNum = (int)progressDec;
     string progressBar = progressNum.ToString() + "%";
     DateTime today = DateTime.Now;
-    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays); 
-       
- }
+    int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
+
+}
 @* 判斷專案募資進度 *@
 @*@{ 
     switch(Model.ProjectDetailItem.ProjectStatus)
@@ -110,11 +110,11 @@
                                 <div id="donating-days-countdown" class="number-row">
                                     @if (dateLine >= 0)
                                     {
-                        <span class="label-grey">募資倒數</span>
+                                        <span class="label-grey">募資倒數</span>
                                         <h2 class="block">@(dateLine.ToString())天</h2> }
                                     else
                                     {
-                        <span class="label-grey">已結束</span>}
+                                        <span class="label-grey">已結束</span>}
                                 </div>
                             </div>
                             <div id="campaign-status-label">
@@ -124,22 +124,22 @@
                                             專案募資成功！
                                             在 @Model.ProjectDetailItem.EndDate
                                             募資結束前，您都可以持續贊助此計畫。
-                                        </div> 
-                                        }
+                                        </div>
+                                    }
                                     else if (Model.ProjectDetailItem.ProjectStatus == "集資失敗")
                                     {
                                         <div class="text-wrap">
                                             此計劃於 @Model.ProjectDetailItem.StartDate - @Model.ProjectDetailItem.EndDate 募資結束，很遺憾並未達成目標。
-                                        </div> 
-                                        }
+                                        </div>
+                                    }
                                     else
                                     {
                                         <div class="text-wrap">
                                             在 @Model.ProjectDetailItem.EndDate
                                             募資結束前，您都可以持續贊助此計畫。
-                                        </div> 
-                                        } 
-                                  }
+                                        </div>
+                                    }
+                                }
                             </div>
                             <!-- 手機的按鈕會變成fixed在body的bottom -->
                             <div id="backing-section" class="wrapper">
@@ -157,10 +157,10 @@
                                         </button>
                                     </div>
                                     @*<div class="btn col-4">
-                                        <button type="button" id="share-btn" class="btn btn-secondary" data-toggle="popover" data-content="Bottom popover" data-html="true" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'>
-                                            分享
-                                        </button>
-                                    </div>*@
+                                            <button type="button" id="share-btn" class="btn btn-secondary" data-toggle="popover" data-content="Bottom popover" data-html="true" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'>
+                                                分享
+                                            </button>
+                                        </div>*@
                                 </div>
 
                             </div>
@@ -175,7 +175,7 @@
             <section id="campaign-details-all">
                 <div class="container">
                     <nav id="info-tabs">
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist" >
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-link active" id="nav-story-tab" data-toggle="tab" href="#nav-story" role="tab"
                                aria-controls="nav-story" aria-selected="true">專案內容</a>
                             <a class="nav-link" id="nav-faq-tab" data-toggle="tab" href="#nav-faq" role="tab"
@@ -200,29 +200,31 @@
                                                 @*專案詳細說明內文*@
                                                 @if (Model.ProjectDetailItem.ProjectStatus == "集資成功")
                                                 {
-                                    <div class="info wrapper">
-                                        <p>已達成 募資目標!</p>
-                                    </div>}
-                                                @{ if (Model.ProjectDetailItem.ProjectId < 27)
+                                                    <div class="info wrapper">
+                                                        <p>已達成 募資目標!</p>
+                                                    </div>
+                                                }
+                                                @{ if (Model.ProjectDetailItem.ProjectId < 30)
                                                     {
                                                         string[] description_str = Model.ProjectDetailItem.ProjectImgUrl.Split(',');
                                                         foreach (var item in description_str)
                                                         {
                                                             if (item.Contains("i.imgur"))
                                                             {
-                                        <div margin:1rem;">
-                                            <img src="@item" style="width:100%;" />
-                                        </div> }
+                                                                <div margin:1rem;">
+                                                                    <img src="@item" style="width:100%;" />
+                                                                </div> }
                                                             else
                                                             {
-                <p>@item</p> }
+                                                                <p>@item</p> }
                                                         }
                                                     }
                                                     else
                                                     {
                                                         string msg = Model.ProjectDetailItem.ProjectImgUrl;
-@Html.Raw(msg);
-} }
+                                                        @Html.Raw(msg);
+                                                    }
+                                                }
                                             </div>
                                         </section>
                                     </div>
@@ -233,65 +235,65 @@
                                             @{ int index = 0;
                                                 foreach (var item in Model.ProjectDetailItem.ProjectFAQList)
                                                 {
-                                    <div class="faq">
-                                        <div class="outer row" @*id="heading-@index"*@>
-                                            @*<div class="arrow">
-                                                </div>*@
-                                            <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                    <g fill="none" fill-rule="evenodd" id="tri-label">
-                                                        <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
-                                                    </g>
-                                                </svg>
-                                                @item.Question
-                                            </button>
+                                                    <div class="faq">
+                                                        <div class="outer row" @*id="heading-@index"*@>
+                                                            @*<div class="arrow">
+                                                                </div>*@
+                                                            <button class="btn btn-link text-left question" type="button" data-toggle="collapse" data-target="#collapse-@index" aria-expanded="true" aria-controls="collapse-@index" id="heading-@index">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                    <g fill="none" fill-rule="evenodd" id="tri-label">
+                                                                        <path fill="#F8414A" d="M12.594 14.747l4.16-4.274C17.28 9.93 16.906 9 16.158 9H7.84c-.748 0-1.122.93-.594 1.473l4.162 4.274c.325.337.857.337 1.185 0z" />
+                                                                    </g>
+                                                                </svg>
+                                                                @item.Question
+                                                            </button>
 
-                                        </div>
-                                        <div id="collapse-@index" class="collapse" data-parent="#accordionExample">
-                                            <div class="card-body answer">
-                                                @item.Answer
-                                            </div>
-                                        </div>
-                                    </div> index++;
+                                                        </div>
+                                                        <div id="collapse-@index" class="collapse" data-parent="#accordionExample">
+                                                            <div class="card-body answer">
+                                                                @item.Answer
+                                                            </div>
+                                                        </div>
+                                                    </div> index++;
                                                 } }
 
                                         </div>
                                     </div>
 
                                     @* 專案進度更新 *@
-                                <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
-                                    @*下面放專案更新進度貼文的card*@
+                                    <div class="tab-pane fade" id="nav-updates" role="tabpanel" aria-labelledby="nav-updates-tab">
+                                        @*下面放專案更新進度貼文的card*@
 
-                                    @{
-                                        while (progressNum >= 100)
-                                        {
-                                            <div id="goal-wrap" class="container success">
-                                                @*<span class="post-date label-grey">2021/01/05</span>*@
-                                                <h4 class="post-label">已達成 募資目標!</h4>
-                                                <h4 class="post-title">解鎖事項：募資成功</h4>
-                                                <div class="wrapper">
+                                        @{
+                                            while (progressNum >= 100)
+                                            {
+                                                <div id="goal-wrap" class="container success">
+                                                    @*<span class="post-date label-grey">2021/01/05</span>*@
+                                                    <h4 class="post-label">已達成 募資目標!</h4>
+                                                    <h4 class="post-title">解鎖事項：募資成功</h4>
+                                                    <div class="wrapper">
 
-                                                    <div class="goal-detail ">
-                                                        <label class="label-grey">贊助金額</label>
-                                                        <h3 class="number">$ @Model.ProjectDetailItem.FundingAmount</h3>
-                                                    </div>
-                                                    <div class="goal-detail ">
-                                                        <label class="label-grey">支持者</label>
-                                                        <h3>@Model.ProjectDetailItem.Fundedpeople 人</h3>
-                                                    </div>
-                                                    <div class="goal-detail ">
-                                                        <label class="label-grey">贊助比例</label>
-                                                        <h3>@progressBar</h3>
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">贊助金額</label>
+                                                            <h3 class="number">$ @Model.ProjectDetailItem.FundingAmount</h3>
+                                                        </div>
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">支持者</label>
+                                                            <h3>@Model.ProjectDetailItem.Fundedpeople 人</h3>
+                                                        </div>
+                                                        <div class="goal-detail ">
+                                                            <label class="label-grey">贊助比例</label>
+                                                            <h3>@progressBar</h3>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            break;
+                                                break;
+                                            }
+
+
                                         }
 
-
-                                    }
-
-                                </div>
+                                    </div>
 
                                     @* 專案留言區 *@
                                     <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
@@ -315,9 +317,9 @@
                                 @*滑動的slider測試*@
                                 @foreach (var item in Model.SelectPlanCards.PlanCardItems)
                                 {
-                    <div class="card-deck">
-                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
-                    </div>}
+                                    <div class="card-deck">
+                                        @Html.Partial("~/Views/Shared/PartialView/_selectPlanCardsPartial.cshtml", item)
+                                    </div>}
                             </section>
                         </div>
                     </div>
@@ -346,7 +348,7 @@
                                     <h4>@Model.CreatorInfo.MemberTeamName</h4>
                                     <p>提案負責人：@Model.CreatorInfo.MemberName</p>
                                     @*<i class="fab fa-facebook-square"></i>
-                                    <a href="@Model.CreatorInfo.MemberWebsite"></a>*@
+                                        <a href="@Model.CreatorInfo.MemberWebsite"></a>*@
                                 </div>
                             </div>
                         </div>
@@ -379,8 +381,8 @@
     }
 
     @section endJS{
-        <script src="~/Assets/Javascript/ProductDetailPage/ProjectDetail.js"></script>
-
+        
+        <script src="~/Assets/Javascript/ProjectDetailPage/ProjectDetail.js"></script>
         <script>
 
             $('#share-btn').popover({
@@ -388,12 +390,12 @@
                 placement: 'bottom',
                 container: 'body',
                 html: true,
-                template: `<div class="popover" role="tooltip">  
-                                    <div id="popover-content">
-                                    <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>                          
-                                    <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
-                                    </div>
-                            </div >`,
+                template: `<div class="popover" role="tooltip">
+                                            <div id="popover-content">
+                                            <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
+                                            <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
+                                            </div>
+                                    </div >`,
             });
 
             //$('#line-share').append(function () {
@@ -402,7 +404,7 @@
             //    window.open(& apos; https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'
             //});
 
-      
+
             function LanchCommentAjax(ProjectId, AskedMemberId) {
                 let clientComment = document.querySelector(".form-control");
                 if (clientComment.value == null) {
@@ -447,8 +449,7 @@
 
                                 })
                             }
-                            else if (data == "Same")
-                            {
+                            else if (data == "Same") {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -464,7 +465,7 @@
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
-                                clientComment.value =""
+                                clientComment.value = ""
                             }
 
                         },

@@ -131,7 +131,8 @@ html {
   background-color: #f9414a;
 }
 
-#backing-section a, button {
+#backing-section a, 
+#backing-section button {
     display: inline-block;
     width: 100%;
     text-decoration: none;

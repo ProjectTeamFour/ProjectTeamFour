@@ -30,7 +30,7 @@ let faSearch = document.querySelector(".pc-fa-search");
 let inputSearch = document.querySelector(".pc-input-search");
 
 faSearch.addEventListener("click", function () {
-    inputSearch.style.borderBottom = "3px solid var(--color)";
+    //inputSearch.style.borderBottom = "3px solid var(--color)";
     inputSearch.focus();
 });
 
@@ -103,6 +103,12 @@ function Logout(isThirdParty) {
         window.location.href = "/Member/Logout"; //讓session 清空
     }
 }
+
+
+document.getElementById("phone-search").addEventListener("click", function () {
+    document.getElementById("phone-searchString").style.display = "block";
+    document.getElementById("phone-searchString").focus();
+});
 
 
 
