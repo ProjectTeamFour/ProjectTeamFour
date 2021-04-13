@@ -25,7 +25,6 @@ namespace ProjectTeamFour.ViewModels
 
         public List<ProjectFAQViewModel> ProjectFAQList { get; set; }
   
-        //可以動態取得看是否拿掉plan.Count(p=>p.projectid==?)......................... 
         public int ProjectPlansCount { get; set; }
         public string ProjectCoverUrl { get; set; }
         public decimal AmountThreshold { get; set; }
@@ -35,6 +34,8 @@ namespace ProjectTeamFour.ViewModels
         //public virtual ICollection<Plan> Plans { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
         public string ProjectMainUrl { get; set; }
+
+        public int ApprovingStatus { get; set; }
 
     }
 }

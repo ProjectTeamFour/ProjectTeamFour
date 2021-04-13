@@ -90,7 +90,9 @@ namespace ProjectTeamFour.Service
                 StartDate = entity.StartDate,
                 ProjectMainUrl = entity.ProjectMainUrl,
                 ProjectId = entity.ProjectId,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                ApprovingStatus = entity.ApprovingStatus,
+                
             };
             return projectdetailVM;
         }
@@ -232,6 +234,7 @@ namespace ProjectTeamFour.Service
                 MemberId = entity.MemberId,
                 DraftProjectPrincipal = entity.DraftProjectPrincipal,
                 IdentityNumber = entity.IdentityNumber,
+                ApprovingStatus = entity.ApprovingStatus,
             };
 
             return draftprojectdetailVM;

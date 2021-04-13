@@ -59,7 +59,7 @@
         @*<a id="btn-fix" href="~/StartAProject/SubmissionProcess">修改</a>*@
         @if (Model.ApprovingStatus == 2 && dateLine > 0)
         {
-            <a id="btn-view" href="~/ProjectDetail/NormalProjectPreview/@Model.ProjectId" target="_blank">前往</a>
+            <a id="btn-view" href="~/ProjectDetail/Index/@Model.ProjectId" target="_blank">前往</a>
         }
         else if (Model.ApprovingStatus == 2 && dateLine < 0)
         {

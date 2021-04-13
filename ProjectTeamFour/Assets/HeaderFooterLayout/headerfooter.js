@@ -30,7 +30,7 @@ let faSearch = document.querySelector(".pc-fa-search");
 let inputSearch = document.querySelector(".pc-input-search");
 
 faSearch.addEventListener("click", function () {
-    inputSearch.style.borderBottom = "3px solid var(--color)";
+    //inputSearch.style.borderBottom = "3px solid var(--color)";
     inputSearch.focus();
 });
 
@@ -94,10 +94,21 @@ function Logout(isThirdParty) {
                 window.location.href = "/Member/Logout"; //讓session 清空
             });
         });
-    } else {
+    } else if (isThirdParty == "Google") {
+        window.location.href = "/Member/Logout"; //讓session 清空
+        location.href = 'https://accounts.google.com/Logout?&continue=https://localhost:44300/Member/Login/';
+        window.location.href = "/Member/Logout"; //讓session 清空
+    }
+    else {
         window.location.href = "/Member/Logout"; //讓session 清空
     }
 }
+
+
+document.getElementById("phone-search").addEventListener("click", function () {
+    document.getElementById("phone-searchString").style.display = "block";
+    document.getElementById("phone-searchString").focus();
+});
 
 
 

@@ -17,8 +17,9 @@
                 <div class="register-item d-flex flex-column name-password">
                     <input type="text" placeholder="名稱" name="Name" required oninvalid="this.setCustomValidity('請幫我填一下名稱噢')" oninput="this.setCustomValidity('')">
                     <input type="email" placeholder="註冊信箱" name="Email" required oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
-                    <input type="password" id="pwrg-first" placeholder="密碼" name="Password" pattern="^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$" minlength="6" maxlength="14" oninvalid="this.setCustomValidity('請輸入介於6-14位的英文與數字')" onChange="onChange()" oninput="this.setCustomValidity('')">
-                    <input type="password" id="pwrg-second" placeholder="確認登入密碼" name="PasswordConfirm" required onChange="onChange()" oninput="this.setCustomValidity('')">
+                    <input type="password" id="pwrg-first" placeholder="密碼 : 請輸入介於6-14位的英文與數字" name="Password" pattern="^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$" minlength="6" maxlength="14" oninvalid="this.setCustomValidity('請輸入介於6-14位的英文與數字')" onChange="onChange()">
+                    @*<p class="text-danger small mt-1">請輸入介於6-14位的英文與數字</p>*@
+                    <input type="password" id="pwrg-second" placeholder="確認登入密碼" name="PasswordConfirm" required onChange="onChange()" oninput="this.setCustomValidity('')" minlength="6" maxlength="14">
                 </div>
                 <div class="register-item birthdate mb-3">
                     <p class="mb-2">生日</p>
@@ -51,25 +52,25 @@
         <div class="register-page-item split-line">
             <p>或</p>
         </div>
-        <div class="register-page-item other-register">
+        <!--<div class="register-page-item other-register">
             <div class="other-register-item title mb-3">
                 <p>社群帳號</p>
             </div>
-            <div class="other-register-item">
-                <a href="#" class="d-flex justify-content-center facebook">
+            <div class="other-register-item">-->
+                @*<a href="#" class="d-flex justify-content-center facebook">
                     <i class="fab fa-facebook-f"></i>
                     <p>使用 Facebook 帳號登入</p>
                 </a>
                 <a href="#" class="d-flex justify-content-center google">
                     <i class="fab fa-google"></i>
                     <p>使用 Google 帳號登入</p>
-                </a>
-                <p class="term">註冊 集資車車 會員即表示我同意<a href="">網站使用條款</a></p>
+                </a>*@
+                <!--<p class="term">註冊 集資車車 會員即表示我同意<a href="#">網站使用條款</a></p>
             </div>
             <hr>
-        </div>
+        </div>-->
         <div class="register-page-item d-flex justify-content-between changestatus">
-            <p>已經有 集資車車 帳號了？</p>
+            <p>已經有集資車車帳號了嗎 ?<br><strong>或是</strong> <span>使用第三方登入</span></p>
             <a href="~/Member/Login">登入</a>
         </div>
     </div>
