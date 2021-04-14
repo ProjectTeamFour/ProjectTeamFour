@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTeamFour_Backend.Controllers
 {
-
+    [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class ProjectController : Controller
     {
@@ -21,7 +21,6 @@ namespace ProjectTeamFour_Backend.Controllers
             _projectService = projectService;
         }
 
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index()
         {
             return View();

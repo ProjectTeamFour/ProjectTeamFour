@@ -30,9 +30,8 @@ namespace ProjectTeamFour.ViewModels
         public decimal AmountThreshold { get; set; }
         public string CreatorName { get; set; }
         //public string ProjectMainUrl { get; set; }
-        //導覽屬性
-        //public virtual ICollection<Plan> Plans { get; set; }
-        //public virtual ICollection<Comment> Comments { get; set; }
+
+        public DateTime CreatedDate { get; set; }
         public string ProjectMainUrl { get; set; }
 
         public int ApprovingStatus { get; set; }
