@@ -138,7 +138,6 @@
         saveAnnouncement() {
             axios.put("/Api/Announcements/SaveAnnouncement", this.Model)
                 .then(res => {
-                    console.log(res);
                     this.saveSuccess('primary');
                     this.getAnnouncement();
                     this.clearModel();
@@ -150,7 +149,6 @@
         createAnnouncement() {
             axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
                 .then(res => {
-                    console.log(res);
                     this.createSuccess('primary');
                     this.getAnnouncement();
                     this.clearModel();
@@ -167,7 +165,6 @@
                 }
             })
                 .then(res => {
-                    console.table(res);
                     this.removeSuccess('primary');
                     this.getAnnouncement();
                 })
