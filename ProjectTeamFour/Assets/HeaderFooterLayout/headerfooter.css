@@ -235,11 +235,13 @@
             margin: 0;
         }
 
-            .hamburger .title h1 a {
+.hamburger .title h1 a {
 /*                color: var(--color);
-                margin-right: 0;
-                text-decoration: none;*/
-            }
+    margin-right: 0;
+    text-decoration: none;*/
+    position:relative;
+    z-index:-1;
+}
 
     .hamburger .dropdown-toggle::after {
         border-top: .27rem solid #aaa;
@@ -415,6 +417,7 @@
         margin: 0;
         font-weight: 700;
         text-align: center;
+        z-index:-1;
     }
 
         .pcmode-navbar .title h1 a {
