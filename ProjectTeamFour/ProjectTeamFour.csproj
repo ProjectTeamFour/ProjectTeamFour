@@ -332,6 +332,7 @@
     <Content Include="Assets\Img\favicon\favicon.ico" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Img\member.png" />
+    <Content Include="Assets\Img\SiteLogo\newlogo-removebg.png" />
     <Content Include="Assets\Img\SiteLogo\newlogo.png" />
     <Content Include="Assets\Img\SiteLogo\raisebubupic-removebg.png" />
     <Content Include="Assets\Img\SiteLogo\raisebubupic.png" />
