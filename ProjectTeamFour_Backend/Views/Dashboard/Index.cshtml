@@ -205,40 +205,49 @@
                                                 var a = items.map((v, i) => tmpArray.push(v.orderDate))
                                                 items.forEach(e => Dates.push(e.orderDate))
                                                 console.log(Dates);
-                                                console.log(a);
+                                                //console.log(a);
                                             })
 
 
                                         const getOption = async () => {
-                                            const getdata = async () => {
-                                                items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
-                                                //console.log(items);
-                                                let tmpArray = [];
-                                                return items.forEach(e => tmpArray.push(e.orderDate))
-                                                console.log(tmpArray);
+                                            //const getdata = async () => {
+                                            //    items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
+                                            //    //console.log(items);
+                                            //    let tmpArray = [];
+                                            //    return items.forEach(e => tmpArray.push(e.orderDate))
+                                            //    console.log(tmpArray);
 
-                                                let OrderDate = [];
-                                                let OrderAccount = [];
-                                                function ChangeDatetoNum(arr) {
-                                                    items.map((v, i) =>
-                                                        v.split('/')
-                                                            .reduce((pre, now) =>
-                                                            {
-                                                                return now.length < 2 ? pre + '0' + now : pre + now
-                                                            }, "")
-                                                    )}
-                                                let newOrderDate = ChangeDatetoNum(tmpArray);
-                                                console.log(newOrderDate);
-                                                const compare = (a, b) => {
-                                                    if (ChangeDatetoNum(a.orderDate) > ChangeDatetoNum(b.orderDate))
-                                                        return 1;
-                                                    else
-                                                        return -1;
-                                                }
-                                                items.sort(compare);
-                                                items.forEach(e => OrderDate.push(e.orderDate));
-                                                items.forEach(e => OrderAccount.push(e.orderTotalAccount));
-                                                return { x: OrderDate, y: OrderAccount }
+                                            //    let OrderDate = [];
+                                            //    let OrderAccount = [];
+                                            //    function ChangeDatetoNum(arr) {
+                                            //        items.map((v, i) =>
+                                            //            v.split('/')
+                                            //                .reduce((pre, now) =>
+                                            //                {
+                                            //                    return now.length < 2 ? pre + '0' + now : pre + now
+                                            //                }, "")
+                                            //        )}
+                                            //    let newOrderDate = ChangeDatetoNum(tmpArray);
+                                            //    console.log(newOrderDate);
+                                            //    const compare = (a, b) => {
+                                            //        if (ChangeDatetoNum(a.orderDate) > ChangeDatetoNum(b.orderDate))
+                                            //            return 1;
+                                            //        else
+                                            //            return -1;
+                                            //    }
+                                            //    items.sort(compare);
+                                            //    items.forEach(e => OrderDate.push(e.orderDate));
+                                            //    items.forEach(e => OrderAccount.push(e.orderTotalAccount));
+                                            //    return { x: OrderDate, y: OrderAccount }
+                                            //}
+                                            const getdata = async () =>
+                                            {
+                                                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList
+                                                let tmpArray = []
+                                                items.map((v, i) => tmpArray.push(i))
+                                                let account = []
+                                                items.map((v, i) => account.push(parseInt(v.orderTotalAccount)))
+                                                return { x: tmpArray, y: account }
                                             }
                                             let tmp = await getdata();
                                             var option = {
@@ -249,6 +258,9 @@
                                                 //legend: {
                                                 //data: ['金額']
                                                 //},
+                                                tooltip: {
+                                                    trigger: 'item',     //觸發類型（座標軸觸發）
+                                                },
                                                 xAxis: {
                                                     data: tmp.x
                                                     //data:months
@@ -290,11 +302,13 @@
                                 <div class="card-body">
                                     <div class="chart-pie" id="projectStatus_pie" style="width: 350px;height:300px;"></div>
                                     <script>
-                                        const getOption_pie1 = async () => {
-                                            const getdata = async () => {
-                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+                                        const getOption_pie1 = async () =>
+                                        {
+                                            const getdata = async () =>
+                                            {
+                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList
 
-                                                let count = [0, 0, 0, 0, 0, 0];
+                                                let count = [0, 0, 0, 0, 0, 0]
                                                 const json = {
                                                     "集資中": 0,
                                                     "集資成功": 1,
@@ -303,63 +317,145 @@
                                                     "結束且成功": 4,
                                                     "結束且失敗": 5
                                                 }
-                                                items.map((v, i) => count[json[v.projectStatus]]++);
-
-                                                const categories = ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"]
-                                                //items.forEach(result, (key, values) =>
-                                                //{
-                                                //    names.push(categories)
-                                                //    nums.push(count)
-                     
-                                                //}
-                                                 return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
+                                                items.map((v, i) => count[json[v.projectStatus]]++)
+                                                return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
                                             }
-                                            let tmp = await getdata();
-                                            console.log(tmp)
+                                            let tmp = await getdata()
 
+                                            // 指定图表的配置项和数据
                                             var option = {
                                                 title: {
-                                                    text: '募資狀態統計圖',
-                                                    show: false
+                                                    text: '募資狀態統計圖'
                                                 },
                                                 tooltip: {
-                                                    trigger: 'item',     //觸發類型（座標軸觸發）
+                                                    trigger: 'item',
                                                 },
                                                 legend: {
-                                                    //top: '5%',
-                                                    //left: 'center',
-                                                    series: [{
-                                                        name: '募資狀態',
-                                                        radius: ['40%', '70%'],
-                                                        avoidLabelOverlap: false,
-                                                        type: 'pie',
-                                                        data: tmp.y,
-                                                        // [
-                                                        //    { value: 1048, name: '搜索引擎' },
-                                                        //    { value: 735, name: '直接访问' },
-                                                        //    { value: 580, name: '邮件营销' },
-                                                        //    { value: 484, name: '联盟广告' },
-                                                        //    { value: 300, name: '视频广告' }
-
+                                                    top: '5%',
+                                                    left: 'center',
+                                                    data: tmp.x
+                                                },
+                                                //xAxis: [{
+                                                //    data: tmp.x,
+                                                //    show: false
+                                                //}],
+                                                //yAxis: {
+                                                //    type: 'value',
+                                                //    show:false
+                                                //},
+                                                series: [{
+                                                    name: '募資狀態',
+                                                    radius: ['40%', '70%'],
+                                                    avoidLabelOverlap: false,
+                                                    type: 'pie',
+                                                    data: tmp.y,
+                                                    label: {
+                                                        show: false,
+                                                        position: 'center'
+                                                    },
+                                                    labelLine: {
+                                                        //show: false
+                                                    },
+                                                    emphasis: {
                                                         label: {
-                                                            show: false,
-                                                            position: 'center'
-                                                        },
-                                                        labelLine: {
-                                                            show: false
-                                                        },
-                                                        emphasis: {
-                                                            label: {
-                                                                show: true,
-                                                                fontSize: '40',
-                                                                fontWeight: 'bold'
-                                                            }
-                                                        },
-                                                    }]
-                                                }
-                                            };
-                                            return option;
+                                                            show: true,
+                                                            fontSize: '40',
+                                                            fontWeight: 'bold'
+                                                        }
+                                                    },
+                                                }]
                                             }
+                                            return option
+                                        }
+                                        //const getOption_pie1 = async () => {
+                                        //    const getdata = async () =>
+                                        //    {
+                                        //        let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList
+
+                                        //        let count = [0, 0, 0, 0, 0, 0]
+
+                                        //        const json2 =
+                                        //            [
+                                        //                { value: 0, name: '集資中' },
+                                        //                { value: 0, name: '集資成功' },
+                                        //                { value: 0, name: '集資失敗' },
+                                        //                { value: 0, name: '審核中' },
+                                        //                { value: 0, name: '結束且成功' },
+                                        //                { value: 0, name: '結束且失敗' }
+                                        //            ];
+                                        //        //const json = {
+                                        //        //    "集資中": 0,
+                                        //        //    "集資成功": 1,
+                                        //        //    "集資失敗": 2,
+                                        //        //    "審核中": 3,
+                                        //        //    "結束且成功": 4,
+                                        //        //    "結束且失敗": 5
+                                        //        //}
+                                        //        //items.map((v, i) => count[json[v.projectStatus]]++);
+
+                                        //        //const json3 = {}
+                                        //        json = items.reduce((json, value, key) => { json[key] = value.projectStatus; return json }, {})
+                                        //        //console.log(json);
+                                        //        //console.log(json3);
+
+                                        //        const status = ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"];
+                                        //        //items.forEach(result, (key, values) =>
+                                        //        //{
+                                        //        //    names.push(categories)
+                                        //        //    nums.push(count)
+                     
+                                        //        //}
+                                        //         //return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
+                                        //         //return { json }
+                                        //    }
+                                        //    let tmp = await getdata();
+                                        //    console.log(tmp)
+
+                                        //    var option = {
+                                        //        title: {
+                                        //            text: '募資狀態統計圖',
+                                        //            show: false
+                                        //        },
+                                        //        tooltip: {
+                                        //            trigger: 'item',     //觸發類型（座標軸觸發）
+                                        //        },
+                                        //        legend: {
+                                        //            //top: '5%',
+                                        //            //left: 'center',
+                                        //            series: [{
+                                        //                name: '募資狀態',
+                                        //                radius: ['40%', '70%'],
+                                        //                avoidLabelOverlap: false,
+                                        //                type: 'pie',
+                                        //                data: [
+                                        //                    json
+                                        //                    ],
+                                        //                // [
+                                        //                //    { value: 1048, name: '搜索引擎' },
+                                        //                //    { value: 735, name: '直接访问' },
+                                        //                //    { value: 580, name: '邮件营销' },
+                                        //                //    { value: 484, name: '联盟广告' },
+                                        //                //    { value: 300, name: '视频广告' }
+
+                                        //                label: {
+                                        //                    show: false,
+                                        //                    position: 'center'
+                                        //                },
+                                        //                labelLine: {
+                                        //                    show: false
+                                        //                },
+                                        //                emphasis: {
+                                        //                    label: {
+                                        //                        show: true,
+                                        //                        fontSize: '40',
+                                        //                        fontWeight: 'bold'
+                                        //                    }
+                                        //                },
+                                        //            }]
+                                        //        }
+                                        //    };
+                                        //    return option;
+                                        //    }
                                         
                                         getOption_pie1().then(option => {
                                             //console.log(option);

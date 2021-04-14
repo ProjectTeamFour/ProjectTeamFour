@@ -19,7 +19,7 @@ namespace ProjectTeamFour_Backend.WebApi
     [ApiController]
     public class AnnouncementsController : ControllerBase
     {
-        private readonly CarCarPlanContext _context;
+        //private readonly CarCarPlanContext _context;
         private readonly IAnnouncementService _announcementService;
         private readonly ILogger<AnnouncementsController> _logger;
         public AnnouncementsController(IAnnouncementService announcementService,ILogger<AnnouncementsController> logger,CarCarPlanContext context)
