@@ -30,7 +30,7 @@ let faSearch = document.querySelector(".pc-fa-search");
 let inputSearch = document.querySelector(".pc-input-search");
 
 faSearch.addEventListener("click", function () {
-    inputSearch.style.borderBottom = "3px solid var(--color)";
+    //inputSearch.style.borderBottom = "3px solid var(--color)";
     inputSearch.focus();
 });
 
