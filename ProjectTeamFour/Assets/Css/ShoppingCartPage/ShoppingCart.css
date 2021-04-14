@@ -5,7 +5,11 @@
     border-bottom-width: 1px;
 }
 
-img {
+#app img {
+    width: 100%;
+}
+
+.wish-list img {
     width: 100%;
 }
 
