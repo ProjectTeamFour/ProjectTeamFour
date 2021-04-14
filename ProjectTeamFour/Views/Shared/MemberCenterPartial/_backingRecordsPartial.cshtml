@@ -64,12 +64,14 @@
                                     <div class="items">方案單價</div>
                                     <div class="items">方案數量</div>
                                     <div class="items">方案名稱</div>
+                                    <div class="items">寄送日期</div>                                    
                                 </div>
                
                                 <div v-for="item in modeldata " class="detail-group col-12">
                                     <div class="detail-item" id="odmoney">{{item.OrderPrice}}</div>
                                     <div class="detail-item" id="qty">{{item.OrderQuantity}}</div>
                                     <div class="detail-item" id="plantitle">{{item.PlanTitle}}</div>
+                                    <div class="detail-item" id="plantitle">{{item.PlanShipDate}}</div>
                                 </div>
                             </div>                                                         
                         </div>
