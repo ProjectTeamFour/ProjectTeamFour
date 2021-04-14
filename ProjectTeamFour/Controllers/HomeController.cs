@@ -60,7 +60,7 @@ namespace ProjectTeamFour.Controllers
             {
                 homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(item);
             }
-            homeviewmodel.Announcements = _announcementService.GetAnnouncement(28);
+            homeviewmodel.Announcements = _announcementService.GetAnnouncement(48);
             return View(homeviewmodel);
         }
 
