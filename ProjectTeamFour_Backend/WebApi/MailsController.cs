@@ -107,7 +107,7 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             string returnData = "";
             //string path = _hostingEnvironment.ContentRootPath + @"\\Template"  + @"\\mailtemplate.html";
-            string path = Path.Combine(_hostingEnvironment.ContentRootPath , @"Template", @"mailtemplate.html" );
+            string path = Path.Combine(_hostingEnvironment.ContentRootPath, "Template", "mailtemplate.html" );
 
             if (path != null)
             {
