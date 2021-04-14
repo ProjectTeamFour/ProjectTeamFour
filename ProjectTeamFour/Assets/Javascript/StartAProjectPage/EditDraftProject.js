@@ -1265,7 +1265,6 @@ var form = new Vue({
                     AddCarCarPlanSwitch = "否";
                 }
 
-
                 var planDateString = item.StringDraftPlanShipDate.split("00")[0].trim();
                 //console.log(planDateString.split("-")[0].trim());
                 //console.log(planDateString.split("-")[1].trim());
@@ -1297,17 +1296,20 @@ var form = new Vue({
             {
                 //console.log(response.data.CreatorInfo.ProfileImgUrl);
                 this.inputData.TeamPicture = response.data.CreatorInfo.ProfileImgUrl;
+                priu = response.data.CreatorInfo.ProfileImgUrl;
                 this.inputDataCheck.TeamPictureError = false;
             }
             if (response.data.DraftProjectDetailItem.DraftProjectMainUrl != null)
             {
                 //console.log(response.data.CreatorInfo.ProfileImgUrl);
                 this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+                pmu = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
                 this.inputDataCheck.ProjectMainUrlError = false;
             }
             if (response.data.DraftProjectDetailItem.DraftProjectCoverUrl != null) {
                 //console.log(response.data.DraftProjectDetailItem.DraftProjectCoverUrl);
                 this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl;
+                pcu = response.data.DraftProjectDetailItem.DraftProjectCoverUrl;
                 this.inputDataCheck.ProjectCoverUrlError = false;
             }
         },

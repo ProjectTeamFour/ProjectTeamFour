@@ -1,0 +1,486 @@
+﻿
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">集資車車募資平台分析</h1>
+                <p class="mb-4">
+                    募資平台經營簡易統計概況
+                    <a target="_blank" href="#">集資車車</a>
+                </p>
+
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- Line Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">月營業額統計圖</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <div id="orders_line" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+
+                                    const getOption = async () => {
+                                        const getdata = async () => {
+                                            let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
+                                            let tmpArray = [];
+                                            items.map((v, i) => tmpArray.push(i));
+                                            let account = [];
+                                            items.map((v, i) => account.push(parseInt(v.orderTotalAccount)));
+                                            return { x: tmpArray, y: account }
+                                        }
+                                        let tmp = await getdata();
+                                        var option = {
+                                            title: {
+                                                text: '訂單銷售統計圖'
+                                            },
+                                            //legend: {
+                                            //data: ['金額']
+                                            //},
+                                            xAxis: {
+                                                data: tmp.x
+                                                //data:months
+                                            },
+                                            yAxis: {
+                                                type: 'value'
+                                            },
+                                            series: [{
+                                                name: '金額',
+                                                type: 'line',
+                                                data: tmp.y
+                                            }]
+                                        };
+                                        return option;
+                                    }
+
+                                    getOption().then(option => {
+                                        console.log(option);
+                                        var moneyChart = echarts.init(document.getElementById('orders_line'));
+                                        moneyChart.setOption(option);
+                                    })
+
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bar Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">提案分類統計圖</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <div id="category_bar" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    //var myChart = echarts.init(document.getElementById('category_bar'));
+                                    //var categories = ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"];
+                                    //var projectStatus = [];
+
+                                    //var projectSummary = [];
+
+                                    const getOption_bar1 = async () => {
+                                        const getdata = async () => {
+                                            let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                                            let account = [0, 0, 0, 0, 0, 0];
+                                            const json = {
+                                                "科技設計": 0,
+                                                "藝術影視": 1,
+                                                "音樂": 2,
+                                                "生活": 3,
+                                                "公共在地": 4,
+                                                "遊戲出版": 5
+                                            }
+                                            items.map((v, i) => account[json[v.category]]++);
+                                            return { x: ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"], y: account }
+                                        }
+                                        let tmp = await getdata();
+
+                                        var option = {
+                                            title: {
+                                                text: '提案分類統計圖'
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis',     //觸發類型（座標軸觸發）
+                                            },
+                                            legend: {
+                                                data: ['category']
+                                            },
+                                            xAxis: [{
+                                                data: tmp.x
+                                            }],
+                                            yAxis: {
+                                                type: 'value'
+                                            },
+                                            series: [{
+                                                name: '提案分類',
+                                                type: 'bar',
+                                                data: tmp.y
+
+                                            }]
+                                        };
+                                        return option;
+                                    }
+
+                                    getOption_bar1().then(option => {
+                                        console.log(option);
+                                        var myChart = echarts.init(document.getElementById('category_bar'));
+                                        myChart.setOption(option);
+                                    })
+
+
+                                    ////var linNums = [];
+                                    //function getProjects() {
+                                    //    axios.get('/Api/Projects/GetAll')
+                                    //        .then(function (res) {
+                                    //            this.projects = res.data.body.projectList;
+                                    //            //console.log(projects);
+                                    //            //this.mounted();
+
+                                    //            projectSummary = projects.map(item => Object.values(item)[3]);
+                                    //            projectStatus = projects.map(item => Object.values(item)[4]);
+
+
+                                    //            //$.each(items, function (key, value) {
+                                    //            //    x.push(items.category);
+
+                                    //            //    if (value) {
+                                    //            //        x[value] = (y[value]) ? x[value] + 1 : 1;
+                                    //            //        //y.push(values.count);
+                                    //            //    }
+                                    //            //});
+                                    //            console.log(projectSummary);
+                                    //            //console.log(x.join(','));
+                                    //        }).catch(function (err) {
+                                    //            console.log(err);
+                                    //        });
+                                    //};
+                                    //getProjects();
+
+
+                                    //myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">平台專案募資狀態統計圖</h6>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-pie pt-4">
+                                    <div id="projectStatus_pie" style="width: 800px;height:300px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    const getOption_pie1 = async () => {
+                                        const getdata = async () => {
+                                            let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                                            let count = [0, 0, 0, 0, 0, 0];
+                                            const json = {
+                                                "集資中": 0,
+                                                "集資成功": 1,
+                                                "集資失敗": 2,
+                                                "審核中": 3,
+                                                "結束且成功": 4,
+                                                "結束且失敗": 5
+                                            }
+                                            items.map((v, i) => count[json[v.projectStatus]]++);
+                                            return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
+                                        }
+                                        let tmp = await getdata();
+
+                                        // 指定图表的配置项和数据
+                                        var option = {
+                                            title: {
+                                                text: '募資狀態統計圖'
+                                            },
+                                            tooltip: {
+                                                trigger: 'item',     //觸發類型（座標軸觸發）
+                                            },
+                                            legend: {
+                                                top: '5%',
+                                                left: 'center',
+                                                data: tmp.x
+                                            },
+                                            xAxis: [{
+                                                data: tmp.x
+                                            }],
+                                            yAxis: {
+                                                type: 'value'
+                                            },
+                                            series: [{
+                                                name: '募資狀態',
+                                                radius: ['40%', '70%'],
+                                                avoidLabelOverlap: false,
+                                                type: 'pie',
+                                                data: tmp.y,
+                                                label: {
+                                                    show: false,
+                                                    position: 'center'
+                                                },
+                                                labelLine: {
+                                                    show: false
+                                                },
+                                                emphasis: {
+                                                    label: {
+                                                        show: true,
+                                                        fontSize: '40',
+                                                        fontWeight: 'bold'
+                                                    }
+                                                },
+                                            }]
+                                        };
+                                        return option;
+                                    }
+                                    getOption_pie1().then(option => {
+                                        console.log(option);
+                                        var myChart = echarts.init(document.getElementById('projectStatus_pie'));
+                                        myChart.setOption(option);
+                                    })
+
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--var dec bar chart-->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">銷售排行榜</h6>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-bar pt-4">
+                                    <div id="main" style="width: 600px;height:400px;"></div>
+                                </div>
+                                <hr>
+                                <script>
+                                    const getOption_bar2 = async () => {
+                                        const getdata = async () => {
+                                            let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+
+                                            let ProjectName = [];
+                                            let ProjectFundingAmount = [];
+                                            const compare = (a, b) => {
+                                                if (a.fundingAmount > b.fundingAmount)
+                                                    return -1;
+                                                else if (a.fundingAmount < b.fundingAmount)
+                                                    return 1;
+                                                return 0;
+                                            }
+                                            items.sort(compare);
+                                            items.forEach(e => ProjectName.push(e.projectName));
+                                            items.forEach(e => ProjectFundingAmount.push(e.fundingAmount));
+                                            //let count = [0, 0, 0, 0, 0, 0];
+                                            //const json = {
+                                            //    "集資中": 0,
+                                            //    "集資成功": 1,
+                                            //    "集資失敗": 2,
+                                            //    "審核中": 3,
+                                            //    "結束且成功": 4,
+                                            //    "結束且失敗": 5
+                                            //}
+                                            //items.map((v, i) => count[json[v.projectStatus]]++);
+                                            
+          
+                                            return { x: ProjectName, y: ProjectFundingAmount }
+                                        }
+                                        let tmp = await getdata();
+
+                                        // 指定图表的配置项和数据
+                                        var option = {
+                                            title: {
+                                                text: '銷售排行榜測試'
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    type: 'line'     //指示器類型（直線指示器）
+                                                }
+                                            },
+                                            legend: {
+                                                data: '銷量'
+                                            },
+                                            transform: {
+                                                type: 'sort',
+                                                config: { dimension: 'ProjectFundingAmount', order: 'desc' }
+                                            },
+                                            xAxis: {
+                                                type:'category',
+                                                data: tmp.x
+                                            },
+                                            yAxis: {
+                                                type: 'value',
+                                                //data: tmp.y
+                                            },
+                                            series: [{
+                                                name: '銷售金額',
+                                                type: 'bar',
+                                                data: tmp.y  
+                                            }]
+                                        };
+                                        return option;
+                                    }
+
+                                    getOption_bar2().then(option => {
+                                        console.log(option);
+                                        var myChart = echarts.init(document.getElementById('main'));
+                                        // 使用刚指定的配置项和数据显示图表。
+                                        myChart.setOption(option);
+                                    })
+
+                                    //指定图表的配置项和数据
+                                    //var option = {
+                                    //    getProjects=() => {
+                                    //        axios.get('/Api/Projects/GetAll')
+                                    //            .then((res) => {
+                                    //                this.items = res.data.body.projectList;
+                                    //            })
+                                    //    }
+                                    //};
+
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--測試echarts-vue數據-->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">測試echarts-vue數據</h6>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-area pt-4">
+                                    <div id="test" style="width: 800px;height:400px;"></div>
+                                    <script>
+                                        //var myChart = echarts.init(document.getElementById('test'));
+                                        
+                                        //const getTestDta = () => {
+                                        //    //axios.get("/Api/Charts/GetProjects")
+                                        //    //    .then((res) => {
+                                        //    //        var dta = res.data.body;
+                                        //    //        this.goods = dta
+                                        //    //        console.log(this.goods);
+                                        //    //        //    console.log(Array.from(this.goods.xAxis.data));
+                                        //    //    })
+
+                                        //    // 异步加载数据
+                                        //    axios.get("/api/Orders/GetAll")
+                                        //        .then((res) => {
+                                        //            var order = res.data.body.myOrderList
+                                        //            //console.log(order)
+                                        //            const list = data.series.map(order => {
+                                        //                let list = order.data;
+                                        //                return [...list]
+                                        //            })
+                                        //        })
+
+                                        //    console.log(list);
+                                        //    console.log(Array.from(...list));
+                                        //};
+                                        //// 显示标题，图例和空的坐标轴
+                                        //var Option = {
+                                        //    title: '',
+                                        //    xAxis: {
+                                        //        //data: //data.xAxis.data
+                                        //    },
+                                        //    series: [{
+                                        //        name: '銷量',
+                                        //        type: 'bar',
+                                        //        data: getTestDta => Array.from(...list) //[5, 20, 36, 10, 10, 20]
+                                        //    }]
+                                        //}
+                                        ////methods: {
+                                        ////    drawBarChart() {
+                                        ////        // 基於準備好的dom，初始化echarts例項
+                                        ////        var myChart = this.echarts.init(document.getElementById('test'))
+                                        ////        // 繪製圖表
+                                        ////        myChart.setOption({
+                                        ////            title: { text: '异步数据加载示例' },
+                                        ////            tooltip: {},
+                                        ////            xAxis: {
+                                        ////                data: [] //["襯衫","羊毛衫","雪紡衫","褲子","高跟鞋","襪子"]
+                                        ////            },
+                                        ////            yAxis: {},
+                                        ////            series: [{
+                                        ////                name: '銷量',
+                                        ////                type: 'bar',
+                                        ////                data: [] //[5, 20, 36, 10, 10, 20]
+                                        ////            }]
+                                        ////        });
+                                        ////        methods: {
+
+                                        ////            function drawLine() {
+                                        ////                //methods: {
+                                        ////                //    getall() {
+                                        ////                //        $.get('data.json').done(function (data) {
+                                        ////                //            // 填入数据
+                                        ////                //            myChart.setOption({
+                                        ////                //                xAxis: {
+                                        ////                //                    data: data.categories
+                                        ////                //                },
+                                        ////                //                series: [{
+                                        ////                //                    // 根据名字对应到相应的系列
+                                        ////                //                    name: '销量',
+                                        ////                //                    data: data.data
+                                        ////                //                }]
+                                        ////                //            });
+                                        ////                //
+                                        ////                //    };
+                                        ////                //}
+                                        ////            };
+
+
+
+                                        ////myChart.setOption(option);
+                                    </script>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--end of Charts-->
+            </div>
+            <!--End Page Content-->
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Content Wrapper-->
+</div>
+<!--End Page Wrapper-->

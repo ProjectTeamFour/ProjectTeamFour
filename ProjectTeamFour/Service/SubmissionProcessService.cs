@@ -32,8 +32,8 @@ namespace ProjectTeamFour.Service
             result.Status = member.MemberId;
             //using (var transaction = _context.Database.BeginTransaction())
             //{
-            try
-            {
+                try
+                {
                 member.MemberConEmail = input.MemberConEmail;
                 member.MemberPhone = input.MemberPhone;
                 member.ProfileImgUrl = input.ProfileImgUrl;
@@ -118,8 +118,8 @@ namespace ProjectTeamFour.Service
                 result.Exception = ex;
                 result.DateTime = DateTime.Now;
                 result.IsSuccessful = false;
-                //transaction.Rollback();
-            }
+                    //transaction.Rollback();
+                }
             //}
             return result;
 
