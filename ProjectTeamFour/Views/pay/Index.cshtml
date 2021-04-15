@@ -13,9 +13,12 @@
 }
 @section endJS{
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
-    <script>        
+    <script>
+        $(document).ready(function () {
+            Binding();
+        })
         function Binding() {
-            new Vue({
+            var form =new Vue({
                 el: "#app",
                 data: {
                     inputData: {
@@ -145,11 +148,12 @@
             })
         }
 
-    function Save2Server() {
+        function Save2Server() {
+        @*var self=this*@
         $.ajax({
             type: "POST",
             url: '@Url.Action("test", "Pay")',
-            data: JSON.stringify({ OrderName: $data.inputData.Name, OrderAddress: $data.inputData.Address, OrderPhone: $data.inputData.Tel, OrderConEmail: $data.inputData.Email }), //注意是放JSON  字串
+            data: JSON.stringify({ OrderName: /*form.*/this.form.inputData.Name, OrderAddress: /*form.*/this.form.inputData.Address, OrderPhone: /*form.*/this.form.inputData.Tel, OrderConEmail: /*form.*/this.form.inputData.Email }), //注意是放JSON  字串
             dataType: "json",
             headers: {
                 'Content-type': 'application/json'
@@ -164,9 +168,7 @@
         });
         }
 
-        $(document).ready(function () {
-            Binding();
-        })
+        
     </script>
 }
 
