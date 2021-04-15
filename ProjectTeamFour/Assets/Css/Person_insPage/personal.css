@@ -595,6 +595,11 @@ tr.shown td.details-control {
 	font-size: 0.5rem;
 }
 
+#plandate{
+	position:relative;
+	left:40px;
+}
+
 .dataTables_wrapper {
 	width: 100%;
 }

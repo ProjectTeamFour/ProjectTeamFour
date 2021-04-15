@@ -85,7 +85,11 @@ namespace ProjectTeamFour.Controllers
             return null;
         }
 
-
+        /// <summary>
+        /// 綠界回傳結果，若RtnCode為1，則為已付款
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Result(FormCollection form)
         {

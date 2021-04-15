@@ -165,9 +165,13 @@ namespace ProjectTeamFour.Service
                 try
                 {                    
                     result.OrderDate = DateTime.UtcNow.AddHours(8);
+
                     result.condition = "已付款";
+                    _repository.Update<Order>(result);
                     result.RtnCode = rtnCode;
+                    _repository.Update<Order>(result);
                     result.TradeNo = MerchantTradeNo;
+                    _repository.Update<Order>(result);
                     foreach (var item in odData)
                     {
                         item.condition = result.condition;
@@ -176,13 +180,11 @@ namespace ProjectTeamFour.Service
                         ///判斷結完帳之後的募資進度
                         foreach(var pj in projectview)
                         {
-
                             pj.Fundedpeople = pj.Fundedpeople + 1;
                             pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
                             ///結完帳之後的募資進度
                             projectProgress = (pj.FundingAmount / pj.AmountThreshold)*100;
                             ///接著於下根據募資進度來發送通知
-
 
                         }
                         foreach (var p in planview)

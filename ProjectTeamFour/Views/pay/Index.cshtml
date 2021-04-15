@@ -13,7 +13,7 @@
 }
 @section endJS{
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
-    <script>
+<script>
         $(document).ready(function () {
             Binding();
         })
@@ -143,33 +143,33 @@
                                 }
                             })
                         }
+                    },
+                    Save2Server: function (e) {
+                        var self = this;
+                                $.ajax({
+                                    type: "POST",
+                                    url: '@Url.Action("test", "Pay")',
+                                    data: JSON.stringify({ OrderName: /*form.*/this.inputData.Name, OrderAddress: /*form.*/this.inputData.Address, OrderPhone: /*form.*/this.inputData.Tel, OrderConEmail: /*form.*/this.inputData.Email }), //注意是放JSON  字串
+                                    dataType: "json",
+                                    headers: {
+                                        'Content-type': 'application/json'
+
+                                    }, //注意 Content-type
+                                    success: function (response) {
+                                        console.log(data);
+                                    },
+                                    error: function (err) {
+                                        console.log(err);
+                                    }
+                                });
                     }
                 }
             })
         }
 
-        function Save2Server() {
-        @*var self=this*@
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("test", "Pay")',
-            data: JSON.stringify({ OrderName: /*form.*/this.form.inputData.Name, OrderAddress: /*form.*/this.form.inputData.Address, OrderPhone: /*form.*/this.form.inputData.Tel, OrderConEmail: /*form.*/this.form.inputData.Email }), //注意是放JSON  字串
-            dataType: "json",
-            headers: {
-                'Content-type': 'application/json'
+       
 
-            }, //注意 Content-type
-            success: function (response) {
-                console.log(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-        }
-
-        
-    </script>
+</script>
 }
 
 
@@ -332,7 +332,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay" id="ToBuy">
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()" value="確認購買" v-on:click="checkAddVerify">
+                        <input type="submit" id="Save2Sever" v-on:click="Save2Server" value="確認購買" v-on:click="checkAddVerify">
                     </a>
                 </div>
             </div>

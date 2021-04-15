@@ -1,4 +1,5 @@
-﻿let getodjson = document.getElementById("odtransJSON");
+﻿
+let getodjson = document.getElementById("odtransJSON");
 let getjson = document.getElementById("transJSON");
 var obj = JSON.parse(getjson.value);//order 陣列
 var objod = JSON.parse(getodjson.value); //orderdetail 陣列
@@ -13,7 +14,16 @@ var jsonObj = {
     "modeldata": []
 };
 
-var odData = jsonObj.modeldata;
+var odData = jsonObj.modeldata
+//changeDate(jsonObj.detail);
+//var i = 0;
+
+
+//function changeDate(DataItems) {  //轉換日期方法 DATAITEMS = 裝欄位的LIST
+//    DataItems.forEach(item => {
+//        item.PlanShipDate = moment(item.PlanShipDate).format('MM-DD-YYYY');
+//    });
+//}
 
 function sendDataToRecord() {
     $.ajax({
