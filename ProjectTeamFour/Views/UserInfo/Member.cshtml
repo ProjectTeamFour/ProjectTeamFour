@@ -663,6 +663,7 @@
                     let SubmitLimit = $('#' + id + 'planNumber').val() //提交庫存數
 
                     let SubmitLimitRegexpNum = /^[1-9]*$/;//輸入非數字時提示                   
+                    let SubmitLimitNum = /^((-\d+)|(0+))$/; //輸入非正整數時提示
 
                     let SubmitLimitError = false
                     let SubmitLimitErrorMsg = '';
@@ -679,10 +680,10 @@
                         SubmitLimitError = true;
                         swal({
                             title: 'warning',
-                            text: '數字不得為0！',
+                            text: '數字不得為0或負數！',
                             icon: 'error'
                         });  
-                    }
+                    }                  
                     else {
                         SubmitLimitError = false;
                         SubmitLimitErrorMsg = '';
