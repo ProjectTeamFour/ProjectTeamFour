@@ -23,6 +23,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace ProjectTeamFour_Backend
 {
@@ -138,6 +140,7 @@ namespace ProjectTeamFour_Backend
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+           
             app.UseCookiePolicy();
             app.UseRouting();
             app.UseCors();

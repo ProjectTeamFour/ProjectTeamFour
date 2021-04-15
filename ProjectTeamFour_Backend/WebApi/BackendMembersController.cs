@@ -97,16 +97,11 @@ namespace ProjectTeamFour_Backend.WebApi
         /// <param name="backendSingle"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
+        public async Task <ActionResult<BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>>> PostBackendMember([FromBody] BackendMemberViewModel.BackendSingleResult backendSingle)
         {
             var result = new BaseModel.BaseResult<BackendMemberViewModel.BackendSingleResult>();
 
             _logger.LogWarning(2001, DateTime.Now.ToLongTimeString() + " BackendMembers控制器PostBackendMember方法被呼叫 ,傳入的資料為:" + System.Text.Json.JsonSerializer.Serialize(backendSingle));
-
-            
-
-
-
             try
             {
                 result.Body = await _backendMemberService.CreateOneMember(backendSingle);

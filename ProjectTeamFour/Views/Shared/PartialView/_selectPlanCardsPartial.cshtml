@@ -3,10 +3,58 @@
 @*選擇方案*@
 
 @{
-    //bool isOffLine = false;
-    if (Model.PlanFundedPeople >= Model.QuantityLimit)
+    bool ifoffLine = false;
+    if (Model.QuantityLimit == 0)
     {
-        //isOffLine = true;
+        ifoffLine = true;
+    }
+}
+
+@{     
+
+    if (!ifoffLine)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3 id ="amount">$ @Model.PlanPrice.ToString("###,###")</h3>
+                    <div class="img-wrap">
+                        <img class="card-img-top" src="@Model.PlanImgUrl" alt="Card image cap">
+                    </div>
+                    <h4 class="card-title">
+                        @Model.PlanTitle
+                    </h4>
+
+                    <p class="card-text">
+                        <div id = "perk-info-down" class="wrapper">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <h6 class="text-secondary text-normal text-small">贊助人數</h6>
+                                    <h4 class="text-large">@Model.PlanFundedPeople 人</h4>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <h6 class="text-secondary text-normal text-small">限量</h6>
+                                    <h4 class="text-large">@Model.QuantityLimit 個</h4>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
+                                    <h4 class="text-large">@Model.PlanShipDate.ToShortDateString()</h4>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <h6 class="text-secondary text-normal text-small">寄送地點</h6>
+                                    <h4 class="text-large">寄送至特定地點</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                    <button id = "donate-btn" onclick="AddToMyCart('@Model.PlanId', '@Model.PlanTitle', '@Model.PlanImgUrl', '@Model.PlanPrice','@Model.QuantityLimit','@Model.ProjectId')">贊助此回饋方案</button>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
         <div class="card isoffline">
             <div class="offline-hint">
                 目前無法贊助
@@ -59,48 +107,9 @@
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="card">
-            <div class="card-body">
-                <div>
-                    <h3 id="amount">$ @Model.PlanPrice.ToString("###,###")</h3>
-                    <div class="img-wrap">
-                        <img class="card-img-top" src="@Model.PlanImgUrl" alt="Card image cap">
-                    </div>
-                    <h4 class="card-title">
-                        @Model.PlanTitle
-                    </h4>
 
-                    <p class="card-text">
-                        <div id="perk-info-down" class="wrapper">
-                            <div class="row">
-                                <div class="col-12 col-sm-4">
-                                    <h6 class="text-secondary text-normal text-small">贊助人數</h6>
-                                    <h4 class="text-large">@Model.PlanFundedPeople 人</h4>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <h6 class="text-secondary text-normal text-small">限量</h6>
-                                    <h4 class="text-large">@Model.QuantityLimit 個</h4>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
-                                    <h4 class="text-large">@Model.PlanShipDate.ToShortDateString()</h4>
-                                </div>
-                                <div class="col-12 col-sm-12">
-                                    <h6 class="text-secondary text-normal text-small">寄送地點</h6>
-                                    <h4 class="text-large">寄送至特定地點</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </p>
-                    <button id="donate-btn" onclick="AddToMyCart('@Model.PlanId', '@Model.PlanTitle', '@Model.PlanImgUrl', '@Model.PlanPrice','@Model.QuantityLimit','@Model.ProjectId')">贊助此回饋方案</button>
-                </div>
-            </div>
-        </div>
+        }
     }
-}
 
 @*<div class="card">
         <div class="card-body">

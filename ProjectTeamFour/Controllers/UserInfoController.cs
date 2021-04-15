@@ -51,7 +51,7 @@ namespace ProjectTeamFour.Controllers
 				
 				//根據會員id抓取會員購買紀錄
 			    model.Records = _backingService.QueryOrder(model.MemberId);
-
+                ///判斷是否是提案人
 				if(model.MyProjects.Count==0)
                 {
 					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);

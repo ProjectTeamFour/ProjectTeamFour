@@ -6,13 +6,19 @@
 
     var userOrder = Model.MyOrder.Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
     var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //o詳細json
-    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle ,y.OrderId});
+    var userOrderDetail = Model.MyOrderDetailList.Select(
+        (y) =>
+    new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle, y.OrderId,
+        PlanShipDate = y.PlanShipDate.ToString("d")
+
+    });
+
     var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
 
     //-------------------------------------------------------------------------
     var userOrderNoPay = Model.MyOrder.Where(x => x.condition == "未付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
     var userOrderDataNoPay = new JavaScriptSerializer().Serialize(userOrderNoPay);
-    //-----------------------------------------------------    
+    //-----------------------------------------------------
 }
 
 
@@ -33,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in items">          
+                <tr v-for="item in items">
                     <td>{{item.OrderName}}</td>
                     <td>{{item.OrderTotalAccount}}</td>
                     <td>{{item.condition}}</td>
@@ -58,27 +64,27 @@
                 </div>
                 <div class="modal-body">
                     <div class="dataitems">
-                        <div class="row">       
+                        <div class="row">
                             <div id="mytable-2">
                                 <div class="itemTitle">
                                     <div class="items">方案單價</div>
                                     <div class="items">方案數量</div>
                                     <div class="items">方案名稱</div>
-                                    <div class="items">寄送日期</div>                                    
+                                    <div class="items">寄送日期</div>
                                 </div>
-               
+
                                 <div v-for="item in modeldata " class="detail-group col-12">
                                     <div class="detail-item" id="odmoney">{{item.OrderPrice}}</div>
                                     <div class="detail-item" id="qty">{{item.OrderQuantity}}</div>
                                     <div class="detail-item" id="plantitle">{{item.PlanTitle}}</div>
-                                    <div class="detail-item" id="plantitle">{{item.PlanShipDate}}</div>
+                                    <div class="detail-item" id="plandate">{{item.PlanShipDate}}</div>
                                 </div>
-                            </div>                                                         
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>                    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                 </div>
             </div>
         </div>
@@ -86,6 +92,7 @@
 
 </div>
 @*//-----------------------------------------------------------------------------------*@
+
 <script>
     @*function getOrder(OrderId) {
         $.ajax({

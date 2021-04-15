@@ -1,15 +1,17 @@
 html {
   font-size: 14px;
-  max-width: 1680px;
+  /*max-width: 1680px;*/
   margin: auto;
   color: #212121;
+}
+h2,h3{
+    font-weight:700;
+    letter-spacing:1.6px;
 }
 .btn:focus{
     box-shadow:none;
 }
-#nav-tab .nav-link.active{
-    border-color:none;
-}
+
 @media screen and (max-width: 767.98px) {
   #main-body {
     width: 100%;
@@ -18,6 +20,10 @@ html {
   #campaign-info-item {
     background-color: #f6f6f6;
     padding: 1rem;
+  }
+
+  #info-text-wrap .badge{
+      display:none;
   }
 
   /* #leftside-main-col {
@@ -126,6 +132,9 @@ html {
 #creator-info #follow-icon i {
   color: #212121;
 }
+.progress {
+    height:0.5rem;
+}
 
 .progress-bar {
   background-color: #f9414a;
@@ -167,12 +176,12 @@ html {
   color: #212121;
   border: 1px solid #d7d7d7;
 }
-
-/* 不太會用tab的客製化樣式 */
-
 #info-tabs {
     background-color: #f6f6f6;
     margin:1rem 0;
+    position:sticky;
+    top:45px;
+    z-index:10;
 }
 
 #info-tabs a {
@@ -266,8 +275,8 @@ h4 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 .isoffline:hover {
-    /*                position: absolute;
-                */
+
+    /*position: absolute;*/
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -279,9 +288,11 @@ h4 {
 
 }
 .card-deck .card #amount {
-  font-size: 2.5rem;
-  left: 0.5rem;
-  color: #f9414a;
+    font-size: 2.5rem;
+    left: 0.5rem;
+    color: #f9414a;
+    font-weight: 700;
+    letter-spacing: 2.0px;
 }
 
 .card-deck .card img {
@@ -289,7 +300,8 @@ h4 {
 }
 
 .card-deck .card .card-title {
-  font-size: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
 }
 
 .card-deck .card #donate-btn {
@@ -316,14 +328,7 @@ h4 {
 .card-deck .card:hover img {
   overflow: hidden;
   transform: scale(1.2);
-/*  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);*/
   transition: 0.5s;
-/*  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;*/
 }
 
 .card-deck .card h4 {
@@ -355,12 +360,14 @@ h4 {
 .badge {
   background-color: #f6f6f6;
   color: #212121;
-  padding: 3px 9px;
+  padding: 6px 9px;
+
 }
 
-.badge p {
-  margin: 3px 9px;
-}
+    .badge p {
+        font-size: 14px;
+        letter-spacing: 1.4px;
+    }
 
 #creator-info .item-wrap {
   display: flex;
@@ -390,6 +397,18 @@ h4 {
     margin: 0;
 }
 
+#nav-tab{
+    border:none;
+
+}
+
+#nav-tab .nav-link.active {
+    border-color: none;
+}
+
+.faq p{
+    font-size:1rem;
+}
 
 /*FAQ的三角形樣式*/
 

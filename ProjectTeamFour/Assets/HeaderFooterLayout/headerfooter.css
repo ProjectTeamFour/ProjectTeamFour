@@ -233,10 +233,12 @@
             font-weight: 700;
             letter-spacing: 0.3rem;
             margin: 0;
+/*            position: relative;*/
+/*            z-index: -1;*/
         }
 
-.hamburger .title h1 a {
-/*                color: var(--color);
+            .hamburger .title h1 a {
+                /*                color: var(--color);
     margin-right: 0;
     text-decoration: none;*/
     position:relative;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -24,11 +25,13 @@ namespace ProjectTeamFour_Backend.WebApi
         private readonly ILogger<MailsController> _logger;
         private readonly IRepository _repository;
         private readonly IConfiguration  _configuration;
-        public MailsController(ILogger<MailsController> logger , IRepository repository,IConfiguration configuration)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public MailsController(ILogger<MailsController> logger , IRepository repository, IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _repository = repository;
             _configuration = configuration;
+            _hostingEnvironment = hostingEnvironment;
         }
         /// <summary>
         /// 傳入前端POST請求的內容mailBaseSingleVM，之後在資料庫內對比mailBaseSingleVM.MemberRegEmail，如無誤，則寄出信件
@@ -103,7 +106,8 @@ namespace ProjectTeamFour_Backend.WebApi
         public string getEmailData()
         {
             string returnData = "";
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"Template" + @"\\" + @"mailtemplate.html";
+            //string path = _hostingEnvironment.ContentRootPath + @"\\Template"  + @"\\mailtemplate.html";
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "Template", "mailtemplate.html" );
 
             if (path != null)
             {
