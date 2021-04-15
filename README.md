@@ -3362,5 +3362,426 @@ protected override void Seed(ProjectTeamFour.Models.ProjectContext context)
                 PlanPrice = 10000m,
                 QuantityLimit = 50
             });
+            //第31個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 31,
+                MemberId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 103,
+                FundingAmount = 168600m,
+                AmountThreshold = 150000m,
+                CreatorName = "政大金旋獎籌備團隊",
+                ProjectMainUrl = "https://i.imgur.com/sekU4oHm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/HZlmV9pl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "近年台灣音樂圈被蓬勃的主流勢力主宰，大型唱片公司和選秀節目將商業利益作為首要考量，使得許多真正強調內容、重視藝術性的音樂人才難以發光發熱。政大金旋團隊不希望音樂就這樣淪為商品，我們期待新一代音樂人跳脫商業取向，讓音樂重回藝術表現的一種形式，這是政大金旋團隊極力關注的議題，也是我們的初衷。團隊成員來自政治大學的不同學院、不同系級，卻同樣熱愛音樂；即便我們在人群中如此平凡，但美好的音樂讓我們相遇、相識、相知、相惜。我們希望繼續撐起這個夢想舞台，圓音樂人的夢，也圓自己的夢。我們堅持用盡全力，在一次又一次的困境中努力提升，希望金旋一年比一年進步，但在追求更專業、更高品質的同時，巨大的經費壓力迎面而來，今年政大金旋精益求精、擴大規模，除了老字號的金旋獎，更於華山1914文創園區舉辦金旋音樂節，這讓我們活動經費更加提高；面對學校極少的補助，我們只能更加努力，靠著自身力量向業界、政府，以及群眾募款，我們希望透過分享金旋故事，感動電腦前的您，希望您願意陪伴我們圓夢，讓我們持續為音樂發聲。",
+                ProjectImgUrl = "https://i.imgur.com/8yxPFNdl.jpg,https://i.imgur.com/Ax4OPwZl.jpg,https://i.imgur.com/R8TTvhpl.jpg,https://i.imgur.com/hgA5L6Jl.jpg,https://i.imgur.com/ybgEUVYl.jpg,https://i.imgur.com/isF4jjRl.jpg,https://i.imgur.com/ckITNYRl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/45czVKsuaQ4",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
 
+
+            });
+            //第31個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 31,
+                MemberAccount = "N31member",
+                MemberPassword = "N31memberPassword",
+                MemberName = "政大金旋獎籌備團隊",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "nccugoldenmelody@gmail.com",
+                MemberRegEmail = "nccugoldenmelody@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-309849",
+                MemberTeamName = "政大金旋獎籌備團隊",
+                MemberWebsite = "https://www.facebook.com/nccugoldenmelody",
+                AboutMe = "金旋獎為全國性的音樂比賽，包括獨唱、重對唱、創作組並行。如早期的張雨生、陶晶瑩、陳珊妮，中期的陳綺貞、閃靈樂團、蘇打綠樂團，一直到最近的盧廣仲、林育群都曾經在金旋獎大賽中脫穎而出！歷年參賽者的素質普遍達相當水準，往往受到音樂界及唱片界的青睞，也因而發掘出不少音樂人才。 金旋獎的目標及理念，除了推廣校園音樂風氣，讓對音樂表演有興趣的學生有一抒才情的機會外，並藉由校際競賽，達到交流互動的效果。金旋獎不僅對愛好音樂的同學具有特殊且重要的意義，更是廣受音樂界及媒體矚目的焦點。 今年金旋獎將邁入第三十二屆，繼續邀請樂壇知名人士擔任評審、嘉賓。 　　「政大金旋獎」是歷年來各大校園間規模最大也最具公信力的音樂比賽，深得學生們的認同，對金旋獎懷抱許多夢想和期許！身為籌備委員的我們，今年也將以珍惜的心情來籌備第三十二屆金旋獎，盡心盡力將本屆活動辦得盡善盡美，希望貴單位不吝予以經費上的支持，使活動能順利舉行，金旋精神能繼續發揮，並且讓愛好音樂的火苗能繼續燃燒下去！",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/vANvUS0t.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第31個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 134,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 1,
+                PlanTitle = "【金旋組合一】",
+                PlanFundedPeople = 46,
+                PlanDescription = "金旋紀念毛巾＋胚布袋＋T 恤＋樂團簽名專輯＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/ns3SqV0m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1300m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 135,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 2,
+                PlanTitle = "【金旋組合二】",
+                PlanFundedPeople = 35,
+                PlanDescription = "金旋紀念毛巾 X2＋胚布袋 X2＋衣服 X2＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/UQPwk1Ym.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1600m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 136,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 3,
+                PlanTitle = "【金旋組合三】",
+                PlanFundedPeople = 22,
+                PlanDescription = "金旋紀念毛巾 X3＋胚布袋 X3＋衣服 X3＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/ckITNYRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2400m,
+                QuantityLimit = 50
+            });
+            //第32個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 32,
+                MemberId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 100,
+                FundingAmount = 370000m,
+                AmountThreshold = 500000m,
+                CreatorName = "中華民國冰球協會",
+                ProjectMainUrl = "https://i.imgur.com/sSkzfS1m.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/F8Jltpml.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/N0NKzbzl.jpg,https://i.imgur.com/GnX0Dotl.jpg,https://i.imgur.com/GFtPCQKl.jpg,https://i.imgur.com/kMhsqOvl.jpg,https://i.imgur.com/PfB1zx9l.jpg,https://i.imgur.com/w2aTAdNl.png,https://i.imgur.com/fXLAv4Fl.png,https://i.imgur.com/Mn3Fd3ul.png,https://i.imgur.com/LPsMwXJl.png,https://i.imgur.com/lFy4oXbl.png,https://i.imgur.com/G75i0JDl.png,https://i.imgur.com/GQPyOryl.jpg,https://i.imgur.com/kucYPiIl.png,https://i.imgur.com/1ejbxA7l.png,https://i.imgur.com/pV9IRuCl.png,https://i.imgur.com/cDj1nVal.jpg,https://i.imgur.com/JcoqVN0l.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/MDClTWqpAvI",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第32個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 32,
+                MemberAccount = "N32member",
+                MemberPassword = "N32memberPassword",
+                MemberName = "中華民國冰球協會",
+                MemberAddress = "10489臺北市中山區朱崙街20號9樓906室",
+                MemberBirth = new DateTime(1991, 5, 3),
+                MemberConEmail = "u20taiwan@gmail.com",
+                MemberRegEmail = "u20taiwan@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-779889",
+                MemberTeamName = "中華民國冰球協會",
+                MemberWebsite = "http://www.ctihf.org.tw/",
+                AboutMe = "本會名稱為《中華民國冰球協會》(以下簡稱本會)。其英文名稱為 CHINESE TAIPEI ICE HOCKEY FEDERATION，並且是唯一代表中華民國為參加《國際冰球總會》(INTERNATION ICE HOCKEY FEDERATION)組織及亞洲冰球聯合會(ASPG)之會員國單位。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/qbtFAxkt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第32個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 137,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 1,
+                PlanTitle = "【贊助組合一】",
+                PlanFundedPeople = 40,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋法國莊園橄欖沐浴精 50ml",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 138,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 2,
+                PlanTitle = "【贊助組合二】",
+                PlanFundedPeople = 30,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋法國橄欖皂 25 克 3 顆（隨機）",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 139,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 3,
+                PlanTitle = "【贊助組合三】",
+                PlanFundedPeople = 20,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋T-shirt 1 件＋法國橄欖液皂 300ml",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 140,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 4,
+                PlanTitle = "【贊助組合四】",
+                PlanFundedPeople = 10,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋全隊簽名 T-shirt 1 件＋法國橄欖沐浴精 500ml＋橄欖皂 150 克",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 10000m,
+                QuantityLimit = 50
+            });
+            //第33個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 33,
+                MemberId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 37,
+                FundingAmount = 2900000m,
+                AmountThreshold = 3000000m,
+                CreatorName = "林育呈",
+                ProjectMainUrl = "https://i.imgur.com/tQcnspEm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/MGUcJLZl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "大家好，我是林育呈 Leo，今年我受到世界聯合學院(United World College)台灣理事會的提名，即將前往挪威分校就讀，成為台灣第三屆UWC學生之一。由於家裡為中低收入戶，經濟程度無法支付學費，很感謝台灣理事會能夠提供全額獎學金的名額，包括學費、機票以及零用錢總額超過新台幣兩百萬元。因為了解這筆獎學金的得來不易，故以募資的方式回饋部分金額給理事會，並且此費用是用來幫助缺少部分學費的學生以及籌備中日青年會議台灣代表團。中日青年會議是由UWC香港分校學生與其他分校畢業生所組織的暑期活動，為期約一個禮拜，與政府並無關聯，旨在增進中日關係的精神。每年邀請來自中國、香港及日本的學生共同回顧歷史、交流對同一事件不同的認知，透過理性的對話為中日和平做出貢獻。在理事會的努力下，今年第一次能以台方代表的身分參加。今年的觀察經驗將帶回來為日後成立台灣代表團做籌備，理事會期望未來每一年都能送起碼十位的台灣學生前往會議為我國發聲。",
+                ProjectImgUrl = "https://i.imgur.com/48DC5uQl.png,https://i.imgur.com/bqmp4E2l.png,https://i.imgur.com/BkV8Wn7l.jpg,https://i.imgur.com/yAMbibol.png,https://i.imgur.com/h2IWCg3l.png,https://i.imgur.com/CUA33YYl.jpg,https://i.imgur.com/sYtQz61l.jpg,https://i.imgur.com/zpPijYll.jpg,https://i.imgur.com/hXQz5Q4l.jpg,https://i.imgur.com/ZOpOR8Kl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第33個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 33,
+                MemberAccount = "N33member",
+                MemberPassword = "N33memberPassword",
+                MemberName = "林育呈",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "yukjeong1019@gmail.com",
+                MemberRegEmail = "yukjeong1019@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-666849",
+                MemberTeamName = "林育呈",
+                MemberWebsite = "https://www.facebook.com/yukjeong?hc_ref=ARQwXw4lOzRIK6auXB78Md3yAPy_PTZi8GgDKSvIzg43DPWFF_BOvnY5PqU5lAnCYGw",
+                AboutMe = "我是林育呈，來自屏東，從小隨父母搬到高雄生活，今年2018年將從岡山高中畢業，前往世界聯合學院挪威分校就讀兩年，曾任社團公關的經驗使我有豐富的推廣能力，接下來兩年我目標將台灣推廣到UWC全校，讓各國新一代青年都認識台灣。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/tQcnspEt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第33個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 141,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 1,
+                PlanTitle = "【挪威組合一】",
+                PlanFundedPeople = 20,
+                PlanDescription = "挪威明信片一組六張+Email感謝信(會附上寄出明信片日期)",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/TZkuA1Km.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 142,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 2,
+                PlanTitle = "【挪威組合二】",
+                PlanFundedPeople = 11,
+                PlanDescription = "挪威明信片×1+極光明信片×2+手寫感謝信+暑假回來經驗分享+【Zoe's 綠生活館多肉植物一盆】+暑假回台個人對談用餐+(能力之內)完成挪威任務",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/yCc5SCRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 143,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 3,
+                PlanTitle = "【挪威組合三】",
+                PlanFundedPeople = 6,
+                PlanDescription = "挪威明信片×1+極光明信片×2+手寫感謝信+暑假回來經驗分享+【Zoe's 綠生活館多肉植物一盆】+暑假回台個人對談用餐+(能力之內)完成挪威任務",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/GB4Mavhm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200000m,
+                QuantityLimit = 50
+            });
+            //第34個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 34,
+                MemberId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 61,
+                FundingAmount = 93000m,
+                AmountThreshold = 27000m,
+                CreatorName = "陳德娜",
+                ProjectMainUrl = "https://i.imgur.com/mP9h1ECm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/pgLFXDel.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "我是陳德娜，目前就讀台灣大學歷史學系四年級，兼修亞洲藝術學程。熱衷於文學創作、藝術推廣以及文化保護。過去曾在新創公司文化銀行、台南奇美博物館以及學校藝文中心實習和工讀，並在2017年於北京大學交換，修習歷史與藝術學院課程。今年三月，我即將參加第21屆於德國科隆舉辦的「世界商業論壇 (World Business Dialogue)」，並希望能透過這項計畫募資來回機票及論壇報名費，約NTD27000。",
+                ProjectImgUrl = "https://i.imgur.com/4EUTykyl.png,https://i.imgur.com/a79hR90l.png,https://i.imgur.com/UazbMiOl.jpg,https://i.imgur.com/pue2rEYl.jpg,https://i.imgur.com/NpGNUu9l.png,https://i.imgur.com/sXRkhDtl.png,https://i.imgur.com/hvqcTARl.png,https://i.imgur.com/1UYiC3ql.png,https://i.imgur.com/Ru8672jl.png,https://i.imgur.com/sQvL691l.png,https://i.imgur.com/OqVwc1dl.png,https://i.imgur.com/AArCqGhl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/ra1gkxY1GSg",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第34個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 34,
+                MemberAccount = "N34member",
+                MemberPassword = "N34memberPassword",
+                MemberName = "陳德娜",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1985, 5, 3),
+                MemberConEmail = "wbdchen@gmail.com",
+                MemberRegEmail = "wbdchen@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-445839",
+                MemberTeamName = "陳德娜",
+                MemberWebsite = "https://storyoftravelinginlife.weebly.com/",
+                AboutMe = "我是陳德娜，目前就讀台灣大學歷史學系四年級，兼修亞洲藝術學程。熱衷於文學創作、藝術推廣以及文化保護。過去曾在新創公司文化銀行、台南奇美博物館以及學校藝文中心實習和工讀，並在2017年於北京大學交換，修習歷史與藝術學院課程。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/frW5dxnt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第34個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 144,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 1,
+                PlanTitle = "【方案一】",
+                PlanFundedPeople = 20,
+                PlanDescription = "【論壇完整筆記壹份】以email寄出電子檔。內容包含工作坊、演講、企業參訪，但若行程有變動，受贊助方保有調整權力。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 800m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 145,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 2,
+                PlanTitle = "【方案二】",
+                PlanFundedPeople = 26,
+                PlanDescription = "【一對一分享(或十人以下)】內容為申請經過、參與論壇心得、旅行中所聞以及雙方交流，時間為兩小時內。地點限制：台北市、台南(可能會在四、五月)。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1200m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 146,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 3,
+                PlanTitle = "【方案三】",
+                PlanFundedPeople = 11,
+                PlanDescription = "【協助2019年世界商業論壇報名】讓我們一起走出舒適圈，接下對自己的挑戰!",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 147,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 4,
+                PlanTitle = "【方案四】",
+                PlanFundedPeople = 4,
+                PlanDescription = "【一對多分享(十人以上)】 內容為申請經過、參與論壇心得、旅行中所聞以及雙方交流，時間為兩小時。 地點限制：台北市、台南(可能會在四、五月)。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3200m,
+                QuantityLimit = 50
+            });
         }
