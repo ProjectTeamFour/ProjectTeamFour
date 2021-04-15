@@ -186,16 +186,20 @@
 
 
 .hamburger {
-    height: 3.5rem;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
 }
-
     .hamburger i {
         font-size: 1.7rem;
         color: var(--color);
         padding: 0 0 0 1rem;
     }
+    .hamburger .fa-bars {
+        
+        padding: 0rem;
+    }
+   
 
     .hamburger #sidebarCollapse {
         border: transparent;
@@ -224,7 +228,7 @@
     .hamburger .title {
         color: #000;
         margin-top: 0rem;
-        margin-left: 3.8rem;
+       /* margin-left: 3.8rem;*/
         text-align: center;
     }
 
@@ -317,7 +321,7 @@
     .hamburger .cart p {
         position: relative;
         bottom: 33px;
-        font-size: 3px;
+        font-size: 10px;
         left: 38px;
         color: #7f7f7f;
         font-weight: 400;
