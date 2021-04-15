@@ -662,8 +662,7 @@
                 vaildation: function (id) {
                     let SubmitLimit = $('#' + id + 'planNumber').val() //提交庫存數
 
-                    let SubmitLimitRegexpNum = /^[0-9]*$/;//輸入非數字時提示
-                    let SubmitLimitRegexp = /^09/; //開頭為09
+                    let SubmitLimitRegexpNum = /^[1-9]*$/;//輸入非數字時提示                   
 
                     let SubmitLimitError = false
                     let SubmitLimitErrorMsg = '';
@@ -675,7 +674,16 @@
                             text: '數字不得為空！',
                             icon: 'error'
                         });
-                    } else {
+                    }
+                    else if (!SubmitLimitRegexpNum.test(SubmitLimit)) {
+                        SubmitLimitError = true;
+                        swal({
+                            title: 'warning',
+                            text: '數字不得為0！',
+                            icon: 'error'
+                        });  
+                    }
+                    else {
                         SubmitLimitError = false;
                         SubmitLimitErrorMsg = '';
                     }
