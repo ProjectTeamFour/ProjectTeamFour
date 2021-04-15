@@ -11,9 +11,7 @@ h2,h3{
 .btn:focus{
     box-shadow:none;
 }
-#nav-tab .nav-link.active{
-    border-color:none;
-}
+
 @media screen and (max-width: 767.98px) {
   #main-body {
     width: 100%;
@@ -22,6 +20,10 @@ h2,h3{
   #campaign-info-item {
     background-color: #f6f6f6;
     padding: 1rem;
+  }
+
+  #info-text-wrap .badge{
+      display:none;
   }
 
   /* #leftside-main-col {
@@ -177,6 +179,9 @@ h2,h3{
 #info-tabs {
     background-color: #f6f6f6;
     margin:1rem 0;
+    position:sticky;
+    top:45px;
+    z-index:10;
 }
 
 #info-tabs a {
@@ -355,12 +360,14 @@ h4 {
 .badge {
   background-color: #f6f6f6;
   color: #212121;
-  padding: 3px 9px;
+  padding: 6px 9px;
+
 }
 
-.badge p {
-  margin: 3px 9px;
-}
+    .badge p {
+        font-size: 14px;
+        letter-spacing: 1.4px;
+    }
 
 #creator-info .item-wrap {
   display: flex;
@@ -388,6 +395,15 @@ h4 {
     width: 100%;
     z-index: 1000;
     margin: 0;
+}
+
+#nav-tab{
+    border:none;
+
+}
+
+#nav-tab .nav-link.active {
+    border-color: none;
 }
 
 .faq p{
