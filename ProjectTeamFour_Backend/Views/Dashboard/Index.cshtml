@@ -39,7 +39,7 @@
                 var getpendingcount = () =>
                 {
                     var pendingprojects = []
-                    pendingprojects = projects.filter(project => project.projectStatus == '集資中')
+                    pendingprojects = projects.filter(project => project.projectStatus == '集資中' || project.projectStatus == '集資成功')
                     return pendingprojects.length
                 }
 
@@ -79,7 +79,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">平台統計圖表</h1>
-                        <a href="./directory/yourfile.pdf" download="Report.pdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <a hidden href="./directory/yourfile.pdf" download="Report.pdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i class="fas fa-download fa-sm text-white-50"></i> 集資車車平台統計
                         </a>
                     </div>
