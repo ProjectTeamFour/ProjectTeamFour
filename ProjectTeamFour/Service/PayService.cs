@@ -165,9 +165,13 @@ namespace ProjectTeamFour.Service
                 try
                 {                    
                     result.OrderDate = DateTime.UtcNow.AddHours(8);
+
                     result.condition = "已付款";
+                    _repository.Update<Order>(result);
                     result.RtnCode = rtnCode;
+                    _repository.Update<Order>(result);
                     result.TradeNo = MerchantTradeNo;
+                    _repository.Update<Order>(result);
                     foreach (var item in odData)
                     {
                         item.condition = result.condition;

@@ -6,7 +6,7 @@
 
     var userOrder = Model.MyOrder.Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
     var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //o詳細json
-    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle ,y.OrderId});
+    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle ,y.OrderId , y.PlanShipDate});
     var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
 
     //-------------------------------------------------------------------------
@@ -71,7 +71,7 @@
                                     <div class="detail-item" id="odmoney">{{item.OrderPrice}}</div>
                                     <div class="detail-item" id="qty">{{item.OrderQuantity}}</div>
                                     <div class="detail-item" id="plantitle">{{item.PlanTitle}}</div>
-                                    <div class="detail-item" id="plantitle">{{item.PlanShipDate}}</div>
+                                    <div class="detail-item" id="plandate">{{item.PlanShipDate}}</div>
                                 </div>
                             </div>                                                         
                         </div>
