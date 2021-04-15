@@ -25,11 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Template\mailtemplate.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Template\mailtemplate.html" />
+    <None Remove="wwwroot\Template\mailtemplate.html" />
   </ItemGroup>
 
   <ItemGroup>

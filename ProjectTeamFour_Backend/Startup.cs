@@ -140,11 +140,7 @@ namespace ProjectTeamFour_Backend
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                Path.Combine(env.ContentRootPath, "Template"))
-            });
+           
             app.UseCookiePolicy();
             app.UseRouting();
             app.UseCors();
