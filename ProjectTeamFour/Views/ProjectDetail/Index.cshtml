@@ -1,16 +1,18 @@
 ﻿@model ProjectTeamFour.ViewModels.ProjectTotalViewModel
 
-@{ decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
+@* 判斷專案募資進度百分比/是否結束 *@
+@{
+    decimal progressDec = (Model.ProjectDetailItem.FundingAmount / Model.ProjectDetailItem.AmountThreshold) * 100;
     int progressNum = (int)progressDec;
     string progressBar = progressNum.ToString() + "%";
     DateTime today = DateTime.Now;
     int dateLine = Convert.ToInt32(new TimeSpan(Model.ProjectDetailItem.EndDate.Ticks - today.Ticks).TotalDays);
 
 }
-@* 判斷專案募資進度 *@
-@*@{ 
-    switch(Model.ProjectDetailItem.ProjectStatus)
-}*@
+@* ProjectStatus *@
+@*@{
+        switch(Model.ProjectDetailItem.ProjectStatus)
+    }*@
 
 <!--FB分享API初始化-->
 <div ifb-root"></div>
@@ -35,12 +37,13 @@
                         </iframe>
                     </div>
                     <div id="campaign-summary" class="">
+                        <!-- 專案名稱FOR手機板 -->
                         <p>@Model.ProjectDetailItem.ProjectName</p>
-
+                        <!-- 募資進度百分比progressbar -->
                         <div id="campaign-progress">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width:@progressBar" aria-valuenow=@progressNum.ToString()
-                                     aria-valuemin="0" aria-valuemax="100">@progressBar</div>
+                                     aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
@@ -59,14 +62,14 @@
                                     <div class="wrapper">
                                         <div class="item-text">
                                             <h5>
-            <span class="label-grey">提案者連結</span><i class="bi bi-link-45deg" style="color:black;"><a href="@Model.CreatorInfo.MemberWebsite">點選</a></i>
-        </h5>
+                                                <span class="label-grey">提案者連結</span><i class="bi bi-link-45deg" style="color:black;"><a href="@Model.CreatorInfo.MemberWebsite">點選</a></i>
+                                            </h5>
                                             @*<h5>
-            <span class="label-grey">提案總數</span>@Model.CreatorInfo.Records
-        </h5>*@
+                                                    <span class="label-grey">提案總數</span>@Model.CreatorInfo.Records
+                                                </h5>*@
                                         </div>
                                         <div id="follow-icon">
-                                            
+
                                             <a href="#" hidden><i class="fab fa-facebook-square"></i></a>
                                             <a href="#" hidden><i class="fab fa-instagram"></i></a>
                                             <a href="#" hidden><i class="fab fa-youtube-square"></i></a>
@@ -381,7 +384,7 @@
     }
 
     @section endJS{
-        
+
         <script src="~/Assets/Javascript/ProjectDetailPage/ProjectDetail.js"></script>
         <script>
 
@@ -391,12 +394,12 @@
                 container: 'body',
                 html: true,
                 template: `<div class="popover" role="tooltip">
-                                            <div id="popover-content">
-                                            <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
-                                            <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
-                                            </div>
-                                    </div >`,
-            });
+                                                    <div id="popover-content">
+                                                    <div class="fab fa-facebook-square" data-href="https://www.google.com" data-layout="button"></div>
+                                                    <a id="line-share" href='javascript: void(window.open(&apos;https://lineit.line.me/share/ui?url=&apos; .concat(encodeURIComponent(location.href)) ));' title='分享給 LINE 好友'><i class="fab fa-line"></i></a>
+                                                    </div>
+                                            </div >`,
+            })
 
             //$('#line-share').append(function () {
             //    var url = "";
@@ -405,35 +408,42 @@
             //});
 
 
-            function LanchCommentAjax(ProjectId, AskedMemberId) {
-                let clientComment = document.querySelector(".form-control");
-                if (clientComment.value == null) {
+            function LanchCommentAjax(ProjectId, AskedMemberId)
+            {
+                let clientComment = document.querySelector(".form-control")
+                if (clientComment.value == null)
+                {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: '請留言!',
 
-                    });
+                    })
                 }
-                else {
+                else
+                {
                     $.ajax({
                         url: "/api/Comment/UpdateComment",
                         type: "POST",
                         /*dataType: "json",*/
                         data: { ProjectId: ProjectId, Comment_Question: clientComment.value, AskedMemberId: AskedMemberId },
-                        success: function (data, textStatus, jqXHR) {
+                        success: function (data, textStatus, jqXHR)
+                        {
 
-                            if (data == "login") {
+                            if (data == "login")
+                            {
                                 Swal.fire(
                                     '尚未登入?',
                                     '請先登入！',
                                     'question'
-                                ).then(result => {
-                                    reloading();
+                                ).then(result =>
+                                {
+                                    reloading()
                                 })
 
                             }
-                            else if (data == "try") {
+                            else if (data == "try")
+                            {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -441,7 +451,8 @@
 
                                 })
                             }
-                            else if (data == "fail") {
+                            else if (data == "fail")
+                            {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -449,7 +460,8 @@
 
                                 })
                             }
-                            else if (data == "Same") {
+                            else if (data == "Same")
+                            {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -457,21 +469,23 @@
 
                                 })
                             }
-                            else {
+                            else
+                            {
                                 Swal.fire({
                                     position: 'top-center',
                                     icon: 'success',
                                     title: '已成功留言！',
                                     showConfirmButton: false,
                                     timer: 1500
-                                });
+                                })
                                 clientComment.value = ""
                             }
 
                         },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR);
-                            console.log(textStatus);
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            console.log(jqXHR)
+                            console.log(textStatus)
 
                         }
                     })
@@ -480,8 +494,9 @@
 
             }
 
-            function reloading() {
-                window.location.href = "/Member/Login";
+            function reloading()
+            {
+                window.location.href = "/Member/Login"
 
             }
         </script>
