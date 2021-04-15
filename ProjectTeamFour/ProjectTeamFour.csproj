@@ -332,6 +332,7 @@
     <Content Include="Assets\Img\favicon\favicon.ico" />
     <Content Include="Assets\Img\logo.png" />
     <Content Include="Assets\Img\member.png" />
+    <Content Include="Assets\Img\Sign\si.png" />
     <Content Include="Assets\Img\SiteLogo\newlogo-removebg.png" />
     <Content Include="Assets\Img\SiteLogo\newlogo.png" />
     <Content Include="Assets\Img\SiteLogo\raisebubupic-removebg.png" />
@@ -353,6 +354,7 @@
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Plugin\FontAwesome\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Plugin\Moment.js\Moment.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Template\mailtemplate.html" />
