@@ -195,7 +195,7 @@ namespace ProjectTeamFour.Service
                     }                    
                     _repository.Update<Order>(result);
                     transaction.Commit(); //交易確認     
-                    result.OrderDate = DateTime.UtcNow.AddHours(8);
+                   
                 }
                 catch (Exception ex)
                 {
@@ -203,6 +203,7 @@ namespace ProjectTeamFour.Service
                     Console.WriteLine(ex);
                 }
             }
+
         }
 
         //重新購買 pay頁面
