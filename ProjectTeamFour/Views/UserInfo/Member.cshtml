@@ -682,12 +682,24 @@
                             title: 'warning',
                             text: '數字不得為0或負數！',
                             icon: 'error'
-                        });  
-                    }                  
-                    else {
-                        SubmitLimitError = false;
-                        SubmitLimitErrorMsg = '';
+                        });
                     }
+                    else {
+                        swal({
+                            title: 'OK',
+                            text: '送出成功！',
+                            icon: 'success'
+                        });
+                        window.setTimeout(reloading, 1000);
+                    }
+
+                    //else {
+                    //    SubmitLimitError = false;
+                    //    SubmitLimitErrorMsg = '';
+                    //}
+
+
+
                     if (SubmitLimitError) {
                         $('#' + id + 'planNumber').addClass('is-invalid')
                     } else {
