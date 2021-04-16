@@ -203,6 +203,7 @@ namespace ProjectTeamFour.Service
                     Console.WriteLine(ex);
                 }
             }
+
         }
 
         //重新購買 pay頁面
