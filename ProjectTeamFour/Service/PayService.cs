@@ -181,7 +181,7 @@ namespace ProjectTeamFour.Service
                         foreach(var pj in projectview)
                         {
                             pj.Fundedpeople = pj.Fundedpeople + 1;
-                            pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
+                            pj.FundingAmount = pj.FundingAmount + item.OrderPrice*item.OrderQuantity;
                             ///結完帳之後的募資進度
                             projectProgress = (pj.FundingAmount / pj.AmountThreshold)*100;
                             ///接著於下根據募資進度來發送通知
@@ -189,7 +189,7 @@ namespace ProjectTeamFour.Service
                         }
                         foreach (var p in planview)
                         {
-                            p.QuantityLimit = p.QuantityLimit - 1;
+                            p.QuantityLimit = p.QuantityLimit - item.OrderQuantity;
                             p.PlanFundedPeople = p.PlanFundedPeople + 1;
                         }
                     }                    
