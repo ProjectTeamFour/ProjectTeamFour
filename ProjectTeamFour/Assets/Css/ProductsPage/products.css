@@ -192,6 +192,7 @@ button[type="button"] {
 
     .popular-project .status {
         margin-left: 0.8rem;
+        width:4rem;
     }
 
     .popular-project .project-name h3 {
@@ -300,4 +301,8 @@ button[type="button"] {
     .popular-project .project-progressnumber p {
         font-size: 0.95rem;
     }
+}
+
+#default{
+    font-size:0.7rem;   
 }
