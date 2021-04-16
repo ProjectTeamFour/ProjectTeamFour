@@ -102,10 +102,10 @@ namespace ProjectTeamFour.Controllers
             TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {
-                if (Convert.ToInt32(RtnCode) == 1)
-                {
+                //if (Convert.ToInt32(RtnCode) == 1)
+                //{
                     _PayService.CreateOrderToDB(RtnCode, MerchantTradeNo, OrderId);
-                }
+                //}
             }
 
             _MemberService.Reloging(intmember);
