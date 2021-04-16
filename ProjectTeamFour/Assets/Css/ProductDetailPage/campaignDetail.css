@@ -26,23 +26,28 @@ h2,h3{
       display:none;
   }
 
-  /* #leftside-main-col {
-    width: 33.5rem;
-  } */
-   #select-perk .card-deck {
-    width: 100%;
-  } 
+    #campaign-status-label{
+        
+    }
+
+    #select-perk .card-deck {
+        width: 100%;
+    } 
 
   .number-row {
-    display: flex;
+    display: inline;
   }
-  .number-row .block {
-    display: block;
-  }
+    .number-row .block {
+        display: block;
+    }
 
-  #goal-wrap .wrapper {
-    flex-wrap: nowrap;
-  }
+    #donating-people-count, #donating-days-countdown .block{
+        font-size:16px;
+    }
+
+    #goal-wrap .wrapper {
+        flex-wrap: nowrap;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -199,16 +204,8 @@ h2,h3{
 
 /* 共用區域 */
 
-#campaign-status-label .text-wrap::before {
-/*  display: block;
-  position: relative;
-  left: -1rem;
-  top: 2.5rem;
-  width: 0.25rem;
-  height: 2.5rem;
-  background-color: #9b9b9b;
-  content: " ";
-  border-radius: 1.5rem;*/
+#campaign-status-label{
+margin-top:1rem;
 }
 
 .text-wrap {

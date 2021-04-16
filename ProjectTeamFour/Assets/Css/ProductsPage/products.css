@@ -190,10 +190,7 @@ button[type="button"] {
         font-weight: 700;
     }
 
-    .popular-project .status {
-        margin-left: 0.8rem;
-        width:4rem;
-    }
+
 
     .popular-project .project-name h3 {
         font-size: 1.1rem;
@@ -245,6 +242,7 @@ button[type="button"] {
         }
 
 
+
 .ForCategory {
     display: none;
 }
@@ -258,9 +256,9 @@ button[type="button"] {
     margin: 1rem 0;
 }
 
-    .btn-more:hover {
-        background-color: #000;
-    }
+.btn-more:hover {
+    background-color: #000;
+}
 
 .pagination {
     display: flex;
@@ -301,8 +299,17 @@ button[type="button"] {
     .popular-project .project-progressnumber p {
         font-size: 0.95rem;
     }
+
+    #status-text{
+        font-size:0.9rem;
+    }
 }
 
-#default{
-    font-size:0.7rem;   
+#default {
+    text-align: center;
+}
+
+.popular-project .status {
+    margin-left: 0.8rem;
+    width: 6rem;
 }
