@@ -13,163 +13,166 @@
 }
 @section endJS{
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
-<script>
-        $(document).ready(function () {
-            Binding();
-        })
-        function Binding() {
-            var form =new Vue({
-                el: "#app",
-                data: {
-                    inputData: {
-                        Name: $('#orderName').val(),
-                        Address: $('#orderAddress').val(),
-                        Tel: $('#orderPhone').val(),
-                        Email: $('#orderEmail').val(),
-                    },
-                    inputDataCheck: {
-                        NameError: false,
-                        NameErrorMsg: '',
-                        AddressError: 1,
-                        AddressErrorMsg: '',
-                        TelError: '',
-                        TelErrorMsg: '',
-                        EmailError: '',
-                        EmailErrorMsg: '',
-                    },
-                    disableInputBool: false,
-                },
-                watch: {
-                    'inputData.Name': {
-                        immediate: true,        //點開即驗證
-                        handler: function () {
-                            if (this.inputData.Name == "") {
-                                this.inputDataCheck.NameError = true;
-                                this.inputDataCheck.NameErrorMsg = '名稱不得為空';
-                            }
-                            else {
-                                this.inputDataCheck.NameError = false;
-                                this.inputDataCheck.NameErrorMsg = '';
-                            }
-                        }
-                    },
-                    'inputData.Address': {
-                        immediate: true,        //點開即驗證
-                        handler: function () {
-                            if (this.inputData.Address == "") {
-                                this.inputDataCheck.AddressError = true;
-                                this.inputDataCheck.AddressErrorMsg = '地址不得為空';
-                            }
-                            else {
-                                this.inputDataCheck.AddressError = false;
-                                this.inputDataCheck.AddressErrorMsg = '';
-                            }
-                        },
-                    },
-                    'inputData.Tel': {
-                        immediate: true,        //點開即驗證
-                        handler: function () {
-                            let telRegexp = /^09/; //開頭為09
-                            let telRegexpNum = /^[0-9]*$/;
-                            if (!telRegexp.test(this.inputData.Tel)) {
 
-                                this.inputDataCheck.TelError = true;
-                                this.inputDataCheck.TelErrorMsg = '開頭必須為09';
-                            }
-                            else if (this.inputData.Tel.length < 10) {
-                                this.inputDataCheck.TelError = true;
-                                this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
-                            }
-                            else if (!telRegexpNum.test(this.inputData.Tel)) {
-                                this.inputDataCheck.TelError = true;
-                                this.inputDataCheck.TelErrorMsg = '只能輸入數字';
-                            }
-                            else {
-                                this.inputDataCheck.TelError = false;
-                                this.inputDataCheck.TelErrorMsg = '';
-                            }
-                        },
-                    },
-                    'inputData.Email': {
-                        immediate: true,        //點開即驗證
-                        handler: function () {
-                            let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
-                            if (!emailRegexp.test(this.inputData.Email)) {
-                                this.inputDataCheck.EmailError = true;
-                                this.inputDataCheck.EmailErrorMsg = '不符合email格式';
-                            }
-                            else {
-                                this.inputDataCheck.EmailError = false;
-                                this.inputDataCheck.EmailErrorMsg = '';
-                            }
-                        }
-                    },
-                },
-                methods: {
-                    checkAddVerify: function (e) {
-                        if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
-                            Swal.fire(
-                                '請填寫符合資料'
-                            );
 
-                            e.preventDefault(); //防止跳轉
-                        }
-                        else {
-                            let timerInterval
-                            Swal.fire({
-                                title: 'Auto close alert!',
-                                html: 'I will close in <b></b> milliseconds.',
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didOpen: () => {
-                                    Swal.showLoading()
-                                    timerInterval = setInterval(() => {
-                                        const content = Swal.getContent()
-                                        if (content) {
-                                            const b = content.querySelector('b')
-                                            if (b) {
-                                                b.textContent = Swal.getTimerLeft()
-                                            }
-                                        }
-                                    }, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            }).then((result) => {
-                                /* Read more about handling dismissals below */
-                                if (result.dismiss === Swal.DismissReason.timer) {
-                                    console.log('I was closed by the timer')
-                                }
-                            })
-                        }
-                    },
-                    Save2Server: function (e) {
-                        var self = this;
-                                $.ajax({
-                                    type: "POST",
-                                    url: '@Url.Action("test", "Pay")',
-                                    data: JSON.stringify({ OrderName: /*form.*/this.inputData.Name, OrderAddress: /*form.*/this.inputData.Address, OrderPhone: /*form.*/this.inputData.Tel, OrderConEmail: /*form.*/this.inputData.Email }), //注意是放JSON  字串
-                                    dataType: "json",
-                                    headers: {
-                                        'Content-type': 'application/json'
-
-                                    }, //注意 Content-type
-                                    success: function (response) {
-                                        console.log(data);
-                                    },
-                                    error: function (err) {
-                                        console.log(err);
-                                    }
-                                });
-                    }
-                }
+    <script>
+            $(document).ready(function () {
+                Binding();
             })
-        }
+            function Binding() {
+            const form = new Vue({
+                    el: "#app",
+                    data: {
+                        inputData: {
+                            Name: $('#orderName').val(),
+                            Address: $('#orderAddress').val(),
+                            Tel: $('#orderPhone').val(),
+                            Email: $('#orderEmail').val(),
+                        },
+                        inputDataCheck: {
+                            NameError: false,
+                            NameErrorMsg: '',
+                            AddressError: 1,
+                            AddressErrorMsg: '',
+                            TelError: '',
+                            TelErrorMsg: '',
+                            EmailError: '',
+                            EmailErrorMsg: '',
+                        },
+                        disableInputBool: false,
+                    },
+                    watch: {
+                        'inputData.Name': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                if (this.inputData.Name == "") {
+                                    this.inputDataCheck.NameError = true;
+                                    this.inputDataCheck.NameErrorMsg = '名稱不得為空';
+                                }
+                                else {
+                                    this.inputDataCheck.NameError = false;
+                                    this.inputDataCheck.NameErrorMsg = '';
+                                }
+                            }
+                        },
+                        'inputData.Address': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                if (this.inputData.Address == "") {
+                                    this.inputDataCheck.AddressError = true;
+                                    this.inputDataCheck.AddressErrorMsg = '地址不得為空';
+                                }
+                                else {
+                                    this.inputDataCheck.AddressError = false;
+                                    this.inputDataCheck.AddressErrorMsg = '';
+                                }
+                            },
+                        },
+                        'inputData.Tel': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                let telRegexp = /^09/; //開頭為09
+                                let telRegexpNum = /^[0-9]*$/;
+                                if (!telRegexp.test(this.inputData.Tel)) {
 
-       
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '開頭必須為09';
+                                }
+                                else if (this.inputData.Tel.length < 10) {
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
+                                }
+                                else if (!telRegexpNum.test(this.inputData.Tel)) {
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '只能輸入數字';
+                                }
+                                else {
+                                    this.inputDataCheck.TelError = false;
+                                    this.inputDataCheck.TelErrorMsg = '';
+                                }
+                            },
+                        },
+                        'inputData.Email': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
+                                if (!emailRegexp.test(this.inputData.Email)) {
+                                    this.inputDataCheck.EmailError = true;
+                                    this.inputDataCheck.EmailErrorMsg = '不符合email格式';
+                                }
+                                else {
+                                    this.inputDataCheck.EmailError = false;
+                                    this.inputDataCheck.EmailErrorMsg = '';
+                                }
+                            }
+                        },
+                    },
+                    methods: {
+                        checkAddVerify: function (e) {
+                            if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
+                                Swal.fire(
+                                    '請填寫符合資料'
+                                );
 
-</script>
+                                e.preventDefault(); //防止跳轉
+                            }
+                            else {
+                                let timerInterval
+                                Swal.fire({
+                                    title: 'Auto close alert!',
+                                    html: 'I will close in <b></b> milliseconds.',
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            const content = Swal.getContent()
+                                            if (content) {
+                                                const b = content.querySelector('b')
+                                                if (b) {
+                                                    b.textContent = Swal.getTimerLeft()
+                                                }
+                                            }
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    /* Read more about handling dismissals below */
+                                    if (result.dismiss === Swal.DismissReason.timer) {
+                                        console.log('I was closed by the timer')
+                                    }
+                                })
+                            }
+                        },
+                        Save2Server: function (e) {
+                            var self = this;
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '@Url.Action("test", "Pay")',
+                                        data: JSON.stringify({ OrderName: /*form.*/this.inputData.Name, OrderAddress: /*form.*/this.inputData.Address, OrderPhone: /*form.*/this.inputData.Tel, OrderConEmail: /*form.*/this.inputData.Email }), //注意是放JSON  字串
+                                        dataType: "json",
+                                        headers: {
+                                            'Content-type': 'application/json'
+
+                                        }, //注意 Content-type
+                                        success: function (response) {
+                                            console.log(data);
+                                        },
+                                        error: function (err) {
+                                            console.log(err);
+                                        }
+                                    });
+                        }
+                    },
+                
+                
+                })
+            }
+    </script>
+
+
 }
 
 
