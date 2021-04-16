@@ -250,6 +250,7 @@ body {
 
     .popular-project .status {
         margin-left: 0.8rem;
+        width: 6rem;
     }
 
     .popular-project .project-name h3 {
@@ -403,17 +404,7 @@ body {
             font-size: 0.8rem;
         }
 
-    .indemand-project .success-item p {
-        font-size: 0.8rem;
-    }
 
-#success-item {
-    background-color: #dffac3;
-    padding: 0.4rem 0.6rem;
-    margin: 0.6rem 0 0.6rem 0.8rem;
-    letter-spacing: 0.1rem;
-/*    margin-left: 0.8rem;*/
-}
 
 
 
@@ -425,11 +416,7 @@ body {
 
 
 
-    #status-text {
-        color: #000;
-/*        background-color: #1bd1a5;*/
-/*        font-weight: 700;*/
-    }
+
 
 
 
@@ -600,5 +587,27 @@ body {
     .indemand-project .cardtemplate .project-name h4 {
         font-size: 0.95rem;
     }
+    #status-text{
+        font-size:0.9rem;
+    }
 }
 
+#default {
+    text-align: center;
+}
+
+#success-item {
+    background-color: #dffac3;
+    padding: 0.4rem 0.6rem;
+    margin: 0.6rem 0 0.6rem 0.8rem;
+    letter-spacing: 0.1rem;
+    width: 7rem;
+    /*    margin-left: 0.8rem;*/
+}
+
+#status-text {
+    color: #000;
+    /*        background-color: #1bd1a5;*/
+    /*        font-weight: 700;*/
+    text-align: center;
+}
