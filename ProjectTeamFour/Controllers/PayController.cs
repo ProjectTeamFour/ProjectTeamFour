@@ -53,8 +53,9 @@ namespace ProjectTeamFour.Controllers
 
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
+            TempData.Keep();
             var order = Convert.ToInt32(TempData["orderId"]);
-            var o = _PayService.CreateANewMemberData(oVM);
+            var o = _PayService.CreateANewMemberData(oVM);///這一行應該可以拿掉
             var memberId = (MemberViewModel)Session["Member"];
             //var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
             var result = _PayService.ConnectECPay(order, memberId);
@@ -71,7 +72,7 @@ namespace ProjectTeamFour.Controllers
             //var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
             TempData["orderId"] = orderId;
-
+            
             return RedirectToAction("ConnectECPay");
         }
 
@@ -102,10 +103,10 @@ namespace ProjectTeamFour.Controllers
             TempData["RtnCode"] = RtnCode;
             if (ModelState.IsValid)
             {
-                //if (Convert.ToInt32(RtnCode) == 1)
-                //{
+                if (Convert.ToInt32(RtnCode) == 1)
+                {
                     _PayService.CreateOrderToDB(RtnCode, MerchantTradeNo, OrderId);
-                //}
+                }
             }
 
             _MemberService.Reloging(intmember);

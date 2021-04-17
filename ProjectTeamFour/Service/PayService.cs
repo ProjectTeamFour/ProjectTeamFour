@@ -141,6 +141,7 @@ namespace ProjectTeamFour.Service
                 item.condition = order.condition;
                 _repository.Create(item);
             }
+            
             return order.OrderId;
            
         }
@@ -151,57 +152,57 @@ namespace ProjectTeamFour.Service
         {
             decimal projectProgress = 0.0m;
             var orderint = Convert.ToInt32(orderId);
-            var rtnCode = Convert.ToInt32(RtnCode);             
-            
+            var rtnCode = Convert.ToInt32(RtnCode);
+
+            var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
+            var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();
+
+            //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
+
             using (var transaction = _context.Database.BeginTransaction())
             {
-
-                var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
-                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();
-                
-                //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
-                
-
-                try
-                {                    
-                    //result.OrderDate = DateTime.UtcNow.AddHours(8);
-
-                    result.condition = "已付款";
-                    _repository.Update<Order>(result);
-                    result.RtnCode = rtnCode;
-                    _repository.Update<Order>(result);
-                    result.TradeNo = MerchantTradeNo;
-                    _repository.Update<Order>(result);
-                    foreach (var item in odData)
+                    try
                     {
-                        item.condition = result.condition;
-                        var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
-                        var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
-                        ///判斷結完帳之後的募資進度
-                        foreach(var pj in projectview)
-                        {
-                            pj.Fundedpeople = pj.Fundedpeople + 1;
-                            pj.FundingAmount = pj.FundingAmount + item.OrderPrice*item.OrderQuantity;
-                            ///結完帳之後的募資進度
-                            projectProgress = (pj.FundingAmount / pj.AmountThreshold)*100;
-                            ///接著於下根據募資進度來發送通知
+                        result.OrderDate = DateTime.UtcNow.AddHours(8);
 
-                        }
-                        foreach (var p in planview)
+                        result.condition = "已付款";
+                        _repository.Update<Order>(result);
+                        result.RtnCode = rtnCode;
+                        _repository.Update<Order>(result);
+                        result.TradeNo = MerchantTradeNo;
+                        _repository.Update<Order>(result);
+                        foreach (var item in odData)
                         {
-                            p.QuantityLimit = p.QuantityLimit - item.OrderQuantity;
-                            p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                            item.condition = result.condition;
+                            var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
+                            var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
+                            ///判斷結完帳之後的募資進度
+                            foreach (var pj in projectview)
+                            {
+                                pj.Fundedpeople = pj.Fundedpeople + 1;
+                                pj.FundingAmount = pj.FundingAmount + item.OrderPrice * item.OrderQuantity;
+                                ///結完帳之後的募資進度
+                                projectProgress = (pj.FundingAmount / pj.AmountThreshold) * 100;
+                                ///接著於下根據募資進度來發送通知
+
+                            }
+                            foreach (var p in planview)
+                            {
+                                p.QuantityLimit = p.QuantityLimit - item.OrderQuantity;
+                                p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                            }
                         }
-                    }                    
-                    _repository.Update<Order>(result);
-                    transaction.Commit(); //交易確認     
-                    //result.OrderDate = DateTime.UtcNow.AddHours(8);
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    Console.WriteLine(ex);
-                }
+                        _repository.Update<Order>(result);
+                        transaction.Commit(); //交易確認     
+                                              //result.OrderDate = DateTime.UtcNow.AddHours(8);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine(ex);
+                    }
+                
+                
             }
 
         }
