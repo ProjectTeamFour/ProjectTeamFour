@@ -21,7 +21,7 @@ namespace ProjectTeamFour.Service
         public List<AnnouncementViewModel> GetAnnouncement(int Id)
         {
             var myAnnouncementList = new List<AnnouncementViewModel>();
-            var AnnouncementItems = _repository.GetAll<Announcement>().Where(x => x.MemberId == Id || x.MemberId == 235);
+            var AnnouncementItems = _repository.GetAll<Announcement>().Where(x => x.MemberId == Id || x.MemberId == 48);
             foreach(var item in AnnouncementItems)
             {
                 var AnnouncementVM = new AnnouncementViewModel
