@@ -19,7 +19,7 @@ namespace ProjectTeamFour_Backend.WebApi
     [ApiController]
     public class AnnouncementsController : ControllerBase
     {
-        private readonly CarCarPlanContext _context;
+        //private readonly CarCarPlanContext _context;
         private readonly IAnnouncementService _announcementService;
         private readonly ILogger<AnnouncementsController> _logger;
         public AnnouncementsController(IAnnouncementService announcementService,ILogger<AnnouncementsController> logger,CarCarPlanContext context)
@@ -31,7 +31,6 @@ namespace ProjectTeamFour_Backend.WebApi
         public BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult> GetAll()
         {
             var result = new BaseModel.BaseResult<AnnouncementViewModel.AnnouncementListResult>();
-            _logger.LogWarning(2001, DateTime.Now.ToLongDateString() + "Product控制器GET方法被呼叫");
             try
             {
                 result.Body = _announcementService.GetAll();

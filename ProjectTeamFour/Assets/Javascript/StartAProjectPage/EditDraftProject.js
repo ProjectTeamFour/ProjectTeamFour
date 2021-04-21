@@ -434,12 +434,12 @@ var form = new Vue({
                 this.inputDataCheck.StartDateAndEndDateError = true;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "募資時間必須填妥";
             } else {
-                console.log(this.inputData.StartDate);
-                console.log(this.inputData.EndDate);
-                console.log(this.inputData.StartDate.split("-"));
-                console.log(this.inputData.EndDate.split("-"));
-                console.log(this.inputData.StartDate.split("-").join(""));
-                console.log(this.inputData.EndDate.split("-").join(""));
+                //console.log(this.inputData.StartDate);
+                //console.log(this.inputData.EndDate);
+                //console.log(this.inputData.StartDate.split("-"));
+                //console.log(this.inputData.EndDate.split("-"));
+                //console.log(this.inputData.StartDate.split("-").join(""));
+                //console.log(this.inputData.EndDate.split("-").join(""));
                 this.inputDataCheck.StartDateAndEndDateError = false;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "";
             }
@@ -695,6 +695,11 @@ var form = new Vue({
                 if (this.modalData.QuantityLimit == 0) {
                     this.modalData.QuantityLimit == 999;
                 }
+
+
+                //var planPriceWithComma = this.numberWithCommas(this.modalData.planPrice);
+
+               
 
                 //做plan物件等等塞回去陣列
                 var modalListObj = {
@@ -1052,8 +1057,8 @@ var form = new Vue({
                 // str.substring(2) => "zilla" 從哪開始
                 totalQuestion = totalQuestion.substring(1);
                 totalAnswer = totalAnswer.substring(1);
-                console.log(totalQuestion);
-                console.log(totalAnswer);
+                //console.log(totalQuestion);
+                //console.log(totalAnswer);
             }
 
             var draftProjectPlansCount;
@@ -1079,8 +1084,8 @@ var form = new Vue({
                 draftProjectId = document.getElementById("myApp").dataset.id;
             }
 
-            console.log(totalQuestion);
-            console.log(totalAnswer);
+            //console.log(totalQuestion);
+            //console.log(totalAnswer);
      
 
             var draftData = {
@@ -1113,7 +1118,6 @@ var form = new Vue({
                 "ProjectStatus": null,
                 "DraftProjectPlansCount": draftProjectPlansCount
             }
-            // console.log(this.ProjectQuestionAnswer);
 
             $.ajax({
                 url: "/api/projectsubmission/receivedraftdata",
@@ -1146,7 +1150,7 @@ var form = new Vue({
             //console.log(targetPageId);
 
             var id = document.getElementById("myApp").dataset.id;
-            console.log(id);
+            //console.log(id);
             var data = {
                 "DraftProjectId": id
             }
@@ -1161,7 +1165,7 @@ var form = new Vue({
 
             axios.post("/startaproject/getdraftprojectdata", data)
                 .then((res) => {
-                    console.log(res);
+                    //console.log(res);
                     this.putBackDataFromServer(res);
                 })
                 .catch((err) => {
@@ -1208,18 +1212,16 @@ var form = new Vue({
             this.inputData.MemberPhone = response.data.CreatorInfo.MemberPhone;
             this.inputData.IdentityNumber = response.data.DraftProjectDetailItem.IdentityNumber;
 
-            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl;
-            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
-            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; 
+            //this.inputData.ProfileImgUrl = response.data.CreatorInfo.ProfileImgUrl; -
+            //this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl; -
+            //this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl; -這個沒了
 
             quill.root.innerHTML = response.data.DraftProjectDetailItem.DraftProjectImgUrl;  //塞回富文本
-
-
+            //console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            //console.log(response.data.CreatorInfo.ProfileImgUrl);
+            this.returnUrlToPic(response);
             this.returnDataToQA(response.data.DraftProjectDetailItem.DraftProjectFAQList);   //待處理
-            //console.log(response.data.DraftProjectDetailItem.DraftProjectFAQList);
-
             this.returnDataToPlan(response.data.SelectPlanCards.DraftPlanCardItems);
-
 
             // "PlanObject": this.modalList, //陣列包物件
             // "ProjectQA": this.ProjectQuestionAnswer, //陣列包物件
@@ -1233,23 +1235,9 @@ var form = new Vue({
         returnDataToQA(qaArray) {     //FAQ 待處理
             //console.log(this.ProjectQAObj.Question);
             //console.log(this.ProjectQAObj.Answer);
-
-            //console.log()
-            //var ProjectQAObj = {
-            //    Question: "",
-            //    Answer: "",
-            //    Count: "",
-            //    QAError: "",
-            //    QAErrorMsg: "",
-            //}
+           
             qaArray.forEach((item, index) => {
-                //this.ProjectQAObj.Question = item.DraftQuestion;
-                //this.ProjectQAObj.Answer = item.DraftAnswer;
-                //console.log(this.ProjectQAObj.Question);
-                //console.log(this.ProjectQAObj.Answer);
-                //this.ProjectQAObj.Count = index + 1;
-                console.log(item.DraftQuestion);
-                console.log(item.DraftAnswer);
+               
                 var ProjectQAObj = {
                     Question: item.DraftQuestion,
                     Answer: item.DraftAnswer,
@@ -1258,15 +1246,16 @@ var form = new Vue({
                     QAErrorMsg: "",
                 }
                 this.ProjectQuestionAnswer.push(ProjectQAObj);
-                console.log(this.ProjectQuestionAnswer[index]);
+                //console.log(this.ProjectQuestionAnswer[index]);
                 //this.$emit("input", this.ProjectQuestionAnswer);
             });
             //this.ProjectQuestionAnswer.push(QAObj);
             //this.$emit("input", this.ProjectQuestionAnswer);
         },
         returnDataToPlan(planArray) {
+            var AddCarCarPlanSwitch = "";
             planArray.forEach((item, index) => {
-                var AddCarCarPlanSwitch = "";
+                
                 //var planCount = index + 1;
                 this.modalData.makePlanCount = index + 1;
 
@@ -1276,13 +1265,11 @@ var form = new Vue({
                     AddCarCarPlanSwitch = "否";
                 }
 
-
                 var planDateString = item.StringDraftPlanShipDate.split("00")[0].trim();
-                console.log(planDateString.split("-")[0].trim());
-                console.log(planDateString.split("-")[1].trim());
-                console.log(Number(planDateString.split("-")[1].trim()));
-
-                console.log(planDateString.split("-").join(""));
+                //console.log(planDateString.split("-")[0].trim());
+                //console.log(planDateString.split("-")[1].trim());
+                //console.log(Number(planDateString.split("-")[1].trim()));
+                //console.log(planDateString.split("-").join(""));
 
                 var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
@@ -1301,6 +1288,33 @@ var form = new Vue({
                 }
                 this.modalList.push(modalListObj);
             })
+        },
+        returnUrlToPic(response) {
+            //console.log(response.data.DraftProjectDetailItem.DraftProjectMainUrl);
+            //console.log(response.data.CreatorInfo.ProfileImgUrl);
+            if (response.data.CreatorInfo.ProfileImgUrl != null)
+            {
+                //console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.TeamPicture = response.data.CreatorInfo.ProfileImgUrl;
+                priu = response.data.CreatorInfo.ProfileImgUrl;
+                this.inputDataCheck.TeamPictureError = false;
+            }
+            if (response.data.DraftProjectDetailItem.DraftProjectMainUrl != null)
+            {
+                //console.log(response.data.CreatorInfo.ProfileImgUrl);
+                this.inputData.ProjectMainUrl = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+                pmu = response.data.DraftProjectDetailItem.DraftProjectMainUrl;
+                this.inputDataCheck.ProjectMainUrlError = false;
+            }
+            if (response.data.DraftProjectDetailItem.DraftProjectCoverUrl != null) {
+                //console.log(response.data.DraftProjectDetailItem.DraftProjectCoverUrl);
+                this.inputData.ProjectCoverUrl = response.data.DraftProjectDetailItem.DraftProjectCoverUrl;
+                pcu = response.data.DraftProjectDetailItem.DraftProjectCoverUrl;
+                this.inputDataCheck.ProjectCoverUrlError = false;
+            }
+        },
+        numberWithCommas(planPrice) {
+            return planPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
 });

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using ProjectTeamFour.Service;
 
 
 namespace ProjectTeamFour.ViewModels
@@ -43,7 +44,7 @@ namespace ProjectTeamFour.ViewModels
         [Display(Name = "大頭照")]
         public string ProfileImgUrl { get; set; }
         [Display(Name = "個人網站")]
-        [DataType(DataType.Url)]
+
         public string MemberWebsite { get; set; }
         [Display(Name = "聯絡訊息")]
         public string MemberMessage { get; set; }
@@ -53,6 +54,7 @@ namespace ProjectTeamFour.ViewModels
         public string Hash { get; set; }
         public string OldPassword { get; set; }
         public string IsThirdParty { get; set; }
+        public int UnreadCount { get; set; }
 
         public BackingRecordsViewModel Records { get; set; }
         public List<SubmissionProcessViewModel> ProjectRecords { get; set; }

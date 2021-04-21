@@ -364,6 +364,11 @@
                         }
                     })
 
+                    // Hide the modal manually
+                    this.$nextTick(() => {
+                        this.$bvModal.hide('info-modal');
+
+                    })
                 }
             },
             //watch: {

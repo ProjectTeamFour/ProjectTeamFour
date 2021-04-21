@@ -141,6 +141,7 @@ namespace ProjectTeamFour.Service
                 item.condition = order.condition;
                 _repository.Create(item);
             }
+            
             return order.OrderId;
            
         }
@@ -151,58 +152,104 @@ namespace ProjectTeamFour.Service
         {
             decimal projectProgress = 0.0m;
             var orderint = Convert.ToInt32(orderId);
-            var rtnCode = Convert.ToInt32(RtnCode);             
-            
+            var rtnCode = Convert.ToInt32(RtnCode);
+
+            var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
+            var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();
+
+            //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
+
             using (var transaction = _context.Database.BeginTransaction())
             {
-
-                var result = _repository.GetAll<Order>().Where((x) => x.OrderId == orderint).FirstOrDefault();
-                var odData = _repository.GetAll<OrderDetail>().Where((x) => x.OrderId == orderint).Select(X => X).ToList();
-                
-                //抓出od DB 的資料 匹配給Project& plan DB 以projectId 分群
-                
-
-                try
-                {                    
-                    result.OrderDate = DateTime.UtcNow.AddHours(8);
-                    result.condition = "已付款";
-                    result.RtnCode = rtnCode;
-                    result.TradeNo = MerchantTradeNo;
-                    foreach (var item in odData)
+                    try
                     {
-                        item.condition = result.condition;
-                        var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
-                        var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
-                        ///判斷結完帳之後的募資進度
-                        foreach(var pj in projectview)
+                        result.OrderDate = DateTime.UtcNow.AddHours(8);
+
+                        result.condition = "已付款";
+                        _repository.Update<Order>(result);
+                        result.RtnCode = rtnCode;
+                        _repository.Update<Order>(result);
+                        result.TradeNo = MerchantTradeNo;
+                        _repository.Update<Order>(result);
+                        foreach (var item in odData)
                         {
+                            item.condition = result.condition;
+                            var projectview = _repository.GetAll<Project>().Where((x) => x.ProjectId == item.ProjectId);
+                            var planview = _repository.GetAll<Plan>().Where((x) => x.PlanId == item.PlanId);
+                            ///判斷結完帳之後的募資進度
+                            foreach (var pj in projectview)
+                            {
+                                pj.Fundedpeople = pj.Fundedpeople + 1;
+                                pj.FundingAmount = pj.FundingAmount + item.OrderPrice * item.OrderQuantity;
+                                ///結完帳之後的募資進度
+                                projectProgress = (pj.FundingAmount / pj.AmountThreshold) * 100;
+                                ///接著於下根據募資進度來發送通知
 
-                            pj.Fundedpeople = pj.Fundedpeople + 1;
-                            pj.FundingAmount = pj.FundingAmount + item.OrderPrice;
-                            ///結完帳之後的募資進度
-                            projectProgress = (pj.FundingAmount / pj.AmountThreshold)*100;
-                            ///接著於下根據募資進度來發送通知
-
-
+                            }
+                            foreach (var p in planview)
+                            {
+                                p.QuantityLimit = p.QuantityLimit - item.OrderQuantity;
+                                p.PlanFundedPeople = p.PlanFundedPeople + 1;
+                            }
                         }
-                        foreach (var p in planview)
-                        {
-                            p.QuantityLimit = p.QuantityLimit - 1;
-                            p.PlanFundedPeople = p.PlanFundedPeople + 1;
-                        }
-                    }                    
-                    _repository.Update<Order>(result);
-                    transaction.Commit(); //交易確認     
-
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    Console.WriteLine(ex);
-                }
+                        _repository.Update<Order>(result);
+                        transaction.Commit(); //交易確認     
+                                              //result.OrderDate = DateTime.UtcNow.AddHours(8);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine(ex);
+                    }
+                
+                
             }
+
         }
 
+        //重新購買 pay頁面
+        public PayViewModel Reshop(PayViewModel cart) //撈資料庫資料 用backingRecordviewmodel的planId找到資料庫的planId 
+        {
+            
+            var session = HttpContext.Current.Session;
+            var memberSession = ((MemberViewModel)session["Member"]);
+            var member = _repository.GetAll<Member>().FirstOrDefault(x => x.MemberId == memberSession.MemberId);
+
+            var viewmodel = new PayViewModel
+            {
+                MemberName = member.MemberName,
+                MemberAddress = member.MemberAddress,
+                MemberPhone = member.MemberPhone,
+                MemberConEmail = member.MemberRegEmail,
+                MemberId = member.MemberId,
+                CartItems = new List<CarCarPlanViewModel>() //先給他一個空的集合 讓viewmodel知道我需要這筆資料
+            };
+            var myOrder = _repository.GetAll<Order>().FirstOrDefault(x => x.OrderId == cart.OrderId);
+            var myOrderDetail = _repository.GetAll<OrderDetail>().Where(x => x.OrderId == myOrder.OrderId).Select(x=>x).ToList();
+            foreach (var item in myOrderDetail) 
+            {
+                var CartItem = new CarCarPlanViewModel
+                {
+                    PlanId = item.PlanId,
+                    Quantity = item.OrderQuantity,
+                    PlanPrice = item.OrderPrice,
+                    PlanImgUrl = item.OrderPlanImgUrl,
+                    PlanTitle = item.PlanTitle,
+                    ProjectId = item.ProjectId,
+                };
+                viewmodel.CartItems.Add(CartItem);
+            }
+            return viewmodel;
+        }
+
+        
+        
+        /// <summary>
+        /// 連接到綠界結帳頁面，並於客製化欄位放入orderId及memberId
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="member"></param>
+        /// <returns></returns>
         public string ConnectECPay(int orderId, MemberViewModel member)
         {
             var session = HttpContext.Current.Session;
@@ -223,9 +270,9 @@ namespace ProjectTeamFour.Service
                     oPayment.MerchantID = "2000132";//ECPay提供的特店編號
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "https://mycarplanwebsite.azurewebsites.net/Pay/CheckECPayFeedBack";//付款完成通知回傳的網址
-                    oPayment.Send.ClientBackURL = "https://mycarplanwebsite.azurewebsites.net/Home/Index";//瀏覽器端返回的廠商網址
-                    oPayment.Send.OrderResultURL = "https://mycarplanwebsite.azurewebsites.net/pay/Result";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.ReturnURL = "https://projecteteam4.azurewebsites.net/Pay/CheckECPayFeedBack";//付款完成通知回傳的網址
+                    oPayment.Send.ClientBackURL = "https://projecteteam4.azurewebsites.net/Home/Index";//瀏覽器端返回的廠商網址
+                    oPayment.Send.OrderResultURL = "https://projecteteam4.azurewebsites.net/pay/Result";//瀏覽器端回傳付款結果網址
                     oPayment.Send.MerchantTradeNo = "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     oPayment.Send.TotalAmount = Decimal.Parse(TotalAmount);
@@ -339,7 +386,9 @@ namespace ProjectTeamFour.Service
             return html;
 
         }
-
+        /// <summary>
+        /// 綠界結帳後的檢查碼
+        /// </summary>
         public void CheckECPayFeedBack()
         {
             List<string> enErrors = new List<string>();

@@ -9,5 +9,6 @@ namespace ProjectTeamFour.ViewModels
     {
         public string Title { get; set; }
         public string Content { get; set; }
+        public double CreateTime { get; set; }
     }
 }

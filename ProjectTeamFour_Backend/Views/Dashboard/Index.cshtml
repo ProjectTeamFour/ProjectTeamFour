@@ -2,19 +2,65 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
-    const projects = (axios.get("/Api/Projects/GetAll")).data.body.projectList;
+    //取得前台統計概況數據
+    var getNums = () =>
+    {
+        axios.get("/Api/Projects/GetAll")
+            .then(function (res)
+            {
+                const projects = res.data.body.projectList
+                //成功專案募資總額
+                var getsuccess = () =>
+                {
+                    var successprojects = []
+                    successprojects = projects.filter(project => project.projectStatus == '集資成功' || project.projectStatus == '結束且成功')
+                    return successprojects.map(e => e.fundingAmount)
+                        .reduce((p, n) => { return p + n })
+                }
+                //成功專案數量
+                var getsuccesscount = () =>
+                {
+                    var successprojects = []
+                    successprojects = projects.filter(project => project.projectStatus == '集資成功' || project.projectStatus == '結束且成功')
+                    return successprojects.length
+                }
+                //全部專案募資總額
+                var getall = () =>
+                {
+                    return projects.map(e => e.fundingAmount)
+                        .reduce((p, n) => { return p + n })
+                }
+                //全部專案數量
+                var getallcount = () =>
+                {
+                    return projects.length
+                }
+                //募資中專案數量
+                var getpendingcount = () =>
+                {
+                    var pendingprojects = []
+                    pendingprojects = projects.filter(project => project.projectStatus == '集資中' || project.projectStatus == '集資成功')
+                    return pendingprojects.length
+                }
 
-    var countSuccessProjects = () => {
-        let count = 0;
-        //if (v.projectStatus == "集資成功" | v.projectStatus == "結束且成功")
-        if (v.projectStatus == "集資中")
-        {
-            projects.map((v, i) => count++)
-            return count;
-        }
-        document.getElementById("#pending_projects_count").innerHTML(count);
+                const successProjectsAccount = getsuccess()
+                const allProjectsAccount = getsuccess() * 0.08
+                const successCount = getsuccesscount()
+                const allCount = getallcount()
+                const pendingProjectsCount = getpendingcount()
+                //募資專案成功比例
+                const SuccessRate = (successCount / allCount) * 100
+                function addTextNode()
+                {
+                    document.getElementById("success_funding_summary").innerText = '$' + successProjectsAccount
+                    document.getElementById("account_Total").innerHTML = '$' + parseInt(allProjectsAccount)
+                    document.getElementById("success_projects_count").innerHTML = parseInt(SuccessRate) + '%'
+                    document.getElementById("pending_projects_count").innerHTML = pendingProjectsCount
+                }
+                addTextNode()
+            })
     }
-
+    getNums()
 
 </script>
 
@@ -32,25 +78,27 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <h1 class="h3 mb-0 text-gray-800">平台統計圖表</h1>
+                        @*<a href="./directory/yourfile.pdf" download="Report.pdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i class="fas fa-download fa-sm text-white-50"></i> 集資車車平台統計
-                        </a>
+                        </a>*@
                     </div>
 
-                    <!-- Content Row -->
+                    <!-- 統計概況 -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Earnings Card for Success -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                營收概況(月營收)
+                                                成功募資總額
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div id="success_funding_summary" class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <!--統計成功募資總金額-->
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -60,16 +108,18 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Earnings Card Total -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                總營收(創建至今)
+                                                平台總營收概況
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div id="account_Total" class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <!--統計平台總營收-->
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -78,8 +128,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Success Projects Percentage -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -90,16 +139,13 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        50%
-
-                                                        @* 這裡做統計喔 *@
-
+                                                    <div id="success_projects_count" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        <!--統計成功募資專案數量-->
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                        <div id="success_rate" class="progress-bar bg-info" role="progressbar"
                                                              style="width: 50%" aria-valuenow="50" aria-valuemin="0"
                                                              aria-valuemax="100"></div>
                                                     </div>
@@ -114,7 +160,7 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- Projects Indemmand -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -124,9 +170,7 @@
                                                 募資中專案數量
                                             </div>
                                             <div id="pending_projects_count" class="h5 mb-0 font-weight-bold text-gray-800">
-
-                                                @* 計算總共有幾個募資專案 *@
-
+                                                <!-- 計算總共有幾個募資專案 -->
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -138,60 +182,87 @@
                         </div>
                     </div>
 
-                    <!-- Content Row -->
-
+                    <!-- 第二列 -->
                     <div class="row">
-
                         <!-- 訂單銷售統計圖 -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">訂單銷售統計圖</h6>
-           
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <div id="orders_line" style="width: 600px;height:400px;"></div>
-                                    </div>
+                                    <div class="chart-area" id="orders_line" style="width: 600px;height:400px;"></div>
                                     <script>
 
-                                        const getOption = async () => {
-                                            const getdata = async () => {
-                                                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
-                                                console.log(items);
-                                                //let tmpArray = [];
-                                                //items.map((v, i) => tmpArray.push(i));
-                                                //let account = [];
-                                                //items.map((v, i) => account.push(parseInt(v.orderTotalAccount)));
-                                                let OrderDate = [];
-                                                let OrderAccount = [];
-                                                function ChangeDatetoNum(e) {
-                                                    return e.split('/').reduce((pre, now) => {
-                                                        return now.length < 2 ? pre + '0' + now : pre + now
-                                                    }, "")
-                                                }
+                                        axios.get("/Api/Orders/GetAll")
+                                            .then(function (res)
+                                            {
+                                                const items = res.data.body.myOrderList
+                                                //console.log(items);
+                                                let Dates = []
+                                                let tmpArray = []
+                                                var a = items.map((v, i) => tmpArray.push(v.orderDate))
+                                                items.forEach(e => Dates.push(e.orderDate))
+                                                console.log(Dates)
+                                                //console.log(a);
+                                            })
 
-                                                const compare = (a, b) => {
-                                                    if (ChangeDatetoNum(a.orderDate) > ChangeDatetoNum(b.orderDate))
-                                                        return 1;
-                                                    else 
-                                                        return -1;
-                                                }
-                                                items.sort(compare);
-                                                items.forEach(e => OrderDate.push(e.orderDate));
-                                                items.forEach(e => OrderAccount.push(e.orderTotalAccount));
-                                                return { x: OrderDate, y: OrderAccount }
+
+                                        const getOption = async () =>
+                                        {
+                                            //const getdata = async () => {
+                                            //    items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList;
+                                            //    //console.log(items);
+                                            //    let tmpArray = [];
+                                            //    return items.forEach(e => tmpArray.push(e.orderDate))
+                                            //    console.log(tmpArray);
+
+                                            //    let OrderDate = [];
+                                            //    let OrderAccount = [];
+                                            //    function ChangeDatetoNum(arr) {
+                                            //        items.map((v, i) =>
+                                            //            v.split('/')
+                                            //                .reduce((pre, now) =>
+                                            //                {
+                                            //                    return now.length < 2 ? pre + '0' + now : pre + now
+                                            //                }, "")
+                                            //        )}
+                                            //    let newOrderDate = ChangeDatetoNum(tmpArray);
+                                            //    console.log(newOrderDate);
+                                            //    const compare = (a, b) => {
+                                            //        if (ChangeDatetoNum(a.orderDate) > ChangeDatetoNum(b.orderDate))
+                                            //            return 1;
+                                            //        else
+                                            //            return -1;
+                                            //    }
+                                            //    items.sort(compare);
+                                            //    items.forEach(e => OrderDate.push(e.orderDate));
+                                            //    items.forEach(e => OrderAccount.push(e.orderTotalAccount));
+                                            //    return { x: OrderDate, y: OrderAccount }
+                                            //}
+                                            const getdata = async () =>
+                                            {
+                                                let items = (await axios.get("/Api/Orders/GetAll")).data.body.myOrderList
+                                                let tmpArray = []
+                                                items.map((v, i) => tmpArray.push(i))
+                                                let account = []
+                                                items.map((v, i) => account.push(parseInt(v.orderTotalAccount)))
+                                                return { x: tmpArray, y: account }
                                             }
-                                            let tmp = await getdata();
+                                            let tmp = await getdata()
                                             var option = {
                                                 title: {
-                                                    text: '訂單銷售統計圖'
+                                                    text: '訂單銷售統計圖',
+                                                    show: false
                                                 },
                                                 //legend: {
                                                 //data: ['金額']
                                                 //},
+                                                tooltip: {
+                                                    trigger: 'item',     //觸發類型（座標軸觸發）
+                                                },
                                                 xAxis: {
                                                     data: tmp.x
                                                     //data:months
@@ -202,18 +273,20 @@
                                                 series: [{
                                                     name: '金額',
                                                     type: 'line',
+                                                    smooth: true,
                                                     stack: '总量',
                                                     data: tmp.y,
                                                     //realtimeSort: true,
                                                 }]
-                                            };
-                                            return option;
+                                            }
+                                            return option
                                         }
 
-                                        getOption().then(option => {
-                                            console.log(option);
-                                            var moneyChart = echarts.init(document.getElementById('orders_line'));
-                                            moneyChart.setOption(option);
+                                        getOption().then(option =>
+                                        {
+                                            //console.log(option);
+                                            var moneyChart = echarts.init(document.getElementById('orders_line'))
+                                            moneyChart.setOption(option)
                                         })
 
                                     </script>
@@ -230,40 +303,60 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie">
-                                        <div id="projectStatus_pie" style="width: 400px;height:300px;"></div>
-                                    </div>
-                                    
+                                    <div class="chart-pie" id="projectStatus_pie" style="width: 350px;height:300px;"></div>
                                     <script>
-                                        const getOption_pie1 = async () => {
-                                            const getdata = async () => {
-                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+                                        const getOption_pie1 = async () =>
+                                        {
+                                            const getdata = async () =>
+                                            {
+                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList
 
-                                                let count = [0, 0, 0, 0, 0, 0];
-                                                const json = {
-                                                    "集資中": 0,
-                                                    "集資成功": 1,
-                                                    "集資失敗": 2,
-                                                    "審核中": 3,
-                                                    "結束且成功": 4,
-                                                    "結束且失敗": 5
-                                                }
-                                                items.map((v, i) => count[json[v.projectStatus]]++);
-                                                return { x: ["集資中", "集資成功", "集資失敗", "審核中", "結束且成功", "結束且失敗"], y: count }
+                                                //let count = [0, 0, 0, 0, 0, 0]
+                                                //const json = {
+                                                //    "集資中": 0,
+                                                //    "集資成功": 1,
+                                                //    "集資失敗": 2,
+                                                //    "審核中": 3,
+                                                //    "結束且成功": 4,
+                                                //    "結束且失敗": 5
+                                                //}
+
+                                                const a = items.filter((p => p.projectStatus == "集資中")).length
+                                                const b = items.filter((p => p.projectStatus == "集資成功")).length
+                                                const c = items.filter((p => p.projectStatus == "集資失敗")).length
+                                                const d = items.filter((p => p.projectStatus == "審核中")).length
+                                                const e = items.filter((p => p.projectStatus == "結束且成功")).length
+                                                const f = items.filter((p => p.projectStatus == "結束且失敗")).length
+
+
+                                                const jsontmp =
+                                                    [
+                                                        { value: d, name: '審核中' },
+                                                        { value: a, name: '集資中' },
+                                                        { value: b, name: '集資成功' },
+                                                        { value: c, name: '集資失敗' },
+                                                        
+                                                        { value: e, name: '結束且成功' },
+                                                        { value: f, name: '結束且失敗' }
+                                                    ]
+
+                                                return {jsontmp}
+                                            
                                             }
-                                            let tmp = await getdata();
+                                            let tmp = await getdata()
 
+                                            // 指定图表的配置项和数据
                                             var option = {
                                                 title: {
-                                                    text: '募資狀態統計圖',
-                                                    show: false
+                                                    text: '募資狀態統計圖'
                                                 },
                                                 tooltip: {
-                                                    trigger: 'item',     //觸發類型（座標軸觸發）
+                                                    trigger: 'item',
                                                 },
                                                 legend: {
                                                     top: '5%',
-                                                    left: 'center',                                               
+                                                    left: 'center',
+                                                    data: tmp
                                                 },
 
                                                 series: [{
@@ -271,7 +364,8 @@
                                                     radius: ['40%', '70%'],
                                                     avoidLabelOverlap: false,
                                                     type: 'pie',
-                                                    data: tmp.y,
+                                                    data: tmp.jsontmp,
+                                                        
                                                     label: {
                                                         show: false,
                                                         position: 'center'
@@ -287,13 +381,15 @@
                                                         }
                                                     },
                                                 }]
-                                            };
-                                            return option;
+                                            }
+                                            return option
                                         }
-                                        getOption_pie1().then(option => {
-                                            console.log(option);
-                                            var myChart = echarts.init(document.getElementById('projectStatus_pie'));
-                                            myChart.setOption(option);
+
+                                        getOption_pie1().then(option =>
+                                        {
+                                            //console.log(option);
+                                            var myChart = echarts.init(document.getElementById('projectStatus_pie'))
+                                            myChart.setOption(option)
                                         })
 
                                     </script>
@@ -310,16 +406,15 @@
                                     <h6 class="font-weight-bold text-primary">提案分類統計圖</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-bar">
-                                        <div id="category_bar" style="width: 550px;height:350px;"></div>
-                                    </div>
-                                    
+                                    <div class="chart-bar" id="category_bar" style="width: 550px;height:350px;"></div>
                                     <script>
-                                        const getOption_bar1 = async () => {
-                                            const getdata = async () => {
-                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+                                        const getOption_bar1 = async () =>
+                                        {
+                                            const getdata = async () =>
+                                            {
+                                                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList
 
-                                                let account = [0, 0, 0, 0, 0, 0];
+                                                let account = [0, 0, 0, 0, 0, 0]
                                                 const json = {
                                                     "科技設計": 0,
                                                     "藝術影視": 1,
@@ -328,14 +423,15 @@
                                                     "公共在地": 4,
                                                     "遊戲出版": 5
                                                 }
-                                                items.map((v, i) => account[json[v.category]]++);
+                                                items.map((v, i) => account[json[v.category]]++)
                                                 return { x: ["科技設計", "藝術影視", "音樂", "生活", "公共在地", "遊戲出版"], y: account }
                                             }
-                                            let tmp = await getdata();
+                                            let tmp = await getdata()
 
                                             var option = {
                                                 title: {
-                                                    text: '提案分類統計圖'
+                                                    text: '提案分類統計圖',
+                                                    show: false
                                                 },
                                                 tooltip: {
                                                     trigger: 'axis',     //觸發類型（座標軸觸發）
@@ -355,14 +451,15 @@
                                                     data: tmp.y
 
                                                 }]
-                                            };
-                                            return option;
+                                            }
+                                            return option
                                         }
 
-                                        getOption_bar1().then(option => {
-                                            console.log(option);
-                                            var myChart = echarts.init(document.getElementById('category_bar'));
-                                            myChart.setOption(option);
+                                        getOption_bar1().then(option =>
+                                        {
+                                            //console.log(option);
+                                            var myChart = echarts.init(document.getElementById('category_bar'))
+                                            myChart.setOption(option)
                                         })
 
                                     </script>
@@ -370,57 +467,55 @@
                             </div>
                         </div>
 
-                    @*</div>*@
+                        @*</div>*@
 
-                    <!-- Content Row -->
-                    <!--<div class="row">-->
-
+                        <!-- Content Row -->
+                        <!--<div class="row">-->
                         <!-- Content Column -->
                         <!--<div class="col-lg-6 mb-4">-->
-
-                            <!-- Project Card Example -->
-                            <!--<div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">各分類專案統計</h6>
+                        <!-- Project Card Example -->
+                        <!--<div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">各分類專案統計</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="small font-weight-bold">
+                                    Server Migration <span class="float-right">20%</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <div class="card-body">
-                                    <h4 class="small font-weight-bold">
-                                        Server Migration <span class="float-right">20%</span>
-                                    </h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">
-                                        Sales Tracking <span class="float-right">40%</span>
-                                    </h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">
-                                        Customer Database <span class="float-right">60%</span>
-                                    </h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">
-                                        Payout Details <span class="float-right">80%</span>
-                                    </h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">
-                                        Account Setup <span class="float-right">Complete!</span>
-                                    </h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                <h4 class="small font-weight-bold">
+                                    Sales Tracking <span class="float-right">40%</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                            </div>-->
+                                <h4 class="small font-weight-bold">
+                                    Customer Database <span class="float-right">60%</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar" role="progressbar" style="width: 60%"
+                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <h4 class="small font-weight-bold">
+                                    Payout Details <span class="float-right">80%</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <h4 class="small font-weight-bold">
+                                    Account Setup <span class="float-right">Complete!</span>
+                                </h4>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>-->
                         @*</div>*@
 
                         <div class="col-lg-6 mb-4">
@@ -431,9 +526,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">熱門募資排行榜</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-bar">
-                                        <div id="orders_popular" style="width: 600px;height:400px;"></div>
-                                    </div>
+
+                                    <div class="chart-bar" id="orders_popular" style="width: 600px;height:400px;"></div>
+
                                 </div>
                             </div>
 
@@ -462,30 +557,34 @@
     <script src="~/js/sb-admin-2.min.js"></script>
 
     <script>
-        const getOption_MostPopular = async () => {
-            const getdata = async () => {
-                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList;
+        const getOption_MostPopular = async () =>
+        {
+            const getdata = async () =>
+            {
+                let items = (await axios.get("/Api/Projects/GetAll")).data.body.projectList
 
-                let ProjectName = [];
-                let ProjectFundingAmount = [];
+                let ProjectName = []
+                let ProjectFundingAmount = []
 
-                const compare = (a, b) => {
+                const compare = (a, b) =>
+                {
                     if (a.fundingAmount > b.fundingAmount)
-                        return -1;
+                        return -1
                     else if (a.fundingAmount < b.fundingAmount)
-                        return 1;
-                    return 0;
+                        return 1
+                    return 0
                 }
-                items.sort(compare);
+                items.sort(compare)
 
-                items.forEach(e => ProjectName.push(e.projectName));
-                items.forEach(e => ProjectFundingAmount.push(e.fundingAmount));
+                items.forEach(e => ProjectName.push(e.projectName))
+                items.forEach(e => ProjectFundingAmount.push(e.fundingAmount))
                 return { x: ProjectName, y: ProjectFundingAmount }
             }
-            let tmp = await getdata();
+            let tmp = await getdata()
             var option = {
                 title: {
-                    text: '訂單銷售統計圖'
+                    text: '熱門募資排行',
+                    show: false
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -494,7 +593,7 @@
                     }
                 },
                 legend: {
-                data: '銷售金額'
+                    data: '銷售金額'
                 },
                 transform: {
                     type: 'sort',
@@ -503,7 +602,8 @@
                 xAxis: {
                     data: tmp.x,
                     //data:months
-                    max:5
+                    max: 5,
+                    show: false
                 },
                 yAxis: {
                     type: 'value',
@@ -514,14 +614,15 @@
                     type: 'bar',
                     data: tmp.y
                 }]
-            };
-            return option;
+            }
+            return option
         }
 
-        getOption_MostPopular().then(option => {
-            console.log(option);
-            var myChart = echarts.init(document.getElementById('orders_popular'));
-            myChart.setOption(option);
+        getOption_MostPopular().then(option =>
+        {
+            //console.log(option);
+            var myChart = echarts.init(document.getElementById('orders_popular'))
+            myChart.setOption(option)
         })
     </script>
 

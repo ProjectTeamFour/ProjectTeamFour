@@ -7,6 +7,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Linq.Expressions;
+using System.Net;
+using System.Web.Mvc;
+
+
 
 namespace ProjectTeamFour.Service
 {
@@ -86,7 +90,9 @@ namespace ProjectTeamFour.Service
                 StartDate = entity.StartDate,
                 ProjectMainUrl = entity.ProjectMainUrl,
                 ProjectId = entity.ProjectId,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                ApprovingStatus = entity.ApprovingStatus,
+                
             };
             return projectdetailVM;
         }
@@ -140,7 +146,9 @@ namespace ProjectTeamFour.Service
                     PlanShipDate = item.PlanShipDate,
                     PlanImgUrl = item.PlanImgUrl,
                     PlanPrice = item.PlanPrice,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan,
+                    
                 };
                 selectPlanCardItems.Add(selectPlanCardViewModel);
             }
@@ -226,6 +234,7 @@ namespace ProjectTeamFour.Service
                 MemberId = entity.MemberId,
                 DraftProjectPrincipal = entity.DraftProjectPrincipal,
                 IdentityNumber = entity.IdentityNumber,
+                ApprovingStatus = entity.ApprovingStatus,
             };
 
             return draftprojectdetailVM;
@@ -255,7 +264,8 @@ namespace ProjectTeamFour.Service
                         StringDraftPlanShipDate = item.DraftPlanShipDate.ToString("u"),
                         DraftPlanImgUrl = item.DraftPlanImgUrl,
                         DraftPlanPrice = item.DraftPlanPrice,
-                        DraftQuantityLimit = item.DraftQuantityLimit
+                        DraftQuantityLimit = item.DraftQuantityLimit,
+                        DraftAddCarCarPlan = item.DraftAddCarCarPlan,
                     };
                     selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
                 }
@@ -288,6 +298,19 @@ namespace ProjectTeamFour.Service
                 }
             }
             return DraftProjectFAQ;
+        }
+
+
+
+
+        public bool ConfirmCurrentUser(int id)
+        {
+            //var member = HttpContext.Current.Session["Member"];
+            //MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
+            //var project = _repository.GetAll<DraftProject>().Where(x => x.MemberId == member.)
+
+
+            return true;
         }
 
 

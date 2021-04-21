@@ -69,7 +69,7 @@ namespace ProjectTeamFour_Backend.WebApi
             // Cookie 是否為持續性
             var authProperties = new AuthenticationProperties()
             {
-                IsPersistent = true,
+                IsPersistent = false,
 
             };
             // 建立加密的 cookie ，並將它新增至目前的回應
@@ -77,10 +77,19 @@ namespace ProjectTeamFour_Backend.WebApi
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
-
             return response;
         }
 
+        /// <summary>
+        /// 登出目前使用者並刪除cookie
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
 
         /// <summary>
         ///  //驗證使用者帳密

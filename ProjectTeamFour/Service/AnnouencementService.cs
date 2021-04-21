@@ -27,12 +27,12 @@ namespace ProjectTeamFour.Service
                 var AnnouncementVM = new AnnouncementViewModel
                 {
                     Title = item.Title,
-                    Content = item.Content
+                    Content = item.Content,
+                    CreateTime = (DateTime.UtcNow.AddHours(8) - item.CreateTime).Days
                 };
                 myAnnouncementList.Add(AnnouncementVM);
             }
             return myAnnouncementList;
         }
-        
     }
 }

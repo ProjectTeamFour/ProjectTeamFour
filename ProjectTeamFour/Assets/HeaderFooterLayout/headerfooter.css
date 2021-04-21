@@ -1,5 +1,6 @@
 ﻿:root {
     --color: #F9414A;
+    font-family: 'Noto Sans TC', 'Helvetica Neue', 'Heiti TC', 'Microsoft JhengHei',Arial, Helvetica, sans-serif;
 }
 
 #sidebar {
@@ -8,7 +9,7 @@
     top: 0;
     left: -25rem;
     height: 100vh;
-    z-index: 100;
+    z-index: 1030;
     background: #F6F6F6;
     color: #fff;
     transition: all 0.6s;
@@ -26,7 +27,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
+    z-index: 1025;
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
@@ -69,17 +70,21 @@
         font-size: 2rem;
     }
 
+
+#sidebar .sidebar-header li {
+    color: #000;
+    margin-left: 1.7rem;
+    margin-top: 3.3rem;
+}
+
+
+
 #sidebar .sidebar-header {
     padding: 0.7rem 0 0 0.7rem;
     display: flex;
     list-style: none;
 }
 
-#sidebar .sidebar-header li {
-    color: #000;
-    margin-left: 1.7rem;
-    margin-top: 0.9rem;
-}
 
 .sidebar-item{
     cursor: pointer;
@@ -110,17 +115,41 @@
 
     .sidebar-header #message-phone{
         color:#000;
+        position:relative;
+        right:-2rem;
+    }
+
+    .sidebar-header #message-phone:hover{
+        color:#F9414A;
     }
 
 
-/*手機input*/
+#sidebar .social-media{
+    padding-bottom: 7rem;
+    padding-left: 2rem;
+}
 
+#sidebar .social-media-item {
+    color: #000;
+    font-size: 1.5rem;
+    transition: .3s;
+}
+
+#sidebar .social-media-item i{
+    color: #000;
+}
+
+    #sidebar .social-media-item:hover i{
+        color: #F9414A;
+    }
+/*手機input*/
 #sidebar .search-input input {
+    display: none;
     border: none;
     margin: 1rem 0 1rem 0.5rem;
     outline: none;
     background-color: transparent;
-    border-bottom: 1px solid #aaa;
+/*    border-bottom: 1px solid #aaa;*/
 }
 
 #sidebar .list-item a {
@@ -132,20 +161,24 @@
 #sidebar .list-item {
     padding: 1rem;
     margin-left: 1rem;
+/*    text-decoration: underline;*/
 }
 
     #sidebar .list-item a {
         text-decoration: none;
+/*        color: #63504e;*/
+        font-weight: 600;
+        letter-spacing: 2px;
     }
 
         #sidebar .list-item a:hover {
-            color: var(--color);
+/*            color: var(--color);*/
         }
 
 /*手機鈴噹*/
 .message-phone{
     position:relative;
-    top:0.8rem;
+    top:3.2rem;
     color:#000;
 }
 
@@ -153,16 +186,20 @@
 
 
 .hamburger {
-    height: 3.5rem;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
 }
-
     .hamburger i {
         font-size: 1.7rem;
         color: var(--color);
         padding: 0 0 0 1rem;
     }
+    .hamburger .fa-bars {
+        
+        padding: 0rem;
+    }
+   
 
     .hamburger #sidebarCollapse {
         border: transparent;
@@ -190,8 +227,8 @@
 
     .hamburger .title {
         color: #000;
-        margin-top: 1rem;
-        margin-left: 3.8rem;
+        margin-top: 0rem;
+       /* margin-left: 3.8rem;*/
         text-align: center;
     }
 
@@ -200,13 +237,16 @@
             font-weight: 700;
             letter-spacing: 0.3rem;
             margin: 0;
+/*            position: relative;*/
+/*            z-index: -1;*/
         }
 
             .hamburger .title h1 a {
-                color: var(--color);
-                margin-right: 0;
-                text-decoration: none;
-            }
+                /*                color: var(--color);
+    margin-right: 0;
+    text-decoration: none;*/
+    position:relative;
+}
 
     .hamburger .dropdown-toggle::after {
         border-top: .27rem solid #aaa;
@@ -247,6 +287,7 @@
     .pcmode-navbar {
         display: block;
     }
+
 }
 
 
@@ -280,7 +321,7 @@
     .hamburger .cart p {
         position: relative;
         bottom: 33px;
-        font-size: 3px;
+        font-size: 10px;
         left: 38px;
         color: #7f7f7f;
         font-weight: 400;
@@ -312,8 +353,7 @@
     }
 
 #message{
-    position:absolute;
-    right:18rem;
+    position:absolute;    
     top:1.1rem;
 }
 
@@ -375,13 +415,14 @@
     .pcmode-navbar .title h1 {
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 55%;
         transform: translate(-50%, -50%);
         /*        color: var(--color);*/
         letter-spacing: 0.2rem;
         margin: 0;
         font-weight: 700;
         text-align: center;
+/*        z-index:-1;*/
     }
 
         .pcmode-navbar .title h1 a {

@@ -30,11 +30,11 @@ let faSearch = document.querySelector(".pc-fa-search");
 let inputSearch = document.querySelector(".pc-input-search");
 
 faSearch.addEventListener("click", function () {
-    inputSearch.style.borderBottom = "3px solid var(--color)";
+    //inputSearch.style.borderBottom = "3px solid var(--color)";
     inputSearch.focus();
 });
 
-//購物車功能
+//購物車功能(加入購物車):使用ajax呼叫以POST的方法呼叫ShoppingCart控制器的AddtoCart Action。
 function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit,ProjectId) {
     $.ajax({
         type: "POST",
@@ -43,17 +43,17 @@ function AddToMyCart(PlanId, PlanTitle, PlanImgUrl, PlanPrice, QuantityLimit,Pro
         dataType: "text",
         success: function (response) {
 
-            $(".MyCart").text(`${response}`);
-        }
-    }).then(function TriggerAlert() {
+                $(".MyCart").text(`${response}`);
+            }
+            }).then(function TriggerAlert() {
 
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '已成功加入購物車',
-            showConfirmButton: false,
-            timer: 1500
-        });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '已成功加入購物車',
+                showConfirmButton: false,
+                timer: 1500
+            });
 
     })
 }
@@ -94,10 +94,21 @@ function Logout(isThirdParty) {
                 window.location.href = "/Member/Logout"; //讓session 清空
             });
         });
-    } else {
+    } else if (isThirdParty == "Google") {
+        window.location.href = "/Member/Logout"; //讓session 清空
+        location.href = 'https://accounts.google.com/Logout?&continue=https://localhost:44300/Member/Login/';
+        window.location.href = "/Member/Logout"; //讓session 清空
+    }
+    else {
         window.location.href = "/Member/Logout"; //讓session 清空
     }
 }
+
+
+document.getElementById("phone-search").addEventListener("click", function () {
+    document.getElementById("phone-searchString").style.display = "block";
+    document.getElementById("phone-searchString").focus();
+});
 
 
 

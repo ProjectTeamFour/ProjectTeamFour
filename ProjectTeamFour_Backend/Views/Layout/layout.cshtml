@@ -103,16 +103,16 @@
                 </li>
 
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                @*<hr class="sidebar-divider">*@
 
 
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                @*<div class="sidebar-heading">
                     Interface
-                </div>
+                </div>*@
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                        aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
@@ -125,10 +125,10 @@
                             <a class="collapse-item" href="~/Components/Cards">Cards</a>
                         </div>
                     </div>
-                </li>
+                </li>-->
 
                 <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                        aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
@@ -144,18 +144,18 @@
                             <a class="collapse-item" href="~/Utilties/Other">Other</a>
                         </div>
                     </div>
-                </li>
+                </li>-->
 
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                @*<hr class="sidebar-divider">*@
 
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                <!--<div class="sidebar-heading">
                     Addons
-                </div>
+                </div>-->
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                        aria-expanded="true" aria-controls="collapsePages">
                         <i class="fas fa-fw fa-folder"></i>
@@ -173,7 +173,7 @@
                             <a class="collapse-item" href="~/Pages/BlankPage">Blank Page</a>
                         </div>
                     </div>
-                </li>
+                </li>-->
 
                 <!-- Nav Item - Orders -->
                 <li class="nav-item">
@@ -227,8 +227,8 @@
                     </a>
                     <div id="collapseProjectPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("Index","Project")">提案管理</a>
-                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("WaitforPass","Project")">審核管理</a>
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("Index","Project")">上架提案</a>
+                            <a class="collapse-item" style="text-align:center;" href="@Url.ActionLink("WaitforPass","Project")">審核提案</a>
                         </div>
                     </div>
                 </li>
@@ -299,8 +299,9 @@
                                      aria-labelledby="userDropdown">
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="~/Manager/Login">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        登出
+                                        <span>  @Html.ActionLink("登出權限", "LogOut", "Manager", new { style = "text-decoration:none;" }) <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></span>
+                                       
+                                      
                                     </a>
                                 </div>
                             </li>
@@ -359,7 +360,7 @@
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
+                <li class="nav-item active" style="display:none;">
                     <a class="nav-link" href="~/Dashboard/Index">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
@@ -580,8 +581,7 @@
                                      aria-labelledby="userDropdown">
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="~/Manager/Login">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        登出
+                                        <span>  @Html.ActionLink("登出權限", "LogOut", "Manager",new { style = "text-decoration:none;" }) <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></span>
                                     </a>
                                 </div>
                             </li>
