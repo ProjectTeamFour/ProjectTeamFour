@@ -1,11 +1,11 @@
 ﻿@model BackingRecordsViewModel
 @using System.Text.Json;
 @using System.Web.Script.Serialization
-@*@using Newtonsoft.Json;*@
+
 @{
 
-    var userOrder = Model.MyOrder.Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
-    var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //o詳細json
+    var userOrder = Model.MyOrder.Select(x => new { x.OrderId ,x.OrderName,x.condition,x.OrderTotalAccount});
+    var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //orderId json
     var userOrderDetail = Model.MyOrderDetailList.Select(
         (y) =>
     new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle, y.OrderId,
@@ -14,11 +14,6 @@
     });
 
     var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
-
-    //-------------------------------------------------------------------------
-    var userOrderNoPay = Model.MyOrder.Where(x => x.condition == "未付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
-    var userOrderDataNoPay = new JavaScriptSerializer().Serialize(userOrderNoPay);
-    //-----------------------------------------------------
 }
 
 
@@ -50,6 +45,7 @@
     </div>
     <input type="text" name="name" value="@userOrderData" id="transJSON" />
     <input type="text" name="name" value="@userOrderDetailData" id="odtransJSON" />
++
 
 
     <!-- Modal -->
@@ -93,17 +89,6 @@
 </div>
 @*//-----------------------------------------------------------------------------------*@
 
-<script>
-    @*function getOrder(OrderId) {
-        $.ajax({
-            type: "POST",
-            url: "/Userinfo/FindOrder",//得到orderId的方法
-            data: { OrderId: },
-            success: function (response) {
-                console.log(data);
-                alert("123");
-            }
-        })
-    }*@
+<script>   
 
 </script>

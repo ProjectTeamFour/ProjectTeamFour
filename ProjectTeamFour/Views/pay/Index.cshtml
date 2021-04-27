@@ -15,7 +15,7 @@
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
 
 
-    <script>
+<script>
             $(document).ready(function () {
                 Binding();
             })
@@ -144,33 +144,56 @@
                                         console.log('I was closed by the timer')
                                     }
                                 })
-                            }
-                        },
-                        Save2Server: function (e) {
                             var self = this;
-                                    $.ajax({
-                                        type: "POST",
-                                        url: '@Url.Action("test", "Pay")',
-                                        data: JSON.stringify({ OrderName: /*form.*/this.inputData.Name, OrderAddress: /*form.*/this.inputData.Address, OrderPhone: /*form.*/this.inputData.Tel, OrderConEmail: /*form.*/this.inputData.Email }), //注意是放JSON  字串
-                                        dataType: "json",
-                                        headers: {
-                                            'Content-type': 'application/json'
-
-                                        }, //注意 Content-type
-                                        success: function (response) {
-                                            console.log(data);
-                                        },
-                                        error: function (err) {
-                                            console.log(err);
-                                        }
-                                    });
+                            var order = { //把ajax的data寫成物件
+                                OrderName: this.inputData.Name,
+                                OrderAddress: this.inputData.Address,
+                                OrderPhone: this.inputData.Tel,
+                                OrderEmail: this.inputData.Email
+                            };
+                            $.ajax({
+                                url: '@Url.Action("test", "Pay")',
+                                data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
+                                dataType: "",
+                                headers: {
+                                    'Content-type': 'application/json'
+                                }, //注意 Content-type
+                                success: function (response) {
+                                    console.log(data);
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+                            }
                         }
+                        @*Save2Server: function (e) {
+                            var self = this;
+                            var order = { //把ajax的data寫成物件
+                                OrderName: this.inputData.Name,
+                                OrderAddress: this.inputData.Address,
+                                OrderPhone: this.inputData.Tel,
+                                OrderEmail: this.inputData.Email
+                            };
+                            $.ajax({
+                                url: '@Url.Action("test", "Pay")',
+                                data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
+                                dataType: "",
+                                headers: {
+                                    'Content-type': 'application/json'
+                                }, //注意 Content-type
+                                success: function (response) {
+                                    console.log(data);
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+                        }*@
                     },
-                
-                
                 })
             }
-    </script>
+</script>
 
 
 }
@@ -335,7 +358,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay" id="ToBuy">
-                        <input type="submit" id="Save2Sever" v-on:click="Save2Server" value="確認購買" v-on:click="checkAddVerify">
+                        <input type="submit" id="Save2Sever" @*v-on:click="Save2Server"*@ value="確認購買" v-on:click="checkAddVerify">
                     </a>
                 </div>
             </div>

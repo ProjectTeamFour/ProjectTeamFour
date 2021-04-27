@@ -163,7 +163,7 @@ namespace ProjectTeamFour.Service
             {
                     try
                     {
-                        result.OrderDate = DateTime.UtcNow.AddHours(8);
+                        //result.OrderDate = DateTime.UtcNow.AddHours(8);
 
                         result.condition = "已付款";
                         _repository.Update<Order>(result);

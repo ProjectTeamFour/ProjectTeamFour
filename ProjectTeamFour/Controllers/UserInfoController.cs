@@ -50,7 +50,7 @@ namespace ProjectTeamFour.Controllers
                 model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
 				
 				//根據會員id抓取會員購買紀錄
-			    model.Records = _backingService.QueryOrder(model.MemberId);
+			    //model.Records = _backingService.QueryOrder(model.MemberId);
                 ///判斷是否是提案人
 				if(model.MyProjects.Count==0)
                 {
@@ -230,12 +230,12 @@ namespace ProjectTeamFour.Controllers
             }
         }
 
-        [System.Web.Http.HttpPost]
-        public ActionResult FindOrder(Order oVM)
-        {   
+        //[System.Web.Http.HttpPost]
+        //public ActionResult FindOrder(Order oVM)
+        //{   
 
-            var order = _backingService.FindOrder(oVM);
-            return View(order);         
-        }
+        //    var order = _backingService.FindOrder(oVM);
+        //    return View(order);         
+        //}
     }
 }

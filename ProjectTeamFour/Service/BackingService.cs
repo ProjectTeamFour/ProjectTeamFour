@@ -55,21 +55,6 @@ namespace ProjectTeamFour.Service
             backorder.MyOrderDetailList = odlist;
             backorder.MyOrder = ordermodel;            
             return backorder;                    
-        }
-
-        public Order FindOrder(Order i)
-        {
-            
-            var o = _repository.GetAll<Order>().Where(x => x.OrderId == i.OrderId).FirstOrDefault();
-
-            //o.OrderId = i.OrderId;
-            //o.OrderName = i.OrderName;
-            //o.OrderPhone = i.OrderPhone;
-            //o.OrderConEmail = i.OrderConEmail;
-            //o.OrderTotalAccount = i.OrderTotalAccount;
-
-            //_repository.Update(o);
-            return o;
-        }
+        }        
     }
 }                

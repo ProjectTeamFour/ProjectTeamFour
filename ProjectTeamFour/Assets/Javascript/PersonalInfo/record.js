@@ -14,27 +14,14 @@ var jsonObj = {
     "modeldata": []
 };
 
+//var jsonObj = {
+//    "items": { OrderId: $("#transJSON").val()},
+//    "detail": { OrderDetailId: $('#odtransJSON').val()},
+//    "modeldata": []
+//};
+
 var odData = jsonObj.modeldata
-//changeDate(jsonObj.detail);
-//var i = 0;
-
-
-//function changeDate(DataItems) {  //轉換日期方法 DATAITEMS = 裝欄位的LIST
-//    DataItems.forEach(item => {
-//        item.PlanShipDate = moment(item.PlanShipDate).format('MM-DD-YYYY');
-//    });
-//}
-
-function sendDataToRecord() {
-    $.ajax({
-        type: "Get",
-        url: '~/api/BackingRecord/GetOrderData',
-        data: {},
-        success: function (response) {
-            window.setTimeout(reloading, 1000);
-        }
-    })
-}
+//var data = { OrderId: $("#transJSON").val(), OrderDetailId: $('#odtransJSON').val() };
 
 function Binding() {
     new Vue({
@@ -44,10 +31,26 @@ function Binding() {
             changeJsonOd(orderId) {
                 this.modeldata = [];
                 this.modeldata = objod.filter(x => x.OrderId == orderId);
-            }
+            },
+            //sendDataToRecord: function (e) {
+            //    var self = this;                
+            //    $.ajax({
+            //        type: "Get",
+            //        url: '~/api/BackingRecord/GetOrder',
+            //        success: function (res) {
+            //            console.log(res.data);
+            //            alert("123");
+            //        },
+            //        error: function (error) {
+            //            console.log(error);
+            //        }
+            //    })
+            //}
         }
     });
 };
+
+
 
 $(document).ready(function () {
     Binding();
