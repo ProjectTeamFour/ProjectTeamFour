@@ -32,22 +32,27 @@
                     </div>
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
-                        <p>
-                            購買過
-                            <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span> 
-                            <br />發起過
-                            @if (Model.MyProjects.Count == null)
-                            {
-                                <span>0件專案</span>
-                            }
-                            else
-                            {
-                                <span>@Model.MyProjects.Count 件專案</span>
-                            }
-                            
-                        </p>
+                        @if (Model.Records == null)
+                        {
+                            <p>目前無任何購買紀錄</p>
+                        }
+                        else
+                        {
+                            <p>
+                                購買過
+                                <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span>
+                                <br />發起過
+                                @if (Model.MyProjects.Count == null)
+                                {
+                                    <span>0件專案</span>
+                                }
+                                else
+                                {
+                                    <span>@Model.MyProjects.Count 件專案</span>
+                                }
+                            </p>
+                        }
                     </div>
-
                 </div>
             </div>
         </div>
@@ -80,7 +85,7 @@
                         {
                             <p>目前無購買方案</p>
                         }
-                    </div>                    
+                    </div>
                 </div>
 
             </div>
