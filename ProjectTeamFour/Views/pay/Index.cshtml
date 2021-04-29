@@ -147,11 +147,12 @@
                             @*var self = this;
                             var order = { //把ajax的data寫成物件
                                 OrderName: this.inputData.Name,
-                                OrderAddress: this.inputData.Address,
+                                OrderAddress:U this.inputData.Address,
                                 OrderPhone: this.inputData.Tel,
                                 OrderEmail: this.inputData.Email*@
                             };
                             $.ajax({
+                                type:"POST"
                                 url: '@Url.Action("test", "Pay")',
                                 data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
                                 dataType: "",
@@ -166,33 +167,29 @@
                                 }
                             });
                             }
-                        @*},
-                        Save2Server: function (e) {
-                            var self = this;
-                            var order = { //把ajax的data寫成物件
-                                OrderName: this.inputData.Name,
-                                OrderAddress: this.inputData.Address,
-                                OrderPhone: this.inputData.Tel,
-                                OrderEmail: this.inputData.Email
-                            };
-                            $.ajax({
-                                url: '@Url.Action("test", "Pay")',
-                                data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
-                                dataType: "",
-                                headers: {
-                                    'Content-type': 'application/json'
-                                }, //注意 Content-type
-                                success: function (response) {
-                                    console.log(data);
-                                },
-                                error: function (err) {
-                                    console.log(err);
-                                }
-                            });*@
                         }
-                    },
+                    }
                 )
-            }
+    }
+
+    @*function Save2Server() {
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("ConnectECPay", "Pay")',
+        data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串
+        dataType: "json",
+        headers: {
+            'Content-type': 'application/json'
+        }, //注意 Content-type
+        success: function (response) {
+
+                alert('儲存成功');
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}*@
 </script>
 
 
@@ -358,7 +355,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay" id="ToBuy">
-                        <input type="submit" id="Save2Sever" @*v-on:click="Save2Server"*@ value="確認購買" v-on:click="checkAddVerify">
+                        <input type="submit" id="Save2Sever" @*onclick="Save2Server"*@ value="確認購買" v-on:click="checkAddVerify">
                     </a>
                 </div>
             </div>
