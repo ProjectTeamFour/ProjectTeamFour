@@ -144,16 +144,16 @@
                                         console.log('I was closed by the timer')
                                     }
                                 })
-                            var self = this;
+                            @*var self = this;
                             var order = { //把ajax的data寫成物件
                                 OrderName: this.inputData.Name,
                                 OrderAddress: this.inputData.Address,
                                 OrderPhone: this.inputData.Tel,
-                                OrderEmail: this.inputData.Email
+                                OrderEmail: this.inputData.Email*@
                             };
                             $.ajax({
                                 url: '@Url.Action("test", "Pay")',
-                                data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
+                                data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
                                 dataType: "",
                                 headers: {
                                     'Content-type': 'application/json'
@@ -166,8 +166,8 @@
                                 }
                             });
                             }
-                        }
-                        @*Save2Server: function (e) {
+                        @*},
+                        Save2Server: function (e) {
                             var self = this;
                             var order = { //把ajax的data寫成物件
                                 OrderName: this.inputData.Name,
@@ -188,10 +188,10 @@
                                 error: function (err) {
                                     console.log(err);
                                 }
-                            });
-                        }*@
+                            });*@
+                        }
                     },
-                })
+                )
             }
 </script>
 

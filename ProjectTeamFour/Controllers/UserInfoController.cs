@@ -48,9 +48,9 @@ namespace ProjectTeamFour.Controllers
                 model.MyDraftProjects = _myProjectsService.GetDraftProjectsbyMemberId(model.MemberId);
                 //根據會員id抓取通知紀錄
                 model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
-				
-				//根據會員id抓取會員購買紀錄
-			    //model.Records = _backingService.QueryOrder(model.MemberId);
+
+                //根據會員id抓取會員購買紀錄
+                model.Records = _backingService.QueryOrder(model.MemberId);
                 ///判斷是否是提案人
 				if(model.MyProjects.Count==0)
                 {
