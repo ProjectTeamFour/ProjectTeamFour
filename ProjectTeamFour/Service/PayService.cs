@@ -90,10 +90,6 @@ namespace ProjectTeamFour.Service
             return o;
         }
 
-        //public PayViewModel UpdateOrderMember(PayViewModel odVM) //更改訂單寄送資料
-        //{
-        //    var result = 
-        //}
         public int SaveData(PayViewModel orderMem) //要抓到修改的pay頁面 會員資料
         {
 
