@@ -166,16 +166,18 @@
                                 }
                             });
                             }
-                        }
-                        @*Save2Server: function (e) {
+                        },
+                        Save2Server: function (e) {
                             var self = this;
-                            var order = { //把ajax的data寫成物件
+                            var order = {
+                                //把ajax的data寫成物件
                                 OrderName: this.inputData.Name,
                                 OrderAddress: this.inputData.Address,
                                 OrderPhone: this.inputData.Tel,
                                 OrderEmail: this.inputData.Email
                             };
                             $.ajax({
+                                type:"POST",
                                 url: '@Url.Action("test", "Pay")',
                                 data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
                                 dataType: "",
@@ -189,7 +191,7 @@
                                     console.log(err);
                                 }
                             });
-                        }*@
+                        }
                     },
                 })
             }
@@ -358,7 +360,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/Pay/ConnectECPay" id="ToBuy">
-                        <input type="submit" id="Save2Sever" @*v-on:click="Save2Server"*@ value="確認購買" v-on:click="checkAddVerify">
+                        <input type="submit" id="Save2Sever" v-on:click="Save2Server" value="確認購買" @*v-on:click="checkAddVerify"*@>
                     </a>
                 </div>
             </div>
