@@ -21,7 +21,7 @@
 
 
 /* 控制黑色遮罩 */
-.overlay {
+/*.overlay {
     display: none;
     position: fixed;
     width: 100vw;
@@ -35,7 +35,8 @@
     .overlay.active {
         display: block;
         opacity: 1;
-    }
+        z-index: 1025;
+    }*/
 
 
 /* 自己調的 */
@@ -60,14 +61,15 @@
 
 #dismiss {
     position: absolute;
-    left: 15.5rem;
+    left: 12.5rem;
     top: 1.3rem;
     display: none;
+    z-index: 1501;
 }
 
     #dismiss i {
-        color: var(--color);
-        font-size: 2rem;
+        color: black;
+        font-size: 1.5rem;
     }
 
 

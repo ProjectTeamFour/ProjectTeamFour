@@ -3,13 +3,20 @@
     $('#dismiss, .overlay').on('click', function () {
         $('#sidebar').removeClass('active');
         $('.overlay').removeClass('active');
+        $('#dismiss').css("display", "none");
     });
 
     $('#sidebarCollapse').on('click', function () {
+        setTimeout(function () {
+            $('#dismiss').css("display", "block");
+        }, 500);
         $('#sidebar').addClass('active');
         $('.overlay').addClass('active');
         $('.collapse.in').toggleClass('in');
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        //setTimeout(function () {
+        //    $('#dismiss').css("display", "block");
+        //}, 2000);
     });
 
     //$(".pc-fa-search").on("click",
