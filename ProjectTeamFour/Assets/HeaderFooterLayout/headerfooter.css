@@ -65,6 +65,7 @@
     top: 1.3rem;
     display: none;
     z-index: 1501;
+    cursor: pointer
 }
 
     #dismiss i {

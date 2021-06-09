@@ -52,6 +52,10 @@ a:hover {
     flex-direction: column;
 }
 
+.dropdown-item {
+    cursor: pointer
+}
+
 button[type="button"] {
     color: #000;
     background-color: #fff;
