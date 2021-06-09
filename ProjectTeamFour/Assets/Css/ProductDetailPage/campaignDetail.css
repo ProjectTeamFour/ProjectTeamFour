@@ -186,7 +186,7 @@ h2,h3{
     margin:1rem 0;
     position:sticky;
     top:45px;
-    z-index:10;
+    z-index:5;
 }
 
 #info-tabs a {
