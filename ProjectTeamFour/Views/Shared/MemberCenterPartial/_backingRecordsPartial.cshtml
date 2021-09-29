@@ -1,18 +1,19 @@
 ﻿@model BackingRecordsViewModel
 @using System.Text.Json;
 @using System.Web.Script.Serialization
-@*@using Newtonsoft.Json;*@
+
 @{
 
-    var userOrder = Model.MyOrder.Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
-    var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //o詳細json
-    var userOrderDetail = Model.MyOrderDetailList.Select((y) => new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle ,y.OrderId});
-    var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
+    var userOrder = Model.MyOrder.Select(x => new { x.OrderId ,x.OrderName,x.condition,x.OrderTotalAccount});
+    var userOrderData = new JavaScriptSerializer().Serialize(userOrder); //orderId json
+    var userOrderDetail = Model.MyOrderDetailList.Select(
+        (y) =>
+    new { y.OrderDetailId, y.OrderPrice, y.OrderQuantity, y.PlanTitle, y.OrderId,
+        PlanShipDate = y.PlanShipDate.ToString("d")
 
-    //-------------------------------------------------------------------------
-    var userOrderNoPay = Model.MyOrder.Where(x => x.condition == "未付款").Select(x => new { x.OrderName, x.condition, x.TradeNo, x.OrderTotalAccount, x.OrderId });
-    var userOrderDataNoPay = new JavaScriptSerializer().Serialize(userOrderNoPay);
-    //-----------------------------------------------------    
+    });
+
+    var userOrderDetailData = new JavaScriptSerializer().Serialize(userOrderDetail); //od詳細json
 }
 
 
@@ -33,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in items">          
+                <tr v-for="item in items">
                     <td>{{item.OrderName}}</td>
                     <td>{{item.OrderTotalAccount}}</td>
                     <td>{{item.condition}}</td>
@@ -44,6 +45,7 @@
     </div>
     <input type="text" name="name" value="@userOrderData" id="transJSON" />
     <input type="text" name="name" value="@userOrderDetailData" id="odtransJSON" />
++
 
 
     <!-- Modal -->
@@ -58,20 +60,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="dataitems">
-                        <div class="row">       
+                        <div class="row">
                             <div id="mytable-2">
                                 <div class="itemTitle">
                                     <div class="items">方案單價</div>
                                     <div class="items">方案數量</div>
                                     <div class="items">方案名稱</div>
+                                    <div class="items">寄送日期</div>
                                 </div>
-               
+
                                 <div v-for="item in modeldata " class="detail-group col-12">
                                     <div class="detail-item" id="odmoney">{{item.OrderPrice}}</div>
                                     <div class="detail-item" id="qty">{{item.OrderQuantity}}</div>
                                     <div class="detail-item" id="plantitle">{{item.PlanTitle}}</div>
+                                    <div class="detail-item" id="plandate">{{item.PlanShipDate}}</div>
                                 </div>
-                            </div>                                                         
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,37 +89,6 @@
 </div>
 @*//-----------------------------------------------------------------------------------*@
 
-@section endJS{    
-    @*@if (Model != null)
-    {*@
-        @*<script>
-            let getjson = document.getElementById('transJSON');
-            var obj = JSON.parse(getjson.value);
-            console.log(obj);
-            var jsonObj = {
-                "items": obj
-            };
-            var jsondata = JSON.stringify(jsonObj);
+<script>   
 
-            function Binding() {
-                new Vue({
-                    el: "#record",
-                    data: jsonObj
-                });
-            };
-
-            $(document).ready(function () {
-                Binding();
-                $("mytable").DataTable({
-                    "info": false,
-                    "bLengthChange": false,
-                    "pageLength": 5
-                })
-            });
-        </script>*@
-    @*}
-    else
-    {
-        <p>您目前沒有任何一筆購買紀錄</p>
-    }*@
-}
+</script>

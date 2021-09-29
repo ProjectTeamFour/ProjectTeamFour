@@ -12,10 +12,9 @@ namespace ProjectTeamFour.ViewModels
 {
     public class BackingRecordsViewModel
     {
-        [JsonIgnore()]
         public List<OrderDetail> MyOrderDetailList { get; set; }
 
-        [JsonIgnore()]
         public List<Order> MyOrder { get; set; }
+        
     }
 }

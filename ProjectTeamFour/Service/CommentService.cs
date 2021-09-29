@@ -56,7 +56,7 @@ namespace ProjectTeamFour.Service
                 MemberId=commentVM.MemberId,
                 AskedMemberId=commentVM.AskedMemberId,
                 Comment_Question=commentVM.Comment_Question,
-                Comment_Time=commentVM.Comment_Time,
+                Comment_Time = DateTime.UtcNow.AddHours(8),
                 ReadStatus=false
             };
             
@@ -228,6 +228,18 @@ namespace ProjectTeamFour.Service
             else
             {
                 return result;
+            }
+        }
+
+        public string CheckProjectMemberId(CommentViewModel commentVM)
+        {
+            if(commentVM.AskedMemberId==commentVM.MemberId)
+            {
+                return "Same";
+            }
+            else
+            {
+                return "Ok";
             }
         }
     }

@@ -21,7 +21,6 @@
                     <input type="text" placeholder="電子郵件" name="MemberRegEmail" required>
 
                     <input type="password" placeholder="密碼" name="MemberPassword" required>
-
                 </div>
                 <div class="login-item checkbox d-flex justify-content-between">
                     <div class="checkbox-item">
@@ -47,13 +46,18 @@
                     <p>使用 Facebook 帳號登入</p>
                 </a>
                 @*<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>*@
-                    <div id="status"></div>
-                    @*<button onclick="FbLogin()">fb登入</button>*@
-                    @*<button onclick="Fblogout()">fb登出</button>*@
-                <a href="#" class="d-flex justify-content-center google">
+                <div id="status"></div>
+                @*<button onclick="FbLogin()">fb登入</button>*@
+                @*<button onclick="Fblogout()">fb登出</button>*@
+                @*<a href="javascript:onSignIn()" class="d-flex justify-content-center google" data-prompt="select_account">
+                        <i class="fab fa-google"></i>
+                        <p>使用 Google 帳號登入</p>
+                    </a>*@
+                <div data-onsuccess="onSignIn" data-prompt="select_account" class="google-button d-flex justify-content-center g-signin2" data-width="320" data-height="40" data-title="true">
                     <i class="fab fa-google"></i>
                     <p>使用 Google 帳號登入</p>
-                </a>
+                </div>
+                @*上面測試Google登入*@
                 <br>
                 <p class="term">
                     如果您使用 Facebook 或 Google 登入，我們將在取得您的授權同意後，導入您的姓名和個人資料作為帳號必要資訊。
@@ -68,8 +72,6 @@
     </div>
 </section>
 
-
-
 @*@section endJS{
         <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
@@ -83,11 +85,11 @@
 
     }*@
 
-
-
 @section FBJS{
-    <script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 
+
+    <script>
 
         //fb初始化 必加  //使用firebase所以不需要
         window.fbAsyncInit = function () {
@@ -108,7 +110,6 @@
 
         };
 
-
         //sdk 必加  //使用firebase所以不需要
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -118,24 +119,19 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-
-
-
-
         // 先印一下狀態，然後判斷 status
         function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);     //印一下authresponse
+            @*console.log('statusChangeCallback');*@
+            @*console.log(response);     //印一下authresponse*@
             if (response.status === 'connected') {
-                console.log(response);
+                @*console.log(response);*@
                 return "成功";
             } else {
-                console.log("討token失敗");
+                @*console.log("討token失敗");*@
                 @*document.getElementById('status').innerHTML = 'Please log ' +
                     'into this webpage.';*@
             }
         }
-
 
         //測試可不可以抓回auth的物件也包含accesstoken
         @*function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
@@ -147,8 +143,6 @@
             });
         }*@
 
-
-
         //登出測試  //實際登出寫在 headerfooter.js
         @*function Fblogout() {
             FB.logout(function (response) {
@@ -159,8 +153,6 @@
                 });
             });
         }*@
-
-
 
         //跳出popup登入框 確認同意 然後呼叫傳get給fb 的function 拿資訊
         function FbLogin() {
@@ -180,8 +172,8 @@
 
                     getProfile();  //順利所以要做 get request 向 fb資料server拿用戶資料
                 } else {
-                    console.log("失敗");
-                    console.log(response);
+                    @*console.log("失敗");*@
+                    @*console.log(response);*@
                     // The person is not logged into your webpage or we are unable to tell.
                 }
             },
@@ -189,15 +181,14 @@
             );
         }
 
-
         //拿使用者資訊 然後傳到後端
         function getProfile() {
             FB.api('/me', "GET", { fields: 'name, email, id, picture'}, function (response) {
 
                 //debug
-                console.log('Successful login for: ' + response.name);
-                console.log(response.email);
-                console.log(response.id);
+                @*console.log('Successful login for: ' + response.name);*@
+                @*console.log(response.email);*@
+                @*console.log(response.id);*@
                 @*console.log(response.picture.data.url);*@
 
                 //測試用
@@ -209,13 +200,12 @@
                     result = statusChangeCallback(response);
                 });
                 if (result == "成功") {
-                    console.log(result);
+                    @*console.log(result);*@
                     fetchData(response);  //傳給後端做存資料建立用戶等等處理
                 }
 
             })
         }
-
 
         //傳到後端判斷是不是使用者
         function fetchData(response) {
@@ -246,15 +236,136 @@
                         setTimeout(() => {
                             window.location.replace(`${window.location.origin}/Home/Index`);  //新語法長知識
                         }, 1000)
-                        console.log("註冊成功");
+                        @*console.log("註冊成功");*@
                     } else {
-                        console.log("尚未註冊");
+                        @*console.log("尚未註冊");*@
                     }
                 })
                 .catch(err => console.log("錯誤" + err))
         }
+
+        //以下為Google登入
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            @*console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());*@
+
+            //  ID token 要傳給後端
+            @*var id_token = googleUser.getAuthResponse().id_token;*@
+            @*console.log("ID Token: " + id_token);*@
+
+            gapi.auth2.getAuthInstance().disconnect();   //這段很重要可以防止再次自動登入 斷開開使用者; 絕對要寫
+
+            if (profile != null) {
+                postGoogleData(profile);
+            }
+        }
+
+        function postGoogleData(profileInfo) {
+            //傳到後端判斷是不是使用者
+
+            let url = "/Member/GoogleLogin";
+            let data = {
+                imgUrl: null,
+                name: profileInfo.getName(),
+                email: profileInfo.getEmail(),
+                socialPlatform: "Google",
+            }
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                })
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.status == 1 && result.response == "第三方登入") {
+                        setTimeout(() => {
+                            window.location.replace(`${window.location.origin}/Home/Index`);  //新語法長知識
+                        }, 1000)
+                    } else if (result.response == "註冊成功") {
+                        setTimeout(() => {
+                            window.location.replace(`${window.location.origin}/Home/Index`);  //新語法長知識
+                        }, 1000)
+                        @*console.log("註冊成功");*@
+                    } else {
+                        @*console.log("尚未註冊");*@
+                    }
+                })
+                .catch(err => console.log("錯誤" + err))
+        }
+
+        @*function GoogleSigninInit() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init({
+                    client_id: 280886641343 - jspsotb774imktmafvrualk4d4nekn7l.apps.googleusercontent.com//必填，記得開發時期要開啟 Chrome開發人員工具 查看有沒有403錯誤(Javascript來源被禁止)
+                });
+            });//end gapi.load
+        }//end GoogleSigninInit function
+
+        function GoogleLogin() {
+            let auth2 = gapi.auth2.getAuthInstance();//取得GoogleAuth物件
+            auth2.signIn().then(function (GoogleUser) {
+                console.log("Google登入成功");
+                let user_id = GoogleUser.getId();//取得user id，不過要發送至Server端的話，請使用↓id_token
+                let AuthResponse = GoogleUser.getAuthResponse(true);//true會回傳access token ，false則不會，自行決定。如果只需要Google登入功能應該不會使用到access token
+                let id_token = AuthResponse.id_token;//取得id_token
+                $.ajax({
+                    url: id_token_to_userIDUrl,
+                    method: "post",
+                    data: { id_token: id_token },
+                    success: function (msg) {
+                        console.log(msg);
+                    }
+                });//end $.ajax
+
+            },
+                function (error) {
+                    console.log("Google登入失敗");
+                    console.log(error);
+                });*@
+        @*function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }*@
+
+        @*setTimeout(function () {
+            document.getElementById("not_signed_inlpeh7owtic7r").style.display = "none";
+        }, 1000);*@
+
+        @*document.getElementById("not_signed_inlpeh7owtic7r").classList.add("google-text")*@
+
+        @*document.getElementById("not_signed_inlpeh7owtic7r").style.display = "none";*@
+
+        @*document.getElementByClassName("google-text").innerHTML = "使用 Google 帳號登入";*@
+
+        @*document.getElementByClassName("abcRioButtonContents").innerHTML = "使用 Google 帳號登入";*@
+
+        function onLoadCallback() {
+            $('span[id^="not_signed_"]').html('使用 Google 帳號登入');
+            $('span[id^="not_signed_"]').css("letter-spacing", "2px");
+            $('span[id^="not_signed_"]').css("margin-right", "20px");
+            $('span[id^="not_signed_"]').css("font-weight", "600");
+
+
+        }
+
     </script>
+
+    @*<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>*@
 }
-
-
-

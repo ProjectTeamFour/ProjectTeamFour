@@ -30,7 +30,7 @@ namespace ProjectTeamFour_Backend.Models
         public string ProfileImgUrl { get; set; }
         public string MemberWebsite { get; set; }
         public string MemberMessage { get; set; }
-        public int Permission { get; set; }
+        public int? Permission { get; set; }
         public string Salt { get; set; }
         public string Hash { get; set; }
         public string ResetPasswordCode { get; set; }

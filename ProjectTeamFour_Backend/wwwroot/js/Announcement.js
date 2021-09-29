@@ -4,7 +4,7 @@
         Model: {
             Title:'',
             Content: '',
-            MemberId:'235',
+            MemberId:'48',
         },
         items: [],
         fields: [
@@ -13,8 +13,6 @@
             { key: 'title', label: '通知標題', class: '' },
             { key: 'createTime', label: '發布時間', class: '' },
             { key: 'createUser', label: '發布人', class: '' },
-            { key: 'editTime', label: '編輯時間', class: '' },
-            { key: 'editUser', label: '編輯人', class: '' },
             { key: 'actions', label:'功能'}
         ],
         isError: false,
@@ -140,7 +138,6 @@
         saveAnnouncement() {
             axios.put("/Api/Announcements/SaveAnnouncement", this.Model)
                 .then(res => {
-                    console.log(res);
                     this.saveSuccess('primary');
                     this.getAnnouncement();
                     this.clearModel();
@@ -152,7 +149,6 @@
         createAnnouncement() {
             axios.post("/Api/Announcements/CreateAnnouncement", this.Model)
                 .then(res => {
-                    console.log(res);
                     this.createSuccess('primary');
                     this.getAnnouncement();
                     this.clearModel();
@@ -169,7 +165,6 @@
                 }
             })
                 .then(res => {
-                    console.table(res);
                     this.removeSuccess('primary');
                     this.getAnnouncement();
                 })

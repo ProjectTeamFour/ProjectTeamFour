@@ -18,29 +18,41 @@
             <div class="col-sm-12 col-md-12">
                 <div class="person-data">
                     <div class="person-data-pic">
-                        <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
+                        @if (Model.ProfileImgUrl == null)
+                        {
+                            <img src="~/Assets/Img/member.png" alt="註冊" />
+                        }
+                        else
+                        {
+                            <img src="@Model.ProfileImgUrl" alt="個人圖片" style="border-radius:50%;">
+                        }
                     </div>
                     <div class="person-data-info">
                         <p>@Model.AboutMe</p>
                     </div>
                     <div class="person-data-text">
                         <h2>@Model.MemberName</h2>
-                        <p>
-                            購買過
-                            <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span> 
-                            <br />發起過
-                            @if (@Model.MyProjects.Count == null)
-                            {
-                                <span>0件專案</span>
-                            }
-                            else
-                            {
-                                <span>@Model.MyProjects.Count 件專案</span>
-                            }
-                            
-                        </p>
+                        @if (Model.Records == null)
+                        {
+                            <p>目前無任何購買紀錄</p>
+                        }
+                        else
+                        {
+                            <p>
+                                購買過
+                                <span>@Model.Records.MyOrderDetailList.Where(x => x.condition == "已付款").Count()件專案</span>
+                                <br />發起過
+                                @if (Model.MyProjects.Count == null)
+                                {
+                                    <span>0件專案</span>
+                                }
+                                else
+                                {
+                                    <span>@Model.MyProjects.Count 件專案</span>
+                                }
+                            </p>
+                        }
                     </div>
-
                 </div>
             </div>
         </div>
@@ -73,7 +85,7 @@
                         {
                             <p>目前無購買方案</p>
                         }
-                    </div>                    
+                    </div>
                 </div>
 
             </div>

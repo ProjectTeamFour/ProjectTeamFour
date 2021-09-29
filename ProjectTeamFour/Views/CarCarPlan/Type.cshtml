@@ -114,21 +114,22 @@
 
         <div class="indemand-project-item cardtemplate-section">
             <div class="indemand-project-wrap">
+                <span class="searchRouterErr"> @ViewBag.ErrMsg</span>
                 <div class="row">
 
 
                     @*@for (int i = 0; i < 12; i++)
-                    {
-                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
-                    }*@
+            {
+                @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", Model.CarCarPlanItems[i]);
+            }*@
 
 
-                    @foreach(var item in Model.CarCarPlanItems)
+                    @foreach (var item in Model.CarCarPlanItems)
                     {
-                       
-                        
-                          @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
-                        
+
+
+                        @Html.Partial("~/Views/Shared/PartialView/_carcarPlanIndexPartial.cshtml", item);
+
 
                         //可能還要再下條件判斷 一頁給幾個，多出來的用 butoon 長，或是到第二頁
                     }

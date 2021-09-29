@@ -31,7 +31,7 @@
                 <a class="nav-links" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">個人頁面</a>
             </li>
             <li class="nav-item-tag" role="presentation">
-                <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="#pills-backings" role="tab" aria-controls="pills-backings" aria-selected="false">歷史紀錄</a>
+                <a class="nav-links" id="pills-backings-tab" data-toggle="pill" href="#pills-backings" role="tab" aria-controls="pills-backings" aria-selected="false">購買紀錄</a>
             </li>
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-myprojects-tab" data-toggle="pill" href="#pills-myprojects" role="tab" aria-controls="pills-myprojects" aria-selected="false">提案紀錄</a>
@@ -48,9 +48,9 @@
             <li class="nav-item-tag" role="presentation">
                 <a class="nav-links" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account" aria-selected="false">修改密碼</a>
             </li>
-            @*<li class="nav-item-tag" role="presentation">
-                    <a class="nav-links" id="pills-setting-tab" data-toggle="pill" href="#pills-setting" role="tab" aria-controls="pills-setting" aria-selected="false">通知設定</a>
-                </li>*@
+            <li class="nav-item-tag" role="presentation">
+                <a class="nav-links" id="pills-setting-tab" data-toggle="pill" href="#pills-setting" role="tab" aria-controls="pills-setting" aria-selected="false">車車專區</a>
+            </li>
         </ul>
     </div>
     <div class="wrap">
@@ -69,10 +69,12 @@
                         @if (Model.Records != null)
                         {
 
-                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records) }
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_backingRecordsPartial.cshtml", Model.Records)
+                        }
                         else
                         {
-                            <div>您目前沒有任何贊助歷史!</div>}
+                            <div>您目前沒有任何贊助歷史!</div>
+                        }
                     </div>
                 </section>
             </div>
@@ -89,152 +91,142 @@
                             {
                                 <p>目前還沒有任何提案!歡迎隨時發起提案</p>
                             }
-                            else if (Model.MyProjects != null && Model.MyDraftProjects != null)
+                            else if (Model.MyProjects != null || Model.MyDraftProjects != null)
                             {
-                                foreach (var item in Model.MyProjects)
+                                if (Model.MyProjects != null && Model.MyDraftProjects != null)
                                 {
-                                    <div class="case-doing">
-                                        <div class="case-doing-funding">
-                                            <h3>募資中專案</h3>
-                                            <hr />
-                                            <div class="case-doing-creating-content">
-                                                @if ((item.EndDate.Ticks - today.Ticks) > 0)
-                                                {
+                                    <div class="case-doing-creating">
+                                        <h3>募資中專案</h3>
+                                        <hr />
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+                                            if (item.ProjectStatus == "集資中" || item.ProjectStatus == "集資成功")
+                                            {
+                                                <div class="case-doing-creating-content">
                                                     @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                }
-                                                else
-                                                {
-                                                    <p>目前您沒有募資中專案</p>
-                                                }
-                                            </div>
-                                        </div>
+                                                </div>
+                                            }
+                                        }
                                     </div>
 
                                     <div class="case-doing-creating">
                                         <h3>審核中專案</h3>
                                         <hr />
-                                        <div class="case-doing-creating-content">
-                                            @if (item.ApprovingStatus == 1)
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+                                            if (item.ApprovingStatus == 1)
                                             {
-                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                            }
-                                            else
-                                            {
-                                                <p>您目前沒有審核中的專案</p>
-                                            }
-                                        </div>
-                                    </div>
-
-
-                                    <div class="case-doing-funding">
-                                        <div class="case-doing-funding">
-                                            <h3>已結束專案</h3>
-                                            <hr />
-                                            <div class="case-doing-creating-content">
-                                                @if ((item.EndDate.Ticks - today.Ticks) < 0)
-                                                {
+                                                <div class="case-doing-creating-content">
                                                     @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                }
-                                                else
-                                                {
-                                                    <p>目前您沒有已結束專案</p>
-                                                }
-                                            </div>
-                                        </div>
+                                                </div>
+                                            }
+                                        }
                                     </div>
-                                }
 
-                                foreach (var item in Model.MyDraftProjects)
-                                {
+                                    @*<div class="case-doing-funding">*@
+                                    <div class="case-doing-creating">
+                                        <h3>已結束專案</h3>
+                                        <hr />
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+
+                                            if (item.ProjectStatus == "結束且成功" || item.ProjectStatus == "結束且失敗")
+                                            {
+                                                <div class="case-doing-creating-content">
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    @*</div>*@
 
                                     <div class="case-doing-creating">
                                         <h3>草稿專案</h3>
                                         <hr />
-                                        <div class="case-doing-creating-content">
-                                            @if (item.ApprovingStatus == 0)
+                                        @foreach (var item in Model.MyDraftProjects)
+                                        {
+                                            if (item.ApprovingStatus == 0)
                                             {
-                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                                <div class="case-doing-creating-content">
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                                </div>
                                             }
-                                            else
-                                            {
-                                                <p>目前您沒有創建中專案</p>
-                                            }
-                                        </div>
+                                        }
                                     </div>
-                                }
-                            }
-                            else if (Model.MyProjects != null)
-                            {
-                                foreach (var item in Model.MyProjects)
-                                {
-                                    <div class="case-doing">
-                                        <div class="case-doing-funding">
-                                            <h3>募資中專案</h3>
-                                            <hr />
-                                            <div class="case-doing-creating-content">
-                                                @if ((item.EndDate.Ticks - today.Ticks) > 0)
-                                                {
-                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                }
-                                                else
-                                                {
-                                                    <p>目前您沒有募資中專案</p>
-                                                }
-                                            </div>
+
+                                    @*<div class="case-doing-creating-content">
+                                            <p>目前您沒有募資中專案</p>
                                         </div>
+
+                                        <div class="case-doing-creating-content">
+                                            <p>您目前沒有審核中的專案</p>
+                                        </div>
+
+                                        <div class="case-doing-creating-content">
+                                            <p>目前您沒有已結束專案</p>
+                                        </div>
+
+                                        <p>目前您沒有創建中專案</p>*@
+
+                                }
+                                else if (Model.MyProjects != null)
+                                {
+                                    <div class="case-doing-creating">
+                                        <h3>募資中專案</h3>
+                                        <hr />
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+                                            if (item.ProjectStatus == "集資中" || item.ProjectStatus == "集資成功")
+                                            {
+                                                <div class="case-doing-creating-content">
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                </div>
+                                            }
+                                        }
                                     </div>
 
                                     <div class="case-doing-creating">
                                         <h3>審核中專案</h3>
                                         <hr />
-                                        <div class="case-doing-creating-content">
-                                            @if (item.ApprovingStatus == 1)
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+                                            if (item.ApprovingStatus == 1)
                                             {
-                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                <div class="case-doing-creating-content">
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
+                                                </div>
                                             }
-                                            else
-                                            {
-                                                <p>您目前沒有審核中的專案</p>
-                                            }
-                                        </div>
+                                        }
                                     </div>
 
-
-                                    <div class="case-doing-funding">
-                                        <div class="case-doing-funding">
-                                            <h3>已結束專案</h3>
-                                            <hr />
-                                            <div class="case-doing-creating-content">
-                                                @if ((item.EndDate.Ticks - today.Ticks) < 0)
-                                                {
+                                    <div class="case-doing-creating">
+                                        <h3>已結束專案</h3>
+                                        <hr />
+                                        @foreach (var item in Model.MyProjects)
+                                        {
+                                            if (item.ProjectStatus == "結束且成功" || item.ProjectStatus == "結束且失敗")
+                                            {
+                                                <div class="case-doing-creating-content">
                                                     @Html.Partial("~/Views/Shared/MemberCenterPartial/_myProjectPartial.cshtml", item)
-                                                }
-                                                else
-                                                {
-                                                    <p>目前您沒有已結束專案</p>
-                                                }
-                                            </div>
-                                        </div>
+                                                </div>
+                                            }
+                                        }
                                     </div>
                                 }
-                            }
-                            else 
-                            {
-                                foreach (var item in Model.MyDraftProjects)
+                                else
                                 {
                                     <div class="case-doing-creating">
                                         <h3>草稿專案</h3>
                                         <hr />
-                                        <div class="case-doing-creating-content">
-                                            @if (item.ApprovingStatus == 0)
+                                        @foreach (var item in Model.MyDraftProjects)
+                                        {
+                                            if (item.ApprovingStatus == 0)
                                             {
-                                                @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                                <div class="case-doing-creating-content">
+                                                    @Html.Partial("~/Views/Shared/MemberCenterPartial/_myDraftProjectPartial.cshtml", item)
+                                                </div>
                                             }
-                                            else
-                                            {
-                                                <p>目前您沒有創建中專案</p>
-                                            }
-                                        </div>
+                                        }
                                     </div>
                                 }
                             }
@@ -295,7 +287,7 @@
                     <div class="wrap-inside">
                         @foreach (var announcement in Model.Announcements)
                         {
-                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml",announcement) 
+                            @Html.Partial("~/Views/Shared/MemberCenterPartial/_activityPartial.cshtml", announcement)
                         }
                     </div>
                 </div>
@@ -381,8 +373,8 @@
                                             <label for="name">顯示名稱</label>
                                             <input type="text" class="form-control" id="name1" value="@vm.MemberName" name="MemberName">
                                         </div>
-                                        <div id="personal-site" class="form-group">
-                                            <label for="personal-site">個人網站</label>
+                                        <div id="memberwebsite" class="form-group">
+                                            <label for="memberwebsite">個人網站</label>
                                             <input type="url" class="form-control" id="personal-site" value="@vm.MemberWebsite" name="MemberWebsite">
                                         </div>
 
@@ -392,7 +384,7 @@
                                 <hr />
                                 @*<input type="submit" value="儲存" class="btn btn-primary"/>*@
                                 <button id="btnSub" class="btn btn-primary">儲存</button>
-                                <a id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</a>
+                                <button id="btn-black" class="btn btn-primary" href="@vm.MemberId">查看檔案頁</button>
                                 @*Html.ActionLink("會員資料", $"Member/{@vm.MemberId}", "UserInfo")*@
                             </div> //</form>
                         } @*表單提交區域!!!*@
@@ -408,14 +400,33 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">-->
-            <!--通知設定-->
-            <!--<div class="setting">
+            <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
+                <div class="setting">
                     <div class="wrap-inside">
-                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_notifactionPartial.cshtml")
+                        @if (Model.PlanRecords == null)
+                        {
+                            <div class="row nomessage" style="text-align: center;justify-content: center;">
+                                <h3>您目前於車車商城上沒有任何上架方案</h3>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="case-title">
+                                <h2>上架方案</h2>
+                            </div>
+                            <div class="container" id="notifactionApp">
+
+                                <div class="row mt-4">
+                                    @foreach (var plan in Model.PlanRecords)
+                                    {
+                                        @Html.Partial("~/Views/Shared/MemberCenterPartial/_notifactionPartial.cshtml", plan)
+                                    }
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>
@@ -426,6 +437,7 @@
 
 @section endJs
     {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_3.5.1_code.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_3.5.1.min.js"></script>
     <script src="~/Assets/Plugin/JQuery/jquery_1.10.24dataTable.js"></script>
@@ -607,35 +619,145 @@
             }
         })
 
-                        //messageSelect.addEventListener("change", function () {
-                        //    if (messageSelect.value == "2") {
+        //messageSelect.addEventListener("change", function () {
+        //    if (messageSelect.value == "2") {
 
-                        //        var hasReply = document.querySelectorAll(".has-reply");
-                        //        hasReply.forEach(node => myComments.removeChild(node.offsetParent));
-                        //        Init();
+        //        var hasReply = document.querySelectorAll(".has-reply");
+        //        hasReply.forEach(node => myComments.removeChild(node.offsetParent));
+        //        Init();
 
-                        //    }
-                        //    else if (messageSelect.value == "3") {
+        //    }
+        //    else if (messageSelect.value == "3") {
 
-                        //        var noReply = document.querySelectorAll(".no-reply");
-                        //        noReply.forEach(node =>myComments.removeChild(node.offsetParent));
-                        //        Init();
+        //        var noReply = document.querySelectorAll(".no-reply");
+        //        noReply.forEach(node =>myComments.removeChild(node.offsetParent));
+        //        Init();
 
-                        //    }
-                        //    else {
+        //    }
+        //    else {
 
-                        //    }
-                        //});
+        //    }
+        //});
 
-                        //function Init()
-                        //{
-                        //            allComments.removeChild(myComments);
+        //function Init()
+        //{
+        //            allComments.removeChild(myComments);
 
-                        //            allComments.appendChild(cloneMyComments);
-                        //}
-
-
+        //            allComments.appendChild(cloneMyComments);
+        //}
 
 
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <script>
+        var form = new Vue({
+            el: "#notifactionApp",
+            methods: {
+                vaildation: function (id) {
+                    let SubmitLimit = $('#' + id + 'planNumber').val() //提交庫存數
+
+                    let SubmitLimitRegexpNum = /^[0-9]*$/;//輸入非數字時提示
+                    let SubmitLimitRegexp = /^09/; //開頭為09
+
+                    let SubmitLimitError = false
+                    let SubmitLimitErrorMsg = '';
+                    if (SubmitLimit == "") {
+                        SubmitLimitError = true;
+                        /*SubmitLimitErrorMsg = '數字不得為空';*/
+                        swal({
+                            title: 'warning',
+                            text: '數字不得為空！',
+                            icon: 'error'
+                        });
+                    } else {
+                        SubmitLimitError = false;
+                        SubmitLimitErrorMsg = '';
+                    }
+                    if (SubmitLimitError) {
+                        $('#' + id + 'planNumber').addClass('is-invalid')
+                    } else {
+                        $('#' + id + 'planNumber').removeClass('is-invalid')
+                    }
+
+                    if (SubmitLimitErrorMsg != '') alert(SubmitLimitErrorMsg);
+                    $('#' + id + 'SubmitLimitErrorMsg').text(SubmitLimitErrorMsg)
+
+                    return SubmitLimitError
+                },
+                submitData: function (id) {
+                    if (!this.vaildation(id)) {
+                        console.log('update plan')
+                        this.saveServer(id);
+                    }
+                },
+                saveServer: function (id) {
+                    let SubmitLimit = $('#' + id + 'planNumber').val()
+                    $.ajax({
+                        type: "POST",
+                        url: '/api/memberapi/UpdatePlan',
+                        dataType: "json",
+                        data: JSON.stringify({ PlanId: id, SubmitLimit: SubmitLimit }), //注意是放JSON  字串
+                        dataType: "json",
+                        headers: {
+                            'Content-type': 'application/json'
+                        }, //注意 Content-type
+                        success: function (response) {
+                            console.log(response);
+                            swal({
+                                title: 'OK',
+                                text: '送出成功！',
+                                icon: 'success'
+                            });
+                            window.setTimeout(reloading, 1000);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            //swal({
+                            //    title: 'warning',
+                            //    text: '數字不得為空！',
+                            //    type: 'error'
+                            //});
+                        }
+                    });
+                }
+            }
+        })
+
+
+                    //$('.product-item-qty button').on('click', function () {
+                    //    var $input = $(this).siblings('input');
+                    //    if (isNaN($input.val())) {
+                    //        alert('請輸入有效數字');
+                    //        return;
+                    //    }
+                    //var data = {
+                    //    PlanId: $input.data('planid'),
+                    //    SubmitLimit: $input.val()
+                    //}
+
+                    //function SaveServer() {
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: '/api/memberapi/UpdatePlan',
+                    //        dataType: "json",
+                    //        data: JSON.stringify({ planNumber: form.$data.inputData.SubmitLimit }), //注意是放JSON  字串
+                    //        dataType: "json",
+                    //        headers: {
+                    //            'Content-type': 'application/json'
+                    //        }, //注意 Content-type
+                    //        success: function (response) {
+                    //            console.log(data);
+                    //        },
+                    //        error: function (err) {
+                    //            console.log(err);
+                    //        }
+                    //    });
+                    //}
     </script>
 }

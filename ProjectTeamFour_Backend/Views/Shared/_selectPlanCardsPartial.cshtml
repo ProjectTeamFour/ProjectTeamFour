@@ -1,0 +1,42 @@
+﻿@model CarCarPlanViewModel.SelectPlanViewModel
+
+
+    @*<h4>選擇方案</h4>*@
+        
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h3 id="amount">$ @Model.PlanPrice.ToString("###,###")</h3>
+                            <div class="img-wrap">
+                                <img class="card-img-top" src="@Model.PlanImgUrl" alt="Card image cap">
+                            </div>
+                            <h4 class="card-title">
+                                @Model.PlanTitle
+                            </h4>
+                            <p class="card-text">
+                                <div id="perk-info-down" class="wrapper">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-6">
+                                            <h6 class="text-secondary text-normal text-small">贊助人數</h6>
+                                            <h4 class="text-large">@Model.PlanFundedPeople</h4>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6">
+                                            <h6 class="text-secondary text-normal text-small">預計寄送時間</h6>
+                                            <h4 class="text-large">@Model.PlanShipDate</h4>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12">
+                                            <h6 class="text-secondary text-normal text-small">寄送地點</h6>
+                                            <h4 class="text-large">寄送至特定地點</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                            <button id="donate-btn" onclick="AddToMyCart('@Model.PlanId', '@Model.PlanTitle', '@Model.PlanImgUrl', '@Model.PlanPrice','@Model.QuantityLimit','@Model.ProjectId')">贊助此回饋方案</button>
+                        </div>
+                    </div>
+                </div>
+
+@section topCSS{
+    <link href="~/css/ProjectDetailPreview/PlanList.css" rel="stylesheet" />
+}

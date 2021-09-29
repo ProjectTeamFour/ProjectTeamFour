@@ -23,7 +23,7 @@ Vue.component("multi-text", {
     },
     methods: {
         updateValue: function () {
-            console.debug(JSON.stringify(this.ProjectQuestionAnswer));
+            //console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
             this.ProjectQuestionAnswer.forEach(function (item) {
                 if (item.Question == "" || item.Answer == "") {
@@ -38,7 +38,7 @@ Vue.component("multi-text", {
         },
         deleteValue: function (index) {
             this.ProjectQuestionAnswer.splice(index, 1);
-            console.debug(JSON.stringify(this.ProjectQuestionAnswer));
+            //console.debug(JSON.stringify(this.ProjectQuestionAnswer));
             this.$emit("input", this.ProjectQuestionAnswer);
         },
         addInput: function () {
@@ -418,12 +418,12 @@ var form = new Vue({
                 this.inputDataCheck.StartDateAndEndDateError = true;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "募資時間必須填妥";
             } else {
-                console.log(this.inputData.StartDate);
-                console.log(this.inputData.EndDate);
-                console.log(this.inputData.StartDate.split("-"));
-                console.log(this.inputData.EndDate.split("-"));
-                console.log(this.inputData.StartDate.split("-").join(""));
-                console.log(this.inputData.EndDate.split("-").join(""));
+                //console.log(this.inputData.StartDate);
+                //console.log(this.inputData.EndDate);
+                //console.log(this.inputData.StartDate.split("-"));
+                //console.log(this.inputData.EndDate.split("-"));
+                //console.log(this.inputData.StartDate.split("-").join(""));
+                //console.log(this.inputData.EndDate.split("-").join(""));
                 this.inputDataCheck.StartDateAndEndDateError = false;
                 this.inputDataCheckErrorMsg.StartDateAndEndDateErrorMsg = "";
             }
@@ -679,6 +679,8 @@ var form = new Vue({
                     this.modalData.QuantityLimit == 999;
                 }
 
+                //var planPriceWithComma = this.numberWithCommas(this.modalData.planPrice);
+
                 //做plan物件等等塞回去陣列
                 var modalListObj = {
                     ProjectPlanId: this.modalData.makePlanCount,
@@ -805,8 +807,8 @@ var form = new Vue({
                 },
                 mimeType: 'multipart/form-data'
             }).then(res => {
-                console.log(res)
-                console.log(res.data.data.link);
+                //console.log(res)
+                //console.log(res.data.data.link);
                 if (imgSwitch == "ProjectMainUrl") {
                     pmu = res.data.data.link;
                 } else if (imgSwitch == "ProjectCoverUrl") {
@@ -825,6 +827,7 @@ var form = new Vue({
                     timer: 1500
                 });
             }).catch(e => {
+
                 //失敗就跳swal
                 Swal.fire({
                     position: 'top',
@@ -980,8 +983,8 @@ var form = new Vue({
                     }
 
                     Swal.fire({
-                        title: '提案資料提交中',
-                        html: '資料將會匯入到我們的資料中心，請耐心稍等一下',
+                        title: '草稿資料提交中',
+                        html: '之後可以到您的會員中心繼續編輯，請耐心稍等一下',
                         timer: 50000,
                         timerProgressBar: true,
                         background: '#FDC6C8',
@@ -1100,6 +1103,9 @@ var form = new Vue({
                 }
             });
         },
+        numberWithCommas(planPrice) {
+            return planPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     }
 });
 
@@ -1282,7 +1288,7 @@ function saveToServer(file) {
     // form.append('description', des);
     form.append('album', album); // 有要指定的相簿就加這行
 
-    console.log(form);
+    //console.log(form);
 
     $.ajax({
         async: true,
@@ -1298,13 +1304,13 @@ function saveToServer(file) {
         data: form,
         success: function (res) {
 
-            console.log(res); // 可以看見上傳成功後回的值
+            //console.log(res); // 可以看見上傳成功後回的值
             var jsonObj = JSON.parse(res); //轉json物件為了取裡面的東西
 
             // alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。');
             url = jsonObj.data.link; //拿imgur link 從json物件裡面取
             imgurArray.push(url);
-            console.log(imgurArray);
+            //console.log(imgurArray);
 
             //塞 imgurUrl
             var img = document.getElementById(`editorImgId${editorImgId}`);

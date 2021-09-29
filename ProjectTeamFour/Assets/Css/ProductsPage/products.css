@@ -52,6 +52,10 @@ a:hover {
     flex-direction: column;
 }
 
+.dropdown-item {
+    cursor: pointer
+}
+
 button[type="button"] {
     color: #000;
     background-color: #fff;
@@ -190,9 +194,7 @@ button[type="button"] {
         font-weight: 700;
     }
 
-    .popular-project .status {
-        margin-left: 0.8rem;
-    }
+
 
     .popular-project .project-name h3 {
         font-size: 1.1rem;
@@ -244,6 +246,7 @@ button[type="button"] {
         }
 
 
+
 .ForCategory {
     display: none;
 }
@@ -257,9 +260,9 @@ button[type="button"] {
     margin: 1rem 0;
 }
 
-    .btn-more:hover {
-        background-color: #000;
-    }
+.btn-more:hover {
+    background-color: #000;
+}
 
 .pagination {
     display: flex;
@@ -273,6 +276,9 @@ button[type="button"] {
 .page-item.active .page-link{
     background-color:#f9414a;
     border:none;
+}
+.page-link:focus{
+    box-shadow:none
 }
 
 
@@ -297,4 +303,17 @@ button[type="button"] {
     .popular-project .project-progressnumber p {
         font-size: 0.95rem;
     }
+
+    #status-text{
+        font-size:0.9rem;
+    }
+}
+
+#default {
+    text-align: center;
+}
+
+.popular-project .status {
+    margin-left: 0.8rem;
+    width: 6rem;
 }

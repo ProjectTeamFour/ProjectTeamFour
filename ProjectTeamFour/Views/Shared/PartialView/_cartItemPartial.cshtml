@@ -1,11 +1,11 @@
 ﻿@*@model CarCarPlanViewModel*@
 <div class="col-sm-12 col-md-12 shop-item" v-for="model in Models">
     <div class="cart-item" v-if="model.QuantityLimit>=0">
-        <a :href="detailUrl+model.ProjectId" class="thumbnail">
+        <a href="javascript:void(0)" class="thumbnail">
             <img v-bind:src="model.PlanImgUrl">
         </a>
         <div class="content">
-            <a :href="detailUrl+model.ProjectId" class="title">{{model.PlanTitle}}</a>
+            <a href="javascript:void(0)" class="title">{{model.PlanTitle}}</a>
             <div class="sales">
                 <p class="price">{{model.PlanPrice}}</p>
                 <p class="stock" >限量：{{model.QuantityLimit}}</p>

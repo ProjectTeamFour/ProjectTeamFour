@@ -5,56 +5,73 @@
     string approvingstatus = (string)ViewData["ApprovingStatus"];
     string id = (string)ViewData["Id"];
 
+
+    
+        DateTime today = DateTime.UtcNow.AddHours(8);
+        double dateLine = Convert.ToInt32(new TimeSpan(Model.EndDate.Ticks - today.Ticks).TotalDays);
+    
+
 }
 
 
-        <div class="container case-doing-item">
-            <div class="case-doing-pic">
-                <img src="@Model.ProjectCoverUrl">
-            </div>
-            <div class="case-doing-text">
-                <div class="case-doing-name">
-                    <h4>
-                        專案名稱:
-                        <span>@Model.ProjectName</span>
-                    </h4>
-                </div>
-                <div class="case-doing-money">
-                    <h4>
-                        目標金額:
-                        <span>$ @Model.GoalMoney</span>
-                    </h4>
-                </div>
-                <div class="case-doing-creat">
-                    <h4>
-                        專案開始日期:
-                        <span>@Model.StartDate.ToShortDateString()</span>
-                    </h4>
-                </div>
-                <div class="case-doing-givedate">
-                    <h4>
-                        @*@if (Model.SubmitStatus == false)
-                        {
-                            <span>提交日期:尚未提交</span>
-                        }
-                        else
-                        {
-                            <span>提交日期:@Model.SubmittedDate</span>
-                        }*@
-                    </h4>
-                </div>
-                <div class="case-doing-fix">
-                    <h4>
-                        <span>專案結束日期:@Model.EndDate.ToShortDateString()</span>
-                    </h4>
-                </div>
-            </div>
-            <div class="button-group">
-                <a id="btn-fix" href="~/StartAProject/SubmissionProcess">修改</a>
-                <a id="btn-view" href="~/ProjectDetail/Index/@Model.ProjectId">預覽</a>
-            </div>
-
+<div class="container case-doing-item">
+    <div class="case-doing-pic">
+        <img src="@Model.ProjectMainUrl">
+    </div>
+    <div class="case-doing-text">
+        <div class="case-doing-name">
+            <h4>
+                專案名稱:
+                <span>@Model.ProjectName</span>
+            </h4>
         </div>
+        <div class="case-doing-money">
+            <h4>
+                目標金額:
+                <span>$ @Model.GoalMoney</span>
+            </h4>
+        </div>
+        <div class="case-doing-creat">
+            <h4>
+                專案開始日期:
+                <span>@Model.StartDate.ToShortDateString()</span>
+            </h4>
+        </div>
+        <div class="case-doing-givedate">
+            <h4>
+                @*@if (Model.SubmitStatus == false)
+                    {
+                        <span>提交日期:尚未提交</span>
+                    }
+                    else
+                    {
+                        <span>提交日期:@Model.SubmittedDate</span>
+                    }*@
+            </h4>
+        </div>
+        <div class="case-doing-fix">
+            <h4>
+                <span>專案結束日期:@Model.EndDate.ToShortDateString()</span>
+            </h4>
+        </div>
+    </div>
+    <div class="button-group">
+        @*<a id="btn-fix" href="~/StartAProject/SubmissionProcess">修改</a>*@
+        @if (Model.ApprovingStatus == 2 && dateLine > 0)
+        {
+            <a id="btn-view" href="~/ProjectDetail/Index/@Model.ProjectId" target="_blank">前往</a>
+        }
+        else if (Model.ApprovingStatus == 2 && dateLine < 0)
+        {
+            <a id="btn-view" href="~/ProjectDetail/NormalProjectPreview/@Model.ProjectId" target="_blank">查看</a>
+        }
+        else
+        {
+            <a id="btn-view" href="~/ProjectDetail/NormalProjectPreview/@Model.ProjectId" target="_blank">預覽</a>
+        }
+    </div>
+
+</div>
 
 @section endJs{
     <script src="~/Assets/Javascript/PersonalInfo/PersonInfo.js"></script>

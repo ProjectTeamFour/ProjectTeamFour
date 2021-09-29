@@ -42,13 +42,33 @@ namespace ProjectTeamFour.Controllers
             return View(GetAll);
         }
 
+        //依據集資類型的自訂路由 - kang
+        // "Projects/Category/類型/集資狀態/商品
+
+        public ActionResult Category(string type, string projectStatus, string id) //過濾
+        {
+            
+            var projectService = new ProjectsService(); //呼叫service
+            var project = new ProjectListViewModel
+            {
+                ProjectItems = new List<ProjectViewModel>()
+            };
+            var GetAll = projectService.GetAllTotalFliter(type, projectStatus, id);
+
+            ViewData["category"] = type;
+            ViewData["status"] = projectStatus;
+            ViewData["id"] = id;
+            return View(GetAll);
+        }
+
+
         public ActionResult GetAll(int id = 1) //換頁
         {
             
             var projectService = new ProjectsService(); //呼叫service
             
             int activePage = id; //目前所在頁
-            int pageRows = 10; //每頁幾筆資料
+            int pageRows = 9; //每頁幾筆資料
             int totalRows = _projectsService.GetAllTotal().ProjectItems.Count(); //總筆數
 
             //計算page頁面

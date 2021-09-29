@@ -46,19 +46,15 @@ namespace ProjectTeamFour.Service
                     OrderQuantity = i.OrderQuantity,
                     OrderDetailDes = i.OrderDetailDes,
                     OrderPlanImgUrl = i.OrderPlanImgUrl,
-                    condition = i.condition
+                    condition = i.condition,
+                    Plan = i.Plan,
+                    PlanShipDate = i.PlanShipDate                    
                 };
                 odlist.Add(order);
             };
             backorder.MyOrderDetailList = odlist;
             backorder.MyOrder = ordermodel;            
             return backorder;                    
-        }                                  
-
-        //public BackingRecordsViewModel BackToShop(OrderDetail ) //抓取特定的訂單詳細(從資料庫) 畫面==資料庫資料 把資料塞進綠界 
-        //{
-
-        //}
-        
+        }        
     }
 }                

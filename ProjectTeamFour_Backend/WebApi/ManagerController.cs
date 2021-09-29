@@ -23,10 +23,10 @@ namespace ProjectTeamFour_Backend.WebApi
     public class ManagerController : ControllerBase
     {
         private readonly IConfiguration _config;
-       
+
         private readonly IBackendMemberService _backendMemberService;
 
-        public ManagerController(IConfiguration config,IBackendMemberService backendMemberService)
+        public ManagerController(IConfiguration config, IBackendMemberService backendMemberService)
         {
             _config = config;
             _backendMemberService = backendMemberService;
@@ -46,11 +46,12 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             IActionResult response = Unauthorized();
             var user = GetBackendAuthentication(loginVM);
-            if(user.IsSuccess==true)
+            if (user.IsSuccess == true)
             {
                 var tokenString = GenerateJsonWebToken(loginVM);
-                response = Ok(new {token=tokenString});
+                response = Ok(new { token = tokenString });
                 Response.Cookies.Append("adm", user.Msg);
+                Response.Cookies.Append("UserEmail", loginVM.MemberRegEmail);
             }
 
 
@@ -68,7 +69,7 @@ namespace ProjectTeamFour_Backend.WebApi
             // Cookie 是否為持續性
             var authProperties = new AuthenticationProperties()
             {
-                IsPersistent = false, 
+                IsPersistent = false,
 
             };
             // 建立加密的 cookie ，並將它新增至目前的回應
@@ -76,10 +77,19 @@ namespace ProjectTeamFour_Backend.WebApi
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
-            
             return response;
         }
 
+        /// <summary>
+        /// 登出目前使用者並刪除cookie
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
 
         /// <summary>
         ///  //驗證使用者帳密
@@ -90,7 +100,7 @@ namespace ProjectTeamFour_Backend.WebApi
         {
             var manager = _backendMemberService.GetBackendAuthentication(loginVM);
             return manager;
-          
+
         }
 
         /// <summary>
@@ -111,7 +121,24 @@ namespace ProjectTeamFour_Backend.WebApi
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+
+
         }
+
+            // - phil註解
+            //var token2 = new JwtSecurityToken(
+
+            //    new JwtHeader(
+            //        new SigningCredentials(
+            //            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"])), 
+            //            SecurityAlgorithms.HmacSha256)), 
+
+            //    new JwtPayload( issuer: "CashUser",
+            //                    audience: "CashAudience",
+            //                    claims: null,
+            //                    notBefore: DateTime.UtcNow,
+            //                    expires: DateTime.UtcNow.AddMinutes(30))
+            //    );
 
     }
 }

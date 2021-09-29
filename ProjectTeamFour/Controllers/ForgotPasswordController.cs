@@ -20,7 +20,6 @@ namespace ProjectTeamFour.Controllers
 {
     public class ForgotPasswordController : Controller
     {
-
        
         private static readonly TimeSpan _passwordResetExpiry = TimeSpan.FromMinutes(5); //限制5分鐘
         private static readonly Byte[] _privateKey = new HMACSHA256().Key; //做key
@@ -173,7 +172,7 @@ namespace ProjectTeamFour.Controllers
 
         //----------加密的東西 int 都先寫 int32 比較好換算理解
 
-       // 做 Hmac金鑰雜湊 用 SHA256 包 memberId 和 時間 去做
+        // 做 Hmac金鑰雜湊 用 SHA256 包 memberId 和 時間 去做
         public String CreatePasswordResetHmacCode(Int32 userId)
         {
             Byte[] message = Enumerable.Empty<Byte>()
@@ -224,7 +223,6 @@ namespace ProjectTeamFour.Controllers
                 return Enumerable.SequenceEqual(hash, messageHash);  //原始的 比對 傳進來的 一樣就是 true 
             }
         }
-
 
 
         //DES加密將HmacSha256code存進去  //沒用到

@@ -56,10 +56,10 @@
 {
     <a class="dropdown-item" href="/UserInfo/Member/@member.MemberId">個人頁面</a>
     @*<hr />
-    <a class="dropdown-item" href="/UserInfo/Sponser">贊助紀錄</a>
-    <a class="dropdown-item" href="/UserInfo/Myprojects">提案紀錄</a>
-    <hr />
-    <a class="dropdown-item" href="/UserInfo/Message">聯絡訊息</a>*@
+        <a class="dropdown-item" href="/UserInfo/Sponser">贊助紀錄</a>
+        <a class="dropdown-item" href="/UserInfo/Myprojects">提案紀錄</a>
+        <hr />
+        <a class="dropdown-item" href="/UserInfo/Message">聯絡訊息</a>*@
     @*<a class="dropdown-item" href="/UserInfo/Notifaction">最新通知</a>*@
     <a class="dropdown-item" href="javascript:Logout(@member.IsThirdParty)" id="logoutButton">登出</a>
 }
@@ -81,11 +81,20 @@
         {
             <img src="~/Assets/Img/Sign/woman.png" width="30" height="30" name="memberimg" />
         }
+        else if (gender == "其他")
+        {
+            <img src="~/Assets/Img/member.png" width="30" height="30" name="memberimg" />
+        }
+        else
+        {
+            <img src="~/Assets/Img/member.png" width="30" height="30" name="memberimg" />
+        }
     }
     else
     {
         <img src=@input width="30" height="30" name="memberimg" />
-    }}
+    }
+}
 @helper ShowNoLoginPic()
 {
     <img src="~/Assets/Img/Sign/questionMark.png" width="30" height="30" name="memberimg" />

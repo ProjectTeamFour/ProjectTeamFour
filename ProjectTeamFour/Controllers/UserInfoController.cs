@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using ProjectTeamFour.Repositories;
 using ProjectTeamFour.Helpers;
 using System.Web.Http;
+using System.Collections.Generic;
+using System.Web;
 
 namespace ProjectTeamFour.Controllers
 {
@@ -17,16 +19,18 @@ namespace ProjectTeamFour.Controllers
 		private readonly CommentService _commentService;
 		private readonly BackingService _backingService;
         private readonly AnnouncementService _announcementService;
+		private readonly PlanRecordsService _planRecordsService;
 
 		public UserInfoController()
-			{
+		{
 			    _logService = new LogService();
 				_memberService = new MemberService();
 				_myProjectsService = new MyProjectsService();
 				_commentService = new CommentService();
 			    _backingService = new BackingService();
+                _planRecordsService = new PlanRecordsService();
                 _announcementService = new AnnouncementService();
-			}
+        }
 
         // GET: PersonInfo
         //[CustomAuthorize(flagNum = 1)]
@@ -44,17 +48,24 @@ namespace ProjectTeamFour.Controllers
                 model.MyDraftProjects = _myProjectsService.GetDraftProjectsbyMemberId(model.MemberId);
                 //根據會員id抓取通知紀錄
                 model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
-				
-				//根據會員id抓取會員購買紀錄
-			    model.Records = _backingService.QueryOrder(model.MemberId);
-				if(model.MyProjects.Count==0)
+
+                //根據會員id抓取會員購買紀錄
+                model.Records = _backingService.QueryOrder(model.MemberId);
+                ///判斷是否是提案人
+				if (model.MyProjects.Count==0)
                 {
 					model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
+                    ///如果model.PlanRecords = null須防止例外跳出
+                    model.PlanRecords = null;
 				}
 				else
                 {
 					model.Comments = _commentService.QueryCommentByaskedMemberId(model.MemberId);
-				}
+                    
+                    model.PlanRecords = _planRecordsService.QueryResult(model.MyProjects);
+                    
+                    
+                }
 				//該會員為提案者沒有留過言，卻要回覆留言
 				
 
@@ -182,8 +193,9 @@ namespace ProjectTeamFour.Controllers
             var model = (MemberViewModel)Session["Member"];
             if (model != null)
             {
+                var LastAnnouncementCount = Request.Cookies["AnnouncementListCount"] == null ? "" : Request.Cookies["AnnouncementListCount"].Value.ToString();
                 var memberInfo = _memberService.GetMember(m => m.MemberId == Id);
-
+                
 
                 //根據專案的提交與審核狀態進行分類
                 model.MyProjects = _myProjectsService.GetProjectsbyMemberId(model.MemberId);
@@ -192,6 +204,13 @@ namespace ProjectTeamFour.Controllers
                 model.Records = _backingService.QueryOrder(model.MemberId);
                 //根據會員id抓取通知
                 model.Announcements = _announcementService.GetAnnouncement(model.MemberId);
+                //存取此次通知數量
+                var AnnouncementCount = model.Announcements.Count;
+                HttpCookie cookie = new HttpCookie("AnnouncementListCount");
+                cookie.Value = AnnouncementCount.ToString();
+                Response.AppendCookie(cookie);
+                var unread = AnnouncementCount - int.Parse(LastAnnouncementCount);
+                model.UnreadCount = unread;
                 if (model.MyProjects.Count == 0)
                 {
                     model.Comments = _commentService.QueryCommentByMemberId(model.MemberId);
@@ -210,5 +229,13 @@ namespace ProjectTeamFour.Controllers
                 return RedirectToAction("Login", "Member");
             }
         }
+
+        //[System.Web.Http.HttpPost]
+        //public ActionResult FindOrder(Order oVM)
+        //{   
+
+        //    var order = _backingService.FindOrder(oVM);
+        //    return View(order);         
+        //}
     }
 }

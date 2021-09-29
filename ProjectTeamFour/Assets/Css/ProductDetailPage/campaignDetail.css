@@ -1,8 +1,15 @@
 html {
   font-size: 14px;
-  max-width: 1680px;
+  /*max-width: 1680px;*/
   margin: auto;
   color: #212121;
+}
+h2,h3{
+    font-weight:700;
+    letter-spacing:1.6px;
+}
+.btn:focus{
+    box-shadow:none;
 }
 
 @media screen and (max-width: 767.98px) {
@@ -15,23 +22,32 @@ html {
     padding: 1rem;
   }
 
-  /* #leftside-main-col {
-    width: 33.5rem;
-  } */
-   #select-perk .card-deck {
-    width: 100%;
-  } 
+  #info-text-wrap .badge{
+      display:none;
+  }
+
+    #campaign-status-label{
+        
+    }
+
+    #select-perk .card-deck {
+        width: 100%;
+    } 
 
   .number-row {
-    display: flex;
+    display: inline;
   }
-  .number-row .block {
-    display: block;
-  }
+    .number-row .block {
+        display: block;
+    }
 
-  #goal-wrap .wrapper {
-    flex-wrap: nowrap;
-  }
+    #donating-people-count, #donating-days-countdown .block{
+        font-size:16px;
+    }
+
+    #goal-wrap .wrapper {
+        flex-wrap: nowrap;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -121,12 +137,16 @@ html {
 #creator-info #follow-icon i {
   color: #212121;
 }
+.progress {
+    height:0.5rem;
+}
 
 .progress-bar {
   background-color: #f9414a;
 }
 
-#backing-section a, button {
+#backing-section a, 
+#backing-section button {
     display: inline-block;
     width: 100%;
     text-decoration: none;
@@ -161,12 +181,12 @@ html {
   color: #212121;
   border: 1px solid #d7d7d7;
 }
-
-/* 不太會用tab的客製化樣式 */
-
 #info-tabs {
     background-color: #f6f6f6;
     margin:1rem 0;
+    position:sticky;
+    top:45px;
+    z-index:5;
 }
 
 #info-tabs a {
@@ -184,16 +204,8 @@ html {
 
 /* 共用區域 */
 
-#campaign-status-label .text-wrap::before {
-/*  display: block;
-  position: relative;
-  left: -1rem;
-  top: 2.5rem;
-  width: 0.25rem;
-  height: 2.5rem;
-  background-color: #9b9b9b;
-  content: " ";
-  border-radius: 1.5rem;*/
+#campaign-status-label{
+margin-top:1rem;
 }
 
 .text-wrap {
@@ -259,11 +271,25 @@ h4 {
 .card-deck .card:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
+.isoffline:hover {
 
+    /*position: absolute;*/
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color:#f8414a;
+    /*background-color: rgba(248,65,74,0.7);*/
+    opacity: 70%;
+    justify-content: center;
+    align-items: center;
+
+}
 .card-deck .card #amount {
-  font-size: 2.5rem;
-  left: 0.5rem;
-  color: #f9414a;
+    font-size: 2.5rem;
+    left: 0.5rem;
+    color: #f9414a;
+    font-weight: 700;
+    letter-spacing: 2.0px;
 }
 
 .card-deck .card img {
@@ -271,7 +297,8 @@ h4 {
 }
 
 .card-deck .card .card-title {
-  font-size: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
 }
 
 .card-deck .card #donate-btn {
@@ -298,14 +325,7 @@ h4 {
 .card-deck .card:hover img {
   overflow: hidden;
   transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
   transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
 }
 
 .card-deck .card h4 {
@@ -337,12 +357,14 @@ h4 {
 .badge {
   background-color: #f6f6f6;
   color: #212121;
-  padding: 3px 9px;
+  padding: 6px 9px;
+
 }
 
-.badge p {
-  margin: 3px 9px;
-}
+    .badge p {
+        font-size: 14px;
+        letter-spacing: 1.4px;
+    }
 
 #creator-info .item-wrap {
   display: flex;
@@ -372,6 +394,18 @@ h4 {
     margin: 0;
 }
 
+#nav-tab{
+    border:none;
+
+}
+
+#nav-tab .nav-link.active {
+    border-color: none;
+}
+
+.faq p{
+    font-size:1rem;
+}
 
 /*FAQ的三角形樣式*/
 

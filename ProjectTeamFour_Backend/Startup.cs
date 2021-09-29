@@ -23,7 +23,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace ProjectTeamFour_Backend
 {
@@ -55,7 +56,7 @@ namespace ProjectTeamFour_Backend
                 //       .WithMethods("GET", "POST", "PUT", "DELETE");
             });
             });
-            services.AddDbContext<LabContext>(options =>
+            services.AddDbContext<CarCarPlanContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
@@ -64,7 +65,7 @@ namespace ProjectTeamFour_Backend
             services.AddRazorPages();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<LabContext>();
+                .AddEntityFrameworkStores<CarCarPlanContext>();
             //============
             //
             //加入Jwt之DI設定
@@ -72,22 +73,33 @@ namespace ProjectTeamFour_Backend
             //===============//
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => {
-                    options.LoginPath = "/Manager/Login/";
-                    options.AccessDeniedPath = "/Account/Forbidden/";
-                })
-          .AddJwtBearer(options =>
-              options.TokenValidationParameters = new TokenValidationParameters
-              {
-                  ValidateIssuer = true,
-                  ValidateAudience = true,
-                  ValidateLifetime = true,
-                  ValidateIssuerSigningKey = true,
-                  ValidIssuer = Configuration["Jwt:Issuer"],
-                  ValidAudience = Configuration["Jwt:Issuer"],
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-              }
-          );
+                    .AddCookie(options =>
+                    {
+                        options.LoginPath = "/Manager/Login/";
+                        options.LogoutPath = "/Manager/LogOut";
+                        options.AccessDeniedPath = "/Account/Forbidden/";
+                    })
+                    .AddJwtBearer(options => {
+                        options.RequireHttpsMetadata = false;
+                        options.SaveToken = true;
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            ValidIssuer = Configuration["Jwt:Issuer"],
+                            ValidAudience = Configuration["Jwt:Issuer"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                        };
+
+
+                    }
+
+
+
+                    );
+                
 
 
             services.AddControllersWithViews();
@@ -107,7 +119,9 @@ namespace ProjectTeamFour_Backend
             services.AddTransient<IAnnouncementService, AnnouncementService>();
 
             services.AddControllers().AddNewtonsoftJson();
-            
+
+            //services.AddControllers().AddControllersAsServices();  - Phil 註解的
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,6 +140,7 @@ namespace ProjectTeamFour_Backend
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+           
             app.UseCookiePolicy();
             app.UseRouting();
             app.UseCors();

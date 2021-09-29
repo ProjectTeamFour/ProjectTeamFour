@@ -7,6 +7,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Linq.Expressions;
+using System.Net;
+using System.Web.Mvc;
+
+
 
 namespace ProjectTeamFour.Service
 {
@@ -48,7 +52,9 @@ namespace ProjectTeamFour.Service
                 MemberName = entity.MemberName,
                 AboutMe = entity.AboutMe,
                 MemberWebsite = entity.MemberWebsite,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                MemberConEmail = entity.MemberConEmail,
+                MemberPhone = entity.MemberPhone,
             };
 
             return memberVM;
@@ -62,7 +68,7 @@ namespace ProjectTeamFour.Service
         private ProjectDetailViewModel GetProjectDetailFromEntity(Expression<Func<Project, bool>> ProjectId)
         {
             var entity = _repository.GetAll<Project>().FirstOrDefault(ProjectId);
-            UpdateProjectStatus(entity);
+            //UpdateProjectStatus(entity);
             //if (entity != default(Models.Project))
             //{
             var projectdetailVM = new ProjectDetailViewModel()
@@ -84,7 +90,9 @@ namespace ProjectTeamFour.Service
                 StartDate = entity.StartDate,
                 ProjectMainUrl = entity.ProjectMainUrl,
                 ProjectId = entity.ProjectId,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                ApprovingStatus = entity.ApprovingStatus,
+                
             };
             return projectdetailVM;
         }
@@ -138,7 +146,9 @@ namespace ProjectTeamFour.Service
                     PlanShipDate = item.PlanShipDate,
                     PlanImgUrl = item.PlanImgUrl,
                     PlanPrice = item.PlanPrice,
-                    QuantityLimit = item.QuantityLimit
+                    QuantityLimit = item.QuantityLimit,
+                    AddCarCarPlan = item.AddCarCarPlan,
+                    
                 };
                 selectPlanCardItems.Add(selectPlanCardViewModel);
             }
@@ -149,16 +159,29 @@ namespace ProjectTeamFour.Service
         public void UpdateProjectStatus(Project item)
         {
 
-            DateTime today = DateTime.Now;
+           
+            DateTime today = DateTime.UtcNow.AddHours(8);
             double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
-
+            var o = _repository.GetAll<Order>().Where(x => x.MemberId == item.MemberId).Select(x => x).ToList();
+            
             if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
             {
                 item.ProjectStatus = "結束且成功";
             }
             else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
-            {
+            {                         
                 item.ProjectStatus = "結束且失敗";
+                var od = _repository.GetAll<OrderDetail>().Where(x => x.ProjectId == item.ProjectId).Select(x => x).ToList();
+                foreach(var i in o)
+                {                    
+                    i.condition = "已付款(退款)";
+                    foreach(var oditem in od)
+                    {
+                        oditem.condition = "已付款(退款)";
+                        _repository.Update(oditem);
+                    }
+                    _repository.Update(i);
+                }
             }
             else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
             {
@@ -172,7 +195,7 @@ namespace ProjectTeamFour.Service
             {
                 item.ProjectStatus = "審核中";
             }
-            _repository.Update(item);
+            _repository.Update(item);            
         }
 
 
@@ -201,11 +224,17 @@ namespace ProjectTeamFour.Service
                 //DraftProject_Question = entity.DraftProject_Question,
                 //DraftProject_Answer = entity.DraftProject_Answer,
                 DraftProjectFAQList = ConvertDraftProjectFAQList(entity.DraftProject_Question, entity.DraftProject_Answer),
+                StringEndDate = entity.EndDate.ToString("u"),
+                StringStartDate = entity.StartDate.ToString("u"),
                 EndDate = entity.EndDate,
                 StartDate = entity.StartDate,
                 DraftProjectMainUrl = entity.DraftProjectMainUrl,
+                DraftProjectCoverUrl = entity.DraftProjectCoverUrl,
                 DraftProjectId = entity.DraftProjectId,
-                MemberId = entity.MemberId
+                MemberId = entity.MemberId,
+                DraftProjectPrincipal = entity.DraftProjectPrincipal,
+                IdentityNumber = entity.IdentityNumber,
+                ApprovingStatus = entity.ApprovingStatus,
             };
 
             return draftprojectdetailVM;
@@ -232,9 +261,11 @@ namespace ProjectTeamFour.Service
                         DraftPlanDescription = item.DraftPlanDescription,
                         DraftPlanFundedPeople = item.DraftPlanFundedPeople,
                         DraftPlanShipDate = item.DraftPlanShipDate,
+                        StringDraftPlanShipDate = item.DraftPlanShipDate.ToString("u"),
                         DraftPlanImgUrl = item.DraftPlanImgUrl,
                         DraftPlanPrice = item.DraftPlanPrice,
-                        DraftQuantityLimit = item.DraftQuantityLimit
+                        DraftQuantityLimit = item.DraftQuantityLimit,
+                        DraftAddCarCarPlan = item.DraftAddCarCarPlan,
                     };
                     selectDraftPlanCardItems.Add(selectDraftPlanCardViewModel);
                 }
@@ -267,6 +298,19 @@ namespace ProjectTeamFour.Service
                 }
             }
             return DraftProjectFAQ;
+        }
+
+
+
+
+        public bool ConfirmCurrentUser(int id)
+        {
+            //var member = HttpContext.Current.Session["Member"];
+            //MemberViewModel vm = Session["member"] == null ? null : (MemberViewModel)Session["Member"];
+            //var project = _repository.GetAll<DraftProject>().Where(x => x.MemberId == member.)
+
+
+            return true;
         }
 
 

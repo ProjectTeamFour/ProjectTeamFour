@@ -226,11 +226,11 @@
         overflow: hidden;
     }
 
-        .indemand-project .project-picture img {
+    .indemand-project .project-picture img {
             transition: .4s;
         }
 
-
+  
 /* 加上 projectname 和 button */
 
 
@@ -280,6 +280,7 @@
     outline: none;
 }
 
+
 /*@media screen and (max-width:321px) {
 
     .indemand-project  .add-to-cart button {
@@ -291,8 +292,6 @@
     }
 }
 */
-
-
 @media screen and (min-width: 768px) {
     .indemand-project .see-more a {
         display: block;

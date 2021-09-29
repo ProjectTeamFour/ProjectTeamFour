@@ -12,35 +12,46 @@ namespace ProjectTeamFour_Backend.Services
     public class CarCarPlanService:ICarCarPlanService
     {
         private readonly IRepository _dbRepository;
-        private readonly LabContext _labContext;
+        private readonly CarCarPlanContext _carcarplanContext;
 
-        public CarCarPlanService(IRepository dbRepository,LabContext labContext)
+        public CarCarPlanService(IRepository dbRepository,CarCarPlanContext carcarplanContext)
         {
             _dbRepository = dbRepository;
-            _labContext = labContext;
+            _carcarplanContext = carcarplanContext;
         }
-
+        /// <summary>
+        /// 先找出提案中ProjectStatus == "結束且成功"，然後在從中抓取AddCarCarPlan == true
+        /// </summary>
+        /// <returns></returns>
         public Task<CarCarPlanViewModel.CarCarPlanListResult> GetAll()
         {
             return Task.Run(() =>
             {
                 CarCarPlanViewModel.CarCarPlanListResult result = new CarCarPlanViewModel.CarCarPlanListResult();
-                result.CarCarPlanList = _dbRepository.GetAll<Plan>().Where(p => p.AddCarCarPlan == true).Select(P => new CarCarPlanViewModel.CarCarPlanSingleResult()
-                {
-                    AddCarCarPlan = P.AddCarCarPlan,
-                    PlanDescription = P.PlanDescription,
-                    PlanFundedPeople = P.PlanFundedPeople,
-                    PlanId = P.PlanId,
-                    PlanImgUrl = P.PlanImgUrl,
-                    PlanPrice = P.PlanPrice,
-                    PlanShipDate = P.PlanShipDate.ToString("d"),
-                    PlanTitle = P.PlanTitle,
-                    ProjectId = P.ProjectId,
-                    ProjectName = P.ProjectName,
-                    ProjectPlanId = P.ProjectPlanId,
-                    QuantityLimit = P.QuantityLimit,
-                    SubmitLimit =P.SubmitLimit
-                }).ToList();
+                //var queryProjects = _dbRepository.GetAll<Project>().Where(p => p.ProjectStatus == "結束且成功").Select(x => x).ToList();
+                
+              
+                    result.CarCarPlanList = _dbRepository.GetAll<Plan>().Where(p =>  p.AddCarCarPlan == true&& p.SubmitLimit!=null).Select(P => new CarCarPlanViewModel.CarCarPlanSingleResult()
+                    {
+                        AddCarCarPlan = P.AddCarCarPlan,
+                        PlanDescription = P.PlanDescription,
+                        PlanFundedPeople = P.PlanFundedPeople,
+                        PlanId = P.PlanId,
+                        PlanImgUrl = P.PlanImgUrl,
+                        PlanPrice = P.PlanPrice,
+                        PlanShipDate = P.PlanShipDate.ToString("d"),
+                        PlanTitle = P.PlanTitle,
+                        ProjectId = P.ProjectId,
+                        ProjectName = P.ProjectName,
+                        ProjectPlanId = P.ProjectPlanId,
+                        QuantityLimit = P.QuantityLimit,
+                        SubmitLimit = P.SubmitLimit
+                    }).ToList();
+
+
+
+                
+                int i = 0;
                 return result;
             });
         }
@@ -62,7 +73,7 @@ namespace ProjectTeamFour_Backend.Services
                 queryResult.QuantityLimit = (int)singleCarCarPlan.SubmitLimit;
 
                 queryResult.SubmitLimit = 0;
-                using (var transaction = _labContext.Database.BeginTransaction())
+                using (var transaction = _carcarplanContext.Database.BeginTransaction())
                 {
                     try
                     {

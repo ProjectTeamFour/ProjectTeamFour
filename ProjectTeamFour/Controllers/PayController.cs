@@ -41,10 +41,21 @@ namespace ProjectTeamFour.Controllers
             return View(cartt);
         }
 
+        //Get : 重新購買(從購買紀錄)
+        //public ActionResult ReShop()
+        //{
+        //    var cart = ;
+        //    var reshop = _PayService.Reshop(cart);
+
+
+        //    return RedirectToAction("Index", reshop);
+        //}
+
         public ActionResult ConnectECPay(PayViewModel oVM) //這裡不能放PayViewModel:因為PayViewModel的範圍太大。CartItems為空，所以totalAccount就會報錯
         {
+            TempData.Keep();
             var order = Convert.ToInt32(TempData["orderId"]);
-            var o = _PayService.CreateANewMemberData(oVM);
+            var o = _PayService.CreateANewMemberData(oVM);///這一行應該可以拿掉
             var memberId = (MemberViewModel)Session["Member"];
             //var orderId = _PayService.SaveData(oVM); //傳更改的viewmodel當參數
             var result = _PayService.ConnectECPay(order, memberId);
@@ -61,7 +72,7 @@ namespace ProjectTeamFour.Controllers
             //var memberId = (MemberViewModel)Session["Member"];
             var orderId = _PayService.SaveData(o); //傳更改的viewmodel當參數
             TempData["orderId"] = orderId;
-
+            
             return RedirectToAction("ConnectECPay");
         }
 
@@ -75,7 +86,11 @@ namespace ProjectTeamFour.Controllers
             return null;
         }
 
-
+        /// <summary>
+        /// 綠界回傳結果，若RtnCode為1，則為已付款
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Result(FormCollection form)
         {

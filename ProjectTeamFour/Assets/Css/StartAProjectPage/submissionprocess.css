@@ -60,6 +60,10 @@
             font-size: 0.5rem;
         }
 
+            .project-proposal .task-title h3 .english {
+                color: #7d7e80;
+            }
+
     .project-proposal input {
         border-radius: 8px;
         border: 0.1rem solid rgb(236, 235, 235);
@@ -294,6 +298,10 @@
         padding-left: 5px;
         font-weight: 500;
     }
+
+        .project-proposal-modal .small-title .english {
+            color: #7d7e80;
+        }
 
         .project-proposal-modal .small-title::before {
             content: '';
@@ -1082,9 +1090,10 @@
         transform: scale(1.02);
     }
 
-
+.project-proposal #card-result-box a{
+    width: fit-content;
+}
 /* QA */
-
 .project-proposal .addQAbutton {
     letter-spacing: 1px;
     transition: .3s;

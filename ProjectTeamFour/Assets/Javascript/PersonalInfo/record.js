@@ -1,4 +1,5 @@
-﻿let getodjson = document.getElementById("odtransJSON");
+﻿
+let getodjson = document.getElementById("odtransJSON");
 let getjson = document.getElementById("transJSON");
 var obj = JSON.parse(getjson.value);//order 陣列
 var objod = JSON.parse(getodjson.value); //orderdetail 陣列
@@ -13,18 +14,14 @@ var jsonObj = {
     "modeldata": []
 };
 
-var odData = jsonObj.modeldata;
+//var jsonObj = {
+//    "items": { OrderId: $("#transJSON").val()},
+//    "detail": { OrderDetailId: $('#odtransJSON').val()},
+//    "modeldata": []
+//};
 
-function sendDataToRecord() {
-    $.ajax({
-        type: "Get",
-        url: '~/api/BackingRecord/GetOrderData',
-        data: {},
-        success: function (response) {
-            window.setTimeout(reloading, 1000);
-        }
-    })
-}
+var odData = jsonObj.modeldata
+//var data = { OrderId: $("#transJSON").val(), OrderDetailId: $('#odtransJSON').val() };
 
 function Binding() {
     new Vue({
@@ -34,10 +31,26 @@ function Binding() {
             changeJsonOd(orderId) {
                 this.modeldata = [];
                 this.modeldata = objod.filter(x => x.OrderId == orderId);
-            }
+            },
+            //sendDataToRecord: function (e) {
+            //    var self = this;                
+            //    $.ajax({
+            //        type: "Get",
+            //        url: '~/api/BackingRecord/GetOrder',
+            //        success: function (res) {
+            //            console.log(res.data);
+            //            alert("123");
+            //        },
+            //        error: function (error) {
+            //            console.log(error);
+            //        }
+            //    })
+            //}
         }
     });
 };
+
+
 
 $(document).ready(function () {
     Binding();

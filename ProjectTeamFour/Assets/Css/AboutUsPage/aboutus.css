@@ -86,8 +86,13 @@
     background-color: #000;
 }
 
-.content-viedo iframe {
+.content-viedo img {
     width: 100%;
+}
+
+.about-us-case a:hover{
+    text-decoration:none;
+    color:#000;
 }
 @media screen and (max-width: 768px) {
     .about-us-case {

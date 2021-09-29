@@ -3,7 +3,7 @@
 @using System.Text.Json.Serialization
 @using System.Web.Script.Serialization
 @{
-    ViewBag.Title = "PayPage";  
+    ViewBag.Title = "PayPage";
 }
 
 
@@ -13,156 +13,191 @@
 }
 @section endJS{
     @*<script src="~/Assets/Javascript/PaymentPage/pay.js"></script>*@
-    <script>           
-        var form = new Vue({
-            el: "#app",
-            data:{
-                inputData: {
-                    Name: $('#orderName').val(),
-                    Address: $('#orderAddress').val(),
-                    Tel: $('#orderPhone').val(),
-                    Email: $('#orderEmail').val(),
-                },
-                inputDataCheck: {
-                    NameError: false,
-                    NameErrorMsg: '',
-                    AddressError: 1,
-                    AddressErrorMsg: '',
-                    TelError: '',
-                    TelErrorMsg: '',
-                    EmailError: '',
-                    EmailErrorMsg: '',
-                },
-                disableInputBool: false,
-            },
-            watch: {
-                'inputData.Name': {
-                    immediate: true,        //點開即驗證
-                    handler: function () {
-                        if (this.inputData.Name == "") {
-                            this.inputDataCheck.NameError = true;
-                            this.inputDataCheck.NameErrorMsg = '名稱不得為空';
-                        }
-                        else {
-                            this.inputDataCheck.NameError = false;
-                            this.inputDataCheck.NameErrorMsg = '';
-                        }
-                    }
-                },
-                'inputData.Address': {
-                    immediate: true,        //點開即驗證
-                    handler: function () {
-                        if (this.inputData.Address == "") {
-                            this.inputDataCheck.AddressError = true;
-                            this.inputDataCheck.AddressErrorMsg = '地址不得為空';
-                        }
-                        else {
-                            this.inputDataCheck.AddressError = false;
-                            this.inputDataCheck.AddressErrorMsg = '';
-                        }
-                    },
-                },
-                'inputData.Tel': {
-                    immediate: true,        //點開即驗證
-                    handler: function () {
-                        let telRegexp = /^09/; //開頭為09
-                        let telRegexpNum = /^[0-9]*$/;
-                        if (!telRegexp.test(this.inputData.Tel)) {
 
-                            this.inputDataCheck.TelError = true;
-                            this.inputDataCheck.TelErrorMsg = '開頭必須為09';
-                        }
-                        else if (this.inputData.Tel.length < 10) {
-                            this.inputDataCheck.TelError = true;
-                            this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
-                        }
-                        else if (!telRegexpNum.test(this.inputData.Tel)) {
-                            this.inputDataCheck.TelError = true;
-                            this.inputDataCheck.TelErrorMsg = '只能輸入數字';
-                        }
-                        else {
-                            this.inputDataCheck.TelError = false;
-                            this.inputDataCheck.TelErrorMsg = '';           
-                        }
-                    },
-                },
-                'inputData.Email': {
-                    immediate: true,        //點開即驗證
-                    handler: function () {
-                        let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
-                        if (!emailRegexp.test(this.inputData.Email)) {
-                            this.inputDataCheck.EmailError = true;
-                            this.inputDataCheck.EmailErrorMsg = '不符合email格式';
-                        }
-                        else {
-                            this.inputDataCheck.EmailError = false;
-                            this.inputDataCheck.EmailErrorMsg = '';
-                        }
-                    }
-                },
-            },
-            methods: {
-                checkAddVerify:function(e) {                   
-                    if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
-                        Swal.fire(
-                            '請填寫符合資料'
-                        );
 
-                        e.preventDefault(); //防止跳轉                     
-                    }
-                    else {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'Auto close alert!',
-                            html: 'I will close in <b></b> milliseconds.',
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                timerInterval = setInterval(() => {
-                                    const content = Swal.getContent()
-                                    if (content) {
-                                        const b = content.querySelector('b')
-                                        if (b) {
-                                            b.textContent = Swal.getTimerLeft()
-                                        }
-                                    }
-                                }, 100)
+<script>
+            $(document).ready(function () {
+                Binding();
+            })
+            function Binding() {
+            const form = new Vue({
+                    el: "#app",
+                    data: {
+                        inputData: {
+                            Name: $('#orderName').val(),
+                            Address: $('#orderAddress').val(),
+                            Tel: $('#orderPhone').val(),
+                            Email: $('#orderEmail').val(),
+                        },
+                        inputDataCheck: {
+                            NameError: false,
+                            NameErrorMsg: '',
+                            AddressError: 1,
+                            AddressErrorMsg: '',
+                            TelError: '',
+                            TelErrorMsg: '',
+                            EmailError: '',
+                            EmailErrorMsg: '',
+                        },
+                        disableInputBool: false,
+                    },
+                    watch: {
+                        'inputData.Name': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                if (this.inputData.Name == "") {
+                                    this.inputDataCheck.NameError = true;
+                                    this.inputDataCheck.NameErrorMsg = '名稱不得為空';
+                                }
+                                else {
+                                    this.inputDataCheck.NameError = false;
+                                    this.inputDataCheck.NameErrorMsg = '';
+                                }
+                            }
+                        },
+                        'inputData.Address': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                if (this.inputData.Address == "") {
+                                    this.inputDataCheck.AddressError = true;
+                                    this.inputDataCheck.AddressErrorMsg = '地址不得為空';
+                                }
+                                else {
+                                    this.inputDataCheck.AddressError = false;
+                                    this.inputDataCheck.AddressErrorMsg = '';
+                                }
                             },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        }).then((result) => {
-                            /* Read more about handling dismissals below */
-                            if (result.dismiss === Swal.DismissReason.timer) {
-                                console.log('I was closed by the timer')
-                            }
-                        })
-                    }
-                }
-            }
-        })
+                        },
+                        'inputData.Tel': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                let telRegexp = /^09/; //開頭為09
+                                let telRegexpNum = /^[0-9]*$/;
+                                if (!telRegexp.test(this.inputData.Tel)) {
 
-    function Save2Server() {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("test", "Pay")',
-            data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串
-            dataType: "json",
-            headers: {
-                'Content-type': 'application/json'
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '開頭必須為09';
+                                }
+                                else if (this.inputData.Tel.length < 10) {
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '號碼長度必須為10碼以上';
+                                }
+                                else if (!telRegexpNum.test(this.inputData.Tel)) {
+                                    this.inputDataCheck.TelError = true;
+                                    this.inputDataCheck.TelErrorMsg = '只能輸入數字';
+                                }
+                                else {
+                                    this.inputDataCheck.TelError = false;
+                                    this.inputDataCheck.TelErrorMsg = '';
+                                }
+                            },
+                        },
+                        'inputData.Email': {
+                            immediate: true,        //點開即驗證
+                            handler: function () {
+                                let emailRegexp = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
+                                if (!emailRegexp.test(this.inputData.Email)) {
+                                    this.inputDataCheck.EmailError = true;
+                                    this.inputDataCheck.EmailErrorMsg = '不符合email格式';
+                                }
+                                else {
+                                    this.inputDataCheck.EmailError = false;
+                                    this.inputDataCheck.EmailErrorMsg = '';
+                                }
+                            }
+                        },
+                    },
+                    methods: {
+                        checkAddVerify: function (e) {
+                            if (this.inputDataCheck.NameError == true || this.inputDataCheck.AddressError == true || this.inputDataCheck.TelError == true || this.inputDataCheck.EmailError == true) {
+                                Swal.fire(
+                                    '請填寫符合資料'
+                                );
 
-            }, //注意 Content-type
-            success: function (response) {   
-                console.log(data);
-            },
-            error: function (err) {
-                console.log(err);
+                                e.preventDefault(); //防止跳轉
+                            }
+                            else {
+                                let timerInterval
+                                Swal.fire({
+                                    title: 'Auto close alert!',
+                                    html: 'I will close in <b></b> milliseconds.',
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            const content = Swal.getContent()
+                                            if (content) {
+                                                const b = content.querySelector('b')
+                                                if (b) {
+                                                    b.textContent = Swal.getTimerLeft()
+                                                }
+                                            }
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    /* Read more about handling dismissals below */
+                                    if (result.dismiss === Swal.DismissReason.timer) {
+                                        console.log('I was closed by the timer')
+                                    }
+                                })
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: '@Url.Action("test", "Pay")',
+                                data: JSON.stringify({ OrderName: form.$data.inputData.Name, OrderAddress: form.$data.inputData.Address, OrderPhone: form.$data.inputData.Tel, OrderConEmail: form.$data.inputData.Email }), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
+                                dataType: "",
+                                headers: {
+                                    'Content-type': 'application/json'
+                                }, //注意 Content-type
+                                success: function (response) {
+                                    console.log(data);
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+                            }                        
+                        @*Save2Server: function (e) {
+                            var self = this;
+                            var order = {
+                                //把ajax的data寫成物件
+                                OrderName: this.inputData.Name,
+                                OrderAddress: this.inputData.Address,
+                                OrderPhone: this.inputData.Tel,
+                                OrderEmail: this.inputData.Email
+                            };
+                            $.ajax({
+                                type:"POST",
+                                url: '@Url.Action("test", "Pay")',
+                                data: JSON.stringify(order), //注意是放JSON  字串 //把畫面的資料帶進資料庫 所以需要給data(要帶進資料庫的資料)
+                                dataType: "",
+                                headers: {
+                                    'Content-type': 'application/json'
+                                }, //注意 Content-type
+                                success: function (response) {
+                                    console.log(data);
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+                        }*@
+                    },
+                )
             }
-        });
-        } 
-    </script>
+</script>
+
+
 }
+
+
+
+
+
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -192,7 +227,7 @@
                         </div>
                     }
                 </div>
-                <div class="checkout">            
+                <div class="checkout">
                     <div class="check-total">
                         <h4>Total</h4>
                         <P>NTD @StringFormat5.addComma((int)Model.TotalAccount)</P>
@@ -245,28 +280,30 @@
                         <h3 id="delivery">寄送資訊</h3>
                     </div>
                     <div class="content-deliver">
-                        <div  class="inside content-deliver-detail">
-                            <h4 class="h4">收件人姓名</h4>
-                            <input type="text" v-model="inputData.Name"   v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
-                            <div class="text-danger">
-                                {{inputDataCheck.NameErrorMsg}}
+                        <keep-alive>
+                            <div class="inside content-deliver-detail">
+                                <h4 class="h4">收件人姓名</h4>
+                                <input type="text" v-model="inputData.Name" v-bind:class="{ 'is-invalid': inputDataCheck.NameError}" placeholder="請填寫姓名" value="@Model.MemberName" id="orderName">
+                                <div class="text-danger">
+                                    {{inputDataCheck.NameErrorMsg}}
+                                </div>
+                                <h4 class="h4">收件地址</h4>
+                                <input type="text" v-model="inputData.Address" v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="@Model.MemberAddress" id="orderAddress">
+                                <div class="text-danger">
+                                    {{inputDataCheck.AddressErrorMsg}}
+                                </div>
+                                <h4 class="h4">聯絡電話</h4>
+                                <input type="text" v-model="inputData.Tel" v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
+                                <div class="text-danger">
+                                    {{inputDataCheck.TelErrorMsg}}
+                                </div>
+                                <h4 class="h4">聯絡信箱</h4>
+                                <input type="text" v-model="inputData.Email" v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
+                                <div class="text-danger ">
+                                    {{inputDataCheck.EmailErrorMsg}}
+                                </div>
                             </div>
-                            <h4 class="h4">收件地址</h4>
-                            <input type="text" v-model="inputData.Address"   v-bind:class="{ 'is-invalid': inputDataCheck.AddressError}" placeholder="請填寫希望的收件地址,回饋將寄送至此" value="@Model.MemberAddress" id="orderAddress">
-                            <div class="text-danger">
-                                {{inputDataCheck.AddressErrorMsg}}
-                            </div>
-                            <h4 class="h4">聯絡電話</h4>
-                            <input type="text" v-model="inputData.Tel"   v-bind:class="{ 'is-invalid': inputDataCheck.TelError}" placeholder="請填寫常用手機號碼,以利提案團隊聯繫" value=@Model.MemberPhone id="orderPhone">
-                            <div class="text-danger">
-                                {{inputDataCheck.TelErrorMsg}}
-                            </div>
-                            <h4 class="h4">聯絡信箱</h4>
-                            <input type="text" v-model="inputData.Email"   v-bind:class="{ 'is-invalid': inputDataCheck.EmailError}" placeholder="請填寫常用電子信箱,以利提案團隊聯繫" value="@Model.MemberConEmail" id="orderEmail">
-                            <div class="text-danger ">
-                                {{inputDataCheck.EmailErrorMsg}}
-                            </div>
-                        </div>
+                        </keep-alive>
                     </div>
                 </div>
                 <div class="col-12">
@@ -277,19 +314,19 @@
                     <div class="inside content-payment">
                         <h4 class="h4">付款方式</h4>
                         <div class="button-group">
-                            <button id="credit-card">信用卡(一次付清)</button>
-                            <div id="one">可用卡別：VISA／MASTERCARD／JCB／銀聯卡，無手續費產生</div>
+                            <div id="credit-card">信用卡(一次付清)</div>
+                            <div id="one">可用卡別：VISA／MASTERCARD／JCB，無手續費產生</div>
                             @*<button id="credit-card-split">信用卡(分期0利率)</button>
-        <button id="credit-atm">ATM</button>
-        <button id="credit-market">超商付款</button>*@
+                                <button id="credit-atm">ATM</button>
+                                <button id="credit-market">超商付款</button>*@
                         </div>
-                        
+
                         @*<span id="split">分期選項將於點選「進行付款」後出現，可分期銀行：中信、台新、玉山、永豐（銀聯卡僅限一次付清）</span>
-                        <span id="atm">
-                            Web ATM 轉帳 / 實體 ATM 繳款：當匯款銀行與金流特定銀行不同時，您的銀行將會額外收取 10 ~ 15 元
-                            轉帳手續費，此費用為銀行端收取的一次性服務費用，若遇退款需求時不計算在退還款項中，將依據實際贊助金額退費。
-                        </span>
-                        <span id="market">超商代碼繳費：可至全台「7-11、全家、萊爾富、OK超商」之多媒體機台列印繳費單，持繳費單至超商櫃台以現金付款。</span>*@
+                            <span id="atm">
+                                Web ATM 轉帳 / 實體 ATM 繳款：當匯款銀行與金流特定銀行不同時，您的銀行將會額外收取 10 ~ 15 元
+                                轉帳手續費，此費用為銀行端收取的一次性服務費用，若遇退款需求時不計算在退還款項中，將依據實際贊助金額退費。
+                            </span>
+                            <span id="market">超商代碼繳費：可至全台「7-11、全家、萊爾富、OK超商」之多媒體機台列印繳費單，持繳費單至超商櫃台以現金付款。</span>*@
                     </div>
                 </div>
                 <div class="col-12">
@@ -316,9 +353,9 @@
         <section class=" button-pay">
             <div class="row">
                 <div class="col-12">
-                    <a href="/Pay/ConnectECPay" id="ToBuy">                        
-                        <input type="submit" id="Save2Sever" onclick="Save2Server()"  value="確認購買"  v-on:click ="checkAddVerify" >
-                    </a>                       
+                    <a href="/Pay/ConnectECPay" id="ToBuy">
+                        <input type="submit" id="Save2Sever" @*v-on:click="Save2Server"*@ value="確認購買" v-on:click="checkAddVerify">
+                    </a>
                 </div>
             </div>
         </section>

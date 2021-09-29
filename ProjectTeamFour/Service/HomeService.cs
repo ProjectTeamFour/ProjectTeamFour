@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -16,11 +17,13 @@ namespace ProjectTeamFour.Service
     {
         private DbContext _context;
         private BaseRepository _repository;
+        private ProjectContext _prContext;
 
         public HomeService()
         {
             _context = new ProjectContext();
             _repository = new BaseRepository(_context);
+            _prContext = new ProjectContext();
         }
 
         public HomeViewModel GetAllTotal()
@@ -60,28 +63,62 @@ namespace ProjectTeamFour.Service
             }
 
 
-            foreach (var item in _repository.GetAll<Plan>())
-            {
+            //List<CarCarPlanViewModel> CarCarPlanItems = new List<CarCarPlanViewModel>();
+            var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功").ToList();
 
-                CarCarPlanViewModel cv = new CarCarPlanViewModel()
+            foreach (var item in result)
+            {
+                var trueprojectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true).ToList();
+
+                if (trueprojectPlan != null)
                 {
-                    PlanImgUrl = item.PlanImgUrl,
-                    ProjectName = item.ProjectName,
-                    Category = item.Project.Category,
-                    PlanTitle = item.PlanTitle,
-                    CreatorName = item.Project.CreatorName,
-                    PlanPrice = (int)item.PlanPrice,
-                    PlanId = item.PlanId,
-                    PlanDescription = item.PlanDescription,
-                    ProjectId = item.ProjectId,
-                    QuantityLimit = item.QuantityLimit,
-                    AddCarCarPlan = item.AddCarCarPlan
-                };
-                if (cv.QuantityLimit > 0)
-                {
-                    homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
+                    foreach (var trueItem in trueprojectPlan)
+                    {
+                        CarCarPlanViewModel cv = new CarCarPlanViewModel()
+                        {
+                            PlanImgUrl = trueItem.PlanImgUrl,
+                            ProjectName = trueItem.ProjectName,
+                            Category = trueItem.Project.Category,
+                            PlanTitle = trueItem.PlanTitle,
+                            CreatorName = trueItem.Project.CreatorName,
+                            PlanPrice = (int)trueItem.PlanPrice,
+                            PlanId = trueItem.PlanId,
+                            PlanDescription = trueItem.PlanDescription,
+                            QuantityLimit = trueItem.QuantityLimit,
+                            AddCarCarPlan = trueItem.AddCarCarPlan,
+                        };
+                        if (cv.QuantityLimit > 0)
+                        {
+                            homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
+                        }
+                    }
                 }
             }
+
+
+
+            //foreach (var item in _repository.GetAll<Plan>())
+            //{
+
+            //    CarCarPlanViewModel cv = new CarCarPlanViewModel()
+            //    {
+            //        PlanImgUrl = item.PlanImgUrl,
+            //        ProjectName = item.ProjectName,
+            //        Category = item.Project.Category,
+            //        PlanTitle = item.PlanTitle,
+            //        CreatorName = item.Project.CreatorName,
+            //        PlanPrice = (int)item.PlanPrice,
+            //        PlanId = item.PlanId,
+            //        PlanDescription = item.PlanDescription,
+            //        ProjectId = item.ProjectId,
+            //        QuantityLimit = item.QuantityLimit,
+            //        AddCarCarPlan = item.AddCarCarPlan
+            //    };
+            //    if (cv.QuantityLimit > 0)
+            //    {
+            //        homeviewmodel.CarCarPlanItem.CarCarPlanItems.Add(cv);
+            //    }
+            //}
 
             return homeviewmodel;
 
@@ -128,6 +165,56 @@ namespace ProjectTeamFour.Service
             return GetSearchCardPlan(x => x.PlanDescription.Contains(searchString));
         }
 
+        public HomeViewModel GetSearchPlanPrice(string searchString)  //待處理 -phil
+        {
+
+            var result = _repository.GetAll<Project>().ToList();
+            //var projectResult;
+
+            HomeViewModel homeviewmodel = new HomeViewModel()
+            {
+                ProjectItem = new ProjectListViewModel()
+                {
+                    ProjectItems = new List<ProjectViewModel>()
+                },
+
+                CarCarPlanItem = new CarCarPlanListViewModel()
+                {
+                    CarCarPlanItems = new List<CarCarPlanViewModel>()
+                }
+            };
+
+            foreach (var item in result)
+            {
+                var newResult = _repository.GetAll<Plan>().Where(x => x.ProjectId == item.ProjectId && x.PlanPrice.ToString().Contains(searchString)).ToList(); 
+
+                foreach (var newItem in newResult)
+                {
+                    var projectResult = _repository.GetAll<Project>().Where(x => x.ProjectId == newItem.ProjectId).ToList();
+
+                    foreach (var finalItem in projectResult)
+                    {
+                        var projectbox = new ProjectViewModel()
+                        {
+                            ProjectMainUrl = finalItem.ProjectMainUrl,
+                            Category = finalItem.Category,
+                            ProjectStatus = finalItem.ProjectStatus,
+                            ProjectName = finalItem.ProjectName,
+                            CreatorName = finalItem.CreatorName,
+                            FundingAmount = finalItem.FundingAmount,
+                            AmountThreshold = finalItem.AmountThreshold,
+                            EndDate = finalItem.EndDate,
+                            StartDate = finalItem.StartDate,
+                            ProjectId = finalItem.ProjectId,
+                            ApprovingStatus = finalItem.ApprovingStatus,
+                        };
+                        homeviewmodel.ProjectItem.ProjectItems.Add(projectbox);
+                    }
+                }
+            }
+            return homeviewmodel;
+        }
+
 
         //設定時鐘
         //public void setTaskAtFixedTime()
@@ -149,19 +236,48 @@ namespace ProjectTeamFour.Service
         //public void UpdateProjectStatus(object state)
         public void UpdateProjectStatus()
         {
-            var result = _repository.GetAll<Project>().ToList();
-            foreach (Project item in result)
-            {
+            //var result = _repository.GetAll<Project>().ToList();
+            var result = _prContext.Projects.ToList();
+            
+            //using (SqlConnection oConn = CreateMARSConnection())
+            //{
+            foreach (var item in result)
+            {                   
                 DateTime today = DateTime.Now;
                 double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
 
-                if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
+                if (item.ApprovingStatus == 1)
+                {
+                    item.ProjectStatus = "審核中";
+                }
+                else if (dateLine <= 0 && item.FundingAmount > item.AmountThreshold)
                 {
                     item.ProjectStatus = "結束且成功";
                 }
                 else if (dateLine <= 0 && item.FundingAmount < item.AmountThreshold)
                 {
                     item.ProjectStatus = "結束且失敗";
+                    var od = _repository.GetAll<OrderDetail>().Where(x => x.ProjectId == item.ProjectId).Select(x => x).ToList();
+                    foreach (var i in od)
+                    {
+                        var o = _repository.GetAll<Order>().Where(x => x.OrderId == i.OrderId).FirstOrDefault();
+                        if(o != null)
+                        {
+                            if (i.condition == "已付款")
+                            {
+                                i.condition = "已付款(退款)";
+                                _repository.Update(i);
+                                o.condition = "已付款(退款)";
+                                _repository.Update(o);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("error");
+                        }
+                        
+                    }                    
+
                 }
                 else if (dateLine > 0 && item.FundingAmount > item.AmountThreshold)
                 {
@@ -171,15 +287,30 @@ namespace ProjectTeamFour.Service
                 {
                     item.ProjectStatus = "集資中";
                 }
-                else
-                {
-                    item.ProjectStatus = "審核中";
-                }
-                _repository.Update(item);
+                
             }
+
+            _prContext.SaveChanges();
+
             //重新設定
             //setTaskAtFixedTime();
         }
+
+
+
+
+        //public void pushPlanToCarCarPlan()
+        //{
+        //    var result = _prContext.Projects.Where(x => x.ProjectStatus == "結束且成功");
+
+        //    foreach (var item in result)
+        //    {
+        //        DateTime today = DateTime.Now;
+        //        double dateLine = Convert.ToInt32(new TimeSpan(item.EndDate.Ticks - today.Ticks).TotalDays);
+
+        //        var projectPlan = _prContext.Plans.Where(x => x.ProjectId == item.ProjectId && x.AddCarCarPlan == true);
+        //    }
+        //}
 
 
 
@@ -217,7 +348,8 @@ namespace ProjectTeamFour.Service
                     AmountThreshold = item.AmountThreshold,
                     EndDate = item.EndDate,
                     StartDate = item.StartDate,
-                    ProjectId = item.ProjectId
+                    ProjectId = item.ProjectId,
+                    ApprovingStatus = item.ApprovingStatus,
                 };
                 homeviewmodel.ProjectItem.ProjectItems.Add(projectbox);
             }
