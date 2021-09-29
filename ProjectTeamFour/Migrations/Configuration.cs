@@ -2708,14 +2708,14 @@
                 FundingAmount = 4680m,
                 AmountThreshold = 5000m,
                 CreatorName = "都市計劃學系110級畢業成果展",
-                ProjectMainUrl = "https://i.imgur.com/lIX9UPyl.png",
+                ProjectMainUrl = "https://i.imgur.com/IXiwVEcm.png",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://www.youtube.com/embed/KDok4sdv1fAl.png",
+                ProjectCoverUrl = "https://i.imgur.com/EtuLoDmm.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "https://i.imgur.com/C0q1J9Yl.png,https://i.imgur.com/UPYdA2ll.png,https://i.imgur.com/clic4Z2l.png,https://i.imgur.com/F6GEuaTl.png,https://i.imgur.com/ZKYawKQl.png,https://i.imgur.com/ZOdXKIll.png,https://i.imgur.com/f2HpwVul.png,https://i.imgur.com/hLsnbKNl.png,https://i.imgur.com/jHlIr8sl.png,https://i.imgur.com/22KSEkgl.png,https://i.imgur.com/o1LkEDtl.png",
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://www.youtube.com/embed/11l_A0vW32w",
+                ProjectVideoUrl = "https://www.youtube.com/embed/KDok4sdv1fA",
                 Project_Question = "《都市相談室》的展期及地點為何？,回饋商品何時會收到？",
                 Project_Answer = "我們的展期在2021/6/10(四) - 2021/6/14(一) 早上11:00至晚上22:00，展覽地點位於南紡購物中心一館一樓 時尚廣場(臺南市東區中華東路一段366號)。,回饋商品皆於展期間於展覽現場領取，若未領取，則將於展期結束後寄送。",
                 ProjectPlansCount = 4,
@@ -2743,7 +2743,7 @@
                 MemberWebsite = "https://lohas.acsite.org/",
                 AboutMe = "都市相談室 | 紡織廠再生-策略規劃與再開發公展,國立成功大學都市計劃學系110級 畢業成果展,NCKU Urban Planning Dept.Graduation Exhibition",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/fE26Ycnt.png",
+                ProfileImgUrl = "https://i.imgur.com/0loe78pt.png",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第22個提案中的方案
@@ -2757,7 +2757,7 @@
                 PlanFundedPeople = 3,
                 PlanDescription = "[ 都市拼貼｜都市拓印 ] 募資限定價$100,✧心之所向✧ 明信片4款＋貼紙3款 你心中有嚮往的城市嗎？,來都市相談室，和我一起拓出屬於我們的城市",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/bPyqZagm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 100m,
                 QuantityLimit = 50
@@ -2772,7 +2772,7 @@
                 PlanFundedPeople = 13,
                 PlanDescription = "✧海納百川✧ 珪藻土杯墊,做規劃覺得累了嗎？,讓我像海綿城市一樣吸納你的淚水與汗水吧,,//現場販售價格 $120//",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/DbcfFvqm.png",
+                PlanImgUrl = "https://i.imgur.com/fCVKsJwm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 100m,
                 QuantityLimit = 50
@@ -2787,7 +2787,7 @@
                 PlanFundedPeople = 14,
                 PlanDescription = "[ 都市容受力 ] 募資限定價$120,✧回憶滿載✧ A4帆布袋,突然發現自己記憶力變差了嗎？,都市容受力讓你擁有裝下你我點點滴滴的超能力,,//現場販售價格 $150//",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/Q45lve9m.png",
+                PlanImgUrl = "https://i.imgur.com/hWWlAfUm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 120m,
                 QuantityLimit = 50
@@ -2802,7 +2802,7 @@
                 PlanFundedPeople = 5,
                 PlanDescription = "[ 四種願望一次滿足 ] 募資限定價$280,✧錯過不再✧ 明信片＋貼紙＋帆布袋＋杯墊,你還在猶豫嗎？,小孩子才做選擇，我全都要！,,//現場販售價格 $330//",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/7h1NFxzm.png",
+                PlanImgUrl = "https://i.imgur.com/DDybSo6m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 280m,
                 QuantityLimit = 70
@@ -2822,14 +2822,14 @@
                 FundingAmount = 47100m,
                 AmountThreshold = 50000m,
                 CreatorName = "提案者FRC7497 MARAHO",
-                ProjectMainUrl = "https://i.imgur.com/lIX9UPyl.png",
+                ProjectMainUrl = "https://i.imgur.com/41xsiTem.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://www.youtube.com/embed/KDok4sdv1fAl.png",
+                ProjectCoverUrl = "https://i.imgur.com/7I6JNmdl.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "https://i.imgur.com/ASDjEj4l.jpg,https://i.imgur.com/4TeQ3bXl.jpg,https://i.imgur.com/7hEkqnJl.jpg,https://i.imgur.com/Ypo3evSl.jpg,https://i.imgur.com/WNXndFpl.jpg,https://i.imgur.com/w6blQuql.jpg,https://i.imgur.com/c3MJF06l.jpg,https://i.imgur.com/JkiChGKl.jpg,https://i.imgur.com/5fMvpfll.jpg,https://i.imgur.com/b0n8OB9l.jpg,https://i.imgur.com/A2bAjenl.jpg,https://i.imgur.com/dfliRPSl.jpg,https://i.imgur.com/7EWwyVPl.jpg,https://i.imgur.com/Gq7xFaNl.jpg,https://i.imgur.com/yMZvZMkl.jpg,https://i.imgur.com/C5M65BWl.jpg,https://i.imgur.com/ef2k4BWl.jpg",
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://www.youtube.com/embed/11l_A0vW32w",
+                ProjectVideoUrl = "https://www.youtube.com/embed/Lbn6N6zDIDY",
                 Project_Question = "為何我們需要您的贊助?",
                 Project_Answer = "frc需要大量的經費及精力，您的支持都是我們前進的動力!",
                 ProjectPlansCount = 5,
@@ -2857,7 +2857,7 @@
                 MemberWebsite = "https://www.flyingv.cc/projects/28002",
                 AboutMe = "成功高中 FRC 7497 團隊",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/fE26Ycnt.png",
+                ProfileImgUrl = "https://i.imgur.com/luE1c85t.png",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第23個提案中的方案
@@ -2871,7 +2871,7 @@
                 PlanFundedPeople = 3,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/qWbpDyUm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 200m,
                 QuantityLimit = 50
@@ -2886,7 +2886,7 @@
                 PlanFundedPeople = 3,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/1fgL0v5m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 500m,
                 QuantityLimit = 50
@@ -2901,7 +2901,7 @@
                 PlanFundedPeople = 20,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/T5xGfcJm.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1000m,
                 QuantityLimit = 50
@@ -2916,7 +2916,7 @@
                 PlanFundedPeople = 5,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/9qDR455m.jpg",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 3000m,
                 QuantityLimit = 50
@@ -2931,7 +2931,7 @@
                 PlanFundedPeople = 2,
                 PlanDescription = "",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/nOQpf1Fm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 5000m,
                 QuantityLimit = 50
@@ -2950,14 +2950,14 @@
                 FundingAmount = 122000m,
                 AmountThreshold = 200000m,
                 CreatorName = "FRC8585 BombaxLeopard",
-                ProjectMainUrl = "https://i.imgur.com/lIX9UPyl.png",
+                ProjectMainUrl = "https://i.imgur.com/H5Xgvikm.png",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://www.youtube.com/embed/KDok4sdv1fAl.png",
+                ProjectCoverUrl = "https://i.imgur.com/M1XVdeVm.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "https://i.imgur.com/qB2CiWZl.png,https://i.imgur.com/HQ3UncBl.jpg,https://i.imgur.com/UCeUHYil.png,https://i.imgur.com/Lva4TvQl.png",
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://www.youtube.com/embed/11l_A0vW32w",
+                ProjectVideoUrl = "https://www.youtube.com/embed/M3R0e-NzECc",
                 Project_Question = "",
                 Project_Answer = "",
                 ProjectPlansCount = 6,
@@ -2985,7 +2985,7 @@
                 MemberWebsite = "https://lohas.acsite.org/",
                 AboutMe = "我們來自大安高工AI自主研究社(機器人研究社) 以Bombax Leopard 山虎棉登記FRC國際隊號#8585 是一支想要改造台灣教育的團隊 儘管我們只是一群高中生 但是我們的執行力和夢想 是遠遠超出其他人的！！",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/fE26Ycnt.png",
+                ProfileImgUrl = "https://i.imgur.com/4GBsE0Mt.png",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第24個提案中的方案
@@ -2999,7 +2999,7 @@
                 PlanFundedPeople = 2,
                 PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 團隊特製感謝函*1,列名於FRC 8585社網",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/cABOytMm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 500m,
                 QuantityLimit = 50
@@ -3014,7 +3014,7 @@
                 PlanFundedPeople = 0,
                 PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊特製感謝函*1,列名於FRC 8585社網",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/TmRXLBKm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1000m,
                 QuantityLimit = 50
@@ -3029,7 +3029,7 @@
                 PlanFundedPeople = 3,
                 PlanDescription = "FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/KDYiyctm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 2000m,
                 QuantityLimit = 50
@@ -3044,7 +3044,7 @@
                 PlanFundedPeople = 3,
                 PlanDescription = "FRC 8585 紀念T-shirt*1,FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/GYhcBJ0m.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 5000m,
                 QuantityLimit = 50
@@ -3059,7 +3059,7 @@
                 PlanFundedPeople = 0,
                 PlanDescription = "非常感謝您支持我們！,受邀參觀FRC 8585、感恩餐會等,特製裱框感謝狀*1,,FRC 8585 紀念T-shirt*1,FRC 8585 特製貼紙*1,FRC 8585 特製徽章*1,FRC 8585 團隊親筆感謝函*1,列名於FRC 8585社網、宣傳片",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/EZxVDCtm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 10000m,
                 QuantityLimit = 50
@@ -3074,7 +3074,7 @@
                 PlanFundedPeople = 1,
                 PlanDescription = "非常感謝您支持我們的理想！,受邀參觀FRC 8585、感恩餐會等,可將姓名、公司商標等置於機器人上，讓全世界看見！,,贈送FRC8585全套產品",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/Kdrt83Um.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 100000m,
                 QuantityLimit = 50
@@ -3093,16 +3093,16 @@
                 FundingAmount = 43280m,
                 AmountThreshold = 300000m,
                 CreatorName = "三好MOONPANT",
-                ProjectMainUrl = "https://i.imgur.com/lIX9UPyl.png",
+                ProjectMainUrl = "https://i.imgur.com/GITEjAcm.jpg",
                 //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
-                ProjectCoverUrl = "https://www.youtube.com/embed/KDok4sdv1fAl.png",
+                ProjectCoverUrl = "https://i.imgur.com/IyjShaRl.png",
                 //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
                 ProjectDescription = "",
-                ProjectImgUrl = "",
+                ProjectImgUrl = "https://i.imgur.com/IyjShaRl.png,https://i.imgur.com/ZdGiP4Hl.png,https://i.imgur.com/Cyjrl8il.jpg,https://i.imgur.com/SJaFXvCl.jpg,https://i.imgur.com/2vEFXdwl.jpg,https://i.imgur.com/FHj6ueBl.jpg,https://i.imgur.com/9cHsv2yl.png,https://i.imgur.com/ACT5Khrl.jpg,https://i.imgur.com/OhtyUFZl.png,https://i.imgur.com/v2VVO15l.png",
                 //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
-                ProjectVideoUrl = "https://www.youtube.com/embed/11l_A0vW32w",
+                ProjectVideoUrl = "https://www.youtube.com/embed/iHwEEXPVol8",
                 Project_Question = "1. 如何洗滌天絲棉内褲延長使用期限呢?,2. 洗內褲的時候為何會有棉絮？",
-                Project_Answer = "最佳的洗滌的方式是【手洗】，天絲棉面料細緻，手洗時別用力搓揉。更別為了省力而用刷子刷，搭配常溫清水在40度以下沖洗，請摺疊擠乾水份，於通風處自然平放晾乾就好；請勿使用漂白水或柔軟精一同清洗，也不要烘乾、熨。特別是第一次下水手洗前，請不要長時間浸泡內褲，容易讓天絲棉因吸附太多水分子而導致膨脹再加上摩擦搓揉而容易起毛絨。",
+                Project_Answer = "最佳的洗滌的方式是【手洗】，天絲棉面料細緻，手洗時別用力搓揉。更別為了省力而用刷子刷，搭配常溫清水在40度以下沖洗，請摺疊擠乾水份，於通風處自然平放晾乾就好；請勿使用漂白水或柔軟精一同清洗，也不要烘乾、熨。特別是第一次下水手洗前，請不要長時間浸泡內褲，容易讓天絲棉因吸附太多水分子而導致膨脹再加上摩擦搓揉而容易起毛絨。,天絲棉是木漿纖維，是由植物纖維提煉出來的天然短纖維，在製造過程中一堆布疊在一起，整批進行裁切時最前面和最後面的布料因為摩擦比較多，導致洗滌的時候帶出棉絮。棉絮洗出來後便不會再有這樣的問題，千萬不要因為有棉絮產生，而誤以為是商品品質不佳。",
                 ProjectPlansCount = 3,
                 CreatedDate = new DateTime(2020, 12, 1),
                 SubmittedDate = new DateTime(2020, 12, 31),
@@ -3117,18 +3117,18 @@
                 MemberId = 25,
                 MemberAccount = "N25member",
                 MemberPassword = "N25memberPassword",
-                MemberName = "",
+                MemberName = "三好MOONPANT",
                 MemberAddress = "",
                 MemberBirth = new DateTime(1996, 5, 3),
-                MemberConEmail = "frc7497@gmail.com",
-                MemberRegEmail = "frc7497@gmail.com",
+                MemberConEmail = "moonpant@gmail.com",
+                MemberRegEmail = "moonpant@gmail.com",
                 MemberMessage = "",
-                MemberPhone = "0938-234949",
-                MemberTeamName = "",
-                MemberWebsite = "",
-                AboutMe = "",
+                MemberPhone = "0932-356949",
+                MemberTeamName = "月光下的秘蜜",
+                MemberWebsite = "http://www.moonpant.com/",
+                AboutMe = "自然純淨 守護您的每一天,MOONPANT沒有華麗的包裝，她希望用自然純淨的面貌和您見面，,MOONPANT不追隨時尚潮流，她希望您就是品牌，,MOONPANT希望女人們都要過美好的生活，,現在開始，MOONPANT",
                 Gender = "男",
-                ProfileImgUrl = "https://i.imgur.com/fE26Ycnt.png",
+                ProfileImgUrl = "https://i.imgur.com/mLbA3Urt.jpg",
                 //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
             });
             //第25個提案中的方案
@@ -3142,7 +3142,7 @@
                 PlanFundedPeople = 0,
                 PlanDescription = "1.商品數量：1件,2.商品顏色：紫月光、北極灰、珊瑚粉 (請選擇顏色)。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/ZdGiP4Hm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 400m,
                 QuantityLimit = 50
@@ -3157,7 +3157,7 @@
                 PlanFundedPeople = 23,
                 PlanDescription = "1.商品數量：3件,2.商品顏色：紫月光、北極灰、珊瑚粉(請選擇組別）。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/zdOnabEm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 900m,
                 QuantityLimit = 50
@@ -3172,11 +3172,968 @@
                 PlanFundedPeople = 13,
                 PlanDescription = "1.商品數量：5件,2.商品顏色：紫月光、北極灰、珊瑚粉(請選擇組別）。,3. 商品尺寸：M、L、XL(請參考尺寸表)。,4.商品款式：蕾絲款中低腰(約略在肚臍下2公分)。,5. 商品產地：台灣。,6.商品圖檔顏色因電腦設定差異有所不同，請依照收到的實際商品。",
                 PlanShipDate = new DateTime(2021, 7, 30),
-                PlanImgUrl = "https://i.imgur.com/TebfrQ4m.png",
+                PlanImgUrl = "https://i.imgur.com/kda3xFPm.png",
                 //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
                 PlanPrice = 1500m,
                 QuantityLimit = 50
             });
+            //第26個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 26,
+                MemberId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 447,
+                FundingAmount = 750960m,
+                AmountThreshold = 500000m,
+                CreatorName = "拍謝少年",
+                ProjectMainUrl = "https://i.imgur.com/qgMOs7Sm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/HFxY2JHl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/o7FQGANl.jpg,https://i.imgur.com/Sl48bgOl.jpg,https://i.imgur.com/LHJK391l.jpg,https://i.imgur.com/vee18bvl.jpg,https://i.imgur.com/NJIMyWFl.jpg,https://i.imgur.com/sUSLjTql.jpg,https://i.imgur.com/lNrBfMCl.jpg,https://i.imgur.com/42x65QMl.jpg,https://i.imgur.com/Jg3DZVNl.jpg,https://i.imgur.com/j46OoGHl.jpg,https://i.imgur.com/xR96mUKl.jpg,https://i.imgur.com/Lllepybl.jpg,https://i.imgur.com/NX0AgyTl.jpg,https://i.imgur.com/FMSEs2Jl.png,https://i.imgur.com/rk5Vk9Ul.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/tDKrqhuLZbg",
+                Project_Question = "若遇疫情暖身演出會取消嗎？,募資的回饋演出是什麼時間？,回饋商品什麼時候會到貨？,我要怎麼收到回饋商品？海外也可以贊助嗎？,回饋品的寄送需另付運費嗎？贊助好幾個方案會分開寄嗎？,我可以同個贊助方案訂購兩份嗎？,已經贊助成功，但想要更改贊助時留下的基本資料/修改收件人要怎麼辦？,專案進行中，可以取消贊助嗎？,贊助暖身演出方案可以將門票（入場資格）轉讓嗎？,暖身方案要怎麼入場呢？會事先寄票嗎？飲料跟餐點兌換券也會寄嗎？,回饋品的製造產地？",
+                Project_Answer = "如遇中央流行疫情指揮中心公佈相關群聚規範影響活動舉辦，回饋演出將順延並另行通知舉辦日期。,三個場次都是16:00開演，預計15:30入場，活動前會再發信給活動參加者提醒唷！,．《歹勢好勢》專輯預計在2021年5月發行，贊助5/8、5/15發行暖身搶聽場的朋友，專輯預計於活動當日領取；贊助5/22發行暖身搶聽場的朋友，專輯將會於活動前郵寄。,回饋品一律採郵局掛號寄出，請參與募資的朋友務必提供正確完整之姓名、電話、地址，以利寄送。由於寄送問題，暫不開放饋品寄送海外，還請見諒。,不用唷！為感謝大家支持，本次募資寄送商品運費將由拍謝少年全數買單！,要麻煩您填兩次單，我們看到相同地址的訂單將會合併寄送。若您兩份商品要寄到不同地方，請填寫不同的寄送地址。,登入平台後，點選右上方個人頭像選取“贊助紀錄”，即可以編輯訂單資料。,可以。請來信至 flyingfive@ontoo.cc 告知＂退款原因＂，同時附上您贊助的「專案名稱、金流單號、贊助金額」，我們將儘速為您處理退款程序。,贊助成功後若想轉讓票券，於專案募資期間請點選右上方個人頭像選取“贊助紀錄”，即可以編輯收件人資料，入場將依「收件人姓名電話」為準。,本次演出皆不會事先寄票也不需取票，活動當天於現場出示可證明身份之相關證件（e.g.身份證、健保卡、學生證），以及flyingV寄出之贊助確認信，核對無誤即可入場。,回饋品皆為台灣生產製造。",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第26個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 26,
+                MemberAccount = "N26member",
+                MemberPassword = "N26memberPassword",
+                MemberName = "拍謝少年",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "sorryyouth@gmail.com",
+                MemberRegEmail = "sorryyouth@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0938-989849",
+                MemberTeamName = "拍謝少年",
+                MemberWebsite = "https://www.facebook.com/sorryyouthtw",
+                AboutMe = "拍謝少年 (Sorry Youth)，一尾台灣土產搖滾樂隊。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/xhb9qrit.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第26個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 116,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 1,
+                PlanTitle = "｜酒豪傳說｜2021.5.8.台北臺虎精釀Lab限定募資回饋場",
+                PlanFundedPeople = 216,
+                PlanDescription = "在酒廠旁喝現拉生啤，聽拍謝少年唱歌！,內容物,- 歹勢好勢專輯 x1,- 限定回饋場門票 x1,- 拍謝少年最喜歡的飲料 兌換券 x1,- 臺虎Lab飲料兌換券 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/pIehvo1m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 117,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 2,
+                PlanTitle = "｜魚人返鄉｜2021.5.15.林聰明沙鍋魚頭限定募資回饋場",
+                PlanFundedPeople = 120,
+                PlanDescription = "魚頭拼魚頭搖滾大對決，吃飽喝足新歌聽滿滿。,內容物,- 歹勢好勢專輯 x1,- 限定回饋場門票 x1,- 拍謝少年最喜歡的飲料 兌換券 x1,- 林聰明限定特餐 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/CgkKiI8m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 118,
+                ProjectId = 26,
+                ProjectName = "拍謝少年《歹勢好勢》專輯發行募資",
+                ProjectPlanId = 3,
+                PlanTitle = "｜重回台十七｜2021.5.22.高雄蚵寮返鄉限定募資回饋場",
+                PlanFundedPeople = 111,
+                PlanDescription = "港邊就是唱歌喝酒的好所在，掀海風聽歌爽！,內容物,-歹勢好勢專輯 x1,-限定回饋場門票 x1,-拍謝少年最喜歡的飲料 兌換券 x1,-意滿漁限定特餐 x1",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/BB86is9m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1680m,
+                QuantityLimit = 50
+            });
+
+            //第27個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 27,
+                MemberId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 103,
+                FundingAmount = 100050m,
+                AmountThreshold = 100000m,
+                CreatorName = "Sandbox樂團",
+                ProjectMainUrl = "https://i.imgur.com/T9jp7bTm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/UTtHqLGl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "大家好，我們是Sandbox ！,Sandbox沙盒樂團成軍於2011年，是以電吉他、鍵盤、貝斯與鼓組成的四人前衛演奏型獨立樂團，曲風結合前衛搖滾、實驗、後搖與電影音樂，四年以來歷經大小革新，從無數次的深省淬鍊出現今的樣貌。邁入新的里程碑的我們，即將帶來富有畫面感與想像空間的全新創作EP，期待與更多人分享我們在樂曲中欲訴說的故事。,,,夢中恍惚的美好，無可捕捉卻又總是流連；如果你也一樣，那麼，一起來到我們的音樂中吧，相信你能找回那種深刻。這些樂曲沒有文字，聲響的對話、想像的空間裡面，你看見了什麼？邀請你一同將我們的想像實體化，使更多人在樂曲中遇見我們，也遇見流浪已久的自我。,,,《流浪者 The Vagabond》EP,流浪之人在沙漠中漫行，時間似沙一般一點一滴流逝，他行至一個沙丘，雖看來無異於他處，但他選擇在這裡稍停，拿起望遠鏡，多看幾眼指引他方向的滿天星斗，希望除了能看出除了東南西北外，還能在星芒的明滅之間，得到造物主些許的默示。 但，他不知道的是，腳下走過的沙漠，雖然時間一點一滴的流逝，但在另一個時空裡，流逝的沙卻變成了一點一滴充滿色彩的水滴，聚流成河地蔓延，原來在冥冥之中，一個可安歇的境地已悄然誕生．．．",
+                ProjectImgUrl = "https://i.imgur.com/UTtHqLGl.jpg,https://i.imgur.com/fW3SCdwl.jpg,https://i.imgur.com/fWxTTsWl.jpg,https://i.imgur.com/Aa70IuKl.jpg,https://i.imgur.com/FwAwzTEl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/WFCJuhczBkY",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第27個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 27,
+                MemberAccount = "N27member",
+                MemberPassword = "N27memberPassword",
+                MemberName = "Sandbox樂團",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1992, 5, 3),
+                MemberConEmail = "sandbox666@gmail.com",
+                MemberRegEmail = "sandbox666@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0938-310899",
+                MemberTeamName = "Sandbox樂團",
+                MemberWebsite = "https://www.facebook.com/SandboxTW/",
+                AboutMe = "Sandbox來自台灣，四件式前衛演奏搖滾樂團，以吉他和鍵盤敘事；鼓和貝斯應答，每首曲子自成一個世界，述說著一個個故事。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/dsSDxaZt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第27個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 119,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 1,
+                PlanTitle = "【流浪者EP1張＋1217發片場門票1張】",
+                PlanFundedPeople = 42,
+                PlanDescription = "行旅天涯，我們走過旱地，唱和著，期待著雙眼被綠洲滋潤的那天。為回報您的支持，我們以十分划算的組合準備了EP專輯1張、以及12月17日 The Wall發片場門票1張套裝組合400元整（原市值共550元），專輯將在發片場當天發放給您，衷心歡迎您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/fW3SCdwm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 400m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 120,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 2,
+                PlanTitle = "【流浪者EP2張＋1217發片場門票2張】",
+                PlanFundedPeople = 11,
+                PlanDescription = "行旅天涯，我們走過旱地，唱和著，期待著雙眼被綠洲滋潤的那天。為回報您的支持，我們以十分划算的組合準備了EP專輯2張、以及12月17日 The Wall發片場門票2張套裝組合750元整（原市值共1100元），專輯將在發片場當天發放給您，衷心歡迎您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/fWxTTsWm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 750m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 121,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 3,
+                PlanTitle = "【流浪者EP5張＋Sandbox Logo貼紙10張】",
+                PlanFundedPeople = 20,
+                PlanDescription = "行經曠野，雁群有序的掠過穹蒼，它們的羽翼在歸巢的路上，那，我們呢？十人限定組合佳評如潮，上架不到一天銷售一空！為回應向隅的朋友們，我們提供優惠的五人限定組合，5張EP、10張貼紙的組合，只有8組，給喜愛Sandbox但昨日慢了一步的朋友們參考！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/Aa70IuKm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1050m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 122,
+                ProjectId = 27,
+                ProjectName = "Sandbox樂團 首張創作EP 《流浪者 The Vagabond》",
+                ProjectPlanId = 4,
+                PlanTitle = "【流浪者EP10張＋Sandbox Logo貼紙20張】",
+                PlanFundedPeople = 30,
+                PlanDescription = "行走於無盡的道路上，難免疲憊不堪，同伴們的支持與鼓勵，總是支撐著彼此向前的動力。快揪您的朋友一起共襄盛舉這場音樂饗宴！10人破盤優惠：10張EP、20張貼紙，只要1800！含寄送費用（原市值2900），呼朋引伴！只有三組！把握機會！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/FwAwzTEm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1800m,
+                QuantityLimit = 50
+            });
+            //第28個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 28,
+                MemberId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                Category = "音樂",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 100,
+                FundingAmount = 2810000m,
+                AmountThreshold = 3000000m,
+                CreatorName = "傻子與白痴",
+                ProjectMainUrl = "https://i.imgur.com/z6Dcgyjm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/P38EDQCl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/x8uY43Fl.jpg,https://i.imgur.com/4uolqTzl.png,https://i.imgur.com/Y3QtVfvl.jpg,https://i.imgur.com/cM4g8TVl.jpg,https://i.imgur.com/kXvO2uWl.jpg,https://i.imgur.com/175xAF9l.jpg,https://i.imgur.com/IIqdEnRl.jpg,https://i.imgur.com/LN4ridNl.jpg,https://i.imgur.com/cK2tFyhl.jpg,https://i.imgur.com/tZa7MC7l.png,https://i.imgur.com/R3WSWXrl.png,https://i.imgur.com/AowNGxwl.jpg,https://i.imgur.com/NsZpLOHl.jpg,https://i.imgur.com/c1xhqNDl.jpg,https://i.imgur.com/k9rBd6tl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/1fgTKtpFaTM",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第28個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 28,
+                MemberAccount = "N28member",
+                MemberPassword = "N28memberPassword",
+                MemberName = "徐維均",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1990, 5, 3),
+                MemberConEmail = "foolandidiot@gmail.com",
+                MemberRegEmail = "foolandidiot@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0960-395249",
+                MemberTeamName = "傻子與白痴",
+                MemberWebsite = "https://www.streetvoice.com/FoolAndIdiotBand/",
+                AboutMe = "人生只要專心做好一件事就好了。2015年，我們18歲，傻子與白痴在炎熱的琴房裡誕生。傻子代表的是內心裡最不社會化的那個我，白痴是被眾人與潮流影響的自己。一個很傻，一個很白痴。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/M6Gpd47t.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第28個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 123,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 1,
+                PlanTitle = "【傻子與白癡 第一輯】",
+                PlanFundedPeople = 20,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + zippo x 傻白 foollighter打火機 一個 + 傻白全團員手寫信 + 傻白未來演出3場通行",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/M6Gpd47m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 8000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 124,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 2,
+                PlanTitle = "【傻子與白癡 第二輯】",
+                PlanFundedPeople = 30,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白演出門票通行一年份",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/LN4ridNm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 15000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 125,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 3,
+                PlanTitle = "【傻子與白癡 第三輯】",
+                PlanFundedPeople = 40,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白演出門票通行一年份 + 傻白為你專屬製作一首你愛的單曲cover",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/IIqdEnRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 30000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 126,
+                ProjectId = 28,
+                ProjectName = "傻子與白痴樂團 - 首張實體EP募資",
+                ProjectPlanId = 4,
+                PlanTitle = "【傻子與白癡 第四輯】",
+                PlanFundedPeople = 10,
+                PlanDescription = "送 簽名EP*1 + 簽名海報*1 + 巡迴門票*1 + 收錄所有傻白創團以來demo之CD小專輯 + 傻白全團員手寫信 + 和傻白團員一起去唱k + 傻白為你專屬製作一首你愛的單曲cover +終生免費傻白演出通行",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/cM4g8TVm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100000m,
+                QuantityLimit = 50
+            });
+            //第29個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 29,
+                MemberId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 76,
+                FundingAmount = 450500m,
+                AmountThreshold = 400000m,
+                CreatorName = "山冶計畫",
+                ProjectMainUrl = "https://i.imgur.com/6WrzXdQm.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/zV7df3Ul.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "1966 年生於日本岐阜縣的池田亮司，影響力早已超出日本，融合多重領域的表現，被國際藝術界視為前衛聲音藝術的領軍人物。1980 年代萌生的後工業音樂／噪音／實驗聲響系譜，因為池田亮司的出現，奠定了一個明確階段。從此，聲音藝術有了嶄新且多元的傳承與開展。過去20年來，池田亮司奮力不懈地探索現場演出、裝置和錄音等各種創作形式，日本前衛多媒體媒體實驗組合 Dumb Type 、編舞家威廉．佛塞（William Forsythe）、建築師伊東豊雄都曾為他的合作對象清單，池田亮司跨越的領域廣闊，我們可從中略知一二。藝術界對他的推崇和肯定，更可自諸多國際重要獎項得知：電子藝術大獎金尼卡獎、德國卡爾斯魯 ZKM 媒體藝術中心 Giga-Hertz 獎、歐洲核子研究組織的 Prix Ars Electronica Collide @ CERN 2014……無一不表現全球藝術界對他的推崇和肯定。,,我們期待，不只有全新的展覽創作，更能夠順勢邀請池田亮司來台表演，因而開啟了此募資計畫，期望集眾人之力讓重量級國際大師池田亮司，首度．親臨．台灣現場表演！,,倘若募資成功，池田亮司將額外帶來表演計畫supercodex，這場巡演始於美國紐約大都會博物館、經英國Attenborough藝術中心、中國北京—上海FUTURE X電子音樂節，12月止於休士頓日以繼夜藝術節。",
+                ProjectImgUrl = "https://i.imgur.com/8QJQsafl.jpg,https://i.imgur.com/bsSmTXxl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/J9kHDuGNcLI",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第29個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 29,
+                MemberAccount = "N29member",
+                MemberPassword = "N29memberPassword",
+                MemberName = "山冶計畫",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1991, 5, 3),
+                MemberConEmail = "mountainplan@gmail.com",
+                MemberRegEmail = "mountainplan@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0940-166798",
+                MemberTeamName = "山冶計畫",
+                MemberWebsite = "https://mtproject.land/",
+                AboutMe = "立基於當代藝術試問現象的動機，從展演策畫到教育活動，視各種與群眾對話的形式為思考實踐的變體。穿越白盒子與未知的野地，交知著自然與人文；交流始於協同合作，讓在地發生轉化和延續．期待以每一次的藝術計畫，碰撞出更開闊的想像世界。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/3dcXHxXt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第29個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 127,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 1,
+                PlanTitle = "【先鋒電子震波組】",
+                PlanFundedPeople = 40,
+                PlanDescription = "**新增【先鋒電子震波組】優先入場（搖滾區）2000元",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/xYmrJNIm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 128,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 2,
+                PlanTitle = "【近距震波組】",
+                PlanFundedPeople = 30,
+                PlanDescription = "【近距震波組】,◐ 優先入場（搖滾區）,◐ 限量明信片一組,◐ 限量提袋,◐ 池田亮司簽名CD,◐ 映像節放映活動保留席,,✶映像節放映活動參與場次可自選，完整節目單將於10月底公佈",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/YttSbyZm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3500m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 129,
+                ProjectId = 29,
+                ProjectName = "極簡主義電子音樂大師：池田亮司 Ryoji Ikeda 重擊來台・唯一表演！",
+                ProjectPlanId = 3,
+                PlanTitle = "【超限序列特製組】",
+                PlanFundedPeople = 6,
+                PlanDescription = "【超限序列特製組】除了一定額的禮物回饋之外，我們將量身訂做回饋與超限的您！",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/sT9QvESm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 60000m,
+                QuantityLimit = 50
+            });
+            //第30個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 30,
+                MemberId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 116,
+                FundingAmount = 402000m,
+                AmountThreshold = 400000m,
+                CreatorName = "行者",
+                ProjectMainUrl = "https://i.imgur.com/wfpmKNGm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/NOSyWvTl.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "《行者》片中部份採用台灣少見的 Dance Film 拍攝，拍攝團隊費盡心思上天下海，尋找出台灣符合無垢舞蹈劇場作品精神的美麗祕境之地，讓舞作中的角色，如神靈顯現般出現在這些秘境中，如神話、如寓言。,,而這樣的拍攝方式，也讓舞蹈作品的呈現，跳脫出劇場的黑盒子，在自然景緻裡活了過來。透過這影像史詩，生命的動能從土地與文化中竄出，在舞者的身體中流轉傳遞，將文字無法言述的畫面意象，透過手足身心，獨立顯影於凝結的時空中。,《行者》完成推出後，相繼獲得台北電影節、台灣國際紀錄片影展、與金馬獎的入圍肯定，更是影展售票中的秒殺片。,,在導演陳芯宜傾十年之力拍完本片後，卻在發行之際面臨資金缺口，電影製作團隊以不計成本的方式拍攝、剪接、後製之後，在已苦無經費的情況下，尚需自掏腰包代墊近百萬的資金缺口。,,為了能讓更多觀眾可以欣賞《行者》，透過電影更深入認識無垢這個美麗而堅毅的故事，同時，看見臺灣舞蹈藝術與土地的能量，我們需要你們的一臂之力。,,,,《行者》即將在 4/10 上映與觀眾見面，請讓我們一起進場支持，也藉由本片對臺灣舞蹈藝術家們獻上最深的敬意！",
+                ProjectImgUrl = "https://i.imgur.com/FZBbnTjl.jpg,https://i.imgur.com/DUM6apLl.jpg,https://i.imgur.com/IcJOuEEl.jpg,https://i.imgur.com/stnDVv3l.png,https://i.imgur.com/Sag2x3Pl.jpg,https://i.imgur.com/MPfmB8fl.png,https://i.imgur.com/n50TfEXl.png,https://i.imgur.com/HUQl3TBl.jpg,https://i.imgur.com/UR5dr0al.png,https://i.imgur.com/9psjJuwl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/uCM1QgwKqII",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+            });
+            //第30個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 30,
+                MemberAccount = "N30member",
+                MemberPassword = "N30memberPassword",
+                MemberName = "行者",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1988, 7, 13),
+                MemberConEmail = "passenger666@gmail.com",
+                MemberRegEmail = "passenger666@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0945-515849",
+                MemberTeamName = "行者",
+                MemberWebsite = "https://www.facebook.com/thewalkerslegendlindancetheatre/",
+                AboutMe = "《行者》團隊自 2004 年起，貼身捕捉舞蹈家林麗珍動人身影，透過她的日常生活，探索舞蹈創作的原點與精神，而這長達十年的紀錄過程，也呼應了林麗珍十年一大作的創作特色。,,十年來，不僅拍攝了無垢於台北、香港、北京、法國、西班牙等各大藝術節演出的珍貴畫面，同時也真實紀錄一個精湛舞作背後，所經過的各種辛苦：無論是舞者的挑選與訓練、對服裝道具的感情與累積、舞者心靈與身體所展現的一致性等等，都深刻展現了臺灣舞蹈發展脈絡與本土藝術家生命映照之間的高度與深度。",
+                Gender = "女",
+                ProfileImgUrl = "https://i.imgur.com/wfpmKNGt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第30個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 130,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 1,
+                PlanTitle = "【行者組合一】",
+                PlanFundedPeople = 800,
+                PlanDescription = "募資限定紀念電影票二張＋《行者》海報一張＋明信片一組＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/lOxl7C3m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 45m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 131,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 2,
+                PlanTitle = "【行者組合二】",
+                PlanFundedPeople = 22,
+                PlanDescription = "募資限定紀念電影票一張＋無垢肢體開發體驗課程單堂一張＋無垢作品絕版海報一張＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5Lc4JT6m.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 132,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 3,
+                PlanTitle = "【行者組合三】",
+                PlanFundedPeople = 38,
+                PlanDescription = "募資限定紀念電影票一張＋《行者》簽名版DVD一組＋《觀》精裝攝影專書一本＋《行者》簽名版海報一張＋明信片一組＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/QCdTAaum.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 133,
+                ProjectId = 30,
+                ProjectName = "《行者》發行募資計劃 x flyingV 獨家售票",
+                ProjectPlanId = 4,
+                PlanTitle = "【行者組合四】",
+                PlanFundedPeople = 11,
+                PlanDescription = "募資限定紀念電影票一張＋秘境小旅行半日遊＋《行者》簽名版海報一張＋名列DVD感謝名單",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/xa4c1Yem.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 10000m,
+                QuantityLimit = 50
+            });
+            //第31個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 31,
+                MemberId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                Category = "藝術影視",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 103,
+                FundingAmount = 168600m,
+                AmountThreshold = 150000m,
+                CreatorName = "政大金旋獎籌備團隊",
+                ProjectMainUrl = "https://i.imgur.com/sekU4oHm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/HZlmV9pl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "近年台灣音樂圈被蓬勃的主流勢力主宰，大型唱片公司和選秀節目將商業利益作為首要考量，使得許多真正強調內容、重視藝術性的音樂人才難以發光發熱。政大金旋團隊不希望音樂就這樣淪為商品，我們期待新一代音樂人跳脫商業取向，讓音樂重回藝術表現的一種形式，這是政大金旋團隊極力關注的議題，也是我們的初衷。團隊成員來自政治大學的不同學院、不同系級，卻同樣熱愛音樂；即便我們在人群中如此平凡，但美好的音樂讓我們相遇、相識、相知、相惜。我們希望繼續撐起這個夢想舞台，圓音樂人的夢，也圓自己的夢。我們堅持用盡全力，在一次又一次的困境中努力提升，希望金旋一年比一年進步，但在追求更專業、更高品質的同時，巨大的經費壓力迎面而來，今年政大金旋精益求精、擴大規模，除了老字號的金旋獎，更於華山1914文創園區舉辦金旋音樂節，這讓我們活動經費更加提高；面對學校極少的補助，我們只能更加努力，靠著自身力量向業界、政府，以及群眾募款，我們希望透過分享金旋故事，感動電腦前的您，希望您願意陪伴我們圓夢，讓我們持續為音樂發聲。",
+                ProjectImgUrl = "https://i.imgur.com/8yxPFNdl.jpg,https://i.imgur.com/Ax4OPwZl.jpg,https://i.imgur.com/R8TTvhpl.jpg,https://i.imgur.com/hgA5L6Jl.jpg,https://i.imgur.com/ybgEUVYl.jpg,https://i.imgur.com/isF4jjRl.jpg,https://i.imgur.com/ckITNYRl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://www.youtube.com/embed/45czVKsuaQ4",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第31個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 31,
+                MemberAccount = "N31member",
+                MemberPassword = "N31memberPassword",
+                MemberName = "政大金旋獎籌備團隊",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "nccugoldenmelody@gmail.com",
+                MemberRegEmail = "nccugoldenmelody@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-309849",
+                MemberTeamName = "政大金旋獎籌備團隊",
+                MemberWebsite = "https://www.facebook.com/nccugoldenmelody",
+                AboutMe = "金旋獎為全國性的音樂比賽，包括獨唱、重對唱、創作組並行。如早期的張雨生、陶晶瑩、陳珊妮，中期的陳綺貞、閃靈樂團、蘇打綠樂團，一直到最近的盧廣仲、林育群都曾經在金旋獎大賽中脫穎而出！歷年參賽者的素質普遍達相當水準，往往受到音樂界及唱片界的青睞，也因而發掘出不少音樂人才。 金旋獎的目標及理念，除了推廣校園音樂風氣，讓對音樂表演有興趣的學生有一抒才情的機會外，並藉由校際競賽，達到交流互動的效果。金旋獎不僅對愛好音樂的同學具有特殊且重要的意義，更是廣受音樂界及媒體矚目的焦點。 今年金旋獎將邁入第三十二屆，繼續邀請樂壇知名人士擔任評審、嘉賓。 　　「政大金旋獎」是歷年來各大校園間規模最大也最具公信力的音樂比賽，深得學生們的認同，對金旋獎懷抱許多夢想和期許！身為籌備委員的我們，今年也將以珍惜的心情來籌備第三十二屆金旋獎，盡心盡力將本屆活動辦得盡善盡美，希望貴單位不吝予以經費上的支持，使活動能順利舉行，金旋精神能繼續發揮，並且讓愛好音樂的火苗能繼續燃燒下去！",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/vANvUS0t.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第31個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 134,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 1,
+                PlanTitle = "【金旋組合一】",
+                PlanFundedPeople = 46,
+                PlanDescription = "金旋紀念毛巾＋胚布袋＋T 恤＋樂團簽名專輯＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/ns3SqV0m.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1300m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 135,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 2,
+                PlanTitle = "【金旋組合二】",
+                PlanFundedPeople = 35,
+                PlanDescription = "金旋紀念毛巾 X2＋胚布袋 X2＋衣服 X2＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/UQPwk1Ym.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1600m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 136,
+                ProjectId = 31,
+                ProjectName = "第三十二屆政大金旋獎Golden Melody",
+                ProjectPlanId = 3,
+                PlanTitle = "【金旋組合三】",
+                PlanFundedPeople = 22,
+                PlanDescription = "金旋紀念毛巾 X3＋胚布袋 X3＋衣服 X3＋工作人員親筆感謝小卡＋粉專列名感謝",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/ckITNYRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2400m,
+                QuantityLimit = 50
+            });
+            //第32個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 32,
+                MemberId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 100,
+                FundingAmount = 370000m,
+                AmountThreshold = 500000m,
+                CreatorName = "中華民國冰球協會",
+                ProjectMainUrl = "https://i.imgur.com/sSkzfS1m.png",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/F8Jltpml.png",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "",
+                ProjectImgUrl = "https://i.imgur.com/N0NKzbzl.jpg,https://i.imgur.com/GnX0Dotl.jpg,https://i.imgur.com/GFtPCQKl.jpg,https://i.imgur.com/kMhsqOvl.jpg,https://i.imgur.com/PfB1zx9l.jpg,https://i.imgur.com/w2aTAdNl.png,https://i.imgur.com/fXLAv4Fl.png,https://i.imgur.com/Mn3Fd3ul.png,https://i.imgur.com/LPsMwXJl.png,https://i.imgur.com/lFy4oXbl.png,https://i.imgur.com/G75i0JDl.png,https://i.imgur.com/GQPyOryl.jpg,https://i.imgur.com/kucYPiIl.png,https://i.imgur.com/1ejbxA7l.png,https://i.imgur.com/pV9IRuCl.png,https://i.imgur.com/cDj1nVal.jpg,https://i.imgur.com/JcoqVN0l.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/MDClTWqpAvI",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第32個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 32,
+                MemberAccount = "N32member",
+                MemberPassword = "N32memberPassword",
+                MemberName = "中華民國冰球協會",
+                MemberAddress = "10489臺北市中山區朱崙街20號9樓906室",
+                MemberBirth = new DateTime(1991, 5, 3),
+                MemberConEmail = "u20taiwan@gmail.com",
+                MemberRegEmail = "u20taiwan@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-779889",
+                MemberTeamName = "中華民國冰球協會",
+                MemberWebsite = "http://www.ctihf.org.tw/",
+                AboutMe = "本會名稱為《中華民國冰球協會》(以下簡稱本會)。其英文名稱為 CHINESE TAIPEI ICE HOCKEY FEDERATION，並且是唯一代表中華民國為參加《國際冰球總會》(INTERNATION ICE HOCKEY FEDERATION)組織及亞洲冰球聯合會(ASPG)之會員國單位。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/qbtFAxkt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第32個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 137,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 1,
+                PlanTitle = "【贊助組合一】",
+                PlanFundedPeople = 40,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋法國莊園橄欖沐浴精 50ml",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 2000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 138,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 2,
+                PlanTitle = "【贊助組合二】",
+                PlanFundedPeople = 30,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋法國橄欖皂 25 克 3 顆（隨機）",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 139,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 3,
+                PlanTitle = "【贊助組合三】",
+                PlanFundedPeople = 20,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋T-shirt 1 件＋法國橄欖液皂 300ml",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 5000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 140,
+                ProjectId = 32,
+                ProjectName = "U20 世錦賽 為熱情而戰",
+                ProjectPlanId = 4,
+                PlanTitle = "【贊助組合四】",
+                PlanFundedPeople = 10,
+                PlanDescription = "貼紙 1 份＋明信片 1 份＋球員海報 1 張（可指定球員）＋毛巾＋全隊簽名 T-shirt 1 件＋法國橄欖沐浴精 500ml＋橄欖皂 150 克",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/F8Jltpmm.png",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 10000m,
+                QuantityLimit = 50
+            });
+            //第33個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 33,
+                MemberId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 37,
+                FundingAmount = 2900000m,
+                AmountThreshold = 3000000m,
+                CreatorName = "林育呈",
+                ProjectMainUrl = "https://i.imgur.com/tQcnspEm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/MGUcJLZl.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "大家好，我是林育呈 Leo，今年我受到世界聯合學院(United World College)台灣理事會的提名，即將前往挪威分校就讀，成為台灣第三屆UWC學生之一。由於家裡為中低收入戶，經濟程度無法支付學費，很感謝台灣理事會能夠提供全額獎學金的名額，包括學費、機票以及零用錢總額超過新台幣兩百萬元。因為了解這筆獎學金的得來不易，故以募資的方式回饋部分金額給理事會，並且此費用是用來幫助缺少部分學費的學生以及籌備中日青年會議台灣代表團。中日青年會議是由UWC香港分校學生與其他分校畢業生所組織的暑期活動，為期約一個禮拜，與政府並無關聯，旨在增進中日關係的精神。每年邀請來自中國、香港及日本的學生共同回顧歷史、交流對同一事件不同的認知，透過理性的對話為中日和平做出貢獻。在理事會的努力下，今年第一次能以台方代表的身分參加。今年的觀察經驗將帶回來為日後成立台灣代表團做籌備，理事會期望未來每一年都能送起碼十位的台灣學生前往會議為我國發聲。",
+                ProjectImgUrl = "https://i.imgur.com/48DC5uQl.png,https://i.imgur.com/bqmp4E2l.png,https://i.imgur.com/BkV8Wn7l.jpg,https://i.imgur.com/yAMbibol.png,https://i.imgur.com/h2IWCg3l.png,https://i.imgur.com/CUA33YYl.jpg,https://i.imgur.com/sYtQz61l.jpg,https://i.imgur.com/zpPijYll.jpg,https://i.imgur.com/hXQz5Q4l.jpg,https://i.imgur.com/ZOpOR8Kl.png",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 3,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第33個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 33,
+                MemberAccount = "N33member",
+                MemberPassword = "N33memberPassword",
+                MemberName = "林育呈",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1996, 5, 3),
+                MemberConEmail = "yukjeong1019@gmail.com",
+                MemberRegEmail = "yukjeong1019@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0935-666849",
+                MemberTeamName = "林育呈",
+                MemberWebsite = "https://www.facebook.com/yukjeong?hc_ref=ARQwXw4lOzRIK6auXB78Md3yAPy_PTZi8GgDKSvIzg43DPWFF_BOvnY5PqU5lAnCYGw",
+                AboutMe = "我是林育呈，來自屏東，從小隨父母搬到高雄生活，今年2018年將從岡山高中畢業，前往世界聯合學院挪威分校就讀兩年，曾任社團公關的經驗使我有豐富的推廣能力，接下來兩年我目標將台灣推廣到UWC全校，讓各國新一代青年都認識台灣。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/tQcnspEt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第33個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 141,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 1,
+                PlanTitle = "【挪威組合一】",
+                PlanFundedPeople = 20,
+                PlanDescription = "挪威明信片一組六張+Email感謝信(會附上寄出明信片日期)",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/TZkuA1Km.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 142,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 2,
+                PlanTitle = "【挪威組合二】",
+                PlanFundedPeople = 11,
+                PlanDescription = "挪威明信片×1+極光明信片×2+手寫感謝信+暑假回來經驗分享+【Zoe's 綠生活館多肉植物一盆】+暑假回台個人對談用餐+(能力之內)完成挪威任務",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/yCc5SCRm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 100000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 143,
+                ProjectId = 33,
+                ProjectName = "【向北尋夢】世界聯合學院UWC挪威分校就學募資計畫",
+                ProjectPlanId = 3,
+                PlanTitle = "【挪威組合三】",
+                PlanFundedPeople = 6,
+                PlanDescription = "挪威明信片×1+極光明信片×2+手寫感謝信+暑假回來經驗分享+【Zoe's 綠生活館多肉植物一盆】+暑假回台個人對談用餐+(能力之內)完成挪威任務",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/GB4Mavhm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 200000m,
+                QuantityLimit = 50
+            });
+            //第34個提案
+            context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
+            {
+                ProjectId = 34,
+                MemberId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                Category = "生活",
+                ProjectStatus = "集資中",
+                StartDate = new DateTime(2021, 4, 1),
+                EndDate = new DateTime(2021, 6, 1),
+                Fundedpeople = 61,
+                FundingAmount = 93000m,
+                AmountThreshold = 27000m,
+                CreatorName = "陳德娜",
+                ProjectMainUrl = "https://i.imgur.com/mP9h1ECm.jpg",
+                //提案瀏覽頁的頁面照片 	Medium Thumbnail 照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                ProjectCoverUrl = "https://i.imgur.com/pgLFXDel.jpg",
+                //提案詳細頁的影片覆蓋 	Large Thumbnail 照片格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectDescription = "我是陳德娜，目前就讀台灣大學歷史學系四年級，兼修亞洲藝術學程。熱衷於文學創作、藝術推廣以及文化保護。過去曾在新創公司文化銀行、台南奇美博物館以及學校藝文中心實習和工讀，並在2017年於北京大學交換，修習歷史與藝術學院課程。今年三月，我即將參加第21屆於德國科隆舉辦的「世界商業論壇 (World Business Dialogue)」，並希望能透過這項計畫募資來回機票及論壇報名費，約NTD27000。",
+                ProjectImgUrl = "https://i.imgur.com/4EUTykyl.png,https://i.imgur.com/a79hR90l.png,https://i.imgur.com/UazbMiOl.jpg,https://i.imgur.com/pue2rEYl.jpg,https://i.imgur.com/NpGNUu9l.png,https://i.imgur.com/sXRkhDtl.png,https://i.imgur.com/hvqcTARl.png,https://i.imgur.com/1UYiC3ql.png,https://i.imgur.com/Ru8672jl.png,https://i.imgur.com/sQvL691l.png,https://i.imgur.com/OqVwc1dl.png,https://i.imgur.com/AArCqGhl.jpg",
+                //	Large Thumbnail 格式IMGURL SIZE:	640x640 連結檔案名結尾l
+                ProjectVideoUrl = "https://youtu.be/ra1gkxY1GSg",
+                Project_Question = "",
+                Project_Answer = "",
+                ProjectPlansCount = 4,
+                CreatedDate = new DateTime(2020, 12, 1),
+                SubmittedDate = new DateTime(2020, 12, 31),
+                LastEditTime = new DateTime(2021, 3, 31),
+                ApprovingStatus = 2
+
+
+            });
+            //第34個提案的會員資料
+            context.Members.AddOrUpdate((x) => x.MemberId, new Member
+            {
+                MemberId = 34,
+                MemberAccount = "N34member",
+                MemberPassword = "N34memberPassword",
+                MemberName = "陳德娜",
+                MemberAddress = "",
+                MemberBirth = new DateTime(1985, 5, 3),
+                MemberConEmail = "wbdchen@gmail.com",
+                MemberRegEmail = "wbdchen@gmail.com",
+                MemberMessage = "",
+                MemberPhone = "0932-445839",
+                MemberTeamName = "陳德娜",
+                MemberWebsite = "https://storyoftravelinginlife.weebly.com/",
+                AboutMe = "我是陳德娜，目前就讀台灣大學歷史學系四年級，兼修亞洲藝術學程。熱衷於文學創作、藝術推廣以及文化保護。過去曾在新創公司文化銀行、台南奇美博物館以及學校藝文中心實習和工讀，並在2017年於北京大學交換，修習歷史與藝術學院課程。",
+                Gender = "男",
+                ProfileImgUrl = "https://i.imgur.com/frW5dxnt.jpg",
+                //	Small Thumbnail照片格式IMGURL SIZE:160x160 連結檔案名結尾t
+            });
+            //第34個提案中的方案
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 144,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 1,
+                PlanTitle = "【方案一】",
+                PlanFundedPeople = 20,
+                PlanDescription = "【論壇完整筆記壹份】以email寄出電子檔。內容包含工作坊、演講、企業參訪，但若行程有變動，受贊助方保有調整權力。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 800m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 145,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 2,
+                PlanTitle = "【方案二】",
+                PlanFundedPeople = 26,
+                PlanDescription = "【一對一分享(或十人以下)】內容為申請經過、參與論壇心得、旅行中所聞以及雙方交流，時間為兩小時內。地點限制：台北市、台南(可能會在四、五月)。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 1200m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 146,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 3,
+                PlanTitle = "【方案三】",
+                PlanFundedPeople = 11,
+                PlanDescription = "【協助2019年世界商業論壇報名】讓我們一起走出舒適圈，接下對自己的挑戰!",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3000m,
+                QuantityLimit = 50
+            });
+            context.Plans.AddOrUpdate((x) => x.PlanId, new Plan
+            {
+                PlanId = 147,
+                ProjectId = 34,
+                ProjectName = "人文∞數位｜以快致慢，從歷史學系到世界商業論壇",
+                ProjectPlanId = 4,
+                PlanTitle = "【方案四】",
+                PlanFundedPeople = 4,
+                PlanDescription = "【一對多分享(十人以上)】 內容為申請經過、參與論壇心得、旅行中所聞以及雙方交流，時間為兩小時。 地點限制：台北市、台南(可能會在四、五月)。",
+                PlanShipDate = new DateTime(2021, 7, 30),
+                PlanImgUrl = "https://i.imgur.com/5P6L4zpm.jpg",
+                //	Medium Thumbnail照片格式IMGURL SIZE:320x320 連結檔案名結尾m
+                PlanPrice = 3200m,
+                QuantityLimit = 50
+            });
+
             ////第22個提案
             //context.Projects.AddOrUpdate((x) => x.ProjectId, new Project
             //{
